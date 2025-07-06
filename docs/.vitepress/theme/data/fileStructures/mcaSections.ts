@@ -73,10 +73,13 @@ export const mcaDbmsSection = [
         title: "SQL",
         items: [
           { label: "SQL Introduction", link: "/mca/dbs/u2/u11" },
-          { label: "SQL Basic Practice", link: "/mca/dbs/u2/u12" },
-          { label: "Complex Queries", link: "/mca/dbs/u2/u13" },
-          { label: "PL/SQL Introduction", link: "/mca/dbs/u2/u14" },
-          { label: "Procedure, Function, Trigger", link: "/mca/dbs/u2/u15" },
+          { label: "SQL Language", link: "/mca/dbs/u2/u12" },
+          { label: "Aggregate Commands", link: "/mca/dbs/u2/u13" },
+          { label: "Complex Nested Queries", link: "/mca/dbs/u2/u14" },
+          { label: "SQl Query Practice", link: "/mca/dbs/u2/u15" },
+          { label: "PL/SQl", link: "/mca/dbs/u2/u16" },
+          { label: "PL/SQl Procedures Functions", link: "/mca/dbs/u2/u17" },
+          { label: "SQL Triggers", link: "/mca/dbs/u2/u18" },          
         ]
       },
     //   {
