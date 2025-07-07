@@ -82,30 +82,34 @@ export const mcaDbmsSection = [
           { label: "SQL Triggers", link: "/mca/dbs/u2/u18" },          
         ]
       },
-    //   {
-    //     title: "Unit-3 E-R Model",
-    //     items: [
-    //       // { label: "Unit 3 Q", link: "/python/col_extra/unit_3_q" },
-    //     ]
-    //   },
-    //   {
-    //     title: "Unit-4 Normalization",
-    //     items: [
-    //       // { label: "Unit 4 Q", link: "/python/col_extra/unit_4_q" },
-    //     ]
-    //   },
+      {
+        title: "ER Model & DB Design",
+        items: [
+          { label: "ER Model", link: "/mca/dbs/u3/u11" },
+          { label: "Types, Sets, Roles", link: "/mca/dbs/u3/u12" },
+          { label: "Weak Entity", link: "/mca/dbs/u3/u13" },
+          // { label: "Database Design", link: "/mca/dbs/u3/u14" },
+        ]
+      },
+      {
+        title: "Advanced DB Concepts",
+        items: [
+          { label: "OOBDs", link: "/mca/dbs/u4/u11" },
+        ]
+      },
     //   {
     //     title: "Unit-5 MongoDB",
     //     items: [
     //       // { label: "Unit 5 Q", link: "/python/col_extra/unit_5_q" },
     //     ]
       // },
-      {
-        title: "Lab Related",
-        items: [
-          { label: "Assignment", link: "/mca/dbs/assignment" },
-        ]
-      },
+      // {
+      //   title: "Prev Questions",
+      //   items: [
+      //     { label: "Assignment", link: "/mca/dbs/assignment" },
+      //     // { label: "Assignment", link: "/mca/dbs/assignment" },
+      //   ]
+      // },
     ]
   }
 ];
