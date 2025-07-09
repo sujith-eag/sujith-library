@@ -1,6 +1,4 @@
-
 # Exception Handling
-
 
 ### Exception Hierarchy
 
@@ -26,9 +24,7 @@ Exceptions can be generated in three ways:
     
 3. **Manually**: Using the `throw` statement.
     
-
 Regardless of how an exception is generated, it is handled in the same way.
-
 
 ## Exception Handling Fundamentals
 
@@ -44,7 +40,6 @@ Java handles exceptions using five key keywords:
     
 - `finally`
     
-
 These form an interrelated subsystem. The use of one typically implies the use of at least one of the others.
 
 - The `try` block contains code that you want to monitor for exceptions.
@@ -59,7 +54,6 @@ These form an interrelated subsystem. The use of one typically implies the use o
     
 - Code that must execute regardless of whether an exception occurs goes into a `finally` block.
     
-
 ---
 
 ### Using `try` and `catch`
@@ -275,7 +269,4 @@ For example:
     
 - Inner `try` blocks can handle minor or recoverable ones
     
-
 This structure improves clarity and control in complex programs.
-
----

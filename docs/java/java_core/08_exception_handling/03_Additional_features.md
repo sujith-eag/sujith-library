@@ -1,4 +1,3 @@
-
 # Additional Exception Features
 
 Modern versions of Java provide advanced exception-handling features to improve code clarity and reduce boilerplate.
@@ -24,14 +23,12 @@ catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
 - Use the **`|`** operator to separate exception types.
     
 - The exception variable `e` is implicitly `final`—you **cannot** assign a new value to it.
-    
 
 ---
 
 ### 3. Final Rethrow (More Precise Rethrow)
 
 The **final rethrow** feature allows the compiler to infer the most specific type of exception that can be thrown. If a catch block rethrows the exception, Java tracks which types are possible and enforces more precise type checking. This helps avoid overly broad exception declarations.
-
 
 ## Built-in Exceptions
 
@@ -82,11 +79,9 @@ Checked exceptions are **not subclasses of `RuntimeException`**, and **must be d
 |`NoSuchMethodException`|Method not found.|
 |`ReflectiveOperationException`|Superclass for reflection-related exceptions.|
 
-
 ## Creating Custom Exception Subclasses
 
 You can define custom exceptions to handle application-specific errors. This is done by subclassing `Exception` (or `RuntimeException` if it should be unchecked).
-
 
 ```java
 // Create a custom exception
@@ -151,6 +146,3 @@ In Java, **exceptions are the preferred way** to handle errors. Although returni
     
 - Are the **standard practice** for professional Java developers.
     
-
----
-

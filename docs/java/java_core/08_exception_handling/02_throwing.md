@@ -1,7 +1,4 @@
-
-
 # Throwing Exceptions
-
 
 So far, we’ve seen exceptions generated automatically by the Java Virtual Machine (JVM). However, Java also allows **manually throwing an exception** using the `throw` statement.
 
@@ -10,7 +7,6 @@ throw exceptionObject;
 ```
 
 Here, `exceptionObject` must be an instance of a class derived from `Throwable`.
-
 
 ```java
 // Manually throw an exception.
@@ -41,7 +37,6 @@ After try/catch block.
 > [!Note]
 >  The `throw` keyword throws an object, not a type. Therefore, you must use `new` to create an instance of the exception.
 
-
 ## Rethrowing an Exception
 
 An exception caught in one `catch` block can be **rethrown** to be handled by another, outer `catch` block. This technique is useful when:
@@ -49,7 +44,6 @@ An exception caught in one `catch` block can be **rethrown** to be handled by an
 - You want multiple handlers to process different aspects of the same exception.
     
 - Local code handles part of the issue, and another part is escalated.
-
 
 ```java
 // Rethrow an exception to the caller.
@@ -111,7 +105,6 @@ Two important methods of `Throwable`:
     
 - `printStackTrace()` – Displays the call stack at the point where the exception occurred.
     
-
 ```java
 // Using Throwable methods.
 class ExcTest {
@@ -285,5 +278,3 @@ The `prompt()` method uses the `throws` clause to declare that it might throw `I
 
 When performing keyboard input, you needed to add the clause `throws java.io.IOException` to `main( )`. An input statement might generate an `IOException`, and at that time, we weren’t able to handle that exception. Thus, such an exception would be thrown out of `main( )` and needed to be specified as such. Now that you know about exceptions, you can easily handle `IOException`.
 
-
----
