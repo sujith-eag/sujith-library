@@ -101,18 +101,17 @@ export const javaMultiThread = [
       { label: 'Multi-Threading Basics', link: '/java/java_core/09_multithread/01_multi_basic' },
       { label: 'Managing Threads', link: '/java/java_core/09_multithread/02_creating_thread' },
       { label: 'Thread Synchronization', link: '/java/java_core/09_multithread/03_thread_sync' },
-    ]
-  }
+    ] 
+  }             
 ]
-
 export const javaEnumGeneric = [
   {
     title: 'enum-Boxing-Generics',
     items: [
-      { label: 'enum Basics', link: '/java/java_core/10enum/01_enum' },
-      { label: 'Autoboxing', link: '/java/java_core/10enum/02_autobox' },
-      { label: 'Generics Basics', link: '/java/java_core/10enum/03_genric_b' },
-      { label: 'Generics Advanced', link: '/java/java_core/10enum/04_genric_adv' },
+      { label: 'enum Basics', link: '/java/java_core/10_enum/01_enum' },
+      { label: 'Autoboxing', link: '/java/java_core/10_enum/02_autobox' },
+      { label: 'Generics Basics', link: '/java/java_core/10_enum/03_genric_b' },
+      { label: 'Generics Advanced', link: '/java/java_core/10_enum/04_genric_adv' },
       
     ]
   }
