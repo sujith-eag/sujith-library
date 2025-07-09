@@ -94,7 +94,9 @@ export const mcaDbmsSection = [
       {
         title: "Advanced DB Concepts",
         items: [
-          { label: "OOBDs", link: "/mca/dbs/u4/u11" },
+          { label: "OO-DBs", link: "/mca/dbs/u4/u11" },
+          { label: "Distributed Databse", link: "/mca/dbs/u4/u12" },
+          { label: "Fragmenstaion, Replication", link: "/mca/dbs/u4/u13" },
         ]
       },
     //   {
