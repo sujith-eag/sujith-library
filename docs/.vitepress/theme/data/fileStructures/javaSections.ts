@@ -127,6 +127,15 @@ export const javaLambda = [
   }
 ]
 
+export const javaCollection = [
+  {
+    title: 'Collection Frameworks',
+    items: [
+      { label: 'Collection Basics', link: '/java/java_core/12_collection/01_cfb' },
+      // { label: 'Lambda Expression Advanced', link: '/java/java_core/11_lambda/02_lambda_a' },
+    ]
+  }
+]
 export const javaSection = [
     ...javaBasic, 
     ...javaDTOP, 
@@ -139,4 +148,5 @@ export const javaSection = [
     ...javaMultiThread,
     ...javaEnumGeneric,
     ...javaLambda,
+    ...javaCollection,
   ]
