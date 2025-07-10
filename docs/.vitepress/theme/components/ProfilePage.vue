@@ -23,7 +23,7 @@
             <a href="https://github.com/sujith-eag" target="_blank"><img src="/logo/github-w.svg" alt="GitHub" /> GitHub</a>
             <a href="mailto:sujith.eag@gmail.com"><img src="/logo/gmail.svg" alt="Email" /> Email</a>
             <a href="https://www.linkedin.com/in/sujith-eag/"><img src="/logo/linkedin_c.svg" alt="LinkedIn" /> LinkedIn</a>
-            <a href="/sujith_resume_1.pdf" target="_blank"><img src="/logo/resume.svg" alt="Resume" /> Resume</a>
+            <!-- <a href="/sujith_resume_1.pdf" target="_blank"><img src="/logo/resume.svg" alt="Resume" /> Resume</a> -->
           </div>
         </div>
     

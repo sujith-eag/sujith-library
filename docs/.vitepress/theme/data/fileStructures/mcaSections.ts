@@ -26,16 +26,16 @@ export const mcaCSSection = [
   {
     title: "Cyber Security",
     items: [
-      { 
-      title: "Notes",
-      items: [     
-        { label: "Cyber Crime", link: "/mca/cs/u1_1" },
-        { label: "Attack Planning", link: "/mca/cs/u1_2" },
-        { label: "Botnet & DDoS", link: "/mca/cs/u1_3" },
-        { label: "Mobile Devices", link: "/mca/cs/u2_1" },
-        { label: "Mobile Security", link: "/mca/cs/u2_2" },
-        ]
-      },
+      // { 
+      // title: "Notes",
+      // items: [     
+      //   { label: "Cyber Crime", link: "/mca/cs/u1_1" },
+      //   { label: "Attack Planning", link: "/mca/cs/u1_2" },
+      //   { label: "Botnet & DDoS", link: "/mca/cs/u1_3" },
+      //   { label: "Mobile Devices", link: "/mca/cs/u2_1" },
+      //   { label: "Mobile Security", link: "/mca/cs/u2_2" },
+      //   ]
+      // },
       { 
       title: "Lab Manual",
       items: [
@@ -240,13 +240,13 @@ export const mcaFSSection = [
 ];
 
 export const mca2Section = [
-  ...mcaFSSection,
-  ...mcaJavaSection,
-  ...mcaNetworkSection,
-  ...mcaDbmsSection,
-  ...mcaDAASection,  
+  // ...mcaFSSection,
+  // ...mcaJavaSection,
+  // ...mcaNetworkSection,
+  // ...mcaDbmsSection,
+  // ...mcaDAASection,  
   ...mcaCSSection,
-  ...mcaRMSection,
+  // ...mcaRMSection,
 ]
 
   export const mcaPythonSection = [

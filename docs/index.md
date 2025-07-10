@@ -12,16 +12,16 @@ hero:
   
   actions:
   - theme: brand
-    text: Personal Profile 
+    text: Profile 
     link: /sujith
   
   - theme: alt
-    text: Previous Projects
+    text: Projects
     link: /projects/
     
-  - theme: alt
-    text: MCA Section 
-    link: /mca/
+  # - theme: alt
+  #   text: MCA Section 
+  #   link: /mca/
 
 features:
 
