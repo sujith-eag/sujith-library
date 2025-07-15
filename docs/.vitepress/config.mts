@@ -48,7 +48,7 @@ export default defineConfig({
       { text: 'JS', link: '/java-script/' },
       { text: 'React', link: '/react/'},
       { text: 'Linux', link: '/linux/' },
-      { text: 'MCA', link: '/mca/' },
+      // { text: 'MCA', link: '/mca/' },
     ],
 
     sidebar: {

@@ -26,16 +26,16 @@ export const mcaCSSection = [
   {
     title: "Cyber Security",
     items: [
-      // { 
-      // title: "Notes",
-      // items: [     
-      //   { label: "Cyber Crime", link: "/mca/cs/u1_1" },
-      //   { label: "Attack Planning", link: "/mca/cs/u1_2" },
-      //   { label: "Botnet & DDoS", link: "/mca/cs/u1_3" },
-      //   { label: "Mobile Devices", link: "/mca/cs/u2_1" },
-      //   { label: "Mobile Security", link: "/mca/cs/u2_2" },
-      //   ]
-      // },
+      { 
+      title: "Notes",
+      items: [     
+        { label: "Cyber Crime", link: "/mca/cs/u1_1" },
+        { label: "Attack Planning", link: "/mca/cs/u1_2" },
+        { label: "Botnet & DDoS", link: "/mca/cs/u1_3" },
+        { label: "Mobile Devices", link: "/mca/cs/u2_1" },
+        { label: "Mobile Security", link: "/mca/cs/u2_2" },
+        ]
+      },
       { 
       title: "Lab Manual",
       items: [
@@ -99,17 +99,16 @@ export const mcaDbmsSection = [
           { label: "Fragmenstaion, Replication", link: "/mca/dbs/u4/u13" },
         ]
       },
-    //   {
-    //     title: "Unit-5 MongoDB",
-    //     items: [
-    //       // { label: "Unit 5 Q", link: "/python/col_extra/unit_5_q" },
-    //     ]
-      // },
+      {
+        title: "Unit-5 MongoDB",
+        items: [
+          // { label: "Unit 5 Q", link: "/python/col_extra/unit_5_q" },
+        ]
+      },
       // {
       //   title: "Prev Questions",
       //   items: [
       //     { label: "Assignment", link: "/mca/dbs/assignment" },
-      //     // { label: "Assignment", link: "/mca/dbs/assignment" },
       //   ]
       // },
     ]
@@ -137,13 +136,13 @@ export const mcaNetworkSection = [
           // { label: "Un", link: "/mca/cn/2_q_answered" }
         ]
       },
-    //   {
-    //     title: "Unit-3 Transport Layer",
-    //     items: [
-    //       // { label: "Unit 3 - Questions", link: "/mca/cn/3_q" },
-    //       // { label: "Unit 3 - Answers", link: "/mca/cn/3_q_answered" }
-    //     ]
-    //   },
+      // {
+      //   title: "Unit-3 Transport Layer",
+      //   items: [
+      //     { label: "Unit 3 - Questions", link: "/mca/cn/3_q" },
+      //     { label: "Unit 3 - Answers", link: "/mca/cn/3_q_answered" }
+      //   ]
+      // },
       {
         title: "Lab Manual",
         items: [
@@ -240,13 +239,13 @@ export const mcaFSSection = [
 ];
 
 export const mca2Section = [
-  // ...mcaFSSection,
-  // ...mcaJavaSection,
-  // ...mcaNetworkSection,
-  // ...mcaDbmsSection,
-  // ...mcaDAASection,  
+  ...mcaFSSection,
+  ...mcaJavaSection,
+  ...mcaNetworkSection,
+  ...mcaDbmsSection,
+  ...mcaDAASection,  
   ...mcaCSSection,
-  // ...mcaRMSection,
+  ...mcaRMSection,
 ]
 
   export const mcaPythonSection = [
