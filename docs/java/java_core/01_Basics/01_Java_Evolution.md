@@ -1,5 +1,4 @@
-
-### Evolution of Java
+# Evolution of Java
 
 Java was conceived in 1991 by James Gosling, Patrick Naughton, Chris Warth, Ed Frank, and Mike Sheridan at Sun Microsystems.
 
@@ -37,9 +36,7 @@ Java was conceived in 1991 by James Gosling, Patrick Naughton, Chris Warth, Ed F
 
 * 2025: Java 22 (JDK 22) was released, continuing the evolution of the language and platform.
 
-____
-
-### Java Fundamentals
+## Java Fundamentals
 
 Java was originally developed to meet the need for a **platform-independent programming language** for embedded systems in consumer electronics (e.g., toasters, microwave ovens, remote controls). At the time, most programming languages compiled to machine code specific to a particular CPU, which limited cross-platform capabilities.
 
@@ -61,5 +58,3 @@ To address the need for packaging and distributing applications post-applets, tw
 
 * **`jlink`** (JDK 9): Creates a custom runtime image containing only the necessary modules and the JRE.
 * **`jpackage`** (JDK 16): Builds installable applications for distribution.
-
----

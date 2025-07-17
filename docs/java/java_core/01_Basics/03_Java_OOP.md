@@ -1,5 +1,4 @@
-
-### Object-Oriented Programming (OOP) in Java
+# Object-Oriented Programming (OOP) in Java
 
 At the core of Java lies **object-oriented programming (OOP)**. Java is fundamentally built on the principles of OOP, and every Java program, to some extent, follows this paradigm.
 
@@ -7,9 +6,7 @@ OOP combines the best ideas of **structured programming** with powerful new conc
 
 In contrast, **object-oriented programming organizes a program around its data**, encapsulating both the data and the methods that operate on it. The core principle becomes “**data controlling access to code**.” In Java, you define data and associate with it the code that is allowed to manipulate it. This structure provides clarity, modularity, and reusability.
 
----
-
-### Core Principles of OOP
+## Core Principles of OOP
 
 To support object-oriented design, all OOP languages share three foundational principles:
 
@@ -17,9 +14,7 @@ To support object-oriented design, all OOP languages share three foundational pr
 2. **Polymorphism**
 3. **Inheritance**
 
----
-
-#### Encapsulation
+## Encapsulation
 
 **Encapsulation** is the mechanism that binds together the code and the data it manipulates, while protecting both from outside interference and misuse. It allows an object to **hide its internal state** and require all interaction to occur through **well-defined interfaces**.
 
@@ -35,9 +30,7 @@ In Java:
 
 This separation of internal representation from external interface enhances **modularity**, **security**, and **maintainability**.
 
----
-
-#### Polymorphism
+## Polymorphism
 
 **Polymorphism**, derived from Greek meaning “many forms,” allows one interface to be used for a general class of actions. The exact behavior is determined by the specific context.
 
@@ -51,7 +44,6 @@ Example:
 
 - With polymorphism, a **single set of stack methods** can be used for all types by defining them through a common interface or superclass.
 
-
 This allows developers to:
 
 - **Write more generic and reusable code**
@@ -60,9 +52,7 @@ This allows developers to:
 
 - **Adapt to changes with minimal impact**
 
----
-
-#### Inheritance
+## Inheritance
 
 **Inheritance** is the process by which one class (the **subclass**) can acquire the properties and behaviors of another class (the **superclass**). It provides a natural mechanism for expressing **hierarchical relationships** and supports **code reuse**.
 
@@ -82,4 +72,3 @@ Inheritance helps to:
 
 - Model real-world relationships effectively
 
----

@@ -132,10 +132,25 @@ export const javaCollection = [
     title: 'Collection Frameworks',
     items: [
       { label: 'Collection Basics', link: '/java/java_core/12_collection/01_cfb' },
-      // { label: 'Lambda Expression Advanced', link: '/java/java_core/11_lambda/02_lambda_a' },
+      { label: 'List Interface', link: '/java/java_core/12_collection/02_list' },
+      { label: 'ArrayList Class', link: '/java/java_core/12_collection/03_array' }
     ]
   }
 ]
+
+export const javaNetworking = [
+  {
+    title: 'Networking',
+    items: [
+      { label: 'Socket in Java', link: '/java/java_core/13_networking/01_socket' },
+      { label: 'TCP Client', link: '/java/java_core/13_networking/02_tcpc' },
+      { label: 'URL', link: '/java/java_core/13_networking/03_url' },
+      { label: 'TCP Server', link: '/java/java_core/13_networking/04_tcps' },
+      // { label: 'Socket in Java', link: '/java/java_core/13_networking/01_socket' },
+    ]
+  }
+]
+
 export const javaSection = [
     ...javaBasic, 
     ...javaDTOP, 
@@ -149,4 +164,5 @@ export const javaSection = [
     ...javaEnumGeneric,
     ...javaLambda,
     ...javaCollection,
+    ...javaNetworking,
   ]

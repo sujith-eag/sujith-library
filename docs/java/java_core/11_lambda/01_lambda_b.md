@@ -142,7 +142,6 @@ someMethod(() -> 3.14);
 
 When used, Java creates an **anonymous class object** that implements the functional interface, with the lambda body as the method implementation.
 
-
 ## Reusing Functional Interfaces with Different Lambdas
 
 ```java

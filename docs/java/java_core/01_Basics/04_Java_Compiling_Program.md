@@ -1,8 +1,6 @@
-
 # Compiling Java Program
 
-
-### Java Development Kit (JDK)
+## Java Development Kit (JDK)
 
 Modern versions of Java are available in two primary forms:
 
@@ -34,19 +32,15 @@ class Example {
 }
 ```
 
----
+### Steps to Execute a Java Program
 
-### Three Basic Steps to Execute a Java Program
+1. Enter the program
 
-1. **Enter the program**
+2. Compile the program
 
-2. **Compile the program**
+3. Run the program
 
-3. **Run the program**
-
----
-
-#### Entering the Program
+## Entering the Program
 
 - Use a **text editor** (e.g., Notepad, VS Code), **not a word processor** like MS Word. Word processors add formatting that can confuse the Java compiler.
 
@@ -56,9 +50,7 @@ class Example {
 
 - A source file is called a **compilation unit** and may contain one or more class definitions.
 
----
-
-#### Compiling the Program
+## Compiling the Program
 
 Use the Java compiler (`javac`) from the command line:
 
@@ -71,9 +63,7 @@ This creates a file called `Example.class`, which contains the compiled **byteco
 >[!note] 
 >Bytecode is not directly executable. It must be interpreted or compiled at runtime by the **Java Virtual Machine (JVM)**.
 
----
-
-#### Running the Program
+## Running the Program
 
 Use the Java interpreter (`java`) by passing the class name (without the `.class` extension):
 
@@ -86,18 +76,15 @@ The interpreter will look for a file named `Example.class`, then execute the byt
 >[!note] 
 >Every class is compiled into its **own `.class` file**, so naming consistency is important.
 
----
+## Features Common to All Java Programs
 
-### Key Features Common to All Java Programs
-
-
-#### Comments
+### Comments
 
 - `/* ... */` – Multi-line comment
 
 - `//` – Single-line comment
 
-#### Class Declaration
+### Class Declaration
 
 ```java
 class Example {
@@ -109,8 +96,7 @@ class Example {
 
 - All Java code **must reside inside a class**.
 
-
-#### The `main()` Method
+### The `main()` Method
 
 ```java
 public static void main(String[] args) {
@@ -143,9 +129,6 @@ System.out.println("Java drives the Web.");
 
 - `print()` is similar but **does not add** a newline.
 
-
----
-
 ```java
 /* File: Example2.java */
 
@@ -171,9 +154,7 @@ myVar1 Contains 1024
 myVar2 contains myVar1 / 2: 512
 ```
 
----
-
-### Working with Floating-Point Numbers
+## Working with Floating-Point Numbers
 
 Java supports two floating-point types:
 
@@ -209,4 +190,3 @@ $ java GalToLit
 >[!note] 
 >To print a blank line in Java, simply call `System.out.println();` with no arguments.
 
----

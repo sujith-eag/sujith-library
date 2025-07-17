@@ -1,6 +1,4 @@
-
 # Java Identifiers & Structures
-
 
 ### Java Keywords
 
@@ -120,7 +118,6 @@ Together, these classes form the **Java API**, a crucial part of the Java platfo
     
 - `println()` and `print()` are **built-in methods** used to display text on the console.
     
-
 ## Two Control Statements
 
 The Java if statement works much like the IF statement in any other language. It determines the flow of program execution based on whether some condition is true or false. 
@@ -184,9 +181,7 @@ c contains 1
 c is non-negative
 ```
 
-___
-
-### the 'for' loop
+## the `for` loop
 
 Repeatedly executes a sequence of code by creating a loop
 
@@ -225,9 +220,7 @@ This is count: 4
 Done Iterating
 ```
 
-___
-
-#### Block of code
+## Block of code
 
 A code block is a grouping of two or more statements. This is done by enclosing the statements between opening and closing curly braces. Once a block of code has been created, it becomes a logical unit that can be used any place that a single statement can
 
@@ -283,5 +276,3 @@ class GalToLitTable
 }
 ```
 
-
-___
