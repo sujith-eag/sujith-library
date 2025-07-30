@@ -152,6 +152,7 @@ export const mcaNetworkSection = [
           { label: "Static Routing", link: "/mca/cn/lab/lab2" },
           { label: "FTP Setup", link: "/mca/cn/lab/lab3" },
           { label: "NAT & Routing", link: "/mca/cn/lab/lab4" },
+          { label: "Sockets", link: "/mca/cn/lab/socket" },
         ]
       },
     ]
