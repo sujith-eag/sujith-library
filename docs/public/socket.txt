@@ -1,117 +1,271 @@
-# Sockets
+## Exercise 1 – Node.js: Callbacks, Event Loop & Emitter
 
-## TCP Server
+### 1. Chaining Callbacks and Reading a File
 
-# server.py
-import socket
-import threading
-import time
+Write a Node.js program that defines a function `add(a, b, callback)` which adds two numbers and returns the result via a callback. Chain this with another callback to multiply the result by 10 and log it. Finally, use `fs.readFile()` to read and display the contents of a file named `info.txt`.
 
-def handle_client(clientsocket, addr):
-    print("*" * 50)
-    print(f"Client connected from: {addr[0]}:{addr[1]}")
-    currentTime = time.ctime(time.time()) + "\r\n"
-    print("Sending time:", currentTime.strip())
-    print("*" * 50)
-    clientsocket.send(currentTime.encode('ascii'))
-    clientsocket.close()
+___
 
-def start_server():
-    host = "172.1.27.11"  # VM1's IP address
-    port = 9998        # Listening port
+Create a file named `info.txt` with some content
 
-    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serversocket.bind((host, port))
-    serversocket.listen(5)
+```js
+const fs = require('fs');
 
-    print(f"Server started at {host} on port {port}")
-    print("Waiting for incoming connections...")
+// Defines the add function with a callback
+function add(a, b, callback) {
+  const sum = a + b;
+  callback(sum);
+}
 
-    while True:
-        clientsocket, addr = serversocket.accept()
-        client_thread = threading.Thread(target=handle_client, args=(clientsocket, addr))
-        client_thread.start()
+// First callback calls the second (chaining)
+add(10, 20, (sum) => { // callback multiplies the result and logs it
+  const result = sum * 10;
+  console.log(`Result after multiplication: ${result}`);
+});
 
-if __name__ == "__main__":
-    start_server()
+// Reads and displays the content of info.txt asynchronously
+fs.readFile('info.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error("Error reading file:", err);
+    return;
+  }
+  console.log("\nContents of info.txt:");
+  console.log(data);
+});
 ```
 
-## TCP Client
+```js
+const fs = require('fs');
 
-# client.py
-import socket
+// Named callback function for the add operation
+function handleSum(sum) {
+  const result = sum * 10;
+  console.log(`Result after multiplication: ${result}`);
+}
+function add(a, b, callback) {
+  const sum = a + b;
+  callback(sum);
+}
 
-host = "172.1.27.11"  # IP address of the server (VM1)
-port = 9998        # Same port as server
+// Named callback function for reading the file
+function handleFileData(err, data) {
+  if (err) {
+    console.error("Error reading file:", err);
+    return;
+  }
+  console.log("\nContents of info.txt:");
+  console.log(data);
+}
 
-try:
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((host, port))
-    data = client_socket.recv(1024)
-    client_socket.close()
+// Calls the add function with a named callback
+add(10, 20, handleSum);
 
-    print("*" * 50)
-    print("The time received from the server is:", data.decode('ascii').strip())
-    print("*" * 50)
+// Reads and displays the content of info.txt asynchronously with a named callback
+fs.readFile('info.txt', 'utf8', handleFileData);
+```
 
-except ConnectionRefusedError:
-    print("Connection failed: Make sure the server is running and accessible.")
-except Exception as e:
-    print("An error occurred:", e)
+---
 
+### 2. Demonstrating Asynchronous Behavior
 
-## UDP Server
+Create a countdown timer using `setTimeout()`. Use `setTimeout()` and `console.log()` to demonstrate asynchronous behavior, and add another `setTimeout` with `1000ms` to execute.
 
+```js
+// Part 1: Countdown Timer
+console.log("Countdown starts now!");
+setTimeout( () => { 
+		console.log("3"); 
+		}, 1000);
 
-# UDPServer.py
-import socket
-import time
+setTimeout(() => { console.log("2"); }, 2000);
+setTimeout(() => { console.log("1"); }, 3000);
+setTimeout(() => { console.log("Go!"); }, 4000);
 
-def start_udp_server():
-    host = "192.168.0.134"  # Your server VM's IP
-    port = 9999             # A different port for UDP
+// Part 2: Demonstrating the Event Loop
+console.log("\n--- Demonstrating Async ---");
+console.log("Start");
 
-    serversocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    serversocket.bind((host, port))
+setTimeout(() => {
+  console.log("Async Task A (executes after 1000ms)");
+}, 1000);
 
-    print(f"UDP Server started at {host} on port {port}")
-    print("Waiting for incoming datagrams...")
+setTimeout(() => {
+  console.log("Async Task B (executes after 500ms)");
+}, 500);
 
-    while True:
-        data, addr = serversocket.recvfrom(1024)
-        print("*" * 50)
-        print(f"Received message from: {addr[0]}:{addr[1]}")
-        print(f"Message: {data.decode().strip()}")
+console.log("End");
+```
 
-        currentTime = time.ctime(time.time()) + "\r\n"
-        serversocket.sendto(currentTime.encode('ascii'), addr)
-        print(f"Sent time back to {addr}")
-        print("*" * 50)
+```
+Expected Output Order for Async Demo:
+Start
+End
+Async Task B (executes after 500ms)
+Async Task A (executes after 1000ms)
+```
 
-if __name__ == "__main__":
-    start_udp_server()
+---
 
+### 3. Using the Event Emitter
 
+Create an event emitter that emits a `greet` event and logs a message. Then, emit a `login` event with a username and log "`<username>` has logged in".
 
+```js
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
 
-# UDPClient.py
-import socket
+// Register a listener for the 'greet' event
+emitter.on('greet', () => {
+  console.log('Hello! Welcome to Node.js Events.');
+});
 
-host = "192.168.0.134"  # IP of the server VM
-port = 9999             # Same port as UDP server
+// Register a listener for the 'login' event
+emitter.on('login', (username) => {
+  console.log(`${username} has logged in.`);
+});
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+// Emit the events
+emitter.emit('greet');
+emitter.emit('login', 'John');
+```
 
-try:
-    message = "Hello UDP Server!"
-    client_socket.sendto(message.encode(), (host, port))
+---
 
-    data, server = client_socket.recvfrom(1024)
-    print("*" * 50)
-    print("The time received from the server is:", data.decode('ascii').strip())
-    print("*" * 50)
+## Exercise 2 – Node.js: Buffers, Streams & File System
 
-except Exception as e:
-    print("An error occurred:", e)
-finally:
-    client_socket.close()
+### 4. Working with Buffers
+
+Create a buffer from the string "`Node.js`" and print it in hexadecimal form. Then, modify the first letter of the buffer from "`N`" to "`C`" and print the result.
+
+```js
+// Create a buffer from a string
+const buffer = Buffer.from('Node.js');
+
+// Print the buffer in hexadecimal form
+console.log('Hexadecimal form:', buffer.toString('hex'));
+
+// Modify the buffer's first byte ('N' -> 'C')
+buffer[0] = 'C'.charCodeAt(0);
+
+// Print the modified buffer as a string
+console.log('Modified Buffer:', buffer.toString());
+```
+
+---
+
+### 5. Using Readable Streams
+
+Use a readable stream to read `data.txt` and log chunks to the console. Explain the benefit of using streams over `fs.readFile()`.
+
+Create a file named data.txt with some text.
+
+```js
+const fs = require('fs');
+
+const readStream = fs.createReadStream('data.txt', 'utf8');
+
+readStream.on('data', (chunk) => {
+  console.log('--- New Chunk Received ---');
+  console.log(chunk);
+});
+
+readStream.on('end', () => {
+  console.log('\n--- Finished Reading File ---');
+});
+
+readStream.on('error', (err) => {
+    console.error('An error occurred:', err);
+});
+```
+
+Benefit of Streams:
+
+Streams are more memory-efficient and scalable. Instead of loading an entire file into memory at once like fs.readFile(), streams read the file in small, manageable chunks. This allows you to process very large files without running out of memory.
+
+---
+
+### 6. Writing and Reading Files
+
+Write a program to write "`Welcome to Node.js`" into a file named `welcome.txt`. Then, read the content of `welcome.txt` and log it using a callback.
+
+```js
+const fs = require('fs');
+
+// Write to the file
+fs.writeFile('welcome.txt', 'Welcome to Node.js', (err) => {
+  if (err) {
+    return console.error('Error writing to file:', err);
+  }
+  
+  console.log('File written successfully!');
+
+  // Read the file after writing is complete
+  fs.readFile('welcome.txt', 'utf8', (err, data) => {
+    if (err) {
+      return console.error('Error reading the file:', err);
+    }
+    console.log('File content:', data);
+  });
+});
+```
+
+---
+
+## Exercise 3 – Git
+
+### 7. Initializing a Repository and Making the First Commit
+
+You are starting a personal website project. Initialize a Git repository, create an `index.html` file, check the status, stage the file, commit it, and view the history.
+
+```bash
+# Create and navigate into the project directory
+mkdir my-website
+cd my-website
+
+# Initialize a new Git repository
+git init
+
+# Create a basic index.html file
+echo "<h1>Welcome to My Website!</h1>" > index.html
+
+# Check the status (shows index.html as an untracked file)
+git status
+
+# Stage the new file for the next commit
+git add index.html
+
+# Commit the staged file with a descriptive message
+git commit -m "Initial commit: Add index.html"
+
+# View the commit history
+git log
+```
+
+---
+
+### 8. Branching and Merging
+
+You want to build a new feature. Create a new branch `feature-navbar`, add a `navbar.html` file, commit the change, and then merge it back into the `main` branch.
+
+```bash
+# Create a new branch and switch to it
+git checkout -b feature-navbar
+
+# Create a simple navbar.html file
+echo "<nav>Home | About | Contact</nav>" > navbar.html
+
+# Stage the new navbar file
+git add navbar.html
+
+# Commit the change on the feature branch
+git commit -m "feat: Add navigation bar"
+
+# Switch back to the main branch
+git checkout main
+
+# Merge the feature-navbar branch into main
+git merge feature-navbar
+
+# (Optional) View the log to see the merge commit
+git log --oneline --graph
+```
