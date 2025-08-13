@@ -18,37 +18,3 @@ fs.readFile('info.txt', 'utf8', (err, data) => {
   console.log("\nContents of info.txt:");
   console.log(data);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-console.log("Countdown starts now!");
-setTimeout( () => { 
-		console.log("3"); 
-		}, 1000);
-
-setTimeout(() => { console.log("2"); }, 2000);
-setTimeout(() => { console.log("1"); }, 3000);
-setTimeout(() => { console.log("Go!"); }, 4000);
-
-
-console.log("\n--- Demonstrating Async ---");
-console.log("Start");
-
-setTimeout(() => {
-  console.log("Async Task A (executes after 1000ms)");
-}, 1000);
-
-setTimeout(() => {
-  console.log("Async Task B (executes after 500ms)");
-}, 500);
-
-console.log("End");
