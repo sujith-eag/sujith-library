@@ -1,0 +1,54 @@
+const fs = require('fs');
+
+function add(a, b, callback) {
+  const sum = a + b;
+  callback(sum);
+}
+
+add(10, 20, (val) => {
+  const result = val * 10;
+  console.log(`Result after multiplication: ${result}`);
+});
+
+fs.readFile('info.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error("Error reading file:", err);
+    return;
+  }
+  console.log("\nContents of info.txt:");
+  console.log(data);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("Countdown starts now!");
+setTimeout( () => { 
+		console.log("3"); 
+		}, 1000);
+
+setTimeout(() => { console.log("2"); }, 2000);
+setTimeout(() => { console.log("1"); }, 3000);
+setTimeout(() => { console.log("Go!"); }, 4000);
+
+
+console.log("\n--- Demonstrating Async ---");
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async Task A (executes after 1000ms)");
+}, 1000);
+
+setTimeout(() => {
+  console.log("Async Task B (executes after 500ms)");
+}, 500);
+
+console.log("End");
