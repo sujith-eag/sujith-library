@@ -19,9 +19,9 @@ hero:
     text: Projects
     link: /projects/
     
-  # - theme: alt
-  #   text: MCA Section 
-  #   link: /mca/
+  - theme: alt
+    text: MCA Section 
+    link: /mca/
 
 features:
 

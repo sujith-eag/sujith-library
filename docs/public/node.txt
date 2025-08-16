@@ -1,0 +1,55 @@
+const fs = require('fs');
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+emitter.on('greet', () => {
+  console.log('Hello! Welcome to Node.js Events.');
+});
+
+emitter.on('login', (username) => {
+  console.log(`${username} has logged in.`);
+});
+
+emitter.emit('greet');
+emitter.emit('login', 'John');
+
+
+fs.writeFile('welcome.txt', 'Welcome to Node.js', (err) => {
+  if (err) {
+    return console.error('Error writing to file:', err);
+  }
+  console.log('File written successfully!');
+
+  fs.readFile('welcome.txt', 'utf8', (err, data) => {
+    if (err) {
+      return console.error('Error reading the file:', err);
+    }
+    console.log('File content:', data);
+  });
+});
+
+
+
+const readStream = fs.createReadStream('data.txt', 'utf8');
+
+readStream.on('data', (chunk) => {
+	console.log('--- New Chunk Received ---');
+	console.log(chunk);
+});
+
+readStream.on('end', () => {
+	console.log('\n--- Finished Reading File ---');
+});
+
+readStream.on('error', (err) => {
+	console.error('An error occurred:', err);
+});
+
+
+const buffer = Buffer.from('Node.js');
+
+console.log('Hexadecimal form:', buffer.toString('hex'));
+
+buffer[0] = 'C'.charCodeAt(0);
+
+console.log('Modified Buffer:', buffer.toString());
