@@ -23,28 +23,20 @@ export const mcaRMSection = [
         ],
       },
       {
-        title: "Unit 3",
+        title: "Unit 3 & 4",
         items: [
           { label: "Sampling Design", link: "/mca/rm/u31" },
           { label: "Data Collection", link: "/mca/rm/u32" },
-          { label: "Interview Method", link: "/mca/rm/u33" },
-          { label: "Schedules", link: "/mca/rm/u34" },
-        ],
-      },
-      {
-        title: "Unit 4",
-        items: [
+          { label: "Questionnaires", link: "/mca/rm/u33" },
           { label: "Report Writing", link: "/mca/rm/u41" },
-          { label: "Report Types", link: "/mca/rm/u42" },
         ],
       },
       {
         title: "Unit 5",
         items: [
           { label: "Intellectual Property", link: "/mca/rm/u51" },
-          { label: "Copyrights", link: "/mca/rm/u52" },
-          { label: "Infringement", link: "/mca/rm/u53" },
-          { label: "Scholarly Publishing", link: "/mca/rm/u54" },
+          { label: "Copyright", link: "/mca/rm/u52" },
+          { label: "Scholarly Publishing", link: "/mca/rm/u53" },
         ],
       },
     ],
@@ -65,15 +57,25 @@ export const mcaCSSection = [
     title: "Cyber Security",
     items: [
       { 
-      title: "Notes",
+      title: "Unit 1 & 2",
       items: [     
-        { label: "Cyber Crime", link: "/mca/cs/u1_1" },
-        { label: "Attack Planning", link: "/mca/cs/u1_2" },
-        { label: "Botnet & DDoS", link: "/mca/cs/u1_3" },
-        { label: "Mobile Devices", link: "/mca/cs/u2_1" },
-        { label: "Mobile Security", link: "/mca/cs/u2_2" },
+        { label: "Cyber Crime", link: "/mca/cs/u11" },
+        { label: "Attack Planning", link: "/mca/cs/u12" },
+        { label: "Botnet & DDoS", link: "/mca/cs/u13" },
+        { label: "Mobile Devices", link: "/mca/cs/u21" },
+        { label: "Mobile Security", link: "/mca/cs/u22" },
         ]
       },
+      // { 
+      // title: "Unit 3",
+      // items: [     
+      //   { label: "Cyber C", link: "/mca/cs/u11" },
+      //   { label: "Attack ", link: "/mca/cs/u12" },
+      //   { label: "Botnet", link: "/mca/cs/u13" },
+      //   { label: "Mobile ", link: "/mca/cs/u21" },
+      //   { label: "Mobile", link: "/mca/cs/u22" },
+      //   ]
+      // },
       { 
       title: "Lab Manual",
       items: [
