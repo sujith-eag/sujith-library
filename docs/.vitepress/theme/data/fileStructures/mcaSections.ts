@@ -4,13 +4,51 @@ export const mcaRMSection = [
   {
     title: "Research Methodology",
     items: [
-          { label: "Research Methodology", link: "/mca/rm/u11" },
-          { label: "Research Process", link: "/mca/rm/u12" },
-          { label: "Research Problem", link: "/mca/rm/u13" },
-          { label: "Literature Review", link: "/mca/rm/u22" },
-          { label: "Research Design", link: "/mca/rm/u21" },
-    ]
-  }
+      {
+        title: "Unit 1",
+        items: [
+          { label: "Research Types", link: "/mca/rm/u11" },
+          { label: "Research Significance", link: "/mca/rm/u12" },
+          { label: "Research Process", link: "/mca/rm/u13" },
+          { label: "Research Problem", link: "/mca/rm/u14" },
+        ],
+      },
+      {
+        title: "Unit 2",
+        items: [
+          { label: "Literature Review", link: "/mca/rm/u21" },
+          { label: "Research Database", link: "/mca/rm/u22" },
+          { label: "Critical Review", link: "/mca/rm/u23" },
+          { label: "Research Design", link: "/mca/rm/u24" },
+        ],
+      },
+      {
+        title: "Unit 3",
+        items: [
+          { label: "Sampling Design", link: "/mca/rm/u31" },
+          { label: "Data Collection", link: "/mca/rm/u32" },
+          { label: "Interview Method", link: "/mca/rm/u33" },
+          { label: "Schedules", link: "/mca/rm/u34" },
+        ],
+      },
+      {
+        title: "Unit 4",
+        items: [
+          { label: "Report Writing", link: "/mca/rm/u41" },
+          { label: "Report Types", link: "/mca/rm/u42" },
+        ],
+      },
+      {
+        title: "Unit 5",
+        items: [
+          { label: "Intellectual Property", link: "/mca/rm/u51" },
+          { label: "Copyrights", link: "/mca/rm/u52" },
+          { label: "Infringement", link: "/mca/rm/u53" },
+          { label: "Scholarly Publishing", link: "/mca/rm/u54" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const mcaDAASection = [
