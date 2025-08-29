@@ -29,12 +29,14 @@ export const mcaRMSection = [
           { label: "Sampling Design", link: "/mca/rm/u31" },
           { label: "Sampling Types", link: "/mca/rm/u32" },
           { label: "Data Collection", link: "/mca/rm/u33" },
-          { label: "Report Writing", link: "/mca/rm/u41" },
+          { label: "Questionnaires", link: "/mca/rm/u34" },
+
         ],
       },
       {
-        title: "Unit 5",
+        title: "Unit 4 & 5",
         items: [
+          { label: "Report Writing", link: "/mca/rm/u41" },
           { label: "Intellectual Property", link: "/mca/rm/u51" },
           { label: "Copyright", link: "/mca/rm/u52" },
           { label: "Scholarly Publishing", link: "/mca/rm/u53" },
