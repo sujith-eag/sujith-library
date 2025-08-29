@@ -7,10 +7,11 @@ export const mcaRMSection = [
       {
         title: "Unit 1",
         items: [
-          { label: "Research Types", link: "/mca/rm/u11" },
-          { label: "Research Significance", link: "/mca/rm/u12" },
-          { label: "Research Process", link: "/mca/rm/u13" },
-          { label: "Research Problem", link: "/mca/rm/u14" },
+          { label: "Research Approach", link: "/mca/rm/u11" },
+          { label: "Research Types", link: "/mca/rm/u12" },
+          { label: "Research Significance", link: "/mca/rm/u13" },
+          { label: "Research Process", link: "/mca/rm/u14" },
+          { label: "Research Problem", link: "/mca/rm/u15" },
         ],
       },
       {
