@@ -27,8 +27,8 @@ export const mcaRMSection = [
         title: "Unit 3 & 4",
         items: [
           { label: "Sampling Design", link: "/mca/rm/u31" },
-          { label: "Data Collection", link: "/mca/rm/u32" },
-          { label: "Questionnaires", link: "/mca/rm/u33" },
+          { label: "Sampling Types", link: "/mca/rm/u32" },
+          { label: "Data Collection", link: "/mca/rm/u33" },
           { label: "Report Writing", link: "/mca/rm/u41" },
         ],
       },
