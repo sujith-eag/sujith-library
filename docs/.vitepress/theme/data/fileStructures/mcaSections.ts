@@ -61,7 +61,6 @@ export const mcaCSSection = [
       items: [     
         { label: "Cyber Crime", link: "/mca/cs/u11" },
         { label: "Attack Planning", link: "/mca/cs/u12" },
-        { label: "Botnet & DDoS", link: "/mca/cs/u13" },
         { label: "Mobile Devices", link: "/mca/cs/u21" },
         { label: "Mobile Security", link: "/mca/cs/u22" },
         ]
@@ -69,22 +68,21 @@ export const mcaCSSection = [
       { 
       title: "Unit 3",
       items: [     
-        { label: "Cyber Crime", link: "/mca/cs/u31" },
+        { label: "Cyber Crime Tools", link: "/mca/cs/u31" },
         { label: "Password Cracking", link: "/mca/cs/u32" },
-        { label: "DoS and DDoS", link: "/mca/cs/u33" },
+        { label: "Botnet & DDoS", link: "/mca/cs/u33" },
         { label: "APTs ", link: "/mca/cs/u34" },
         ]
       },
-            { 
+      { 
       title: "Unit 4 & 5",
       items: [     
-        { label: "Cyber Crime", link: "/mca/cs/u41" },
+        { label: "Computer Forensics", link: "/mca/cs/u41" },
         { label: "Password Cracking", link: "/mca/cs/u42" },
         { label: "Security Policy", link: "/mca/cs/u51" },
         { label: "IT Acts ", link: "/mca/cs/u52" },
         ]
       },
-      
       { 
       title: "Lab Manual",
       items: [
