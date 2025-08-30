@@ -63,7 +63,10 @@ export const mcaCSSection = [
       title: "Unit 1 & 2",
       items: [     
         { label: "Cyber Crime", link: "/mca/cs/u11" },
-        { label: "Attack Planning", link: "/mca/cs/u12" },
+        { label: "Cyber Attack", link: "/mca/cs/u12" },
+        { label: "Cyber Offense", link: "/mca/cs/u13" },
+        { label: "Cyber Defence", link: "/mca/cs/u14" },
+
         { label: "Mobile Devices", link: "/mca/cs/u21" },
         { label: "Mobile Security", link: "/mca/cs/u22" },
         ]
