@@ -79,7 +79,7 @@ export const mcaCSSection = [
       { 
       title: "Unit 3",
       items: [     
-        { label: "Cyber Crime Tools", link: "/mca/cs/u31" },
+        { label: "Cybercrime Tools", link: "/mca/cs/u31" },
         { label: "Password Cracking", link: "/mca/cs/u32" },
         { label: "Botnet & DDoS", link: "/mca/cs/u33" },
         { label: "APTs ", link: "/mca/cs/u34" },
@@ -89,9 +89,9 @@ export const mcaCSSection = [
       title: "Unit 4 & 5",
       items: [     
         { label: "Computer Forensics", link: "/mca/cs/u41" },
-        { label: "Password Cracking", link: "/mca/cs/u42" },
-        { label: "Security Policy", link: "/mca/cs/u51" },
-        { label: "IT Acts ", link: "/mca/cs/u52" },
+        { label: "Forensic Tools", link: "/mca/cs/u42" },
+        { label: "IT Acts", link: "/mca/cs/u51" },
+        { label: "Amendments & IPR", link: "/mca/cs/u52" },
         ]
       },
       { 
