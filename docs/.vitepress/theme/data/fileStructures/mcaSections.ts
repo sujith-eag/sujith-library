@@ -44,29 +44,97 @@ export const mcaNetworkSection = [
 
 export const mcaJavaSection = [
   {
-    title: "Java Lab",
+    title: "Java",
     items: [
+      {
+        title: "Unit-1",
+        items: [
+          { label: "Unit-1 Questions", link: "/mca/java/u1/q1" },
+
+          { label: "", link: "/mca/java/u1/a11" },
+          { label: "", link: "/mca/java/u1/a12" },
+          { label: "", link: "/mca/java/u1/a13" },
+          { label: "", link: "/mca/java/u1/a14" },
+                    
+          { label: "", link: "/mca/java/u1/a15" },
+          { label: "", link: "/mca/java/u1/a16" },
+          { label: "", link: "/mca/java/u1/a17" },
+          { label: "", link: "/mca/java/u1/a18" },
+        ]
+      },
+      {
+        title: "Unit-2",
+        items: [
+          { label: "Unit-2 Questions", link: "/mca/java/u2/q1" },
+
+          { label: "", link: "/mca/java/u2/a11" },
+          { label: "", link: "/mca/java/u2/a12" },
+          { label: "", link: "/mca/java/u2/a13" },
+          { label: "", link: "/mca/java/u2/a14" },
+        ]
+      },
+      {
+        title: "Unit-3",
+        items: [
+          { label: "Unit-3 Questions", link: "/mca/java/u3/q1" },
+
+          { label: "", link: "/mca/java/u3/a11" },
+          { label: "", link: "/mca/java/u3/a12" },
+          { label: "", link: "/mca/java/u3/a13" },
+        ]
+      },
+      {
+        title: "Unit-4",
+        items: [
+          { label: "Unit-4 Questions", link: "/mca/java/u4/q1" },
+
+          { label: "", link: "/mca/java/u4/a11" },
+          { label: "", link: "/mca/java/u4/a12" },
+          { label: "", link: "/mca/java/u4/a13" },
+          { label: "", link: "/mca/java/u4/a14" },
+          { label: "", link: "/mca/java/u4/a15" },
+          { label: "", link: "/mca/java/u4/a16" },
+        ]
+      },
+      {
+        title: "Unit-5",
+        items: [
+          { label: "Unit-5 Questions", link: "/mca/java/u5/q1" },
+
+          { label: "", link: "/mca/java/u5/a11" },
+          { label: "", link: "/mca/java/u5/a12" },
+          { label: "", link: "/mca/java/u5/a13" },
+        ]
+      },
       {
         title: "Lab Programs",
         items: [
-          { label: "Program-1", link: "/mca/java/p01" },
-          { label: "Program-2", link: "/mca/java/p02" },
-          { label: "Program-3", link: "/mca/java/p03" },
-          { label: "Program-4", link: "/mca/java/p04" },
-          { label: "Program-5", link: "/mca/java/p05" },
-          { label: "Program-6", link: "/mca/java/p06" },
-          { label: "Program-7", link: "/mca/java/p07" },
+          { label: "P1 Class Fundamental", link: "/mca/java/p01" },
+          { label: "P2 Inheritance", link: "/mca/java/p02" },
+          { label: "P3 String Class", link: "/mca/java/p03" },
+          { label: "P4 Packages", link: "/mca/java/p04" },
+          { label: "P5 Try-Catch Block", link: "/mca/java/p05" },
+          { label: "P6 Multiple Exception", link: "/mca/java/p06" },
+          { label: "P7 Multi-threading", link: "/mca/java/p07" },
+          { label: "P8 Enum & Autoboxing", link: "/mca/java/p08" },          
+          { label: "P9 Generics", link: "/mca/java/p09" },
+          { label: "P10 Collection Framework", link: "/mca/java/p10" },
+          { label: "P11 Lambda Expression", link: "/mca/java/p11" },
+          { label: "P12 Design Pattern", link: "/mca/java/p12" },
+          { label: "P13 Event Handling", link: "/mca/java/p13" },
+          { label: "P13e Swing Event", link: "/mca/java/p14" },
+          { label: "P14 JDBC", link: "/mca/java/p15" },
         ]
       },
-      
       {
         title: "Java Assignment",
         items: [
-          { label: "Question-1", link: "/mca/java/a01" },
-          { label: "Question-2", link: "/mca/java/a02" },
-          { label: "Question-3", link: "/mca/java/a03" },
-          { label: "Question-4", link: "/mca/java/a04" },
-          { label: "Question-5", link: "/mca/java/a05" },
+          { label: "Question-1", link: "/mca/java/assign/a01" },
+          { label: "Question-2", link: "/mca/java/assign/a02" },
+          { label: "Question-3", link: "/mca/java/assign/a03" },
+          { label: "Question-4", link: "/mca/java/assign/a04" },
+          { label: "Question-5", link: "/mca/java/assign/a05" },
+          { label: "Question-6-10", link: "/mca/java/assign/a06" },
         ]
       },
     ]
