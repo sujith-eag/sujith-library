@@ -1,6 +1,81 @@
+export const mcaNetworkSection = [
+  {
+    title: "Networking",
+    items: [
+      {
+        title: "Network & Internet",
+        items: [
+         { label: "MAC & IP", link: "/mca/cn/u1/u11" },
+         { label: "Networking Devices", link: "/mca/cn/u1/u12" },
+         { label: "Packet & Circuit Switching", link: "/mca/cn/u1/u13" },
+         { label: "Layerd Architecture", link: "/mca/cn/u1/u14" },
+         
+        ]
+      },
+      {
+        title: "Application Layer",
+        items: [
+          { label: "FTP", link: "/mca/cn/u2/u21" },
+          // { label: "Un", link: "/mca/cn/2_q_answered" }
+        ]
+      },
+      // {
+      //   title: "Unit-3 Transport Layer",
+      //   items: [
+      //     { label: "Unit 3 - Questions", link: "/mca/cn/3_q" },
+      //     { label: "Unit 3 - Answers", link: "/mca/cn/3_q_answered" }
+      //   ]
+      // },
+      {
+        title: "Lab Manual",
+        items: [
+          { label: "VirtualBox Setup", link: "/mca/cn/lab/virtual" },
+          { label: "Apache Server", link: "/mca/cn/lab/apache" },  
+          { label: "IP Addressing", link: "/mca/cn/lab/lab1" },
+          { label: "Static Routing", link: "/mca/cn/lab/lab2" },
+          { label: "FTP Setup", link: "/mca/cn/lab/lab3" },
+          { label: "NAT & Routing", link: "/mca/cn/lab/lab4" },
+          { label: "Sockets", link: "/mca/cn/lab/socket" },
+        ]
+      },
+    ]
+  }
+]
+
+export const mcaJavaSection = [
+  {
+    title: "Java Lab",
+    items: [
+      {
+        title: "Lab Programs",
+        items: [
+          { label: "Program-1", link: "/mca/java/p01" },
+          { label: "Program-2", link: "/mca/java/p02" },
+          { label: "Program-3", link: "/mca/java/p03" },
+          { label: "Program-4", link: "/mca/java/p04" },
+          { label: "Program-5", link: "/mca/java/p05" },
+          { label: "Program-6", link: "/mca/java/p06" },
+          { label: "Program-7", link: "/mca/java/p07" },
+        ]
+      },
+      
+      {
+        title: "Java Assignment",
+        items: [
+          { label: "Question-1", link: "/mca/java/a01" },
+          { label: "Question-2", link: "/mca/java/a02" },
+          { label: "Question-3", link: "/mca/java/a03" },
+          { label: "Question-4", link: "/mca/java/a04" },
+          { label: "Question-5", link: "/mca/java/a05" },
+        ]
+      },
+    ]
+  }
+];
+
 export const mcaDbmsSection = [
   {
-    title: "Data Base Management",
+    title: "Database Management",
     items: [
       {
         title: "DBMS & Relational Model",
@@ -267,83 +342,6 @@ export const mcaCSSection = [
   }
 ];
 
-
-
-export const mcaNetworkSection = [
-  {
-    title: "Networking",
-    items: [
-      {
-        title: "Network & Internet",
-        items: [
-         { label: "MAC & IP", link: "/mca/cn/u1/u11" },
-         { label: "Networking Devices", link: "/mca/cn/u1/u12" },
-         { label: "Packet & Circuit Switching", link: "/mca/cn/u1/u13" },
-         { label: "Layerd Architecture", link: "/mca/cn/u1/u14" },
-         
-        ]
-      },
-      {
-        title: "Application Layer",
-        items: [
-          { label: "FTP", link: "/mca/cn/u2/u21" },
-          // { label: "Un", link: "/mca/cn/2_q_answered" }
-        ]
-      },
-      // {
-      //   title: "Unit-3 Transport Layer",
-      //   items: [
-      //     { label: "Unit 3 - Questions", link: "/mca/cn/3_q" },
-      //     { label: "Unit 3 - Answers", link: "/mca/cn/3_q_answered" }
-      //   ]
-      // },
-      {
-        title: "Lab Manual",
-        items: [
-          { label: "VirtualBox Setup", link: "/mca/cn/lab/virtual" },
-          { label: "Apache Server", link: "/mca/cn/lab/apache" },  
-          { label: "IP Addressing", link: "/mca/cn/lab/lab1" },
-          { label: "Static Routing", link: "/mca/cn/lab/lab2" },
-          { label: "FTP Setup", link: "/mca/cn/lab/lab3" },
-          { label: "NAT & Routing", link: "/mca/cn/lab/lab4" },
-          { label: "Sockets", link: "/mca/cn/lab/socket" },
-        ]
-      },
-    ]
-  }
-]
-
-export const mcaJavaSection = [
-  {
-    title: "Java Lab",
-    items: [
-      {
-        title: "Lab Programs",
-        items: [
-          { label: "Program-1", link: "/mca/java/p01" },
-          { label: "Program-2", link: "/mca/java/p02" },
-          { label: "Program-3", link: "/mca/java/p03" },
-          { label: "Program-4", link: "/mca/java/p04" },
-          { label: "Program-5", link: "/mca/java/p05" },
-          { label: "Program-6", link: "/mca/java/p06" },
-          { label: "Program-7", link: "/mca/java/p07" },
-        ]
-      },
-      
-      {
-        title: "Java Assignment",
-        items: [
-          { label: "Question-1", link: "/mca/java/a01" },
-          { label: "Question-2", link: "/mca/java/a02" },
-          { label: "Question-3", link: "/mca/java/a03" },
-          { label: "Question-4", link: "/mca/java/a04" },
-          { label: "Question-5", link: "/mca/java/a05" },
-        ]
-      },
-    ]
-  }
-];
-
 export const mcaFSSection = [
   {
     title: "Full Stack Development",
@@ -389,6 +387,34 @@ export const mcaFSSection = [
           { label: "Counter", link: "/mca/fs/react/e53" },
         ]
       },
+      {
+        title: "Express Exercise-1",
+        items: [
+          { label: "Node Programs", link: "/mca/fs/express/e11" },          
+          { label: "User Managemement", link: "/mca/fs/express/e12" },
+          { label: "Product Catalog", link: "/mca/fs/express/e13" },
+          { label: "Book Management", link: "/mca/fs/express/e14" },
+          { label: "Course Management", link: "/mca/fs/express/e15" },
+          { label: "Task Management", link: "/mca/fs/express/e16" },
+        ]
+      },
+      {
+        title: "Express Exercise-2",
+        items: [
+          { label: "EJS Movie Page", link: "/mca/fs/express/e21" },
+          { label: "Pug Ingredients Page", link: "/mca/fs/express/e22" },
+          { label: "EJS Feedback Form", link: "/mca/fs/express/e23" },
+        ]
+      },
+      {
+        title: "Express Exercise-3",
+        items: [
+          { label: "Student Login", link: "/mca/fs/express/e31" },
+          { label: "Result Access", link: "/mca/fs/express/e32" },
+          { label: "Course Access", link: "/mca/fs/express/e33" },
+        ]
+      },
+
     ]
   },
 ];
