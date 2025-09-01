@@ -51,15 +51,13 @@ export const mcaJavaSection = [
         items: [
           { label: "Unit-1 Questions", link: "/mca/java/u1/q1" },
 
-          { label: "", link: "/mca/java/u1/a11" },
-          { label: "", link: "/mca/java/u1/a12" },
-          { label: "", link: "/mca/java/u1/a13" },
-          { label: "", link: "/mca/java/u1/a14" },
-                    
-          { label: "", link: "/mca/java/u1/a15" },
-          { label: "", link: "/mca/java/u1/a16" },
-          { label: "", link: "/mca/java/u1/a17" },
-          { label: "", link: "/mca/java/u1/a18" },
+          { label: "Java Working", link: "/mca/java/u1/a11" },
+          { label: "Object Oriented Programming", link: "/mca/java/u1/a12" },
+          { label: "Constructor", link: "/mca/java/u1/a13" },
+          { label: "Scanner Class", link: "/mca/java/u1/a14" },
+          { label: "Inheritance", link: "/mca/java/u1/a15" },
+          { label: "Overriding & Overloading", link: "/mca/java/u1/a16" },
+          { label: "Abstract Class", link: "/mca/java/u1/a17" },
         ]
       },
       {
@@ -67,10 +65,9 @@ export const mcaJavaSection = [
         items: [
           { label: "Unit-2 Questions", link: "/mca/java/u2/q1" },
 
-          { label: "", link: "/mca/java/u2/a11" },
-          { label: "", link: "/mca/java/u2/a12" },
-          { label: "", link: "/mca/java/u2/a13" },
-          { label: "", link: "/mca/java/u2/a14" },
+          { label: "Packages", link: "/mca/java/u2/a11" },
+          { label: "Interfaces", link: "/mca/java/u2/a12" },
+          { label: "Exceptions", link: "/mca/java/u2/a13" },
         ]
       },
       {
@@ -78,52 +75,46 @@ export const mcaJavaSection = [
         items: [
           { label: "Unit-3 Questions", link: "/mca/java/u3/q1" },
 
-          { label: "", link: "/mca/java/u3/a11" },
-          { label: "", link: "/mca/java/u3/a12" },
-          { label: "", link: "/mca/java/u3/a13" },
+          { label: "Multi-threading", link: "/mca/java/u3/a11" },
+          { label: "Synchronization", link: "/mca/java/u3/a12" },
+          { label: "Enum & Generics", link: "/mca/java/u3/a13" },
         ]
       },
       {
-        title: "Unit-4",
+        title: "Unit-4 & 5",
         items: [
           { label: "Unit-4 Questions", link: "/mca/java/u4/q1" },
 
-          { label: "", link: "/mca/java/u4/a11" },
-          { label: "", link: "/mca/java/u4/a12" },
-          { label: "", link: "/mca/java/u4/a13" },
-          { label: "", link: "/mca/java/u4/a14" },
-          { label: "", link: "/mca/java/u4/a15" },
-          { label: "", link: "/mca/java/u4/a16" },
-        ]
-      },
-      {
-        title: "Unit-5",
-        items: [
-          { label: "Unit-5 Questions", link: "/mca/java/u5/q1" },
+          { label: "Collection Framework", link: "/mca/java/u4/a11" },
+          { label: "Linked List", link: "/mca/java/u4/a12" },
+          { label: "Networking in Java", link: "/mca/java/u4/a13" },
+          { label: "TCP & UDP", link: "/mca/java/u4/a14" },
+          { label: "Lambda Expressions", link: "/mca/java/u4/a15" },
+                   
+          { label: "Unit-5 Questions", link: "/mca/java/u4/q2" },             
 
-          { label: "", link: "/mca/java/u5/a11" },
-          { label: "", link: "/mca/java/u5/a12" },
-          { label: "", link: "/mca/java/u5/a13" },
+          { label: "Event Handling", link: "/mca/java/u4/a16" },
+          { label: "JavaFX", link: "/mca/java/u4/a17" },
         ]
       },
       {
         title: "Lab Programs",
         items: [
-          { label: "P1 Class Fundamental", link: "/mca/java/p01" },
-          { label: "P2 Inheritance", link: "/mca/java/p02" },
-          { label: "P3 String Class", link: "/mca/java/p03" },
-          { label: "P4 Packages", link: "/mca/java/p04" },
-          { label: "P5 Try-Catch Block", link: "/mca/java/p05" },
-          { label: "P6 Multiple Exception", link: "/mca/java/p06" },
-          { label: "P7 Multi-threading", link: "/mca/java/p07" },
-          { label: "P8 Enum & Autoboxing", link: "/mca/java/p08" },          
-          { label: "P9 Generics", link: "/mca/java/p09" },
-          { label: "P10 Collection Framework", link: "/mca/java/p10" },
-          { label: "P11 Lambda Expression", link: "/mca/java/p11" },
-          { label: "P12 Design Pattern", link: "/mca/java/p12" },
-          { label: "P13 Event Handling", link: "/mca/java/p13" },
-          { label: "P13e Swing Event", link: "/mca/java/p14" },
-          { label: "P14 JDBC", link: "/mca/java/p15" },
+          { label: "P1 Class Fundamental", link: "/mca/java/lab/p01" },
+          { label: "P2 Inheritance", link: "/mca/java/lab/p02" },
+          { label: "P3 String Class", link: "/mca/java/lab/p03" },
+          { label: "P4 Packages", link: "/mca/java/lab/p04" },
+          { label: "P5 Try-Catch Block", link: "/mca/java/lab/p05" },
+          { label: "P6 Multiple Exception", link: "/mca/java/lab/p06" },
+          { label: "P7 Multi-threading", link: "/mca/java/lab/p07" },
+          { label: "P8 Enum & Autoboxing", link: "/mca/java/lab/p08" },          
+          { label: "P9 Generics", link: "/mca/java/lab/p09" },
+          { label: "P10 Collection Framework", link: "/mca/java/lab/p10" },
+          { label: "P11 Lambda Expression", link: "/mca/java/lab/p11" },
+          { label: "P12 Design Pattern", link: "/mca/java/lab/p12" },
+          { label: "P13 Event Handling", link: "/mca/java/lab/p13" },
+          { label: "P13e Swing Event", link: "/mca/java/lab/p14" },
+          { label: "P14 JDBC", link: "/mca/java/lab/p15" },
         ]
       },
       {
