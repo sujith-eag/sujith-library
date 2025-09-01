@@ -1,4 +1,94 @@
+export const mcaDAASection = [
+  {
+    title: "Design & Analysis of Algorithms",
+    items: [
+        { 
+          title: "Unit 1",
+          items: [
+            { label: "Unit-1 Questions", link: "/mca/daa/u1/q1" },
+            { label: "Algorithm Fundamental", link: "/mca/daa/u1/u11" },
+            { label: "GCD & Euclid", link: "/mca/daa/u1/u12" },
+            { label: "Analysis Framework", link: "/mca/daa/u1/u13" },
+            { label: "Asymptotic Notations", link: "/mca/daa/u1/u14" },
+            { label: "Time Complexity", link: "/mca/daa/u1/u15" },
+            { label: "Non-Recursive", link: "/mca/daa/u1/u16" },
+            { label: "Recursive", link: "/mca/daa/u1/u17" },
+          ],
+        },
+        { 
+          title: "Unit 2",
+          items: [
+            { label: "Unit-2 Questions", link: "/mca/daa/u2/q2" },
+            { label: "Brute Force", link: "/mca/daa/u2/u21" },
+            { label: "String Matching", link: "/mca/daa/u2/u22" },
+            { label: "Divide & Conquer", link: "/mca/daa/u2/u23" },
+            { label: "Merge Sort", link: "/mca/daa/u2/u24" },
+            { label: "Quick Sort", link: "/mca/daa/u2/u25" },
+            { label: "Binary Search", link: "/mca/daa/u2/u26" },
+          ],
+        },
+        { 
+          title: "Unit 3",
+          items: [
+            { label: "Unit-3 Questions", link: "/mca/daa/u3/q3" },
+            { label: "Insertion & DFS", link: "/mca/daa/u3/u31" },
+            { label: "Topological Sort", link: "/mca/daa/u3/u32" },
+            { label: "Presorting", link: "/mca/daa/u3/u33" },
+            { label: "Heap Sort", link: "/mca/daa/u3/u34" },
+          ],
+        },
+        { 
+          title: "Unit 4 & 5",
+          items: [
+            { label: "Unit-4 Questions", link: "/mca/daa/u4/q4" },
+            { label: "Counting & Hashing", link: "/mca/daa/u4/u41" },
+            { label: "Dynamic Programming", link: "/mca/daa/u4/u42" },
+            { label: "Greedy Technique", link: "/mca/daa/u4/u43" },
 
+            { label: "Unit-5 Questions", link: "/mca/daa/u4/q5" },
+            { label: "Backtracking", link: "/mca/daa/u4/u51" },
+            { label: "Hamiltonian", link: "/mca/daa/u4/u52" },
+            { label: "P & NP Problems", link: "/mca/daa/u4/u53" },
+          ],
+        },
+        { 
+          title: "Lab Programs",
+          items: [
+              { 
+              title: "Numbers",
+              items: [
+                { label: "Finding GCD", link: "/mca/daa/lab/num/u11" },
+                { label: "Largest Element", link: "/mca/daa/lab/num/u12" },
+                { label: "Unique Elements", link: "/mca/daa/lab/num/u13" },
+                { label: "Factorial", link: "/mca/daa/lab/num/u14" },
+              ],
+            },
+            { 
+              title: "Searching & Matrix",
+              items: [
+                { label: "Linear Search", link: "/mca/daa/lab/mg/u11" },
+                { label: "String Matching", link: "/mca/daa/lab/mg/u12" },
+                { label: "Matrix Multiplication", link: "/mca/daa/lab/mg/u13" },
+                { label: "Warshall's Algorithm", link: "/mca/daa/lab/mg/u14" },
+                { label: "Floyd's Algorithm", link: "/mca/daa/lab/mg/u15" },
+              ],
+            },
+            { 
+              title: "Sorting",
+              items: [
+                { label: "Selection Sort", link: "/mca/daa/lab/so/u11" },
+                { label: "Insertion Sort", link: "/mca/daa/lab/so/u12" },
+                { label: "Merge Sort", link: "/mca/daa/lab/so/u13" },
+                { label: "Quick Sort", link: "/mca/daa/lab/so/u14" },
+                { label: "Heap Sort", link: "/mca/daa/lab/so/u15" },
+              ],
+            },
+          ],
+        },
+        
+      ]
+  }
+];
 
 export const mcaRMSection = [
   {
@@ -46,14 +136,6 @@ export const mcaRMSection = [
   },
 ];
 
-export const mcaDAASection = [
-  {
-    title: "Design & Analysis of Algorithms",
-    items: [
-          { label: "Algorithms Introduction", link: "/mca/daa/u11" },
-    ]
-  }
-];
 
 export const mcaCSSection = [
   {
