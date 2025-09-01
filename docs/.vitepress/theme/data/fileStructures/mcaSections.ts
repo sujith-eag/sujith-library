@@ -1,3 +1,78 @@
+export const mcaDbmsSection = [
+  {
+    title: "Data Base Management",
+    items: [
+      {
+        title: "DBMS & Relational Model",
+        items: [
+          { label: "Introduction to DBMS", link: "/mca/dbs/u1/u11" },
+          { label: "Characteristics of DBMS", link: "/mca/dbs/u1/u12" },
+          { label: "Data Models & Schema", link: "/mca/dbs/u1/u13" },
+          { label: "Three Schema Architecture", link: "/mca/dbs/u1/u14" },
+          { label: "DBS Component Module", link: "/mca/dbs/u1/u15" },
+          { label: "Relational Model Concepts", link: "/mca/dbs/u1/u16" },
+          { label: "Relational Constraints & Schema", link: "/mca/dbs/u1/u17" },
+
+          { label: "Unit-1 Questions", link: "/mca/dbs/u1/q1" },
+        ]
+      },
+      {
+        title: "SQL & PL/SQL",
+        items: [
+          { label: "SQL Introduction", link: "/mca/dbs/u2/u11" },
+          { label: "SQL Language", link: "/mca/dbs/u2/u12" },
+          { label: "Aggregate Commands", link: "/mca/dbs/u2/u13" },
+          { label: "Complex Nested Queries", link: "/mca/dbs/u2/u14" },
+          { label: "SQl Query Practice", link: "/mca/dbs/u2/u15" },
+          { label: "PL/SQl Introduction", link: "/mca/dbs/u2/u16" },
+          { label: "PL/SQl Procedures Functions", link: "/mca/dbs/u2/u17" },
+          { label: "SQL Triggers", link: "/mca/dbs/u2/u18" },
+
+          { label: "Unit-2 Questions", link: "/mca/dbs/u2/q2" },          
+        ]
+      },
+      {
+        title: "ER Model & DB Design",
+        items: [
+          { label: "ER Model", link: "/mca/dbs/u3/u11" },
+          { label: "ER Relations and Contraints", link: "/mca/dbs/u3/u12" },
+          { label: "DB Design Guidlines", link: "/mca/dbs/u3/u13" },
+          { label: "Normalization", link: "/mca/dbs/u3/u14" },
+
+          { label: "Unit-3 Questions", link: "/mca/dbs/u3/q3" },          
+        ]
+      },
+      {
+        title: "Advanced DB Concepts",
+        items: [
+          { label: "Object Oriented DB", link: "/mca/dbs/u4/u11" },
+          { label: "Distributed Databse", link: "/mca/dbs/u4/u12" },
+          { label: "DDB Design Techniques", link: "/mca/dbs/u4/u13" },
+          { label: "Types of DDB", link: "/mca/dbs/u4/u14" },
+          { label: "Big Data", link: "/mca/dbs/u4/u15" },
+          { label: "NoSQL Systems", link: "/mca/dbs/u4/u16" },
+          { label: "NoSQL Categories", link: "/mca/dbs/u4/u17" },
+
+          { label: "Unit-4 Questions", link: "/mca/dbs/u4/q4" },          
+        ]
+      },
+      {
+        title: "MongoDB",
+        items: [
+          { label: "MongoDB Intro", link: "/mca/dbs/u5/u11" },
+          { label: "MongoDB CRUD", link: "/mca/dbs/u5/u12" },
+          { label: "ECommerce DB Practice", link: "/mca/dbs/u5/u13" },
+          { label: "Aggregation Pipeline", link: "/mca/dbs/u5/u14" },
+          { label: "ECommerce Aggregation", link: "/mca/dbs/u5/u15" },
+
+          { label: "Unit-5 Questions", link: "/mca/dbs/u5/q5" },
+        ]
+      },
+    ]
+  }
+];
+
+
 export const mcaDAASection = [
   {
     title: "Design & Analysis of Algorithms",
@@ -193,67 +268,6 @@ export const mcaCSSection = [
 ];
 
 
-export const mcaDbmsSection = [
-  {
-    title: "Data Base Management",
-    items: [
-      {
-        title: "DBMS & Relational Model",
-        items: [
-          { label: "Introduction", link: "/mca/dbs/u1/u11" },
-          { label: "Characteristics of DBMS", link: "/mca/dbs/u1/u12" },
-          { label: "Data Models & Schema", link: "/mca/dbs/u1/u13" },
-          { label: "Three Schema Architecture", link: "/mca/dbs/u1/u14" },
-          { label: "Component Module", link: "/mca/dbs/u1/u15" },
-          { label: "Relational Model Concepts", link: "/mca/dbs/u1/u16" },
-          { label: "Relational Constraints & Schema", link: "/mca/dbs/u1/u17" },
-        ]
-      },
-      {
-        title: "SQL",
-        items: [
-          { label: "SQL Introduction", link: "/mca/dbs/u2/u11" },
-          { label: "SQL Language", link: "/mca/dbs/u2/u12" },
-          { label: "Aggregate Commands", link: "/mca/dbs/u2/u13" },
-          { label: "Complex Nested Queries", link: "/mca/dbs/u2/u14" },
-          { label: "SQl Query Practice", link: "/mca/dbs/u2/u15" },
-          { label: "PL/SQl", link: "/mca/dbs/u2/u16" },
-          { label: "PL/SQl Procedures Functions", link: "/mca/dbs/u2/u17" },
-          { label: "SQL Triggers", link: "/mca/dbs/u2/u18" },          
-        ]
-      },
-      {
-        title: "ER Model & DB Design",
-        items: [
-          { label: "ER Model", link: "/mca/dbs/u3/u11" },
-          { label: "Types, Sets, Roles", link: "/mca/dbs/u3/u12" },
-          { label: "Weak Entity", link: "/mca/dbs/u3/u13" },
-          // { label: "Database Design", link: "/mca/dbs/u3/u14" },
-        ]
-      },
-      {
-        title: "Advanced DB Concepts",
-        items: [
-          { label: "OO-DBs", link: "/mca/dbs/u4/u11" },
-          { label: "Distributed Databse", link: "/mca/dbs/u4/u12" },
-          { label: "Fragmenstaion, Replication", link: "/mca/dbs/u4/u13" },
-        ]
-      },
-      {
-        title: "Unit-5 MongoDB",
-        items: [
-          // { label: "Unit 5 Q", link: "/python/col_extra/unit_5_q" },
-        ]
-      },
-      // {
-      //   title: "Prev Questions",
-      //   items: [
-      //     { label: "Assignment", link: "/mca/dbs/assignment" },
-      //   ]
-      // },
-    ]
-  }
-];
 
 export const mcaNetworkSection = [
   {
