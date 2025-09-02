@@ -1,6 +1,10 @@
 <template>
-  <div class="collapsible-section">
-    <button @click="emit('toggle')" class="collapsible-btn" :aria-expanded="isOpen">
+  <div class="collapsible-section" :class="{ 'is-open': isOpen }">
+    <button 
+      @click="emit('toggle')" 
+      class="collapsible-btn" 
+      :class="{ open: isOpen }"
+      :aria-expanded="isOpen">
       <span class="title">{{ title }}</span>
       
       <span class="chevron" :class="{ open: isOpen }">
@@ -10,7 +14,7 @@
       </span>
     </button>
 
-    <transition name="fade">
+<transition name="slide" @enter="onEnter" @leave="onLeave" @after-enter="onAfterEnter">
       <div v-if="isOpen" class="collapsible-content">
         <slot />
       </div>
@@ -19,11 +23,34 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  title: String,
-  isOpen: Boolean
-})
-const emit = defineEmits(['toggle'])
+  const props = defineProps({
+    title: String,
+    isOpen: Boolean
+  })
+  const emit = defineEmits(['toggle'])
+
+  function onEnter(el) {
+    el.style.height = 'auto';
+    const height = getComputedStyle(el).height;
+    el.style.height = 0;
+    getComputedStyle(el); 
+    setTimeout(() => {
+      el.style.height = height;
+    });
+  }
+
+  function onLeave(el) {
+    el.style.height = getComputedStyle(el).height;
+    // Force repaint
+    getComputedStyle(el);
+    setTimeout(() => {
+      el.style.height = 0;
+    });
+  }
+  
+  function onAfterEnter(el) {
+    el.style.height = 'auto';
+  }
 </script>
 
 <style scoped>
@@ -34,6 +61,13 @@ const emit = defineEmits(['toggle'])
   background-color: var(--vp-c-bg-soft);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   overflow: hidden;
+  
+  position: relative;
+  transition: border 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.3s;
+}
+
+.collapsible-section.is-open {
+  z-index: 10;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -51,6 +85,11 @@ const emit = defineEmits(['toggle'])
   color: var(--vp-c-text-1);
   transition: background-color 0.3s ease, color 0.3s ease;
   color: var(--vp-c-text-1);
+  /* border-bottom: 1px solid var(--vp-c-border); */
+  border-bottom: none;
+}
+
+.collapsible-btn.open {
   border-bottom: 1px solid var(--vp-c-border);
 }
 
@@ -82,40 +121,48 @@ const emit = defineEmits(['toggle'])
 .collapsible-content {
   padding: 0.75rem 1rem;
   background-color: var(--vp-c-bg);
-  border-top: 1px solid var(--vp-c-border);
+  border-top: none;
   transition: background-color 0.3s ease;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-4px);
+.slide-enter-active,
+.slide-leave-active {
+  transition: height 0.2s ease-in-out;
+  overflow: hidden;
 }
 
-/* Deep styles for slotted content */
-::v-deep(.collapsible-content a) {
+
+.collapsible-btn:focus-visible {
+  /* Use an inset box-shadow which respects overflow: hidden */
+  box-shadow: inset 0 0 0 2px var(--vp-c-brand-1);
+  outline: none; /* Optional: explicitly remove the default outline */
+}
+
+.collapsible-section:hover {
+  border-color: var(--vp-c-gray-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:deep(.collapsible-content a) {
   color: var(--vp-c-brand-1);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-::v-deep(.collapsible-content a:hover) {
+:deep(.collapsible-content a:hover) {
   color: var(--vp-c-brand-3);
   text-decoration: underline;
 }
 
-::v-deep(.collapsible-content ul) {
+:deep(.collapsible-content ul) {
   list-style: none;
   padding-left: 1rem;
   margin: 0;
 }
 
-::v-deep(.collapsible-content li) {
+:deep(.collapsible-content li) {
   margin: 0.5rem 0;
   line-height: 1.6;
 }
+
 </style>

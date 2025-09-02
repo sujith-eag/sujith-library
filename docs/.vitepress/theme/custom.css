@@ -78,102 +78,110 @@
     }
   }
 
-  
-  
-/* Container adjustments for spacing and layout */
+/* Container adjustments for homepage hero spacing and layout */
 .VPHome .VPHomeHero .actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  /* Override VitePress default button style */
-  .VPHome .VPHomeHero .action .VPButton {
-    all: unset; /* Remove all default styles */
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Gradient style for brand theme */
-  .VPHome .VPHomeHero .action .VPButton.brand {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
-  }
-  
-  .VPHome .VPHomeHero .action .VPButton.brand:hover {
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
-    transform: translateY(-1px);
-  }
-  
-  /* Gradient style for alt theme */
-  .VPHome .VPHomeHero .action .VPButton.alt {
-    background: linear-gradient(135deg, #a855f7, #ec4899);
-  }
-  
-  .VPHome .VPHomeHero .action .VPButton.alt:hover {
-    background: linear-gradient(135deg, #9333ea, #db2777);
-    transform: translateY(-1px);
-  }
-  
-  
-  
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Custom override for VitePress default hero buttons */
+.VPHome .VPHomeHero .action .VPButton {
+  all: unset; /* Remove all default styles */
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Custom size for homepage feature icons */
+.VPHome .VPFeatures .VPFeature .icon img {
+  width: 60px;
+  height: 60px; /* It's good practice to set both */
+}
+
+
+/* Gradient style for brand theme button */
+.VPHome .VPHomeHero .action .VPButton.brand {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+}
+
+.VPHome .VPHomeHero .action .VPButton.brand:hover {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  transform: translateY(-1px);
+}
+
+/* Gradient style for alt theme button */
+.VPHome .VPHomeHero .action .VPButton.alt {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+
+.VPHome .VPHomeHero .action .VPButton.alt:hover {
+  background: linear-gradient(135deg, #9333ea, #db2777);
+  transform: translateY(-1px);
+}
+
+/* Add focus states for accessibility */
+.VPHome .VPHomeHero .action .VPButton:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
 
 /* Feature grid layout */
 .VPHome .VPFeatures {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    /* margin-top: 3rem; */
-    /* padding: 0 1.5rem; */
-  }
-  /* Each feature block */
-  .VPHome .VPFeature {
-    border: 1px solid var(--vp-c-border);
-    border-radius: 12px;
-    /* padding: 1.25rem 1.5rem; */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-  }
-  /* Hover interaction */
-  .VPHome .VPFeature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    background-color: var(--vp-c-bg-hover);
-  }
-  /* Feature title */
-  .VPHome .VPFeature h2 {
-    /* margin: 0 0 0.5rem; */
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--vp-c-text-1);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  /* Feature details */
-  .VPHome .VPFeature p {
-    font-size: 0.95rem;
-    color: var(--vp-c-text-2);
-    line-height: 1.6;
-  }
-  /* Prevent default blue link styling in feature titles */
-  .VPHome .VPFeature h2 a {
-    color: var(--vp-c-text-1);
-    text-decoration: none;
-  }
-  .VPHome .VPFeature h2 a:hover {
-    color: var(--vp-c-brand-1);
-    text-decoration: none;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Each feature block */
+.VPHome .VPFeature {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover interaction for features */
+.VPHome .VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background-color: var(--vp-c-bg-hover);
+}
+
+/* Feature title */
+.VPHome .VPFeature h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Feature details */
+.VPHome .VPFeature p {
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+
+/* Prevent default blue link styling in feature titles */
+.VPHome .VPFeature h2 a {
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+.VPHome .VPFeature h2 a:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}

@@ -1,19 +1,16 @@
 <template>
   <div class="collapsible-list-grid">
     <template v-for="(item, index) in sections" :key="index">
-      <!-- Simple Link item -->
       <template v-if="item.label && item.link">
         <a class="collapsible-item-link" :href="item.link">{{ item.label }}</a>
       </template>
 
-      <!-- Collapsible section with nested items -->
       <CollapsibleSection
         v-else-if="item.title && item.items"
         :title="item.title"
-        :is-open="activeIndex === index"
+        :is-open="openIndices.has(index)"
         @toggle="() => toggle(index)"
       >
-        <!-- Recursive rendering of children -->
         <CollapsibleList :sections="item.items" />
       </CollapsibleSection>
     </template>
@@ -33,11 +30,14 @@ defineProps({
   }
 })
 
-// Single open index
-const activeIndex = ref(null)
+const openIndices = ref(new Set())
 
 function toggle(index) {
-  activeIndex.value = activeIndex.value === index ? null : index
+  if (openIndices.value.has(index)) {
+    openIndices.value.delete(index)
+  } else {
+    openIndices.value.add(index)
+  }
 }
 </script>
 
@@ -70,6 +70,12 @@ function toggle(index) {
 .collapsible-item-link:hover {
   color: var(--vp-c-brand-3);
   background: var(--vp-c-bg-hover);
+}
+
+.collapsible-item-link:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+  background-color: var(--vp-c-bg-hover);
 }
 </style>
 

@@ -17,20 +17,9 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    app.component('BookCard', BookCard)  // component registration
+    app.component('BookCard', BookCard)
     app.component('ProfilePage', ProfilePage)
-    app.component('ProjectsShowcase', ProjectsShowcase)
-    
-
-    // Adding Script for GoatCounter Analytics
-    // <script data-goatcounter="https://sujith.goatcounter.com/count"
-    //    async src="//gc.zgo.at/count.js"></script>
-    if(typeof window !== 'undefined') {
-      const script = document.createElement('script')
-      script.setAttribute('data-goatcounter', 'https://sujith.goatcounter.com/count')
-      script.setAttribute('src', '//gc.zgo.at/count.js')
-      script.setAttribute('async', 'true')
-      document.body.appendChild(script)
-    }
+    app.component('ProjectsShowcation', ProjectsShowcase)
   }
 } satisfies Theme
+

@@ -11,21 +11,40 @@ import { linuxSidebar } from './sidebar/linuxSidebar'
 import { osSidebar } from './sidebar/osSidebar'
 import { pythonSidebar } from './sidebar/pythonSidebar'
 import { reactSidebar } from './sidebar/reactSidebar'
-
 import { mcaSidebar } from './sidebar/mcaSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Sujith's Library",
-  description: "Curated collection of learning resources with examples.",
-  ignoreDeadLinks: true,
-  base: '/',
+  description: "A curated collection of learning resources and code examples.",
   
-  cleanUrls: true,  // removing .html
-  // appearance: false, // defaults to light, user can still toggle
+  // Best practice: Catch broken links during the build process
+  ignoreDeadLinks: false,
+  base: '/',
+  cleanUrls: true,
 
+  // Add sitemap for SEO
+  sitemap: {
+    hostname: 'https://sujith-eag.in'
+  },
+  
   head: [
-    ['link', { rel: 'icon', href: './logo/logo.png' }]
+    // Favicon
+    ['link', { rel: 'icon', href: '/logo/logo.png' }],
+
+    // Social media meta tags for better link sharing
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'en' }],
+    ['meta', { property: 'og:site_name', content: "Sujith's Library" }],
+    ['meta', { property: 'og:image', content: '/logo/logo.png' }], 
+     [
+      'script',
+      {
+        'data-goatcounter': 'https://sujith.goatcounter.com/count',
+        src: '//gc.zgo.at/count.js',
+        async: 'true'
+      }
+    ]
   ],
 
   markdown: {
@@ -37,20 +56,44 @@ export default defineConfig({
   },
     
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     logo: '/logo/logo.png',
-    // siteTitle: 'This Site',
-    nav: [
-      { text: 'Home', link: '/' },
+    
+nav: [
+  { text: 'Home', link: '/' },
+  {
+    text: 'Languages',
+    items: [
       { text: 'Java', link: '/java/' },
       { text: 'Python', link: '/python/' },
-      // { text: 'C', link: '/c/' },
-      { text: 'JS', link: '/java-script/' },
-      { text: 'React', link: '/react/'},
+      { text: 'C', link: '/c/' }
+    ]
+  },
+  {
+    text: 'Web Dev',
+    items: [
+      { text: 'JavaScript', link: '/java-script/' },
+      { text: 'JavaScript DOM', link: '/java-script-dom/' },
+      { text: 'React', link: '/react/' },
+      { text: 'HTML & CSS', link: '/html/' }
+    ]
+  },
+  {
+    text: 'CS Fundamentals',
+    items: [
+      { text: 'Operating Systems', link: '/os/' },
+      { text: 'Databases (DBMS)', link: '/dbms/' }
+    ]
+  },
+  {
+    text: 'More',
+    items: [
       { text: 'Linux', link: '/linux/' },
-      // { text: 'MCA', link: '/mca/' },
-    ],
-
+      { text: 'Tools & Git', link: '/tools/' },
+      { text: 'MCA', link: '/mca/' }
+    ]
+  }
+],
+    
     sidebar: {
       '/c/': cSidebar(),
       '/css/': htmlcssSidebar(),
@@ -66,27 +109,30 @@ export default defineConfig({
       '/python/': pythonSidebar(),
       '/react/': reactSidebar(),
       '/tools/': toolsSidebar()
-       // need to plan for multiple return functions with collapsed
     },
       
     outline: {
       level: [2, 6],
     },
     
+    // Enable detailed view for local search
+    search: {
+      provider: 'local',
+      options: {
+        detailedView: true
+      }
+    },
     
-    search:{
-      provider: 'local' // 'agolia'
+    // Enable the "Edit this page" link
+    editLink: {
+      pattern: 'https://github.com/sujith-eag/vu-library/edit/main/docs/:path',    
+      text: 'Edit this page on Github' 
     },
     
     footer: {
       message: 'Made with ❤️ for students, by a fellow learner.',
-      copyright: '© Sujith.'
+      copyright: `© ${new Date().getFullYear()} Sujith.`
     },
-    
-//    editLink: {
-//      pattern: 'https://github.com/sujith-eag/vu-library/edit/main/docs/:path',    
-//      text: 'Edit this page on Github' 
-//    },
     
     lastUpdated: {
       text: 'Updated on',
@@ -107,3 +153,4 @@ export default defineConfig({
     ]
   }
 })
+

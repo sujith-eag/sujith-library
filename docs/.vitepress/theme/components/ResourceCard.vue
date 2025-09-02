@@ -21,11 +21,14 @@ defineProps({
 .resource-card {
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.resource-card:hover {
+.resource-card:hover,
+.resource-card:focus-visible {
   border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .resource-link {
@@ -37,8 +40,10 @@ defineProps({
   transition: color 0.3s ease;
 }
 
-.resource-card:hover .resource-link {
+.resource-card:hover .resource-link,
+.resource-card:focus-visible .resource-link {
   color: var(--vp-c-brand-3);
 }
+
 </style>
 

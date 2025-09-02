@@ -129,6 +129,15 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 
+/* To customize dark mode */
+.dark {
+  --vp-c-brand-1: var(--vp-c-indigo-2);
+  --vp-c-brand-2: var(--vp-c-indigo-1);
+  --vp-c-brand-3: #5c60f2; /* A custom, brighter brand color for dark bg */
+  --vp-c-brand-soft: rgba(92, 96, 242, 0.14);
+}
+
+
 /**
  * Component: Algolia
  * -------------------------------------------------------------------------- */

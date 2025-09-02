@@ -4,8 +4,9 @@ layout: home
 
 hero:
   name: "Sujith's Library"
-  text: "Consequence of Exploration"
-  tagline: Structured Knowledge from a Developer’s Learning Trail.
+  # Suggested: More engaging hero text
+  text: "A Developer's Learning Trail"
+  tagline: A curated collection of notes, code examples, and structured knowledge from my journey through tech.
   image:
     src: /logo/logo.png
     alt: Eagle's Library
@@ -24,119 +25,87 @@ hero:
     link: /mca/
 
 features:
+  - icon:
+      src: /logo/python.svg
+      alt: Python Icon
+    title: Python Topics
+    details: Dive into Python syntax, data types, and scripting techniques.
+    link: /python/
 
-# PYTHON
-  - title: <a 
-      href="/python/">
-      <img src="./logo/python.svg" 
-      alt="Python Icon" 
-      style="width:60px;" 
-      />Python Topics</a>
-    details: <a 
-      href="/python/"
-      >Dive into Python syntax, data types, and scripting techniques.</a>
+  - icon:
+      src: /logo/java.svg
+      alt: Java Icon
+    title: Java Topics
+    details: Explore Java fundamentals, OOP, collections, and more.
+    link: /java/
 
-#JAVA
-  - title: <a 
-      href="/java/">
-      <img src="./logo/java.svg" 
-      alt="Java Icon" 
-      style="width:60px;" 
-      />Java Topics</a>
-    details: <a href="/java/">Explore Java fundamentals, OOP, collections, and more.</a>
+  - icon:
+      src: /logo/react.svg
+      alt: React Icon
+    title: React Topics
+    details: Learn React components, hooks, and state management.
+    link: /react/
 
-# REACT
-  - title: <a 
-      href="/react/">
-      <img src="./logo/react.svg" 
-      alt="React Icon" 
-      style="width:60px;" 
-      />React Topics</a>
-    details: <a href="/react/">Learn React components, hooks, and state management.</a>
+  - icon:
+      src: /logo/javascript.svg
+      alt: JavaScript Icon
+    title: JavaScript Topics
+    details: Master JavaScript basics, DOM, and ES6+ features.
+    link: /java-script/
 
-# JAVASCRIPT
-  - title: <a 
-      href="/java-script/">
-      <img src="./logo/javascript.svg" 
-      alt="JavaScript Icon" 
-      style="width:60px;" 
-      />JavaScript Topics</a>
-    details: <a href="/java-script/">Master JavaScript basics, DOM, and ES6+ features.</a>
+  - icon:
+      src: /logo/os_s.svg
+      alt: OS Icon
+    title: Operating Systems
+    details: Explore OS fundamentals like processes, memory, and scheduling.
+    link: /os/
 
-# OPERATING SYSTEMS
-  - title: <a 
-      href="/os/">
-      <img src="./logo/os_s.svg" 
-      alt="OS Icon" 
-      style="width:60px;" 
-      />Operating Systems</a>
-    details: <a href="/os/">Explore OS fundamentals like processes, memory, and scheduling.</a>
+  - icon:
+      src: /logo/terminal.svg
+      alt: Terminal Icon
+    title: Bash & Linux Topics
+    details: Get started with Linux commands, bash scripting, and file systems.
+    link: /linux/
 
-# BASH LINUX
-  - title: <a 
-      href="/linux/">
-      <img src="./logo/terminal.svg" 
-      alt="Terminal Icon" 
-      style="width:60px;" 
-      />Bash & Linux Topics</a>
-    details: <a href="/linux/">Get started with Linux commands, bash scripting, and file systems.</a>
+  - icon:
+      src: /logo/c_logo.svg
+      alt: C Icon
+    title: Data Structures using C
+    details: Understand pointers, memory management, and low-level programming using fundamental data structures.
+    link: /c/
 
-# C Language
-  - title: <a 
-      href="/c/"><img 
-      src="./logo/c_logo.svg" 
-      alt="C Icon" 
-      style="width:60px;" 
-      />Data Structures using C</a>
-    details: <a href="/c/">Understand pointers, memory management, and low-level programming using fundamental data structures</a>
+  - icon:
+      src: /logo/git.svg
+      alt: Git Icon
+    title: Tools, Git & GitHub
+    details: Learn version control, branches, and collaboration with Git.
+    link: /tools/
 
-# GITHUB
-  - title: <a 
-      href="/tools/">
-      <img src="./logo/git.svg" 
-      alt="Git Icon" 
-      style="width:60px;" 
-      />Tools, Git & GitHub</a>
-    details: <a href="/tools/">Learn version control, branches, and collaboration with Git.</a>
+  - icon:
+      src: /logo/html.svg
+      alt: HTML Icon
+    title: HTML & CSS Basics
+    details: Build web pages with semantic HTML. Style web content with layouts, colors, and responsive design.
+    link: /html/
 
-# HTML
-  - title: <a 
-      href="/html/">
-      <img src="./logo/html.svg" 
-      alt="HTML Icon" 
-      style="width:60px;" 
-      />HTML & CSS Basics</a>
-    details: <a href="/html/">Build web pages with semantic HTML. Style web content with layouts, colors, and responsive design.</a>
+  - icon:
+      src: /logo/data_p.svg
+      alt: Database Icon
+    title: Databases
+    details: Learn SQL, relational models, and basic database design.
+    link: /dbms/
 
-# DATABASE
-  - title: <a 
-      href="/dbms/">
-      <img src="./logo/data_p.svg" 
-      alt="Database Icon" 
-      style="width:60px;" 
-      />Databases</a>
-    details: <a href="/dbms/">Learn SQL, relational models, and basic database design.</a>
+  - icon:
+      src: /logo/vuejs.svg
+      alt: Vue Icon
+    title: Vue Topics
+    details: Learn Vue components, directives, reactivity, and lifecycle hooks.
+    link: /vue/
 
-# VUE
-  - title: <a 
-      href="/vue/">
-      <img src="./logo/vuejs.svg" 
-      alt="Vue Icon" 
-      style="width:60px;" 
-      />Vue Topics</a>
-    details: <a href="/vue/">Learn Vue components, directives, reactivity, and lifecycle hooks.</a>
-
-# LEETCODE
-  - title: <a 
-      href="/leetcode/">
-      <img src="./logo/leetcode_p.svg" 
-      alt="LeetCode Icon" 
-      style="width:60px;" 
-      />LeetCode Practice</a>
-    details: <a href="/leetcode/">Practice coding problems for interviews and problem-solving skills.</a>
-
-
-
-
+  - icon:
+      src: /logo/leetcode_p.svg
+      alt: LeetCode Icon
+    title: LeetCode Practice
+    details: Practice coding problems for interviews and problem-solving skills.
+    link: /leetcode/
 ---
-
