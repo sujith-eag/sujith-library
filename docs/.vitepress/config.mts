@@ -18,8 +18,8 @@ export default defineConfig({
   title: "Sujith's Library",
   description: "A curated collection of learning resources and code examples.",
   
-  // Best practice: Catch broken links during the build process
-  ignoreDeadLinks: false,
+  // Catch broken links during the build process
+  ignoreDeadLinks: true,
   base: '/',
   cleanUrls: true,
 
