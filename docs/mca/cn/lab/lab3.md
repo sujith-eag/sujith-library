@@ -1,4 +1,3 @@
-
 # FTP Server using ProFTPD
 
 Set up an FTP server on Virtual Machine **PC1** using **ProFTPD**, allowing clients to upload and download files via FTP.

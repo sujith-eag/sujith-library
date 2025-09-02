@@ -1,4 +1,3 @@
-
 # Static Routing
 
 Static routing is a method of manually configuring routes in a router’s routing table. In this approach:
@@ -122,7 +121,6 @@ Cisco routers operate through a hierarchical command-line interface with differe
 	
 - `banner motd #Message#` – Set login banner message.
     
-
 ---
 
 ### 4. Interface Configuration Mode

@@ -4,7 +4,7 @@ title: MCA Section
 hero:
   name: MCA Section
   # text: Learn about various subjects
-  tagline: Materials, Previous Questions and Practices for MCA Examination
+  tagline: Subject Notes, Practice Codes, Previous QP & Solutions
   image:
     src: /logo/terminal.svg
     alt: Code logo

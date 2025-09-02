@@ -1,6 +1,4 @@
-
 # VirtualBox VM Setup Guide
-
 
 ## Add Oracle’s GPG key and repository:
 
@@ -9,16 +7,21 @@ sudo apt update
 sudo apt install -y gnupg wget
 ```
 
+Downloads Oracle's public key and adds it to your system. This key is a digital signature that lets your system verify that the VirtualBox software is authentic and hasn't been tampered with.`
 ```bash
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+```
+
+Adding the official VirtualBox repository to your list of software sources, specifying `noble` for Ubuntu 24.04 version.
+```bash
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian noble contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 ```
 
 ## Install VirtualBox:
 
 ```bash
 sudo apt update
-sudo apt install virtualbox-7.0
+sudo apt install virtualbox-7.1
 ```
 
 Check installation: `virtualbox`
@@ -26,6 +29,11 @@ Check installation: `virtualbox`
 
 Download Lubuntu 16.04 ISO. Official archived ISO :  
     [https://cdimage.ubuntu.com/lubuntu/releases/16.04/release/](https://cdimage.ubuntu.com/lubuntu/releases/16.04/release/)
+
+> [!important]
+> If VMWare is installed then it has to be turned off from using KVM
+> `sudo rmmod kvm_intel` or for amd `sudo rmmod kvm_amd`
+> Then Unload the main KVM Module `sudo rmmod kvm`
 
 
 ## Create a Virtual Machine in VirtualBox

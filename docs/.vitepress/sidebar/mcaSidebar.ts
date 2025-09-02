@@ -5,7 +5,7 @@ import { transformToSidebar } from "../theme/utils/transformSectionsToSidebar";
 export function mcaSidebar() {
   return [
     {
-      text : 'MCA Practice',
+      text : 'MCA Material',
       collapsed: true,
       items: transformToSidebar(mcaSection)
     }

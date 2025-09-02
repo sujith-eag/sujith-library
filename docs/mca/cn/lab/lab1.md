@@ -1,4 +1,3 @@
-
 # IP Addressing
 
 ## Classful Addressing (Class A: 10.0.0.0/8)
@@ -88,8 +87,6 @@ show arp
 		
 - Notice differences in IP range and subnet masks.
 	
-
-
 ## Outcome
 
 - All PCs must be on the **same subnet** for direct communication.

@@ -1,4 +1,3 @@
-
 # Apache2 Server
 
 Installing and configuring an Apache2 web server on Ubuntu to serve content from the `/var/www/` directory (the default web root). 
@@ -119,10 +118,10 @@ sudo systemctl restart apache2
 
 ### Apache Folder Structure Basics
 
-|Folder|Purpose|
-|---|---|
-|`/var/www/`|Default document root|
-|`/etc/apache2/sites-available/`|Virtual host config files|
-|`/etc/apache2/apache2.conf`|Main config file|
-|`/etc/apache2/ports.conf`|Port settings|
-|`/var/log/apache2/`|Apache logs|
+| Folder                          | Purpose                   |
+| ------------------------------- | ------------------------- |
+| `/var/www/`                     | Default document root     |
+| `/etc/apache2/sites-available/` | Virtual host config files |
+| `/etc/apache2/apache2.conf`     | Main config file          |
+| `/etc/apache2/ports.conf`       | Port settings             |
+| `/var/log/apache2/`             | Apache logs               |

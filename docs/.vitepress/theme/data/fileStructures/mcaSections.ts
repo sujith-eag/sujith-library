@@ -1,31 +1,54 @@
 export const mcaNetworkSection = [
   {
-    title: "Networking",
+    title: "Computer Networks",
     items: [
       {
         title: "Network & Internet",
         items: [
-         { label: "MAC & IP", link: "/mca/cn/u1/u11" },
-         { label: "Networking Devices", link: "/mca/cn/u1/u12" },
-         { label: "Packet & Circuit Switching", link: "/mca/cn/u1/u13" },
-         { label: "Layerd Architecture", link: "/mca/cn/u1/u14" },
-         
+         { label: "Networking Devices", link: "/mca/cn/u1/u11" },
+         { label: "IP & IP Protocol", link: "/mca/cn/u1/u12" },
+         { label: "Switched Networks", link: "/mca/cn/u1/u13" },
+         { label: "OSI Reference Model", link: "/mca/cn/u1/u14" },
+         { label: "TCP/IP Reference Model", link: "/mca/cn/u1/u15" },
         ]
       },
       {
         title: "Application Layer",
         items: [
-          { label: "FTP", link: "/mca/cn/u2/u21" },
-          // { label: "Un", link: "/mca/cn/2_q_answered" }
+         { label: "Application Layer", link: "/mca/cn/u2/u11" },
+         { label: "Web & HTTP", link: "/mca/cn/u2/u12" },
+         { label: "FTP", link: "/mca/cn/u2/u13" },
+         { label: "SMTP & IMAP", link: "/mca/cn/u2/u14" },
+         { label: "DNS", link: "/mca/cn/u2/u15" },
         ]
       },
-      // {
-      //   title: "Unit-3 Transport Layer",
-      //   items: [
-      //     { label: "Unit 3 - Questions", link: "/mca/cn/3_q" },
-      //     { label: "Unit 3 - Answers", link: "/mca/cn/3_q_answered" }
-      //   ]
-      // },
+      {
+        title: "Transport Layer",
+        items: [
+         { label: "Transport Layer", link: "/mca/cn/u3/u11" },
+         { label: "UDP", link: "/mca/cn/u3/u12" },
+         { label: "RDT Design", link: "/mca/cn/u3/u13" },
+         { label: "TCP", link: "/mca/cn/u3/u14" },
+         { label: "Congestion Control", link: "/mca/cn/u3/u15" },
+        ]
+      },
+      {
+        title: "Network Layer",
+        items: [
+         { label: "IPv4", link: "/mca/cn/u4/u11" },
+         { label: "DHCP", link: "/mca/cn/u4/u12" },
+         { label: "IPv6", link: "/mca/cn/u4/u13" },
+         { label: "Routing Algorithms", link: "/mca/cn/u4/u14" },
+        ]
+      },
+      {
+        title: "Link Layer",
+        items: [
+         { label: "Link Layer Services", link: "/mca/cn/u5/u11" },
+         { label: "Error Detection", link: "/mca/cn/u5/u12" },
+         { label: "Multiple Access Protocols", link: "/mca/cn/u5/u13" },
+        ]
+      },
       {
         title: "Lab Manual",
         items: [
