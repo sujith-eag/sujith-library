@@ -32,19 +32,28 @@ export const booksPending = [
   }
 ]
 
-export const resourcesUsed = [
+export const resourcesUsed = [  
   {
-    title: 'Previous Collection',
-    description: 'Drive Folder with Previous Question Papers and Notes on all Subjects',
+    title: 'Previous Papers & Notes',
+    description: 'A Drive folder containing a collection of previous question papers and notes for all subjects.',
     link: 'https://drive.google.com/drive/folders/1SstJgG0CqhcvV8MLuJ6r-l0igKTvg8y9?usp=sharing'
   },
   {
-    title: 'DSA Visualisation',
-    description: 'Site for Visualizing major Algorithms and Data Structures',
+    title: 'Algorithm Visualizer',
+    description: 'An interactive site that animates data structures and algorithms to help understand their mechanics.',
     link: 'https://www.cs.usfca.edu/~galles/visualization/Algorithms.html'
   },
+  // {
+  //   title: 'LeetCode',
+  //   description: 'The leading platform for practicing coding problems, preparing for technical interviews, and honing problem-solving skills.',
+  //   link: 'https://leetcode.com/'
+  // },
+  // {
+  //   title: 'GeeksforGeeks',
+  //   description: 'A comprehensive computer science portal with in-depth articles, tutorials, and a vast collection of practice problems.',
+  //   link: 'https://www.geeksforgeeks.org/'
+  // },
 ]
-
 export const resourcesPending = [
   {
     title: 'Java Documentation',

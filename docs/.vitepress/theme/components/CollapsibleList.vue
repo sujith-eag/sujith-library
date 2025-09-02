@@ -64,7 +64,7 @@ function toggle(index) {
   border-radius: 8px;
   background: var(--vp-c-bg-alt);
   color: var(--vp-c-brand-1);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .collapsible-item-link:hover {

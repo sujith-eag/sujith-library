@@ -3,7 +3,7 @@
 export const booksUsed = [
   
   {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Fundamentals of Database Systems, 7th Edition',
     author: 'Ramez Elmasri',
     year: '2017',
@@ -13,38 +13,38 @@ export const booksUsed = [
 
 export const booksPending = [
   {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Database System Concepts, 7th Edition',
     author: 'Abraham Silberschatz',
     year: '2020',
   },
   {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'MongoDB The Definitive Guide',
     author: 'Shannon Bradshaw',
     year: '2020',
   },
   
   {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Database Systems: Design, Implementation, and Management, 13th Edition',
     author: 'Carlos Coronel',
     year: '2019',
   },
   {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Designing Data-Intensive Appllications',
     author: 'Martin Kleppmann',
     year: '2017',
   },
  {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Grokking Relational Database Design',
     author: 'Qiang Hao',
     year: '2025',
   },
  {
-    img: '/books/placeholder.svg',
+    img: '/books/placeholder.png',
     title: 'Learn SQL in a Month of Lunches',
     author: 'Jeff Iannucci',
     year: '2025',

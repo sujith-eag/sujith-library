@@ -502,13 +502,13 @@ export const mcaFSSection = [
 ];
 
 export const mca2Section = [
-  ...mcaFSSection,
   ...mcaJavaSection,
   ...mcaNetworkSection,
   ...mcaDbmsSection,
   ...mcaDAASection,  
-  ...mcaCSSection,
   ...mcaRMSection,
+  ...mcaCSSection,
+  ...mcaFSSection,
 ]
 
   export const mcaPythonSection = [

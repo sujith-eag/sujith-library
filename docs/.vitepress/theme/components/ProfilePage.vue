@@ -1,241 +1,142 @@
 <template>
-    <div class="profile-container">
-      <div class="profile-card">
-  
-        <!-- Avatar + Name -->
-        <div class="image-name-card">
-          <img src="/sujith_1.jpg" alt="Sujith's Avatar" class="avatar" />
-          <div>
-            <h1>Sujith Kumar</h1>
-            <p class="tagline">Full-stack Developer | Cyber Security Enthusiast</p>
-          </div>
-        </div>
-  
-        <p class="bio">
-          I’m passionate about building scalable web apps, exploring cybersecurity concepts, and
-          continuously evolving as a developer. I love working with JavaScript, React, Vue, and backend APIs.
-        </p>
-  
-        <!-- Section Cards -->
-        <div class="section-card">
-          <h3>💼 Links</h3>
-          <div class="info-list">
-            <a href="https://github.com/sujith-eag" target="_blank"><img src="/logo/github-w.svg" alt="GitHub" /> GitHub</a>
-            <a href="mailto:sujith.eag@gmail.com"><img src="/logo/gmail.svg" alt="Email" /> Email</a>
-            <a href="https://www.linkedin.com/in/sujith-eag/"><img src="/logo/linkedin_c.svg" alt="LinkedIn" /> LinkedIn</a>
-            <!-- <a href="/sujith_resume_1.pdf" target="_blank"><img src="/logo/resume.svg" alt="Resume" /> Resume</a> -->
-          </div>
-        </div>
-    
-        <div class="section-card">
-          <h3>🧩 Technical Skills</h3>
-          <ul class="skills-list">
-            <li><b>Languages:</b> C, Bash, Java, Python, SQL, MongoDB</li>
-            <li><b>Web Development:</b> React.js, Vue.js, Flask, TypeScript, JavaScript, HTML/CSS</li>
-            <li><b>Tools & Libraries:</b> NumPy, Matplotlib, GitHub, VS Code, IntelliJ, Node.js, Obsidian, LaTeX</li>
-          </ul>
-        </div>
-  
-        <div class="section-card">
-          <h3>📂 Projects</h3>
-          <ul class="project-list">
-            <li>
-              <b>Sujith’s Library</b> – Vue.js, TypeScript, Vite, VitePress, GitHub Actions<br />
-              Maintains a 600+ page programming site with code, notes, and visuals. Open-source & auto-deployed.
-            </li>
-            <li>
-              <b>Note’s Library</b> – Hugo, GitHub Pages<br />
-              Personal note-based site on programming concepts with searchable topic catalog.
-            </li>
-          </ul>
-        </div>
-  
-        <div class="section-card">
-          <h3>🎓 Education</h3>
-          <ul class="edu-list">
-            <li><b>MCA</b>, MSRIT – CGPA: 9.66 (2024–2026)</li>
-            <li><b>B.Ed</b>, SKC (BNU) – CGPA: 8.86 (2018–2020)</li>
-            <li><b>B.Sc (PCM)</b>, SKC (BU) – 56.3% (2011–2014)</li>
-            <li><b>PUC (PCMB)</b>, SKC – 51.0% (2009–2011)</li>
-            <li><b>SSLC</b>, MABL – 78.1% (2009)</li>
-          </ul>
-        </div>
-  
-        <div class="section-card">
-          <h3>📚 Publications</h3>
-          <ul class="pubs">
-            <li><b>Adaptive Chaos-Based Encryption</b>, SRC-2025, Dayananda Sagar</li>
-            <li><b>Cryptography via Graph Structures</b>, Case Study, MSRIT</li>
-          </ul>
-        </div>
-  
-        <div class="section-card">
-          <h3>🛠 Workshops & Trainings</h3>
-          <p>
-            <b>IoT 4.0:</b> Industry-focused IoT workshop on NodeMCU, Arduino, and sensor automation using Python.
-          </p>
-        </div>
-  
-        <div class="section-card">
-          <h3>🎯 Goals</h3>
-          <p>
-            Continue building real-world apps, contribute to open-source projects, and dive deeper into system design and backend engineering.
-          </p>
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="image-name-card">
+        <img :src="profileData.personal.avatar" :alt="profileData.personal.name" class="avatar" />
+        <div>
+          <h1>{{ profileData.personal.name }}</h1>
+          <p class="tagline">{{ profileData.personal.tagline }}</p>
         </div>
       </div>
+
+      <p class="bio">{{ profileData.personal.bio }}</p>
+
+      <div v-for="section in profileData.sections" :key="section.title" class="section-card">
+        <h3>{{ section.title }}</h3>
+        
+        <div v-if="section.type === 'links'" class="info-list">
+          <a v-for="link in section.items" :key="link.text" :href="link.url" target="_blank" rel="noopener noreferrer">
+            <img :src="link.icon" :alt="link.text" /> {{ link.text }}
+          </a>
+        </div>
+
+        <ul v-else-if="section.type === 'list'" class="content-list">
+          <li v-for="item in section.items" :key="item.title">
+            <b>{{ item.title }}</b>
+            <div v-if="Array.isArray(item.details)" class="skills-container">
+              <span v-for="skill in item.details" :key="skill" class="skill-tag">{{ skill }}</span>
+            </div>
+            <span v-else-if="item.details"><br />{{ item.details }}</span>
+          </li>
+        </ul>
+
+        <p v-else-if="section.type === 'paragraph'">{{ section.content }}</p>
+      </div>
     </div>
-  </template>
-  
-  <style scoped>
-  
-  .profile-container {
-  --bg-light: #f8f9fa;
-  --bg-dark: #1e1e1e;
+  </div>
+</template>
 
-  --card-light: #ffffff;
-  --card-dark: #2a2a2a;
+<script setup>
 
-  --text-light: #212529;
-  --text-dark: #f1f1f1;
+import { profileData } from '../data/profileData.ts';
+</script>
 
-  --subtext-light: #6c757d;
-  --subtext-dark: #b0b0b0;
-
-  --link-light: #0077cc;
-  --link-dark: #66aaff;
-
-  --hover-light: #e6f0ff;
-  --hover-dark: #3a3a3a;
-
-  --divider-light: #ddd;
-  --divider-dark: #444;
-  }
-  
-  .profile-container {
-    display: flex;
-    justify-content: center;
-    padding: 3rem;
-    border-radius: 12px;
-    background: var(--bg-light);
-    max-width:fit-content
-    /* background: #f2f2f2; */
-    /* background: #3c4148; */
-  }
-  
-  html.dark .profile-container{
-    background: var(--bg-dark);
-    /* background: #2a2d32; */
-  }
-  
-  .profile-card {
-    max-width: 1200px;
-    width: 100%;
-    padding: 2rem;
-    border-radius: 12px;
-    background: var(--card-light);
-    /* background: #ffffff; */
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-light);
-  }
-  
-  html.dark .profile-card {
-  /* background: #1f1f1f; */
-  /* color: #e0e0e0; */
-  /* color: #c71515; */
-  background: var(--card-dark);
-  color: var(--text-dark);
+<style scoped>
+/* --- Theming Variables (remains the same) --- */
+.profile-container {
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --section-bg: #f1f1f1;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --link-color: #0077cc;
+  --link-hover-bg: #e1effc;
+  --divider: #ddd;
+  --tag-bg: #e9ecef;
+  --tag-text: #495057;
 }
-  
-  .image-name-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  .tagline {
-    font-style: italic;
-    color: var(--subtext-light);
-    /* color: #666; */
-    margin-top: 0.3rem;
-  }
-  
-  html.dark .tagline {
-    color: var(--subtext-dark);
-    /* color: #aaa; */
-  }
-  
-  .bio {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: var(--text-light);
-    /* color: #333; */
-  }
-  
-  html.dark .bio {
-    color: var(--text-dark);
-    /* color: #ccc; */
-  }
-  
-  .section-card {
-    margin-bottom: 1rem;
-    padding: 1.5rem;
-    background: #f1f1f1;
-    /* background: #e6e6e6; */
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    /* box-shadow: 0 1px 4px rgba(118, 111, 111, 0.5); */
-  }
 
-  html.dark .section-card {
-    background: #2e2e2e;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  /* background: #2f2f2f;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); */
-  }
+html.dark .profile-container {
+  --bg: #1e1e1e;
+  --card-bg: #2a2a2a;
+  --section-bg: #2e2e2e;
+  --text-primary: #f1f1f1;
+  --text-secondary: #b0b0b0;
+  --link-color: #66aaff;
+  --link-hover-bg: #3a3a3a;
+  --divider: #444;
+  --tag-bg: #3a3a3a;
+  --tag-text: #ced4da;
+}
 
-  .section-card h3 {
-    /* all: unset; */
-    margin-bottom: 1rem;
-    margin-top: 0.2rem;
-    color: var(--text-light);
-    /* color: #2c3e50; */
-    font-size: 1.2rem;
-    /* border-bottom: 1px solid #ddd; */
-    border-bottom: 1px solid var(--divider-light);
-    padding-bottom: 0.5rem;
-  
-  }
-  
-  html.dark .section-card h3 {
-  /* color: #ddd; */
-  color: var(--text-dark);
-  border-bottom: 1px solid var(--divider-dark);
-  /* border-bottom: 1px solid #444; */
-  }
+/* --- General Styles (mostly the same) --- */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  background: var(--bg);
+}
 
-  .info-list {
+.profile-card {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+}
+
+.image-name-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 { margin: 0; }
+.tagline { font-style: italic; color: var(--text-secondary); margin-top: 0.3rem; }
+.bio { font-size: 1rem; margin-bottom: 2rem; text-align: center; }
+
+.section-card {
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: var(--section-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  /* ✨ ADDED: Transition for hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ ADDED: Subtle hover effect for all sections */
+.section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-card h3 {
+  margin: 0.2rem 0 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 0.5rem;
+}
+
+/* --- Links Section --- */
+.info-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: flex-start;
-  /* justify-content: center; */
   align-items: center;
   margin-top: 1.4rem;
 }
@@ -245,82 +146,43 @@
   align-items: center;
   gap: 0.3rem;
   text-decoration: none;
-  color: var(--link-light);
-  /* color: #007acc; */
+  color: var(--link-color);
   font-weight: 500;
-  font-size: 1rem;
   padding: 0.5rem 0.75rem;
-  /* background: #f0f4f8; */
-  background: #eef5fa;
+  background: var(--card-bg); /* Use main card bg for contrast */
   border-radius: 8px;
   transition: background 0.2s ease;
 }
-
-html.dark .info-list a {
-  /* background: #444; */
-  background: #3a3a3a;
-  color: var(--link-dark);
-  /* color: #66aaff; */
-}
-
-.info-list a:hover {
-  /* background: #e1effc; */
-  background: var(--hover-light);
-}
-
-html.dark .info-list a:hover {
-  /* background: #555; */
-  background: var(--hover-dark);
-}
-
-.info-list img {
-  width: 24px;
-  height: 24px;
-  margin: 0;
-}
+.info-list a:hover { background: var(--link-hover-bg); }
+.info-list img { width: 24px; height: 24px; }
    
-.skills-list, 
-.project-list, 
-.edu-list, 
-.pubs {
-    list-style: none;
-    padding-left: 0;
+/* --- List-based Content --- */
+.content-list { list-style: none; padding-left: 0; }
+.content-list li { margin-bottom: 0.75rem; line-height: 1.6; }
+
+/* --- ✨ ADDED: New Styles for Skill Tags --- */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
 }
 
-.skills-list li, 
-.project-list li, 
-.edu-list li, 
-.pubs li {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
+.skill-tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
+/* --- Media Queries (remains the same) --- */
 @media (max-width: 600px) {
-  .profile-container {
-    padding: 1rem;
-  }
-
-  .image-name-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  .info-list {
-    justify-content: center;
-  }
-  .info-list img{
-    height: 18px;
-    width: 18px;
-  }
-  .profile-card {
-    font-size: 0.9rem;
-  }
+  .profile-container { padding: 1rem; }
+  .image-name-card { flex-direction: column; text-align: center; }
+  .avatar { width: 100px; height: 100px; }
+  .info-list { justify-content: center; }
+  .profile-card { font-size: 0.9rem; }
 }
-
 </style>

@@ -63,12 +63,12 @@
   overflow: hidden;
   
   position: relative;
-  transition: border 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.3s;
+  transition: border 0.2s ease, box-shadow 0.2s ease, z-index 0s 0.2s;
 }
 
 .collapsible-section.is-open {
   z-index: 10;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
 .collapsible-btn {
@@ -83,7 +83,7 @@
   font-weight: 600;
   font-size: 1rem;
   color: var(--vp-c-text-1);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   color: var(--vp-c-text-1);
   /* border-bottom: 1px solid var(--vp-c-border); */
   border-bottom: none;
@@ -108,7 +108,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 0.75rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   color: inherit;
 }
 .chevron svg {
@@ -122,7 +122,7 @@
   padding: 0.75rem 1rem;
   background-color: var(--vp-c-bg);
   border-top: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .slide-enter-active,
@@ -146,7 +146,7 @@
 :deep(.collapsible-content a) {
   color: var(--vp-c-brand-1);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 :deep(.collapsible-content a:hover) {

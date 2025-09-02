@@ -124,10 +124,10 @@ nav: [
     },
     
     // Enable the "Edit this page" link
-    editLink: {
-      pattern: 'https://github.com/sujith-eag/vu-library/edit/main/docs/:path',    
-      text: 'Edit this page on Github' 
-    },
+    // editLink: {
+    //   pattern: 'https://github.com/sujith-eag/vu-library/edit/main/docs/:path',    
+    //   text: 'Edit this page on Github' 
+    // },
     
     footer: {
       message: 'Made with ❤️ for students, by a fellow learner.',

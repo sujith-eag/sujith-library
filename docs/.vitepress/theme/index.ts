@@ -19,7 +19,7 @@ export default {
   enhanceApp({ app, router, siteData }) {
     app.component('BookCard', BookCard)
     app.component('ProfilePage', ProfilePage)
-    app.component('ProjectsShowcation', ProjectsShowcase)
+    app.component('ProjectsShowcase', ProjectsShowcase)
   }
 } satisfies Theme
 
