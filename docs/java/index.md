@@ -42,8 +42,8 @@ import { javaSection } from '@theme/data/fileStructures/javaSections.ts'
 
 </script>
 
-## Java Topic Index
- 
+## Core Java Topic
+
 <CollapsibleList :sections="javaSection" />
 
 ___

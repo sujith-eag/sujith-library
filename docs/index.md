@@ -4,7 +4,6 @@ layout: home
 
 hero:
   name: "Sujith's Library"
-  # Suggested: More engaging hero text
   text: "A Developer's Learning Trail"
   tagline: A curated collection of notes, code examples, and structured knowledge from my journey through tech.
   image:
@@ -61,6 +60,13 @@ features:
     link: /os/
 
   - icon:
+      src: /logo/cloud_server.svg
+      alt: cloud Icon
+    title: DevOps & Cloud Topics
+    details: Covering Fundamentals of Cloud and DevOps Concepts.
+    link: /dev-cloud/
+
+  - icon:
       src: /logo/terminal.svg
       alt: Terminal Icon
     title: Bash & Linux Topics
@@ -73,13 +79,6 @@ features:
     title: Data Structures using C
     details: Understand pointers, memory management, and low-level programming using fundamental data structures.
     link: /c/
-
-  - icon:
-      src: /logo/git.svg
-      alt: Git Icon
-    title: Tools, Git & GitHub
-    details: Learn version control, branches, and collaboration with Git.
-    link: /tools/
 
   - icon:
       src: /logo/html.svg
@@ -108,4 +107,12 @@ features:
     title: LeetCode Practice
     details: Practice coding problems for interviews and problem-solving skills.
     link: /leetcode/
+
+  - icon:
+      src: /logo/git.svg
+      alt: Git Icon
+    title: Tools, Git & GitHub
+    details: Learn version control, branches, and collaboration with Git.
+    link: /tools/
+
 ---
