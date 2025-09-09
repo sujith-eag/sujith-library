@@ -34,17 +34,17 @@ export const htmlSection = [
           ]
         },
         {
+          title: 'Box Model',
+          items: [
+            { label: 'Box Model', link: '/css/box_model/5_box_model' }
+          ]
+        },
+        {
           title: 'Flex Box',
           items: [
             { label: 'Flexbox', link: '/css/flex_box/6_flexbox' },
             { label: 'Flex Flexibility', link: '/css/flex_box/7_flex_flexibility' },
             { label: 'Axes in Flexbox', link: '/css/flex_box/8_axes_in_flexbox' }
-          ]
-        },
-        {
-          title: 'Box Model',
-          items: [
-            { label: 'Box Model', link: '/css/box_model/5_box_model' }
           ]
         },
         {

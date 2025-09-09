@@ -1,29 +1,14 @@
----
-title: "CSS - 08 - Axes in Flexbox"
-description: ""
-summary: ""
-date: 2024-11-06T15:02:27+05:30
-lastmod: 2024-11-06T15:02:27+05:30
-draft: false
-weight: 807
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# Axes in Flexbox
 
 Flexbox operates along two main axes: the **main axis** and the **cross axis**.
 
-### **Key Flexbox Properties:**
+### Key Flexbox Properties:
 
 - **`justify-content`**: Aligns items along the **main axis**. (Row for row)
 - **`align-items`**: Aligns items along the **cross axis**. (Column for row)
 
 
-## **Main Axis and Cross Axis**
+## Main Axis and Cross Axis
 
 **Main Axis**: This is the primary axis along which flex items are arranged. It is determined by the `flex-direction` property.
   - When `flex-direction: row` (the default), the main axis runs **horizontally** (left to right).
@@ -33,7 +18,7 @@ Flexbox operates along two main axes: the **main axis** and the **cross axis**.
   - When `flex-direction: row`, the cross axis runs **vertically** (top to bottom).
   - When `flex-direction: column`, the cross axis runs **horizontally** (left to right).
 
-### **Changing the Orientation of Flex Items**
+### Changing the Orientation of Flex Items
 
 The `flex-direction` property defines the direction of the main axis and affects how flex items are aligned:
 
@@ -42,12 +27,12 @@ The `flex-direction` property defines the direction of the main axis and affects
 - **`flex-direction: column`**: Arranges items **vertically** from top to bottom.
 - **`flex-direction: column-reverse`**: Items are arranged **vertically**, but from **bottom to top**.
 
-#### **Default Behavior of `flex-direction: row`**
+#### Default Behavior of `flex-direction: row`
 
 - Items are arranged in a **row** (horizontally) and **take up the full width** of the container.
 - If you use `flex: 1` on each item, the items will grow equally to fill the available space in the container.
 
-#### **Behavior with `flex-direction: column`**
+#### Behavior with `flex-direction: column`
 
 - When `flex-direction: column` is set, items are stacked **vertically**. Here, **height** becomes the main dimension (instead of width).
 - With `flex: 1`, the items will grow vertically and take up equal amounts of space along the column, but if `flex-basis: 0` is used, the items collapse and shrink.
@@ -56,7 +41,7 @@ The `flex-direction` property defines the direction of the main axis and affects
 > **Note**: By default, block-level elements (like divs) in `flex-direction: column` will collapse to **height: auto**, meaning they'll shrink to fit their content unless specified otherwise.
 
 
-## **Gap Between Items**
+## Gap Between Items
 
 The `gap` property adds **spacing** between flex items, similar to adding margins but specifically designed for grid and flex layouts.
 
@@ -66,21 +51,21 @@ The `gap` property adds **spacing** between flex items, similar to adding margin
 This is a relatively **new feature** but provides a cleaner and more consistent way to manage space between items than using margins.
 
 
-## **Using `margin: auto` for Alignment**
+## Using `margin: auto` for Alignment
 
 - **`margin-left: auto;`**: Pushes the item to the **right** by taking up all available space to the left.
 - **`margin-right: auto;`**: Pushes the item to the **left** by taking up all available space to the right.
 
 This is a great way to center elements (either horizontally or vertically) within a flex container.
 
----
 
-# **Flexbox Cheat Sheet**
+## **Flexbox Cheat Sheet**
+
 [Cheat Sheet for flexbox](https://flexbox.malven.co/)
 
 Here’s a quick reference for some commonly used Flexbox properties:
 
-### **General Properties**
+### General Properties
 
 - **`display`**: Enables Flexbox for all children
   - `display: flex;` — Applies Flexbox layout to the container.
@@ -97,7 +82,7 @@ Here’s a quick reference for some commonly used Flexbox properties:
   - `flex-wrap: wrap;` — Items wrap onto multiple lines if needed.
   - `flex-wrap: wrap-reverse;` — Items wrap onto multiple lines in reverse order.
 
-### **Alignment and Distribution**
+### Alignment and Distribution
 
 **`justify-content`**: Aligns items along the **main axis**
   - `justify-content: flex-start;` — Aligns items to the **start** of the container.
@@ -124,7 +109,7 @@ Here’s a quick reference for some commonly used Flexbox properties:
 
 ---
 
-### **For Individual Children**
+### For Individual Children
 
 **`order: integer;`**: Explicitly sets the **order** of flex items. Items with lower values will appear before those with higher values.
   - `order: 2;` The item will appear second in the flex container.
@@ -143,7 +128,7 @@ Here’s a quick reference for some commonly used Flexbox properties:
 
 ---
 
-### **Putting It All Together**
+### Putting It All Together
 
 - **`flex: 1;`** — This shorthand means `flex-grow: 1`, `flex-shrink: 1`, and `flex-basis: 0`. It allows the item to grow and shrink evenly, filling available space in the container.
 - **`flex: 1 1 auto;`** — This allows the item to grow and shrink, but it starts at its **natural size** based on its content.

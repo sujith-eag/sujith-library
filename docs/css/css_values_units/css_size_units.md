@@ -1,19 +1,4 @@
----
-title: "CSS - 04.1 - Size Units"
-description: ""
-summary: ""
-date: 2024-11-07T10:54:56+05:30
-lastmod: 2024-11-07T10:54:56+05:30
-draft: false
-weight: 899
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# CSS Sizing Units
 
 CSS offers various units for defining sizes in styles.
 
@@ -198,6 +183,7 @@ These units are relative to another value, typically the parent element's size o
 - **When to Use**: For responsive typography.
 - **When to Avoid**: In static designs where sizes must remain unchanged.
 
-## Conclusion
+___
 
-Choosing the right sizing unit in CSS can significantly impact your layout's responsiveness and user experience. Using relative units like `em`, `rem`, and viewport units can help create flexible designs, while absolute units like `px` are best for fixed layouts.
+Using relative units like `em`, `rem`, and viewport units can help create flexible designs, while absolute units like `px` are best for fixed layouts.
+

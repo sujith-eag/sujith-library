@@ -1,19 +1,6 @@
----
-title: "HTML - 02 - Texts & Lists"
-description: ""
-summary: ""
-date: 2024-11-04T19:52:11+05:30
-lastmod: 2024-11-04T19:52:11+05:30
-draft: false
-weight: 702
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Texts & Lists
 
+## Text Tags
 
 ### Paragraphs `<p> </p>`
 
@@ -64,9 +51,8 @@ The `<sub>` tag denotes text that appears half the size and at a lower position,
 
 The `<sup>` tag displays text that appears half a character above the normal line and in a smaller font, useful for footnotes or exponentiation.
 
----
 
-### Nesting and Indentation
+## Nesting and Indentation
 
 Nesting is used to show parent, child, and sibling tag relationships. Indentation makes these relationships easier to see.
 
@@ -165,7 +151,6 @@ The definition term and the description that directly follows it correspond to o
 <dl>
   <dt>study</dt>
   <dd>The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of books</dd>
-  
   <dt>design</dt>
   <dd>A plan or drawing produced to show the look and function or workings of a building, garment, or other object before it is built or made</dd>
   <dd>Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material object</dd>
@@ -176,22 +161,26 @@ The definition term and the description that directly follows it correspond to o
 
 
 study
+
 The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of books
 
 design
+
 A plan or drawing produced to show the look and function or workings of a building, garment, or other object before it is built or made
+
 Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material object
 
 business
 
 work
+
 A person's regular occupation, profession, or trade
 ```
 
 ### List-Style-Type Property
 
 List items can be styled through CSS using the `list-style-type` property. The style can be applied to either `<ul>`, `<ol>`, or `<li>` elements.
-[[List Styles]]
+[[List_Styles]]
 ```css
 /* Partial list of styles */
 list-style-type: disc;
@@ -215,3 +204,4 @@ list-style-type: initial;
 list-style-type: revert;
 list-style-type: unset;
 ```
+

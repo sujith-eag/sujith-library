@@ -1,20 +1,8 @@
----
-title: "HTML - 03 - Links & Images"
-description: ""
-summary: ""
-date: 2024-11-04T19:52:36+05:30
-lastmod: 2024-11-04T19:52:36+05:30
-draft: false
-weight: 703
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Links and Images
 
-# Anchor Elements
+
+## Anchor Elements
+
 An anchor element is defined by wrapping the text or another HTML element we want to link with an `<a>` tag.
 
 ```html
@@ -106,3 +94,4 @@ root/
 - Avoid spaces, numbers, and capital letters in file names.
 - Keep names short and simple.
 - Additional web pages can be placed in the root folder or in separate directories as needed.
+

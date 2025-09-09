@@ -1,19 +1,4 @@
----
-title: "HTML - 01 - Boiler Plate"
-description: ""
-summary: ""
-date: 2024-11-04T19:50:38+05:30
-lastmod: 2024-11-04T19:50:38+05:30
-draft: false
-weight: 701
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# HTML Structure
 
 **HTML (HyperText Markup Language)** defines the structure and content of webpages. We use HTML elements to create all the paragraphs, headings, lists, images, and links that make up a typical webpage.
 
@@ -29,7 +14,7 @@ All elements of HTML are wrapped in opening and closing HTML tags.
 ```
 
 ### Catalog of Tags
-[[Catalog of Tags]]
+[[Catalog_of_Tags]]
 
 Elements are containers for content, with the tags indicating what content the element contains. Using the correct element for content is referred to as **semantic HTML**.
 

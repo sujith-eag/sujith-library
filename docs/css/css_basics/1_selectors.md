@@ -1,33 +1,16 @@
----
-title: "CSS - 01 -Selectors"
-description: ""
-summary: ""
-date: 2024-11-06T14:58:36+05:30
-lastmod: 2024-11-06T14:58:36+05:30
-draft: false
-weight: 800
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# Basic Syntax
 
 CSS consists of rules, which are made up of:  
 - **Selector**: Points to a part of the HTML  
 - **Declaration**: A **property: value** pair (semicolon-separated list)
 
-### **Ruleset**  
+### Ruleset  
 A **ruleset** (or **rule**) consists of One or more **selectors** and an associated **declarations block**
 
 - HTML comments: `<!-- -->`  
 - CSS comments: `/* */`
 
-
-
-## **Selectors**  
+## Selectors  
 Selectors refer to the HTML elements to which a particular CSS rules / ***declarations***  applies to;
 ***selectors*** , are conditions selecting some elements of the page.
 
@@ -42,10 +25,9 @@ A `<div>` is one of the basic HTML elements. It is an empty container.
 In general, it is best to use other tags such as `<h1>` or `<p>` for content but there are many cases where the thing needed is just a container for other elements.
 
 
+## Selector Types  
 
-## **Selector Types**  
-
-### **1. Universal Selector (*)**  
+### 1. Universal Selector (*)  
 
 The universal selector will select all elements of any type in a document, hence the name **universal selector**, and the syntax for it is an asterisk `*`. 
 
@@ -58,7 +40,7 @@ This would apply `color: purple;` to all elements on the page.
 
 ---
 
-### **2. Type Selector**  
+### 2. Type Selector  
 A **type selector** (or **element selector**) targets all elements of a specific type (e.g., `<div>`, `<p>`, etc.).  
 
 ```html
@@ -78,7 +60,7 @@ This will apply the `color: white;` style to all `<div>` elements, but **not** t
 
 ---
 
-### **3. Class Selector**  
+### 3. Class Selector  
 Class selectors target all elements with a specific class. The syntax uses a period (`.`) followed by the class name.   
 Classes are reusable across multiple elements.
 
@@ -87,8 +69,8 @@ Classes are reusable across multiple elements.
 ```
 ```css
 .alert-text {
-	color: red;
-}
+	  		  color: red;
+			}
 ```
 **Syntax:** `.classname`  
 a period `.` immediately followed by the case-sensitive value of the class attribute.   
@@ -100,10 +82,9 @@ You can also add multiple classes to an element using a space-separated list:
 
 ---
 
-### **4. ID Selector**  
+### 4. ID Selector  
 ID selectors target an element with a specific **ID**. The syntax uses a hashtag (`#`) followed by the ID value. IDs must be unique within a page.
-
-#### Example:  
+ 
 ```html
 <div id="title">My Awesome 90's Page</div>
 ```
@@ -118,12 +99,13 @@ A hashtag `#` immediately followed by the case-sensitive value of the ID attribu
 - **Important**: An element can have only **one ID**, and an ID must be unique within a page. IDs should **not** contain any white space.
 
 
+## Key Differences Between Classes and IDs  
 
-## **Key Differences Between Classes and IDs**  
-- **Classes**:  
+**Classes**:  
   - Can be used on multiple elements.  
   - Can apply to any number of elements across a page.
-- **IDs**:  
+
+**IDs**:  
   - Must be unique to a single element.  
   - Cannot be used on more than one element on a page.
 

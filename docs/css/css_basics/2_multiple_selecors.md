@@ -1,21 +1,6 @@
----
-title: "CSS - 02 - Multiple Selecors"
-description: ""
-summary: ""
-date: 2024-11-06T14:59:06+05:30
-lastmod: 2024-11-06T14:59:06+05:30
-draft: false
-weight: 801
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Multiple Selectors
 
-
-## **1. Grouping Selectors**
+## 1. Grouping Selectors
 
 Grouping selectors allows for applying the same style rules to multiple elements. Instead of writing separate rules for similar selectors, they can be grouped together with a comma-separated list. This helps in reducing redundancy and makes your CSS more efficient.
 
@@ -56,8 +41,7 @@ If the `.read` and `.unread` selectors share common style declarations, we can g
 By grouping them, you can apply common properties (like `color` and `background-color`) to both classes at once. This reduces repetition and makes your code easier to maintain.
 
 
-
-## **2. Chaining Selectors**
+## 2. Chaining Selectors
 
 Chaining selectors allows for targeting elements that match multiple conditions, such as an element that has both a specific class and an ID, or multiple classes. This technique can be used to apply styles more specifically without having to create new classes or IDs.
 
@@ -104,11 +88,11 @@ In this case:
 **Important**: You cannot chain multiple type selectors (e.g., `div` and `p`) since an element can only be one type. For example, `divp` is not valid because it tries to target a non-existent `<divp>` element.
 
 
-## **3. Combinators**
+## 3. Combinators
 
 Combinators in CSS are used to describe relationships between elements. They allow us to select elements based on their position or relationship in the HTML structure.
 
-### **3.1 Descendant Combinator (A B)**
+### 3.1 Descendant Combinator (A B)
 Specifies that the element selected by `B` is a descendant of the element selected by `A`, but is not necessarily a direct child.   
 The **descendant combinator** (represented by a space between two selectors) selects an element that is a descendant of another element. This can be any level of nesting, not just direct children.
 
@@ -134,7 +118,7 @@ The **descendant combinator** (represented by a space between two selectors) sel
 
 ---
 
-### **3.2 Next-Sibling Combinator (A + B)**
+### 3.2 Next-Sibling Combinator (A + B)
 
 The **next-sibling combinator** specifies that the elements selected by both `A` and `B` have the same parent and selects the element `B` that immediately follows element `A` as a sibling.
 
@@ -153,7 +137,7 @@ The **next-sibling combinator** specifies that the elements selected by both `A
 
 ---
 
-### **3.3 Subsequent-Sibling Combinator (A ~ B)**
+### 3.3 Subsequent-Sibling Combinator (A ~ B)
 
 The **subsequent-sibling combinator** selects all elements `B` that share the same parent as element `A` and come **after** it, but not necessarily immediately.
 
@@ -173,7 +157,7 @@ The **subsequent-sibling combinator** selects all elements `B` that share the sa
 
 ---
 
-### **3.4 Child Combinator (A > B)**
+### 3.4 Child Combinator (A > B)
 
 The **child combinator** selects element `B` only if it is a **direct child** of element `A`.
 
@@ -194,7 +178,7 @@ The **child combinator** selects element `B` only if it is a **direct child** of
 
 ---
 
-### **3.5 Column Combinator (A || B)**
+### 3.5 Column Combinator (A || B)
 
 The **column combinator** is used in **tables** to target elements within a specific column.
 
@@ -219,15 +203,15 @@ td || Column 2 {
 
 - The column combinator selects elements in a specified table column, including those that span multiple columns.
 
-___
 
-# **CSS Cascade and Specificity**
+## CSS Cascade and Specificity
 
-### **Specificity in CSS**
+
+### Specificity in CSS
 
 The order of importance in CSS rules is determined by specificity. More specific selectors override less specific ones.
 
-#### **Specificity Hierarchy**:
+### Specificity Hierarchy:
 1. **Inline styles**: Styles applied directly to an element via the `style` attribute.
 2. **ID selectors**: `#idname` (more specific than classes or elements).
 3. **Class selectors**: `.classname`
@@ -255,9 +239,8 @@ The order of importance in CSS rules is determined by specificity. More specific
 
 - **Result**: The text will appear in **blue** because the ID selector (`#subsection`) has higher specificity than the class selector (`.main .list`).
 
----
 
-### Additional resources
+## Additional resources
 
 - [An interactive Scrim](https://scrimba.com/scrim/co12d4cf99cf2776f19e84a9d) 
   Video covers how selectors can be chained and used along with rules to select specific items.
@@ -268,6 +251,4 @@ The order of importance in CSS rules is determined by specificity. More specific
   video from Kevin Powell about specificity of selectors and priorities.
 - [Interactive Scrim on the CSS Cascade.](https://v1.scrimba.com/scrim/c9gwmnAR)
 - [CSS Specificity Calculator](https://specificity.keegan.st/) allows you to fill in your own selectors and have their specificity calculated and visualized.
-
-
 

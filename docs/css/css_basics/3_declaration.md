@@ -1,26 +1,11 @@
----
-title: "CSS - 03 - Declaration"
-description: ""
-summary: ""
-date: 2024-11-06T14:59:30+05:30
-lastmod: 2024-11-06T14:59:30+05:30
-draft: false
-weight: 802
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
-
+# Declaration
 
 A **Declaration** is a key-value pair that defines a style rule in CSS. It is composed of two parts:  
 1. **Property**: An identifier (human-readable name) that specifies the feature to be styled.  
 2. **Value**: Describes how the feature should be handled by the browser engine.
 
-### **Declaration Block**
+## Declaration Block
+
 A declaration block is a group of one or more declarations enclosed in curly braces (`{}`), and each declaration is separated by a semicolon (`;`).
 ```css
 div.bold-text {
@@ -34,13 +19,13 @@ div.bold-text {
 
 
 
-## **CSS Properties**
+## CSS Properties
 
 Each CSS property has a set of valid values, defined by a formal grammar, as well as a semantic meaning, implemented by the browser engine.
 
 ---
 
-### **Color and Background Color**
+### Color and Background Color
 
 The `color` property controls the text color, while the `background-color` property defines the background color of an element. Both properties can accept different kinds of values:
 
@@ -69,9 +54,9 @@ p {
 
 ---
 
-### **Typography Basics**
+### Typography Basics
 
-#### **Font Family**
+#### Font Family
 
 The `font-family` property defines which font to use for the text. It can be:
 - A **specific font family name** (e.g., `"Times New Roman"`).  
@@ -89,7 +74,7 @@ In this example, `"Times New Roman"` is the preferred font, and `serif` is the f
 
 ---
 
-#### **Font Size**
+#### Font Size
 
 The `font-size` property sets the size of the text. This value should not contain any spaces between the number and the unit (e.g., `px`, `em`).
 
@@ -101,7 +86,7 @@ p {
 
 ---
 
-#### **Font Weight**
+#### Font Weight
 
 The `font-weight` property affects the boldness of the text. It can accept:
 - **Keywords** like `normal`, `bold`.  
@@ -119,7 +104,7 @@ h2 {
 
 ---
 
-#### **Text Alignment**
+#### Text Alignment
 
 The `text-align` property aligns text horizontally within an element. Common values include:
 - `left`
@@ -135,7 +120,7 @@ p {
 
 ---
 
-### **Image Size (Height and Width)**
+### Image Size (Height and Width)
 
 By default, an `<img>` element’s `height` and `width` values are the same as the image’s actual dimensions. 
 
@@ -157,9 +142,9 @@ This ensures the image keeps its aspect ratio while adjusting the width to `500p
 When you explicitly set the `height` and `width` for images, you help the browser allocate space on the page before the image loads. This prevents layout shifts as images load.
 
 
-## **Inline vs. Block Elements**
+## Inline vs. Block Elements
 
-### **Inline Elements**
+### Inline Elements
 - Inline elements do not start on a new line. They appear alongside other elements on the same line. `<a>`, `<span>`, `<strong>`, `<em>`.
 
 **Inline elements have special behavior** for padding and margin. For instance, they won’t expand vertically like block elements.   
@@ -168,16 +153,15 @@ Do not want to try to put extra padding or margin on inline elements.
 
 ---
 
-### **Block Elements**
+### Block Elements
 - Block elements start on a new line and take up the full width of their parent element, stacking vertically. `<div>`, `<p>`, `<h1>` to `<h6>`.
 
 **Block elements** behave like containers that stretch across the page.
 
 
+## Display Property
 
-## **display Property**
-
-### **Inline vs. Block Display**
+### Inline vs. Block Display
 
 - **`display: inline`**: Makes elements appear in a line, one after another.
 - **`display: block`**: Forces elements to take up the full width, causing each element to appear on a new line. Next item goes to the next line (stacked on each other)
@@ -194,7 +178,7 @@ button {
 - `img` will behave as a block element (taking up full width).
 - `button` will behave inline, appearing next to other inline elements.
 
-### **inline-block**: A Middle Ground
+### inline-block: A Middle Ground
 
 The `inline-block` value combines the behavior of inline and block elements. It allows elements to sit inline, but you can still apply block-level properties like padding and margin.
 You’ll probably end up reaching for flexbox more often
@@ -208,8 +192,7 @@ div {
 - **`inline-block`** elements behave like inline elements, but you can still control their dimensions and margins like block elements.
 
 
-
-## **Divs and Spans**
+## Divs and Spans
 
 - **`<div>`**: A block-level element used to group other elements and apply styles. It’s a generic container with no semantic meaning. Divs allow us to _divide_ the page into different blocks and apply styling to those blocks.
   
@@ -221,9 +204,9 @@ div {
 </div>
 ```
 
----
 
-#### Main reference
+## Main reference
+
 - [Mozilla CSS values and units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) can be used to learn the various types of values possible in absolute or relative terms.	
 
 - [Mozilla CSS Properties Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) 

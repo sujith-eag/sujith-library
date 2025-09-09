@@ -1,19 +1,4 @@
----
-title: "HTML - 04 - Input Types"
-description: ""
-summary: ""
-date: 2024-11-04T19:53:10+05:30
-lastmod: 2024-11-04T19:53:10+05:30
-draft: false
-weight: 704
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# Input & Types
 
 The **`<input>`** HTML element is used to create interactive controls for web-based forms to accept data from users. It provides a wide variety of input types and control widgets depending on the device and user agent. The `<input>` element is one of the most powerful and complex in HTML due to the numerous combinations of input types and attributes available.
 

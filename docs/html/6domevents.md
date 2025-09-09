@@ -1,24 +1,6 @@
----
-title: "HTML - 06 - DOM Events"
-description: ""
-summary: ""
-date: 2024-11-04T19:54:06+05:30
-lastmod: 2024-11-04T19:54:06+05:30
-draft: false
-weight: 706
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
-
+# DOM Events
 
 [HTML DOM Events](https://www.w3schools.com/jsref/dom_obj_event.asp)
-
----
-
 
 HTML events are actions that occur to HTML elements, which JavaScript can respond to. By using event listeners, you can execute JavaScript code in reaction to these events.
 
@@ -155,3 +137,4 @@ Here’s a list of some common HTML events along with their descriptions:
 |[volumechange](https://www.w3schools.com/jsref/event_onvolumechange.asp)|The volume of a media is changed (includes muting)|[Event](https://www.w3schools.com/jsref/obj_event.asp)|
 |[waiting](https://www.w3schools.com/jsref/event_onwaiting.asp)|A media is paused but is expected to resume (e.g. buffering)|[Event](https://www.w3schools.com/jsref/obj_event.asp)|
 |[wheel](https://www.w3schools.com/jsref/event_onwheel.asp)|The mouse wheel rolls up or down over an element|[WheelEvent](https://www.w3schools.com/jsref/obj_wheelevent.asp)|
+
