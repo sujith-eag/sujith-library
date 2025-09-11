@@ -1,13 +1,3 @@
-export const simpleMethods = [{
-    title: "Simple Problems",
-    items: [
-      { label: "Fibonacci Numbers", link: "/leetcode/basic/fib" },
-      { label: "Simple Problems", link: "/leetcode/basic/s1" },
-      { label: "Product of Array", link: "/leetcode/basic/s2" },      
-      { label: "Increasing Triplet", link: "/leetcode/basic/s3" },
-    ]
-}];
-
 export const twoPointerMethod = [{
     title: "Two Pointer Method",
     items: [
@@ -18,6 +8,23 @@ export const twoPointerMethod = [{
     ]
 }];
 
+export const simpleMethods = [{
+    title: "Simple Problems",
+    items: [
+      { label: "Fibonacci Numbers", link: "/leetcode/basic/fib" },
+      { label: "Number Problems Set-1", link: "/leetcode/basic/s1" },
+      { label: "Number Problems Set-2", link: "/leetcode/basic/s2" },      
+      // { label: "I", link: "/leetcode/basic/s3" },
+    ]
+}];
+
+export const stringMethod = [{
+    title: "String Manipulation",
+    items: [
+      { label: "String Problems Set-1", link: "/leetcode/string/s1" },
+    ]
+}];
+
 export const backTrackingMethod = [{
     title: "Backtracking Method",
     items: [
@@ -25,16 +32,9 @@ export const backTrackingMethod = [{
     ]
 }];
 
-export const stringMethod = [{
-    title: "String Manipulation",
-    items: [
-    //   { label: "N-Queens Problems", link: "/leetcode/backtrack/nqueens" },
-    ]
-}];
-
 export const interviewSection = [
     ...twoPointerMethod,
+    ...simpleMethods,
     ...stringMethod,
     ...backTrackingMethod,
-    ...simpleMethods,
 ];
