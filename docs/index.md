@@ -53,18 +53,18 @@ features:
     link: /java-script/
 
   - icon:
-      src: /logo/os_s.svg
-      alt: OS Icon
-    title: Operating Systems
-    details: Explore OS fundamentals like processes, memory, and scheduling.
-    link: /os/
-
-  - icon:
       src: /logo/cloud_server.svg
       alt: cloud Icon
     title: DevOps & Cloud Topics
     details: Covering Fundamentals of Cloud and DevOps Concepts.
     link: /dev-cloud/
+
+  - icon:
+      src: /logo/leetcode_p.svg
+      alt: LeetCode Icon
+    title: LeetCode Practice
+    details: Practice coding problems for interviews and problem-solving skills.
+    link: /leetcode/
 
   - icon:
       src: /logo/terminal.svg
@@ -73,6 +73,13 @@ features:
     details: Get started with Linux commands, bash scripting, and file systems.
     link: /linux/
 
+  - icon:
+      src: /logo/os_s.svg
+      alt: OS Icon
+    title: Operating Systems
+    details: Explore OS fundamentals like processes, memory, and scheduling.
+    link: /os/
+    
   - icon:
       src: /logo/c_logo.svg
       alt: C Icon
@@ -100,13 +107,6 @@ features:
     title: Vue Topics
     details: Learn Vue components, directives, reactivity, and lifecycle hooks.
     link: /vue/
-
-  - icon:
-      src: /logo/leetcode_p.svg
-      alt: LeetCode Icon
-    title: LeetCode Practice
-    details: Practice coding problems for interviews and problem-solving skills.
-    link: /leetcode/
 
   - icon:
       src: /logo/git.svg

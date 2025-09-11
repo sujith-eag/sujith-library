@@ -41,21 +41,13 @@ export const cloud2Section = [
     ]
   }
 ]
-
-
-export const cloudSection = [
-  ...cloud1Section,
-  ...cloud2Section,
-]
  
-
-
 export const dev1Section = [
   {
     title: "DevOps Basics",
     items: [
       {
-        title: "a",
+        title: "A",
         items: [
         //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
         ]
@@ -63,7 +55,7 @@ export const dev1Section = [
       {
         title: "B",
         items: [
-        //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
+      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
         ]
       },
     ]
@@ -91,13 +83,17 @@ export const dev2Section = [
   }
 ]
 
+export const cloudSection = [
+  ...cloud1Section,
+  ...cloud2Section,
+]
 
 export const devopsSection = [
   ...dev1Section,
   ...dev2Section,
 ]
   
-// export const mcaSection = [
-//   ...mca1Section,
-//   ...mca2Section
-// ]
+export const devcloudSection = [
+  ...cloudSection,
+  ...devopsSection,
+]

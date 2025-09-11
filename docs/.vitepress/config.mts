@@ -12,6 +12,8 @@ import { osSidebar } from './sidebar/osSidebar'
 import { pythonSidebar } from './sidebar/pythonSidebar'
 import { reactSidebar } from './sidebar/reactSidebar'
 import { mcaSidebar } from './sidebar/mcaSidebar'
+import { interviewSidebar } from './sidebar/interviewSidebar'
+import { devcloudSidebar } from './sidebar/devcloudSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -108,7 +110,9 @@ nav: [
       '/os/': osSidebar(),
       '/python/': pythonSidebar(),
       '/react/': reactSidebar(),
-      '/tools/': toolsSidebar()
+      '/tools/': toolsSidebar(),
+      '/leetcode/': interviewSidebar(),
+      '/dev-cloud/': devcloudSidebar(),
     },
       
     outline: {

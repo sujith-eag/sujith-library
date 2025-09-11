@@ -37,6 +37,9 @@ import { mca1Section, mca2Section } from '@theme/data/fileStructures/mcaSections
 
 ___
 
+
+<h3>Resource Links</h3>
+
 <div class="book-container">
   <ResourceCard
     v-for="(resource, index) in resourcesUsed"

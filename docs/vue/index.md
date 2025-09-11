@@ -7,7 +7,7 @@ hero:
   tagline: Working with Vue framework
   image:
     src: /logo/vuejs.svg
-    alt: React logo
+    alt: Vue logo
 
 ---
 
@@ -29,7 +29,7 @@ import {
 ## Still under edit
  
 <!-- <CollapsibleList :sections="vueSection" /> -->
-Check out the books on react which were really helpful
+Check out the books which were really helpful
 ___
  
 <h3>Books Used to Learn Vue.js</h3>

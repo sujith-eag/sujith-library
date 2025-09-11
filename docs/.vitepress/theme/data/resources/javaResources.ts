@@ -1,13 +1,10 @@
 export const booksUsed = [
-  
-
-{
-img: '/books/placeholder.png',
-title: 'Java The Complete Reference, 13th Edition',
-author: 'Herbert Schildt',
-year: '2024',
-},
-
+  {
+    img: '/books/placeholder.png',
+    title: 'Java The Complete Reference, 13th Edition',
+    author: 'Herbert Schildt',
+    year: '2024',
+  },
 ]
 
 export const booksPending = [
