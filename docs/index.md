@@ -10,15 +10,15 @@ hero:
     src: /logo/logo.png
     alt: Eagle's Library
   
-  actions:
-  - theme: brand
-    text: Profile 
-    link: /sujith
-  
+  actions:  
   - theme: alt
-    text: Projects
+    text: Projects & Profile
     link: /projects/
-    
+
+  - theme: brand
+    text: Eagle Tasks
+    link: https://task.sujith-eag.in 
+
   - theme: alt
     text: MCA Section 
     link: /mca/

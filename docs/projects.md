@@ -3,15 +3,13 @@ title: My Practice Projects
 ---
 
 <div class="site-description">
-  <p class="entry">Welcome to my project showcase!</p>
-  <p>
-    This is a collection of projects I've implemented as part of my learning journey.
-    Each project reflects a growing skill set in HTML, CSS, JavaScript, and modern frameworks like React and Vue.
-  </p>
+  <p class="entry">Welcome to my project showcase.</p>
+  <p> A curated collection of my work, each project reflects a commitment to modern & scalable architecture security, practicality and exceptional user experience.</p>
 </div>
 
 <ClientOnly>
   <ProjectsShowcase />
+  <ProfilePage />
 </ClientOnly>
 
 <style>

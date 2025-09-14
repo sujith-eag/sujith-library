@@ -83,7 +83,8 @@ nav: [
     text: 'CS Fundamentals',
     items: [
       { text: 'Operating Systems', link: '/os/' },
-      { text: 'Databases (DBMS)', link: '/dbms/' }
+      { text: 'Databases (DBMS)', link: '/dbms/' },
+      { text: 'DSA Problems', link: '/leetcode/' }
     ]
   },
   {
