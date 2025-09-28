@@ -8,25 +8,23 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // {
-  //   title: "State Managed Task App",
-  //   link: "https://task.sujith-eag.in/",
-  //   description: "A MERN Stack application that handles Authentication and User State using Redux Toolkit. Data is stored in MongoDB, hosted on Netlify with a backend on Render.",
-  //   tags: ["React", "Redux", "Express.js", "Node.js", "MongoDB"]
-  // },
-{
-  title: "Eagle Tasks: A Production-Grade MERN Application",
+
+  {
+  title: "Eagle Campus: Full-Stack College Management & Productivity Platform",
   link: "https://task.sujith-eag.in/",
-  description: "A MERN task manager architected with a modular, feature-based design for exceptional maintainability and scalability. The backend features a secure RESTful API, JWT authentication, and role-based access control. The frontend is a performant SPA built with React and Vite. State is managed via Redux Toolkit using advanced patterns like optimistic updates for a seamless UI.",
+  description: "A Production-Grade MERN application. An all-in-one platform designed for the modern educational institution. Teachers can manage classes and track attendance in real-time, students can engage with their coursework and provide feedback, and administrators have a complete toolkit to manage the entire academic structure. Beyond the campus, every user gets a powerful suite of personal productivity tools, including an AI-powered planner, secure file sharing, and instant messaging.",
   tags: [
     "React", 
     "Node.js", 
     "Express.js", 
     "Redux Toolkit",
+    "Socket.IO",
     "MongoDB", 
     "Material-UI (MUI)", 
     "JWT Authentication",
-    "REST API"
+    "REST API",
+    "AWS S3, EC2",
+    "Role-Based Access Control (RBAC)"
     ]
   },
   {

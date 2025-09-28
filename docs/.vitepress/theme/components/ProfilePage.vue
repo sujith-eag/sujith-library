@@ -42,7 +42,7 @@ import { profileData } from '../data/profileData.ts';
 </script>
 
 <style scoped>
-/* --- Theming Variables (remains the same) --- */
+/* --- Theming Variables --- */
 .profile-container {
   --bg: #f8f9fa;
   --card-bg: #ffffff;
@@ -69,7 +69,7 @@ html.dark .profile-container {
   --tag-text: #ced4da;
 }
 
-/* --- General Styles (mostly the same) --- */
+/* --- General Styles --- */
 .profile-container {
   display: flex;
   justify-content: center;
@@ -115,11 +115,11 @@ h1 { margin: 0; }
   background: var(--section-bg);
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  /* ✨ ADDED: Transition for hover effect */
+  /* Transition for hover effect */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ✨ ADDED: Subtle hover effect for all sections */
+/* Subtle hover effect for all sections */
 .section-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -160,7 +160,7 @@ h1 { margin: 0; }
 .content-list { list-style: none; padding-left: 0; }
 .content-list li { margin-bottom: 0.75rem; line-height: 1.6; }
 
-/* --- ✨ ADDED: New Styles for Skill Tags --- */
+/* --- Styles for Skill Tags --- */
 .skills-container {
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +177,7 @@ h1 { margin: 0; }
   font-weight: 500;
 }
 
-/* --- Media Queries (remains the same) --- */
+/* --- Media Queries --- */
 @media (max-width: 600px) {
   .profile-container { padding: 1rem; }
   .image-name-card { flex-direction: column; text-align: center; }

@@ -16,7 +16,7 @@ hero:
     link: /projects/
 
   - theme: brand
-    text: Eagle Tasks
+    text: Eagle Campus
     link: https://task.sujith-eag.in 
 
   - theme: alt
