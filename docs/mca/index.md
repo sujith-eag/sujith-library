@@ -8,6 +8,10 @@ hero:
   image:
     src: /logo/terminal.svg
     alt: Code logo
+  actions:
+  - theme: alt
+    text: Timetable
+    link: https://task.sujith-eag.in/timetable
     
 ---
 
