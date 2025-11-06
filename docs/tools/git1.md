@@ -1,6 +1,4 @@
-
-# Git: Basic Setup
-
+# Git: Local Workflow & Basics
 
 ## Basic Setup After Installing Git
 
@@ -30,7 +28,7 @@ Enable Colored Output (Highly Recommended)
 git config --global color.ui auto
 ```
 
-Configure Pull Behavior (Merge vs. Rebase)
+Configure Pull Behavior (Merge vs. Rebase) : This sets the default strategy for git pull (which is a remote command). Using false (merge) is often simpler for beginners.
 ```bash
 git config --global pull.rebase false
 ```
@@ -40,22 +38,48 @@ for rebase by default on pull (more advanced)
 git config --global pull.rebase true
 ```
 
-
 ## Basic Git Commands: The Core Workflow
 
-These are the commands you'll use most frequently.
+### Starting a Local Project
 
 ```bash
+# Creates a new Git repository in the current directory
+git init
+
+# A modern one-liner to create a repo with the default branch named 'main'
+git init -b main
+
 # Check Repository Status
 git status
 ```
 
-- Tracked: Files Git knows about.
-- Untracked: New files Git doesn't yet know about.
-- Modified: Tracked files that have changes.
-- Staged: Files whose current versions are marked to be included in the next commit.
+`git status` displays the state of the **working tree** and the **staging area**.
+
+- **Tracked:** Files Git knows about.
+    
+- **Untracked:** New files Git doesn't yet know about.
+    
+- **Modified:** Tracked files that have changes.
+    
+- **Staged:** Files whose current versions are marked to be included in the next commit.
+
+### Inspect Changes (Diffing)
+
+See changes that are **not yet staged** (in your working directory).
+
+```bash
+git diff
+```
+
+See changes that **are staged** (in your staging area, ready to be committed).
+
+```bash
+git diff --cached
+```
 
 ### Stage Changes (Adding to the Staging Area/Index)
+
+The staging area (or "index") is an intermediate step before committing. It allows you to select which changes go into the next commit.
 
 ```bash
 # Stage a specific file
@@ -66,17 +90,41 @@ git add <file1.txt> <file2.js>
 
 # Stage all changes
 git add .
-# git add -A
-# git add --all
+git add -A
+git add --all
 ```
 
-The staging area is an intermediate step before committing. It allows to select which changes go into the next commit.
+### Stage Changes Interactively (Patch Mode)
 
-Commit Changes
+`git add -p` (patch mode) is a powerful command that lets you interactively review each "hunk" (or chunk) of change within a file and decide whether to stage it.
+
+```bash
+git add -p [file_name]
+```
+
+While in the interactive prompt, you can use these keys:
+
+- `y` - stage this hunk
+    
+- `n` - do NOT stage this hunk
+    
+- `s` - **split** this hunk into smaller pieces (if possible)
+    
+- `e` - manually edit the hunk
+    
+- `q` - quit and stage nothing
+    
+- `?` - show help
+
+### Commit Changes
+
+A commit saves a snapshot of your staged changes to the repository's history. The data saved includes the author, date, commit message, and the unique identifier of the preceding commit.
+
 ```bash
 git commit -m "Your concise and descriptive commit message"
 ```
-If you omit -m, Git will open your configured text editor.
+
+If you omit `-m`, Git will open your configured text editor.
 
 ### View Commit History
 
@@ -96,46 +144,108 @@ git log --pretty=format:"%h - %an, %ar : %s"
 # Custom format
 ```
 
-### Pushing to Remote Repository
-
-If remote repository is setup, Push the current local branch to its corresponding upstream (remote) branch.
 ```bash
-git push
+# Show a diff of the changes in each commit
+git log -p
+
+# Show an overview of changes (files changed, insertions/deletions)
+git log --stat --summary
 ```
 
-Explicitly push the local 'main' branch to the 'main' branch on the remote named 'origin'.
+## Exploring History
+
+You can inspect any commit, or its parents, using `git show`.
+
 ```bash
-git push origin main
+# Show details of the most recent commit
+git show HEAD
+
+# Show details of a specific commit by its hash
+git show 0472ffea0f
 ```
 
-To Push all Local Branches to origin
+You can navigate the history using `^` (parent) and `~` (ancestor):
+
 ```bash
-git push --all origin
+git show HEAD^  # to see the parent of HEAD
+git show HEAD^^ # to see the grandparent of HEAD
+git show HEAD~4 # to see the great-great grandparent of HEAD
 ```
 
-To remove the ranches that have been deleted locally, to keep Remote in sync.
+For merge commits (which have two parents):
+
 ```bash
-git push --all origin
-git push --prune origin
+git show HEAD^1 # show the first parent of HEAD
+git show HEAD^2 # show the second parent of HEAD
+```
+
+## Undoing Changes
+
+### Discarding Local, Unstaged Changes
+
+The new, preferred command to restore a file to its last committed state (discarding unstaged changes) is `git restore`.
+
+```bash
+# Discard changes in a specific file
+git restore <file_name.txt>
+```
+
+This is safer than the old `git checkout -- <file>` command.
+
+### "Undoing" a Commit
+
+There are two main ways to undo a commit:
+
+1. git revert (The Safe Way)
+
+This creates a new commit that does the exact opposite of the specified commit. It's the preferred way to undo a commit that has already been shared with others.
+
+```bash
+git revert <commit_hash_to_revert>
+```
+
+2. git reset (The Destructive Way)
+
+This moves the HEAD pointer to a previous commit, effectively rewriting history.
+
+```bash
+git reset --hard <commit_hash>
+```
+
+> **Warning:** `git reset --hard` is destructive. It **discards all changes** in the working directory and staging area that came after that commit. Do not use this on commits that you have already shared.
+
+## Working with Tags
+
+You can give a permanent, human-readable name to a specific commit by creating a tag. This is often used to mark release versions (e.g., `v1.0`).
+
+```bash
+# Create a tag named 'v2.5' pointing to a specific commit
+git tag v2.5 1b2e1d63ff
+```
+
+You can then use this tag name in any command that accepts a commit hash:
+
+```bash
+# See the difference between your current state and the v2.5 tag
+git diff v2.5 HEAD
 ```
 
 ## Ignoring Files and Directories (`.gitignore`)
 
-The `.gitignore` file tells Git which files or directories it should ignore. Ignored files won't be tracked and won't show up in `git status` as untracked files, nor will they be added with `git add .`.
+The `.gitignore` file tells Git which files or directories it should ignore. Ignored files won't be tracked and won't show up in `git status` as untracked files.
 
-*   Create a file named `.gitignore` in the root directory of repository.
-*   Add patterns, filenames, or directory names to this file, one per line.
-
-```txt
+- Create a file named `.gitignore` in the root directory of your repository.
+    
+- Add patterns, filenames, or directory names to this file, one per line.
+    
+```
 # Ignore specific files
-
 secret_keys.txt
 .env
 *.log
 *.tmp
 
 # Ignore directories
-
 node_modules/
 build/
 dist/
@@ -179,23 +289,26 @@ git branch
 git branch -a
 ```
 
-Creating and Checking out a branch
+### Creating and Switching Branches
+
+Git (version 2.23+) introduced `git switch` and `git restore` to make these operations clearer and safer than the older `git checkout` command.
+
 ```bash
-# Creates the branch; it doesn't switch to it.
+# Create a new branch (does not switch to it)
 git branch <new_branch_name>
 
-# Switch to an existing branch (checkout).
-git checkout <branch_name>
+# Switch to an existing branch
+git switch <branch_name>
 
-# Create a new branch AND switch to it in one command.
-git checkout -b <new_branch_name>
+# Create a new branch AND switch to it in one command
+git switch -c <new_branch_name>
 ```
 
 ### Merging Branches
 
 Merging integrates changes from one branch into another.
 
-Switch to the branch to merge changes INTO (target branch).
+Switch to the branch to merge changes INTO (the target branch).
 ```bash
 git checkout main
 
@@ -210,15 +323,24 @@ If there are no conflicting changes, Git might perform a "fast-forward" merge. I
 Merge conflicts occur when Git cannot automatically resolve differences in the same part of a file between the two branches being merged.
 
 *   Happens when modified the same lines in the same file.
+
 *   Git will pause the merge and mark the conflicting sections in the affected file(s) with conflict markers (e.g., `<<<<<<< HEAD`, `=======`, `>>>>>>> branch-name`).
 
-Your task:
-1.  Open the conflicted file(s). Manually edit the file to resolve the differences: choose which version to keep, or combine them.
-2.  Remove the conflict markers.
-3.  Save the file. Stage the resolved file: `git add <conflicted_file_name>`
-4.  Once all conflicts are resolved and staged, complete the merge: `git commit` (Git will often pre-fill a commit message for the merge).
+To be done :
 
-If you want to abort the merge: `git merge --abort`
+1. **Open** the conflicted file(s). Git will mark the conflicting sections.
+    
+2. **Manually edit** the file to resolve the differences.
+    
+3. **Remove** the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+    
+4. **Save** the file.
+    
+5. **Stage** the resolved file: `git add <conflicted_file_name>`.
+    
+6. **Commit** the merge: `git commit` (Git will pre-fill a commit message).
+    
+If you want to abort the merge: `git merge --abort`.
 
 ### Deleting a Branch
 
@@ -238,8 +360,6 @@ Delete a remote branch (on GitHub/origin):
 ```bash
 git push origin --delete <remote_branch_name>
 ```
-
-
 
 ## Using Git in VS Code
 
@@ -273,7 +393,6 @@ Clear, concise commit messages are vital for understanding project history and c
 7.  **Use the body to explain *what* and *why* vs. *how*.**
     *   The code itself shows *how*. The commit message should explain the reasoning behind the change and what it accomplishes, especially for complex changes.
 
-
-
 >[!note]
 >- **[Pro Git Book](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)**: A comprehensive guide to Git.
+>- [Cheat Sheet](https://git-scm.com/cheat-sheet): Official
