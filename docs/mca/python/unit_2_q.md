@@ -1,27 +1,21 @@
 ---
 title: "Python Unit-2 Previous Questions"
 description: ""
-summary: ""
 date: 2024-12-17T22:34:58+05:30
 lastmod: 2024-12-17T22:34:58+05:30
 draft: false
-weight: 184
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+
+# Python Unit-2 Previous Questions
 
 #### SEMESTER END EXAMINATIONS – JUNE 2024
 
 Write a Python function named average_list that takes a list of numbers as input and returns their average. Additionally, include a condition to ensure that the input is a list of numeric values only that are >=1). What is the output when this list average_list is:
-(i) An empty list
-(ii) a list containing non-numeric values
-(iii) -1
-(iv) 10000000000000000000000000000
+* (i) An empty list
+* (ii) a list containing non-numeric values
+* (iii) -1
+* (iv) 10000000000000000000000000000
 
 Implement a program that prompts the user to enter a tuple of integers. Calculate and print the sum of all integers in the tuple.
 
@@ -71,22 +65,22 @@ Develop a python program to print unique elements in a list.
 ___
 
 Predict the output of the following and justify your answer:
-```
+```python
 i) 
->>>lst=[1,7,3,9,2]
->>>lst.append([4,5])
->>>lst.extend([9,3])
->>>lst.pop(3)
->>>lst.insert(3,6)
+ lst=[1,7,3,9,2]
+ lst.append([4,5])
+ lst.extend([9,3])
+ lst.pop(3)
+ lst.insert(3,6)
 
 
 ii) 
->>>22 > "z"
->>>[1, 2] in [0, 1, 2, 3]
->>>str=“Python programming”
->>>print(str[7:-4])
->>> ls=[34, 'hi', -5]
->>> ls.sort()
+ 22 > "z"
+ [1, 2] in [0, 1, 2, 3]
+ str=“Python programming”
+ print(str[7:-4])
+  ls=[34, 'hi', -5]
+  ls.sort()
 ```
 
 Explain the use of `join()` and `split()` string methods with examples. What does it mean strings are immutable? Explain with an example.
@@ -103,7 +97,7 @@ ___
 #### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Assume that the name t is assigned a value ‘Programming with Python’ what will be the output when we execute the following commands and explain.
-```
+```python
 t[13:], t[:9], t[:], t[7:16], t[5:-10], t[6:-6:], t[-2::-1], t[::-2],
 t[-2:1:-2], t[:-8]
 ```
@@ -115,7 +109,6 @@ i) Processing characters in Strings
 ii) Displaying values and keys of a dictionary
 iii) Looping over List of Lists.
 
-___
 
 #### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 

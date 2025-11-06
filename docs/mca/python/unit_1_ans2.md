@@ -1,18 +1,12 @@
 ---
 title: "Python Unit-1 Answered-2"
 description: ""
-summary: ""
 date: 2024-12-17T22:34:58+05:30
 lastmod: 2024-12-17T22:34:58+05:30
 draft: false
-weight: 183
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
+
+# Python Unit-1 Answered-2
 
 
 ##### Write a program using a while loop that asks the user for a number, and prints a countdown from that number to zero.

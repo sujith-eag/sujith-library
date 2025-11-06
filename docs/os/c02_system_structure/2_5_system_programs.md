@@ -1,19 +1,13 @@
 ---
 title: "OS 2.05 - System Programs"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:13+05:30
 lastmod: 2025-01-12T21:27:13+05:30
 draft: false
-weight: 2013
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+
+ # OS 2.05 - System Programs
 
 **System programs**, also known as **system utilities**, are essential components of an operating system that provide a convenient environment for the development, execution, and management of programs. 
 

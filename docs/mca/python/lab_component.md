@@ -1,18 +1,12 @@
 ---
 title: "Python Lab Component Questions"
-description: ""
-summary: ""
+description: "" # short summary for SEO and social cards
 date: 2024-12-17T22:34:58+05:30
 lastmod: 2024-12-17T22:34:58+05:30
 draft: false
-weight: 180
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
+
+# Python Lab Component Questions
 
 
 #### Question 1
@@ -347,7 +341,7 @@ def get_student_data(n):
     # Loop to input roll number and marks for n students
     for _ in range(n):
         roll_number = input("Enter roll number: ")
-        marks = float(input("Enter marks: ")
+        marks = float(input("Enter marks: "))
         # Store roll number and marks in the dictionary
         student_data[roll_number] = marks   
          

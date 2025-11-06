@@ -1,20 +1,14 @@
 ---
 title: "OS 2.01 - OS Services"
 description: ""
-summary: ""
 date: 2025-01-12T21:22:44+05:30
 lastmod: 2025-01-12T21:22:44+05:30
 draft: false
-weight: 2010
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
 
+
+ # OS 2.01 - OS Services
 
 The main three aspects of an OS are its **Services**, **Interfaces**, and **Components**. 
 

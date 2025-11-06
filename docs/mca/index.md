@@ -26,17 +26,22 @@ import {
   resourcesUsed,
   resourcesPending } from '@theme/data/resources/mcaResources.ts'
 
-import { mca1Section, mca2Section } from '@theme/data/fileStructures/mcaSections.ts'
+import { mca1Section, mca2Section, mca3Section } from '@theme/data/fileStructures/mcaSections.ts'
 
 </script>
 
+## Third Semester
+
+<CollapsibleList :sections="mca3Section" />
+
+
 ## Second Semester
- 
+
 <CollapsibleList :sections="mca2Section" />
 
 
 ## First Semester
- 
+
 <CollapsibleList :sections="mca1Section" />
 
 ___

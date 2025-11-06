@@ -1,19 +1,14 @@
 ---
 title: "OS 8.02 - Virtual Memory, Page Replacement"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2047
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+
+
+# OS 8.02 - Virtual Memory, Page Replacement
 
 ### Virtual Memory
 

@@ -1,20 +1,14 @@
 ---
 title: "OS 2.10 - System Boot"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2015
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
 
+
+ # OS 2.10 - System Boot
 
 Booting a computer system refers to the process of starting it up by loading the kernel into memory and initiating its execution. This procedure is vital for initializing the operating system and setting up the system for user operations.
 

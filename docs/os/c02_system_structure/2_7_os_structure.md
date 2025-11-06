@@ -1,20 +1,12 @@
 ---
 title: "OS 2.07 - OS Structure"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:29+05:30
 lastmod: 2025-01-12T21:27:29+05:30
 draft: false
-weight: 2014
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
-
+# OS 2.07 - OS Structure
 
 Operating-system structure refers to the organization of an operating system's components and how they interact with each other. Over the years, operating system structures have evolved from simple designs to more modular, complex ones, each with trade-offs regarding performance, maintainability, and flexibility. 
 

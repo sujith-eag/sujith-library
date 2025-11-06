@@ -1,19 +1,12 @@
 ---
 title: "OS 3.04 - Inter-Process Communication"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2018
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+# OS 3.04 - Inter-Process Communication
 
 Processes executing concurrently in an operating system can be either **independent** or **cooperating**.
 

@@ -1,18 +1,12 @@
 ---
 title: "OS 1.05 - OS Operations"
 description: ""
-summary: ""
 date: 2025-01-12T21:21:19+05:30
 lastmod: 2025-01-12T21:21:19+05:30
 draft: false
-weight: 2001
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
+
+# OS 1.05 - OS Operations
 
 Interrupts, System Calls, and Modes of Operation
 

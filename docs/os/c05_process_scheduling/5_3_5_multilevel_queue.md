@@ -1,20 +1,13 @@
 ---
 title: "OS 5.03.05 - Multi-Level Queue Scheduling"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2027
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
 
+# OS 5.03.05 - Multi-Level Queue Scheduling
 
 Multilevel Queue Scheduling is used in situations where processes can be easily classified into different groups.
 

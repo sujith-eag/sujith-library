@@ -1,21 +1,13 @@
 ---
 title: "OS 8.02 - Paging"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2046
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+# OS 8.02 - Paging
 
- 
 ### Paging
 
 One solution to the problem of external fragmentation is to allow the logical address space of processes to be noncontiguous. This enables a process to be allocated physical memory wherever it is available. This strategy is used in paging, which is the most common memory-management technique in modern computer systems.

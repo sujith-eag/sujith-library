@@ -1,18 +1,12 @@
 ---
 title: "Python Unit-1 Answered-1"
 description: ""
-summary: ""
 date: 2024-12-17T22:34:58+05:30
 lastmod: 2024-12-17T22:34:58+05:30
 draft: false
-weight: 182
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
+
+# Python Unit-1 Answered-1
 
 
 #### What are identical objects and equivalent objects? Give examples.

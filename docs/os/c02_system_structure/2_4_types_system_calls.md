@@ -1,19 +1,12 @@
 ---
 title: "OS 2.04 - Types Of System Calls"
 description: ""
-summary: ""
 date: 2025-01-12T21:24:56+05:30
 lastmod: 2025-01-12T21:24:56+05:30
 draft: false
-weight: 2012
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+# OS 2.04 - Types Of System Calls
 
 System calls are typically grouped into six major categories, each providing different functions necessary for operating system tasks.
 

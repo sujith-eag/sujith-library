@@ -1,19 +1,12 @@
 ---
 title: "OS 5.01 - Process Scheduling"
 description: ""
-summary: ""
 date: 2025-01-12T21:27:49+05:30
 lastmod: 2025-01-12T21:27:49+05:30
 draft: false
-weight: 2021
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+# OS 5.01 - Process Scheduling
 
 In multiprogrammed OS, the aim of CPU scheduling is to maximize CPU utilization by switching between processes and have some process running all the time.     
 

@@ -1,19 +1,12 @@
 ---
 title: "Python Unit-3 Answered-1"
 description: ""
-summary: ""
 date: 2024-12-17T22:34:58+05:30
 lastmod: 2024-12-17T22:34:58+05:30
 draft: false
-weight: 188
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
 ---
 
+# Python Unit-3 Answered-1
 
 # Variables
 
