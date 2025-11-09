@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import BookCard from './components/BookCard.vue'
 import ProfilePage from './components/ProfilePage.vue'
 import ProjectsShowcase from './components/ProjectsShowcase.vue'
+import 'katex/dist/katex.min.css'
 
 import './style.css'
 import './custom.css'

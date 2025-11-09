@@ -1,3 +1,164 @@
+export const mcaMLSection = [
+  {
+    title: "Machine Learning",
+    items: [
+      {
+        title: "Unit-1",
+        items: [
+          { label: "Introduction to ML", link: "/mca/ml/u1/u11" },
+          { label: "Types of ML", link: "/mca/ml/u1/u12" },
+          { label: "Applications of ML", link: "/mca/ml/u1/u13" },
+          // { label: "Unit-1 Questions", link: "/mca/ml/u1/q1" },
+        ]
+      },
+      // {
+      //   title: "Unit-2",
+      //   items: [
+      //     { label: "Supervised Learning", link: "/mca/ml/u2/u21" },
+      //     { label: "Regression Techniques", link: "/mca/ml/u2/u22" },
+      //     { label: "Classification", link: "/mca/ml/u2/u23" },
+      //     { label: "Unit-2 Questions", link: "/mca/ml/u2/q2" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-3",
+      //   items: [
+      //     { label: "Unsupervised Learning", link: "/mca/ml/u3/u31" },
+      //     { label: "Clustering", link: "/mca/ml/u3/u32" },
+      //     { label: "Dimensionality Reduction", link: "/mca/ml/u3/u33" },
+      //     { label: "Unit-3 Questions", link: "/mca/ml/u3/q3" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-4 & 5",
+      //   items: [
+      //     { label: "Neural Networks", link: "/mca/ml/u4/u41" },
+      //     { label: "Deep Learning Overview", link: "/mca/ml/u4/u42" },
+      //     { label: "Model Evaluation & Deployment", link: "/mca/ml/u4/u43" },
+      //     { label: "Unit-5 Questions", link: "/mca/ml/u4/q5" },
+      //   ]
+      // },
+      // {
+      //   title: "Lab Manual",
+      //   items: [
+      //     { label: "Dataset Exploration", link: "/mca/ml/lab/dataset" },
+      //     { label: "Preprocessing", link: "/mca/ml/lab/preprocessing" },
+      //     { label: "Regression Lab", link: "/mca/ml/lab/regression" },
+      //     { label: "Classification Lab", link: "/mca/ml/lab/classification" },
+      //     { label: "Neural Net Lab", link: "/mca/ml/lab/neuralnet" },
+      //   ]
+      // },
+    ]
+  }
+];
+
+export const mcaSESection = [
+  {
+    title: "Software Engineering",
+    items: [
+      // {
+      //   title: "Unit-1",
+      //   items: [
+      //     { label: "Software Process Models", link: "/mca/se/u1/u11" },
+      //     { label: "Requirement Engineering", link: "/mca/se/u1/u12" },
+      //     { label: "Unit-1 Questions", link: "/mca/se/u1/q1" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-2",
+      //   items: [
+      //     { label: "System Modeling & Design", link: "/mca/se/u2/u21" },
+      //     { label: "Architectural Styles", link: "/mca/se/u2/u22" },
+      //     { label: "Unit-2 Questions", link: "/mca/se/u2/q2" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-3",
+      //   items: [
+      //     { label: "Software Testing", link: "/mca/se/u3/u31" },
+      //     { label: "Quality & Metrics", link: "/mca/se/u3/u32" },
+      //     { label: "Unit-3 Questions", link: "/mca/se/u3/q3" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-4 & 5",
+      //   items: [
+      //     { label: "Maintenance & Evolution", link: "/mca/se/u4/u41" },
+      //     { label: "Project Management", link: "/mca/se/u4/u42" },
+      //     { label: "Unit-5 Questions", link: "/mca/se/u4/q5" },
+      //   ]
+      // },
+      // {
+      //   title: "Lab Manual",
+      //   items: [
+      //     { label: "Requirements Lab", link: "/mca/se/lab/requirements" },
+      //     { label: "Design Lab", link: "/mca/se/lab/design" },
+      //     { label: "Version Control", link: "/mca/se/lab/version-control" },
+      //     { label: "Testing Lab", link: "/mca/se/lab/testing" },
+      //     { label: "Project Lab", link: "/mca/se/lab/project" },
+      //   ]
+      // },
+    ]
+  }
+];
+
+export const mcaEHSection = [
+  {
+    title: "Ethical Hacking",
+    items: [
+      // {
+      //   title: "Unit-1",
+      //   items: [
+      //     { label: "Introduction & Ethics", link: "/mca/eh/u1/u11" },
+      //     { label: "Reconnaissance", link: "/mca/eh/u1/u12" },
+      //     { label: "Unit-1 Questions", link: "/mca/eh/u1/q1" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-2",
+      //   items: [
+      //     { label: "Network Exploitation", link: "/mca/eh/u2/u21" },
+      //     { label: "Scanning & Enumeration", link: "/mca/eh/u2/u22" },
+      //     { label: "Unit-2 Questions", link: "/mca/eh/u2/q2" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-3",
+      //   items: [
+      //     { label: "Web Application Attacks", link: "/mca/eh/u3/u31" },
+      //     { label: "Exploitation Tools", link: "/mca/eh/u3/u32" },
+      //     { label: "Unit-3 Questions", link: "/mca/eh/u3/q3" },
+      //   ]
+      // },
+      // {
+      //   title: "Unit-4 & 5",
+      //   items: [
+      //     { label: "Wireless & Mobile Attacks", link: "/mca/eh/u4/u41" },
+      //     { label: "Defensive Measures & Legal", link: "/mca/eh/u4/u42" },
+      //     { label: "Unit-5 Questions", link: "/mca/eh/u4/q5" },
+      //   ]
+      // },
+      {
+        title: "Lab Manual",
+        items: [
+          { label: "Wake-on-LAN", link: "/mca/eh/lab/lab1" },
+          { label: "Tunneling", link: "/mca/eh/lab/lab2" },
+          { label: "Google Dorking", link: "/mca/eh/lab/lab3" },
+          // { label: "BurpSuite Practice", link: "/mca/eh/lab/burp" },
+          // { label: "Wireless Lab", link: "/mca/eh/lab/wifi" },
+        ]
+      },
+    ]
+  }
+];
+
+export const mca3Section = [
+  ...mcaMLSection,
+  ...mcaSESection,
+  ...mcaEHSection,
+];
+
+
 export const mcaNetworkSection = [
   {
     title: "Computer Networks",
@@ -511,167 +672,7 @@ export const mca2Section = [
   ...mcaFSSection,
 ]
 
-export const mcaMLSection = [
-  {
-    title: "Machine Learning",
-    items: [
-      // {
-      //   title: "Unit-1",
-      //   items: [
-      //     { label: "Introduction to ML", link: "/mca/ml/u1/u11" },
-      //     { label: "Linear Algebra & Stats", link: "/mca/ml/u1/u12" },
-      //     { label: "Data Preprocessing", link: "/mca/ml/u1/u13" },
-      //     { label: "Unit-1 Questions", link: "/mca/ml/u1/q1" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "Supervised Learning", link: "/mca/ml/u2/u21" },
-      //     { label: "Regression Techniques", link: "/mca/ml/u2/u22" },
-      //     { label: "Classification", link: "/mca/ml/u2/u23" },
-      //     { label: "Unit-2 Questions", link: "/mca/ml/u2/q2" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-3",
-      //   items: [
-      //     { label: "Unsupervised Learning", link: "/mca/ml/u3/u31" },
-      //     { label: "Clustering", link: "/mca/ml/u3/u32" },
-      //     { label: "Dimensionality Reduction", link: "/mca/ml/u3/u33" },
-      //     { label: "Unit-3 Questions", link: "/mca/ml/u3/q3" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-4 & 5",
-      //   items: [
-      //     { label: "Neural Networks", link: "/mca/ml/u4/u41" },
-      //     { label: "Deep Learning Overview", link: "/mca/ml/u4/u42" },
-      //     { label: "Model Evaluation & Deployment", link: "/mca/ml/u4/u43" },
-      //     { label: "Unit-5 Questions", link: "/mca/ml/u4/q5" },
-      //   ]
-      // },
-      // {
-      //   title: "Lab Manual",
-      //   items: [
-      //     { label: "Dataset Exploration", link: "/mca/ml/lab/dataset" },
-      //     { label: "Preprocessing", link: "/mca/ml/lab/preprocessing" },
-      //     { label: "Regression Lab", link: "/mca/ml/lab/regression" },
-      //     { label: "Classification Lab", link: "/mca/ml/lab/classification" },
-      //     { label: "Neural Net Lab", link: "/mca/ml/lab/neuralnet" },
-      //   ]
-      // },
-    ]
-  }
-];
-
-export const mcaSESection = [
-  {
-    title: "Software Engineering",
-    items: [
-      // {
-      //   title: "Unit-1",
-      //   items: [
-      //     { label: "Software Process Models", link: "/mca/se/u1/u11" },
-      //     { label: "Requirement Engineering", link: "/mca/se/u1/u12" },
-      //     { label: "Unit-1 Questions", link: "/mca/se/u1/q1" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "System Modeling & Design", link: "/mca/se/u2/u21" },
-      //     { label: "Architectural Styles", link: "/mca/se/u2/u22" },
-      //     { label: "Unit-2 Questions", link: "/mca/se/u2/q2" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-3",
-      //   items: [
-      //     { label: "Software Testing", link: "/mca/se/u3/u31" },
-      //     { label: "Quality & Metrics", link: "/mca/se/u3/u32" },
-      //     { label: "Unit-3 Questions", link: "/mca/se/u3/q3" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-4 & 5",
-      //   items: [
-      //     { label: "Maintenance & Evolution", link: "/mca/se/u4/u41" },
-      //     { label: "Project Management", link: "/mca/se/u4/u42" },
-      //     { label: "Unit-5 Questions", link: "/mca/se/u4/q5" },
-      //   ]
-      // },
-      // {
-      //   title: "Lab Manual",
-      //   items: [
-      //     { label: "Requirements Lab", link: "/mca/se/lab/requirements" },
-      //     { label: "Design Lab", link: "/mca/se/lab/design" },
-      //     { label: "Version Control", link: "/mca/se/lab/version-control" },
-      //     { label: "Testing Lab", link: "/mca/se/lab/testing" },
-      //     { label: "Project Lab", link: "/mca/se/lab/project" },
-      //   ]
-      // },
-    ]
-  }
-];
-
-export const mcaEHSection = [
-  {
-    title: "Ethical Hacking",
-    items: [
-      // {
-      //   title: "Unit-1",
-      //   items: [
-      //     { label: "Introduction & Ethics", link: "/mca/eh/u1/u11" },
-      //     { label: "Reconnaissance", link: "/mca/eh/u1/u12" },
-      //     { label: "Unit-1 Questions", link: "/mca/eh/u1/q1" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "Network Exploitation", link: "/mca/eh/u2/u21" },
-      //     { label: "Scanning & Enumeration", link: "/mca/eh/u2/u22" },
-      //     { label: "Unit-2 Questions", link: "/mca/eh/u2/q2" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-3",
-      //   items: [
-      //     { label: "Web Application Attacks", link: "/mca/eh/u3/u31" },
-      //     { label: "Exploitation Tools", link: "/mca/eh/u3/u32" },
-      //     { label: "Unit-3 Questions", link: "/mca/eh/u3/q3" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-4 & 5",
-      //   items: [
-      //     { label: "Wireless & Mobile Attacks", link: "/mca/eh/u4/u41" },
-      //     { label: "Defensive Measures & Legal", link: "/mca/eh/u4/u42" },
-      //     { label: "Unit-5 Questions", link: "/mca/eh/u4/q5" },
-      //   ]
-      // },
-      {
-        title: "Lab Manual",
-        items: [
-          { label: "Wake-on-LAN", link: "/mca/eh/lab/lab1" },
-          { label: "Tunneling", link: "/mca/eh/lab/lab2" },
-          { label: "Google Dorking", link: "/mca/eh/lab/lab3" },
-          // { label: "BurpSuite Practice", link: "/mca/eh/lab/burp" },
-          // { label: "Wireless Lab", link: "/mca/eh/lab/wifi" },
-        ]
-      },
-    ]
-  }
-];
-
-export const mca3Section = [
-  ...mcaMLSection,
-  ...mcaSESection,
-  ...mcaEHSection,
-];
-
-  export const mcaPythonSection = [
+export const mcaPythonSection = [
   {
     title: "Python",
     items: [

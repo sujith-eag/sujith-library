@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import katex from 'markdown-it-katex'
 
 import { cSidebar } from './sidebar/cSidebar'
 import { javaSidebar } from './sidebar/javaSidebar'
@@ -54,7 +55,11 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark'
     },
-    lineNumbers: true
+    lineNumbers: true,
+
+    config: (md) => {
+      md.use(katex)
+    }
   },
     
   themeConfig: {
