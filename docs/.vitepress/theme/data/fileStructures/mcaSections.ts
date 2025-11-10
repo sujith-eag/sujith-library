@@ -6,9 +6,11 @@ export const mcaMLSection = [
         title: "Unit-1",
         items: [
           { label: "Introduction to ML", link: "/mca/ml/u1/u11" },
-          { label: "Types of ML", link: "/mca/ml/u1/u12" },
-          { label: "Applications of ML", link: "/mca/ml/u1/u13" },
-          // { label: "Unit-1 Questions", link: "/mca/ml/u1/q1" },
+          { label: "Supervised Learning", link: "/mca/ml/u1/u12" },
+          { label: "Un-Supervised Learning", link: "/mca/ml/u1/u13" },
+          { label: "Applications & Tools", link: "/mca/ml/u1/u14" },
+          { label: "Phases of ML", link: "/mca/ml/u1/u21" },
+          { label: "Data Structures & Attributes", link: "/mca/ml/u1/u22" },
         ]
       },
       // {
