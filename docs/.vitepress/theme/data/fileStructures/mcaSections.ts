@@ -11,17 +11,18 @@ export const mcaMLSection = [
           { label: "Applications & Tools", link: "/mca/ml/u1/u14" },
           { label: "Phases of ML", link: "/mca/ml/u1/u21" },
           { label: "Data Structures & Attributes", link: "/mca/ml/u1/u22" },
+          { label: "Preparing to Model", link: "/mca/ml/u1/u23" },
         ]
       },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "Supervised Learning", link: "/mca/ml/u2/u21" },
-      //     { label: "Regression Techniques", link: "/mca/ml/u2/u22" },
-      //     { label: "Classification", link: "/mca/ml/u2/u23" },
-      //     { label: "Unit-2 Questions", link: "/mca/ml/u2/q2" },
-      //   ]
-      // },
+      {
+        title: "Unit-2",
+        items: [
+          { label: "Selecting a Model", link: "/mca/ml/u2/u11" },
+          { label: "Training a Model", link: "/mca/ml/u2/u12" },
+          { label: "Model Representation", link: "/mca/ml/u2/u13" },
+          { label: "Improving Performance", link: "/mca/ml/u2/u14" },
+        ]
+      },
       // {
       //   title: "Unit-3",
       //   items: [
