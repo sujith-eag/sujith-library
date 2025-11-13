@@ -11,12 +11,12 @@ export const cloud1Section = [
          { label: "Conceptializing Cloud", link: "/dev-cloud/cu1/u14" }, 
         ]
       },
-      // {
-      //   title: "B",
-      //   items: [
-      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
-      //   ]
-      // },
+      {
+        title: "Cloud Labs",
+        items: [
+         { label: "Application Layer", link: "/dev_cloud/cclab/l10.md/l11" },
+        ]
+      },
     ]
   }
 ]
@@ -41,6 +41,13 @@ export const cloud2Section = [
     ]
   }
 ]
+
+
+export const cloudSection = [
+  ...cloud1Section,
+  ...cloud2Section,
+]
+
  
 export const dev1Section = [
   {
@@ -81,11 +88,6 @@ export const dev2Section = [
       },
     ]
   }
-]
-
-export const cloudSection = [
-  ...cloud1Section,
-  ...cloud2Section,
 ]
 
 export const devopsSection = [
