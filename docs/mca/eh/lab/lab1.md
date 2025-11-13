@@ -1,314 +1,271 @@
-# Wake-on-LAN (WoL)
+# Lab 1: Wake-on-LAN (WoL)
 
-Wake-on-LAN (WoL) is a hardware-, firmware-, and network-level capability that allows a powered-off or suspended computer to be remotely awakened through the delivery of a specially crafted Ethernet frame known as a **magic packet**. WoL is widely used in enterprise environments to support remote maintenance, patch management, asset inventory, and controlled power-management workflows.
+**Objective:** To provide a formal, detailed analysis of Wake-on-LAN (WoL), covering its technical implementation, security implications, configuration, and practical usage in both offensive and defensive contexts.
 
+## 1. Introduction to Wake-on-LAN
 
-## 1. Technical Overview: How WoL Works
+Wake-on-LAN (WoL) is an industry-standard protocol that allows a computer in a low-power state (e.g., sleep, hibernate, or soft-off) to be remotely awakened. This is achieved by sending a specially crafted network message known as a **magic packet**. WoL is a fundamental technology for enterprise system administration, enabling remote maintenance, patch management, and power conservation strategies. However, its lack of built-in security features also makes it a vector for misuse that security professionals must understand.
 
-1. **NIC Power State**  
-    When the system enters a low-power state (S3/S4) or soft-off state (S5), the network interface card (NIC) remains partially powered so it can listen for incoming WoL frames.
-    
-2. **Magic Packet Format**  
-    A valid magic packet contains:
-    
-    - Six bytes of `FF FF FF FF FF FF`, followed by
-        
-    - The target device’s MAC address repeated **16 consecutive times** (binary).
-        
-3. **Packet Delivery**  
-    Magic packets are typically delivered via:
-    
-    - **Ethernet broadcast frames**, or
-        
-    - **UDP broadcasts** (commonly to ports **7** or **9**) so the NIC can receive the packet regardless of operating-system state.
-        
-4. **Wake Trigger**  
-    When the NIC detects its MAC address in the packet payload, it signals the system’s power circuitry to initiate the startup process.
-    
-5. **Cross-Subnet Limitations**  
-    Broadcasts do not traverse routers by default. Waking a host across subnets requires **directed broadcast forwarding**, a **relay**, or **specialized management appliances**.
-    
+## 2. Core Concepts and Technical Breakdown
 
-## 2. Security Relevance
+### 2.1. System Power States and NIC Behavior
 
-### 2.1 Potential Misuse and Offensive Scenarios
+WoL functionality depends on the network interface card (NIC) remaining in a low-power listening mode even when the rest of the system is powered down. This is defined by ACPI (Advanced Configuration and Power Interface) power states:
 
-- Unauthorized users with the ability to send local broadcasts may:
-    
-    - Wake systems intentionally kept offline for security reasons.
-        
-    - Reactivate remote-access services (RDP/SSH/SMB) that administrators intended to disable.
-        
-    - Increase the available attack surface by powering on dormant hosts.
-        
-    - Enable persistence mechanisms that depend on the host being powered.
-        
-- WoL provides **no authentication**; any user with network access and the target MAC address can attempt to wake a machine.
-    
-- Attackers may combine WoL with:
-    
-    - Credential theft
-        
-    - Lateral movement
-        
-    - Misconfigured routing or ACLs  
-        to compromise hosts intended to remain offline.
-        
+- **S3 (Standby/Sleep):** RAM is still powered. The system can wake very quickly.
+- **S4 (Hibernate):** System state is saved to disk, and the system powers down.
+- **S5 (Soft-Off):** The system is fully shut down, but the power supply unit (PSU) still provides standby power to certain components, including the NIC for WoL.
 
-### 2.2 Defensive and Monitoring Considerations
+For WoL to function, the NIC must continue to receive power and listen for the magic packet in these states.
 
-- Unexpected wake events may indicate:
-    
-    - Reconnaissance
-        
-    - Misconfiguration
-        
-    - Unauthorized administrative activity
-        
-- Because WoL lacks authentication, defenders must rely on:
-    
-    - Network segmentation
-        
-    - Broadcast control
-        
-    - Log correlation
-        
-    - Monitoring and alerting to detect or prevent abuse.
-        
+### 2.2. The Magic Packet
 
-## 3. Configuration and Operational Usage
+The magic packet is the trigger that initiates the wake-up sequence. It is a small, simple broadcast frame, and its payload has a unique structure that NICs are designed to recognize.
 
-### 3.1 BIOS/UEFI Configuration (Required Step)
+**Magic Packet Structure:**
 
-Before the operating system can enable WoL, corresponding BIOS/UEFI options must be enabled.  
+| Component             | Size      | Description                                                                 | Example (Hex)                  |
+| --------------------- | --------- | --------------------------------------------------------------------------- | ------------------------------ |
+| **Synchronization Stream** | 6 bytes   | A sequence of six `FF` bytes, acting as a preamble.                         | `FF:FF:FF:FF:FF:FF`            |
+| **MAC Address Block** | 96 bytes  | The target computer's 6-byte MAC address, repeated 16 consecutive times.     | `A1:B2:C3:D4:E5:F6` (x16)      |
+| **Total Payload**     | **102 bytes** | The complete payload that the NIC's circuitry scans for.                    |                                |
 
-Restart your PC → press F2 / F10 / DEL (depending on manufacturer).
+The NIC constantly scans incoming frames for this pattern. If it detects the 6-byte preamble followed by 16 instances of its own MAC address, it signals the motherboard to initiate the system boot process.
 
-Typical settings include:
+### 2.3. Packet Transmission
 
-- Wake on LAN
-    
-- Wake on PCI-E / Wake by PCI Device
-    
-- Power on by PME / Wake Up Events
- 
-- Enable `Wake on LAN`, `Power On by PCI-E/PCI Device`, or similar.
-   
-Configuration path varies by vendor. After enabling, save and reboot.
+Magic packets are typically sent as broadcast frames at Layer 2 or Layer 3:
 
----
+- **Layer 2 (Ethernet Broadcast):** The magic packet is encapsulated in an Ethernet frame with the destination MAC address `FF:FF:FF:FF:FF:FF`. This is the most common method and is confined to the local network segment (VLAN).
+- **Layer 3 (IP Broadcast):** The packet is sent as a UDP datagram, typically to port 7 or 9, to the subnet's broadcast address (e.g., `192.168.1.255`). This method is also typically confined to the local subnet, as routers do not forward broadcast traffic by default.
 
-### 3.2 Linux Usage
+**Cross-Subnet WoL:** To wake a machine in a different subnet, a **directed broadcast** forwarding must be configured on the router, or a relay agent must be used. This is a significant security consideration, as it can expose the WoL mechanism to a wider network.
 
-#### Check Existing WoL Configuration
+## 3. Security Analysis
 
-```bash
-sudo apt install ethtool
+WoL was designed for convenience, not security. It has **no authentication or encryption**, making it a tool that can be easily abused.
 
-ethtool eth0 | grep -i "Wake-on"
-```
+### 3.1. Offensive Scenarios and Attack Surface
 
-Expected status:
-- `g` = WoL enabled for magic packets
-- `d` = WoL disabled
-    
-#### Enable WoL (Temporary)
+- **Increasing Attack Surface:** An attacker on the local network can wake up machines that were intentionally powered down for security, such as servers awaiting patching or workstations after hours. This brings their services (e.g., RDP, SSH, SMB) back online and makes them vulnerable to attack.
 
-```bash
-sudo ethtool -s eth0 wol g
-```
+- **Lateral Movement:** After compromising one machine, an attacker can use WoL to wake other systems on the same subnet to probe them for vulnerabilities.
 
-Note: This change does **not persist** across reboots.
+- **Bypassing Physical Security:** If an attacker gains remote access to a single powered-on machine in an office, they can use WoL to power on other sensitive systems that are otherwise physically secured.
 
-#### Make WoL Persistent
+- **Denial of Service / Disruption:** An attacker could create a "wake storm" by repeatedly sending magic packets to all devices, causing disruption and potentially masking other malicious activity.
 
-Options include:
+### 3.2. Defensive Measures and Monitoring
 
-1. **Using /etc/network/interfaces**
-    
+- **Network Segmentation:** Isolate sensitive systems in separate VLANs to contain broadcast traffic, including magic packets.
+
+- **Disable Directed Broadcasts:** Ensure routers are configured to block directed broadcast traffic to prevent cross-subnet WoL abuse.
+
+- **Port Security:** On managed switches, restrict which MAC addresses can communicate on which ports.
+
+- **IDS/IPS Signatures:** Deploy network monitoring tools with signatures to detect and alert on the presence of magic packets, especially outside of normal maintenance windows.
+
+- **Log Correlation:** Correlate network alerts (magic packet detected) with system boot logs, DHCP lease logs, and authentication logs to identify unauthorized wake events.
+
+## 4. Implementation and Configuration
+
+Enabling WoL is a two-step process: first in the system's firmware (BIOS/UEFI) and then in the operating system.
+
+### 4.1. Step 1: BIOS/UEFI Configuration
+
+This is a mandatory prerequisite.
+1.  Reboot the computer and enter the BIOS/UEFI setup utility (commonly by pressing `F2`, `F10`, or `Del`).
+2.  Navigate to the "Power Management" or "Advanced" settings.
+3.  Look for an option named **"Wake on LAN," "Power On by PCI-E Device,"** or **"PME (Power Management Event) Wake Up."**
+4.  Enable this setting, save changes, and exit.
+
+### 4.2. Step 2: Operating System Configuration
+
+#### Linux
+
+On Linux, the `ethtool` utility is the standard for configuring NIC properties.
+
+1.  **Check WoL Status:**
     ```bash
-    auto eth0
-    iface eth0 inet dhcp
-        post-up /sbin/ethtool -s eth0 wol g
+    sudo apt install ethtool
+    
+    # Replace 'eth0' with your network interface name
+    sudo ethtool eth0 | grep "Wake-on"
     ```
-    
-2. **Using systemd service**  
-    Create a small unit that runs the ethtool command on boot.
-    
-3. **Using rc.local** (if enabled by the distribution)
-    
+    The output `Wake-on: g` means WoL with magic packets is enabled. `d` means disabled.
+
+2.  **Enable WoL (Temporarily):**
     ```bash
-    ethtool -s eth0 wol g
+    sudo ethtool -s eth0 wol g
     ```
-    
+    This setting will be lost on reboot.
 
-#### Sending a Magic Packet
+3.  **Enable WoL (Persistently):**
+    - **systemd (Modern approach):** Create a `systemd-link` file.
+      ```bash
+      # /etc/systemd/network/50-wired.link
+      [Match]
+      MACAddress=A1:B2:C3:D4:E5:F6
 
-```bash
-wakeonlan AA:BB:CC:DD:EE:FF
-# Or:
-sudo etherwake -i eth0 AA:BB:CC:DD:EE:FF
-```
+      [Link]
+      NamePolicy=kernel
+      WakeOnLan=magic
+      ```
+    - **network-manager:** Use the `nmcli` command.
+      ```bash
+      nmcli c mod "My Connection" 802-3-ethernet.wake-on-lan magic
+      ```
+    - **/etc/network/interfaces (Legacy):**
+      ```
+      auto eth0
+      iface eth0 inet dhcp
+          ethernet-wol g
+      ```
 
-Notes:
+#### Windows
 
-- `wakeonlan` sends UDP broadcasts.
-    
-- `etherwake` sends raw Ethernet frames and may require root privileges.
-    
+1.  Open **Device Manager** and locate your network adapter.
+2.  Right-click the adapter and select **Properties**.
+3.  Go to the **Power Management** tab.
+4.  Check the boxes for:
+    - `Allow this device to wake the computer.`
+    - `Only allow a magic packet to wake the computer.` (This is crucial to prevent spurious wake-ups).
+5.  Go to the **Advanced** tab. Look for a property named "Wake on Magic Packet" and ensure it is **Enabled**.
 
-#### Capturing Magic Packets for Analysis
 
-```bash
-sudo tcpdump -i eth0 -s 0 -w wol.pcap 'udp and (dst port 7 or dst port 9) and ether broadcast'
-```
+## 5. Practical Tooling and Scripts
 
-Or a simpler live filter:
+### 5.1. Sending Magic Packets
 
-```bash
-tcpdump -n -i eth0 'udp and (port 7 or port 9)'
-```
+- **Linux:**
+  ```bash
+  # Using wakeonlan (sends UDP packets)
+  sudo apt install wakeonlan
+  wakeonlan A1:B2:C3:D4:E5:F6
 
-Or live check for the pattern with tshark/Wireshark (look for FF:FF:FF:FF:FF:FF followed by MAC ×16).
+  # Using ether-wake (sends Layer 2 frames, requires root)
+  sudo apt install ether-wake
+  sudo ether-wake -i eth0 A1:B2:C3:D4:E5:F6
+  ```
 
----
+- **Windows:**
+  - Third-party tools like NirSoft's `WakeMeOnLan` are popular.
+  - PowerShell can be used for scripting.
 
-### 3.3 Windows Usage
+### 5.2. Example Scripts
 
-#### Enabling WoL
-
-1. Device Manager → Network Adapter → Properties
-    
-    - Enable "Allow this device to wake the computer"
-        
-    - Optionally restrict wake-up to "Only allow a magic packet"
-        
-2. BIOS/UEFI settings for PCI-E/PME wake must also be enabled.
-    
-3. Domain environments may require:
-    
-    - Group Policy configurations
-        
-    - Vendor driver configuration tools
-        
-
-#### Sending Magic Packets on Windows
-
-Tools include:
-
-- NirSoft **WakeMeOnLan** (GUI/CLI)
-    
-- **wolcmd.exe** (third-party)
-    
-- PowerShell scripts (example provided later)
-    
-
-## 4. Magic Packet Format (Detailed Specification)
-
-- **Header:**  
-    `FF FF FF FF FF FF` (6 bytes)
-    
-- **Payload:**  
-    `<MAC> × 16` (each MAC is 6 bytes, repeated 16 times)
-    
-- **Total Payload Length:**  
-    102 bytes (excluding frame, IP, and UDP headers)
-    
-- **Transport:**  
-    Raw Ethernet or UDP broadcast (ports 7 or 9)
-    
-- **Limitations:**  
-    Broadcast packets typically do not cross router boundaries unless explicitly permitted or relayed.
-    
-
-## 5. Example Scripts
-
-### 5.1 Python Script (UDP Magic Packet Sender)
-
+#### Python Magic Packet Sender
 ```python
 #!/usr/bin/env python3
-# send_wol.py — send a magic packet over UDP
+# send_wol.py: Sends a magic packet to a specified MAC address.
 
 import socket
 import sys
 import re
 
-def mac_to_bytes(mac: str) -> bytes:
-    mac = re.sub('[.:-]', '', mac).lower()
+def create_magic_packet(mac_address: str) -> bytes:
+    """Creates the 102-byte magic packet payload."""
+    # Sanitize MAC address and convert to bytes
+    mac = re.sub(r'[:\-]', '', mac_address).lower()
     if len(mac) != 12:
-        raise ValueError("MAC address must be 12 hex digits")
-    return bytes.fromhex(mac)
-
-def create_magic_packet(mac: str) -> bytes:
-    mac_bytes = mac_to_bytes(mac)
+        raise ValueError("Invalid MAC address format")
+    mac_bytes = bytes.fromhex(mac)
+    
+    # Construct packet: 6 bytes of FF + 16 repetitions of MAC
     return b'\xff' * 6 + mac_bytes * 16
 
 def send_magic_packet(mac: str, broadcast_ip: str = '255.255.255.255', port: int = 9):
+    """Sends the magic packet via a UDP broadcast."""
     packet = create_magic_packet(mac)
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         s.sendto(packet, (broadcast_ip, port))
+    print(f"Magic packet sent to {mac} via {broadcast_ip}:{port}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: send_wol.py <MAC> [broadcast_ip] [port]")
+        print(f"Usage: {sys.argv[0]} <MAC_ADDRESS> [BROADCAST_IP] [PORT]")
         sys.exit(1)
-    mac = sys.argv[1]
-    bcast = sys.argv[2] if len(sys.argv) >= 3 else '255.255.255.255'
-    port = int(sys.argv[3]) if len(sys.argv) >= 4 else 9
-    send_magic_packet(mac, bcast, port)
-    print(f"Sent magic packet to {mac} via {bcast}:{port}")
+    
+    send_magic_packet(*sys.argv[1:])
 ```
 
-### 5.2 PowerShell Scripts
-
-Two versions were included in your draft; you can keep either. The following remains clean and formal:
-
+#### PowerShell Magic Packet Sender
 ```powershell
-# Send-WoL.ps1 — Send a magic packet to a MAC address
+# Send-WoL.ps1: Sends a magic packet using PowerShell.
 
 param (
-    [Parameter(Mandatory = $true)][string] $Mac,
-    [string] $Broadcast = "255.255.255.255",
-    [int] $Port = 9
+    [Parameter(Mandatory = $true)]
+    [string]$Mac,
+
+    [string]$Broadcast = "255.255.255.255",
+    [int]$Port = 9
 )
 
-function MacToBytes($mac) {
-    $clean = $mac -replace '[-:.]', ''
-    if ($clean.Length -ne 12) { throw "MAC must be 12 hex digits" }
-    $bytes = for ($i=0; $i -lt 12; $i+=2) { [byte]::Parse($clean.Substring($i,2),'HexNumber') }
-    return ,$bytes
+try {
+    # Sanitize MAC and convert to byte array
+    $macBytes = $Mac -replace '[-:]' | ForEach-Object { [byte[]]($_.Substring(0,2), $_.Substring(2,2), $_.Substring(4,2), $_.Substring(6,2), $_.Substring(8,2), $_.Substring(10,2)) -join '' }
+    
+    # Construct packet
+    $packet = [byte[]](,0xFF * 6) + ($macBytes * 16)
+
+    # Send packet
+    $udpClient = New-Object System.Net.Sockets.UdpClient
+    $udpClient.Connect($Broadcast, $Port)
+    $udpClient.Send($packet, $packet.Length) | Out-Null
+    $udpClient.Close()
+
+    Write-Host "Magic packet successfully sent to $Mac."
 }
-
-$macBytes = MacToBytes $Mac
-$packet = [byte[]]@(0xFF,0xFF,0xFF,0xFF,0xFF,0xFF) + (foreach ($i in 1..16) { $macBytes })
-
-$udp = New-Object System.Net.Sockets.UdpClient
-$udp.EnableBroadcast = $true
-$endpoint = New-Object System.Net.IPEndPoint ([System.Net.IPAddress]::Parse($Broadcast)), $Port
-$udp.Send($packet, $packet.Length, $endpoint) | Out-Null
-$udp.Close()
-
-Write-Output "Magic packet sent to $Mac via $Broadcast:$Port"
+catch {
+    Write-Error "Failed to send magic packet: $_"
+}
 ```
 
+## 6. Hands-On Lab Scenarios
 
-## 6. Attack Surface and Abuse Scenarios
+### 1. Basic Two-Host Wake-on-LAN Lab
 
-- **Local Broadcast Abuse:**  
-    In unsegmented networks, a malicious host can broadcast WoL packets to many devices simultaneously.
+This scenario demonstrates the fundamental WoL workflow.
+
+1. Prepare two physical machines on the same Layer-2 network segment. (WoL support is inconsistent in virtualized environments unless the hypervisor explicitly supports wake-packet passthrough.)
     
-- **Combination with Remote Access Services:**  
-    Attackers may wake hosts and then attempt RDP/SMB/SSH access using stolen credentials.
+2. On the target system, enable WoL in BIOS/UEFI and configure the NIC for WoL within the operating system (for example, `ethtool` on Linux or Device Manager on Windows).
     
-- **Wake Storms:**  
-    Repeated or mass wake-ups can deliberately increase noise, strain resources, or disrupt operations.
+3. On the sender system, start a packet capture using Wireshark or `tcpdump`. Send a magic packet using one of the provided Python or PowerShell scripts. Observe the magic packet in the capture and verify that the target system powers on as expected.
     
-- **Cross-Subnet Misconfigurations:**  
-    Improperly configured directed broadcast forwarding can expose WoL to unintended networks.
+This exercise demonstrates packet structure, delivery requirements, and NIC wake behavior.
+
+### 2. Packet Capture and Detection Lab
+
+This scenario focuses on packet analysis and detection logic.
+
+1. Configure port mirroring (SPAN) on the switch so that all broadcast traffic from the target VLAN is replicated to a monitoring system.
     
+2. Use Wireshark or `tcpdump` to capture traffic and filter specifically for WoL patterns, such as the six `FF` bytes followed by the repeated MAC address.
+    
+3. Develop a simple detection script (for example, in Python) that continuously inspects packet payloads for the WoL signature (`FF FF FF FF FF FF` followed by MAC × 16) and generates an alert.  
+    This helps reinforce both payload inspection techniques and signature-based detection concepts.
+    
+### 3. Hardening and Policy Enforcement Lab
+
+This scenario focuses on understanding and applying defensive controls.
+
+1. Create a configuration checklist for disabling or restricting WoL:  
+    BIOS/UEFI configurations, NIC driver power-management settings, and Group Policy controls (for Windows environments).
+    
+2. Apply and test network-layer restrictions. Implement ACLs or firewall rules that block UDP broadcasts to ports 7 and 9 from unauthorized segments. Confirm that legitimate management tools still function as intended.
+    
+3. Document the effect of segmentation and ACLs on the ability to deliver magic packets across VLAN boundaries.
+    
+
+This exercise helps illustrate how network design and access control influence WoL behavior.
+
+
 
 ## 7. Detection and Forensic Considerations
+
+#### Capturing Magic Packets for Analysis
 
 NICs typically do not log wake events, so analysis must rely on external data sources:
 
@@ -353,48 +310,7 @@ NICs typically do not log wake events, so analysis must rely on external data so
 - Avoid exposing WoL mechanisms across the Internet unless encapsulated within authenticated channels.
     
 
-## Safe Lab Scenarios for Ethical Learning
-
-### 1. Basic Two-Host Wake-on-LAN Lab
-
-This scenario demonstrates the fundamental WoL workflow.
-
-1. Prepare two physical machines on the same Layer-2 network segment. (WoL support is inconsistent in virtualized environments unless the hypervisor explicitly supports wake-packet passthrough.)
-    
-2. On the target system, enable WoL in BIOS/UEFI and configure the NIC for WoL within the operating system (for example, `ethtool` on Linux or Device Manager on Windows).
-    
-3. On the sender system, start a packet capture using Wireshark or `tcpdump`. Send a magic packet using one of the provided Python or PowerShell scripts. Observe the magic packet in the capture and verify that the target system powers on as expected.
-    
-This exercise demonstrates packet structure, delivery requirements, and NIC wake behavior.
-
-### 2. Packet Capture and Detection Lab
-
-This scenario focuses on packet analysis and detection logic.
-
-1. Configure port mirroring (SPAN) on the switch so that all broadcast traffic from the target VLAN is replicated to a monitoring system.
-    
-2. Use Wireshark or `tcpdump` to capture traffic and filter specifically for WoL patterns, such as the six `FF` bytes followed by the repeated MAC address.
-    
-3. Develop a simple detection script (for example, in Python) that continuously inspects packet payloads for the WoL signature (`FF FF FF FF FF FF` followed by MAC × 16) and generates an alert.  
-    This helps reinforce both payload inspection techniques and signature-based detection concepts.
-    
-
-### 3. Hardening and Policy Enforcement Lab
-
-This scenario focuses on understanding and applying defensive controls.
-
-1. Create a configuration checklist for disabling or restricting WoL:  
-    BIOS/UEFI configurations, NIC driver power-management settings, and Group Policy controls (for Windows environments).
-    
-2. Apply and test network-layer restrictions. Implement ACLs or firewall rules that block UDP broadcasts to ports 7 and 9 from unauthorized segments. Confirm that legitimate management tools still function as intended.
-    
-3. Document the effect of segmentation and ACLs on the ability to deliver magic packets across VLAN boundaries.
-    
-
-This exercise helps illustrate how network design and access control influence WoL behavior.
-
-
-## Practical Checklists
+## 9 Practical Checklists
 
 ### Device-Level Verification Checklist
 
@@ -408,7 +324,6 @@ Use this list to confirm whether a device is correctly configured for WoL or del
     
 - If WoL is enabled, administrators maintain an updated record of permitted MAC addresses and scheduled maintenance windows.
     
-
 ### Network Hardening Checklist
 
 Use this list to ensure the network infrastructure does not allow uncontrolled magic-packet delivery.
@@ -420,4 +335,4 @@ Use this list to ensure the network infrastructure does not allow uncontrolled m
 - Monitoring and alerting detect abnormal volumes of WoL traffic or packets originating outside approved maintenance windows.
     
 - Out-of-band or authenticated remote management solutions (such as IPMI, vPro/AMT, or vendor-specific management controllers) are preferred for remote power operations across subnets or remote locations.
-    
+

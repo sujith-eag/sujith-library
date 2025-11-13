@@ -145,9 +145,9 @@ export const mcaEHSection = [
         title: "Lab Manual",
         items: [
           { label: "Wake-on-LAN", link: "/mca/eh/lab/lab1" },
-          { label: "Tunneling", link: "/mca/eh/lab/lab2" },
+          { label: "Network Tunneling", link: "/mca/eh/lab/lab2" },
           { label: "Google Dorking", link: "/mca/eh/lab/lab3" },
-          // { label: "BurpSuite Practice", link: "/mca/eh/lab/burp" },
+          { label: "WHOIS & RDAP", link: "/mca/eh/lab/lab4" },
           // { label: "Wireless Lab", link: "/mca/eh/lab/wifi" },
         ]
       },
