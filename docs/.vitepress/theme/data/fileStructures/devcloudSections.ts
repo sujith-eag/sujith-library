@@ -11,33 +11,32 @@ export const cloud1Section = [
          { label: "Conceptializing Cloud", link: "/dev-cloud/cu1/u14" }, 
         ]
       },
-      {
-        title: "Cloud Labs",
-        items: [
-         { label: "Application Layer", link: "/dev_cloud/cclab/l10.md/l11" },
-        ]
-      },
+      // {
+      //   title: "L",
+      //   items: [
+      //    { label: "AWS VPC Setup ", link: "/dev-cloud/cclab/l10" },
+      //   ]
+      // },
     ]
   }
 ]
 
 export const cloud2Section = [
   {
-    title: "Cloud Architecture",
+    title: "AWS Setup & Practice",
     items: [
-      {
-        title: "A",
+     {
+        title: "Network Lab",
         items: [
-        //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
-
+         { label: "AWS VPC Setup ", link: "/dev-cloud/cclab/l10" },
         ]
       },
-      {
-        title: "B",
-        items: [
-        //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
-        ]
-      },
+      // {
+      //   title: "B",
+      //   items: [
+      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
+      //   ]
+      // },
     ]
   }
 ]
@@ -51,18 +50,20 @@ export const cloudSection = [
  
 export const dev1Section = [
   {
-    title: "DevOps Basics",
+    title: "Jenkins",
     items: [
       {
-        title: "A",
+        title: "Basics",
         items: [
-        //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
+         { label: "Jenkins Introduction", link: "/dev-cloud/devops/jenkins/jenkins1" },
         ]
       },
       {
-        title: "B",
+        title: "Setup & Pipeline",
         items: [
-      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
+         { label: "Jenkins Setup", link: "/dev-cloud/devops/jenkins/jenkins2" },
+         { label: "Creating Job", link: "/dev-cloud/devops/jenkins/jenkins3" },
+         { label: "Pipeline as Code", link: "/dev-cloud/devops/jenkins/jenkins4" },
         ]
       },
     ]
@@ -73,26 +74,26 @@ export const dev2Section = [
   {
     title: "Pipelines",
     items: [
-      {
-        title: "A",
-        items: [
-        //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
+      // {
+      //   title: "A",
+      //   items: [
+      //   //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
 
-        ]
-      },
-      {
-        title: "B",
-        items: [
-        //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
-        ]
-      },
+      //   ]
+      // },
+      // {
+      //   title: "B",
+      //   items: [
+      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
+      //   ]
+      // },
     ]
   }
 ]
 
 export const devopsSection = [
   ...dev1Section,
-  ...dev2Section,
+  // ...dev2Section,
 ]
   
 export const devcloudSection = [
