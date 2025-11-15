@@ -66,28 +66,35 @@ export const dev1Section = [
          { label: "Pipeline as Code", link: "/dev-cloud/devops/jenkins/jenkins4" },
         ]
       },
+      {
+        title: "Comparing Platforms",
+        items: [
+         { label: "Syntax", link: "/dev-cloud/devops/cmp/1" },
+         { label: "Environment", link: "docs/dev-cloud/devops/cmp/2" },
+        //  { label: "Pipeline as Code", link: "/dev-cloud/devops/jenkins/jenkins4" },
+        ]
+      },      
     ]
   }
 ]
 
 export const dev2Section = [
   {
-    title: "Pipelines",
-    items: [
-      // {
-      //   title: "A",
-      //   items: [
-      //   //  { label: "Networking Devices", link: "/mca/cn/u1/u11" },
-
-      //   ]
-      // },
+    // title: "Comparisions",
+    // items: [
+    //   {
+    //     title: "A",
+    //     items: [
+    //      { label: "Networking Devices", link: "/mca/cn/u1/u11" },
+    //     ]
+    //   },
       // {
       //   title: "B",
       //   items: [
       //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
       //   ]
       // },
-    ]
+    // ]
   }
 ]
 
