@@ -59,14 +59,16 @@ export const mcaSESection = [
   {
     title: "Software Engineering",
     items: [
-      // {
-      //   title: "Unit-1",
-      //   items: [
-      //     { label: "Software Process Models", link: "/mca/se/u1/u11" },
-      //     { label: "Requirement Engineering", link: "/mca/se/u1/u12" },
-      //     { label: "Unit-1 Questions", link: "/mca/se/u1/q1" },
-      //   ]
-      // },
+      {
+        title: "Unit-1",
+        items: [
+          { label: "Requirements Engineering", link: "/mca/se/u1/u11" },
+          { label: "Software Requirements Document", link: "/mca/se/u1/u12" },
+          { label: "RE Process", link: "/mca/se/u1/u13" },
+          { label: "Complex Systems & System Engineering", link: "/mca/se/u1/u14" },
+          { label: "Procurement, Development, Operations ", link: "/mca/se/u1/u15" },
+        ]
+      },
       // {
       //   title: "Unit-2",
       //   items: [
