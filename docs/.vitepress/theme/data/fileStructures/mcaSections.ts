@@ -63,10 +63,12 @@ export const mcaSESection = [
         title: "Unit-1",
         items: [
           { label: "Requirements Engineering", link: "/mca/se/u1/u11" },
-          { label: "Software Requirements Document", link: "/mca/se/u1/u12" },
-          { label: "RE Process", link: "/mca/se/u1/u13" },
-          { label: "Complex Systems & System Engineering", link: "/mca/se/u1/u14" },
-          { label: "Procurement, Development, Operations ", link: "/mca/se/u1/u15" },
+          { label: "RE Process", link: "/mca/se/u1/u12" },
+          { label: "Requirements Specification & SRD", link: "/mca/se/u1/u13" },
+          { label: "Requirement Validation & Change", link: "/mca/se/u1/u14" },
+          { label: "Socio-technical Systems", link: "/mca/se/u1/u15" },
+          { label: "System Engineering", link: "/mca/se/u1/u16" },
+          { label: "System Development & Operations ", link: "/mca/se/u1/u17" },
         ]
       },
       // {
