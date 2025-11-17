@@ -70,8 +70,7 @@ export const dev1Section = [
         title: "Comparing Platforms",
         items: [
          { label: "Syntax", link: "/dev-cloud/devops/cmp/1" },
-         { label: "Environment", link: "docs/dev-cloud/devops/cmp/2" },
-        //  { label: "Pipeline as Code", link: "/dev-cloud/devops/jenkins/jenkins4" },
+         { label: "Environment", link: "/dev-cloud/devops/cmp/2" },
         ]
       },      
     ]
@@ -80,27 +79,35 @@ export const dev1Section = [
 
 export const dev2Section = [
   {
-    // title: "Comparisions",
-    // items: [
-    //   {
-    //     title: "A",
-    //     items: [
-    //      { label: "Networking Devices", link: "/mca/cn/u1/u11" },
-    //     ]
-    //   },
-      // {
-      //   title: "B",
-      //   items: [
-      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
-      //   ]
-      // },
-    // ]
+    title: "Docker",
+    items: [
+      {
+        title: "Introduction",
+        items: [
+         { label: "Docker Core Concepts", link: "/dev-cloud/devops/docker/1_intro/u11" },
+         { label: "Docker Architecture", link: "/dev-cloud/devops/docker/1_intro/u12" },
+         { label: "Container Networking", link: "/dev-cloud/devops/docker/1_intro/u13" },
+         { label: "Docker Lifecycle", link: "/dev-cloud/devops/docker/1_intro/u14" },
+         { label: "Application Design Philosophy", link: "/dev-cloud/devops/docker/1_intro/u15" },
+         { label: "Docker Ecosystem", link: "/dev-cloud/devops/docker/1_intro/u16" },
+        ]
+      },
+      {
+        title: "Docker Files",
+        items: [
+         { label: "Dockerfile", link: "/dev-cloud/devops/docker/2_files/u21" },
+         { label: "Docker Compose", link: "/dev-cloud/devops/docker/2_files/u22" },
+         { label: "Managing Data and Storage", link: "/dev-cloud/devops/docker/2_files/u23" },
+         { label: "Container Security", link: "/dev-cloud/devops/docker/2_files/u24" },
+        ]
+      },
+    ]
   }
 ]
 
 export const devopsSection = [
   ...dev1Section,
-  // ...dev2Section,
+  ...dev2Section,
 ]
   
 export const devcloudSection = [
