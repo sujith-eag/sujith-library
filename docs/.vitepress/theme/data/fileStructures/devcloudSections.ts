@@ -86,10 +86,7 @@ export const dev2Section = [
         items: [
          { label: "Docker Core Concepts", link: "/dev-cloud/devops/docker/1_intro/u11" },
          { label: "Docker Architecture", link: "/dev-cloud/devops/docker/1_intro/u12" },
-         { label: "Container Networking", link: "/dev-cloud/devops/docker/1_intro/u13" },
-         { label: "Docker Lifecycle", link: "/dev-cloud/devops/docker/1_intro/u14" },
-         { label: "Application Design Philosophy", link: "/dev-cloud/devops/docker/1_intro/u15" },
-         { label: "Docker Ecosystem", link: "/dev-cloud/devops/docker/1_intro/u16" },
+         { label: "Application Design Philosophy", link: "/dev-cloud/devops/docker/1_intro/u13" },
         ]
       },
       {
@@ -99,6 +96,10 @@ export const dev2Section = [
          { label: "Docker Compose", link: "/dev-cloud/devops/docker/2_files/u22" },
          { label: "Managing Data and Storage", link: "/dev-cloud/devops/docker/2_files/u23" },
          { label: "Container Security", link: "/dev-cloud/devops/docker/2_files/u24" },
+
+         { label: "Docker Lifecycle", link: "/dev-cloud/devops/docker/1_intro/u14" },
+         { label: "Container Networking", link: "/dev-cloud/devops/docker/1_intro/u15" },
+         { label: "Docker Ecosystem", link: "/dev-cloud/devops/docker/1_intro/u16" },
         ]
       },
     ]

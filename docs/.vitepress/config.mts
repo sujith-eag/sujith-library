@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import katex from 'markdown-it-katex'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 import { cSidebar } from './sidebar/cSidebar'
 import { javaSidebar } from './sidebar/javaSidebar'
@@ -17,7 +18,8 @@ import { interviewSidebar } from './sidebar/interviewSidebar'
 import { devcloudSidebar } from './sidebar/devcloudSidebar'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(
+defineConfig({
   title: "Sujith's Library",
   description: "A curated collection of learning resources and code examples.",
   
@@ -164,3 +166,4 @@ nav: [
   }
 })
 
+)
