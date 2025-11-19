@@ -33,6 +33,18 @@ defineConfig({
     hostname: 'https://sujith-eag.in'
   },
   
+  vite: { 
+    plugins: [ /* plugin */ ],
+    
+    optimizeDeps: {
+      include: ['mermaid'] 
+    },
+    
+    ssr: {
+      noExternal: ['mermaid', 'vitepress-plugin-mermaid']
+    }
+  },
+  
   head: [
     // Favicon
     ['link', { rel: 'icon', href: '/logo/logo.png' }],
@@ -52,6 +64,7 @@ defineConfig({
     ]
   ],
 
+  
   markdown: {
     theme: {
         light: 'github-light',

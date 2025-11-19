@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.mts"]
+}
