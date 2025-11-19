@@ -16,6 +16,7 @@ import { reactSidebar } from './sidebar/reactSidebar'
 import { mcaSidebar } from './sidebar/mcaSidebar'
 import { interviewSidebar } from './sidebar/interviewSidebar'
 import { devcloudSidebar } from './sidebar/devcloudSidebar'
+import { softwareModelingSidebar } from './sidebar/softwareModelingSidebar'
 
 // https://vitepress.dev/reference/site-config
 
@@ -181,15 +182,17 @@ nav: [
 
     text: 'CS Fundamentals',
 
-    items: [
+        items: [
 
-      { text: 'Operating Systems', link: '/os/' },
+          { text: 'Operating Systems', link: '/os/' },
 
-      { text: 'Databases (DBMS)', link: '/dbms/' },
+          { text: 'Databases (DBMS)', link: '/dbms/' },
 
-      { text: 'DSA Problems', link: '/leetcode/' }
+          { text: 'Software Modeling', link: '/software-modeling/' },
 
-    ]
+          { text: 'DSA Problems', link: '/leetcode/' }
+
+        ]
 
   },
 
@@ -243,11 +246,13 @@ nav: [
 
       '/tools/': toolsSidebar(),
 
-      '/leetcode/': interviewSidebar(),
+            '/leetcode/': interviewSidebar(),
 
-      '/dev-cloud/': devcloudSidebar(),
+            '/dev-cloud/': devcloudSidebar(),
 
-    },
+            '/software-modeling/': softwareModelingSidebar,
+
+          },
 
       
 
