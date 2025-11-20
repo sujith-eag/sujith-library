@@ -174,10 +174,13 @@ graph TD
     
     OrderService -- "Initiates Payment" --> PaymentService
     PaymentService -- "Processes via" --> PaymentGatewayAPI
-    PaymentService --> OrderDB -- "Updates Payment Status"
+	PaymentService -- "Updates Payment Status" --> OrderDB
     
-    OrderService -- "Confirm Order" --> NotificationService
+	OrderService -- "Confirm Order" --> NotificationService
     NotificationService -- "Via" --> EmailSender
+
+
+
 
     style AuthService fill:#e6f7ff,stroke:#91d5ff
     style ProductService fill:#e6f7ff,stroke:#91d5ff

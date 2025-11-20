@@ -22,26 +22,21 @@ import { softwareModelingSidebar } from './sidebar/softwareModelingSidebar'
 
 export default withMermaid(
   defineConfig({
+
+    /* --------------------------------------------------------
+     *  Site Identity
+     * ------------------------------------------------------*/
     title: "Sujith's Library",
     description: "A curated collection of learning resources and code examples.",
-
-    // Catch broken links during the build process
-    ignoreDeadLinks: true,
     base: '/',
     cleanUrls: true,
+    ignoreDeadLinks: true,
 
-    // Add sitemap for SEO
+    /* --------------------------------------------------------
+     *  SEO: Sitemap & Head Meta Tags + Analytics
+     * ------------------------------------------------------*/
     sitemap: {
       hostname: 'https://sujith-eag.in'
-    },
-
-    vite: {
-      optimizeDeps: {
-        include: ['mermaid']
-      },
-      ssr: {
-        noExternal: ['mermaid', 'vitepress-plugin-mermaid']
-      }
     },
 
     head: [
@@ -49,12 +44,13 @@ export default withMermaid(
       ['link', { rel: 'icon', href: '/logo/logo.png' }],
       ['link', { rel: 'shortcut icon', href: '/logo/logo.png', type: 'image/png' }],
 
-      // Social media meta tags for better link sharing
+      // Social sharing metadata
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:locale', content: 'en' }],
       ['meta', { property: 'og:site_name', content: "Sujith's Library" }],
       ['meta', { property: 'og:image', content: '/logo/logo.png' }],
 
+      // Analytics
       [
         'script',
         {
@@ -65,59 +61,94 @@ export default withMermaid(
       ]
     ],
 
+    /* --------------------------------------------------------
+     *  Markdown Settings
+     * ------------------------------------------------------*/
     markdown: {
       theme: {
         light: 'github-light',
         dark: 'github-dark'
       },
       lineNumbers: true,
-
       config: (md) => {
         md.use(katex)
       }
     },
 
+    /* --------------------------------------------------------
+     *  Vite Configuration
+     * ------------------------------------------------------*/
+    vite: {
+      optimizeDeps: {
+        include: ['mermaid']
+      },
+      ssr: {
+        noExternal: ['mermaid', 'vitepress-plugin-mermaid']
+      }
+    },
+
+    /* --------------------------------------------------------
+     *  Theme Configuration: Navbar, Sidebar, Outline
+     * ------------------------------------------------------*/
     themeConfig: {
       logo: '/logo/logo.png',
 
+      /* Navigation Menu */
       nav: [
         { text: 'Home', link: '/' },
+
+        /* Programming Languages */
         {
           text: 'Languages',
           items: [
+            { text: 'C', link: '/c/' },
             { text: 'Java', link: '/java/' },
-            { text: 'Python', link: '/python/' },
-            { text: 'C', link: '/c/' }
+            { text: 'Python', link: '/python/' }
           ]
         },
+
+        /* Web Development */
         {
           text: 'Web Dev',
           items: [
+            { text: 'HTML & CSS', link: '/html/' },
             { text: 'JavaScript', link: '/java-script/' },
             { text: 'JavaScript DOM', link: '/java-script-dom/' },
-            { text: 'React', link: '/react/' },
-            { text: 'HTML & CSS', link: '/html/' }
+            { text: 'React', link: '/react/' }
           ]
         },
+
+        /* CS Core Subjects */
         {
-          text: 'CS Fundamentals',
+          text: 'Computer Science',
           items: [
             { text: 'Operating Systems', link: '/os/' },
             { text: 'Databases (DBMS)', link: '/dbms/' },
             { text: 'Software Modeling', link: '/software-modeling/' },
-            { text: 'DSA Problems', link: '/leetcode/' }
+            { text: 'DSA / LeetCode', link: '/leetcode/' }
           ]
         },
+
+        /* Tools, Platforms, Extra */
         {
-          text: 'More',
+          text: 'Platforms',
           items: [
             { text: 'Linux', link: '/linux/' },
             { text: 'Tools & Git', link: '/tools/' },
+            { text: 'Dev Cloud', link: '/dev-cloud/' }
+          ]
+        },
+
+        /* Academics / University */
+        {
+          text: 'Academics',
+          items: [
             { text: 'MCA', link: '/mca/' }
           ]
         }
       ],
 
+      /* Sidebar groups */
       sidebar: {
         '/c/': cSidebar(),
         '/css/': htmlcssSidebar(),
@@ -138,11 +169,12 @@ export default withMermaid(
         '/software-modeling/': softwareModelingSidebar
       },
 
+      /* Page structure */
       outline: {
         level: [2, 6]
       },
 
-      // Enable detailed view for local search
+      /* Search */
       search: {
         provider: 'local',
         options: {
@@ -150,17 +182,18 @@ export default withMermaid(
         }
       },
 
-      // Edit link (currently disabled)
       // editLink: {
       //   pattern: 'https://github.com/sujith-eag/vu-library/edit/main/docs/:path',
       //   text: 'Edit this page on Github'
       // },
 
+      /* Footer */
       footer: {
         message: 'Made with ❤️ for students, by a fellow learner.',
         copyright: `© ${new Date().getFullYear()} Sujith.`
       },
 
+      /* Last updated timestamp */
       lastUpdated: {
         text: 'Updated on',
         formatOptions: {
@@ -168,15 +201,10 @@ export default withMermaid(
         }
       },
 
+      /* Social icons */
       socialLinks: [
-        {
-          icon: 'github',
-          link: 'https://github.com/sujith-eag/'
-        },
-        {
-          icon: 'linkedin',
-          link: 'https://www.linkedin.com/in/sujith-eag'
-        }
+        { icon: 'github', link: 'https://github.com/sujith-eag/' },
+        { icon: 'linkedin', link: 'https://www.linkedin.com/in/sujith-eag' }
       ]
     }
   })
