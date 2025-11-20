@@ -47,7 +47,6 @@ export const cloudSection = [
   ...cloud2Section,
 ]
 
- 
 export const dev1Section = [
   {
     title: "Jenkins",
@@ -84,22 +83,51 @@ export const dev2Section = [
       {
         title: "Introduction",
         items: [
-         { label: "Docker Core Concepts", link: "/dev-cloud/devops/docker/1_intro/u11" },
-         { label: "Docker Architecture", link: "/dev-cloud/devops/docker/1_intro/u12" },
-         { label: "Application Design Philosophy", link: "/dev-cloud/devops/docker/1_intro/u13" },
+          { label: "Core Concepts", link: "/dev-cloud/devops/docker/1_intro/u11" },
+          { label: "Docker Architecture", link: "/dev-cloud/devops/docker/1_intro/u12" },
+          { label: "Design Philosophy", link: "/dev-cloud/devops/docker/1_intro/u13" },
         ]
       },
       {
-        title: "Docker Files",
+        title: "Installation & Files",
         items: [
-         { label: "Dockerfile", link: "/dev-cloud/devops/docker/2_files/u21" },
-         { label: "Docker Compose", link: "/dev-cloud/devops/docker/2_files/u22" },
-         { label: "Managing Data and Storage", link: "/dev-cloud/devops/docker/2_files/u23" },
-         { label: "Container Security", link: "/dev-cloud/devops/docker/2_files/u24" },
-
-         { label: "Docker Lifecycle", link: "/dev-cloud/devops/docker/1_intro/u14" },
-         { label: "Container Networking", link: "/dev-cloud/devops/docker/1_intro/u15" },
-         { label: "Docker Ecosystem", link: "/dev-cloud/devops/docker/1_intro/u16" },
+          { label: "Install & Setup", link: "/dev-cloud/devops/docker/2_install/u21" },
+          { label: "Dockerfile", link: "/dev-cloud/devops/docker/2_install/u22" },
+          { label: "Docker Compose", link: "/dev-cloud/devops/docker/2_install/u23" },
+        ]
+      },
+      {
+        title: "Technical Concepts",
+        items: [
+          { label: "Data & Storage Management", link: "/dev-cloud/devops/docker/3_tech/u31" },
+          { label: "Container Networking", link: "/dev-cloud/devops/docker/3_tech/u32" },
+          { label: "Security Best Practices", link: "/dev-cloud/devops/docker/3_tech/u33" },
+          { label: "Advanced Security", link: "/dev-cloud/devops/docker/3_tech/u34" },
+        ]
+      },
+      {
+        title: "Lifecycle & Optimization",
+        items: [
+          { label: "Docker Lifecycle", link: "/dev-cloud/devops/docker/4_life_ecj/u41" },
+          { label: "Docker Ecosystem", link: "/dev-cloud/devops/docker/4_life_ecj/u42" },
+          { label: "Image Optimization", link: "/dev-cloud/devops/docker/4_life_ecj/u43" },
+        ]
+      },
+      {
+        title: "Registries & CI",
+        items: [
+          { label: "Managing Registries", link: "/dev-cloud/devops/docker/5_reg/u51" },
+          { label: "CI Testing", link: "/dev-cloud/devops/docker/5_reg/u52" },
+          { label: "CI Pipelines", link: "/dev-cloud/devops/docker/5_reg/u53" },
+        ]
+      },
+      {
+        title: "Orchestration",
+        items: [
+          { label: "Swarm", link: "/dev-cloud/devops/docker/6_cloud/u61" },
+          { label: "Kubernetes", link: "/dev-cloud/devops/docker/6_cloud/u62" },
+          { label: "Managed K8s", link: "/dev-cloud/devops/docker/6_cloud/u63" },
+          { label: "Observability", link: "/dev-cloud/devops/docker/6_cloud/u64" },
         ]
       },
     ]
