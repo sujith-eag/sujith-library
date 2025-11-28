@@ -23,20 +23,47 @@ export const cloud1Section = [
 
 export const cloud2Section = [
   {
-    title: "AWS Setup & Practice",
+    title: "AWS Labs",
     items: [
-     {
-        title: "Network Lab",
+      {
+        title: "Account & IAM",
         items: [
-         { label: "AWS VPC Setup ", link: "/dev-cloud/cclab/l10" },
+          { label: "AWS Account Setup", link: "/dev-cloud/cclab/lab_1" },
+          { label: "IAM User & Group", link: "/dev-cloud/cclab/lab_2" },
         ]
       },
-      // {
-      //   title: "B",
-      //   items: [
-      //   //  { label: "Application Layer", link: "/mca/cn/u2/u11" },
-      //   ]
-      // },
+      {
+        title: "S3 Storage",
+        items: [
+          { label: "S3 Introduction", link: "/dev-cloud/cclab/lab_3" },
+          { label: "S3 Hosting & Replication", link: "/dev-cloud/cclab/lab_4" },
+        ]
+      },
+      {
+        title: "EC2 Instances",
+        items: [
+          { label: "Windows EC2 (RDP)", link: "/dev-cloud/cclab/lab_5" },
+          { label: "Linux EC2 (SSH)", link: "/dev-cloud/cclab/lab_6" },
+          { label: "Static Website on EC2", link: "/dev-cloud/cclab/lab_7" },
+          { label: "Custom AMI", link: "/dev-cloud/cclab/lab_8" },
+          { label: "Mini Project", link: "/dev-cloud/cclab/lab_9" },
+        ]
+      },
+      {
+        title: "Networking (VPC)",
+        items: [
+          { label: "Custom VPC Setup", link: "/dev-cloud/cclab/lab_10" },
+          { label: "EC2 in Public/Private Subnet", link: "/dev-cloud/cclab/lab_11" },
+        ]
+      },
+      {
+        title: "Load Balancing & Scaling",
+        items: [
+          { label: "ALB & Auto Scaling", link: "/dev-cloud/cclab/lab_12" },
+          { label: "Stress Testing (CloudWatch)", link: "/dev-cloud/cclab/lab_13" },
+          // { label: "Final Project", link: "/dev-cloud/cclab/lab_14" },
+        ]
+      },
     ]
   }
 ]

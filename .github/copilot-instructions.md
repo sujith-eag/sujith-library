@@ -43,3 +43,12 @@ This file gives concise, actionable guidance for AI coding agents working on the
 **Do not change**
 - Avoid editing generated build outputs under `docs/.vitepress/dist` or files under `docs/.vitepress/cache` — these are artifacts.
 
+**Content Formatting Rules**
+- Use `#` (h1) for page title (one per page), `##` for main sections, `###` for subsections.
+- Do not use `**bold**` formatting inside headings.
+- Do not add `---` separators before `##` headings — VitePress auto-creates them.
+- Do not label diagrams as "Mermaid Diagram:" — use descriptive headings.
+- Place a large overview diagram at the top; split and place focused diagrams in relevant sections.
+- Use `###` subheadings for multi-step subsections (e.g., "Option 1: Passkey Setup").
+- Use `flowchart TD` for complex diagrams; avoid `flowchart LR` for diagrams with many nodes (they become too small).
+
