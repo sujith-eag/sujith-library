@@ -1,6 +1,7 @@
 # Custom AMI Creation and Management
 
 **Date:** 7-11-2025
+
 This lab covers creating a Custom Amazon Machine Image (AMI) from a working EC2 instance, launching new instances from it, and properly deleting AMIs to avoid unnecessary charges.
 
 

@@ -1,6 +1,7 @@
 # Stress Testing a Linux EC2 Instance
 
 **Date:** 20-11-2025
+
 This lab demonstrates how to generate high CPU load on an Amazon EC2 Linux instance using the `stress-ng` tool and observe CPU utilization in CloudWatch.
 
 ```mermaid
