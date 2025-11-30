@@ -302,6 +302,10 @@ pnpm add package-name
 
 # Mermaid Diagrams
 
+## Theme-Aware Diagrams
+
+All Mermaid diagrams are **automatically theme-aware**. Colors adapt to light/dark mode via CSS variables defined in `docs/.vitepress/theme/mermaid.css`. You do not need to add `classDef` or `style` directives — the theme handles styling consistently.
+
 ## Basic Usage
 
 Embed diagrams using fenced code blocks with `mermaid` language:
@@ -326,65 +330,35 @@ flowchart TD
 > [!IMPORTANT]
 > Avoid `flowchart LR` for diagrams with many nodes or subgraphs — they become too small horizontally.
 
-## Standard Color Palette
+## Best Practices
 
-Use these `classDef` styles for consistent appearance:
+1. **Do NOT hardcode colors** — Let the CSS handle styling for theme consistency.
 
-```mermaid
-flowchart TD
-    A[Process Node] --> B{Decision Node}
-    B -->|Yes| C[Success Node]
-    B -->|No| D[Warning Node]
-    C --> E[Highlight Node]
+2. **Keep diagrams simple** — Break complex flows into multiple smaller diagrams.
 
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-    classDef warning fill:#f8d7da,stroke:#721c24
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
+3. **Use descriptive node IDs** — `UserAuth` instead of `A` for readability.
 
-    class A process
-    class B decision
-    class C success
-    class D warning
-    class E highlight
-```
+4. **Avoid reserved keywords** — Don't use `end`, `start`, `graph`, `subgraph` as node IDs.
 
-### Color Reference
+5. **Wrap special characters** — Use quotes: `A["Node with (parentheses)"]`
 
-| Style | Fill | Stroke | Use For |
-|-------|------|--------|---------|
-| `process` | `#e6f7ff` | `#91d5ff` | Standard steps, activities |
-| `decision` | `#fffbe6` | `#ffe58f` | Decision points, conditionals |
-| `success` | `#d4edda` | `#155724` | Completion, success states |
-| `warning` | `#f8d7da` | `#721c24` | Errors, failures, warnings |
-| `highlight` | `#fff0f5` | `#ff69b4` | Emphasis, important items |
+## Supported Diagram Types
 
-## Subgraph Styling
+The theme covers all common Mermaid diagram types:
 
-Style subgraphs for visual grouping:
+| Type | Syntax Start | Use Case |
+|------|--------------|----------|
+| Flowchart | `flowchart TD` | Process flows, decision trees |
+| Sequence | `sequenceDiagram` | API calls, interactions |
+| Class | `classDiagram` | OOP class structures |
+| State | `stateDiagram-v2` | State machines |
+| ER | `erDiagram` | Database schemas |
+| Gantt | `gantt` | Project timelines |
+| Pie | `pie` | Data distribution |
+| Mindmap | `mindmap` | Hierarchical concepts |
+| Git Graph | `gitGraph` | Branch visualization |
 
-```mermaid
-flowchart TD
-    subgraph VPC [Virtual Private Cloud]
-        subgraph Public [Public Subnet]
-            Web[Web Server]
-        end
-        subgraph Private [Private Subnet]
-            DB[Database]
-        end
-    end
-```
-
-## Diagram Layout Rules
-
-- Use `flowchart TD` for complex diagrams with many nodes.
-
-- Use `flowchart LR` only for simple linear flows (5-6 nodes maximum).
-
-- Avoid reserved keywords as node IDs (`end`, `start`, `graph`).
-
-## Common Diagram Types
+## Common Diagram Examples
 
 ### Flowchart
 
@@ -394,8 +368,8 @@ flowchart TD
     Process --> Decision{Valid?}
     Decision -->|Yes| Success[Save]
     Decision -->|No| Error[Show Error]
-    Success --> End[End]
-    Error --> End
+    Success --> EndNode[End]
+    Error --> EndNode
 ```
 
 ### Sequence Diagram
@@ -416,9 +390,6 @@ sequenceDiagram
     deactivate Server
 ```
 
-> [!NOTE]
-> Sequence diagrams do not support `classDef` styling. Use `themeVariables` in frontmatter for global styling.
-
 ### Entity Relationship
 
 ```mermaid
@@ -428,25 +399,23 @@ erDiagram
     PRODUCT ||--o{ LINE_ITEM : "ordered in"
 ```
 
-## Mermaid Syntax Reference
+## Subgraph Styling
 
-### Reserved Keywords
-
-Do not use as node IDs: `end`, `start`, `graph`, `subgraph`, `direction`
+Subgraphs are automatically styled. Just define them:
 
 ```mermaid
 flowchart TD
-    A --> endNode[End]  %% Correct: use endNode, not end
+    subgraph VPC [Virtual Private Cloud]
+        subgraph Public [Public Subnet]
+            Web[Web Server]
+        end
+        subgraph Private [Private Subnet]
+            DB[Database]
+        end
+    end
 ```
 
-### Special Characters
-
-Wrap text with special characters in quotes:
-
-```mermaid
-flowchart TD
-    A["Node with (parentheses)"] --> B["Price: $100"]
-```
+## Mermaid Syntax Tips
 
 ### Line Breaks in Nodes
 
@@ -459,7 +428,7 @@ flowchart TD
 
 ### Sequence Diagram Activation
 
-Use explicit `activate`/`deactivate` keywords instead of `+`/`-` modifiers:
+Use explicit `activate`/`deactivate` keywords:
 
 ```mermaid
 sequenceDiagram
@@ -468,6 +437,47 @@ sequenceDiagram
     Server-->>User: Response
     deactivate Server
 ```
+
+## Theme Color Reference
+
+The CSS provides these semantic color categories (applied automatically):
+
+| Category | Light Mode | Dark Mode | Applied To |
+|----------|------------|-----------|------------|
+| Default | Soft blue | Deep blue | Standard nodes |
+| Primary | Indigo | Navy blue | Highlighted nodes |
+| Secondary | Green | Emerald | Success/secondary |
+| Tertiary | Pink | Magenta | Alternative nodes |
+| Accent | Yellow | Amber | Decision points |
+| Success | Green | Green | Success states |
+| Warning | Orange | Warm orange | Warnings |
+| Danger | Red | Red | Errors |
+
+> [!NOTE]
+> Colors rotate automatically across nodes for visual variety. No manual assignment needed.
+
+## Standardization (Automatic)
+
+The CSS enforces these standards across all diagrams:
+
+| Aspect | Standard | Notes |
+|--------|----------|-------|
+| Border radius | 6px | Rounded corners on rectangles |
+| Stroke width | 1.5px | Consistent line thickness |
+| Font family | System fonts | -apple-system, Segoe UI, Roboto |
+| Node text | 13px | Standard readability |
+| Edge labels | 11px | Slightly smaller |
+| Root/title | 14px bold | Emphasis on hierarchy roots |
+
+## Tips for Cleaner Diagrams
+
+1. **Avoid `::icon()` syntax** — Font Awesome icons may not render consistently; use emoji or text labels instead.
+
+2. **Use simple node shapes** — Stick to `[]` rectangles, `{}` rhombus, `()` rounded, `(())` circles.
+
+3. **Keep labels concise** — Long text wraps poorly; use `<br>` for controlled line breaks.
+
+4. **Limit nesting depth** — Keep subgraphs/mindmaps to 3 levels for clarity.
 
 ---
 
@@ -504,7 +514,7 @@ $$
 | Line spacing | Blank line between separate elements |
 | Code blocks | Always specify language identifier |
 | Callouts | Capitalize keyword: `[!NOTE]` |
-| Diagrams | Use `flowchart TD` for complex diagrams |
+| Diagrams | Theme-aware, no manual colors needed |
 | Node IDs | Avoid reserved keywords (`end`, `start`, `graph`) |
 
 ---
@@ -516,6 +526,7 @@ $$
 | File | Purpose |
 |------|---------|
 | `docs/.vitepress/config.mts` | Site configuration, plugins, theme |
+| `docs/.vitepress/theme/mermaid.css` | Theme-aware Mermaid diagram styling |
 | `docs/.vitepress/theme/data/fileStructures/*.ts` | Sidebar data structures |
 | `docs/.vitepress/theme/utils/transformSectionsToSidebar.ts` | Sidebar generation utility |
 | `package.json` | Dependencies and npm scripts |

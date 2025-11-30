@@ -272,8 +272,26 @@
 
 /* ───── Mindmap ───── */
 .mermaid .mindmap-node rect,
-.mermaid .mindmap-node circle { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
-.mermaid .mindmap-node text { fill: var(--mm-text) !important; }
+.mermaid .mindmap-node circle,
+.mermaid .mindmap-node polygon { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .mindmap-node text,
+.mermaid .mindmap-node tspan { fill: var(--mm-text) !important; }
+/* Mindmap branch colors for hierarchy */
+.mermaid .mindmap-node--level-0 rect,
+.mermaid .mindmap-node--level-0 circle { fill: var(--mm-node-primary-fill) !important; stroke: var(--mm-node-primary-stroke) !important; }
+.mermaid .mindmap-node--level-1 rect,
+.mermaid .mindmap-node--level-1 circle { fill: var(--mm-node-secondary-fill) !important; stroke: var(--mm-node-secondary-stroke) !important; }
+.mermaid .mindmap-node--level-2 rect,
+.mermaid .mindmap-node--level-2 circle { fill: var(--mm-node-tertiary-fill) !important; stroke: var(--mm-node-tertiary-stroke) !important; }
+.mermaid .mindmap-node--level-3 rect,
+.mermaid .mindmap-node--level-3 circle { fill: var(--mm-node-accent-fill) !important; stroke: var(--mm-node-accent-stroke) !important; }
+/* Mindmap edges */
+.mermaid .edge-depth-0 { stroke: var(--mm-node-primary-stroke) !important; }
+.mermaid .edge-depth-1 { stroke: var(--mm-node-secondary-stroke) !important; }
+.mermaid .edge-depth-2 { stroke: var(--mm-node-tertiary-stroke) !important; }
+/* Section styling for mindmap */
+.mermaid .section-root > rect { fill: var(--mm-node-primary-fill) !important; stroke: var(--mm-node-primary-stroke) !important; }
+.mermaid .section-root text { fill: var(--mm-text) !important; font-weight: 600 !important; }
 
 /* ───── Git Graph ───── */
 .mermaid .commit circle { fill: var(--mm-primary) !important; stroke: var(--mm-border) !important; }
@@ -300,3 +318,104 @@
 
 /* ───── Subgraph borders (flowchart clusters) ───── */
 .mermaid .cluster-label { fill: var(--mm-text) !important; }
+
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL TEXT & TYPOGRAPHY ENHANCEMENTS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Force all text elements to use theme text color */
+.mermaid text,
+.mermaid tspan,
+.mermaid .nodeLabel,
+.mermaid .edgeLabel,
+.mermaid .label-container,
+.mermaid foreignObject div {
+  fill: var(--mm-text) !important;
+  color: var(--mm-text) !important;
+}
+
+/* Font Awesome icons in diagrams */
+.mermaid .fa,
+.mermaid .fas,
+.mermaid .far,
+.mermaid .fab,
+.mermaid [class^="fa-"],
+.mermaid [class*=" fa-"] {
+  fill: var(--mm-text) !important;
+  color: var(--mm-text) !important;
+}
+
+/* Icon text in parentheses from ::icon() */
+.mermaid .icon {
+  fill: var(--mm-muted-text) !important;
+  color: var(--mm-muted-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STANDARDIZATION: Shapes, Sizes, Spacing
+   ═══════════════════════════════════════════════════════════ */
+
+/* Consistent border radius for rectangular nodes */
+.mermaid .node rect,
+.mermaid .cluster rect,
+.mermaid .actor rect,
+.mermaid .statediagram-state rect {
+  rx: 6px !important;
+  ry: 6px !important;
+}
+
+/* Consistent stroke width */
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .cluster rect,
+.mermaid .edgePath path,
+.mermaid .flowchart-link {
+  stroke-width: 1.5px !important;
+}
+
+/* Thicker strokes for emphasis elements */
+.mermaid .start-state circle,
+.mermaid .end-state circle {
+  stroke-width: 2px !important;
+}
+
+/* Consistent arrow/marker sizing */
+.mermaid marker path {
+  stroke-width: 1px !important;
+}
+
+/* Improve edge label backgrounds */
+.mermaid .edgeLabel rect,
+.mermaid .edgeLabel foreignObject {
+  rx: 4px !important;
+  ry: 4px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FONT STANDARDIZATION
+   ═══════════════════════════════════════════════════════════ */
+
+.mermaid text,
+.mermaid tspan {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Root/title nodes slightly larger */
+.mermaid .mindmap-node--level-0 text,
+.mermaid .section-root text {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Standard node text */
+.mermaid .node text,
+.mermaid .nodeLabel {
+  font-size: 13px !important;
+}
+
+/* Edge labels slightly smaller */
+.mermaid .edgeLabel text {
+  font-size: 11px !important;
+}

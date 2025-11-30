@@ -50,13 +50,8 @@ export default withMermaid(
         }
       ],
 
-      // Theme-aware Mermaid client script
-      // Theme-aware Mermaid client script & CSS
+      // Theme-aware Mermaid styling
       ['link', { rel: 'stylesheet', href: '/.vitepress/theme/mermaid.css' }],
-      [
-        'script',
-        { type: 'module', src: '/.vitepress/theme/mermaid.client.ts' }
-      ],
     ],
     base: '/',
     cleanUrls: true,
