@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css'
 
 import './style.css'
 import './custom.css'
+import './mermaid.css'
 
 export default {
   extends: DefaultTheme,

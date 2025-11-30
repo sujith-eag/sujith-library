@@ -49,9 +49,6 @@ export default withMermaid(
           async: 'true'
         }
       ],
-
-      // Theme-aware Mermaid styling
-      ['link', { rel: 'stylesheet', href: '/.vitepress/theme/mermaid.css' }],
     ],
     base: '/',
     cleanUrls: true,
