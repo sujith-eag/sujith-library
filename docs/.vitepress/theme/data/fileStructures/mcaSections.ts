@@ -60,51 +60,45 @@ export const mcaSESection = [
     title: "Software Engineering",
     items: [
       {
-        title: "Unit-1",
+        title: "Requirements Engineering",
         items: [
-          { label: "Requirements Engineering", link: "/mca/se/u1/u11" },
-          { label: "RE Process", link: "/mca/se/u1/u12" },
-          { label: "Requirements Specification & SRD", link: "/mca/se/u1/u13" },
-          { label: "Requirement Validation & Change", link: "/mca/se/u1/u14" },
-          { label: "Socio-technical Systems", link: "/mca/se/u1/u15" },
-          { label: "System Engineering", link: "/mca/se/u1/u16" },
-          { label: "System Development & Operations ", link: "/mca/se/u1/u17" },
+          { label: "RE Fundamentals", link: "/mca/se/u11/u11" },
+          { label: "RE Process", link: "/mca/se/u11/u12" },
+          { label: "Requirements Specification (SRD)", link: "/mca/se/u11/u13" },
+          { label: "Requirements Validation", link: "/mca/se/u11/u14" },
         ]
       },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "System Modeling & Design", link: "/mca/se/u2/u21" },
-      //     { label: "Architectural Styles", link: "/mca/se/u2/u22" },
-      //     { label: "Unit-2 Questions", link: "/mca/se/u2/q2" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-3",
-      //   items: [
-      //     { label: "Software Testing", link: "/mca/se/u3/u31" },
-      //     { label: "Quality & Metrics", link: "/mca/se/u3/u32" },
-      //     { label: "Unit-3 Questions", link: "/mca/se/u3/q3" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-4 & 5",
-      //   items: [
-      //     { label: "Maintenance & Evolution", link: "/mca/se/u4/u41" },
-      //     { label: "Project Management", link: "/mca/se/u4/u42" },
-      //     { label: "Unit-5 Questions", link: "/mca/se/u4/q5" },
-      //   ]
-      // },
-      // {
-      //   title: "Lab Manual",
-      //   items: [
-      //     { label: "Requirements Lab", link: "/mca/se/lab/requirements" },
-      //     { label: "Design Lab", link: "/mca/se/lab/design" },
-      //     { label: "Version Control", link: "/mca/se/lab/version-control" },
-      //     { label: "Testing Lab", link: "/mca/se/lab/testing" },
-      //     { label: "Project Lab", link: "/mca/se/lab/project" },
-      //   ]
-      // },
+      {
+        title: "Socio-Technical & Systems Engineering",
+        items: [
+          { label: "Socio-technical Systems", link: "/mca/se/u12/u11" },
+          { label: "Systems Engineering Process", link: "/mca/se/u12/u12" },
+          { label: "System Development & Evolution", link: "/mca/se/u12/u13" },
+        ]
+      },
+      {
+        title: "System Modeling & MDE",
+        items: [
+          { label: "System Modeling Overview", link: "/mca/se/u21/u1" },
+          { label: "Context Models", link: "/mca/se/u21/u2" },
+          { label: "Interaction Models", link: "/mca/se/u21/u3" },
+          { label: "Sequence Diagrams", link: "/mca/se/u21/u4" },
+          { label: "Structural Models", link: "/mca/se/u21/u5" },
+          { label: "Behavioral Models", link: "/mca/se/u21/u6" },
+          { label: "Event-Driven Modeling & MDE", link: "/mca/se/u21/u7" },
+          { label: "Model-Driven Architecture (MDA)", link: "/mca/se/u21/u8" },
+        ]
+      },
+      {
+        title: "Architectural Design & Patterns",
+        items: [
+          { label: "Architectural Design", link: "/mca/se/u22/u1" },
+          { label: "Design Decisions", link: "/mca/se/u22/u2" },
+          { label: "Architectural Views", link: "/mca/se/u22/u3" },
+          { label: "Architectural Patterns", link: "/mca/se/u22/u4" },
+          { label: "Application Architectures", link: "/mca/se/u22/u5" },
+        ]
+      },
     ]
   }
 ];
