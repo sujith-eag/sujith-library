@@ -47,7 +47,6 @@ erDiagram
     BOOK ||--o| TRANSLATOR : translated_by
     BOOK ||--o| RATING : has_rating
     AUTHOR ||--o| AUTHOR : co_author_of
-
 ```
 
 
@@ -64,7 +63,6 @@ erDiagram
     BOOK }o--o| TRANSLATOR : translated_by
     BOOK ||--o| RATING : has_rating
     AUTHOR ||--o| AUTHOR : co_author_of
-
 ```
 
 
@@ -104,7 +102,6 @@ erDiagram
     BOOK }o--o| TRANSLATOR : translated_by
     BOOK ||--o| RATING : has_rating
     AUTHOR ||--o| AUTHOR : co_author_of
-
 ```
 
 Each table is an entry in our database.

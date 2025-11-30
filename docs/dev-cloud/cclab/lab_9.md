@@ -36,14 +36,6 @@ flowchart TD
     Instance -->|Assumes| Role
     Role -.->|Read Access| Bucket
     Script -->|Syncs Content| Bucket
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Bucket,Files,Instance,Nginx,Script process
-    class Role,SG highlight
-    class Browser success
 ```
 
 ## Project Status

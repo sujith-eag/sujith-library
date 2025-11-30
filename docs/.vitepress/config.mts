@@ -28,17 +28,7 @@ export default withMermaid(
      * ------------------------------------------------------*/
     title: "Sujith's Library",
     description: "A curated collection of learning resources and code examples.",
-    base: '/',
-    cleanUrls: true,
-    ignoreDeadLinks: true,
-
-    /* --------------------------------------------------------
-     *  SEO: Sitemap & Head Meta Tags + Analytics
-     * ------------------------------------------------------*/
-    sitemap: {
-      hostname: 'https://sujith-eag.in'
-    },
-
+    // Ensure client script loads to make Mermaid theme-aware
     head: [
       // Favicon
       ['link', { rel: 'icon', href: '/logo/logo.png' }],
@@ -58,8 +48,28 @@ export default withMermaid(
           src: '//gc.zgo.at/count.js',
           async: 'true'
         }
-      ]
+      ],
+
+      // Theme-aware Mermaid client script
+      // Theme-aware Mermaid client script & CSS
+      ['link', { rel: 'stylesheet', href: '/.vitepress/theme/mermaid.css' }],
+      [
+        'script',
+        { type: 'module', src: '/.vitepress/theme/mermaid.client.ts' }
+      ],
     ],
+    base: '/',
+    cleanUrls: true,
+    ignoreDeadLinks: true,
+
+    /* --------------------------------------------------------
+     *  SEO: Sitemap & Head Meta Tags + Analytics
+     * ------------------------------------------------------*/
+    sitemap: {
+      hostname: 'https://sujith-eag.in'
+    },
+
+    
 
     /* --------------------------------------------------------
      *  Markdown Settings

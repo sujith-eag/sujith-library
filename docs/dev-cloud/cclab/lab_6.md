@@ -28,16 +28,6 @@ flowchart TD
     
     SSH_Cmd --> Connected([Connected to EC2])
     Open --> Connected
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-
-    class DownloadPEM,Chmod,Icacls,SSH_Cmd process
-    class DownloadPPK,InstallPuTTY,ConfigPuTTY,Open highlight
-    class KeySelect,OS_Check decision
-    class Connected success
 ```
 
 ### Key Pair Format Differences
@@ -56,12 +46,6 @@ flowchart LR
     Security --> Run[Launch & Get IP]
     Run --> Perms[Set Key Permissions]
     Perms --> Connect[SSH Connect]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Launch,Key,Security,Run,Perms process
-    class Connect success
 ```
 
 **Step 1:** Sign in to AWS Management Console: select the nearest AWS Region.
@@ -192,12 +176,6 @@ flowchart LR
     Run --> PuTTY[Open PuTTY]
     PuTTY --> Config[Configure Host & Auth]
     Config --> Connect[Connect]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Launch,Key,Security,Run,PuTTY,Config process
-    class Connect success
 ```
 
 **Step 1:** Sign in to AWS Management Console and select your AWS Region.
@@ -372,8 +350,5 @@ flowchart TD
     end
 
     BEFORE --> ACTION --> AFTER
-    
-    style AFTER fill:#d4edda,stroke:#28a745
-    style BEFORE fill:#f8d7da,stroke:#dc3545
 ```
 

@@ -123,12 +123,6 @@ graph TD
     B -- "2: submit()" --> C(Order Service)
     C -- "3: updateInventory()" --> D(Inventory Service)
     C -- "4: createPayment()" --> E(Payment Service)
-    
-    style A fill:#e2e3e5,stroke:#383d41
-    style B fill:#e6f7ff,stroke:#91d5ff
-    style C fill:#e6f7ff,stroke:#91d5ff
-    style D fill:#e6f7ff,stroke:#91d5ff
-    style E fill:#e6f7ff,stroke:#91d5ff
 ```
 
 ### Advanced Example: Microservice-based User Registration
@@ -153,15 +147,4 @@ graph TD
 
     UserAuth -- "Error Response" --> Frontend
     Frontend -- "Error Display" --> User
-
-    style User fill:#e6f7ff,stroke:#91d5ff
-    style Frontend fill:#d4edda,stroke:#155724
-    style UserAuth fill:#fffbe6,stroke:#ffe58f
-    style UserProfile fill:#fffbe6,stroke:#ffe58f
-    style LoggingService fill:#e2e3e5,stroke:#383d41
-    style NotificationService fill:#e2e3e5,stroke:#383d41
-    style MailProvider fill:#e2e3e5,stroke:#383d41
-    style SMSGateway fill:#e2e3e5,stroke:#383d41
-    style UserDB fill:#e6f7ff,stroke:#91d5ff
-    style ProfileDB fill:#e6f7ff,stroke:#91d5ff
 ```

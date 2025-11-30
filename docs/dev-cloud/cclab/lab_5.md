@@ -30,18 +30,6 @@ flowchart TD
         Creds --> RDP[Open RDP Client]
         RDP -->|Public IP + Password| Remote[Remote Desktop Session]
     end
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-
-    class Console,AMI,Type,Instance,Ready,Decrypt,Creds,RDP process
-    class Key,Network highlight
-    class Remote success
-
-    style Setup fill:#f0f5ff,stroke:#adc6ff,stroke-dasharray: 5 5
-    style Access fill:#f0fff0,stroke:#90ee90,stroke-dasharray: 5 5
 ```
 
 Amazon Elastic Compute Cloud (EC2) is a core AWS Compute service that lets you run virtual servers (instances) in the cloud. Amazon EC2 is an Infrastructure as a Service (IaaS) offering from AWS. It allows you to launch virtual machines to host applications and manage them remotely – wherever you are in the world.
@@ -130,12 +118,6 @@ flowchart LR
     Security --> Run[Launch & Wait]
     Run --> Decrypt[Decrypt Password]
     Decrypt --> Connect[Connect via RDP]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Launch,Config,Key,Security,Run,Decrypt process
-    class Connect success
 ```
 
 **Step 1:** Sign in to AWS Management Console:

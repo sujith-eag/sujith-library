@@ -21,14 +21,6 @@ flowchart TD
         StepA[Deregister AMI] --> StepB[Delete Snapshot]
         StepB --> Free[Storage Freed]
     end
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Existing,AMI,Snap,New,Config process
-    class StepA,StepB highlight
-    class Free success
 ```
 
 ## What is an AMI?
@@ -58,12 +50,6 @@ flowchart TD
     Create --> Name[Enter Image Name]
     Name --> Storage[Configure Storage]
     Storage --> Done[Create Image]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Select,Actions,Create,Name,Storage process
-    class Done success
 ```
 
 **Step 1:** Select the running instance
@@ -108,12 +94,6 @@ flowchart TD
     Config --> Network[Network Settings]
     Network --> Storage[Storage Options]
     Storage --> Review[Review & Launch]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class AMI,Launch,Config,Network,Storage process
-    class Review success
 ```
 
 **Step 1:** Go to AMIs
@@ -169,14 +149,6 @@ flowchart TD
     Deregister --> FindSnap[Find Associated Snapshot]
     FindSnap --> DeleteSnap[Delete Snapshot]
     DeleteSnap --> Clean[Resources Freed]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Locate,Deregister,FindSnap process
-    class DeleteSnap highlight
-    class Clean success
 ```
 
 **Step 1:** Open EC2 Dashboard

@@ -39,11 +39,6 @@ graph TD
     decision -- "No" --> needs_revision[Needs Revision];
     needs_revision --> enter_details;
     approved --> stop([End]);
-
-    style start fill:#000,stroke:#000,stroke-width:2px,color:#fff
-    style stop fill:#000,stroke:#fff,stroke-width:4px,color:#fff
-    style parallel_process_fork fill:#000,color:#fff
-    style parallel_process_join fill:#000,color:#fff
 ```
 
 ### Advanced Example: Order Fulfillment Process with Swimlanes
@@ -80,19 +75,6 @@ graph TD
     C -- "Yes" --> F
     J --> K
     L --> M
-
-    style start fill:#000,stroke:#000,stroke-width:2px,color:#fff
-    style E fill:#000,stroke:#fff,stroke-width:4px,color:#fff
-    style M fill:#000,stroke:#fff,stroke-width:4px,color:#fff
-    style A fill:#fffbe6,stroke:#ffe58f
-    style B fill:#e6f7ff,stroke:#91d5ff
-    style D fill:#f8d7da,stroke:#721c24
-    style F fill:#fffbe6,stroke:#ffe58f
-    style H fill:#f8d7da,stroke:#721c24
-    style I fill:#e6f7ff,stroke:#91d5ff
-    style J fill:#e6f7ff,stroke:#91d5ff
-    style K fill:#e6f7ff,stroke:#91d5ff
-    style L fill:#e6f7ff,stroke:#91d5ff
 ```
 
 ## State Machine Diagrams

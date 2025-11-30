@@ -31,14 +31,6 @@ flowchart TD
     IGW --> Internet
     
     Internet -.->|X Blocked| DB
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-
-    class IGW,NAT process
-    class Web success
-    class DB highlight
 ```
 
 ## Launch Windows Instance in Public Subnet

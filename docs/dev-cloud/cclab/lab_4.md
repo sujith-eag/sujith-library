@@ -32,12 +32,6 @@ flowchart TD
     Policy -->|Allowed| Config
     Config -->|Serves| Files
     Files -->|Response| User
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Bucket,Policy,Config,Files process
-    class User success
 ```
 
 When you enable "Static Website Hosting," your S3 bucket acts like a web server, and AWS provides a public website URL to access it. You can create a multi-page static website (e.g., `index.html`, `about.html`, `contact.html`) and upload it to S3. Links within these pages allow users to navigate between them just like a normal website.
@@ -50,12 +44,6 @@ flowchart TD
     Upload --> Enable[Enable Static Hosting]
     Enable --> Policy[Add Bucket Policy]
     Policy --> Access[Access Website URL]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Create,Upload,Enable,Policy process
-    class Access success
 ```
 
 **Step 1:** Create an S3 Bucket
@@ -206,13 +194,6 @@ flowchart TD
         IAM -->|Async Copy| Dest[Destination Bucket]
         Dest --> Ver_B[Versioning Enabled]
     end
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Upload,Source,Ver_A,IAM,Dest,Ver_B process
-    class Rule decision
 ```
 
 ### Set Up CRR

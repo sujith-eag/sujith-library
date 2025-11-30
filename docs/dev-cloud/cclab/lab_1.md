@@ -48,17 +48,6 @@ flowchart TD
 
     MFA_Done --> EndNode([Setup Complete])
     Finalize --> EndNode
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Dashboard,Explore,Widgets,Regions,Security,Billing,Features,CreateB,Type,Details,Alert,Email,AssignMFA,Passkey,BioPrompt,AuthApp,ScanQR,EnterCode process
-    class Choice decision
-    class MFA_Done,Finalize,EndNode success
-
-    style MFA_Setup fill:#f0f5ff,stroke:#adc6ff,stroke-dasharray: 5 5
-    style Budget_Setup fill:#fff7e6,stroke:#ffd591,stroke-dasharray: 5 5
 ```
 
 ## AWS Console Overview
@@ -92,14 +81,6 @@ flowchart TD
     AuthApp --> ScanQR[Scan QR Code]
     ScanQR --> EnterCode[Enter 6-Digit Code]
     EnterCode --> MFA_Done
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Security,AssignMFA,Passkey,BioPrompt,AuthApp,ScanQR,EnterCode process
-    class Choice decision
-    class MFA_Done success
 ```
 
 ### Option 1: Add a Passkey for Easier Login
@@ -173,12 +154,6 @@ flowchart TD
     Details --> Alert["Set Alert Threshold (80%)"]
     Alert --> Email[Enter Email Recipient]
     Email --> Finalize[Budget Created]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Billing,Features,CreateB,Type,Details,Alert,Email process
-    class Finalize success
 ```
 
 ### Creating a budget

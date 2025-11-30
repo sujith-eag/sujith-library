@@ -55,15 +55,6 @@ graph TD
     C2B -- "Messages" --> CN1
     CN1 -- "Messages" --> C1A
     CN1 -- "Messages" --> C1B
-
-    style C3A fill:#e6f7ff,stroke:#91d5ff
-    style C3B fill:#e6f7ff,stroke:#91d5ff
-    style C2A fill:#fffbe6,stroke:#ffe58f
-    style C2B fill:#fffbe6,stroke:#ffe58f
-    style C1A fill:#d4edda,stroke:#155724
-    style C1B fill:#d4edda,stroke:#155724
-    style CN1 fill:#e2e3e5,stroke:#383d41
-    style CN2 fill:#e2e3e5,stroke:#383d41
 ```
 
 ### Advanced Example: Smart Home Automation System
@@ -107,14 +98,4 @@ graph TD
     DevA -- "Status Updates" --> CN_Dev
     DevB -- "Status Updates" --> CN_Dev
     DevC -- "Status Updates" --> CN_Dev
-
-    style UIA fill:#e6f7ff,stroke:#91d5ff
-    style UIB fill:#e6f7ff,stroke:#91d5ff
-    style CtrlA fill:#fffbe6,stroke:#ffe58f
-    style CtrlB fill:#fffbe6,stroke:#ffe58f
-    style DevA fill:#d4edda,stroke:#155724
-    style DevB fill:#d4edda,stroke:#155724
-    style DevC fill:#d4edda,stroke:#155724
-    style CN_App fill:#e2e3e5,stroke:#383d41
-    style CN_Dev fill:#e2e3e5,stroke:#383d41
 ```

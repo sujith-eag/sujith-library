@@ -87,13 +87,6 @@ classDiagram
     IPaymentGateway <|.. PayPalGateway : implements
     IPaymentGateway <|.. StripeGateway : implements
     PaymentProcessor -- Transaction : creates
-
-    style IPaymentGateway fill:#e2e3e5,stroke:#383d41
-    style PayPalGateway fill:#d4edda,stroke:#155724
-    style StripeGateway fill:#d4edda,stroke:#155724
-    style PaymentProcessor fill:#e6f7ff,stroke:#91d5ff
-    style PaymentRequest fill:#fffbe6,stroke:#ffe58f
-    style Transaction fill:#fffbe6,stroke:#ffe58f
 ```
 
 ## Component Diagrams
@@ -126,10 +119,6 @@ graph TD
     
     Frontend -- "Sends HTTP Requests" --> API
     API -- "Executes Queries" --> DB
-
-    style Frontend fill:#e6f7ff,stroke:#91d5ff
-    style API fill:#d4edda,stroke:#155724
-    style DB fill:#fffbe6,stroke:#ffe58f
 ```
 ### Advanced Example: Microservices E-commerce System
 
@@ -178,22 +167,6 @@ graph TD
     
 	OrderService -- "Confirm Order" --> NotificationService
     NotificationService -- "Via" --> EmailSender
-
-
-
-
-    style AuthService fill:#e6f7ff,stroke:#91d5ff
-    style ProductService fill:#e6f7ff,stroke:#91d5ff
-    style OrderService fill:#e6f7ff,stroke:#91d5ff
-    style PaymentService fill:#e6f7ff,stroke:#91d5ff
-    style NotificationService fill:#e6f7ff,stroke:#91d5ff
-    style MobileApp fill:#d4edda,stroke:#155724
-    style WebApp fill:#d4edda,stroke:#155724
-    style AuthDB fill:#fffbe6,stroke:#ffe58f
-    style ProductDB fill:#fffbe6,stroke:#ffe58f
-    style OrderDB fill:#fffbe6,stroke:#ffe58f
-    style PaymentGatewayAPI fill:#e2e3e5,stroke:#383d41
-    style EmailSender fill:#e2e3e5,stroke:#383d41
 ``````
 
 
@@ -300,5 +273,4 @@ erDiagram
 
     USER }|--|{ FOLLOWS : "follows_user"
     USER }|--|{ FOLLOWS : "is_followed_by_user"
-
 ```

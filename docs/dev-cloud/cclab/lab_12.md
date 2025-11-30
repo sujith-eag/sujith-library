@@ -25,14 +25,6 @@ flowchart TD
         AMI -.->|Used to Launch| Inst1
         AMI -.->|Used to Launch| Inst2
     end
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Base,Config,Inst1,Inst2 process
-    class AMI,LB highlight
-    class User,TG success
 ```
 
 ## Component Overview
@@ -117,12 +109,6 @@ flowchart TD
     Type --> Protocol[Protocol: HTTP, Port: 80]
     Protocol --> Health[Health Check Path: /]
     Health --> Done[Target Group Ready]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Create,Type,Protocol,Health process
-    class Done success
 ```
 
 **Step 1:** EC2 → Target Groups → Create Target Group

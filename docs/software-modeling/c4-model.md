@@ -38,11 +38,6 @@ graph TD
     user -- "Views account balances, makes payments" --> system
     system -- "Sends emails to" --> email_system
     system -- "Gets account data from" --> mainframe
-
-    style system fill:#e6f7ff,stroke:#91d5ff
-    style user fill:#e2e3e5,stroke:#383d41
-    style email_system fill:#e2e3e5,stroke:#383d41
-    style mainframe fill:#e2e3e5,stroke:#383d41
 ```
 
 ### Advanced Example: Microservices E-commerce Platform (Context)
@@ -72,14 +67,6 @@ graph TD
     ecommerce_platform -- "Sends shipping requests" --> shipping_provider
     ecommerce_platform -- "Sends notifications" --> email_service
     ecommerce_platform -- "Manages inventory" --> warehouse
-
-    style ecommerce_platform fill:#d4edda,stroke:#155724
-    style customer fill:#e6f7ff,stroke:#91d5ff
-    style admin fill:#e6f7ff,stroke:#91d5ff
-    style payment_gateway fill:#fffbe6,stroke:#ffe58f
-    style shipping_provider fill:#fffbe6,stroke:#ffe58f
-    style email_service fill:#fffbe6,stroke:#ffe58f
-    style warehouse fill:#e2e3e5,stroke:#383d41
 ```
 
 ## Level 2: Containers
@@ -108,10 +95,6 @@ graph TD
     user(fa:fa-user Customer) -- "Uses" --> webapp
     api -- "Uses" --> mainframe(fa:fa-university Mainframe)
     api -- "Sends email using" --> email_system(fa:fa-envelope Email System)
-
-    style webapp fill:#d4edda,stroke:#155724
-    style api fill:#d4edda,stroke:#155724
-    style db fill:#fffbe6,stroke:#ffe58f
 ```
 
 ### Advanced Example: E-commerce Platform Containers
@@ -149,17 +132,6 @@ graph TD
     OrderService <--> Database
     PaymentService <--> Database
     SearchService <--> Cache
-
-    style WebServer fill:#e2e3e5,stroke:#383d41
-    style WebApp fill:#d4edda,stroke:#155724
-    style APIGateway fill:#fffbe6,stroke:#ffe58f
-    style AuthService fill:#e6f7ff,stroke:#91d5ff
-    style ProductService fill:#e6f7ff,stroke:#91d5ff
-    style OrderService fill:#e6f7ff,stroke:#91d5ff
-    style PaymentService fill:#e6f7ff,stroke:#91d5ff
-    style SearchService fill:#e6f7ff,stroke:#91d5ff
-    style Database fill:#fffbe6,stroke:#ffe58f
-    style Cache fill:#e2e3e5,stroke:#383d41
 ```
 
 ## Level 3: Components
@@ -191,10 +163,6 @@ graph TD
     
     accounts -- "Uses" --> db[(Database)]
     payments -- "Uses" --> db
-    
-    style security fill:#e6f7ff,stroke:#91d5ff
-    style accounts fill:#e6f7ff,stroke:#91d5ff
-    style payments fill:#e6f7ff,stroke:#91d5ff
 ```
 
 ### Advanced Example: User Profile Service Components
@@ -221,21 +189,6 @@ graph TD
     ProfileRepository -- "Accesses" --> Database[(User Profile DB)]
     ImageUploader -- "Uploads to" --> CloudStorage[Cloud Storage S3]
     EventPublisher -- "Sends to" --> MessageBroker["Message Broker (Kafka)"]
-
-    
-    classDef success-release fill:#d4edda,stroke:#155724
-    classDef process-activity fill:#e6f7ff,stroke:#91d5ff
-    classDef decision-detail fill:#fffbe6,stroke:#ffe58f
-    classDef nfr-high-level fill:#e2e3e5,stroke:#383d41
-
-    class ProfileController success-release
-    class ProfileRepository process-activity
-    class ProfileValidator decision-detail
-    class ImageUploader nfr-high-level
-    class EventPublisher nfr-high-level
-    class Database decision-detail
-    class CloudStorage nfr-high-level
-    class MessageBroker nfr-high-level
 ```
 
 ## Level 4: Code
@@ -321,11 +274,4 @@ classDiagram
     UserService "1" -- "1" PasswordHasher : uses
     UserRepository <|.. DatabaseUserRepository : implements
     UserService ..> User : manages
-
-    style UserService fill:#e6f7ff,stroke:#91d5ff
-    style UserRepository fill:#e2e3e5,stroke:#383d41
-    style DatabaseUserRepository fill:#d4edda,stroke:#155724
-    style EmailService fill:#fffbe6,stroke:#ffe58f
-    style PasswordHasher fill:#fffbe6,stroke:#ffe58f
-    style User fill:#e2e3e5,stroke:#383d41
 ```

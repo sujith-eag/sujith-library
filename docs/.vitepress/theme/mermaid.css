@@ -1,0 +1,302 @@
+/* Mermaid theme variables bridged to VitePress colors */
+:root {
+  /* Base (light) */
+  --mm-bg: #ffffff;
+  --mm-text: #1f2937; /* gray-800 */
+  --mm-muted-text: #374151; /* gray-700 */
+  --mm-surface: #f3f4f6; /* gray-100 */
+  --mm-border: #9ca3af; /* gray-400 */
+
+  /* Distinct node colors (light) */
+  --mm-node-default-fill: #e6f7ff;
+  --mm-node-default-stroke: #91d5ff;
+  --mm-node-primary-fill: #d6e4ff;
+  --mm-node-primary-stroke: #597ef7;
+  --mm-node-secondary-fill: #d9f7be;
+  --mm-node-secondary-stroke: #73d13d;
+  --mm-node-tertiary-fill: #fff0f6;
+  --mm-node-tertiary-stroke: #ff85c0;
+  --mm-node-accent-fill: #fffbe6;
+  --mm-node-accent-stroke: #fadb14;
+  --mm-node-info-fill: #e6fffb;
+  --mm-node-info-stroke: #36cfc9;
+  --mm-node-success-fill: #d4edda;
+  --mm-node-success-stroke: #155724;
+  --mm-node-warning-fill: #fff3cd;
+  --mm-node-warning-stroke: #856404;
+  --mm-node-danger-fill: #f8d7da;
+  --mm-node-danger-stroke: #721c24;
+
+  /* Accents for edges, highlights */
+  --mm-primary: #2563eb;
+  --mm-secondary: #10b981;
+  --mm-accent: #f59e0b;
+}
+
+.dark {
+  /* Dark */
+  --mm-bg: #0b0f14; /* near-black */
+  --mm-text: #e5e7eb; /* gray-200 */
+  --mm-muted-text: #cbd5e1; /* slate-300 */
+  --mm-surface: #111827; /* gray-900 */
+  --mm-border: #6b7280; /* gray-500 */
+
+  /* Distinct node colors (dark) — higher contrast */
+  --mm-node-default-fill: #1e3a5f;
+  --mm-node-default-stroke: #5b9bd5;
+  --mm-node-primary-fill: #1d3557;
+  --mm-node-primary-stroke: #a8c7fa;
+  --mm-node-secondary-fill: #14532d;
+  --mm-node-secondary-stroke: #86efac;
+  --mm-node-tertiary-fill: #4a1942;
+  --mm-node-tertiary-stroke: #f9a8d4;
+  --mm-node-accent-fill: #422006;
+  --mm-node-accent-stroke: #fcd34d;
+  --mm-node-info-fill: #134e4a;
+  --mm-node-info-stroke: #5eead4;
+  --mm-node-success-fill: #14532d;
+  --mm-node-success-stroke: #86efac;
+  --mm-node-warning-fill: #451a03;
+  --mm-node-warning-stroke: #fcd34d;
+  --mm-node-danger-fill: #450a0a;
+  --mm-node-danger-stroke: #fca5a5;
+
+  /* Accents */
+  --mm-primary: #60a5fa;
+  --mm-secondary: #34d399;
+  --mm-accent: #fbbf24;
+}
+
+/* Ensure SVG inherits background for better contrast */
+.mermaid svg {
+  background-color: var(--mm-bg) !important;
+}
+
+/* Improve text legibility */
+.mermaid svg text {
+  fill: var(--mm-text) !important;
+}
+
+/* ───────────────────────────────────────────────────────────
+   Node and cluster defaults — use distinct node colors
+   ─────────────────────────────────────────────────────────── */
+.mermaid .cluster rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node path { fill: var(--mm-node-default-fill) !important; stroke: var(--mm-node-default-stroke) !important; }
+.mermaid .label rect { fill: var(--mm-node-default-fill) !important; stroke: var(--mm-node-default-stroke) !important; }
+.mermaid .classGroup rect { fill: var(--mm-node-default-fill) !important; stroke: var(--mm-node-default-stroke) !important; }
+
+/* Apply distinct colors per node position (nth-of-type) for variety */
+.mermaid .node:nth-of-type(4n+1) rect,
+.mermaid .node:nth-of-type(4n+1) polygon,
+.mermaid .node:nth-of-type(4n+1) circle { fill: var(--mm-node-primary-fill) !important; stroke: var(--mm-node-primary-stroke) !important; }
+.mermaid .node:nth-of-type(4n+2) rect,
+.mermaid .node:nth-of-type(4n+2) polygon,
+.mermaid .node:nth-of-type(4n+2) circle { fill: var(--mm-node-secondary-fill) !important; stroke: var(--mm-node-secondary-stroke) !important; }
+.mermaid .node:nth-of-type(4n+3) rect,
+.mermaid .node:nth-of-type(4n+3) polygon,
+.mermaid .node:nth-of-type(4n+3) circle { fill: var(--mm-node-tertiary-fill) !important; stroke: var(--mm-node-tertiary-stroke) !important; }
+.mermaid .node:nth-of-type(4n) rect,
+.mermaid .node:nth-of-type(4n) polygon,
+.mermaid .node:nth-of-type(4n) circle { fill: var(--mm-node-accent-fill) !important; stroke: var(--mm-node-accent-stroke) !important; }
+
+.mermaid .cluster text,
+.mermaid .node text,
+.mermaid .label text,
+.mermaid .classGroup text {
+  fill: var(--mm-text) !important;
+}
+
+/* Edges and arrows */
+.mermaid .edgePath path,
+.mermaid .relationshipLine,
+.mermaid .flowchart-link {
+  stroke: var(--mm-border) !important;
+}
+
+.mermaid .edgeLabel {
+  background-color: var(--mm-bg) !important;
+  color: var(--mm-muted-text) !important;
+}
+
+/* Sequence diagram participants */
+.mermaid .actor rect,
+.mermaid .actor-line {
+  stroke: var(--mm-border) !important;
+  fill: var(--mm-surface) !important;
+}
+
+.mermaid .messageText,
+.mermaid .actor > text {
+  fill: var(--mm-text) !important;
+}
+
+/* State diagram */
+.mermaid .stateGroup rect,
+.mermaid .stateGroup .divider {
+  stroke: var(--mm-border) !important;
+}
+
+.mermaid .stateGroup text {
+  fill: var(--mm-text) !important;
+}
+
+/* Activity diagram */
+.mermaid .label,
+.mermaid .task rect {
+  fill: var(--mm-surface) !important;
+  stroke: var(--mm-border) !important;
+}
+
+/* Highlight accents for starts/ends and special nodes */
+.mermaid .start-state circle,
+.mermaid .end-state circle,
+.mermaid .decision .label rect {
+  stroke: var(--mm-primary) !important;
+}
+
+.mermaid .start-state circle,
+.mermaid .end-state circle {
+  fill: var(--mm-accent) !important;
+}
+
+/* ───── Class-based node overrides (if classDef is used) ───── */
+.mermaid .process rect,
+.mermaid .process polygon,
+.mermaid .process path,
+.mermaid .process circle { fill: var(--mm-node-default-fill) !important; stroke: var(--mm-node-default-stroke) !important; }
+.mermaid .process text { fill: var(--mm-text) !important; }
+
+.mermaid .decision rect,
+.mermaid .decision polygon,
+.mermaid .decision path,
+.mermaid .decision circle { fill: var(--mm-node-accent-fill) !important; stroke: var(--mm-node-accent-stroke) !important; }
+.mermaid .decision text { fill: var(--mm-text) !important; }
+
+.mermaid .success rect,
+.mermaid .success polygon,
+.mermaid .success path,
+.mermaid .success circle { fill: var(--mm-node-success-fill) !important; stroke: var(--mm-node-success-stroke) !important; }
+.mermaid .success text { fill: var(--mm-text) !important; }
+
+.mermaid .warning rect,
+.mermaid .warning polygon,
+.mermaid .warning path,
+.mermaid .warning circle { fill: var(--mm-node-warning-fill) !important; stroke: var(--mm-node-warning-stroke) !important; }
+.mermaid .warning text { fill: var(--mm-text) !important; }
+
+.mermaid .highlight rect,
+.mermaid .highlight polygon,
+.mermaid .highlight path,
+.mermaid .highlight circle { fill: var(--mm-node-primary-fill) !important; stroke: var(--mm-node-primary-stroke) !important; }
+.mermaid .highlight text { fill: var(--mm-text) !important; }
+
+.mermaid .danger rect,
+.mermaid .danger polygon,
+.mermaid .danger path,
+.mermaid .danger circle { fill: var(--mm-node-danger-fill) !important; stroke: var(--mm-node-danger-stroke) !important; }
+.mermaid .danger text { fill: var(--mm-text) !important; }
+
+.mermaid .info rect,
+.mermaid .info polygon,
+.mermaid .info path,
+.mermaid .info circle { fill: var(--mm-node-info-fill) !important; stroke: var(--mm-node-info-stroke) !important; }
+.mermaid .info text { fill: var(--mm-text) !important; }
+
+/* ───────────────────────────────────────────────────────────
+   Extended diagram-type coverage
+   ─────────────────────────────────────────────────────────── */
+
+/* ───── Flowchart / Graph edges ───── */
+.mermaid .flowchart-link { stroke: var(--mm-border) !important; }
+.mermaid marker path { fill: var(--mm-border) !important; }
+
+/* ───── Sequence Diagram ───── */
+.mermaid .activation0,
+.mermaid .activation1,
+.mermaid .activation2 { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid line.loopLine { stroke: var(--mm-border) !important; }
+.mermaid .loopText,
+.mermaid .noteText { fill: var(--mm-text) !important; }
+.mermaid .note rect { fill: var(--mm-surface) !important; stroke: var(--mm-accent) !important; }
+.mermaid .messageLine0,
+.mermaid .messageLine1 { stroke: var(--mm-border) !important; }
+.mermaid .sequenceNumber { fill: var(--mm-bg) !important; }
+
+/* ───── Class Diagram ───── */
+.mermaid .classLabel .box { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .classLabel .label { fill: var(--mm-text) !important; }
+.mermaid .relation { stroke: var(--mm-border) !important; }
+.mermaid .composition,
+.mermaid .aggregation,
+.mermaid .dependency { stroke: var(--mm-border) !important; }
+.mermaid defs marker path { fill: var(--mm-border) !important; }
+
+/* ───── State Diagram ───── */
+.mermaid .statediagram-state rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .statediagram-state .stateTitle { fill: var(--mm-text) !important; }
+.mermaid .state-note rect { fill: var(--mm-surface) !important; stroke: var(--mm-accent) !important; }
+.mermaid .state-note text { fill: var(--mm-text) !important; }
+.mermaid .stateLabel text { fill: var(--mm-text) !important; }
+.mermaid .transition { stroke: var(--mm-border) !important; }
+
+/* ───── ER Diagram ───── */
+.mermaid .er.entityBox { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .er.entityLabel { fill: var(--mm-text) !important; }
+.mermaid .er.relationshipLabel { fill: var(--mm-muted-text) !important; }
+.mermaid .er.relationshipLine { stroke: var(--mm-border) !important; }
+
+/* ───── Gantt Chart ───── */
+.mermaid .section0,
+.mermaid .section1 { fill: var(--mm-surface) !important; }
+.mermaid .grid .tick line { stroke: var(--mm-border) !important; }
+.mermaid .taskText { fill: var(--mm-text) !important; }
+.mermaid .taskTextOutsideRight,
+.mermaid .taskTextOutsideLeft { fill: var(--mm-text) !important; }
+.mermaid .task { fill: var(--mm-primary) !important; stroke: var(--mm-border) !important; }
+.mermaid .taskText { fill: var(--mm-bg) !important; }
+.mermaid .sectionTitle { fill: var(--mm-text) !important; }
+
+/* ───── Pie Chart ───── */
+.mermaid .pieTitleText { fill: var(--mm-text) !important; }
+.mermaid .slice { stroke: var(--mm-bg) !important; }
+.mermaid .legend text { fill: var(--mm-text) !important; }
+
+/* ───── Journey Diagram ───── */
+.mermaid .journey-section rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .journey-section text { fill: var(--mm-text) !important; }
+.mermaid .task-label { fill: var(--mm-text) !important; }
+
+/* ───── Mindmap ───── */
+.mermaid .mindmap-node rect,
+.mermaid .mindmap-node circle { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .mindmap-node text { fill: var(--mm-text) !important; }
+
+/* ───── Git Graph ───── */
+.mermaid .commit circle { fill: var(--mm-primary) !important; stroke: var(--mm-border) !important; }
+.mermaid .commit-label { fill: var(--mm-text) !important; }
+.mermaid .branch-label { fill: var(--mm-text) !important; }
+.mermaid .branch line,
+.mermaid .arrow line { stroke: var(--mm-border) !important; }
+
+/* ───── Requirement Diagram ───── */
+.mermaid .requirement rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .requirement text { fill: var(--mm-text) !important; }
+.mermaid .requirementLine { stroke: var(--mm-border) !important; }
+
+/* ───── C4 Diagram ───── */
+.mermaid .person rect,
+.mermaid .system rect,
+.mermaid .container rect,
+.mermaid .component rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .person text,
+.mermaid .system text,
+.mermaid .container text,
+.mermaid .component text { fill: var(--mm-text) !important; }
+.mermaid .c4Line { stroke: var(--mm-border) !important; }
+
+/* ───── Subgraph borders (flowchart clusters) ───── */
+.mermaid .cluster-label { fill: var(--mm-text) !important; }

@@ -32,19 +32,6 @@ flowchart TD
         Console -->|3. Enable Security| MFA[Multi-Factor Auth]
         MFA --> Secure[Secured User Access]
     end
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-
-    class IAM_Dash,Alias,Console,Policy process
-    class Root,Group,User highlight
-    class Secure,MFA success
-
-    style Account_Management fill:#f0f5ff,stroke:#adc6ff,stroke-dasharray: 5 5
-    style IAM_Structure fill:#fff7e6,stroke:#ffd591,stroke-dasharray: 5 5
-    style Security_Hardening fill:#f0fff0,stroke:#90ee90,stroke-dasharray: 5 5
 ```
 
 
@@ -69,12 +56,6 @@ flowchart LR
     Create --> Name[Set Group Name]
     Name --> Policy[Attach Policies]
     Policy --> Done[Group Created]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class IAM,Groups,Create,Name,Policy process
-    class Done success
 ```
 
 **Step 1:** Sign in to AWS Console
@@ -125,12 +106,6 @@ flowchart LR
     Details --> Perms[Set Permissions]
     Perms --> Review[Review & Create]
     Review --> Creds[Save Credentials]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class IAM,Users,Add,Details,Perms,Review process
-    class Creds success
 ```
 
 **Step 1:** Sign in to AWS Management Console
@@ -204,14 +179,6 @@ flowchart LR
     Scan --> Verify[Enter Codes]
     Key --> Verify
     Verify --> Done[MFA Enabled]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-
-    class User,Security,Assign,Virtual,Key,Scan,Verify process
-    class Type decision
-    class Done success
 ```
 
 **Step 1:** Sign in to AWS Console as root user

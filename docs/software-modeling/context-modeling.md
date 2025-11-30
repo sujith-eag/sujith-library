@@ -32,12 +32,6 @@ graph TD
     Member -- "Initiates" --> UC2
     Member -- "Initiates" --> UC3
     Member -- "Accesses" --> UC4
-
-    style Member fill:#e6f7ff,stroke:#91d5ff
-    style UC1 fill:#fffbe6,stroke:#ffe58f
-    style UC2 fill:#fffbe6,stroke:#ffe58f
-    style UC3 fill:#fffbe6,stroke:#ffe58f
-    style UC4 fill:#fffbe6,stroke:#ffe58f
 ```
 
 ### Advanced Example: Online Shopping Cart
@@ -66,15 +60,6 @@ graph LR
 
     UC_Checkout -- "includes" --> UC_ProcessPayment
     UC_Checkout -- "extends" --> UC_ApplyDiscount
-
-    style Customer fill:#e6f7ff,stroke:#91d5ff
-    style UC_Add fill:#fffbe6,stroke:#ffe58f
-    style UC_View fill:#fffbe6,stroke:#ffe58f
-    style UC_Checkout fill:#f8d7da,stroke:#721c24
-    style UC_Login fill:#d4edda,stroke:#155724
-    style UC_Register fill:#d4edda,stroke:#155724
-    style UC_ProcessPayment fill:#e2e3e5,stroke:#383d41
-    style UC_ApplyDiscount fill:#fffbe6,stroke:#ffe58f
 ```
 
 ## System Context Diagrams
@@ -114,11 +99,6 @@ graph TD
     system -- "Provides Class Rosters" --> professor
 
     system -- "Processes Payments" --> payment
-
-    style system fill:#e6f7ff,stroke:#91d5ff
-    style student fill:#e2e3e5,stroke:#383d41
-    style professor fill:#e2e3e5,stroke:#383d41
-    style payment fill:#e2e3e5,stroke:#383d41
 ```
 
 ### Advanced Example: E-commerce Platform Context
@@ -157,13 +137,4 @@ graph TB
     warehouse -- "Inventory Updates, Shipment Details" --> ecommerce_platform
     
     ecommerce_platform -- "Send Data" --> analytics_tool
-
-    style ecommerce_platform fill:#d4edda,stroke:#155724
-    style customer fill:#e6f7ff,stroke:#91d5ff
-    style admin fill:#e6f7ff,stroke:#91d5ff
-    style payment_gateway fill:#fffbe6,stroke:#ffe58f
-    style shipping_provider fill:#fffbe6,stroke:#ffe58f
-    style email_service fill:#fffbe6,stroke:#ffe58f
-    style warehouse fill:#e2e3e5,stroke:#383d41
-    style analytics_tool fill:#e2e3e5,stroke:#383d41
 ```

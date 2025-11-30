@@ -29,13 +29,6 @@ flowchart TD
     CPU -.->|Reports Usage| CW
     CW --> Graph
     U3 --> Graph
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class U1,U2,U3,OS,Tool,CPU process
-    class CW,Graph highlight
 ```
 
 ## Launch a Linux EC2 Instance
@@ -119,12 +112,6 @@ flowchart TD
     Nav --> Select[Select EC2 → Per-Instance]
     Select --> CPU[Choose CPUUtilization]
     CPU --> Graph[View Spike in Graph]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class EC2,CW,Nav,Select,CPU process
-    class Graph success
 ```
 
 **Step 1:** Go to CloudWatch → Metrics → EC2 → Per-Instance Metrics.

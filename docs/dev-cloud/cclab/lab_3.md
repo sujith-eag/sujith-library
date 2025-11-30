@@ -27,17 +27,6 @@ flowchart TD
     end
     
     Action --> Access([Access via Object URL])
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef warning fill:#fff0f5,stroke:#ff69b4
-    classDef success fill:#d4edda,stroke:#155724
-
-    class Search,CreateB,Config1,Confirm,Upload,Select,Action process
-    class Config2,Config3 warning
-    class Access success
-
-    style Bucket_Creation fill:#f0f5ff,stroke:#adc6ff,stroke-dasharray: 5 5
-    style Object_Management fill:#fff7e6,stroke:#ffd591,stroke-dasharray: 5 5
 ```
 
 Amazon S3 (Simple Storage Service) is a fully managed, object-based storage service offered by AWS. It allows you to store and retrieve unlimited amounts of data from anywhere on the web.
@@ -103,12 +92,6 @@ flowchart LR
     Config --> Upload[Upload File]
     Upload --> Public[Make Public]
     Public --> URL[Copy Object URL]
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef success fill:#d4edda,stroke:#155724
-
-    class S3,Create,Config,Upload,Public process
-    class URL success
 ```
 
 **Step 1:** Open the S3 Service:

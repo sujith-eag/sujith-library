@@ -25,16 +25,6 @@ flowchart TD
     Launch2 --> Boot[Instance Boots]
     Boot --> Auto[[System Auto-Executes Script]]
     Auto --> EndNode
-
-    classDef process fill:#e6f7ff,stroke:#91d5ff
-    classDef decision fill:#fffbe6,stroke:#ffe58f
-    classDef success fill:#d4edda,stroke:#155724
-    classDef highlight fill:#fff0f5,stroke:#ff69b4
-
-    class Net,Launch1,SSH,Install,StartSvc,File,Script,Launch2,Boot process
-    class Choice decision
-    class Auto highlight
-    class EndNode success
 ```
 
 - **Manual Installation of Apache (httpd) Web Server on EC2 for Static Website Hosting.**

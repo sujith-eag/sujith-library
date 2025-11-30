@@ -374,10 +374,6 @@ flowchart TD
             DB[Database]
         end
     end
-
-    style VPC fill:#f0f5ff,stroke:#adc6ff,stroke-dasharray: 5 5
-    style Public fill:#d4edda,stroke:#155724
-    style Private fill:#fff0f5,stroke:#ff69b4
 ```
 
 ## Diagram Layout Rules
