@@ -66,7 +66,14 @@ flowchart TD
 
 - Image name: `MyWebsiteAMI`
 - Description: AMI created from configured Apache website instance
-- Leave "No reboot" unchecked (so the filesystem is consistent)
+- To reboot the system, leave "No reboot" unchecked (so the filesystem is consistent)
+	
+>[!NOTE] The "Why" 
+>When you create an AMI, AWS effectively pulls the power cord to ensure the file system is frozen and data is consistent. 
+>If you check "No Reboot," the server stays online, but you risk data corruption if files are being written exactly when the snapshot happens. 
+>**Always reboot unless you can't afford 2 minutes of downtime.**
+>
+   
 
 **Step 4:** Storage volumes
 
@@ -82,6 +89,9 @@ flowchart TD
 - In the left panel → AMIs → refresh until Status = **Available**
 
 Your custom AMI is now saved in that region and can be used to launch identical webserver instances.
+
+>[!IMPORTANT] Region Trap
+>AMIs are **Regional**. If you create `MyWebsiteAMI` in `us-east-1`, you **cannot** see or use it in `us-west-2` unless you explicitly "Copy AMI" to that region.
 
 ## Launch an EC2 Instance from Custom AMI
 
@@ -137,6 +147,10 @@ flowchart TD
 
 A new EC2 instance is successfully launched using the Custom AMI, automatically containing the OS, Apache, configurations, and website files — no manual setup required.
 
+>[!NOTE] Golden Image Strategy
+>You build one perfect server, patch it, secure it, turn it into an AMI, and then launch all production servers from that, In the industry, this is called the "Golden Image."
+> 
+   
 ## Delete a Custom AMI
 
 Deleting a custom AMI involves **deregistering** the image and then **deleting its associated EBS snapshot**.

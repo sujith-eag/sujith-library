@@ -66,9 +66,6 @@ flowchart TD
 
 - Before uploading, organize your files in a folder structure as follows:
     
-
-Plaintext
-
 ```
 my-website/
 |
@@ -142,6 +139,10 @@ my-website/
     
 - Use the header links to navigate between pages (About, Contact, etc.).
 
+>[!NOTE]
+>S3 Static Website Hosting provides an **HTTP** endpoint (not secure). Your browser might warn "Not Secure." To get HTTPS (the lock icon), you must put **CloudFront** (CDN) in front of S3.
+
+	
 ### When Will the Error Page Be Shown?
 
 If a user enters a wrong URL or tries to access a file that doesn't exist (e.g., `/abc.html`), Amazon S3 automatically displays the file you set as the Error document (`error.html`).
@@ -163,9 +164,10 @@ Versioning allows you to keep multiple versions of an object in a bucket. If a f
 5. Click Save changes.
     
 
-Now whenever you upload a file with the same name, S3 will keep both versions.
+Now whenever you upload a file with the same name, S3 will keep both versions. You can view versions by clicking "List versions" in the bucket objects page.
 
-Note: You can view versions by clicking "List versions" in the bucket objects page.
+> [!NOTE]
+> When you enable versioning, if you overwrite a 1GB file 10 times, you are paying for **11GB** of storage (10 old versions + 1 current). You must set up a **Lifecycle Policy** to delete old versions automatically after 30 days to save money.
 
 ### Restore or Delete a Specific Version
 
@@ -178,6 +180,10 @@ Note: You can view versions by clicking "List versions" in the bucket objects pa
 CRR automatically copies objects from one S3 bucket (source) to another (destination) in a different AWS Region. It is used for disaster recovery, compliance, or low-latency access in another region.
 
 **Requirement:** Versioning must be enabled on both buckets.
+
+> [!NOTE]
+> Cross-Region Replication **doubles your storage cost** (data in 2 regions) AND adds **Data Transfer costs** (paying to move data across the country).
+
 
 ```mermaid
 flowchart TD
@@ -242,3 +248,6 @@ Note: Replication is not retroactive — only new uploads after enabling CRR are
 
 Reminder: Resource cleanup – release/delete/terminate the resources created when finished.
 
+>[!NOTE]
+>**Delete Markers:** When you "delete" a file in a versioned bucket, AWS puts a "Delete Marker" on it. The file is hidden, not gone. It still costs money until you delete the specific version ID.
+   

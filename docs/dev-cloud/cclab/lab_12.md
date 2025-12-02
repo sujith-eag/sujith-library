@@ -140,6 +140,10 @@ The Target Group holds the list of EC2 instances behind the Load Balancer.
 - Security Group: allow HTTP (port 80)
 - Forward to Target Group → `WebApp-TG`
 
+>[!NOTE] Subnet Requirement
+>An ALB _must_ use subnets in at least **two different Availability Zones** (e.g., `us-east-1a` and `us-east-1b`). If your VPC only has subnets in one zone, the creation will fail.
+    
+
 **Step 4:** Click Create
 
 ## Test the Load Balancer
@@ -150,19 +154,19 @@ The Target Group holds the list of EC2 instances behind the Load Balancer.
 
 **Step 3:** Copy the ALB DNS Name:
 
-```
+```bash
 WebApp-ALB-123456789.ap-south-1.elb.amazonaws.com
 ```
 
 **Step 4:** Open a Browser and enter:
 
-```
+```bash
 http://<your-alb-dns-name>
 ```
 
 **Expected Output:**
 
-```
+```bash
 Hello from Instance 1 - ip-xx-xx-xx-xx
 ```
 
@@ -177,3 +181,7 @@ This confirms:
 - If using Auto Scaling with multiple instances
 - Clicking Refresh shows different hostnames
 - This confirms load balancing across multiple servers
+
+>[!Note] Health Check "Grace Period"
+>When adding an ASG, if you don't set a "Health Check Grace Period" (e.g., 300 seconds), the ASG might kill your instance before Apache finishes installing, creating a loop of death.
+    

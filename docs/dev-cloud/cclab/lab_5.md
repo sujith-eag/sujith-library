@@ -152,6 +152,9 @@ Choose t3.micro (Free-tier eligible).
     
 - Allow RDP (port 3389) access from My IP (for better security) or anywhere (0.0.0.0/0).
 
+>[!NOTE] Warning
+>Windows RDP (Port 3389) is the #1 target for hackers. If you leave this open to `0.0.0.0/0` for more than a few days, bots _will_ find it and try to brute-force your password. Always try to use "My IP" when possible.
+
 **Step 7:** Launch the Instance:
 
 Review all configurations. Click Launch Instance. Wait until the Instance state changes to Running.
@@ -168,6 +171,9 @@ Review all configurations. Click Launch Instance. Wait until the Instance state 
     
 - Copy the Public IPv4 address and Administrator Password shown.
 
+>[!NOTE]
+>You can actually set the Windows password _during_ launch using a User Data script, avoiding the decryption process entirely
+
 **Step 9:** Connect Using RDP Client:
 
 - On Windows system: Open Remote Desktop Connection (from Start Menu).
@@ -182,5 +188,7 @@ Review all configurations. Click Launch Instance. Wait until the Instance state 
 
 You should now see a Windows Server desktop running inside your local window.
 
-**Note:** Always Stop (not Terminate) the instance when not in use to avoid charges.
-
+>[!note]
+>Always Stop the instance when not in use to avoid charges. Only "Stop" if you plan to use the exact same files tomorrow. Otherwise Terminate.
+>
+>Stopping the instance saves **Compute** costs (the CPU/RAM). However, the **EBS Volume** (the hard drive) persists and **you are still charged for storage** every month.

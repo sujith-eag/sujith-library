@@ -103,6 +103,12 @@ stress-ng --cpu 4 --timeout 120
 - After completion: `successful run completed in 120.02s`
 - CPU usage spikes to 90–100% (check using `top`)
 
+>[!NOTE] The "5-Minute" Gap
+>By default, EC2 sends metrics to CloudWatch every **5 minutes** (Basic Monitoring). If your stress test runs for only **2 minutes** (120s), CloudWatch might smooth out that spike in the graph, showing an average of 40% instead of a peak of 100%.
+>
+>Run the stress test for at least **6-10 minutes** to see a clear block on the graph.
+>
+
 ## Observe CPU Utilization in CloudWatch
 
 ```mermaid
@@ -122,6 +128,10 @@ flowchart TD
 
 You should see a sharp spike during the 2-minute stress period.
 
+>[!NOTE] Real-time Monitoring
+>CloudWatch has a delay. To see _instant_ results, use the Linux command `top` or `htop` inside the SSH terminal while the test is running.
+>
+  
 ## Stop or Terminate the Instance
 
 To avoid charges:
@@ -141,3 +151,9 @@ Actions → Instance State → Terminate
 |CPU Utilization in CloudWatch|90–100%|
 |Stress test completion|Without errors|
 |Understanding gained|How CPU load affects EC2 metrics|
+
+     
+>[!NOTE] The "Burstable" Trap
+>`t2.micro` or `t3.micro` utilize **CPU Credits**. If you run a T-instance at 100% CPU for too long, you will burn through your credits. Once empty, AWS **throttles** your CPU down to a baseline (e.g., 10% or 20%), even if `stress-ng` is asking for 100%. This is expected behavior for T-family instances.
+>
+

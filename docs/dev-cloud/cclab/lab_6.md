@@ -32,10 +32,10 @@ flowchart TD
 
 ### Key Pair Format Differences
 
-|**Scenario**|**Key File Format**|**Explanation**|
-|---|---|---|
-|**Using PuTTY on Windows**|`.ppk`|The .ppk file is specific to the GUI based PuTTY application.|
-|**Using PowerShell on Windows, Linux terminal**|`.pem`|The .pem file is the default AWS key format used by the OpenSSH client.|
+| **Scenario**                                | **Key File Format** | **Explanation**                                                         |
+| ------------------------------------------- | ------------------- | ----------------------------------------------------------------------- |
+| Using PuTTY on Windows                      | `.ppk`              | The .ppk file is specific to the GUI based PuTTY application.           |
+| Using PowerShell on Windows, Linux terminal | `.pem`              | The .pem file is the default AWS key format used by the OpenSSH client. |
 
 ## Launch Linux EC2 and Connect via SSH (PowerShell/Linux)
 
@@ -80,73 +80,7 @@ flowchart LR
 
 **Step 7:** Get the Public IP Address: Select your instance → Copy the Public IPv4 address.
 
-**Step 8:** Connect using SSH:
-
-**Note: Fixing "Permission Denied" on Windows (PowerShell)**
-
-When using PowerShell on Windows, you may get an "Unprotected private key file" or "Permission denied" error. This happens because the `.pem` file, by default, can be read by other users on your system (it has inherited permissions), which SSH refuses for security.
-
-On Linux, this is fixed with `chmod 400 key.pem`, which makes the file readable _only_ by the owner. The Windows equivalent uses the `icacls` command to remove permissions from all other users and groups.
-> 
-> **To fix this in PowerShell (run as Administrator):**
-> 
-> 1. **Navigate to your key file:** (e.g., in Downloads)
->     
->     ```bash
->     cd "C:\Users\YourUser\Downloads"
->     ```
->     
-> 2. **Remove inherited permissions:** This stops other users from having access.
->
->     ```bash
->     icacls .\your-key-file.pem /inheritance:r
->     ```
->     
-> 3. **Grant read access only to yourself:** (Replace `YourUser` with your actual Windows username).
->     
->     ```bash
->     icacls .\your-key-file.pem /grant:r "YourUser:(R)"
->     ```
->     
-> After running these commands, your key file is secure and SSH will accept it.
-
-- **(A) On Windows using PowerShell:**
-    
-    - Open PowerShell.
-        
-    - Navigate to the folder where your .pem file is saved:
-        
-        ```bash
-        cd "C:\Users\<YourName>\Downloads"
-        ```
-        
-    - Connect using the SSH command:
-
-        ```bash
-        ssh -i "keyfile.pem" ec2-user@<Public-IP-address>
-        ```
-        
-    - When prompted, type `yes` to continue connecting.
-        
-- **(B) On Linux Terminal (Ubuntu / macOS):**
-    
-    - Open Terminal.
-        
-    - Navigate to the directory where your .pem file is stored.
-        
-    - Set proper permission for the key file:
-        
-        ```bash
-        chmod 400 keyfile.pem
-        ```
-        
-    - Connect to the instance:
-        
-        ```bash
-        ssh -i keyfile.pem ec2-user@<Public-IP-address>
-        ```
-        
-    - Type `yes` when prompted.
+**Step 8:** Connect using SSH: (Check below notes for fixing Permission errors)
 
 **Step 9:** Verify Connection: Try commands: `uname -a` and `sudo yum update -y`.
 
@@ -165,6 +99,12 @@ PuTTY is a client program for the SSH, Telnet and Rlogin network protocols. It i
 4. Once it downloads, open the file and follow: Next → Next → Install → Finish
     
 5. After installation, you will have: PuTTY, PuTTYgen, Pageant.
+
+
+>[!IMPORTANT] The "MobaXterm" Alternative
+>PuTTY is old and clunky. Most modern Windows engineers use **MobaXterm** (free). It handles SSH keys better and includes a file browser (SFTP) automatically.
+>
+
 
 ## Launch Linux EC2 and Connect via PuTTY
 
@@ -224,59 +164,86 @@ flowchart LR
     
 - When prompted, click **Accept** to trust the host.
 
+>[!TIP] Username Confusion
+>Always check the "Connect" button instructions to verify the username.
+>Username is `ec2-user` for Amazon Linux. 
+> However, if you launch **Ubuntu**, the user is `ubuntu`. 
+> If you launch **CentOS**, it is `centos`. 
+>
+
 **Step 9:** Verify Connection: Try: `uname -a` or `sudo yum update –y`
 
 **Step 10:** Stop the Instance: Return to the EC2 Dashboard → Select your instance → click Instance State → Stop Instance.
 
 > **Note on Formats:** Use **.ppk** format key when connecting with PuTTY. Use **.pem** format key when connecting with PowerShell / Linux / macOS terminal.
 
-> Note on Permissions:
-> 
-> The message “Permission denied (publickey)” or “Permissions are too open” appears when the .pem key file or SSH configuration has incorrect permissions or mismatched ownership.
-> 
-> Run this command in your local terminal before connecting:
-> 
-> ```bash
-> chmod 400 keypair.pem
-> ```
-> 
-> Then connect again:
-> 
-> ```bash
-> ssh -i "keypair.pem" ec2-user@<Public-IP>
-> ```
+
+>[!IMPORTANT] Console Connect method.
+>- Select Instance $\rightarrow$ Click **Connect** (top right) $\rightarrow$ Tab: **EC2 Instance Connect** $\rightarrow$ Click **Connect**.
+>- It opens a terminal directly in your browser. No keys (`.pem`/`.ppk`) needed! AWS temporarily pushes a key for you behind the scenes.
+  
+## Fixing "Permission Denied" on Windows (PowerShell)
+
+When using PowerShell on Windows, you may get an "Unprotected private key file" or "Permission denied" error. This happens because the `.pem` file, by default, can be read by other users on your system (it has inherited permissions), which SSH refuses for security.
+
+On Linux, this is fixed with `chmod 400 key.pem`, which makes the file readable _only_ by the owner. 
+
+The Windows equivalent uses the `icacls` command to remove permissions from all other users and groups.
+
+To fix this in PowerShell (run as Administrator):
+1. **Navigate to your key file:** (e.g., in Downloads)
+    
+   ```powershell
+     cd "C:\Users\YourUser\Downloads"
+     ```
+    
+2. **Remove inherited permissions:** This stops other users from having access.
+    ```powershell
+	icacls .\your-key-file.pem /inheritance:r
+    ```
+
+3. **Grant read access only to yourself:** (Replace `YourUser` with your actual Windows username).
+
+    ```powershell
+    icacls .\your-key-file.pem /grant:r "YourUser:(R)"
+    ```
+
+After running these commands, your key file is secure and SSH will accept it.
 
 
-### Deep Dive: Fixing the “Too Open” Permission Error on Windows
+**(A) On Windows using PowerShell:**
+    
+- Open PowerShell. Navigate to the folder where your .pem file is saved:
+        
+	```bash
+	cd "C:\Users\<YourName>\Downloads"
+	```
+	
+- Connect using the SSH command:
 
-When connecting to EC2 via SSH, you may encounter the error: `“Permission denied (publickey)”` or `“Unprotected private key file”`. This occurs because Windows, by default, inherits permissions that allow other users (or the system) to read your files. AWS requires the key to be accessible **only** by you.
-
-#### Scenario Comparison: Laptop vs. Lab System
-
-| **Situation**              | **Your Laptop**                           | **Lab Systems**                                                |
-| -------------------------- | ----------------------------------------- | -------------------------------------------------------------- |
-| **Who owns the .pem file** | You (single user)                         | Shared system, different users per batch                       |
-| **File location**          | Inside your user folder (safe by default) | Often in Downloads of another user, or in Public/shared folder |
-| **Windows permissions**    | Automatically restricted to your account  | Other users might have access to the same folder               |
-| **Result**                 | Works fine                                | SSH refuses connection (Security Risk)                         |
-
-### The Solution: Restrict Permissions using icacls
-
-On Linux, we use `chmod 400`. On Windows, we use `icacls`. Both achieve the same goal: **Make the key file readable only by the file's owner.**
-
-**Run these commands in PowerShell as Administrator:**
-
-```powershell
-# 1. Go to folder where pem file is stored
-cd "C:\Users\studentX\Downloads"
-
-# 2. Remove inherited permissions (others lose access)
-icacls .\keyfile.pem /inheritance:r
-
-# 3. Grant permission only to the current logged-in user
-# (Replace 'studentX' with your actual username)
-icacls .\keyfile.pem /grant:r "studentX:(R)"
-```
+	```bash
+	ssh -i "keyfile.pem" ec2-user@<Public-IP-address>
+	```
+	
+- When prompted, type `yes` to continue connecting.
+	
+**(B) On Linux Terminal (Ubuntu / macOS):**
+    
+- Open Terminal. Navigate to the directory where your .pem file is stored.
+	
+- Set proper permission for the key file:
+	
+	```bash
+	chmod 400 keyfile.pem
+	```
+	
+- Connect to the instance:
+	
+	```bash
+	ssh -i keyfile.pem ec2-user@<Public-IP-address>
+	```
+	
+- Type `yes` when prompted.
 
 ### Understanding the icacls Command
 
@@ -286,30 +253,22 @@ icacls .\keyfile.pem /grant:r "studentX:(R)"
         
     - **"Cacls" (Change Access Control Lists):** The old command was `cacls`. The new version adds support for viewing/modifying permissions, handling NTFS ACLs, and managing inheritance.
 
-### Command Breakdown
 
-**1. `cd "C:\Users\studentX\Downloads"`**
+`icacls .\keyfile.pem /inheritance:r`
 
-- **CD (Change Directory):** Moves PowerShell’s current working location into the folder containing your key.
+- `.\keyfile.pem`: Target the file in the current folder.
+    
+- `/inheritance:r`: "Remove inherited permissions."
+    
+By default, files inherit permissions from the parent folder (e.g., "Downloads"). This command breaks that link, removing default access for "Administrators" or generic "Users."
     
 
-**2. `icacls .\keyfile.pem /inheritance:r`**
+`icacls .\keyfile.pem /grant:r "studentX:(R)"`
 
-- **`.\keyfile.pem`**: Target the file in the current folder.
+- `/grant:r`: Grant specific rights, replacing existing ones.
     
-- **`/inheritance:r`**: "Remove inherited permissions."
+- `"studentX:(R)"`: Give **Read-only** access specifically to the user `studentX`.
     
-- **What it does:** By default, files inherit permissions from the parent folder (e.g., "Downloads"). This command breaks that link, removing default access for "Administrators" or generic "Users."
-    
-
-**3. `icacls .\keyfile.pem /grant:r "studentX:(R)"`**
-
-- **`/grant:r`**: Grant specific rights, replacing existing ones.
-    
-- **`"studentX:(R)"`**: Give **Read-only** access specifically to the user `studentX`.
-    
-
-#### Final State of the `.pem` File
 
 After running these commands, your key file is:
 
@@ -319,36 +278,3 @@ After running these commands, your key file is:
     
 3. **Fully compliant** with AWS’s SSH key security rule (functionally identical to `chmod 400`).
     
-
----
-
-#### Mermaid Diagram: Permission Logic
-
-This diagram visualizes how the permissions change before and after running the command.
-
-```mermaid
-flowchart TD
-    subgraph BEFORE [Default Windows State]
-        File1[.pem File]
-        Admin(Admins) -->|Read/Write| File1
-        System(System) -->|Read/Write| File1
-        User(Current User) -->|Read/Write| File1
-        Other(Other Users) -.->|Inherited Read| File1
-    end
-
-    subgraph ACTION [Run icacls Commands]
-        Cmd1[1. /inheritance:r] -->|Breaks Links| File2
-        Cmd2[2. /grant:r User:R] -->|Adds Specific Rule| File2
-    end
-
-    subgraph AFTER [Secured State]
-        File2[.pem File]
-        User2(Current User) -->|Read Only| File2
-        Admin -.->|Access Removed| File2
-        System -.->|Access Removed| File2
-        Other -.->|Access Removed| File2
-    end
-
-    BEFORE --> ACTION --> AFTER
-```
-

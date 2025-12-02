@@ -169,7 +169,7 @@ flowchart LR
 ## Enable AWS IAM MFA
 
 ```mermaid
-flowchart LR
+flowchart TD
     User[Select User] --> Security[Security Credentials]
     Security --> Assign[Assign MFA Device]
     Assign --> Type{MFA Type}

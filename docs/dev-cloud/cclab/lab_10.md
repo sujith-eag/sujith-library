@@ -44,6 +44,8 @@ flowchart TD
 - IPv4 CIDR block → `10.0.0.0/16`
 - Tenancy → `Default`
 
+> You must enable **"Enable DNS hostnames"**. If you don't do this, your EC2 instances will get a Public IP (e.g., `54.1.2.3`), but they won't get a Public DNS name (e.g., `ec2-54-1-2-3.compute-1.amazonaws.com`). Many applications and scripts rely on this DNS name.
+
 **Step 5:** Click `Create VPC`
 
 > **Note:** The `10.0.0.0/16` CIDR block is a standard choice from the private IP range. It gives you 65,536 total IP addresses to use within this VPC.
@@ -68,6 +70,12 @@ Create two subnets inside the VPC.
 
 **Step 5:** Click `Create subnet`
 
+>[!NOTE] Auto-Assign Public IP
+>Creating a "Public Subnet" doesn't automatically give instances a Public IP.
+>After creating the subnet, you must Select Subnet -> Actions -> **Edit subnet settings** -> Check **"Enable auto-assign public IPv4 address"**. 
+>
+>Without this, every time you launch an instance, you have to manually request an IP.
+   
 ### Private Subnet
 
 **Step 1:** Click `Create subnet`
@@ -126,9 +134,17 @@ Create two subnets inside the VPC.
 
 Now the `PublicSubnet` has internet access.
 
+>[!NOTE] 
+>When you create a VPC, AWS creates a "Main" route table automatically. Leave the "Main" table empty (no routes to IGW). Explicitly associate your subnets to your custom tables. This prevents accidental public exposure if you create a new subnet and forget to configure it.
+
 ## Create NAT Gateway
 
-> **Important:** NAT Gateway must always be created in a public subnet. NAT Gateway is a **paid resource**.
+>[!IMPORTANT] NAT Tax 
+>NAT Gateways are **NOT Free Tier eligible**. As soon as you finish this lab, **delete the NAT Gateway**. It charges you even if no data is passing through it.
+>
+
+
+NAT Gateway must always be created in a public subnet. 
 
 **Step 1:** Go to `NAT Gateways` → `Create NAT Gateway`
 
@@ -137,6 +153,8 @@ Now the `PublicSubnet` has internet access.
 - Name → `NAT-GW`
 - Subnet → `PublicSubnet`
 - Elastic IP Allocation ID → Click `Allocate Elastic IP`
+
+> **Elastic IP Limits:** By default, you can only have 5 Elastic IPs per region.
 
 **Step 3:** Click `Create NAT Gateway`
 
@@ -195,3 +213,4 @@ Now the `PublicSubnet` has internet access.
 |Use Case|Fine-grained control|Border checkpoint|
 
 > **Note:** For 99% of use cases, Security Groups provide sufficient control. Most leave default "allow all" NACL as-is.
+

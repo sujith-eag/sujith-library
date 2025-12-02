@@ -110,7 +110,7 @@ flowchart LR
     
 - AWS Region: Choose the region nearest to you.
     
-- **Object Ownership: select ACLs enabled** [this enables us to access the objects through the public URLs].
+- **Object Ownership: select ACLs enabled** [this enables us to access the objects through the public URLs]. In production, we rarely use ACLs anymore. We use **Bucket Policies** (a JSON rule for the whole bucket) instead.
     
 - Next keep the ‘Bucket owner preferred’ as checked [default setting].
     
@@ -156,4 +156,13 @@ flowchart LR
     
 
 The image is displayed directly from the S3 bucket — meaning AWS S3 is serving that object over HTTP.
+
+The URL structure is always: `https://<bucket-name>.s3.<region>.amazonaws.com/<filename>`
+
+- To clean up, you must **Empty** the bucket first, _then_ **Delete** the bucket.
+
+
+> [!NOTE]
+> S3 Bucket names are **Globally Unique**. You cannot name your bucket `test-bucket`. 
+> It must be weird and specific, like `student1-lab3-assets-2025-xy`.
 

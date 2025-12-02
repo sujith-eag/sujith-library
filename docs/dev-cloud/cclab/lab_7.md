@@ -42,32 +42,30 @@ To host a website:
     
 - Apache listens on **port 80 (HTTP)** or **port 443 (HTTPS)** for incoming connections
     
-
 Apache HTTP Server (httpd) is a web server software. httpd stands for HTTP Daemon. When you install Apache, you’re really installing the httpd service.
 
 File Locations (default) – Website files go into: /var/www/html
 
----
 
-### Manual Installation of Apache (httpd) Web Server on EC2 for Static Website Hosting
+## Manual Installation of Apache (httpd) Web Server on EC2 for Static Website Hosting
 
-#### Part 1 – Creating an EC2 Instance
+### Part 1 – Creating an EC2 Instance
 
-**Step 1: Sign in to AWS Management Console:** Go to EC2 Dashboard.
+* Step 1: Sign in to AWS Management Console: Go to EC2 Dashboard.
 
-**Step 2: Launch a New Instance:** Click “Launch Instance.” Give a name (e.g., MyApacheServer).
+* Step 2: Launch a New Instance: Click “Launch Instance.” Give a name (e.g., MyApacheServer).
 
-**Step 3: Choose an Amazon Machine Image (AMI):** Select Amazon Linux 2 AMI (Free tier eligible).
+* Step 3: Choose an Amazon Machine Image (AMI): Select Amazon Linux 2 AMI (Free tier eligible).
 
-**Step 4: Choose Instance Type:** Choose t3.micro (Free tier eligible).
+* Step 4: Choose Instance Type: Choose t3.micro (Free tier eligible).
 
-**Step 5: Create / Select Key Pair:** Create new key pair → File format = .pem. Download the key file.
+* Step 5: Create / Select Key Pair: Create new key pair → File format = .pem. Download the key file.
 
-**Step 6: Configure Network Settings:** Click → Allow SSH traffic, → Allow HTTP traffic from the internet. (This automatically opens port 80).
+* Step 6: Configure Network Settings: Click → Allow SSH traffic, → Allow HTTP traffic from the internet. (This automatically opens port 80).
 
-**Step 7: Launch Instance:** Click Launch Instance.
+* Step 7: Launch Instance: Click Launch Instance.
 
-**Step 8: Connect to the Instance:** Using PowerShell, navigate to your .pem file folder and connect:
+* Step 8: Connect to the Instance: Using PowerShell, navigate to your .pem file folder and connect:
 
 ```bash
 ssh -i "keyfile.pem" ec2-user@<Public-IP-address>
@@ -154,15 +152,17 @@ sudo systemctl restart httpd
 
 ## User Data Script Automation
 
-### Understanding the Shebang
-
-> **Important Note**
+>[!IMPORTANT] Important Note
 > 
 > When you provide a script to the EC2 "User Data" field, the very first line **must** be `#!/bin/bash`.
 > 
-> This line, called a "shebang", tells the Linux operating system to use the Bash shell (located at `/bin/bash`) to run all the commands in the script.
+> This line, called a "shebang", tells the Linux operating system to use the Bash shell (located at `/bin/bash`) to run all the commands in the script. Without it, Linux thinks "This is just text."
 > 
 > When your EC2 instance first boots, it reads this User Data. If the shebang is missing, the system doesn't know what interpreter to use (e.g., Bash, Python). This will cause the script to **silently fail**—Apache won't get installed and your website won't appear.
+> 
+> If your script fails, you can check the log file inside the instance at: `/var/log/cloud-init-output.log`. This file shows every command the script tried to run and the error messages.
+> 
+
 
 ### Launch EC2 with User Data Script
 
@@ -192,7 +192,6 @@ In this method, you write a shell script in the User Data section (during instan
     
 - Paste the following shell script:
     
-
 ```bash
 #!/bin/bash
 # Update packages
@@ -213,6 +212,14 @@ echo "<html>
 </html>" > /var/www/html/index.html
 ```
 
+> User Data scripts run as the **root** user by default, so `sudo` is implied.
+
+
+>[!note] "One-Time Only" Rule: 
+> User Data scripts run **only once** during the very first boot. If you edit the script in the AWS Console and reboot the instance, **nothing happens**. You must terminate and recreate the instance to run the new script.
+> 
+ 
+
 **Step 6:** Launch the Instance: Click Launch Instance. Wait for the status → Running.
 
 **Step 7:** Test Your Web Server:
@@ -222,4 +229,12 @@ echo "<html>
 - Paste it in your browser: `http://<your-public-ip>`
 
 - You should immediately see your webpage!
+
+
+>[!NOTE] Public IP Volatility:
+> 
+>While using the Public IP to view the website. If you **Stop** and **Start** the instance, AWS releases that Public IP and gives you a new random one. Your website URL will break.
+>
+>For a real web server, we allocate an **Elastic IP** (static IP) so the address never changes.
+>
 
