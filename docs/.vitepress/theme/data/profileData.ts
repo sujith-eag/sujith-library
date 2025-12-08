@@ -33,7 +33,7 @@ export const profileData = {
         { text: "GitHub", url: "https://github.com/sujith-eag", icon: "/logo/github-w.svg" },
         { text: "LinkedIn", url: "https://linkedin.com/in/sujith-eag", icon: "/logo/linkedin_c.svg" },
         { text: "Email", url: "mailto:sujith.eag@gmail.com", icon: "/logo/gmail.svg" },
-        // { text: "Resume", url: "/sujith_resume_1.pdf", icon: "/logo/resume.svg" },
+        { text: "Resume", url: "/sujith_resume.pdf", icon: "/logo/resume.svg" },
       ]
     },
     {

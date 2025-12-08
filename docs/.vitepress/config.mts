@@ -191,7 +191,7 @@ export default withMermaid(
 
       /* Footer */
       footer: {
-        message: 'Made with ❤️ for students, by a fellow learner.',
+        message: 'Made with ❤️ for students, by a fellow learner. <a href="https://github.com/sujith-eag/" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/sujith-eag" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
         copyright: `© ${new Date().getFullYear()} Sujith.`
       },
 

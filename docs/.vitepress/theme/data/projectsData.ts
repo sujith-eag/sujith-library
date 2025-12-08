@@ -8,7 +8,24 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-
+{
+  title: "Agentic Workstation: Flow Engineering based Multi-Agent Orchestration Framework",
+  link: "https://github.com/sujith-eag/agentic-workstation/",
+  description: "A production-ready Open Source CLI platform that revolutionizes software development by solving 'AI Context Drift'. Unlike standard vector-database approaches, it uses File-Based Flow Engineering (FBFE) and deterministic state machines to orchestrate 40+ specialized autonomous agents. It features a zero-infrastructure design, requiring only a file system and an LLM, and includes enterprise-grade tooling for automated code generation, rigorous quality gating, and full audit traceability via immutable logging.",
+  tags: [
+    "Python",
+    "Click (CLI)",
+    "Rich (TUI)",
+    "Flow Engineering",
+    "Multi-Agent Systems",
+    "PyYAML & TOML",
+    "Jinja2",
+    "Structlog",
+    "Pytest",
+    "Docker",
+    "Stateless Architecture"
+    ]
+  },
   {
   title: "Eagle Campus: Full-Stack College Management & Productivity Platform",
   link: "https://task.sujith-eag.in/",

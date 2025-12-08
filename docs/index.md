@@ -19,6 +19,10 @@ hero:
     text: Eagle Campus
     link: https://task.sujith-eag.in 
 
+  - theme: brand
+    text: Agentic-Workspace(beta)
+    link: https://github.com/sujith-eag/agentic-workstation 
+
   - theme: alt
     text: MCA Section 
     link: /mca/
