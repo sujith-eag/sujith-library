@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "katex": "^0.16.25",
+    "katex": "^0.16.27",
     "markdown-it-katex": "^2.0.3",
     "mermaid": "^11.12.1",
     "vitepress": "^1.6.3",
