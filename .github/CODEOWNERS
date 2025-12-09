@@ -1,0 +1,17 @@
+# This file defines the code owners for this repository
+# When a pull request is opened, the users listed here will be automatically
+# requested for review
+
+# Global owners - get notified for all changes
+* @sujith-eag
+
+# Documentation owners
+docs/ @sujith-eag
+
+# Configuration files
+.github/ @sujith-eag
+docs/.vitepress/ @sujith-eag
+
+# Build and deployment
+package.json @sujith-eag
+.github/workflows/ @sujith-eag

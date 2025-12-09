@@ -46,7 +46,7 @@ export const profileData = {
         { title: '"Cryptography Through Graph Structures: A Study of RSA and ECC"', details: "Case Study Presentation at MSRIT." }
       ]
     },
-        {
+    {
       title: "🏆 Technical Skills",
       type: "list",
       items: [
@@ -55,13 +55,13 @@ export const profileData = {
         { title: "Tools & Platforms:", details: ["GitHub", "Node.js", "Arduino", "VS Code", "IntelliJ", "Obsidian", "LaTeX"] }
       ]
     },
-    {
-      title: "🛠 Workshops & Trainings",
-      type: "list",
-      items: [
-        { title: "IoT 4.0: Internet of Things in Industry, Healthcare and Smart Cities", details: "Attended a 3-day hands-on workshop on IoT systems, working with Arduino, NodeMCU, and various sensors. Implemented internet-connected automation using Python scripting." }
-      ]
-    },
+    // {
+    //   title: "🛠 Workshops & Trainings",
+    //   type: "list",
+    //   items: [
+    //     { title: "IoT 4.0: Internet of Things in Industry, Healthcare and Smart Cities", details: "Attended a 3-day hands-on workshop on IoT systems, working with Arduino, NodeMCU, and various sensors. Implemented internet-connected automation using Python scripting." }
+    //   ]
+    // },
     {
       title: "🎓 Education",
       type: "list",

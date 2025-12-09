@@ -1,0 +1,34 @@
+---
+name: Content Contribution
+about: Suggest new content or improvements to existing content
+title: "[CONTENT] "
+labels: ["content", "enhancement"]
+assignees: []
+
+---
+
+## Content Suggestion
+
+**What type of content would you like to contribute?**
+- [ ] New tutorial/article
+- [ ] Code example
+- [ ] Topic explanation
+- [ ] Correction to existing content
+- [ ] Other (please specify)
+
+**Topic/Category**
+<!-- e.g., JavaScript, Data Structures, Web Development, etc. -->
+
+**Description**
+<!-- Provide a clear description of what you'd like to add or improve -->
+
+**Why is this content needed?**
+<!-- Explain the value this content would add -->
+
+**Additional context**
+<!-- Any other relevant information, links, or references -->
+
+**Would you be willing to contribute this content yourself?**
+- [ ] Yes, I'd like to write it
+- [ ] No, just suggesting for someone else
+- [ ] Maybe, with some guidance

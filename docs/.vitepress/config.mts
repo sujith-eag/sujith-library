@@ -124,6 +124,7 @@ export default withMermaid(
         {
           text: 'Computer Science',
           items: [
+            { text: 'MCA Program', link: '/mca/' },
             { text: 'Operating Systems', link: '/os/' },
             { text: 'Databases (DBMS)', link: '/dbms/' },
             { text: 'Software Modeling', link: '/software-modeling/' },
@@ -140,12 +141,15 @@ export default withMermaid(
             { text: 'Dev Cloud', link: '/dev-cloud/' }
           ]
         },
-
-        /* Academics / University */
+        /* Community & Support */
         {
-          text: 'Academics',
+          text: 'Community',
           items: [
-            { text: 'MCA', link: '/mca/' }
+            { text: '👋 About & Support', link: '/support/' },
+            { text: '🤝 Contribute', link: 'https://github.com/sujith-eag/sujith-library/blob/main/CONTRIBUTING.md' },
+            { text: '🐛 Report Issues', link: 'https://github.com/sujith-eag/sujith-library/issues' },
+            { text: '💬 Discussions', link: 'https://github.com/sujith-eag/sujith-library/discussions' },
+            { text: '📖 GitHub Repository', link: 'https://github.com/sujith-eag/sujith-library' }
           ]
         }
       ],
@@ -191,8 +195,8 @@ export default withMermaid(
 
       /* Footer */
       footer: {
-        message: 'Made with ❤️ for students, by a fellow learner. <a href="https://github.com/sujith-eag/" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/sujith-eag" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
-        copyright: `© ${new Date().getFullYear()} Sujith.`
+        message: 'Made with ❤️ for students, by a fellow learner.<br><a href="/support/" style="color: var(--vp-c-brand-1);">Support the Project</a> | <a href="https://github.com/sujith-eag/sujith-library" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/sujith-eag" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
+        copyright: `© ${new Date().getFullYear()} Sujith. Licensed under <a href="https://github.com/sujith-eag/sujith-library/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a>.`
       },
 
       /* Last updated timestamp */

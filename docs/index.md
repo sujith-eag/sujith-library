@@ -11,23 +11,27 @@ hero:
     alt: Eagle's Library
   
   actions:  
-  - theme: alt
-    text: Projects & Profile
-    link: /projects/
-
   - theme: brand
-    text: Eagle Campus
-    link: https://task.sujith-eag.in 
+    text: 📚 Eagle Campus
+    link: https://task.sujith-eag.in
 
-  - theme: brand
-    text: Agentic-Workspace(beta)
-    link: https://github.com/sujith-eag/agentic-workstation 
+  # - theme: brand
+  #   text: Agentic-Workspace(beta)
+  #   link: https://github.com/sujith-eag/agentic-workstation 
 
   - theme: alt
-    text: MCA Section 
-    link: /mca/
+    text: ❤️ Collaborate on Project
+    link: /support/
+
 
 features:
+  - icon:
+      src: /logo/book.ico
+      alt: Academic Icon
+    title: MCA Program
+    details: Master of Computer Applications curriculum with comprehensive study materials.
+    link: /mca/
+
   - icon:
       src: /logo/python.svg
       alt: Python Icon

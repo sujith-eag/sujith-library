@@ -1,19 +1,17 @@
 Purpose
 =======
 
-Guidance for AI coding agents working on the `vu-library` VitePress documentation site.
+Guidance for AI coding agents working on the `sujith-library` VitePress documentation site.
 
-> **For complete formatting and style guidelines, see `README.md`**
+> **For complete formatting and style guidelines, see `CONTRIBUTING.md`**
 
 ## Project Structure
 
 - **Content:** `docs/` — All Markdown pages
-
 - **Config:** `docs/.vitepress/config.mts` — Site configuration
-
 - **Sidebars:** `docs/.vitepress/theme/data/fileStructures/*.ts` — Sidebar data
-
 - **Assets:** `public/` — Static files (images, logos)
+- **Contributing:** `CONTRIBUTING.md` — Guidelines for contributors
 
 ## Commands
 
