@@ -7,14 +7,13 @@ description: Learn about Sujith Kumar, explore my projects, and support this ope
 
 **Sujith's Library** is a free, open-source educational platform built with ❤️ to help developers and students learn computer science concepts.
 
-It has taken significant time and effort to create and maintain this resource, yet I have avoided ads and paywalls to keep the content accessible to everyone.
+It has taken significant time and effort to create and maintain this resource, yet I have avoided ads and paywalls to keep the content accessible to everyone. I will be focusing on other projects and need your support to continue improving and expanding this library.
 
 Maintaining and expanding the project requires resources and time. Your support helps keep this resource accessible for the student and developer community so they can continue to benefit from it.
 
 ## Why Support?
 
-- **📚 Free Education**: All content is completely free and accessible
-- **🌍 Global Impact**: Used by developers worldwide for learning
+- **📚 Free Education**: All content is completely free and accessible with impact on learning of those who need it.
 - **🔄 Continuous Updates**: Regular content additions and improvements
 - **🤝 Community Driven**: Open source with community contributions
 - **🚀 Modern Tech**: Built with latest technologies (VitePress, Vue.js)
@@ -23,6 +22,8 @@ Maintaining and expanding the project requires resources and time. Your support 
 - **🌟 Open Source Learning**: Gain hands-on experience contributing to real open-source projects
 - **📋 Git Workflow Mastery**: Master version control and collaborative development practices
 - **🧪 Testing & Development**: Learn modern testing methodologies and development workflows
+- **📖 Documentation Excellence**: Follow industry best practices for technical writing and documentation
+- **🎯 Standards Compliance**: Learn to create content that meets professional standards and guidelines
 
 ## Ways to Support
 

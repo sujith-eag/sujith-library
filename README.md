@@ -6,7 +6,7 @@
 
 An open-source knowledge base and portfolio site built with VitePress, featuring comprehensive notes on computer science and software engineering topics. This extensive personal knowledge management system is meticulously organized into over 800+ pages, leveraging Static Site Generation (SSG) for blazing-fast, secure, and SEO-optimized performance. This project aims to create a collaborative resource where developers, students, and educators can contribute and learn together.
 
-🌐 **[Live Demo](https://sujith-eag.in)** | 📖 **[Documentation](https://sujith-eag.in)**
+🌐 **[Live Demo](https://sujith-eag.in)** | 📖 **[Documentation](https://sujith-eag.in/docs)**
 
 ## ✨ Features
 

@@ -17,6 +17,7 @@ import { mcaSidebar } from './sidebar/mcaSidebar'
 import { interviewSidebar } from './sidebar/interviewSidebar'
 import { devcloudSidebar } from './sidebar/devcloudSidebar'
 import { softwareModelingSidebar } from './sidebar/softwareModelingSidebar'
+import { projectsSidebar } from './sidebar/projectsSidebar'
 
 // https://vitepress.dev/reference/site-config
 
@@ -141,15 +142,17 @@ export default withMermaid(
             { text: 'Dev Cloud', link: '/dev-cloud/' }
           ]
         },
+
         /* Community & Support */
         {
           text: 'Community',
           items: [
             { text: '👋 About & Support', link: '/support/' },
-            { text: '🤝 Contribute', link: 'https://github.com/sujith-eag/sujith-library/blob/main/CONTRIBUTING.md' },
-            { text: '🐛 Report Issues', link: 'https://github.com/sujith-eag/sujith-library/issues' },
-            { text: '💬 Discussions', link: 'https://github.com/sujith-eag/sujith-library/discussions' },
-            { text: '📖 GitHub Repository', link: 'https://github.com/sujith-eag/sujith-library' }
+            { text: 'Project Documentation', link: '/projects/' },
+            { text: 'Contribute', link: 'https://github.com/sujith-eag/sujith-library/blob/main/CONTRIBUTING.md' },
+            { text: 'Report Issues', link: 'https://github.com/sujith-eag/sujith-library/issues' },
+            // { text: 'Discussions', link: 'https://github.com/sujith-eag/sujith-library/discussions' },
+            { text: 'GitHub Repository', link: 'https://github.com/sujith-eag/sujith-library' }
           ]
         }
       ],
@@ -172,12 +175,13 @@ export default withMermaid(
         '/tools/': toolsSidebar(),
         '/leetcode/': interviewSidebar(),
         '/dev-cloud/': devcloudSidebar(),
-        '/software-modeling/': softwareModelingSidebar
+        '/software-modeling/': softwareModelingSidebar,
+        '/projects/': projectsSidebar()
       },
 
       /* Page structure */
       outline: {
-        level: [2, 6]
+        level: [2, 4]
       },
 
       /* Search */

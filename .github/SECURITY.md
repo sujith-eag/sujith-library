@@ -1,13 +1,5 @@
 # Security Policy
 
-## Supported Versions
-
-We take security seriously. This section outlines how we handle security vulnerabilities in Sujith's Library.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| Latest  | :white_check_mark: |
-
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability, please report it responsibly by emailing [sujith.eag@gmail.com](mailto:sujith.eag@gmail.com) instead of creating a public issue.
