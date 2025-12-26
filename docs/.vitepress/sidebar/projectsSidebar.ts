@@ -6,6 +6,22 @@ export const projectsSidebar = () => [
     items: [
       { text: 'Overview', link: '/projects/' },
       {
+        text: 'Browser & DOM Exploits',
+        collapsed: true,
+        items: [
+          { text: 'Summary: The Hostile DOM', link: '/projects/security_blog/dom_exploits/00-hostile-dom-summary' },
+          { text: 'Master Index & Coverage Map', link: '/projects/security_blog/dom_exploits/01-hostile-dom-index' },
+          { text: 'Part 1: Browser Architecture & Instrumentation', link: '/projects/security_blog/dom_exploits/deep_dive/02-hostile-dom-architecture' },
+          { text: 'Part 2: Visual & UI Deception', link: '/projects/security_blog/dom_exploits/deep_dive/03-hostile-dom-visual-attacks' },
+          { text: 'Part 3: Persistence & Background Execution', link: '/projects/security_blog/dom_exploits/deep_dive/04-hostile-dom-persistence' },
+          { text: 'Part 4: Code Injection & Execution', link: '/projects/security_blog/dom_exploits/deep_dive/05-hostile-dom-injection' },
+          { text: 'Part 5: Credential & Session Theft', link: '/projects/security_blog/dom_exploits/deep_dive/06-hostile-dom-theft' },
+          { text: 'Part 6: Permission & Extension Exploitation', link: '/projects/security_blog/dom_exploits/deep_dive/07-hostile-dom-extensions' },
+          { text: 'Part 7: Fingerprinting & Tracking', link: '/projects/security_blog/dom_exploits/deep_dive/08-hostile-dom-fingerprinting' },
+          { text: 'Part 8: Advanced Attack Vectors', link: '/projects/security_blog/dom_exploits/deep_dive/09-hostile-dom-advanced' }
+        ]
+      },
+      {
         text: 'Sujith\'s Library',
         collapsed: true,
         items: [
