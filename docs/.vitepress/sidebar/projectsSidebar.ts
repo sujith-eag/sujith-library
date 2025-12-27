@@ -18,7 +18,8 @@ export const projectsSidebar = () => [
           { text: 'Part 5: Credential & Session Theft', link: '/projects/security_blog/dom_exploits/deep_dive/06-hostile-dom-theft' },
           { text: 'Part 6: Permission & Extension Exploitation', link: '/projects/security_blog/dom_exploits/deep_dive/07-hostile-dom-extensions' },
           { text: 'Part 7: Fingerprinting & Tracking', link: '/projects/security_blog/dom_exploits/deep_dive/08-hostile-dom-fingerprinting' },
-          { text: 'Part 8: Advanced Attack Vectors', link: '/projects/security_blog/dom_exploits/deep_dive/09-hostile-dom-advanced' }
+          { text: 'Part 8: Advanced Attack Vectors', link: '/projects/security_blog/dom_exploits/deep_dive/09-hostile-dom-advanced' },
+          { text: 'Part 9: Spectre & Meltdown Attacks', link: '/projects/security_blog/dom_exploits/deep_dive/10_spectre_meltdown' }
         ]
       },
       {
