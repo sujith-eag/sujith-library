@@ -159,9 +159,9 @@ Use proper Markdown table syntax with alignment:
 
 # Callout Blocks (Notes, Warnings, Tips)
 
-VitePress supports GitHub-flavored callout blocks. Use these for important information.
+VitePress supports both GitHub-flavored callout blocks and custom containers. Use these for important information.
 
-## Syntax
+## GitHub-Flavored Callouts
 
 > [!NOTE]
 > This is helpful information.
@@ -183,7 +183,7 @@ VitePress supports GitHub-flavored callout blocks. Use these for important infor
 > This warns about dangerous actions.
 > Dangerous actions that could cause problems.
 
-## Syntax Rules
+### Syntax Rules
 
 - **Capitalize the keyword**: Use `[!NOTE]` not `[!note]` or `[!Note]` for consistency.
 
@@ -193,6 +193,55 @@ VitePress supports GitHub-flavored callout blocks. Use these for important infor
   > [!NOTE] Developer's Note
   > This is additional context for developers.
   ```
+
+## VitePress Custom Containers
+
+VitePress also supports custom containers for highlighting blocks:
+
+::: info General Note
+This is helpful information.
+Informational notes for additional context.
+:::
+
+::: tip Best Practices/Defense
+This is a helpful tip.
+Helpful tips and best practices.
+:::
+
+::: warning Vulnerability Alert
+This warns about potential issues.
+Potential issues or things to watch out for.
+:::
+
+::: danger Critical/Exploit Warning
+This warns about dangerous actions.
+Dangerous actions that could cause problems.
+:::
+
+### Syntax Rules
+
+- Use `::: type` to start and `:::` to end the block.
+- You can add a title after the type: `::: info My Title`
+
+---
+
+# Collapsible Sections
+
+Use `::: details` to create expandable sections that hide content by default:
+
+::: details Click to expand
+This content is hidden by default and can be expanded by clicking the title.
+:::
+
+### Syntax
+
+```markdown
+::: details Summary Text
+Content to hide...
+:::
+```
+
+This is useful for hiding code examples, spoilers, or additional details.
 
 ---
 
