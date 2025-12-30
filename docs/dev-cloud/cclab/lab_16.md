@@ -5,11 +5,7 @@
 ### Exercise–16: Building a Basic Python Flask Web Application
 
 **Fundamentals of Web Requests & Form Handling (Pre-Requisite for AWS RDS Connectivity Lab)**
-
-> **Note:** This is a local Python Flask exercise used as a prerequisite for the AWS RDS exercise. No AWS services are used in this specific lab.
-> 
-> **Security Warning:** This app displays passwords in plain text for educational purposes only. In real applications, never store or display passwords—use hashing (e.g., bcrypt). Disable debug mode in production to avoid exposing sensitive data.
-
+ 
 ---
 
 ### 1. Objectives
@@ -205,5 +201,4 @@ if __name__ == "__main__":
 - **Port 5000 in use:** Change port in `app.run(port=5001)`.
 - **Form not submitting:** Check HTML for correct `action` and `method`.
 - **Debug issues:** Enable debug mode and check console for errors.
-    
 
