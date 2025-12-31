@@ -11,12 +11,6 @@ export const cloud1Section = [
          { label: "Conceptializing Cloud", link: "/dev-cloud/cu1/u14" }, 
         ]
       },
-      // {
-      //   title: "L",
-      //   items: [
-      //    { label: "AWS VPC Setup ", link: "/dev-cloud/cclab/l10" },
-      //   ]
-      // },
     ]
   }
 ]
@@ -61,7 +55,29 @@ export const cloud2Section = [
         items: [
           { label: "ALB & Auto Scaling", link: "/dev-cloud/cclab/lab_12" },
           { label: "Stress Testing (CloudWatch)", link: "/dev-cloud/cclab/lab_13" },
-          // { label: "Final Project", link: "/dev-cloud/cclab/lab_14" },
+          { label: "ASG Mini Project", link: "/dev-cloud/cclab/lab_14" },
+        ]
+      },
+      {
+        title: "Managed Services",
+        items: [
+          { label: "WordPress on Lightsail", link: "/dev-cloud/cclab/lab_15" },
+          { label: "Flask on Elastic Beanstalk", link: "/dev-cloud/cclab/lab_20" },
+          { label: "Flask + DynamoDB on EB", link: "/dev-cloud/cclab/lab_21" },
+        ]
+      },
+      {
+        title: "Web Applications",
+        items: [
+          { label: "Flask Basics", link: "/dev-cloud/cclab/lab_16" },
+          { label: "Flask + RDS MySQL", link: "/dev-cloud/cclab/lab_17" },
+        ]
+      },
+      {
+        title: "Data Services",
+        items: [
+          { label: "DynamoDB Operations", link: "/dev-cloud/cclab/lab_18" },
+          { label: "ElastiCache Redis", link: "/dev-cloud/cclab/lab_19" },
         ]
       },
     ]
