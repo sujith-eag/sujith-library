@@ -11,7 +11,6 @@
 
 Deploy a simple Flask application on AWS Elastic Beanstalk and verify it using the public URL.
 
-
 ## What is Elastic Beanstalk?
 
 Elastic Beanstalk is a Platform as a Service (PaaS) provided by AWS that allows developers to deploy and manage applications without manually handling the underlying infrastructure such as EC2, load balancers, or auto scaling.
@@ -33,7 +32,6 @@ A single instance environment means the application runs on one EC2 instance onl
 - Low-traffic applications
 
 It is cost-effective and simple, but not fault-tolerant.
-
 
 ## Elastic Beanstalk Architecture
 
@@ -248,7 +246,6 @@ If environment health is "Degraded" or "Severe":
 3. Download and review for errors (e.g., import failures, port issues)
 4. Alternatively, SSH into EC2 via EB → Environment → EC2 Instance → Connect
 
-
 ## Common Mistakes
 
 - **Procfile must be "Procfile"** (no .txt extension)
@@ -284,7 +281,6 @@ This allows:
 
 > [!TIP]
 > We use `host='0.0.0.0'` so that the Flask application running on EC2 is accessible from external systems using the EC2 public IP.
-
 
 ## Troubleshooting
 
