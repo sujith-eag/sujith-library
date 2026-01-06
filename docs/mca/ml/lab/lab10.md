@@ -1,0 +1,156 @@
+## LAB 10: Linear Regression
+
+This lab demonstrates simple linear regression using exam scores data. We'll predict external exam scores based on internal exam scores.
+
+```python
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+import matplotlib.pyplot as plt
+```
+
+Load and Explore Data
+
+```python
+# Load the dataset
+data = pd.read_csv("Exam.csv")
+df = pd.DataFrame(data)
+
+# Display the first few rows
+print("Dataset preview:")
+print(df.head())
+```
+
+Prepare Features and Target
+
+```python
+# Define features (X) and target (y)
+X = df[["Internal exam"]]
+y = df["External exam"]
+```
+
+Split Data
+
+```python
+# Split into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+Train the Linear Regression Model
+
+```python
+# Initialize and train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Display model parameters
+print(f"Model Intercept: {model.intercept_:.2f}")
+print(f"Model Coefficient: {model.coef_[0]:.2f}")
+```
+
+Make Predictions
+
+```python
+# Predict on test data
+y_pred = model.predict(X_test)
+
+# Evaluate the Model
+# Calculate R-squared and MSE
+r2 = r2_score(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+
+print(f"R-squared Score: {r2:.4f}")
+print(f"Mean Squared Error: {mse:.2f}")
+```
+
+Visualize Results
+
+```python
+# Scatter plot of actual vs predicted values
+plt.scatter(X_test, y_test, color="blue", label="Actual Data", alpha=0.7)
+plt.plot(X_test, y_pred, color="red", label="Regression Line", linewidth=2)
+plt.xlabel("Internal Exam Score")
+plt.ylabel("External Exam Score")
+plt.title("Linear Regression: Internal vs External Exam Scores")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+## Exercise 10: Linear Regression Analysis
+
+Use Exam dataset, apply linear regression and analyse if internal marks increases by 1 unit, by how much does externals marks increases? 
+
+Plot the graph and give intercept and co-efficient values.
+
+____
+
+This exercise demonstrates simple linear regression to determine the relationship between internal and external exam marks. Specifically, we calculate how much the dependent variable (External marks) changes for every 1-unit increase in the independent variable (Internal marks).
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+
+# 1. Load the dataset
+# Based on Lab 10, we use the Exam.csv dataset
+data = pd.read_csv("Exam.csv")
+df = pd.DataFrame(data)
+
+# 2. Prepare Features (X) and Target (y)
+X = df[["Internal exam"]] # Independent variable
+y = df["External exam"]   # Dependent variable
+
+# 3. Split Data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 4. Train the Model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 5. Extract Parameters
+intercept = model.intercept_
+coefficient = model.coef_[0]
+
+print(f"Model Intercept (c): {intercept:.2f}")
+print(f"Model Coefficient (m): {coefficient:.2f}")
+
+# 6. Make Predictions and Evaluate
+y_pred = model.predict(X_test)
+print(f"R-squared Score: {r2_score(y_test, y_pred):.4f}")
+
+# 7. Visualization
+plt.scatter(X_test, y_test, color="blue", label="Actual Data")
+plt.plot(X_test, y_pred, color="red", label="Regression Line")
+plt.xlabel("Internal Exam Score")
+plt.ylabel("External Exam Score")
+plt.title("Linear Regression: Internal vs External Exam Scores")
+plt.legend()
+plt.show()
+```
+
+### Analysis and Interpretation
+
+#### 1. Mathematical Relationship
+
+The relationship is defined by the equation:
+
+$$\text{External Marks} = (\text{Coefficient} \times \text{Internal Marks}) + \text{Intercept}$$
+
+#### 2. Impact Analysis
+
+- **Coefficient (Slope)**: The coefficient value tells you exactly how much the external marks increase for every 1-unit increase in internal marks. For example, if the coefficient is **0.85**, it means that for every **1 additional mark** a student gets in their internal exam, their predicted external mark increases by **0.85 units**.
+    
+- **Intercept**: This is the predicted external score if the internal score were zero.
+    
+
+#### 3. Model Fit
+
+- **R-squared Score**: This value (ranging from 0 to 1) indicates how well the internal marks explain the variance in external marks. A score closer to 1 suggests a very strong predictive relationship.
+    
+- **Visual Insight**: The regression line represents the "best fit." The closer the blue dots (actual data) are to the red line (predictions), the more accurate the model is for this dataset.
+    

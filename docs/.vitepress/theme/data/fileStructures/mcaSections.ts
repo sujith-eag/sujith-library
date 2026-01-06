@@ -41,16 +41,22 @@ export const mcaMLSection = [
       //     { label: "Unit-5 Questions", link: "/mca/ml/u4/q5" },
       //   ]
       // },
-      // {
-      //   title: "Lab Manual",
-      //   items: [
-      //     { label: "Dataset Exploration", link: "/mca/ml/lab/dataset" },
-      //     { label: "Preprocessing", link: "/mca/ml/lab/preprocessing" },
-      //     { label: "Regression Lab", link: "/mca/ml/lab/regression" },
-      //     { label: "Classification Lab", link: "/mca/ml/lab/classification" },
-      //     { label: "Neural Net Lab", link: "/mca/ml/lab/neuralnet" },
-      //   ]
-      // },
+      {
+        title: "Lab Manual",
+        items: [
+          { label: "Lab1", link: "/mca/ml/lab/lab1" },
+          { label: "Lab2", link: "/mca/ml/lab/lab2" },
+          { label: "Lab3", link: "/mca/ml/lab/lab3" },
+          { label: "Lab4", link: "/mca/ml/lab/lab4" },
+          { label: "Lab5", link: "/mca/ml/lab/lab5" },
+          { label: "Lab6", link: "/mca/ml/lab/lab6" },
+          { label: "Lab7", link: "/mca/ml/lab/lab7" },
+          { label: "Lab8", link: "/mca/ml/lab/lab8" },
+          { label: "Lab9", link: "/mca/ml/lab/lab9" },
+          { label: "Lab10", link: "/mca/ml/lab/lab10" },
+          { label: "Cheatsheet", link: "/mca/ml/lab/cheatsheet" },
+        ]
+      },
     ]
   }
 ];
