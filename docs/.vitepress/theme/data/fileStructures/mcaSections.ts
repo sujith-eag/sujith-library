@@ -686,47 +686,47 @@ export const mcaPythonSection = [
       {
         title: "Unit-1 Intro & Control Flow",
         items: [
-          { label: "Previous Questions", link: "/mca/python/unit_1_q" },
-          { label: "Answered-1", link: "/mca/python/unit_1_ans1" },
-          { label: "Answered-2", link: "/mca/python/unit_1_ans2" }
+          { label: "Previous Questions", link: "/mca/python/python-u1-q" },
+          { label: "Answered-1", link: "/mca/python/python-u1-a1" },
+          { label: "Answered-2", link: "/mca/python/python-u1-a2" }
         ]
       },
       {
         title: "Unit-2 Data Structures & Numpy",
         items: [
-          { label: "Previous Questions", link: "/mca/python/unit_2_q" },
-          { label: "Answered-1", link: "/mca/python/unit_2_ans_1" },
-          { label: "Answered-2", link: "/mca/python/unit_2_ans_2" }
+          { label: "Previous Questions", link: "/mca/python/python-u2-q" },
+          { label: "Answered-1", link: "/mca/python/python-u2-a1" },
+          { label: "Answered-2", link: "/mca/python/python-u2-a2" }
         ]
       },
       {
         title: "Unit-3 Functional Programming",
         items: [
-          { label: "Previous Questions", link: "/mca/python/unit_3_q" },
-          { label: "Answered-1", link: "/mca/python/unit_3_ans_1" },
-          { label: "Answered-2", link: "/mca/python/unit_3_ans_2" }
+          { label: "Previous Questions", link: "/mca/python/python-u3-q" },
+          { label: "Answered-1", link: "/mca/python/python-u3-a1" },
+          { label: "Answered-2", link: "/mca/python/python-u3-a2" }
         ]
       },
       {
         title: "Unit-4 Regex & OOP",
         items: [
-          { label: "Previous Questions", link: "/mca/python/unit_4_q" },
-          { label: "Answered-1", link: "/mca/python/unit_4_ans_1" },
-          { label: "Answered-2", link: "/mca/python/unit_4_ans_2" }
+          { label: "Previous Questions", link: "/mca/python/python-u4-q" },
+          { label: "Answered-1", link: "/mca/python/python-u4-a1" },
+          { label: "Answered-2", link: "/mca/python/python-u4-a2" }
         ]
       },
       {
         title: "Unit-5 Exceptions & File I/O",
         items: [
-          { label: "Previous Questions", link: "/mca/python/unit_5_q" },
-          { label: "Answered-1", link: "/mca/python/unit_5_ans_1" },
-          { label: "Answered-2", link: "/mca/python/unit_5_ans_2" }
+          { label: "Previous Questions", link: "/mca/python/python-u5-q" },
+          { label: "Answered-1", link: "/mca/python/python-u5-a1" },
+          { label: "Answered-2", link: "/mca/python/python-u5-a2" }
         ]
       },
       {
         title: "Lab Component",
         items: [
-          { label: "Answered", link: "/mca/python/lab_component" }
+          { label: "Answered", link: "/mca/python/python-lab" }
         ]
       }
     ]
@@ -801,7 +801,8 @@ export const mcaPythonSection = [
           { label: "Unit-3 Deadlocks", link: "/mca/os/os_u3_qa" },
           { label: "Unit-4 Memory Management", link: "/mca/os/os_u4_qa" },
           { label: "Unit-4 Paging", link: "/mca/os/os_u4_qa2" },
-          { label: "Unit-5 Linux Commands", link: "/mca/os/os_u5_qa" },
+          { label: "File System & Permissions", link: "/mca/os/os-u5-files-permissions" },
+          { label: "Commands & Scripting", link: "/mca/os/os-u5-commands-scripting" },
         ]
       }
     ];

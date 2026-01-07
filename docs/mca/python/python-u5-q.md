@@ -1,15 +1,6 @@
----
-title: "Python Unit-5 Previous Questions"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 5: Questions
 
-
-# Python Unit-5 Previous Questions
-
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 List and describe ANY FIVE file open modes in python.
 
@@ -26,9 +17,7 @@ Discover what exception is produced by each of the following points. Then develo
 *  Opening a file that does not exist
 *  Indexing a list with an illegal value
 
-___
-
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Illustrate “catching an exception is programmatically good and necessary mechanism” with exception handling mechanism in python. Demonstrate the working of any six exceptions in python.
 
@@ -36,9 +25,7 @@ Discuss all the file accessing modes and also write python program to count the 
 
 Illustrate user defined exceptions with suitable examples.
 
-___
-
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Demonstrate the methods to read and write text files in python.
 
@@ -46,9 +33,7 @@ List and describe the file open modes in python.
 
 Explain exception handling in python with an example.
 
-___
-
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Develop a script that will prompt the user for a file name, read all the lines from the file into a list, sort the list, then print the lines in sorted order as well as write to a file.
 
@@ -59,9 +44,7 @@ ___
 Discover the exception produced by each of the following points. Then, for each, develop a small script that illustrates catching the exception using a try statement and continuing with execution after the interrupt.
 i) Division by zero ii) Opening a file that does not exist iii) Indexing a list with an illegal value iv) Using improper key with a dictionary v) Using un-indented code.
 
-___
-
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Develop a Python program to demonstrate user defined exception.
 
@@ -80,9 +63,7 @@ iii. Indexing a list with an illegal value
 iv. Using an improper key with a dictionary
 v. Passing an improperly formatted expression to the function expr( )
 
-___
-
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Develop a script that will prompt the user for a file name, then print all lines from the file that contain the Python comment character #.
 
@@ -94,9 +75,7 @@ Explain user defined exceptions in python with an example.
 
 Develop a script that asks the user for a file name, then prints the number of characters, words and lines in the file.
 
-___
-
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Develop a python script that will prompt the user for a string and a file name, and then print all lines in the file that contains the string entered by the user.
 
@@ -111,9 +90,7 @@ iii) Indexing a list with an illegal value
 iv) Using improper key with a dictionary
 v) Using unindented code.
 
-___
-
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Demonstrate the methods to read and write text files in python. 
 
@@ -125,17 +102,13 @@ Explain exception handling in python with an example.
 
 Write a python program to sort the file contents in reverse order and write the sorted contents along with line number.
 
-___
-
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
 
 What is exception handling? How do you handle exceptions in python? Explain with an example.
 
 Explain the different methods available for manipulating the text files.
 
-___
-
-#### SEMESTER END EXAMINATIONS – JUNE 2019
+## SEMESTER END EXAMINATIONS – JUNE 2019
 
 Consider the following program which contains some errors. You may
 assume that the comments within the program accurately describe the
@@ -175,9 +148,7 @@ num_pairs.txt
 -1   1
 ```
 
-___
-
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
 
 Develop a python program that will prompt the user for a file name, read all the numbers from the file into a list, separate positive and negative numbers from the list, and store them in separate files.
 
@@ -188,9 +159,7 @@ iii) Indexing a list with an illegal value
 iv) Using improper key with a dictionary
 v) Using unindented code.
 
-___
-
-#### MAKEUP EXAMINATIONS – JULY 2019
+## MAKEUP EXAMINATIONS – JULY 2019
 
 Discover what exception is produced by each of the following points. Then, for each, write a small example program that illustrates catching the exception using a try statement and continuing with exception after the interrupt.
 i. Division by zero
@@ -201,18 +170,14 @@ v. Passing an improperly formatted expression to the function expr( )
 
 Write a program that will prompt the user for a file name, read all the lines from the file into a list, sort the list, and then print the lines in sorted order.
 
-___
-
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2018
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2018
 
 Explain with the help of an example the different functions used with files.
 
 Write a program that asks the user for a file name, then prints the number of characters, words and lines in the file.
 
 Explain exception handling in python in detail with the help of an example.
-
-___
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
 
 Why is exception handling required? Write a Python program to demonstrate user defined exception.
 
@@ -233,15 +198,11 @@ num_pairs.txt
 ```
 
 
-___
-
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2017
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2017
 
 Develop a script to open a file and count number of lines in the file. Find the middle 3 lines in the file and write it on to another file. Repeat the same steps until there are only 3 lines are left.
 
 Develop a program that asks the user for a file name, then prints the number of special characters, words and lines in the file.
 
 Explain exception handling in python in detail with the help of an example.
-
-___
 

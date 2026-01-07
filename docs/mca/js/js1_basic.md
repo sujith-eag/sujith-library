@@ -1,24 +1,9 @@
----
-title: "JavaScript - 1 Basics"
-description: ""
-summary: ""
-date: 2025-02-12T14:03:31+05:30
-lastmod: 2025-02-12T14:03:31+05:30
-draft: false
-weight: 680
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Basic JavaScript
 
 
+## Basic Programs (Data sheet 13)
 
-### Basic Programs (Data sheet 13)
-
-##### Question 1
+### Question 1
 Develop a JavaScript code to reverse a given string using loops.
 ```js
 function reverseString(str) {
@@ -68,7 +53,7 @@ function revString() {
 </body>
 ```
 
-##### Question 2
+### Question 2
 Develop a JavaScript code to count the number of vowels using loops and if statement.
 
 
@@ -139,7 +124,7 @@ console.log(vowelCount);  // Output: 3
 
 ```
 
-##### Question 3
+### Question 3
 Develop a JavaScript code to find the largest of 3 numbers using if statement and logical
 operators.
 ```js
@@ -188,7 +173,7 @@ console.log("The largest number is:", largest);
 ```
 
 
-##### Question 4
+### Question 4
 Develop a JavaScript code to print even and odd numbers from 1 – 10.
 
 ```js
@@ -241,7 +226,7 @@ document.getElementById("even").textContent = evenString;
 </body>
 ```
 
-##### Question 5
+### Question 5
 Develop a JavaScript code program that prints the numbers from 1 to 20. However, for
 multiples of 3, print "Fizz" instead of the number, for multiples of 5, print "Buzz",
 and for numbers that are multiples of both 3 and 5, print "FizzBuzz".
@@ -296,11 +281,10 @@ fizzbuzz();
 </body>
 ```
 
-___
 
-### JavaScript Strings (Data Sheet 14)
+## JavaScript Strings (Data Sheet 14)
 
-##### Question 1
+### Question 1
 
 Declare a string and display it using `innerHTML`.
 ```html
@@ -316,7 +300,7 @@ Declare a string and display it using `innerHTML`.
 </html>
 ```
 
-##### Question 2
+### Question 2
 
 Display the string containing special characters(quotes) using backslash escape
 character.
@@ -348,7 +332,7 @@ character.
 </body>
 ```
 
-##### Question 3
+### Question 3
 
 Demonstrate the `slice()` with no parameters, one parameter, two parameters and
 negative parameters.
@@ -412,7 +396,7 @@ console.log(result);
 </html>
 ```
 
-##### Question 4
+### Question 4
 
 Demonstrate the `substr()` with no parameters, one parameter, two parameters and
 negative parameters.
@@ -475,7 +459,7 @@ console.log(result);
 </html>
 ```
 
-##### Question 5
+### Question 5
 
 Demonstrate the `replace()` and `replaceAll()` methods
 
@@ -496,4 +480,3 @@ console.log(result);
 // "Hi, World! Hi again!"
 ```
 
-____

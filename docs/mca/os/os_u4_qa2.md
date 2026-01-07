@@ -1,21 +1,6 @@
----
-title: "OS - Unit-4 - Paging Answered"
-description: ""
-summary: ""
-date: 2025-01-12T21:20:56+05:30
-lastmod: 2025-01-12T21:20:56+05:30
-draft: false
-weight: 1985
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Unit-4: Paging
 
-
-### Paging Concept
+## Paging Concept
 
 * Describe paging with the hardware diagram.
 - Explain paging and its hardware with a neat diagram. What are the advantages of paging?
@@ -59,7 +44,8 @@ Paging is the most common memory-management technique in modern computer systems
   <figcaption>Paging Example</figcaption>
 </figure>
 
-##### Advantages of Paging
+
+### Advantages of Paging
 
 * It simplifies memory management by using fixed-size blocks of frames and pages. 
 
@@ -69,9 +55,8 @@ Paging is the most common memory-management technique in modern computer systems
 
 * A process can only access memory within it's own page table which are the pages it owns. Each process is protected, since the memory access is controlled through its page table.
 
----
 
-##### Disadvantages of Paging
+### Disadvantages of Paging
 
 * Paging may cause internal fragmentation. This happens when the last page of a process does not completely fill a frame, leaving some memory unused. 
 
@@ -79,9 +64,8 @@ Paging is the most common memory-management technique in modern computer systems
 
 * Address translation may also slow down performance, though this is often optimized using hardware features like the Translation Lookaside Buffer (TLB).
 
----
 
-##### Difference Between Paging and Segmentation
+### Difference Between Paging and Segmentation
 
 * Paging divides memory into fixed-size blocks, while segmentation divides memory into variable-sized logical units based on the program structure.
 
@@ -91,9 +75,9 @@ Paging is the most common memory-management technique in modern computer systems
 
 * In paging, internal fragmentation may occur. In segmentation, external fragmentation may occur because segments vary in size.
 
----
 
-### Translation Look-Aside Buffer (TLB)
+
+## Translation Look-Aside Buffer (TLB)
 
 - With a neat diagram, explain paging hardware with TLB.
 - With a neat diagram and example, demonstrate the working procedure of paging hardware with TLB.
@@ -125,9 +109,8 @@ Some entries in the TLB, especially those used by the operating system or critic
 
 The percentage of times that the page number of interest is found in the TLB is called the **hit ratio**. For example, an 80% hit ratio means the desired page number is found in the TLB 80% of the time.
 
----
 
-### Virtual Memory Management
+## Virtual Memory Management
 
 Memory protection in a paged environment is accomplished through **protection bits** associated with each frame. One additional bit, called the **valid-invalid bit**, is generally attached to each page table entry.
 
@@ -142,7 +125,9 @@ Memory protection in a paged environment is accomplished through **protection bi
 
 The operating system sets this bit for each page to allow or disallow access to the page. If a page’s valid-invalid bit is set to invalid, the computer traps to the operating system in case of an invalid page reference.
 
-### Page Faults and Handling
+
+
+## Page Faults and Handling
 
 - Under what circumstances do page faults occur? Describe the actions taken by the OS when page faults occur.
 - With a neat diagram, describe the steps in handling a page fault.
@@ -190,9 +175,9 @@ Control is transferred to the operating system indicating the required page need
 
 Secondary storage (usually a portion of the hard drive or SSD) is used to store pages that are not in main memory. This area is called **swap space**. The page table tracks whether each page is in memory or on disk.
 
----
 
-### Swapping and Memory Techniques
+
+## Swapping and Memory Techniques
 
 - Write short notes on the following: Swapping process in memory.
 - Illustrate the facts and concepts for the following terms: Swapping.
@@ -229,13 +214,13 @@ Causes of Thrashing:
 
 - Processes with **frequent context switching** and random memory access patterns.
 
----
 
-### Page Replacement Algorithms
+## Page Replacement Algorithms
 
 Various page-replacement algorithms exist to determine which page to swap out when a page fault occurs. These include:
 
-#### FIFO Page Replacement
+
+### FIFO Page Replacement
 
 The simplest page-replacement algorithm is **First-In-First-Out (FIFO)**. The FIFO algorithm associates each page with the time it was brought into memory. When a page must be replaced, the oldest page is selected.
 
@@ -244,7 +229,7 @@ The simplest page-replacement algorithm is **First-In-First-Out (FIFO)**. The FI
   <figcaption>FIFO Page Replacement Algorithm</figcaption>
 </figure>
 
-#### Optimal Page Replacement
+### Optimal Page Replacement
 
 The **optimal page-replacement** algorithm selects the page that will not be used for the longest time in the future. This approach guarantees the lowest possible page-fault rate but requires knowledge of future page references, which makes it impractical for real-world systems. As such, it is typically used for comparison studies.
 
@@ -253,7 +238,7 @@ The **optimal page-replacement** algorithm selects the page that will not be use
   <figcaption>Optimal Page Replacement Algorithm</figcaption>
 </figure>
 
-#### LRU Page Replacement
+### LRU Page Replacement
 
 The **Least Recently Used (LRU)** algorithm approximates the optimal page-replacement strategy. It replaces the page that has not been used for the longest period of time, using past access patterns to predict future behavior.
 
@@ -264,9 +249,8 @@ The **Least Recently Used (LRU)** algorithm approximates the optimal page-replac
 
 LRU is widely used as a page-replacement algorithm and is considered to be effective.
 
-____
 
-### Page Replacement Problems
+## Page Replacement Problems
 
 1. A process references 5 pages (A, B, C, D, E) in the following order: A, B, C, D, A, E, B, C, E, D. Assuming the replacement algorithms are FIFO, LRU, and Optimal, find out the number of page faults during the sequence of references, starting with an empty main memory with 3 frames.
 
@@ -289,8 +273,4 @@ ____
 10. A small computer has 3 page frames. A process makes the following list of page references: 5, 4, 3, 2, 1, 4, 3, 5, 4, 3, 2, 1, 5. How many page faults occur using FIFO, LRU, and Optimal page replacement algorithms?
 
 11. Consider the reference string 1, 2, 3, 4, 6, 5, 2, 5, 5, 6, 4, 1, 1, 2, 3, 4 with 4 memory frames. Determine the page fault using: FIFO, LRU, Optimal page replacement algorithm.
-
-
-_____
-
 

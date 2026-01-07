@@ -1,15 +1,7 @@
----
-title: "Python Unit-1 Answered-2"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-1 Answered-2
+# Python Unit 1: Answers (Part 2)
 
 
-##### Write a program using a while loop that asks the user for a number, and prints a countdown from that number to zero.
+### Write a program using a while loop that asks the user for a number, and prints a countdown from that number to zero.
 
 **Answer :**
 
@@ -59,7 +51,7 @@ Countdown: 0
 
 ___
 
-##### Develop a program to print the sum of n natural numbers.
+### Develop a program to print the sum of n natural numbers.
 
 **Answer :**
 
@@ -91,7 +83,7 @@ Using while loop
 
 ___
 
-##### Develop a python program to find the sum of even numbers and odd numbers in the given list.
+### Develop a python program to find the sum of even numbers and odd numbers in the given list.
 
 **Answer :**
 
@@ -134,7 +126,7 @@ print(f"Sum of odd numbers: {odd_sum}")
 
 ___
 
-##### Develop a python program to sum the digits of a given number.
+### Develop a python program to sum the digits of a given number.
 
 **Answer :**
 
@@ -170,7 +162,7 @@ Shortcut by converting number to string and iterating using `for()` loop
 
 ____
 
-##### Write a program to count the total number of digits and sum of digits in a number using a while loop.
+### Write a program to count the total number of digits and sum of digits in a number using a while loop.
 
 **Answer :**
 
@@ -207,7 +199,7 @@ String Cheat method
 
 ____
 
-##### Implement a Python Program to reverse a number and also find the number of digits and Sum of digits in the reversed number. Prompt the user for input.
+### Implement a Python Program to reverse a number and also find the number of digits and Sum of digits in the reversed number. Prompt the user for input.
 
 **Answer :**
 
@@ -264,7 +256,7 @@ String Cheat Methods
 
 ___
 
-##### Design a program to print the mid number (which is between minimum and maximum) out of three input numbers
+### Design a program to print the mid number (which is between minimum and maximum) out of three input numbers
 
 * Design a Python program to find the average of best two test scores out of three test scores taken as input.
 
@@ -296,7 +288,7 @@ Using list, sort and indexing
 
 ___
 
-##### Write a Python program to count the palindrome words in a line of text.
+### Write a Python program to count the palindrome words in a line of text.
 
 * Develop a python function to return the number of palindrome words in a line of text.
 
@@ -346,7 +338,7 @@ print(count_palindromes(text))
 
 ___
 
-##### Design a simple calculator with different mathematical operations using python script.
+### Design a simple calculator with different mathematical operations using python script.
 
 **Answer :**
 
@@ -383,7 +375,7 @@ A menu driven calculator function for four operations.
 
 ___
 
-##### Using for loop, print of table of Celsius/Fahrenheit equivalences. Let c be the Celsius temperatures, ranging from 0 to 100. For each value of c, print the corresponding Fahrenheit temperature.
+### Using for loop, print of table of Celsius/Fahrenheit equivalences. Let c be the Celsius temperatures, ranging from 0 to 100. For each value of c, print the corresponding Fahrenheit temperature.
 
 **Answer :**
 
@@ -398,7 +390,7 @@ for celsius in range(0, 101):
 
 ____
 
-##### Develop a script to read n values into a list. 
+### Develop a script to read n values into a list. 
 Separate the numbers in the list into two new lists, first contains all prime numbers and second contains all non-prime numbers.
 
 **Answer :**
@@ -463,7 +455,7 @@ non_primes = [ num for num in values if not is_prime(num) ]
 
 ____
 
-##### Program on finding highest and Lowest
+### Program on finding highest and Lowest
 
 * Develop a Python program that will accept, as input, a series of names and salaries. Use the name ‘End’ to mark the end of the sequence of values. After the values have been entered, print the average salary and the names and salaries of those individuals with the highest and lowest salaries.
 
@@ -552,7 +544,7 @@ print(f"The lowest salary is for {low_name} with {lowest}\n")
 
 ____
 
-##### Develop a Python program to find roots of a quadratic equation with necessary validation.
+### Develop a Python program to find roots of a quadratic equation with necessary validation.
 
 To develop a Python program that finds the roots of a quadratic equation ( ax^2 + bx + c = 0 ), we need to use the quadratic formula:
 
@@ -601,7 +593,4 @@ def find_roots():
 # Run the function to find roots
 find_roots()
 ```
-
-
-____
 

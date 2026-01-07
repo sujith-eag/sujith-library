@@ -1,16 +1,8 @@
----
-title: "Python Unit-3 Answered-1"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 3: Answers (Part 1)
 
-# Python Unit-3 Answered-1
+## Variables
 
-# Variables
-
-#### What are DOC strings? Illustrate with an example.
+### What are DOC strings? Illustrate with an example.
 
 * Discuss the importance of using docstrings in Python functions. Explain how docstrings enhance code readability and maintainability. 
 * Provide an example demonstrating the use of docstrings in a Python function.
@@ -40,7 +32,7 @@ def add(a, b):
 
 ___
 
-##### Demonstrate scope of the local and global variables.
+### Demonstrate scope of the local and global variables.
 
 * Illustrate the following with example: i) DOC strings ii) local and global variables iii) pass by value and pass by object reference in python iv) Variable length arguments.
 * Illustrate the following with example: i) DOC strings ii) local and global variables iii) pass by reference and pass by value in python
@@ -75,7 +67,7 @@ print(x)  # Output: 20
 
 ___
 
-##### What is LEGB rule? Explain LEGB rule with an example.
+### What is LEGB rule? Explain LEGB rule with an example.
 
 The **LEGB Rule** stands for **Local, Enclosing, Global, and Built-in**. This is the rule Python follows to resolve variable names and determine their scope when searching for the value of a variable.
 
@@ -123,7 +115,7 @@ outer_function()
 
 ____
 
-##### Apply LEGB rule for the following code and explain what is happening in this code. Also write the output.
+### Apply LEGB rule for the following code and explain what is happening in this code. Also write the output.
 
 ```python
 a=7
@@ -153,7 +145,7 @@ The resolution of these variables happens in the following way.
 ## Functions, Arguments
 
 
-##### Illustrate different function parameters in python with suitable examples
+### Illustrate different function parameters in python with suitable examples
 
 * Illustrate `*args` and `**kwargs` parameters in Python programming language with an example.
 * Explain how `*args` and `**kwargs` allow the function to accept a variable number of arguments and keyword variable_length arguments. Explain how they differ from positional arguments through another program.
@@ -325,7 +317,7 @@ key = cd, value = UNNCD
 
 ____
 
-##### Develop Python function to calculate sum and product of two arguments, return them.
+### Develop Python function to calculate sum and product of two arguments, return them.
 
 * Write a Python function named calculate sum that takes two integers as input and returns their sum. Then, write another function called calculate product that takes two integers as input and returns their product. Demonstrate both functions by providing suitable inputs.
 
@@ -350,7 +342,7 @@ print(total, product)
 
 ___
 
-##### Develop a python program to calculate and return the average of given list of integers using functions.
+### Develop a python program to calculate and return the average of given list of integers using functions.
 
 Write a Python function named average_list that takes a list of numbers as input and returns their average.  Additionally, include a condition to ensure that the input is a list of numeric values only that are >=1).
 What is the output when this list average_list is:
@@ -394,7 +386,8 @@ The `isinstance()` function in Python is used to check whether an object is an i
 Dealing with strings and check if the string represents a numeric value, `str.isdigit()` can be used, but not directly on number.
 
 _____
-##### Write a python function to check whether the given string is palindrome or not 
+
+### Write a python function to check whether the given string is palindrome or not 
 
 Function should take a string as argument and return Boolean value. Function should take “MADAM” as default, argument.
 
@@ -417,7 +410,7 @@ print(is_palindrome("hello"))
 
 ____
 
-##### Write a Program to Reverse a Number, Count the Digits, and Calculate the Sum of Digits in the Reversed Number by taking input from the user
+### Write a Program to Reverse a Number, Count the Digits, and Calculate the Sum of Digits in the Reversed Number by taking input from the user
 
 ```python
 def reverse_and_calculate(num):
@@ -454,7 +447,7 @@ Number of Digits: 4
 
 ____
 
-##### Define a Python function `isAscending(L)` that returns True if the input list L is in ascending order, otherwise returns False. For empty list, it should return True.
+### Define a Python function `isAscending(L)` that returns True if the input list L is in ascending order, otherwise returns False. For empty list, it should return True.
 
 **Answer :**
 
@@ -488,7 +481,7 @@ print(isAscending([5, 5, 6]))
 
 ____
 
-##### Write a Python function that takes two lists and returns True if they have at least one common member
+### Write a Python function that takes two lists and returns True if they have at least one common member
 Input: `list1=[1,2,3,4,5], list2=[5,6,7,8,9])`
 Output: True
 Input: `list3=[1,2,3,4,5], list4=[6,7,8,9])`
@@ -518,7 +511,7 @@ print(have_common_member(list3, list4))
 
 ____
 
-##### Develop a Python program that prints the intersection of two lists. (without using list comprehension/sets).
+### Develop a Python program that prints the intersection of two lists. (without using list comprehension/sets).
 
 **Answer :**
 
@@ -699,5 +692,4 @@ else:
 
 The condition `a or b and c` will become `True or (False and False)` because of precedence so the Boolean value will be `True` so will print `MSRIT`
 
-___
 

@@ -1,24 +1,10 @@
----
-title: "JavaScript - 2 Arrays"
-description: ""
-summary: ""
-date: 2025-02-12T14:03:31+05:30
-lastmod: 2025-02-12T14:03:31+05:30
-draft: false
-weight: 681
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Arrays
 
 
-### JavaScript Arrays (Data Sheet 15)
+## JavaScript Arrays (Data Sheet 15)
 
 
-##### Question 1
+### Question 1
 Declare an array using literal and print the array elements using for loop.
 ```html
 <body>
@@ -40,7 +26,7 @@ Declare an array using literal and print the array elements using for loop.
 </html>
 ```
 
-##### Question 2
+### Question 2
 Declare an array using new constructor and print the array elements using `forEach()`.
 ```html
 <body>
@@ -72,7 +58,7 @@ function printElement(element) {
 }
 ```
 
-##### Question 3
+### Question 3
 Create an array of numbers and print the Fibonacci series with the help of `forEach()`
 method.
 
@@ -103,7 +89,7 @@ method.
 </body>
 ```
 
-##### Question 4
+### Question 4
 
 Create an array of numbers and print the sum of numbers with the help of `forEach()` method.
 ```html
@@ -125,7 +111,7 @@ Create an array of numbers and print the sum of numbers with the help of `forEac
 </body>
 ```
 
-##### Question 5
+### Question 5
 Use the `Array.forEach()` method to copy every element from one array to another.
 ```html
 <body>
@@ -145,7 +131,7 @@ Use the `Array.forEach()` method to copy every element from one array to another
 </body>
 ```
 
-##### Question 6
+### Question 6
 Develop a javascript program to demonstrate the concept of arrays and its following
 methods i) `join()`, `reverse()`, `sort()` and `concat()`.
 ```html
@@ -175,5 +161,3 @@ methods i) `join()`, `reverse()`, `sort()` and `concat()`.
 </body>
 ```
 
-
-_____

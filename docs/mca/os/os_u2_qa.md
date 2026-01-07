@@ -1,21 +1,7 @@
----
-title: "OS - Unit-2 - Process Scheduling Answered"
-description: ""
-summary: ""
-date: 2025-01-12T21:20:56+05:30
-lastmod: 2025-01-12T21:20:56+05:30
-draft: false
-weight: 1981
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Unit-2: Process Scheduling
 
 
-### Process
+## Process
 
 - Define a process. List the different fields of a Process Control Block (PCB).
 - What is a Process Control Block (PCB)? Explain its contents.
@@ -27,7 +13,7 @@ A process is an active instance of a program in execution. While a program is a 
 
 When a program is loaded into memory for execution, it becomes a process and is assigned a unique Process ID (PID) by the operating system.
 
-##### Process Memory Layout:
+### Process Memory Layout:
 
 A process typically consists of the following memory sections:
 
@@ -48,9 +34,8 @@ Multiple processes can be associated with the same program, each process is cons
 
 In these cases, each process is independent, even though their text sections (program code) may be identical. The data, heap, and stack sections will differ for each process.
 
-___
 
-### Process Control Block (PCB)
+## Process Control Block (PCB)
 
 The Process Control Block (PCB) is a data structure maintained by the operating system to store all information about a process. Every process in an OS is represented by a PCB, also known as a Task Control Block.
 
@@ -86,9 +71,8 @@ When an interrupt occurs, OS saves the PCB of a process when switching out of it
   <figcaption>3.04 Process Switching</figcaption>
 </figure>
 
-____
 
-### Process State
+## Process State
 
 - Define a process and present its various states.
 - Explain the different states of a process with a neat diagram.
@@ -115,8 +99,8 @@ Note:
 - Multiple processes can be in the ready or waiting states at the same time.
 
 
-_____
-### Scheduling and Execution
+
+## Scheduling and Execution
 
 - Explain the various process schedulers.
 - Why is it important for the scheduler to distinguish I/O-bound programs and CPU-bound programs?
@@ -141,7 +125,8 @@ Whenever a running process enters a waiting state (e.g., for I/O), the **CPU Sch
 
 If the number of processes exceeds the CPU’s capacity, some must wait their turn, leading to queueing and scheduling delays. Proper scheduling ensures fairness and efficient resource use.
 
-#### Scheduling Queues
+
+### Scheduling Queues
 
 In an operating system, various queues manage the state and progress of processes:
 
@@ -156,7 +141,7 @@ In an operating system, various queues manage the state and progress of processe
   <figcaption>3.06 Queueing Diagram Representing Process Scheduling</figcaption>
 </figure>
 
-##### **CPU–I/O Cycle**:
+### **CPU–I/O Cycle**:
 
 A process typically executes in a cycle of CPU bursts and I/O bursts until it terminates:
 
@@ -166,9 +151,8 @@ A process typically executes in a cycle of CPU bursts and I/O bursts until it te
 
 This cycle allows the operating system to balance workloads and maximize device utilization.
 
-___
 
-#### Schedulers
+### Schedulers
 
 Schedulers are responsible for selecting processes at various stages of execution:
 
@@ -185,9 +169,8 @@ Swapped-out processes are moved to secondary storage and reloaded later into mem
   <figcaption>3.07 Medium Term Scheduling in Queueing Diagram</figcaption>
 </figure>
 
----
 
-#### Context Switching
+### Context Switching
 
 A context switch is the process of saving the state of a currently running process and loading the state of another process. This allows multiple processes to share the CPU effectively.
 
@@ -202,9 +185,8 @@ A context switch occurs when the operating system switches from one process to a
 
 - Factors Affecting Speed : The time taken for a context switch can vary depending on system factors, such as memory access speed, the number of registers involved. System architecture and optimization of the OS kernel.
 
----
 
-#### Dispatcher
+### Dispatcher
 
 The dispatcher is a system component that is responsible for transferring control of the CPU to the process selected by the short-term scheduler. 
 
@@ -212,9 +194,8 @@ The dispatcher performs operations like context switching, switching the CPU fro
 
 **Dispatch Latency** is the time taken to perform a context switch and start executing a new process. To stop one process and start another. This latency is crucial for optimizing process scheduling efficiency.
 
-____
 
-#### Scheduling Criteria
+### Scheduling Criteria
 
 * Present various criteria to evaluate the best CPU scheduling algorithm.
 
@@ -238,13 +219,12 @@ Optimization goals:
 - Maximize CPU Utilization and Throughput.
 - Minimize Turnaround Time, Waiting Time, and Response Time.
 
-____
 
-### Scheduling Algorithms
+## Scheduling Algorithms
 
 CPU scheduling involves determining which process from the ready queue should be allocated CPU time.
 
-##### First-Come, First-Served Scheduling (FCFS)
+### First-Come, First-Served Scheduling (FCFS)
 
 The FCFS scheduling algorithm allocates CPU to processes in the order they arrive, using a FIFO queue. The process at the front of the queue gets the CPU, and when it completes, it is removed.
 
@@ -258,7 +238,7 @@ The FCFS scheduling algorithm allocates CPU to processes in the order they arriv
 
 ---
 
-##### Shortest Job First Scheduling
+### Shortest Job First Scheduling
 
 The Shortest Job First (SJF) scheduling algorithm assigns the CPU to the process with the shortest CPU burst.   If two processes have the same burst, FCFS is used to break the tie.
 
@@ -268,7 +248,7 @@ The Shortest Job First (SJF) scheduling algorithm assigns the CPU to the process
 
 ---
 
-##### Priority Scheduling
+### Priority Scheduling
 
 The Priority Scheduling algorithm allocates CPU time based on process priority. The process with the highest priority gets the CPU.   If two processes have the same priority, FCFS is used.
 
@@ -284,7 +264,7 @@ The Priority Scheduling algorithm allocates CPU time based on process priority. 
 
 ---
 
-##### Round Robin Scheduling
+### Round Robin Scheduling
 
 The Round-Robin (RR) scheduling algorithm is a variant of FCFS, but with preemption.
 
@@ -382,4 +362,4 @@ ___
    i) Draw Gantt charts for Round Robin (Quantum = 5 ms), Priority Scheduling, and SJF algorithms.  
    ii) Determine average waiting and turnaround times for each algorithm.  
 
----
+

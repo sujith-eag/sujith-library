@@ -1,24 +1,9 @@
----
-title: "JavaScript - 4 DOM"
-description: ""
-summary: ""
-date: 2025-02-12T14:03:31+05:30
-lastmod: 2025-02-12T14:03:31+05:30
-draft: false
-weight: 683
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DOM Manipulation
 
 
+## DOM (Data Sheet 18)
 
-### DOM (Data Sheet 18)
-
-##### Question 1
+### Question 1
 
 Demonstrate `moveTo()` and `moveBy()` methods of Window Object.
 
@@ -85,7 +70,7 @@ The `moveTo()` and `moveBy()` methods of the `Window` object are used to move a 
 
 ```
 
-##### Question 2
+### Question 2
 
 Demonstrate `ResizeTo()` and `ResizeBy()` methods of Window Object.
 
@@ -147,7 +132,7 @@ The `resizeTo()` and `resizeBy()` methods are used to change the size of the bro
 
 ```
 
-##### Question 3
+### Question 3
 
 Write HTML files and JavaScript scripts to set the color of an HTML element using `getElementById()`
 
@@ -191,7 +176,7 @@ Write HTML files and JavaScript scripts to set the color of an HTML element usin
 
 ```
 
-##### Question 4
+### Question 4
 
 Write HTML files and JavaScript scripts to accept three Numbers. Display the largest of the three input numbers (use `getElementById( )` to access user input)
 
@@ -260,9 +245,9 @@ Write HTML files and JavaScript scripts to accept three Numbers. Display the lar
 
 ```
 
-### DOM (Data Sheet 19)
+## DOM (Data Sheet 19)
 
-##### Question 1
+### Question 1
 
 Develop and design JavaScript code to Implement arithmetic operations using `getElementById()`
 
@@ -361,7 +346,7 @@ Develop and design JavaScript code to Implement arithmetic operations using `get
 
 ```
 
-##### Question 2
+### Question 2
 
 Develop and design JavaScript to convert temperatures from Fahrenheit to Celsius and vice versa using getElementById(). (subtract 32 and multiply by .5556 (or 5/9). To convert temperatures in degrees Celsius to Fahrenheit, multiply by 1.8 (or 9/5) and add 32.)
 
@@ -428,7 +413,8 @@ Develop and design JavaScript to convert temperatures from Fahrenheit to Celsius
 </body>
 </html>
 ```
-##### Question 3
+
+### Question 3
 
 Develop and design JavaScript to count total number of `h2` and `h3` tags used in the document using `getElementByTagName()`
 
@@ -479,7 +465,7 @@ Develop and design JavaScript to count total number of `h2` and `h3` tags used i
 </html>
 ```
 
-##### Question 4
+### Question 4
 
 Find the product of the two input numbers (use `getElementById( )` to access user input) 
 
@@ -538,6 +524,4 @@ Find the product of the two input numbers (use `getElementById( )` to access use
 </html>
 ```
 
-
-____
 

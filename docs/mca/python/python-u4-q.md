@@ -1,16 +1,6 @@
+# Python Unit 4: Questions
 
----
-title: "Python Unit-4 Previous Questions"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-4 Previous Questions
-
-
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Write a program to demonstrate multiple inheritance concept in python.
 
@@ -26,9 +16,8 @@ Differentiate class variable and instance variable in python using suitable pyth
 
 Write short note on : i) `getattr` ii) `setattr`.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Demonstrate Multiple Inheritance with Method Overriding.
 
@@ -51,9 +40,8 @@ iii) In the withdraw method check for sufficient balance before withdrawal.
 
 List any 6 regular expression patterns in python and write the meaning of each.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 List any 5 regular expression patterns in python and write the meaning of each.
 
@@ -69,9 +57,8 @@ Demonstrate `match()` and `search()` methods w.r.t regular expressions in python
 
 Demonstrate the scope of class attributes and data attributes with an example.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Create a class Rectangle. The constructor for this class should take two numeric arguments, which are the width and height. Add methods to compute the area and perimeter of the rectangle, as well as methods that simply return the height and width. Add a method is Square that returns a Boolean value if the rectangle is a square.
 
@@ -85,9 +72,8 @@ Define the following w.r.t classes in python. Demonstrate each of the following.
 
 Develop a script using regular expressions to search and replace a string in a given input.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Develop regular expressions to match the following patterns: Email Address, Mobile number, USN.
 
@@ -104,9 +90,8 @@ before withdrawal.
 
 Demonstrate the following concepts w.r.t python: i) Constructor ii) Destructor iii) self iv) del
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 List any five regular expression patterns in python and write the meaning of each.
 
@@ -128,9 +113,8 @@ Design a Python class called account and implement the functions deposit, withdr
 
 Demonstrate how the concept of data hiding is implemented in python.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Define the following w.r.t classes in python. Demonstrate each of the following.
 (i) Constructor (ii) Destructor (iii) getattr (iv) hasattr
@@ -145,9 +129,8 @@ Create a class Rectangle. The constructor for this class should take two numeric
 
 List and explain 5 built-in classes in python and their use, with suitable example. Develop a program to demonstrate the same.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 List any 6 regular expression patterns in python and write the meaning of each.
 
@@ -163,9 +146,8 @@ Create a class Stack. Add methods to perform different stack operations like pus
 
 Demonstrate Multiple Inheritance with Method Overriding.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
 
 Explain the basic syntax of class in Python. Show an example defining a class which demonstrates attributes, methods, constructor and destructor.
 
@@ -186,9 +168,8 @@ iv. Contain at least 1 character from $, #, @
 v. Minimum length of password: 6
 vi. Maximum length of password: 12.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2019
+## SEMESTER END EXAMINATIONS – JUNE 2019
 
 Define the following w.r.t classes in python. Demonstrate each of the following.
 (i) Constructor  (ii) Destructor  (iii) getattr  (iv) hasattr.
@@ -205,9 +186,8 @@ Create a class called Stack, Add methods to perform different stack operations l
 
 Explain data attributes and class attributes? Develop a python program that will illustrate the fact that class variables are shared among all instances of a class.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
 
 Explain the following concepts in detail:  i.Data hiding   ii.Inheritance   iii.Static members.
 
@@ -219,9 +199,8 @@ What are data attributes and class attributes? Create a python program that will
 
 List any 6 regular expression patterns in python and write the meaning of each.
 
-___
 
-#### MAKEUP EXAMINATIONS – JULY 2019
+## MAKEUP EXAMINATIONS – JULY 2019
 
 What is the difference between a method and a function? Give an example each.
 
@@ -238,9 +217,8 @@ Explain the inheritance in python.
 
 List any 6 regular expression patterns in python along with their meaning and example.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2018
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2018
 
 Suppose you are designing the software for an ATM (Automatic Teller Machine). Write at least three different scenarios describing the use of your system. From these create CRC cards to describe the various classes that might be used to implement your design. Walk through your scenarios to make sure that all activity is matched to a class.
 
@@ -252,8 +230,7 @@ Create a class Rectangle. The constructor for this class should take two numeric
 
 List any 6 regular expression patterns in python and write the meaning of each.
 
-___
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
 
 Define the following w.r.t classes in python. Show the code snippets to define/show the usage of each. (i) Constructor (ii) Destructor (iii) getattr (iv) hasattr.
 
@@ -269,9 +246,8 @@ How do you define regular expressions in python? Write regular expression to mat
 (iii) the file names that end with at least two digits and don’t begin with an alphabet.
 (iv) the files except ‘.py’ extension
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2017
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2017
 
 Write a regular expression to validate a float number it should satisfy the following.
 i. Number can start with +, - or . symbol.
@@ -286,9 +262,8 @@ Define a class BankAccount. The constructor for this class will take one argumen
 
 Develop a script using regular expressions to search and replace a string in a given input.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
 
 Suppose you are designing the software for an ATM (Automatic Teller Machine). Write at least three different scenarios describing the use of your system. From these create CRC cards to describe the various classes that might be used to implement your design. Walk through your scenarios to make sure that all activity is matched to a class.
 
@@ -300,5 +275,4 @@ Create a class Rectangle. The constructor for this class should take two numeric
 
 List any 6 regular expression patterns in python and write the meaning of each.
 
-___
 

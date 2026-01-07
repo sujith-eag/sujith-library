@@ -1,16 +1,7 @@
-
----
-title: "Python Unit-3 Previous Questions"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-3 Previous Questions
+# Python Unit 3: Questions
 
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Write a Python function named `calculate_sum` that takes two integers as input and returns their sum. Then, write another function called `calculate_product` that takes two integers as input and returns their product. Demonstrate both functions by providing suitable inputs.
 
@@ -26,9 +17,8 @@ Write a Python program that defines both local and global variables and demonstr
 
 Explain how `*args` and `**kwargs` allow the function to accept a variable number of arguments and keyword variable_length arguments. Explain how they differ from positional arguments through another program.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Explain the following arguments to functions in python with examples. (i) Keyword arguments (ii) Default arguments (iii) Variable length arguments.
 
@@ -49,9 +39,8 @@ Explain list comprehension with example. Write a python program that initializes
 
 Write short notes on the following: (i) Mapping (ii) Filtering (iii) Anonymous functions.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Illustrate different function parameters in python with suitable examples.
 
@@ -67,9 +56,8 @@ Discuss lambda function with suitable examples.
 
 Discuss recursion? Explain the working of recursion using factorial program.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Let a be the list of values produced by range(1,50). Using the function map, filter, reduce and a lambda argument, write the expression that will produce each of the following.
 (i) A list of values in a divisible by 3 and not divisible by 7
@@ -124,9 +112,8 @@ Let ‘a’ be the list of integer values in the range(1,11). Explain what the f
 `reduce(lambda x, y: x and y, filter(lambda x: x % 2!= 0, a))`
 What would the function be returning if the lambda used ‘or’ operator rather than ‘and’ operator?
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Develop a recursive Python function that recursively computes sum of elements in a list of lists.   `Sample Input: [1, 2, [3,4], [5,6]]`  Expected Result: 21.
 
@@ -145,9 +132,8 @@ Develop Python function to calculate sum and product of two arguments, return th
 
 Create a list of even numbers from 1 to 10 using the loop and filter method.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Explain the following arguments to functions in python with examples. (i) Keyword arguments (ii) Default arguments (iii) Variable length arguments.
 
@@ -165,9 +151,8 @@ Let a be the list of values produced by range(1,11). Using the function filter a
 
 Write short notes on the following: (i) Mapping (ii) Filtering (iii) List comprehension.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Write a python function to check whether the given string is palindrome or not Function should take a string as argument and return Boolean value. Function should take “MADAM” as default, argument.
 
@@ -188,9 +173,8 @@ i) Local and global variables
 ii) DOC Strings
 iii) map and reduce functions.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Define a Python function `isAscending(L)` that returns True if the input list L is in ascending order, otherwise returns False. For empty list, it should return True.
 
@@ -243,10 +227,9 @@ i. Keyword arguments
 ii. Variable length arguments 
 iii. Default arguments.
 
-___
 
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
 
 Write a python function that accepts a sentence containing alpha numeric characters and calculates the number of digits, uppercase and lowercase letters. Return the calculated values.
 
@@ -264,9 +247,8 @@ Write a function to find the factorial of a number using functional programming.
 Use list comprehension to create a list of integers which specify the length of each word in a certain sentence, but only if the word is not the word "the".
 text =”the students of MCA study the programming language python as part of the curriculum”
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2019
+## SEMESTER END EXAMINATIONS – JUNE 2019
 
 Let a be the list of values produced by range(1,11). Using the functions map and a lamda argument, write an expression that will produce each of the following.
 (i) A list of squares of the values
@@ -283,9 +265,8 @@ Illustrate different types of function parameters available in python.
 
 Explain list comprehension with example. Also develop a python script to print prime numbers in the given range using comprehension.
 
-____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
 
 Exemplify the various types of formal arguments in python.
 
@@ -311,9 +292,8 @@ ii.
 >>>reduce(lambda x, y: x and y, filter(lambda x:x%2==0,a))
 ```
 
-___
 
-#### MAKEUP EXAMINATIONS – JULY 2019
+## MAKEUP EXAMINATIONS – JULY 2019
 
 Let a be the list of values produced by range(1,50). Using the function filter and a lamda argument, write the expression that will produce each of the following.
 (i) A list of odd numbers in a
@@ -340,9 +320,8 @@ Is it possible to get the same output using a single loop?Justify.
 Illustrate the following with example:
 i) DOC strings ii) local and global variables iii) pass by reference and pass by value in python
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2018
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2018
 
 Write a lambda function for each of the following:
 i) Take one argument and return true if it is nonzero
@@ -370,9 +349,8 @@ Explain recursion in python.
 
 Illustrate the following with example: i) DOC strings ii) local and global variables iii) pass by reference and pass by value in python.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
 
 Define list comprehension. Explain with an example.
 
@@ -397,9 +375,8 @@ def h(m,n):
 	return(ans)
 ```
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2017
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2017
 
 Let a be the list of values produced by range(1,11). Using the functions map and a lamda argument, write an expression that will produce each of the following.
 (i)  A list of squares of the values
@@ -426,9 +403,8 @@ Demonstrate different types of function parameters available in python.
 
 Explain list comprehension with example. Also develop a python script to print prime numbers in the given range using comprehension.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
 
 Explain keyword arguments, default arguments and variable length arguments with the help of an example each.
 
@@ -448,5 +424,4 @@ iii. A list where each element is larger by one than the corresponding element i
 Develop a factorial function which returns the factorial of a number. Using the factorial function, develop another function that estimates the value of mathematical constant e using this formula :
 `e = 1 + 1/1! + 1/2! + 1/3! + 1/4! + 1/5! + . . . . . . . .`
 
-___
 

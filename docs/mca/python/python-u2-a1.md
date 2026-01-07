@@ -1,17 +1,8 @@
----
-title: "Python Unit-2 Answered-1"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 2: Answers (Part 1)
 
+## String
 
-# Python Unit-2 Answered-1
-
-# String
-
-#### What is a string? Discuss the different ways of representing a string in Python.
+### What is a string? Discuss the different ways of representing a string in Python.
 
 **Answer :**
 
@@ -38,7 +29,7 @@ full_string = "Hello" + " " + "World"
 
 ____
 
-##### What do you mean by mutable and immutable data structures? Explain with examples.
+### What do you mean by mutable and immutable data structures? Explain with examples.
 
 **Answer :**
 
@@ -67,7 +58,7 @@ str1[0] = "H"
 
 ___
 
-##### Demonstrate slicing on strings. Also explain the use of join() and split() string methods with examples.
+### Demonstrate slicing on strings. Also explain the use of join() and split() string methods with examples.
 
 * Explain the use of `join()` and `split()` string methods with examples. What does it mean strings are immutable? Explain with an example.
 
@@ -114,7 +105,7 @@ print(fruits)
 
 ___
 
-##### Develop a python program to find whether the given string is palindrome or not.
+### Develop a python program to find whether the given string is palindrome or not.
 
 **Answer :**
 
@@ -128,7 +119,7 @@ else:
 
 ___
 
-##### Slicing Questions
+### Slicing Questions
 
 Assume that the name `t` is assigned a value ‘Programming with Python’ what will be the output when we execute the following commands and explain.
 ```
@@ -198,7 +189,7 @@ a[5:], t[:4], t[2:-2:2], t[3:4], t[2:-2], t[1:-2:], t[-3::-2], t[::-4], t[-4:1:-
 
 ___
 
-##### Program to write third person singular form verb
+### Program to write third person singular form verb
 
 The third person singular verb form in English is distinguished by the suffix `-s`, which is added to the stem of the infinitive form: run -> runs. A simple set of rules can be given as follows:
 * If the verb ends in `y`, remove it and add `ies`
@@ -227,7 +218,7 @@ print(third_person_singular("fly"))    # Output: flies
 
 ___
 
-##### Predict the output of the following and justify your answer:
+### Predict the output of the following and justify your answer:
 
 ```python
 i)
@@ -276,7 +267,7 @@ Hence, the `if` condition is `True` and `MSRIT` gets printed.
 
 ____
 
-##### Write a python program to count number of vowels and consonants, identify numbers, uppercase letters, lowercase letters and special characters in a given string.
+### Write a python program to count number of vowels and consonants, identify numbers, uppercase letters, lowercase letters and special characters in a given string.
 
 * Write a python function that accepts a sentence containing alpha numeric characters and calculates the number of digits, uppercase and lowercase letters. Return the calculated values.
 
@@ -351,11 +342,10 @@ def analyze_string(input_string):
             special_char_count += 1
 ```
 
-____
 
-### Additional String Practice Programs
+## Additional String Practice Programs
 
-##### Alternating letters to uppercase
+### Alternating letters to uppercase
 
 ```python
 >>> s = "hello this is python"
@@ -371,7 +361,7 @@ ____
 'hElLo tHiS Is pYtHoN'
 ```
 
-##### Find the biggest word(s) in a string
+### Find the biggest word(s) in a string
 
 ```python
 str_in = input("Enter a string : ")
@@ -418,7 +408,7 @@ print(multipleMaxWordList)
 ## Tuples
 
 
-##### List and describe any five methods on tuples.
+### List and describe any five methods on tuples.
 
 * List and describe any five functions to operate Tuples.
 
@@ -461,7 +451,7 @@ print(a, b, c, d)
 
 _____
 
-##### Implement a program that prompts the user to enter a tuple of integers. Calculate and print the sum of all integers in the tuple.
+### Implement a program that prompts the user to enter a tuple of integers. Calculate and print the sum of all integers in the tuple.
 
 **Answer :**
 
@@ -479,7 +469,8 @@ sum_of_tuple()
 ```
 
 ___
-##### Develop Python script that takes a list of words and returns the length of the longest one using tuples.
+
+### Develop Python script that takes a list of words and returns the length of the longest one using tuples.
 
 **Answer :**
 
@@ -508,7 +499,7 @@ print(f"The length of the longest word is: {longest_word(words)}")
 
 ____
 
-##### Program to store and convert student marks to a tuple
+### Program to store and convert student marks to a tuple
 
 Write a Python program that:
 - Prompts the user to enter the number of students.
@@ -533,7 +524,7 @@ print("Marks as tuple:", tuple(t))
 
 ____
 
-##### Store the following data in a list, a tuple, and a dictionary:
+### Store the following data in a list, a tuple, and a dictionary:
 ```
 India 91
 USA   1
@@ -558,5 +549,3 @@ data_tuple = (("India", 91), ("USA", 1), ("UK", 41), ("Japan", 9))
 data_dict = {"India": 91, "USA": 1, "UK": 41, "Japan": 9}
 ```
 
-
-___

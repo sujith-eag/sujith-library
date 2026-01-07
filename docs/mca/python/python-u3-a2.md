@@ -1,18 +1,10 @@
----
-title: "Python Unit-3 Answered-2"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-3 Answered-2
+# Python Unit 3: Answers (Part 2)
 
 
-# Recursion
+## Recursion
 
 
-#### Explain recursion in Python functions. Provide an example illustrating the use of recursion to solve a specific problem.
+### Explain recursion in Python functions. Provide an example illustrating the use of recursion to solve a specific problem.
 
 * Discuss recursion? Explain the working of recursion using factorial program.
 * What is recursion? Find the factorial of a number using recursive function.
@@ -38,7 +30,7 @@ print(factorial(3))  # Output: 6
 
 ___
  
-##### Write a function to display the Fibonacci sequence up to nth term where n is provided by the user.
+### Write a function to display the Fibonacci sequence up to nth term where n is provided by the user.
 
 Recursive Fibonacci for getting Just nth Fibonacci number 
 ```python
@@ -101,7 +93,7 @@ fibonacci(n)
 
 ____
 
-##### Write a Python recursive function Hanoi which implements a recursive solution for Towers of Hanoi.
+### Write a Python recursive function Hanoi which implements a recursive solution for Towers of Hanoi.
 
 ```python
 def hanoi(n, source, auxiliary, destination):
@@ -123,7 +115,7 @@ hanoi(n, 'A', 'B', 'C')
 
 ____
 
-##### Demonstrate recursion in Python. Write a recursive function to find sum of n numbers.
+### Demonstrate recursion in Python. Write a recursive function to find sum of n numbers.
 
 ```python
 def sum_of_n(n):
@@ -140,7 +132,7 @@ print(f"The sum of the first {n} numbers is: {result}")
 
 ___
 
-##### Develop a recursive function to generate prime numbers in a given range.
+### Develop a recursive function to generate prime numbers in a given range.
 
 Recursive way
 ```python
@@ -223,7 +215,7 @@ Filtering out prime numbers from a list using filter and lambda function:
 
 _____
 
-##### Develop a recursive Python function that recursively computes sum of elements in a list of lists. 
+### Develop a recursive Python function that recursively computes sum of elements in a list of lists. 
 `Input: [1, 2, [3,4], [5,6]]`
 Expected Result: 21.
 
@@ -244,7 +236,7 @@ print("Sum of elements:", result)
 
 ___
 
-##### Develop a factorial function which returns the factorial of a number. 
+### Develop a factorial function which returns the factorial of a number. 
 Using the factorial function, develop another function that estimates the value of mathematical constant e using this formula :
 `e = 1 + 1/1! + 1/2! + 1/3! + 1/4! + 1/5! + . . . . . . . .`
 
@@ -269,12 +261,10 @@ print("Estimate e for 10 terms:", estimate_e(10))
 ```
 
 
-
-
 ## Lambda, Map, Filter, List Comprehension
 
 
-##### Discuss lambda function with suitable examples.
+### Discuss lambda function with suitable examples.
 
 * Describe the purpose and usage of lambda functions in Python. Provide an example to illustrate the use of lambda functions.
 * Write short notes on anonymous functions in python.
@@ -316,7 +306,7 @@ Using a lambda function to filter even numbers from a list:
 
 ____
 
-##### Write a Note on the following
+### Write a Note on the following
 
 * What is the significance of :  map and reduce functions.
 * Write short notes on the following: (i) Mapping (ii) Filtering (iii) Anonymous functions.
@@ -387,7 +377,7 @@ print(result)
 
 ____
 
-##### Discuss list comprehension with example.
+### Discuss list comprehension with example.
 
 * What is List Comprehension? Describe with examples.
 * Explain list comprehension with example.
@@ -451,7 +441,7 @@ print(f"Prime numbers between {start} and {end}: {primes}")
 
 ____
 
-##### Create a list of even numbers from 1 to 10 using the loop and filter method.
+### Create a list of even numbers from 1 to 10 using the loop and filter method.
 
 Using for Loop
 ```python
@@ -481,7 +471,7 @@ Using List comprehension
 
 ___
 
-##### Write a lambda function for each of the following: -
+### Write a lambda function for each of the following: -
 
 i.Take one argument and return true if it is nonzero
 ii.Take one argument and return true if it is odd
@@ -517,7 +507,7 @@ print(total)  # Output: 15
 
 ___
 
-##### Write a program using map function to convert the temperature from Celsius to Fahrenheit and vice versa.
+### Write a program using map function to convert the temperature from Celsius to Fahrenheit and vice versa.
 
 **Answer :**
 
@@ -563,7 +553,7 @@ Using list comprehension
 
 ___
 
-##### Analyze and write the output for the following code snippets:
+### Analyze and write the output for the following code snippets:
 
 ```python
 >>>filter(lambda x:x,[4,0,6,3,0,2])
@@ -586,7 +576,7 @@ In the reduce function, two numbers from the even list are compared using `and` 
 4
 ```
 
-##### Let a be the list of integer values in the range(1,11). 
+### Let a be the list of integer values in the range(1,11). 
 Explain what the following expression is returning:     
 `reduce(lambda x, y: x and y, filter(lambda x: x % 2!= 0, a))`
 
@@ -605,7 +595,7 @@ If `or` was used in `lamda x, y: x or y`, then it would return the first value o
 
 ___
 
-##### Let a be the list of values produced by range(1,11). 
+### Let a be the list of values produced by range(1,11). 
 
 Using the function filter and a lambda argument, write the expression that will produce each of the following.
 (i) A list of even numbers in a
@@ -635,7 +625,7 @@ div_three = [ x for x in a if x%3==0]
 ```
 ____
 
-##### Let a be the list of values produced by range(1,11). 
+### Let a be the list of values produced by range(1,11). 
 
 Using the functions map and a lamda argument, write an expression that will produce each of the following.
 (i) A list of squares of the values
@@ -683,7 +673,7 @@ one_large = [ x+1 for x in a]
 
 _____
 
-##### Implement anonymous(lambda) functions for the following:
+### Implement anonymous(lambda) functions for the following:
 
 i) Filter out only even numbers from the given list.
 
@@ -735,7 +725,7 @@ total  # 12
 
 ___
 
-##### Explain list comprehension with example. 
+### Explain list comprehension with example. 
 Write a python program that initializes a list with numbers from 1 to 20 using list comprehension. Print how many odd numbers present in the list and sum of even numbers in the list.
 
 ```python
@@ -758,7 +748,7 @@ Write a python program that initializes a list with numbers from 1 to 20 using l
 
 ___
 
-##### Let a be the list of values produced by range(1,50). 
+### Let a be the list of values produced by range(1,50). 
 Using the function map, filter, reduce and a lambda argument, write the expression that will produce each of the following.
 (i) A list of odd numbers in a
 (ii) A list of even numbers in a
@@ -858,7 +848,7 @@ total = sum([x**2 for x in range(1,50) if x%5==0])
 ____
 
 
-##### Use list comprehension to create a list of integers
+### Use list comprehension to create a list of integers
 which specify the length of each word in a certain sentence, but only if the word is not the word "the".
 
 text ="the students of MCA study the programming language python as part of the curriculum"
@@ -882,8 +872,4 @@ In one line
 >>> count
 [8, 2, 3, 5, 11, 8, 6, 2, 4, 2, 10]
 ```
-
-
-___
-
 

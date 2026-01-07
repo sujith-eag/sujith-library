@@ -1,19 +1,10 @@
-
----
-title: "Python Unit-5 Answered-1"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-5 Answered-1
+# Python Unit 5: Answers (Part 1)
 
 
-# Exception Handling
+## Exception Handling
 
 
-#### Explain exception handling in python in detail with the help of an example.
+### Explain exception handling in python in detail with the help of an example.
 
 * Illustrate “catching an exception is programmatically good and necessary mechanism” with exception handling mechanism in python. Demonstrate the working of any six exceptions in python.
 * How do you handle an exception? Demonstrate try-finally clause.
@@ -95,7 +86,7 @@ open_file('non_existing_file.txt')
 ```
 
 
-##### Different Types of Exceptions
+### Different Types of Exceptions
 
 Common exceptions in Python:
 
@@ -199,7 +190,7 @@ except NameError:
 
 ____
 
-##### Illustrate user defined exceptions with suitable examples.
+### Illustrate user defined exceptions with suitable examples.
 
 * Develop a Python program to demonstrate user defined exception.
 
@@ -247,12 +238,12 @@ except ValueError:
 
 `except` block: Catches the custom `InvalidAgeError` and prints the error message, or catches `ValueError` if the user enters non-numeric input.
 
-___
+
 
 ## File I/O
 
 
-##### List and describe the file open modes in python.
+### List and describe the file open modes in python.
 
 * List and describe any five file open modes in python.
 
@@ -309,7 +300,7 @@ file.close()
 
 ---
 
-##### Demonstrate the methods to read and write text files in python.
+### Demonstrate the methods to read and write text files in python.
 
 * Explain with the help of an example the different functions used with files.
 * Explain the different methods available for manipulating the text files.
@@ -451,5 +442,4 @@ print(lines)
 file.close()
 ```
 
-___
 

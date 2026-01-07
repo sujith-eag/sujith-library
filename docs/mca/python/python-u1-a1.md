@@ -1,15 +1,7 @@
----
-title: "Python Unit-1 Answered-1"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-1 Answered-1
+# Python Unit 1: Answers (Part 1)
 
 
-#### What are identical objects and equivalent objects? Give examples.
+## What are identical objects and equivalent objects? Give examples.
 
 **Answer :**
 
@@ -60,7 +52,7 @@ print(a == b)
 * List the operators supported in Python? Describe specifically about identity and membership operator with a suitable example?
 * Describe membership operator and identity operator in python with suitable examples.
 
-##### Answer
+### Answer
 
 An **operator** is a symbol that performs an operation on one or more operands (variables or values). They can be classified based on Nature :
 - Arithmetic Operators : `+`, `-`, `*`, `/`, `%`, `//`, `**`
@@ -72,7 +64,9 @@ An **operator** is a symbol that performs an operation on one or more operands (
 - Bitwise Operators : `&`, `|`, `^`, `~`, `<<`, `>>`
 - Unary Operators: `-` (negation)
 
-##### 1. Arithmetic Operators
+
+
+### 1. Arithmetic Operators
 Arithmetic operators are used to perform basic arithmetic operations like addition, subtraction, multiplication, etc.
 - **`+`**: Addition
 - **`-`**: Subtraction
@@ -99,7 +93,7 @@ print(a ** b) # 1000 (Exponentiation)
 
 ---
 
-##### 2. Assignment Operators
+### 2. Assignment Operators
 Assignment operators are used to assign values to variables, sometimes in a shorthand way.
 - **`=`**: Simple assignment
 - **`+=`**: Add and assign (e.g., `x += 1` is the same as `x = x + 1`)
@@ -116,9 +110,11 @@ x += 3  # x = x + 3 => x = 8
 x *= 2  # x = x * 2 => x = 16
 ```
 
+
 ---
 
-##### 3. Unary Operators
+### 3. Unary Operators
+
 A unary operator operates on a single operand (value). Unary Minus (`-`)  operator negates the value of a variable (changes a positive value to negative and vice versa).
 
 ```python
@@ -128,7 +124,8 @@ y = -x  # y = -10
 
 ---
 
-##### 4. Relational Operators
+### 4. Relational Operators
+
 Relational (or Comparison) operators are used to compare two values. They return a boolean value (`True` or `False`).
 - **`>`**: Greater than
 - **`<`**: Less than
@@ -155,7 +152,7 @@ print(10 < 5 < 20)  # False
 
 ---
 
-##### 5. Logical Operators
+### 5. Logical Operators
 Logical operators are used to combine conditional statements. They are commonly used in `if` statements.
 - `and`: Returns `True` if both operands are `True`
 - `or`: Returns `True` if at least one operand is `True`
@@ -171,7 +168,7 @@ print(not x)    # False
 
 ---
 
-##### 6. Membership Operators
+### 6. Membership Operators
 Membership operators are used to check if a value is present in a sequence (like a string, list, dictionary, tuple, etc.).
 - `in`: Returns `True` if the value is found in the sequence.
 - `not in`: Returns `True` if the value is **not** found in the sequence.
@@ -184,7 +181,7 @@ print('grapes' not in fruits)  # True
 
 ---
 
-##### 7. Identity Operators
+### 7. Identity Operators
 Identity operators are used to compare the memory locations of two objects. These operators help check if two variables point to the same object in memory.
 - `is`: Returns `True` if both operands refer to the same object in memory
 - `is not`: Returns `True` if both operands do not refer to the same object
@@ -206,7 +203,7 @@ print(id(y))
 
 ---
 
-##### 8. Bitwise Operators
+### 8. Bitwise Operators
 Bitwise operators are used to perform bit-level operations on integers. These operations work at the binary level.
 - **`&`**: Bitwise AND
 - **`|`**: Bitwise OR
@@ -225,9 +222,7 @@ print(x ^ y)  # Bitwise XOR: 6 (binary: 0110)
 print(~x)     # Bitwise NOT: -6 (binary: 1010)
 ```
 
-____
-
-#### Examine each of the following expressions. 
+## Examine each of the following expressions. 
 
 Predict what the result would be? Explain what the type is for each expression. If an expression is illegal, explain why?
 ```
@@ -271,8 +266,7 @@ v. 3 ** 10 / 3.
 
 ## Control Flow and Conditionals
 
-
-#### Write a python script to demonstrate 'if..elif...else' statement in python.
+## Write a python script to demonstrate 'if..elif...else' statement in python.
 
 `if...elif...else` are the primary structures for controlling the flow of the program and execution of code blocks based on conditional statements which are Boolean expressions.
 
@@ -305,7 +299,7 @@ else:
 ## Loops , break, continue, pass
 
 
-#### Illustrate the different types of iterative statements available in Python.
+## Illustrate the different types of iterative statements available in Python.
 
 * Illustrate conditions and looping statements in python with suitable examples.
 
@@ -359,9 +353,7 @@ while number <= 5:
     number += 1
 ```
 
-___
-
-#### Demonstrate the usage of pass, continue and break with the help of appropriate example.
+## Demonstrate the usage of pass, continue and break with the help of appropriate example.
 
 * Illustrate break, continue and pass statements in Python.
 * Describe the purpose and usage of Break, Continue and Pass in Python.
@@ -442,9 +434,8 @@ while True:
         print(f"\n{city.title()} is lovely")
 ```
 
-___
 
-#### Write a program to display only those numbers from a list that satisfy the following conditions
+## Write a program to display only those numbers from a list that satisfy the following conditions
 
 *  The number must be divisible by five.
 * If the number is greater than 100, then skip it and move to the next number.
@@ -470,10 +461,7 @@ ___
 30
 ```
 
-___
-
-
-#### What is the output of the following code segments? Explain the causes.
+## What is the output of the following code segments? Explain the causes.
 
 ```python
 i) 
@@ -544,9 +532,7 @@ Current Letter : o
 Current Letter : n
 ```
 
-___
-
-#### Give the syntax of 'range()' function and discuss its importance. 
+## Give the syntax of 'range()' function and discuss its importance. 
 
 * Write a python script to demonstrate for loop statement with range() function.
 
@@ -597,9 +583,8 @@ def factors(n):
 	return DivList
 ```
 
-___
 
-#### Demonstrate the usage of while statement in python. 
+## Demonstrate the usage of while statement in python. 
 
 * Write a python script to demonstrate while concept to add 5 numbers.
 
@@ -618,9 +603,7 @@ Adding only five numbers from a list.
 31
 ```
 
-___
-
-#### Pattern Printing
+## Pattern Printing
 
 Develop a python program that reads two integer values n and m from the user, then produces a box that is n wide and m deep, such as the following:
 Enter a width: 5
@@ -742,12 +725,9 @@ for i in range(height):
 ```
 
 
-___
+## Additional Patterns for Practice
 
-#### Additional Patterns for Practice
-
-
-##### Define a function that takes a positive integer n, and then produces n lines of output in the following pattern
+### Define a function that takes a positive integer n, and then produces n lines of output in the following pattern
 
 ```
 +
@@ -856,6 +836,3 @@ for i in range(n-1, 0, -1):
 
 ```
 
-
-
-____

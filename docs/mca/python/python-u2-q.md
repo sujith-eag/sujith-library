@@ -1,15 +1,6 @@
----
-title: "Python Unit-2 Previous Questions"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 2: Questions
 
-
-# Python Unit-2 Previous Questions
-
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Write a Python function named average_list that takes a list of numbers as input and returns their average. Additionally, include a condition to ensure that the input is a list of numeric values only that are >=1). What is the output when this list average_list is:
 * (i) An empty list
@@ -30,9 +21,9 @@ i) Calculate the shape of the array.
 ii) Print a subset of the array using slicing.
 iii) Multiply all elements of the array by 2 and print the result.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Consider the list `sub1={ANM,Py,DS,ASE,Java,OOPS }` perform the following operations and show the output
 i) Insert the Sub `AWP` at the position 3
@@ -54,9 +45,9 @@ Discuss the following with an example: i) Indexing ii) Splitting arrays iii) Sha
 
 Illustrate 2-D and 3-D array iterating with respect to numpy.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Develop a python program for the following: Create a dictionary by asking the user to give the name and marks of 10 different students. Sort the dictionary created according to marks.
 
@@ -92,9 +83,8 @@ Write a program to create NumPy array and get the smallest and largest element f
 Explain the following routines of NumPy with examples:
 i) reshape ii) resize iii) unique iv) append v) insert.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Assume that the name t is assigned a value ‘Programming with Python’ what will be the output when we execute the following commands and explain.
 ```python
@@ -110,7 +100,7 @@ ii) Displaying values and keys of a dictionary
 iii) Looping over List of Lists.
 
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 
 List and describe any five methods on tuples.
@@ -119,9 +109,9 @@ How do you create and access dictionaries in Python? Explain the operations `len
 
 Demonstrate slicing on strings. Also explain the use of `join()` and `split()` string methods with examples.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Differentiate between lists and tuples in Python. How to create nested lists? Demonstrate how to create and print a 3-dimensional matrix with lists.
 
@@ -133,9 +123,8 @@ Develop a Python code to extract the Even elements indices from the given list.
 
 Develop Python script that takes a list of words and returns the length of the longest one using tuples.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Explain the usage of the following methods with examples:
 i) extend() ii) pop() iii) sort() iv) split() v) join()
@@ -150,9 +139,9 @@ Demonstrate how dictionaries are created and used in Python. List and describe a
 
 Develop a python program to count the frequency of words in a string using dictionary.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Demonstrate any five list functions with the help of an example.
 
@@ -168,9 +157,9 @@ t[-4:1:-4], t[:-3]
 
 Develop a script for filtering odd and even numbers into two separate lists from a list of numbers.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
 
 List and describe any five functions to operate Tuples.
 
@@ -182,9 +171,9 @@ ___
 
 When you use the + operator to concatenate two lists, does it make a copy or a reference of the arguments? Explain with the help of an example.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2019
+
+## SEMESTER END EXAMINATIONS – JUNE 2019
 
 The third person singular verb form in English is distinguished by the suffix -s, which is added to the stem of the infinitive form: run -> runs. A simple set
 of rules can be given as follows:
@@ -201,9 +190,9 @@ Develop Python script that takes a list of words and returns the length of the l
 
 List and exemplify the built – in dictionary methods.
 
-____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
 
 predict the output of the following and justify your answer
 ```
@@ -255,9 +244,9 @@ else:
 
 What is a string? Discuss the different ways of representing a string in Python.
 
-____
 
-#### MAKEUP EXAMINATIONS – JULY 2019
+
+## MAKEUP EXAMINATIONS – JULY 2019
 
 Explain the usage any 5 list operating methods with examples. 
 
@@ -269,9 +258,8 @@ How do you create and access dictionaries in Python? List and describe any 5 met
 
 Develop a python program to find whether the given string is palindrome or not.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2018
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2018
 
 Write the evaluation result of the following expressions:
 ```
@@ -321,17 +309,15 @@ else:
 	print "RNSIT"
 ```
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
 
 Demonstrate any four functions of lists with the help of an examples. 
 
 Demonstrate any three functions of dictionaries in python with examples.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2017
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2017
 
 Explain the usage of the following methods with examples:
 (i) extend()  (ii) pop()   (iii) sort()  (iv) split()  (v) join()
@@ -343,7 +329,5 @@ How do you create and access dictionaries in Python? Explain the operations len(
 Develop a python program to count the frequency of word in a string using dictionary.
 
 Develop a python program to print unique elements in a list.
-
-____
 
 

@@ -1,20 +1,7 @@
----
-title: "OS - Unit-2 - Synchronization Answered"
-description: ""
-summary: ""
-date: 2025-01-12T21:27:49+05:30
-lastmod: 2025-01-12T21:27:49+05:30
-draft: false
-weight: 1982
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Unit-2: Synchronization
 
-### Process Synchronization
+
+## Process Synchronization
 
 Process synchronization refers to the coordination of the execution of processes that share resources, in order to maintain consistency and avoid conflicts. 
 
@@ -22,9 +9,8 @@ A common issue that arises is **race condition**, which occurs when multiple pro
 
 Therefore, synchronization mechanisms are required to ensure correct process behavior and data integrity.
 
----
 
-### Critical Section Problem
+## Critical Section Problem
 
 - What is the critical section problem? Explain the requirements that must be satisfied by its solution.
 - What are the requirements for providing a solution to the critical section problem? Explain.
@@ -42,7 +28,8 @@ Each process follows a structure that typically consists of four sections:
 3. **Exit Section** – Code that signals the process has exited the critical section.
 4. **Remainder Section** – Code that executes when the process is not in the critical section.
 
-##### Requirements for a Solution:
+
+### Requirements for a Solution:
 
 A valid solution to the critical-section problem must satisfy three essential conditions:
 
@@ -54,9 +41,8 @@ A valid solution to the critical-section problem must satisfy three essential co
 
 These requirements ensure that the system maintains consistency, avoids deadlock, and allows fair access to shared resources among competing processes.
 
----
 
-### Interprocess Communication (IPC)
+## Interprocess Communication (IPC)
 
 - What is IPC? Explain the two models of IPC.
 - Explain IPC using message passing with an example.
@@ -74,7 +60,8 @@ Processes can be classified as:
 
 - **Cooperating Processes**: These share data with other processes and, therefore, require coordination and communication to ensure consistency and correct operation. IPC is required to enable cooperating processes to exchange information and synchronize execution.
 
-##### Reasons for Process Cooperation
+
+### Reasons for Process Cooperation
 
 Providing an environment for process cooperation allows the operating system to support:
 
@@ -86,9 +73,8 @@ Providing an environment for process cooperation allows the operating system to 
 
 4. **Convenience** : Cooperative multitasking allows users to run multiple applications at the same time, improving system usability and responsiveness.
 
----
 
-#### Models of Interprocess Communication
+### Models of Interprocess Communication
 
 There are two primary models of IPC:
 
@@ -107,9 +93,8 @@ There are two primary models of IPC:
   <figcaption>3.12 Communication Models</figcaption>
 </figure>
 
----
 
-#### IPC Using Message Passing
+### IPC Using Message Passing
 
 **Message passing** allows processes to communicate and synchronize without sharing memory (same address space). 
 
@@ -124,18 +109,16 @@ Producer-Consumer Problem Using Message Passing:
 - The **consumer** waits to receive data using the `receive()` operation.
 - If blocking (synchronous) communication is used, the producer may wait until the consumer is ready to receive the message.
 
----
 
-#### Message Passing Implementation Models
+### Message Passing Implementation Models
 
 Message passing systems can be implemented using different methods, including:
 - **Direct or Indirect Communication** : Based on how processes identify each other.
 - **Synchronous or Asynchronous Communication** : Defines whether the sender or receiver waits for acknowledgment.
 - **Automatic or Explicit Buffering** : Relates to how messages are queued and managed.
 
----
 
-#### Message Passing Communication
+### Message Passing Communication
 
 **Direct Communication**: Processes (Sender or Reciever) explicitly name each other during communication and messages are directly sent to process.
 
@@ -158,9 +141,8 @@ ____
 
 Processes are more loosely coupled, offering more flexibility and scalability, especially in dynamic distributed systems spread across different machines.
 
----
 
-### Synchronous or Asynchronous Communication
+## Synchronous or Asynchronous Communication
 
 **Synchronous Communication (Blocking)**: The sender waits until the message is received. The receiver waits until a message is available. Suitable for situations where synchronization is required.
 
@@ -172,9 +154,8 @@ In the Producer-Consumer problem:
 - The producer sends a message using a blocking send and waits until the message is received by the consumer.
 - The consumer receives a message via blocking receive, waiting until the message is available.
 
----
 
-### Buffering in Message Passing
+## Buffering in Message Passing
 
 Messages exchanged between processes are temporarily stored in queues known as **message buffers**. The buffering behavior depends how it is implemented in the system:
 
@@ -186,12 +167,11 @@ Messages exchanged between processes are temporarily stored in queues known as *
 
 Systems with bounded or unbounded queues are referred to as automatic buffering systems, while a system with a zero-capacity queue is referred to as no buffering.
 
----
 
-### Classic problems
+## Classic problems
 
 
-#### Producer-Consumer Problem
+### Producer-Consumer Problem
 
 One common problem in cooperative processes is the Producer-Consumer problem.
 - Producer Process: Produces data and stores it in a shared buffer.
@@ -248,9 +228,7 @@ integer value representing the number of available instances of a particular res
 
 
 
-____
-
-#### Dining-Philosophers Problem
+### Dining-Philosophers Problem
 
 Consider five philosophers who spend their lives thinking and eating. These philosophers share a circular table with five chairs, each belonging to one philosopher. In the center of the table is a bowl of rice, and five chopsticks are laid out for use.
 
@@ -303,6 +281,4 @@ do {
 
 - Each philosopher executes this loop, trying to pick up chopsticks, eat, and then think.
 
-
----
 

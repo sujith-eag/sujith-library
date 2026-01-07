@@ -1,15 +1,7 @@
----
-title: "Python Unit-1 Previous Questions"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-1 Previous Questions
+# Python Unit 1: Questions
 
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Describe logical operators and relational operators in python with suitable examples.
 
@@ -25,9 +17,9 @@ Give the syntax of `range()` function and discuss its importance. Write a python
 
 Demonstrate the usage of `while` statement in python. Write a python script to demonstrate `while` concept to add 5 numbers.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Illustrate conditions and looping statements in python with suitable examples.
 
@@ -35,9 +27,9 @@ Develop a Python program to find roots of a quadratic equation with necessary va
 
 Develop a python program to sum the digits of a given number.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Describe Arithmetic Operators, Assignment Operators, and Comparison Operators with example.
 
@@ -52,9 +44,9 @@ Write a program to count the total number of digits and sum of digits in a numbe
 
 What are identical objects and equivalent objects? Give examples.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – SEPTEMBER 2022
 
 Explain the usage of `chr()` and `ord()` functions. Develop a script to read a string and convert all uppercase letters to lowercase and vice versa using `chr()` and `ord()` functions.
 
@@ -75,9 +67,9 @@ Enter width: 5
 
 Write a program using a while loop that asks the user for a number, and prints a countdown from that number to zero.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Explain the significance of break, continue and pass with suitable example.
 
@@ -96,31 +88,31 @@ ___
 
 Illustrate the different types of iterative statements available in Python.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 List the operators supported in Python? Describe specifically about identity and membership operator with a suitable example?
 
 Demonstrate the usage of pass, continue and break with the help of appropriate example.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Develop a python program to print unique elements in a list.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021 SUPPLEMENTARY
 
 Develop a program to print the sum of n natural numbers.
 
 Demonstrate the usage of pass, continue and break with the help of appropriate examples.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020 SUPPLEMENTARY
 
 Describe Arithmetic Operators, Assignment Operators, Comparison Operators, Logical Operators and Bitwise Operators in detail with examples.
 
@@ -130,15 +122,15 @@ Implement a Python Program to reverse a number and also find the number of digit
 
 Illustrate break, continue and pass statements in Python.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2019
+
+## SEMESTER END EXAMINATIONS – JUNE 2019
 
 Describe the purpose and usage of Break, Continue and Pass in Python.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY 2019
 
 Design a program to print the mid number (which is between min and max) out of three input numbers
 
@@ -153,17 +145,17 @@ i) Processing characters in Strings
 ii) Displaying values and keys of a dictionary
 iii) Looping over List of Lists.
 
-___
-#### MAKEUP EXAMINATIONS – JULY 2019
+
+## MAKEUP EXAMINATIONS – JULY 2019
 
 Develop a python program to find the sum of even numbers and odd numbers in the given list.
 ___
 
 Design a simple calculator with different mathematical operations using python script.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2018
+
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2018
 
 Design a Python program to find the average of best two test scores out of three test scores taken as input.
 
@@ -174,9 +166,9 @@ i) Processing characters in Strings
 ii) Displaying values and keys of a dictionary
 iii) Looping over List of Lists.
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – JULY/AUGUST 2018
 
 Using for loop, print of table of Celsius/Fahrenheit equivalences. Let c be the Celsius temperatures, ranging from 0 to 100. For each value of c, print the corresponding Fahrenheit temperature.
 
@@ -197,9 +189,9 @@ Sample input: I love PyTHon
 Sample output: i LOVE pYthON.
 ```
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY/JUNE 2017
+
+## SEMESTER END EXAMINATIONS – MAY/JUNE 2017
 
 What is the output of the following code segments? Explain the causes.
 ```
@@ -223,9 +215,9 @@ for letter in'Python':
 	print'Current Letter :', letter
 ```
 
-___
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS – AUGUST 2017
 
 When you use the `+` operator to concatenate two lists, does it make a copy or a reference of the arguments? Explain with the help of an example.
 
@@ -246,4 +238,3 @@ Enter width: 5
 Develop a script to read n values into a list. Separate the numbers in the list into two new lists, first contains all prime numbers and second contains all non-prime numbers.
 
 
-___

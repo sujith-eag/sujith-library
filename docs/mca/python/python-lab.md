@@ -1,15 +1,7 @@
----
-title: "Python Lab Component Questions"
-description: "" # short summary for SEO and social cards
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Lab Component Questions
+# Python Lab Questions
 
 
-#### Question 1
+## Question 1
 
 Create a function called `outer_function` that takes two parameters, `a` and `b`. 
 Within this function, define an inner function called `inner_function` that returns the sum of `a` and `b`.
@@ -29,9 +21,9 @@ In `outer_function`, add 5 to the result from `inner_function` and return this f
 15
 ```
 
-___
 
-#### Question 2
+
+## Question 2
 
 Define **two** Python functions to determine the largest of three numbers.
 - Create a helper function that takes **two numbers** and returns the **larger** one.
@@ -64,9 +56,9 @@ Enter c: 77
 77
 ```
 
-____
 
-#### Question 3
+
+## Question 3
 
 Create two functions, `sum_of_numbers()` and `product_of_numbers()`, each using Python’s `*args` to accept a variable number of numeric arguments.
 - `sum_of_numbers()` should return the total of all numbers passed in.
@@ -96,9 +88,9 @@ Create two functions, `sum_of_numbers()` and `product_of_numbers()`, each using 
 12
 ```
 
-____
 
-#### Question 4
+
+## Question 4
 
 Define a Python recursive function to print the Fibonacci series up to n_terms.
 
@@ -118,9 +110,9 @@ Define a Python recursive function to print the Fibonacci series up to n_terms.
 ```
 
 
-____
 
-#### Question 5
+
+## Question 5
 
 Write a Python program that allows the user to choose between computing a factorial or printing a Fibonacci series (without recursion).
 
@@ -152,9 +144,9 @@ else:
     print("Invalid choice! Please enter either 1 or 2.")
 ```
 
-___
 
-#### Question 6
+
+## Question 6
 
 Write a menu-driven Python program that lets the user check if a number is even/odd or prime.
 ```python
@@ -202,8 +194,8 @@ if __name__ == "__main__":
     main()
 ```
 
-___
-#### Question 7
+
+## Question 7
 
 Write a Python program that allows the user to reverse a number or reverse a string. reverse a number without converting it into a string also check if the given number is a palindrome.
 
@@ -267,9 +259,9 @@ if __name__ == "__main__":
 
 ```
 
-___
 
-#### Question 8
+
+## Question 8
 
 Write a menu-driven Python program that displays the following patterns:
 
@@ -328,9 +320,9 @@ if __name__ == "__main__":
     main()
 ```
 
-___
 
-#### Question 9
+
+## Question 9
 
 WAP to read roll number and marks of n students and create a dictionary from it having roll numbers as keys.
 
@@ -362,9 +354,9 @@ if __name__ == "__main__":
     main()
 ```
 
-___
 
-#### Question 10
+
+## Question 10
 
 Write a python program that accepts a string and calculate the number of uppercase, lowercase, digits and special characters
 ```python
@@ -402,9 +394,9 @@ if __name__ == "__main__":
 
 ```
 
-___
 
-#### Question 11
+
+## Question 11
 
 Write a Python program that demonstrates the use of five different list methods. Your program should:
 1. Create a list and allow the user to add elements using the append() method.
@@ -455,9 +447,9 @@ if __name__ == "__main__":
 
 ```
 
-___
 
-#### Question 12
+
+## Question 12
 
 Write a Python program that demonstrates the following:
 1. Create and check the shape of an array
@@ -498,9 +490,9 @@ if __name__ == "__main__":
 
 ```
 
-___
 
-#### Question 13
+
+## Question 13
 
 Write regular expressions to validate the following inputs:
 
@@ -532,9 +524,9 @@ else:
 
 ```
 
-___
 
-#### Question 14
+
+## Question 14
 
 Write regular expressions to validate the following inputs:
 
@@ -566,7 +558,4 @@ else:
 
 
 ```
-
-
-____
 

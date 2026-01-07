@@ -1,19 +1,10 @@
-
----
-title: "Python Unit-4 Answered-2"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
-
-# Python Unit-4 Answered-2
+# Python Unit 4: Answers (Part 2)
 
 
 ## Regular Expressions
 
 
-##### How do you define and use regular expressions in Python? Discuss.
+### How do you define and use regular expressions in Python? Discuss.
 
 * List any 6 regular expression patterns in python and write the meaning of each and example.
 * How do you define and use regular expressions in Python? Discuss.
@@ -109,7 +100,7 @@ split_example()
  
 ___
 
-##### Write a Python program to check the following using regular expressions:
+### Write a Python program to check the following using regular expressions:
 
 * A given USN of RIT MCA student is valid or not.
 * To find the sequences of one upper case letter followed by lower case letters.
@@ -252,7 +243,7 @@ validate_mobile_number("123-45-67890")
 
 _____
 
-##### Write a regular expression to validate a float number it should satisfy the following.
+### Write a regular expression to validate a float number it should satisfy the following.
 i. Number can start with +, - or . symbol.
 ii. Number must contain at least 1 decimal value.
 iii. Number must have exactly one . symbol.
@@ -289,7 +280,7 @@ validate_float("123456")    # Invalid (no decimal point)
 
 ____
 
-##### Write a Python program to check the validity of a password given by the user using regular expression.
+### Write a Python program to check the validity of a password given by the user using regular expression.
 The Password should satisfy the following criteria:
 i. Contain at least 1 letter between a and z
 ii. Contain at least 1 number between 0 and 9
@@ -328,7 +319,7 @@ Similarly one character of each Upper, digit and Symbol are matched but they do 
 
 ____
 
-##### How do you define regular expressions in python? Write regular expression to match the following patterns:
+### How do you define regular expressions in python? Write regular expression to match the following patterns:
 (i) The file names chap01, chap02, chap03, chap10, chap11 and chap12
 (ii) containing ‘RIT’ as an embedded string except at the beginning or end
 
@@ -409,7 +400,7 @@ validate_non_py_extension("file.txt")   # Valid
 
 ____
 
-##### Develop a script using regular expressions to search and replace a string in a given input.
+### Develop a script using regular expressions to search and replace a string in a given input.
 
 **Answer :**
 
@@ -433,7 +424,7 @@ print("Updated String: ", output_string)
 
 ____
 
-##### Develop a script using regular expressions to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+### Develop a script using regular expressions to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
 
 **Answer :**
 
@@ -470,8 +461,5 @@ The replacement string `r'\3-\2-\1'` rearranges the groups:
 `\1` represents the year (from the first captured group).
 
 This transforms the format from `yyyy-mm-dd` to `dd-mm-yyyy`.
-
-
-____
 
 

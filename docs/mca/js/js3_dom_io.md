@@ -1,24 +1,10 @@
----
-title: "JavaScript - 3 DOM and Functions"
-description: ""
-summary: ""
-date: 2025-02-12T14:03:31+05:30
-lastmod: 2025-02-12T14:03:31+05:30
-draft: false
-weight: 682
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DOM I/O & Functions
 
 
-### JavaScript I/O (Data Sheet 16)
+## JavaScript I/O (Data Sheet 16)
 
 
-##### Question 1
+### Question 1
 
 Demonstrate the use of Embedded JavaScript to display the following text on your web page.
 I am part of the HTML document!
@@ -40,7 +26,7 @@ I am also part of the HTML document, after the script results!
 </html>
 ```
 
-##### Question 2
+### Question 2
 
 Demonstrate the use of prompt method by accepting user’s name as input.
 
@@ -64,7 +50,7 @@ Demonstrate the use of prompt method by accepting user’s name as input.
 
 ```
 
-##### Question 3
+### Question 3
 
 Design a simple Web Page to add two input numbers and display their sum using prompt and alert.
 
@@ -89,7 +75,7 @@ Design a simple Web Page to add two input numbers and display their sum using pr
 </html>
 ```
 
-##### Question 4
+### Question 4
 
 Develop and demonstrate a HTML file that includes JavaScript script for the following
 a) A number n obtained using prompt: The first n Fibonacci numbers using
@@ -137,9 +123,9 @@ b) A number n obtained using prompt: A table from 1 to n and their squares using
 ```
 
 
-### JavaScript Functions (Data Sheet 17)
+## JavaScript Functions (Data Sheet 17)
 
-##### Question 1
+### Question 1
 
 Find the area of a triangle where lengths of the three of its sides are 5, 6, 7.
 
@@ -168,7 +154,7 @@ Find the area of a triangle where lengths of the three of its sides are 5, 6, 7.
 </html>
 ```
 
-##### Question 2
+### Question 2
 
 Develop and design JavaScript code to Implement arithmetic operations using functions.
 
@@ -244,7 +230,7 @@ Develop and design JavaScript code to Implement arithmetic operations using func
 </html>
 ```
 
-##### Question 3
+### Question 3
 
 Develop and design JavaScript Compute GCD and LCM of two numbers using functions.
 
@@ -297,7 +283,8 @@ Develop and design JavaScript Compute GCD and LCM of two numbers using functions
 </body>
 </html>
 ```
-##### Question 4
+
+### Question 4
 
 Develop and design JavaScript function to calculate the income of a person
 Salary :
@@ -353,4 +340,3 @@ Salary :
 </html>
 ```
 
-____

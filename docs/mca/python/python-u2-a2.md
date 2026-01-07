@@ -1,18 +1,9 @@
----
-title: "Python Unit-2 Answered-2"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 2: Answers (Part 2)
+
+## Lists
 
 
-# Python Unit-2 Answered-2
-
-# Lists
-
-
-#### How do you demonstrate that lists are equal and identical?
+### How do you demonstrate that lists are equal and identical?
 
 **Answer :**
 
@@ -37,7 +28,7 @@ print(f"list1 is list3: {list1 is list3}")
 
 _____
 
-##### When you use the + operator to concatenate two lists, does it make a copy or a reference of the arguments? Explain with the help of an example.
+### When you use the + operator to concatenate two lists, does it make a copy or a reference of the arguments? Explain with the help of an example.
 
 **Answer :**
 
@@ -58,7 +49,7 @@ print("New list:", new_list)     # Output: [1, 2, 3, 4, 5, 6]
 
 ____
 
-##### Explain the purpose of slicing in Python lists. Provide at least 4 examples to demonstrate slicing operations.
+### Explain the purpose of slicing in Python lists. Provide at least 4 examples to demonstrate slicing operations.
 
 **Answer :**
 
@@ -98,7 +89,7 @@ print(slice5)  # Output: [3, 4, 5, 6, 7]
 
 ___
 
-##### Explain the usage any 5 list operating methods with examples. 
+### Explain the usage any 5 list operating methods with examples. 
 
 * Demonstrate any four functions of lists with the help of an examples.
 * Demonstrate any five list functions with the help of an example.
@@ -205,7 +196,8 @@ print(sentence)
 ```
 
 ____
-##### Develop a script for filtering odd and even numbers into two separate lists from a list of numbers.
+
+### Develop a script for filtering odd and even numbers into two separate lists from a list of numbers.
 
 ```python
 even = []
@@ -223,7 +215,7 @@ print(f"Odd are: {odd}")
 
 ____
 
-##### Develop a python program to print unique elements in a list.
+### Develop a python program to print unique elements in a list.
 
 **Answer :**
 
@@ -254,7 +246,7 @@ print(unique)
 
 ____
 
-##### Develop a Python code to extract the Even elements indices from the given list.
+### Develop a Python code to extract the Even elements indices from the given list.
 
 **Answer :**
 
@@ -280,7 +272,7 @@ print(f"Indices of even numbers: {even_indices_list}")
 
 ____
 
-##### List operations
+### List operations
 
 Consider the list `sub1={ANM,Py,DS,ASE,Java,OOPS }` perform the following operations and show the output
 i) Insert the Sub `AWP` at the position 3
@@ -348,7 +340,7 @@ False
 
 ____
 
-##### Consider the list 
+### Consider the list 
 `scores = [5, 4, 7, 3, 6, 2, 1]` and write the python instruction to perform the following operations:
 i) Insert an element 9 at the beginning of the list.
 ii) Insert an element 8 at the index position 3 of the list.
@@ -449,7 +441,7 @@ else:
 ```
 
 
-##### Write the evaluation result of the following expressions:
+### Write the evaluation result of the following expressions:
 ```
 i) not “True”
 ii) – 22 % 5
@@ -474,7 +466,7 @@ iv) dir(“python”) v) ['H', 'He', 'Li'] + 'Be'
 
 Discuss the significance of dictionary. Develop a python program to simulate language dictionary.
 
-##### Demonstrate the creation and operation of dictionaries in Python.
+### Demonstrate the creation and operation of dictionaries in Python.
 
 * How do you create and access dictionaries in Python? List and describe any 5 methods on dictionaries.
 * List and exemplify the built – in dictionary methods.
@@ -565,7 +557,7 @@ print(my_dict)
 
 ____
 
-##### Use the for loop and give example for:
+### Use the for loop and give example for:
 i) Processing characters in Strings
 ii) Displaying values and keys of a dictionary
 iii) Looping over List of Lists.
@@ -620,7 +612,7 @@ for lis in list_of_lists:
 
 ___
 
-##### Develop a Python program that counts the number of occurrences of a letter in a string, using dictionaries.
+### Develop a Python program that counts the number of occurrences of a letter in a string, using dictionaries.
 
 **Answer :**
 
@@ -645,7 +637,7 @@ print(result)
 
 ____
 
-##### Develop a python program to count the frequency of words in a string using dictionary.
+### Develop a python program to count the frequency of words in a string using dictionary.
 
 Logic is to split strings into words first and then find unique entries similar to above program.
 ```python
@@ -667,7 +659,7 @@ print(word_frequency(text))
 
 ____
 
-##### Write a Python program to create a dictionary from a list where keys are elements and values are their frequencies.
+### Write a Python program to create a dictionary from a list where keys are elements and values are their frequencies.
 
 Same logic as above program to find unique entries
 ```python
@@ -689,7 +681,7 @@ print(frequency)
 
 ___
 
-##### Implement a telephone directory using Dictionaries.
+### Implement a telephone directory using Dictionaries.
 
 ```python
 telephone_directory = {}
@@ -709,7 +701,7 @@ print(f"The number for {name} is {telephone_directory[name]}")
 
 ____
 
-##### Develop a python program for the following: Create a dictionary by asking the user to give the name and marks of 10 different students. Sort the dictionary created according to marks.
+### Develop a python program for the following: Create a dictionary by asking the user to give the name and marks of 10 different students. Sort the dictionary created according to marks.
 
 ```python
 count = 3
@@ -785,7 +777,7 @@ for name, marks in sorted_dict.items():
 
 ___
 
-##### Design a Python program to create a dictionary containing the names and ages of five people. Determine the name of the oldest person in the dictionary.
+### Design a Python program to create a dictionary containing the names and ages of five people. Determine the name of the oldest person in the dictionary.
 
 Logic would be to iterate through the dictionary and store only the largest value and it's corresponding key by comparison.
 ```python
@@ -857,7 +849,7 @@ print(f"The oldest person is: {person_list[0]}")
 
 ## Numpy
 
-##### Discuss the following with an example: 
+### Discuss the following with an example: 
 
 i) Indexing ii) Splitting arrays iii) Shape and reshape.
 
@@ -915,7 +907,7 @@ print(reshaped_arr)
 
 ____
 
-##### Explain the following routines of NumPy with examples: 
+### Explain the following routines of NumPy with examples: 
 
 i) reshape ii) resize iii) unique iv) append v) insert.
 
@@ -954,7 +946,7 @@ print(arr_inserted)  # Output: [1 2 3 4 5]
 
 ____
 
-##### Create a NumPy array of integers and perform the following operations: 
+### Create a NumPy array of integers and perform the following operations: 
 
 i) Calculate the shape of the array. 
 ii) Print a subset of the array using slicing. 
@@ -983,7 +975,7 @@ print(f"Array multiplied by 2: {multiplied_arr}")
 
 ____
 
-##### Write a program to create NumPy array and get the smallest and largest element from the array and display them.
+### Write a program to create NumPy array and get the smallest and largest element from the array and display them.
 
 ```python
 import numpy as np
@@ -1004,8 +996,4 @@ ____
 * Illustrate 2-D and 3-D array iterating with respect to numpy.
 
 * Differentiate between lists and tuples in Python. How to create nested lists? Demonstrate how to create and print a 3-dimensional matrix with lists.
-
-
-___
-
 

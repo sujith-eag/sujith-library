@@ -1,21 +1,6 @@
----
-title: "OS - Unit-3 - Deadlock Answered"
-description: ""
-summary: ""
-date: 2025-01-12T21:20:56+05:30
-lastmod: 2025-01-12T21:20:56+05:30
-draft: false
-weight: 1983
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Unit-3: Deadlocks
 
-
-### Deadlock Basics & Conditions
+## Deadlock Basics & Conditions
 
 * Define a deadlock. Describe the necessary and sufficient conditions for a deadlock to occur in a system.
 
@@ -33,9 +18,8 @@ A deadlock occurs when the following four conditions are met simultaneously:
 
 * **Circular Wait** : A set of processes exist such that each process in the set is waiting for a resource that is held by another process in the set, forming a circular chain of dependencies.
 
-____
 
-### Deadlock Prevention, Avoidance, Detection and Handling
+## Deadlock Prevention, Avoidance, Detection and Handling
 
 * What are the different ways a deadlock can be handled? How can deadlocks be prevented?
 * Explain the deadlock prevention algorithms.
@@ -54,8 +38,9 @@ Deadlocks can be handled in several ways in operating systems.
 
 - **Deadlock Detection and Recovery** : Allows deadlock to occur but detects and recovers from it using various algorithms.
 
-________
-#### 1. Deadlock Prevention
+
+
+### 1. Deadlock Prevention
 
 A deadlock occurs when all four of the following conditions are met:
 - Mutual Exclusion
@@ -81,8 +66,8 @@ To prevent deadlocks, at least one of these conditions must be eliminated. Deadl
 * Processes must request resources in a specific order, and if a process requests a resource that it cannot obtain, it releases the resources it holds and retries. 
 * This ensures that a cycle in the resource allocation graph cannot form by seeing that lower-priority resources are released before requesting higher priority resources.
 
-________
-#### 2. Deadlock Avoidance
+
+### 2. Deadlock Avoidance
 
 Deadlock avoidance allows the system to allocate resources dynamically in a way that ensures that deadlock is always avoided. 
 
@@ -103,9 +88,8 @@ One common approach to deadlock avoidance is the Banker’s Algorithm.
 
 - In this approach, if a thread requests a resource that is currently available, it may still need to wait. As a result, resource utilization may be lower than optimal.
 
-______
 
-#### 3. Deadlock Detection and Recovery
+### 3. Deadlock Detection and Recovery
 
 In deadlock detection and recovery, the system allows deadlocks to occur but has mechanisms to detect them and recover from them when they do occur. This involves:
 
@@ -124,9 +108,8 @@ In deadlock detection and recovery, the system allows deadlocks to occur but has
 
 - **Resource Preemption** : from the processes involved in the deadlock and reallocating them to other processes. The preempted process may be restarted later. (The issue to handle are Selecting a victim, Rollback of affected process, Not choosing a process repeatedly causing starvation)
 
-___
 
-### Resource Allocation Graph
+## Resource Allocation Graph
 
 * Discuss the Resource Allocation Graph.
 * Narrate the different components of the Resource Allocation Graph. How do you analyze RAG with respect to safe state and unsafe state?
@@ -176,9 +159,8 @@ P1 → R2 → P2 → R1 → P1
 
 We have a cycle (P1 → R2 → P2 → R1 → P1), indicating a deadlock as no process can proceed because they are all waiting for resources held by other processes in the cycle, and no resources are available to break the cycle.
 
-____
 
-#### Deadlock Avoidance Using RAG
+### Deadlock Avoidance Using RAG
 
 Resource Allocation Graph Algorithm is also used for deadlock avoidance by using a claim edge in addition to request and assignment edge. It is a graph-based approach that helps determine whether granting a resource request will lead to a safe state or an unsafe state, potentially causing a deadlock.
 
@@ -207,10 +189,8 @@ Suppose thread T2 requests resource R2. Although R2 is free, allocating it to T2
 The resource-allocation graph algorithm does not apply to systems with multiple instances of each resource type.
 
 
-___
 
-
-#### Readers-Writers Problem
+### Readers-Writers Problem
 
 * Explain the Readers Writers Problem with code snippets and explain how deadlock is avoided in the scenario.
 
@@ -281,10 +261,9 @@ ____
   iv) Decrease Max for one process (the process needs fewer resources)  
   v) Increase the number of processes  
   vi) Decrease the number of processes
-_____
 
 
-### Problems on Resource Allocation
+## Problems on Resource Allocation
 
 1. Consider a system with five processes P_0 through P_4 and three resource types ( A ), ( B ), and ( C ). Resource type ( A ) has 10 instances, ( B ) has 5 instances, and  C  has 8 instances. Suppose at time ( t_0 ), the following snapshot of the system has been taken:
 
@@ -425,7 +404,5 @@ Answer the following questions using the banker’s algorithm:
 (i)What is the content of the matrix Need?
 (ii)Is the system in a safe state?
 If a request from a process P1 arrives for (0, 4, 2, 0), can the request be granted immediately?
-
-___
 
 

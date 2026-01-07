@@ -1,18 +1,9 @@
----
-title: "Python Unit-4 Answered-1"
-description: ""
-date: 2024-12-17T22:34:58+05:30
-lastmod: 2024-12-17T22:34:58+05:30
-draft: false
----
+# Python Unit 4: Answers (Part 1)
+
+## OOP
 
 
-# Python Unit-4 Answered-1
-
-# OOP
-
-
-#### List and explain 5 built-in classes in python and their use, with suitable example. Develop a program to demonstrate the same.
+### List and explain 5 built-in classes in python and their use, with suitable example. Develop a program to demonstrate the same.
 
 **Answer :**
 
@@ -75,9 +66,8 @@ fruits.remove("banana")  # Removes "banana" from the set
 print(fruits)
 ```
 
-____
 
-### Explain the basic structure of a class with example.
+## Explain the basic structure of a class with example.
 
 * How the class created in python? 
 * Explain the basic syntax of class in Python. Show an example defining a class which demonstrates attributes, methods, constructor and destructor.
@@ -97,7 +87,7 @@ ____
 
 A class contains **methods** and **variables**, and it is used as a blueprint to create objects. An **object** is an instance of a **class** from which it is created from.
 
-#### Basic Structure of a Class in Python
+### Basic Structure of a Class in Python
 
 A class in Python is defined using the `class` keyword and It typically includes:
 * Attributes: Variables that belong to the class or instance.
@@ -105,7 +95,7 @@ A class in Python is defined using the `class` keyword and It typically includes
 * Constructor (__init__): Special method for initializing new instances of the class.
 * Destructor (__del__): Special method called when an instance is destroyed.
 
-#### Creating a class
+### Creating a class
 
 A class is created using the `class` keyword followed by the **class name** and a colon `:` 
 ```python
@@ -116,7 +106,7 @@ The class does not require parentheses unless it inherits from a base class.
 
 ___
 
-#### Constructor 
+### Constructor 
 
 The `__init__()` method is a special method referred to as the **constructor**. It is automatically called when a new object of the class is created. 
 
@@ -145,7 +135,7 @@ del dog
 
 ____
 
-#### self keyword
+### self keyword
 
 When an object is created, `self` will allow us to access the attributes and methods of that particular object.
 - When an object is instantiated, **self** stores the memory location of that object.
@@ -161,7 +151,7 @@ In addition to its use in the `__init__()` method, **`self`** is also used as th
 
 ____
 
-#### Types of Variable / Attributes
+### Types of Variable / Attributes
 
 In Python, there are two types of variables used inside a class:
 1. **Instance variables**
@@ -227,9 +217,8 @@ print(hasattr(person, "address"))
 # False
 ```
 
-____
 
-##### What is the difference between a method and a function? Give an example each.
+## What is the difference between a method and a function? Give an example each.
 
 **Answer :**
 
@@ -274,9 +263,8 @@ print(result)
 
 `add_numbers` is a **function** because it is defined outside any class and operates on the arguments passed to it. It doesn't depend on any instance or class state.
 
-____
 
-##### Explain different ways of accessing attributes in a class.
+## Explain different ways of accessing attributes in a class.
 
 **Answer :**
 
@@ -353,9 +341,8 @@ Here, `setattr()` is used to dynamically add a new attribute (`color`) to the `m
 **Accessing Attributes Using `hasattr()` :** The `hasattr()` function checks if an attribute exists in an object. It returns `True` if the attribute exists and `False` otherwise.
 - `hasattr(object, name)` checks if the attribute `name` exists.
 
-____
 
-##### Write a program to demonstrate multiple inheritance concept in python.
+## Write a program to demonstrate multiple inheritance concept in python.
 
 * Demonstrate Multiple Inheritance with Method Overriding.
 * Illustrate multilevel inheritance in Python. Also demonstrate how to pass data to the base class constructor.
@@ -463,9 +450,9 @@ Child name: John
 
 By using `super()`, we ensure that the constructor of the base classes (grandparent and parent) is called before initializing attributes in the child class, thus allowing us to pass and initialize data across the inheritance chain.
 
-______
 
-##### Demonstrate how the concept of data hiding is implemented in python.
+
+## Demonstrate how the concept of data hiding is implemented in python.
 
 * Demonstrate the following concepts in python: i) Data Hiding ii) Inheritance iii) Static Members iv) del keyword.
 * Write short note on: i) Data hiding ii) Static Member.
@@ -503,9 +490,9 @@ print(emp.get_id())
 # Outputs: 12345
 ```
 
-____
 
-##### Create a class Rectangle. 
+
+## Create a class Rectangle. 
 
 The constructor for this class should take two numeric arguments, which are the width and height. Add methods to compute the area and perimeter of the rectangle, as well as methods that simply return the height and width. Add a method `is_Square` that returns a Boolean value if the rectangle is a square.
 
@@ -553,9 +540,8 @@ print(f"Is it a Square?: {r1.isSquare()}")
 print(f"The Width is {r1.getWidth()}, hight is {r1.getHeight()}")
 ```
 
-____
 
-##### Design a Python class called account and implement the functions deposit, withdraw and display balance.
+## Design a Python class called account and implement the functions deposit, withdraw and display balance.
 
 * Define a class BankAccount. The constructor for this class will take one argument i.e. default balance for opening an account. Add methods withdraw, deposit and displayBalance to do respective operations. In the withdraw method check for sufficient balance before withdrawal. And also keep track of number of bank accounts.
 
@@ -722,7 +708,4 @@ ____
 * Define a class time which has 3 members hours, minutes and seconds. Use constructor to initialize the values and develop functions to add two times and display.
 
 * Suppose you are designing the software for an ATM (Automatic Teller Machine). Write at least three different scenarios describing the use of your system. From these create CRC cards to describe the various classes that might be used to implement your design. Walk through your scenarios to make sure that all activity is matched to a class.
-
-
-___
 

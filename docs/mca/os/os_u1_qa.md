@@ -1,21 +1,7 @@
----
-title: "OS - Unit-1 - Operating Systems Answered"
-description: ""
-summary: ""
-date: 2025-01-12T21:20:56+05:30
-lastmod: 2025-01-12T21:20:56+05:30
-draft: false
-weight: 1980
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# Unit-1: OS Introduction
 
 
-### Operating System Services
+## Operating System Services
 
 * List and explain operating system services.
 * Discuss the operating system services.
@@ -58,9 +44,8 @@ Key roles of an OS include:
 
 * **Accounting and Monitoring** : Tracks resource usage by users and programs for billing, system tuning, and usage analysis. Useful in enterprise or shared systems to manage costs and optimize performance.
 
----
 
-#### User Interfaces
+## User Interfaces
 
 Operating systems offers various User interfaces to meet various user needs:
 
@@ -72,9 +57,8 @@ Operating systems offers various User interfaces to meet various user needs:
 
 - Hybrid Interface: Combines features from multiple interfaces to enhance flexibility and usability.
 
----
 
-### System Calls
+## System Calls
 
 * Write short notes on different types of system calls.
 * What are system calls? Discuss any three system calls.  
@@ -91,9 +75,8 @@ A **system call** is a programmatic way through which a user-level program reque
 
 These services typically involve access to hardware resources or other operations that require privileged access, such as creating a process, accessing a file, or communicating with a device. Since user programs do not have direct access to critical hardware or protected parts of the system (for reasons of security, control, and abstraction).
 
-____
 
-#### Types of System Calls
+### Types of System Calls
 
 **Process Control** : Deals with the creation, execution, termination, and management of processes.
 - `fork()` – Create a new process.
@@ -132,9 +115,8 @@ ____
 
 The OS is interrupt-driven, relying on traps and interrupts to manage events and ensure smooth functioning.
 
----
 
-### System Programs
+## System Programs
 
 * What are system programs? Explain their categories.
 * Define a system program. Explain the different categories provided by system programs.
@@ -153,9 +135,8 @@ Along with core OS services, system programs provide additional functionality to
 
 - **Background Services (Daemons)**: Perform tasks such as scheduling, printing, network monitoring, and error logging in the background.
 
----
 
-### Dual-Mode Operation
+## Dual-Mode Operation
 
 * Explain the dual-mode operation in an operating system with a neat diagram.
 * Discuss the dual-mode operation in an operating system.
@@ -186,9 +167,8 @@ ____
 
 A **timer** is a hardware, it prevents a process from monopolizing the CPU indefinitely. Timer is set to a specified duration for a process and when the timer expires, it generates an interrupt, allowing the OS to regain control and possibly switch to another process. This is crucial for preemptive multitasking and system responsiveness.
 
----
 
-### Computer Systems
+## Computer Systems
 
 * Compare client-server with peer-to-peer computing. 
 
@@ -259,17 +239,13 @@ Traditional computing setups refer to systems where computing resources such as 
 
 **Multiprocessor systems** : are computers that have more than one CPU. These systems allow multiple processes to run simultaneously, increasing performance and efficiency. There are two types: symmetric multiprocessing, where all processors are equal, and asymmetric multiprocessing, where one processor controls others. These systems are used in high-performance computing and servers.
 
----
 
-#### System Boot
+### System Boot
 
 Booting is the process of starting or restarting a computer system by loading the operating system kernel into the system's main memory (RAM) and beginning its execution so that the computer becomes operational.
 
 The Bootstrap Loader is a small, specialized code that resides in firmware, usually in ROM (Read-Only Memory) or flash memory on the motherboard. Because ROM is non-volatile, it retains its contents even when the power is off.
 
 This bootstrap program is the first code that runs when the system is powered on. It Starts the booting process and initializes the system by performing basic system checks and then locate and load the operating system kernel from disk into memory.
-
-
----
 
 
