@@ -1,10 +1,10 @@
 ---
 layout: home
-title: Project Documentation Hub
+title: Content Hub
 hero:
-  name: Project Documentation Hub
+  name: Content Hub
   text: Comprehensive Resources
-  tagline: Technical guides, development blogs, and articles for my projects
+  tagline: Technical blogs, articles, and project documentation for learning and development
   image:
     src: /logo/logo.png
     alt: Sujith's Library
@@ -18,13 +18,17 @@ import { projectsSection } from '@theme/data/fileStructures/projectsSections.ts'
 
 </script>
 
-## 📝 Development Blogs
+## 📝 Blogs & Articles
 
-<CollapsibleList :sections="projectsSection.slice(0, 2)" />
+Explore security insights, open-source philosophy, and short reads.
 
-## 🚀 Project Documentations
+<CollapsibleList :sections="[projectsSection[0], projectsSection[1]]" />
 
-<CollapsibleList :sections="projectsSection.slice(2)" />
+## 🚀 Projects
+
+Dive into blogs and documentation for personal and open-source projects.
+
+<CollapsibleList :sections="[projectsSection[2], projectsSection[3], projectsSection[4]]" />
 
 ---
 

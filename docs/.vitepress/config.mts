@@ -143,15 +143,11 @@ export default withMermaid(
           ]
         },
 
-        /* Community & Support */
+        /* Content & Support */
         {
-          text: 'Community',
+          text: 'Blogs',
           items: [
-            { text: 'Project Documentation', link: '/projects/' },
-            { text: 'Contribute', link: 'https://github.com/sujith-eag/sujith-library/blob/main/CONTRIBUTING.md' },
-            // { text: 'Report Issues', link: 'https://github.com/sujith-eag/sujith-library/issues' },
-            // { text: 'Discussions', link: 'https://github.com/sujith-eag/sujith-library/discussions' },
-            { text: 'GitHub Repository', link: 'https://github.com/sujith-eag/sujith-library' },
+            { text: 'Blogs & Articles', link: '/projects/' },
             { text: 'About & Support', link: '/support/' },
           ]
         }
