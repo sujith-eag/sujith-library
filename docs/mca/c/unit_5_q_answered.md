@@ -1,25 +1,10 @@
----
-title: "DS - Unit-5 B-Tree and Graph Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 285
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-5 B-Tree and Graph Answered
 
+## Multi-way trees: Introduction, Definition, features. B-trees – Introduction, Definition and features, 
 
-#### Multi-way trees: Introduction, Definition, features. B-trees – Introduction, Definition and features, 
-
-* Illustrate the properties of m-way tree with an example.
-* Explain simplified B-tree with an example.
-* Define and explain with example for the following: i. m-way tree   ii. B-tree   iii. 2-3 tree    iv. 2-3-4 tree
+- Illustrate the properties of m-way tree with an example.
+- Explain simplified B-tree with an example.
+- Define and explain with example for the following: i. m-way tree   ii. B-tree   iii. 2-3 tree    iv. 2-3-4 tree
 
 **Answer :**
 
@@ -40,25 +25,24 @@ For a 3-way tree (a ternary tree), each node can have at most 3 children.
   E   F  G
 ```
 
-____
 
-#### B-tree
+## B-tree
 
 A B-tree is a self-balancing search tree data structure that maintains sorted data and allows for efficient insertion, deletion, and searching operations.
 
 A **B-tree of order _m_** is an **m-way search tree** that satisfies the following properties:
 
-* All leaves are at the same level (i.e., the tree is height-balanced).
+- All leaves are at the same level (i.e., the tree is height-balanced).
 
-* About Number of Nodes :
-	* The root node must have at least two children.
-	* Each internal node (except the root) must have at least `⌈m/2⌉` children.
-	* Each node can have at most _m_ children.
+- About Number of Nodes :
+	- The root node must have at least two children.
+	- Each internal node (except the root) must have at least `⌈m/2⌉` children.
+	- Each node can have at most _m_ children.
 
-* About Number of Keys :
-	* Each node can contain a maximum of `m − 1` keys.
-	* Each node (except root) must contain at least (`[m-1] / 2`) keys.
-	* Root contains at least 1 key.
+- About Number of Keys :
+	- Each node can contain a maximum of `m − 1` keys.
+	- Each node (except root) must contain at least (`[m-1] / 2`) keys.
+	- Root contains at least 1 key.
 
 ---
 
@@ -74,9 +58,9 @@ B-Tree of Order 3 (m = 3)
       [5]  [15] [25, 30]
 ```
 
----
 
-#### Special Cases of B-Trees
+
+## Special Cases of B-Trees
 
 A B-tree of order 3 is often referred to as a 2-3 Tree: 
 - Internal nodes can have 2 or 3 children, hence keys per node can be 1 or 2.
@@ -94,9 +78,9 @@ A B-tree of order 5 is not referred to as a 2-3-4-5 tree : It allows up to 4 key
 
 - Internal nodes can only have **3, 4, or 5 children**, which means they hold **2, 3, or 4 keys** respectively.
 
----
 
-#### Key Characteristics
+
+## Key Characteristics
 
 - Balanced Tree: All leaf nodes are at the same depth, ensuring balanced structure.
 - Sorted Order: Keys are maintained in sorted order.
@@ -113,9 +97,9 @@ B-Trees are ideal for storage systems that read and write large blocks of data. 
 - File Systems (e.g., NTFS, HFS+, ext4)
 - Indexing structures for large datasets
 
-____
 
-#### 2-3 tree:
+
+## 2-3 tree:
 
   - 2-node: A node that has 1 key and 2 children.
   - 3-node: A node that has 2 keys and 3 children.
@@ -126,9 +110,9 @@ ____
     [5]      [15]    [25, 30]
 ```
 
-____
 
-#### 2-3-4 Tree
+
+## 2-3-4 Tree
 
 - 2-node: A node with 1 key and 2 children.
 - 3-node: A node with 2 keys and 3 children.
@@ -144,32 +128,30 @@ It is essentially a B-tree with a maximum of 4 children per node.
 
 ____
 
-* Draw complete 2-3 and 2-3-4 trees.
+- Draw complete 2-3 and 2-3-4 trees.
 
-* Calculate the maximum number of data entries in a:  i) 3-way tree of height 3   ii) m-way tree of height h  iii) B-Tree of order 5 with a height of h.
+- Calculate the maximum number of data entries in a:  i) 3-way tree of height 3   ii) m-way tree of height h  iii) B-Tree of order 5 with a height of h.
 
-________
 
-#### Construction of B-trees of order 3, order 4 and order 5, Implementation, Simplified B-Trees: 2-3 tree, 2-3-4 tree.
 
-* List the properties of B-tree. Explain the insertion operation in B-tree using essential data of your choice.
-* Construct B-tree of order 4 from the following elements given as follows: `1, 6, 8, 2, 9, 12, 15, 7, 18, 3, 4, 20.`
-* Construct a B-tree of order 4 created by inserting the following data arriving in sequence: `92, 24, 6, 7, 11, 8, 22, 4, 5, 16, 19, 20, 78.`
-* Draw the B-tree of order 3 created by inserting the following data arriving in sequence: `92, 24, 6, 7, 11, 8, 22, 4, 5, 16, 19, 20, 78`
-* Draw a B-tree of order 5 for the following set of elements arriving in the sequence:  `76, 21, 14, 11,97, 85, 74, 63, 45, 42, 57, 20, 16, 19, 52, 30, 21`
+## Construction of B-trees of order 3, order 4 and order 5, Implementation, Simplified B-Trees: 2-3 tree, 2-3-4 tree.
 
-____
-
-* Explain the characteristics of 2-3 trees. Formulate the procedure to design a 2-3 tree for the given input:  `10, 6, 8, 5, 1, 4, 7.`
-
-* Create a 2-3 tree of order 3 for the following data arriving in sequence. `11, 12, 8, 20, 25, 16, 12, 26, 17, 27, 52, 16, 48, 68, 3, 26, 29, 53, 95, 55.`
+- List the properties of B-tree. Explain the insertion operation in B-tree using essential data of your choice.
+- Construct B-tree of order 4 from the following elements given as follows: `1, 6, 8, 2, 9, 12, 15, 7, 18, 3, 4, 20.`
+- Construct a B-tree of order 4 created by inserting the following data arriving in sequence: `92, 24, 6, 7, 11, 8, 22, 4, 5, 16, 19, 20, 78.`
+- Draw the B-tree of order 3 created by inserting the following data arriving in sequence: `92, 24, 6, 7, 11, 8, 22, 4, 5, 16, 19, 20, 78`
+- Draw a B-tree of order 5 for the following set of elements arriving in the sequence:  `76, 21, 14, 11,97, 85, 74, 63, 45, 42, 57, 20, 16, 19, 52, 30, 21`
 
 ____
-___
 
-#### Graphs: Basic concepts, Terminologies: vertices, edge, cycle, loop, graph vs tree, operations: insert vertex delete vertex, insert edge, delete edge. 
+- Explain the characteristics of 2-3 trees. Formulate the procedure to design a 2-3 tree for the given input:  `10, 6, 8, 5, 1, 4, 7.`
 
-* Define the following with reference to Graph and an example for each: Path, Cycle, Loop, Degree, Weighted Graph, Out-Degree and In-Degree.
+- Create a 2-3 tree of order 3 for the following data arriving in sequence. `11, 12, 8, 20, 25, 16, 12, 26, 17, 27, 52, 16, 48, 68, 3, 26, 29, 53, 95, 55.`
+
+
+## Graphs: Basic concepts, Terminologies: vertices, edge, cycle, loop, graph vs tree, operations: insert vertex delete vertex, insert edge, delete edge. 
+
+- Define the following with reference to Graph and an example for each: Path, Cycle, Loop, Degree, Weighted Graph, Out-Degree and In-Degree.
 
 **Answer :**
 
@@ -285,9 +267,9 @@ ____
 
 * Discuss the steps to add and delete a vertex in the graph with suitable examples.
 
-____
 
-#### Graph traversals: Breadth-First- Search (BFS) Traversal, Depth-First- Search (DFS) Traversal, 
+
+## Graph traversals: Breadth-First- Search (BFS) Traversal, Depth-First- Search (DFS) Traversal, 
 
 * Write an algorithm for Breadth-first Traversal.
 * Discuss Breadth-first traversal of a graph with suitable example and algorithm
@@ -448,9 +430,8 @@ BFS(graph, start):
 ```
 
 
-____
 
-### Depth First Traversal 
+## Depth First Traversal 
 
 * Write the algorithm for depth first traversal of a graph. Explain the process of traversal with suitable graph data structure.
 * Discuss Depth-first traversal of a Graph with an example.
@@ -589,9 +570,9 @@ DFS(graph, start):
                 stack.append(neighbor)
 ```
 
-____
 
-#### Storage structures (Adjacency Matrix and Adjacency List), graph algorithms.
+
+## Storage structures (Adjacency Matrix and Adjacency List), graph algorithms.
 
 * Explain how Graph can be represented using a Adjacency Matrix and Adjacency List with suitable example.
 * Describe the graph storage structures adjacency matrix and adjacency list with example. Give the comparisons between them.
@@ -695,6 +676,4 @@ Adjacency List :
 2: [1, 3]
 3: [1, 2]
 ```
-
-___
 

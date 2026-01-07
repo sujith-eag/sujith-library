@@ -1,20 +1,6 @@
----
-title: "DS - Unit-2 Previous Questions"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 278
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-2 Previous Questions
 
-### Syllabus
+## Syllabus
 
 Queues: Introduction to Queues, Definition, Array Representation of Queues, Primitive operations of queue and its implementation; 
 
@@ -22,9 +8,8 @@ Types of Queues: How to overcome the drawbacks of Linear Queue using Circular Qu
 
 Linked list: Introduction, Representation and implementation of operations (Insertion, Deletion and Search) of Singly, Doubly and Circular Linked Lists, Implementation of stack and queue using lists.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 
 Design a program to create Singly Linked List (SLL) of student data having the following the fields: Std_USN, Name, Marks and Total and display the same.
@@ -39,9 +24,8 @@ Identify the limitations of linear queue? How can it be resolved by the circular
 
 Examine the advantages of double linked list over single linked list.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 
 Implement a singly linked list to store a polynomial equation.
@@ -58,8 +42,8 @@ Write an algorithm to insert a node in between any two nodes in an ordered linke
 
 Assume there are two singly linked list L1 and L2. Write an algorithm to create a doubly linked list L3 by merging the even positions node from L1 and odd positions node from L2.
 
-____
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Represent diagrammatically the following sequence of operations on an empty stack.
 Push (54); push (52); pop (); push (55); push (62); S=pop ();
@@ -84,9 +68,8 @@ iv. last_delete();
 v. display()
 
 
-____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Develop routines to perform each of the following operation on a linear list:
 i. Delete every second element for a list
@@ -103,9 +86,8 @@ What do you mean by priority queue? Discuss different types of priority queue.
 
 Develop C routine to insert a node before a given key node in a doubly linked list.
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Write C functions for Insertion and Deletion of elements in a circular queue. For an array of size 3, show (diagrammatically) the representation of the queue for the conditions.
 i. Insert 3 elements
@@ -121,9 +103,8 @@ What is Queue? List its types. Mention the limitations of Linear Queue. Also Exp
 
 Develop a ‘C’ routine to insert a node before a given key node in a doubly linked list.
 
-___
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 
 Write C functions for Insertion and Deletion of elements in a circular queue. For an array of size 4, show (diagrammatically) the representation of the queue for the conditions.
@@ -140,9 +121,8 @@ What is Queue? List its types. Mention the limitations of Linear Queue. Also Exp
 
 Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from user.
 
-____
 
-#### SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Illustrate the creation and display operations on Singly Linked List (SLL) of Employee Data with the fields: Employee ID, Name, company name and Mobile number.
 
@@ -155,9 +135,8 @@ Differentiate between doubly Linked List and singly Linked List. Develop an algo
 
 Write a routines to simulate the operations of Queue using singly linked list.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 Explain how queue data structure is useful in categorizing data with an algorithm.
 
@@ -170,8 +149,5 @@ size 3.
 i. Insert 3 elements ii. Delete 2 elements iii. Insert 3 elements.
 
 Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from user.
-
-
-___
 
 

@@ -1,21 +1,6 @@
----
-title: "DS - Unit-3 Previous Questions"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 280
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-3 Previous Questions
 
-
-### Syllabus
+## Syllabus
 
 Trees: Importance of Trees, Basic Tree Concepts and Terminologies: node, path, degree, internal nodes, height and subtree. 
 
@@ -24,9 +9,9 @@ Construction of Expression Tree.
 
 Binary Search Tree: Binary Search Trees – Basic Concepts, Operations (Insertion, Deletion, Find the smallest node, Find the largest node, and Find a requested node), Applications, Threaded Binary Trees.
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Find the following in the tree given:
 i. Balance factor of the tree.
@@ -65,8 +50,8 @@ With suitable example, illustrate Threaded Binary tree.
 
 Explain the Level of a tree with example. In a Binary Tree what is the maximum number of nodes that can be found in level 12.
 
-____
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 With a suitable examples, define the following:
 i) Binary tree
@@ -86,8 +71,8 @@ Explain threaded binary trees and their representation with a neat diagram. Also
 
 Write C function to find the maximum element in BST.
 
-____
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Traverse the given tree using Inorder and Postorder traversals.
 ```
@@ -113,9 +98,9 @@ Define Binary Tree, Complete Tree and nearly complete Tree. Give one example for
 Construct the Binary Search Tree (BST) from the following elements by considering each character as one element.
 `D A T A S T R U C T U R E A N D A L G O R I T H M S`
 
-____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 What is Binary Search Tree? Create a binary search tree using the following data entered as a sequential set:
 14,15,12,23,5,7,7,10,33,80,66
@@ -152,9 +137,9 @@ Generate Binary Tree looking into the following tree traversals:
 Preorder: ABDGCEHIF
 Inorder: DGBAHEICF
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Construct the Binary Search Tree (BST) from the following elements:
 `D A T A S T R U C T U R E S U S I N G C`
@@ -173,9 +158,9 @@ i) Complete Binary tree
 ii) Nearly complete Binary tree
 iii) Binary search tree.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 Construct the Binary Search Tree (BST) from the following elements 
 `D A T A S T R U C T U R E A N D A L G O R I T H M S`
@@ -208,9 +193,9 @@ Write algorithms to perform the following operations on a BST:
 i. Search for a requested node
 ii. Add a new node.
 
-_____
 
-#### SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
+
+## SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
 
 Explain the following terms with suitable examples.
 i. Binary Tree
@@ -239,9 +224,9 @@ ii. `(5+6*7)$((5+6)*7))`
 
 Define Threaded Binary Tree and show its representation.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020
 
 Give the properties of binary trees that distinguish them from general trees.
 
@@ -257,4 +242,4 @@ Give the algorithms for preorder and postorder tree traversals. Represent the fo
 Write the algorithms for the following operations in Binary Search Tree (BST).
 i) Smallest node in a BST ii) Add node to BST iii) Search an item in a BST
 
-____
+

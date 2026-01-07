@@ -1,25 +1,10 @@
----
-title: "DS - Unit-2 Queue and Linked List Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 279
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-2 Queue and Linked List Answered
 
+## Queues: Introduction to Queues, Definition, Array Representation of Queues, Primitive operations of queue and its implementation;
 
-#### Queues: Introduction to Queues, Definition, Array Representation of Queues, Primitive operations of queue and its implementation; 
+- What is Queue? List its types. Mention the limitations of Linear Queue. Also Explain the insert, delete and display operations on Queue with appropriate examples.
 
-* What is Queue? List its types. Mention the limitations of Linear Queue. Also Explain the insert, delete and display operations on Queue with appropriate examples.
-
-* Write a C program to simulate the insert and delete operations of a Queue. Trace the program for the following sequence of operations for Queue of size 3. i. Insert 3 elements ii. Delete 2 elements iii. Insert 3 elements.
+- Write a C program to simulate the insert and delete operations of a Queue. Trace the program for the following sequence of operations for Queue of size 3. i. Insert 3 elements ii. Delete 2 elements iii. Insert 3 elements.
 
 **Answer :**
 
@@ -45,17 +30,17 @@ It can be visualized like a line of people standing at a counter; the person who
 3. **Display**: To display all the elements in the queue.
 4. IsEmpty and IsFull : to check empty and full queue
 
-#### Applications of Queue
+## Applications of Queue
 
-* Ticket Booking Systems:Managing people in a queue for seat allotments.
-* Call Center Support:Customer calls handled in the order they are received.
-* Printers:Print jobs are executed sequentially in the order of request.
-* Messaging Systems:Managing message delivery in applications like SMS.
-* CPU Task Scheduling:Processes waiting to be executed by the CPU.
-* Networking:Packets waiting to be transmitted in routers.
-* Order Processing:Online shopping orders being processed sequentially.
-* Traffic Light Systems:Vehicles passing through intersections in a queued manner.
-* Task Queues in Applications :Background jobs like email sending or notifications.
+- Ticket Booking Systems:Managing people in a queue for seat allotments.
+- Call Center Support:Customer calls handled in the order they are received.
+- Printers:Print jobs are executed sequentially in the order of request.
+- Messaging Systems:Managing message delivery in applications like SMS.
+- CPU Task Scheduling:Processes waiting to be executed by the CPU.
+- Networking:Packets waiting to be transmitted in routers.
+- Order Processing:Online shopping orders being processed sequentially.
+- Traffic Light Systems:Vehicles passing through intersections in a queued manner.
+- Task Queues in Applications :Background jobs like email sending or notifications.
 
 ```c
 #include <stdio.h>
@@ -140,14 +125,13 @@ _____
 
 (Diagram to show insertion and deletion in stack and queue: Answer will be  62 + 24 = 86)
 
-____
 
-#### Types of Queues: How to overcome the drawbacks of Linear Queue using Circular Queue, Representation of Circular Queues, Deques and Priority Queues.
+## Types of Queues: How to overcome the drawbacks of Linear Queue using Circular Queue, Representation of Circular Queues, Deques and Priority Queues.
 
-* Identify the limitations of linear queue? How can it be resolved by the circular queue?
-* Explain the limitations of Linear Queue with an example. Also explain with the program how to overcome these limitations using Circular Queue.
-* State the limitations of Linear Queue and explain how it will be resolved in Circular Queue. Explain the algorithms for Insertion and Deletion of elements in a circular queue.
-* Write a program to perform insert and delete operations on Circular QUEUE.
+- Identify the limitations of linear queue? How can it be resolved by the circular queue?
+- Explain the limitations of Linear Queue with an example. Also explain with the program how to overcome these limitations using Circular Queue.
+- State the limitations of Linear Queue and explain how it will be resolved in Circular Queue. Explain the algorithms for Insertion and Deletion of elements in a circular queue.
+- Write a program to perform insert and delete operations on Circular QUEUE.
 
 **Answer :**
 
@@ -285,11 +269,10 @@ int main() {
 }
 ```
 
-____
 
-##### Representing Enqueue Dequeue operations in Circular queue
+### Representing Enqueue Dequeue operations in Circular queue
 
-* Write C functions for the Insertion and Deletion of elements in a circular queue. For an array of size 4, show (diagrammatically) the representation of the queue for the conditions.  i. Insert 3 elements   ii. Delete 2 elements  iii. Insert 3 elements    iv. Delete 1 element.
+- Write C functions for the Insertion and Deletion of elements in a circular queue. For an array of size 4, show (diagrammatically) the representation of the queue for the conditions.  i. Insert 3 elements   ii. Delete 2 elements  iii. Insert 3 elements    iv. Delete 1 element.
 
 **Answer :**
 
@@ -340,7 +323,7 @@ Queue: [50, 60, _, 40]
 
 ____
 
-##### What do you mean by priority queue? Discuss different types of priority queue.
+### What do you mean by priority queue? Discuss different types of priority queue.
 
 **Answer :**
 
@@ -350,16 +333,15 @@ The order of elements depends on their priority levels so elements with high pri
 
 Priority queues are typically implemented using data structures that allow efficient access to the element with the highest (or lowest) priority:
 
-____
 
-#### Memory Allocation
+## Memory Allocation
 
 
 Memory allocation refers to the process of assigning memory space to variables or data structures during the execution of a program. In programming, especially in languages like C and C++, memory can be allocated in two ways: **static** and **dynamic**.
 
 ---
 
-#### Static Memory Allocation
+### Static Memory Allocation
 
 Static memory allocation is the process where memory is allocated at **compile time**. Once memory is allocated, it remains fixed throughout the execution of the program and cannot be changed or altered during runtime.
 
@@ -378,7 +360,7 @@ Here, memory for 5 integers is allocated during compilation and cannot be resize
 
 ---
 
-#### Dynamic Memory Allocation
+### Dynamic Memory Allocation
 
 Dynamic memory allocation is done at **runtime**, allowing the program to request memory as needed during execution. This provides flexibility as the memory size can be adjusted according to the requirements of the program.
 
@@ -390,9 +372,9 @@ Dynamic memory allocation is done at **runtime**, allowing the program to reques
 
 ---
 
-#### Functions Used for Dynamic Memory Allocation in C
+### Functions Used for Dynamic Memory Allocation in C
 
-* `malloc()` – Memory Allocation  
+- `malloc()` – Memory Allocation  
 
 Allocates a single block of memory of a specified size but does **not initialize** it. The memory contains **garbage values** by default.
 
@@ -406,7 +388,7 @@ int* arr = (int*) malloc(5 * sizeof(int));
 
 ____
 
-* `calloc()` – Contiguous Allocation  
+- `calloc()` – Contiguous Allocation  
 
 Similar to `malloc()`, but allocates **multiple blocks** of memory and **initializes each block to zero**.
 
@@ -420,7 +402,7 @@ int* arr = (int*) calloc(5, sizeof(int));
 
 ____
 
-* *`realloc()` – Reallocation of Memory
+- *`realloc()` – Reallocation of Memory
 
 Used to **resize** a previously allocated memory block. Useful when the originally allocated memory is insufficient.
 
@@ -435,7 +417,7 @@ arr = realloc(arr, 10 * sizeof(int));
 
 ____
 
-* `free()` – Memory Deallocation  
+- `free()` – Memory Deallocation  
 
 Frees the dynamically allocated memory, returning it to the heap to avoid **memory leaks**.
 
@@ -446,7 +428,7 @@ free(ptr);
 _____
 ____
 
-### Linked list: Introduction
+## Linked list: Introduction
 
 A linked list is a linear data structure consisting of a sequence of elements, called nodes, where each node is stored separately in memory and connected via pointers.
 
@@ -467,7 +449,7 @@ An extra pointer, usually called **head**, is used to keep track of the beginnin
 
 ---
 
-#### Doubly Linked List vs. Singly Linked List
+### Doubly Linked List vs. Singly Linked List
 
 A doubly linked list is a type of linked list where each node contains three parts:
 1. Data
@@ -494,47 +476,45 @@ This allows traversal in **both directions** — forward and backward.
 5. Better for Certain Complex Data Structures:    
     - Doubly linked lists serve as a base for more complex structures like **doubly-ended queues (deque)** and **linked hash maps**.
 
----
 
-#### Representation and implementation of operations (Insertion, Deletion and Search) of Singly linked list
+## Representation and implementation of operations (Insertion, Deletion and Search) of Singly linked list
 
-* Write an algorithm to insert a node in between any two nodes in an ordered linked list.
-* Write a C Program to insert a node with a value X to the right of the node with the value Y in a SLL.
-* Develop routines to perform each of the following operation on a linear list: i. Delete every second element for a list    ii. Return the number of elements in the list.
-* Write an algorithm to search an item in a singly linked list. Explain the algorithm with example.
+- Write an algorithm to insert a node in between any two nodes in an ordered linked list.
+- Write a C Program to insert a node with a value X to the right of the node with the value Y in a SLL.
+- Develop routines to perform each of the following operation on a linear list: i. Delete every second element for a list    ii. Return the number of elements in the list.
+- Write an algorithm to search an item in a singly linked list. Explain the algorithm with example.
 
 ____
 
-* Design a program to create Singly Linked List (SLL) of student data having the following the fields: Std_USN, Name, Marks and Total and display the same.
+- Design a program to create Singly Linked List (SLL) of student data having the following the fields: Std_USN, Name, Marks and Total and display the same.
 
-* Illustrate the creation and display operations on Singly Linked List (SLL) of Employee Data with the fields: Employee ID, Name, company name and Mobile number.
+- Illustrate the creation and display operations on Singly Linked List (SLL) of Employee Data with the fields: Employee ID, Name, company name and Mobile number.
 
-* Implement a singly linked list to store a polynomial equation.
+- Implement a singly linked list to store a polynomial equation.
 
-_____
 
-### Operations on Doubly and Circular Linked Lists,
 
-* Examine the advantages of double linked list over single linked list.
-* Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from the user.
-* Differentiate between doubly Linked List and singly Linked List. Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from user.
-* Differentiate between doubly Linked List and singly Linked List. Also develop a ‘C’ routine to insert a node before a given key node in a doubly linked list.
+## Operations on Doubly and Circular Linked Lists,
+
+- Examine the advantages of double linked list over single linked list.
+- Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from the user.
+- Differentiate between doubly Linked List and singly Linked List. Write a C function to insert a node in a doubly linked list by position. Your program should take position as input from the user.
+- Differentiate between doubly Linked List and singly Linked List. Also develop a 'C' routine to insert a node before a given key node in a doubly linked list.
 
 **Answer :**
 
 
 ____
 
-* Assume there are two singly linked list L1 and L2. Write an algorithm to create a doubly linked list L3 by merging the even positions node from L1 and odd positions node from L2.
+- Assume there are two singly linked list L1 and L2. Write an algorithm to create a doubly linked list L3 by merging the even positions node from L1 and odd positions node from L2.
 
-* Write a C functions to perform following operations on Circular Doubly Linked List.   i. beginsert ();   ii. lastinsert ();    iii. begin_delete();   iv. last_delete();   v. display()
+- Write a C functions to perform following operations on Circular Doubly Linked List.   i. beginsert ();   ii. lastinsert ();    iii. begin_delete();   iv. last_delete();   v. display()
 
-____
 
-###  Implementation of stack and queue using lists.
+## Implementation of stack and queue using lists.
 
-* Develop an algorithm to perform queue operation into a Circular Linked List.
-* Write a routines to simulate the operations of Queue using singly linked list.
+- Develop an algorithm to perform queue operation into a Circular Linked List.
+- Write a routines to simulate the operations of Queue using singly linked list.
 
 **Answer :**
 
@@ -643,11 +623,11 @@ int main() {
 }
 ```
 
-____
 
-#### Stack Representation using Linked List
 
-* Develop an algorithm to perform stack operation into a circular single linked List.
+## Stack Representation using Linked List
+
+- Develop an algorithm to perform stack operation into a circular single linked List.
 
 **Answer :**
 
@@ -750,6 +730,3 @@ void display()
 	printf("\n");
 }
 ```
-
-___
-

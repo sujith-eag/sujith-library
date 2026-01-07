@@ -54,7 +54,7 @@ export const mcaMLSection = [
           { label: "Lab8", link: "/mca/ml/lab/lab8" },
           { label: "Lab9", link: "/mca/ml/lab/lab9" },
           { label: "Lab10", link: "/mca/ml/lab/lab10" },
-          { label: "Cheatsheet", link: "/mca/ml/lab/cheatsheet" },
+          { label: "Cheatsheet", link: "/mca/ml/lab/questions_cheat_sheet" },
         ]
       },
     ]
@@ -763,7 +763,7 @@ export const mcaPythonSection = [
           title: "Unit-4 AVL & Heaps",
           items: [
             { label: "Questions", link: "/mca/c/unit_4_q" },
-            { label: "Answers", link: "/mca/c/unit_4_q_answered copy" }
+            { label: "Answers", link: "/mca/c/unit_4_q_answered" }
           ]
         },
         {

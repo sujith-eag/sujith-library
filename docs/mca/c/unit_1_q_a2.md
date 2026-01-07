@@ -1,31 +1,17 @@
----
-title: "DS - Unit-1 Recursion and Stack Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 277
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-1 Recursion and Stack Answered
 
-#### Recursion: Recursive definition and processes, Designing the recursive functions, Examples on recursion: Factorial of a number, Fibonacci numbers
+## Recursion: Recursive definition and processes, Designing the recursive functions, Examples on recursion: Factorial of a number, Fibonacci numbers
 
-* Differentiate between iterative functions and recursive functions.
-* Write the difference between iterative method and recursion method. Is it advisable to generate Fibonacci Series using recursion? Justify your answer with an example.
-* What is Recursive function? Write a recursive program to find Fibonacci series.
+- Differentiate between iterative functions and recursive functions.
+- Write the difference between iterative method and recursion method. Is it advisable to generate Fibonacci Series using recursion? Justify your answer with an example.
+- What is Recursive function? Write a recursive program to find Fibonacci series.
 
 **Answer :**
 
 An **iterative function** uses loops (for, while, or do-while) to repeat a set of instructions until a certain condition is met. Iteration involves repeating a block of code in a loop.
-* Typically involves maintaining state variables that change with each iteration.
-* **Memory Usage** is generally less because no additional stack space is needed.
-* **Performance** is faster in terms of execution as there are fewer overheads compared to recursion.
+- Typically involves maintaining state variables that change with each iteration.
+- **Memory Usage** is generally less because no additional stack space is needed.
+- **Performance** is faster in terms of execution as there are fewer overheads compared to recursion.
 
 To calculate the **sum of numbers from 1 to N**:
 ```c
@@ -61,21 +47,21 @@ int sumRecursive(int n) {
 
 ____
 
-##### Applications of Recursion
+### Applications of Recursion
 
-* **Searching and sorting algorithms** : Recursive algorithms are used to search and sort data structures like trees and graphs.
+- **Searching and sorting algorithms** : Recursive algorithms are used to search and sort data structures like trees and graphs.
 
-* **Mathematical calculations** : Recursive algorithms are used to solve problems such as factorial,Fibonacci sequence, etc.
+- **Mathematical calculations** : Recursive algorithms are used to solve problems such as factorial,Fibonacci sequence, etc.
 
-* **Compiler design** : Recursion is used in the design of compilers to parse and analyze programming languages.
+- **Compiler design** : Recursion is used in the design of compilers to parse and analyze programming languages.
 
-* **Graphics** : many computer graphics algorithms, such as fractals and the Mandelbrot set, use recursion to generate complex patterns.
+- **Graphics** : many computer graphics algorithms, such as fractals and the Mandelbrot set, use recursion to generate complex patterns.
 
-* **Artificial intelligence** : recursive neural networks are used in natural language processing, computer vision, and other AI applications.
+- **Artificial intelligence** : recursive neural networks are used in natural language processing, computer vision, and other AI applications.
 
 ---
 
-##### What is Recursive function? Write a recursive program to find Factorial of a number.
+### What is Recursive function? Write a recursive program to find Factorial of a number.
 
 **Answer :**
 
@@ -108,16 +94,14 @@ int main() {
 }
 ```
 
-____
-
-#### Fibonacci Series Using Recursion
+## Fibonacci Series Using Recursion
 
 It is not advisable to generate the Fibonacci series using recursion, especially for large numbers.
 - Exponential Time Complexity: A naive recursive implementation has exponential time complexity `O(2^n)` because it recalculates the same values multiple times. This leads to redundant calculations, causing a significant performance issue.
 - Stack Overflow: Recursive calls consume stack space for each function call, and for large inputs, this may lead to stack overflow.
 - Inefficiency: For large `n`, recursion may be inefficient compared to other methods like iteration or dynamic programming.
 
-##### Fibonacci using recursion 
+### Fibonacci using recursion 
 
 ```c
 #include <stdio.h>
@@ -150,7 +134,7 @@ int main()
 
 ____
 
-##### Fibonacci Series Using Iteration (More Efficient):
+### Fibonacci Series Using Iteration (More Efficient):
 
 ```c
 #include <stdio.h>
@@ -189,7 +173,7 @@ int main()
 
 ___
 
-##### Using While Loop and no separate function
+### Using While Loop and no separate function
 
 ```c
 #include <stdio.h>
@@ -225,7 +209,7 @@ In this iterative approach:
 
 _____
 
-##### Write a recursive C program to find GCD of two numbers.
+### Write a recursive C program to find GCD of two numbers.
 
 **Answer :**
 
@@ -254,14 +238,14 @@ int main() {
 
 ____
 
-### Towers of Hanoi problem for ‘n’ disks.
+## Towers of Hanoi problem for 'n' disks.
 
-* Write a recursive function to solve Towers of Hanoi problem for ‘n’ disks and interpret the recursive calls for the transfer of three disks.
-* State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
-* Write a Recursive C program to solve tower of Hanoi problem. Find the number of moves required to solve the same problem for 5 Disks.
-* State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
-* Explain how stacks can be used in recursion. Write the recursive algorithm to solve towers of Hanoi problem. Trace the algorithm considering 3 disks.
-* Define Recursion. Write a recursive c function for the following: i) Find factorial of a number    ii) Solve Towers of Hanoi problem.
+- Write a recursive function to solve Towers of Hanoi problem for 'n' disks and interpret the recursive calls for the transfer of three disks.
+- State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
+- Write a Recursive C program to solve tower of Hanoi problem. Find the number of moves required to solve the same problem for 5 Disks.
+- State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
+- Explain how stacks can be used in recursion. Write the recursive algorithm to solve towers of Hanoi problem. Trace the algorithm considering 3 disks.
+- Define Recursion. Write a recursive c function for the following: i) Find factorial of a number    ii) Solve Towers of Hanoi problem.
 
 **Answer :**
 
@@ -330,20 +314,19 @@ For `n = 5` disks, the number of moves required is: `2^5−1 = 32−1 =31` move
 ___
 ____
 
-### Stack: Introduction to Stacks, Operations on a Stack
+## Stack: Introduction to Stacks, Operations on a Stack
 
-* Define stack. Give the implementation of push, pop and display functions. Include check for empty and full conditions.
-* What is Stack? Write C functions to perform push (), pop () and display operations on STACK.
-* What is Stack? Write a c program to implement stack using an array checking all necessary conditions and to perform the following operations: push (), pop () and display.
-* Define Stack. Develop routines to handle insert, push, pop and print operations on Stack.
-* Write C functions to perform push (), pop () and display operations on STACK.
+- Define stack. Give the implementation of push, pop and display functions. Include check for empty and full conditions.
+- What is Stack? Write C functions to perform push (), pop () and display operations on STACK.
+- What is Stack? Write a c program to implement stack using an array checking all necessary conditions and to perform the following operations: push (), pop () and display.
+- Define Stack. Develop routines to handle insert, push, pop and print operations on Stack.
+- Write C functions to perform push (), pop () and display operations on STACK.
 
 **Answer :**
 
 Stack is a linear data structure having same data types. Elements are arranged in a sequential order in which insertion (push) and deletion (pop) are made at only one end called the top.
 
 Since the last element inserted is the last one to be removed, a stack is also known as `Last-in-First_out  LIFO` list
-
 
 
 Stack Operations:
@@ -470,7 +453,7 @@ int main() {
 
 _____
 
-##### Write a C program to Reverse a String using STACK data structure.
+### Write a C program to Reverse a String using STACK data structure.
 
 * Justify the usage of stacks for reversal of strings while explaining the various operations related to stack data structure.
 
@@ -568,23 +551,23 @@ int main()
 
 ____
 
-### Applications of Stacks: Conversion from Infix to Postfix
+## Applications of Stacks: Conversion from Infix to Postfix
 
-* Write a C program to convert an infix expression to postfix expression using STACK. Also convert the following infix expression to postfix expression by mentioning the steps clearly: 
-* Write the algorithm for converting the Infix Expression to Postfix expression. Also transform the following expression to its postfix equivalent form by using the conversion algorithm steps.
+- Write a C program to convert an infix expression to postfix expression using STACK. Also convert the following infix expression to postfix expression by mentioning the steps clearly: 
+- Write the algorithm for converting the Infix Expression to Postfix expression. Also transform the following expression to its postfix equivalent form by using the conversion algorithm steps.
 
-* `(a+b)*(c+(d-e))`
-* `(A+B)*C-D*F+E`         
-* `(A+B)-C)*D`           
-* `(A-(B+C))*D)$(E+F)`
-* `((M+(N-O)*P)^Q+R)`     
-* `A^B^C-D+E+F/G`
-* `((A+(B-C) *D) ^E+F)`     
-* `X^Y^Z-D+E+F/G`
-* `(A ^ B * (H - J * K)) + P / K * G`
-* `((A+B)^C-(D*E)/F)`
-* `(((A/B)+C*(D-E)^F)*G)`.
-* `3 – 6 / (9 * (2 ^ 4))`
+- `(a+b)*(c+(d-e))`
+- `(A+B)*C-D*F+E`         
+- `(A+B)-C)*D`           
+- `(A-(B+C))*D)$(E+F)`
+- `((M+(N-O)*P)^Q+R)`     
+- `A^B^C-D+E+F/G`
+- `((A+(B-C) *D) ^E+F)`     
+- `X^Y^Z-D+E+F/G`
+- `(A ^ B * (H - J * K)) + P / K * G`
+- `((A+B)^C-(D*E)/F)`
+- `(((A/B)+C*(D-E)^F)*G)`.
+- `3 – 6 / (9 * (2 ^ 4))`
 
 **Answer :**
 
@@ -626,17 +609,17 @@ ____
 
 ____
 
-### Evaluation of a postfix expression.
+## Evaluation of a postfix expression.
 
-* Develop an algorithm to evaluate a postfix expression. Trace the algorithm for the expression:
-* Write a function in C for evaluating a postfix expression. Justify the usage of stack for evaluating the given expression:
+- Develop an algorithm to evaluate a postfix expression. Trace the algorithm for the expression:
+- Write a function in C for evaluating a postfix expression. Justify the usage of stack for evaluating the given expression:
 
-* `2536+**5/2-`
-* `6 2 3 + - 3 8 2 / + * 2 $ 3 +`.
-* `PQ+R-QP+R^-` where P=1, Q=2, R=3.
-* `AB/CDE$*-F+`   Assume A=12, B=3, C=2, D=5, E=1, F=7
-* `XYZ + * ZYX - + *` where X=1, Y=2, Z=3.
-* `ABC + * CBA - + *` where A=1, B=2, C=3.
+- `2536+**5/2-`
+- `6 2 3 + - 3 8 2 / + * 2 $ 3 +`.
+- `PQ+R-QP+R^-` where P=1, Q=2, R=3.
+- `AB/CDE$*-F+`   Assume A=12, B=3, C=2, D=5, E=1, F=7
+- `XYZ + * ZYX - + *` where X=1, Y=2, Z=3.
+- `ABC + * CBA - + *` where A=1, B=2, C=3.
 
 
 **Answer :**
@@ -660,6 +643,4 @@ ___
 5. `XYZ + * ZYX - + *` where X=1, Y=2, Z=3.     Answer: `6`
 6. `ABC + * CBA - + *` where A=1, B=2, C=3.    Answer: `6`
 
-
-____
 

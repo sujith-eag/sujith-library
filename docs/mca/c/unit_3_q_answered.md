@@ -1,24 +1,10 @@
----
-title: "DS - Unit-3 Trees Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 281
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-3 Trees Answered
 
+> Trees: Importance of Trees, Basic Tree Concepts and Terminologies: node, path, degree, internal nodes, height and subtree.
 
-##### Trees: Importance of Trees, Basic Tree Concepts and Terminologies: node, path, degree, internal nodes, height and subtree. 
-##### Binary Tree: Binary Trees, Binary Tree Representations, Representing Lists as Binary trees, Minimum nodes, Maximum nodes, Nearly complete binary tree
+### Binary Tree: Binary Trees, Binary Tree Representations, Representing Lists as Binary trees, Minimum nodes, Maximum nodes, Nearly complete binary tree
 
-* Give the properties of binary trees that distinguish them from general trees.
+- Give the properties of binary trees that distinguish them from general trees.
 
 **Answer :**
 
@@ -37,7 +23,7 @@ Structure and Use:
 
 ____
 
-##### With a suitable examples, define the following:
+### With a suitable examples, define the following:
 i) Binary tree
 ii) Degree of a node
 iii) Level of a binary tree
@@ -68,7 +54,7 @@ Structure and Use:
 
 ---
 
-##### i) Binary Tree
+### i) Binary Tree
 
 A binary tree is a tree data structure where each node has up to two children: a left child and a right child.
 
@@ -80,7 +66,7 @@ A binary tree is a tree data structure where each node has up to two children: a
 
 ---
 
-##### ii) Degree of a Node
+### ii) Degree of a Node
 
 The **degree of a node** is the number of children it has.  
 Nodes with degree 0 are called **leaf nodes** or **terminal nodes**.
@@ -98,7 +84,7 @@ The **degree of a tree** is the maximum degree among all its nodes.
 
 ---
 
-##### iii) Level of a Node in a Binary Tree
+### iii) Level of a Node in a Binary Tree
 
 The **level** of a node is the number of **edges from the root** to that node.
 - The root node is at level 0.
@@ -125,7 +111,7 @@ The **level** of a node is the number of **edges from the root** to that node.
 
 ____
 
-##### iv) Complete Binary Tree
+### iv) Complete Binary Tree
 
 A **complete binary tree** is a binary tree where:
 - All levels are completely filled **except possibly the last**, and
@@ -141,7 +127,7 @@ A **complete binary tree** is a binary tree where:
 
 ---
 
-##### v) Nearly Complete Binary Tree
+### v) Nearly Complete Binary Tree
 
 A **nearly complete binary tree** is almost a complete binary tree but may be missing a few nodes in the **bottom-right part** of the last level. All other levels are fully filled and nodes in the last level are as far **left as possible**.
 
@@ -149,7 +135,7 @@ This structure is often used in **binary heaps**.
 
 ---
 
-##### vi) Height of a Tree
+### vi) Height of a Tree
 
 The **height** of a tree is the **longest path** from the root to any leaf, measured in number of edges.
 
@@ -168,7 +154,7 @@ If counting nodes instead of edges, height would be 3.
 
 ---
 
-##### vii) Binary Search Tree (BST)
+### vii) Binary Search Tree (BST)
 
 A **Binary Search Tree** is a binary tree where:
 - The **left subtree** of a node contains only nodes with **values less than** the node’s value.
@@ -186,7 +172,7 @@ This property allows for **efficient searching, insertion, and deletion** operat
 
 ---
 
-##### viii) Expression Tree
+### viii) Expression Tree
 
 An **expression tree** is a binary tree used to represent **arithmetic expressions** :
 - **Internal nodes** contain operators (`+, -, *, /`)
@@ -206,14 +192,13 @@ Expression: `(a + b) * (c - d)`
 
 Expression trees are used in **compilers** and **interpreters** to parse and evaluate expressions.
 
-_____
 
-#### Tree Traversals Depth First Traversal (Preorder, Inorder and Postorder), Breadth First Traversal, 
+## Tree Traversals Depth First Traversal (Preorder, Inorder and Postorder), Breadth First Traversal, 
 
 
 **Tree traversal** is the process of **systematically visiting each node** in a tree exactly once in a specific order. Traversal is essential for processing, searching, or retrieving data from tree structures.
 
-##### 1. Depth-First Traversal (DFT)
+### 1. Depth-First Traversal (DFT)
 
 **Depth-First Traversal (DFT)** is a traversal technique where we explore a tree **as deeply as possible along each branch** before backtracking. It can be implemented using **recursion** or a **stack** (explicit or implicit).
 
@@ -244,7 +229,7 @@ Each traversal visits every node **exactly once**, so the time complexity for al
 
 ---
 
-##### 2. Breadth-First Traversal (BFT)
+### 2. Breadth-First Traversal (BFT)
 
 **Breadth-First Traversal (BFT)** is also known as **Level Order Traversal**. In this method, nodes are visited **level by level**, starting from the root and moving **left to right** across each level.
 
@@ -263,9 +248,8 @@ A → B → C → ...
 **Used in:** Finding shortest paths, level-order representation, serialization of trees.
 
 
-___
 
-#### Write the algorithm for Binary Tree Inorder, Preorder and Postorder traversal.
+## Write the algorithm for Binary Tree Inorder, Preorder and Postorder traversal.
 
 **Answer :**
 
@@ -327,7 +311,7 @@ void postorder(treePointer root)
 
 ---
 
-##### Find the following in the tree given:
+### Find the following in the tree given:
 
 i. Balance factor of the tree.      
 ii. Show the depth first traversal (preorder, inorder and postorder) of the tree.      
@@ -398,7 +382,7 @@ iii) Show the breadth first traversal of the tree.
 
 ____
 
-##### Generate Binary Tree looking into the following tree traversals:
+### Generate Binary Tree looking into the following tree traversals:
 
 Preorder: ABDGCEHIF
 Inorder: DGBAHEICF
@@ -528,21 +512,20 @@ Final expression tree:
 * `( A + B * C ) $ (( D + E ) * F)`
 * `( 5 + 6 * 7 ) $ ( ( 5 + 6 ) * 7 ))`
 
-_____
 
-#### Binary Search Tree: Binary Search Trees – Basic Concepts, Operations (Insertion, Deletion, Find the smallest node, Find the largest node, and Find a requested node), Applications, 
+## Binary Search Tree: Binary Search Trees – Basic Concepts, Operations (Insertion, Deletion, Find the smallest node, Find the largest node, and Find a requested node), Applications,
 
-* Write an algorithm to insert and delete an element in a Binary Search Tree.
+- Write an algorithm to insert and delete an element in a Binary Search Tree.
 
-* Explain algorithm to delete a node from the Binary Search Tree (BST) with an appropriate example.
+- Explain algorithm to delete a node from the Binary Search Tree (BST) with an appropriate example.
 
-* Write algorithms to perform the following operations on a BST: i. Search for a requested node  ii. Add a new node.
+- Write algorithms to perform the following operations on a BST: i. Search for a requested node  ii. Add a new node.
 
-* Write the algorithms for the following operations in Binary Search Tree (BST). i) Smallest node in a BST ii) Add node to BST iii) Search an item in a BST
+- Write the algorithms for the following operations in Binary Search Tree (BST). i) Smallest node in a BST ii) Add node to BST iii) Search an item in a BST
 
-* Write algorithms to find Smallest node and largest node in a Binary Search Tree.
+- Write algorithms to find Smallest node and largest node in a Binary Search Tree.
 
-* Write C function to find the maximum element in BST.
+- Write C function to find the maximum element in BST.
 
 
 **Answer :**
@@ -724,9 +707,7 @@ Construct the Binary Search Tree (BST) from the following elements  `D A T A S T
 Construct the Binary Search Tree (BST) from the following elements: `D A T A S T R U C T U R E S U S I N G C` also write the in-order, pre-order and post-order traversals for the BST generated.
 
 
-____
-
-### Threaded Binary Trees.
+## Threaded Binary Trees.
 
 * Explain threaded binary trees and their representation with a neat diagram. Also develop function to do the inorder traversal of a threaded binary tree.
 * What area threaded tree and its advantage?
@@ -764,6 +745,4 @@ To perform the **inorder traversal** of a threaded binary tree, we need to follo
 3. If the node has a right thread, move to the inorder successor using the right thread.
 4. If the node has no right child, move to its parent (using the thread in the left pointer if it exists).
 5. Repeat the process until all nodes are visited.
-
-____
 

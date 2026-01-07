@@ -1,22 +1,6 @@
----
-title: "DS - Unit-4 AVL and Heap Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 283
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-4 AVL and Heap Answered
 
-
-
-#### Advanced concepts in Trees: AVL Search Trees: Need for AVL Search Trees, Definition, Balancing Trees (L-L Rotation, R-R Rotation, L-R Double Rotation, R-L Double Rotation)-, 
+## Advanced concepts in Trees: AVL Search Trees: Need for AVL Search Trees, Definition, Balancing Trees (L-L Rotation, R-R Rotation, L-R Double Rotation, R-L Double Rotation)-, 
 
 * How to overcome the drawbacks of Binary Search Tree (BST) using AVL tree? Illustrate with an example.
 
@@ -31,22 +15,22 @@ The left and right subtrees are also binary sub trees.
 
 
 Drawbacks of BST:
-* **BST can become Unbalanced** : If nodes are inserted in a sorted order (increasing or decreasing), the BST can become unbalanced and degenerate into a linear structure resembling a linked list.
-* **Inefficient Operations** : In the worst case scenario, time complexity for search, insert, and deletion becomes O(n) due to unbalanced structure, where n is the number of nodes.
+- **BST can become Unbalanced** : If nodes are inserted in a sorted order (increasing or decreasing), the BST can become unbalanced and degenerate into a linear structure resembling a linked list.
+- **Inefficient Operations** : In the worst case scenario, time complexity for search, insert, and deletion becomes O(n) due to unbalanced structure, where n is the number of nodes.
 
-#### AVL Tree
+## AVL Tree
 
 An AVL tree is a self-balancing binary search tree, which automatically adjusts itself to ensure that it remains balanced. 
 
 Characteristics of AVL trees:
-* **Balance factor** : It ensures that the height of left and right subtrees of any node differ by at most 1 (i.e., the balance factor is -1, 0, or 1). An AVL tree keeps the BST properties while ensuring balance.
-* Balance Factor = height(left subtree) - height(right subtree)
+- **Balance factor** : It ensures that the height of left and right subtrees of any node differ by at most 1 (i.e., the balance factor is -1, 0, or 1). An AVL tree keeps the BST properties while ensuring balance.
+- Balance Factor = height(left subtree) - height(right subtree)
 
-* The minimum number of nodes is `n(h) = n(h-1) + n(h-2)+1`
+- The minimum number of nodes is `n(h) = n(h-1) + n(h-2)+1`
 
-* If the balance factor is violated (i.e., it becomes -2 or 2), the tree performs rotations to restore balance. avoiding the worst-case scenario of a skewed tree.
+- If the balance factor is violated (i.e., it becomes -2 or 2), the tree performs rotations to restore balance. avoiding the worst-case scenario of a skewed tree.
 
-* **Optimized Search** : Operations such as search, insertion, and deletion maintain a time complexity of **O(log n)** due to the balanced structure.
+- **Optimized Search** : Operations such as search, insertion, and deletion maintain a time complexity of **O(log n)** due to the balanced structure.
 
 ____
 
@@ -134,15 +118,15 @@ After right left rotation:
 ```
 Now, the tree is balanced, and the height of the tree is O(log n), ensuring that operations like search, insert, and delete will be efficient.
 
-____
 
-#### Discuss AVL tree and Write code to create AVL tree.
 
-* How you balance an unbalanced AVL trees in the following cases: i. Left of Left(L-L)     ii. Right of Right(R-R) iii. Right of Left(R-L)    iv. Left of Right(L-R) Explain with suitable examples.
-* Explain the Rotate Left and Double Rotation Left algorithms used for AVL tree balancing with a suitable example.
-* Write algorithms to RotateRight and RotateLeft in an AVL tree.
-* Explain the following AVL Tree balancing procedures giving suitable examples: Double Rotation Right and Double Rotation Left.
-* Explain the Rotate right and Double Rotation Right algorithms used for AVL Tree balancing with a suitable example
+## Discuss AVL tree and Write code to create AVL tree.
+
+- How you balance an unbalanced AVL trees in the following cases: i. Left of Left(L-L)     ii. Right of Right(R-R) iii. Right of Left(R-L)    iv. Left of Right(L-R) Explain with suitable examples.
+- Explain the Rotate Left and Double Rotation Left algorithms used for AVL tree balancing with a suitable example.
+- Write algorithms to RotateRight and RotateLeft in an AVL tree.
+- Explain the following AVL Tree balancing procedures giving suitable examples: Double Rotation Right and Double Rotation Left.
+- Explain the Rotate right and Double Rotation Right algorithms used for AVL Tree balancing with a suitable example
 
 **Answer :**
 
@@ -170,9 +154,9 @@ This property ensures that the tree remains balanced, meaning the height of the 
 Occurs when a node is inserted into the **left subtree of the left child** of an unbalanced node. (Left child of the left subtree causes the imbalance. 
 
 To fix this, a single right rotation is performed on the root of the subtree.
-* Set the left child of the current root as the new root
-* Make the right child of new root(20) as the left child of the current root (30)
-* Set Current root (30) as the right child of the new root (20).
+- Set the left child of the current root as the new root
+- Make the right child of new root(20) as the left child of the current root (30)
+- Set Current root (30) as the right child of the new root (20).
 
 ```
       30
@@ -195,9 +179,9 @@ ____
 Occurs when a node is inserted into the **right subtree of the right child** of an unbalanced node. (Right child of the right subtree causes the imbalance).
 
 To fix this, we perform a single left rotation on the root of the subtree.
-* Set the right child of current root as new root. 
-* Make the left child of the new root (20) the right child of the current root (10).
-* Set the current root (10) as the left child of the new root (20).
+- Set the right child of current root as new root. 
+- Make the left child of the new root (20) the right child of the current root (10).
+- Set the current root (10) as the left child of the new root (20).
 
 ```
     10
@@ -220,8 +204,8 @@ _____
 Occurs when a node is inserted into the **left subtree of the right child** of an unbalanced node.
 
 To fix this, we perform a double rotation(Right-Left)
-* Right rotation on the right child of the root. 
-* Left rotation on the unbalanced root.
+- Right rotation on the right child of the root. 
+- Left rotation on the unbalanced root.
 
 ```
       10
@@ -252,8 +236,8 @@ ____
 Occurs when a node is inserted into the **right subtree of the left child** of an unbalanced node.
 
 To fix this, we perform a double rotation(Left-Right)
-* Left rotation on the left child of the root. 
-* Right rotation on the unbalanced root.
+- Left rotation on the left child of the root. 
+- Right rotation on the unbalanced root.
 
 ```
       30
@@ -277,33 +261,31 @@ Right Rotation on 30:
    10    30
 ```
 
-_____
 
-#### AVL tree Operations: Insertion, Deletion. 
 
-* Show the AVL tree that results after each of the integer keys  `9, 27, 50, 15, 2, 21, 36` are inserted, in that order, into an initially empty AVL tree.  Clearly show the tree that results after each insertion, and make clear any rotations that must be performed.
+## AVL tree Operations: Insertion, Deletion. 
 
-* Construct AVL tree for the following data:  `21,26,30,9,4,14,28,18,15,10,2,3,7`
+- Show the AVL tree that results after each of the integer keys  `9, 27, 50, 15, 2, 21, 36` are inserted, in that order, into an initially empty AVL tree.  Clearly show the tree that results after each insertion, and make clear any rotations that must be performed.
 
-* Construct the AVL tree mentioning the balance factor from the following data  `13, 5, 1, 7, 8, 98, 67, 26, 33, 12, 6, 7, 8.`
+- Construct AVL tree for the following data:  `21,26,30,9,4,14,28,18,15,10,2,3,7`
 
-* Define AVL tree. Construct the AVL tree mentioning the balance factor from the following data: `14, 6, 1, 7, 8, 99, 68, 26, 33, 12, 6, 7, 8.`
+- Construct the AVL tree mentioning the balance factor from the following data  `13, 5, 1, 7, 8, 98, 67, 26, 33, 12, 6, 7, 8.`
 
-* Construct an AVL tree utilizing the given dataset. Display the balance factors in the resultant tree. Data: `17, 28, 9, 13, 35, 42, 65, 50, 73` After insertion of 20 and 45, update the AVL tree.
+- Define AVL tree. Construct the AVL tree mentioning the balance factor from the following data: `14, 6, 1, 7, 8, 99, 68, 26, 33, 12, 6, 7, 8.`
 
-* Create an AVL tree using the following data .Show the balance factors in the resulting tree. `24,45, 28, 12,23, 32,14,67`.  Insert 48 and 52 into the tree created.
+- Construct an AVL tree utilizing the given dataset. Display the balance factors in the resultant tree. Data: `17, 28, 9, 13, 35, 42, 65, 50, 73` After insertion of 20 and 45, update the AVL tree.
 
-* Create an AVL tree using the following data. Show the balance factors in the resulting tree. `14 23 7 10 33 56 80 66 70` Insert 44 and 50 into the tree created.
+- Create an AVL tree using the following data .Show the balance factors in the resulting tree. `24,45, 28, 12,23, 32,14,67`.  Insert 48 and 52 into the tree created.
 
-_____
-____
+- Create an AVL tree using the following data. Show the balance factors in the resulting tree. `14 23 7 10 33 56 80 66 70` Insert 44 and 50 into the tree created.
 
-#### Heaps – Definition, Heap Maintenance operations: insertion and deletion. Rheapup, Rheapdown algorithms and heap implementation, Applications.
 
-* What are the applications of Heap? Write the algorithm for Reheap UP and Reheap Down operation.
-* Discuss algorithms used in Heap construction with a suitable example: i) reheap up    ii) reheap down
-* Explain the algorithms to perform following operations with an example: i) Max heap construction ii) Max heap deletion.
-* Explain the reheap up and reheap down algorithms used in Heap construction with a suitable example.
+## Heaps – Definition, Heap Maintenance operations: insertion and deletion. Rheapup, Rheapdown algorithms and heap implementation, Applications.
+
+- What are the applications of Heap? Write the algorithm for Reheap UP and Reheap Down operation.
+- Discuss algorithms used in Heap construction with a suitable example: i) reheap up    ii) reheap down
+- Explain the algorithms to perform following operations with an example: i) Max heap construction ii) Max heap deletion.
+- Explain the reheap up and reheap down algorithms used in Heap construction with a suitable example.
 
 **Answer :**
 
@@ -342,9 +324,9 @@ Heaps are typically implemented using **arrays** for efficient indexing : For a 
 - Right child: `2i + 2`
 - Parent: `(i - 1) / 2`
 
-___
 
-#### Heap Construction Algorithms
+
+## Heap Construction Algorithms
 
 Heap Construction Algorithms **Reheap Up** and **Reheap Down** operations maintain the heap structure:
 - Reheap Up restores the heap property after insertion.
@@ -355,9 +337,9 @@ Both operations ensure the heap property in O(log n) time, which makes heaps hig
 - Heap Sort
 - Graph Algorithms (e.g., Dijkstra’s Algorithm)
 
-___
 
-#### Reheap Up Operations 
+
+## Reheap Up Operations 
 
 When a new element is inserted into the heap, it's placed at the end of the array (to maintain the Complete Binary Tree structure).
 
@@ -372,7 +354,7 @@ This process ensures the heap maintains its ordering from **leaf to root**.
 
 Follow the path from the newly added node upward, checking at each step if the parent is smaller (in max-heap). Stop when parent is larger or root is reached.
 
-#### Reheap Down Operations
+## Reheap Down Operations
 
 When deleting the root node from a heap:
 
@@ -396,19 +378,19 @@ Both `Reheap Up` and `Reheap Down` operations perform at most `log(n)` compariso
 
 ____
 
-##### Common Applications of Heap:
+### Common Applications of Heap:
 
-* **Priority Queues** – Efficient for accessing the highest or lowest priority element.
+- **Priority Queues** – Efficient for accessing the highest or lowest priority element.
 
-* **Job Scheduling Systems** – For scheduling jobs/tasks based on priority. OS process scheduling, network packet scheduling.
+- **Job Scheduling Systems** – For scheduling jobs/tasks based on priority. OS process scheduling, network packet scheduling.
 
-* **Heap Sort** – comparison-based, in-place sorting algorithm that uses min or max heap to sort elements.
+- **Heap Sort** – comparison-based, in-place sorting algorithm that uses min or max heap to sort elements.
 
-* **Dijkstra’s Algorithm** – For finding the shortest path in graphs.
+- **Dijkstra’s Algorithm** – For finding the shortest path in graphs.
 
-* **Median Maintenance in data streams** – Heaps are used in real-time to keep track of medians of dynamic stream of numbers.
+- **Median Maintenance in data streams** – Heaps are used in real-time to keep track of medians of dynamic stream of numbers.
 
-* **Data Stream Management** – For maintaining top-k elements in a stream of data efficiently. (Trending hashtags, top-scoring users in games, real-time recommendation systems)
+- **Data Stream Management** – For maintaining top-k elements in a stream of data efficiently. (Trending hashtags, top-scoring users in games, real-time recommendation systems)
 
 - **Database Indexing** - Helps optimize queries using heap-structured indices.
 
@@ -418,9 +400,8 @@ ____
 
 - **AI/ML Search Algorithms** - A algorithm for pathfinding, Huffman encoding for data compression.
 
-____
 
-### Heap Sort
+## Heap Sort
 
 Heap Sort is a comparison-based, in-place sorting algorithm that uses a binary heap to sort elements efficiently.
 
@@ -432,7 +413,7 @@ Heap Sort is a comparison-based, in-place sorting algorithm that uses a binary h
 
 ____
 
-* Define Heap? Write Heap sort Algorithm and sort the below tree.
+- Define Heap? Write Heap sort Algorithm and sort the below tree.
 ```
                     27
                   /    \
@@ -443,18 +424,14 @@ ____
 
 ____
 
-* Show construction of a heap from the following data  `30, 4, 12, 9, 19, 50, 65, 60, 20, 17`. Insert 75 into the Heap and reheapify.
+- Show construction of a heap from the following data  `30, 4, 12, 9, 19, 50, 65, 60, 20, 17`. Insert 75 into the Heap and reheapify.
 
-* Show construction of a heap from the following data read from the keyboard: `42, 23, 74, 11, 65, 58, 94`. Insert 36 into the heap and reheapify
+- Show construction of a heap from the following data read from the keyboard: `42, 23, 74, 11, 65, 58, 94`. Insert 36 into the heap and reheapify
 
-* Show the construction of max-heap to sort the following numbers by mentioning the steps clearly: `82, 90, 10, 12, 15, 77, 55, 23` . Delete 90 from the heap and heapify.
+- Show the construction of max-heap to sort the following numbers by mentioning the steps clearly: `82, 90, 10, 12, 15, 77, 55, 23` . Delete 90 from the heap and heapify.
 
-* Show construction of a heap from the following data read from the keyboard: `20, 35, 9, 26, 49, 78, 2`. Insert 46 into the heap and reheapify
+- Show construction of a heap from the following data read from the keyboard: `20, 35, 9, 26, 49, 78, 2`. Insert 46 into the heap and reheapify
 
-* Show construction of a heap from the following data read from the keyboard: `21, 37, 10, 26, 50, 76, 5` Insert 45 into the heap and reheapify.
+- Show construction of a heap from the following data read from the keyboard: `21, 37, 10, 26, 50, 76, 5` Insert 45 into the heap and reheapify.
 
-* Construction the heap tree from the following data : `32, 8, 21, 18, 39, 55, 75, 80, 40, 99.` Design an algorithm for the same.
-
-___
-
-
+- Construction the heap tree from the following data : `32, 8, 21, 18, 39, 55, 75, 80, 40, 99.` Design an algorithm for the same.

@@ -1,21 +1,6 @@
----
-title: "DS - Unit-4 Previous Questions"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 282
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-4 Previous Questions
 
-
-### Syllabus
+## Syllabus
 
 Advanced concepts in Trees: AVL Search Trees: Need for AVL Search Trees, Definition, Balancing Trees (L-L Rotation, R-R Rotation, L-R Double Rotation, R-L Double Rotation)-, AVL tree Operations: Insertion, Deletion. 
 
@@ -24,7 +9,7 @@ deletion. Rheapup, Rheapdown algorithms and heap implementation, Applications.
 
 ___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Discuss algorithms used in Heap construction with a suitable example:
 i) reheap up
@@ -47,8 +32,8 @@ iii. Right of Left(R-L)
 iv. Left of Right(L-R)
 Explain with suitable examples.
 
-____
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Show the AVL tree that results after each of the integer keys 9, 27, 50, 15, 2, 21, and 36 are inserted, in that order, into an initially empty AVL tree. Clearly show the tree that results after each insertion, and make clear any rotations that must be performed.
 
@@ -62,9 +47,9 @@ Explain the Rotate Left and Double Rotation Left algorithms used for AVL tree ba
 Show construction of a heap from the following data read from the keyboard:
 42, 23, 74, 11, 65, 58, 94. Insert 36 into the heap and reheapify
 
-____
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 How to overcome the drawbacks of Binary Search Tree (BST) using AVL tree? Illustrate with an example.
 
@@ -81,9 +66,8 @@ Another 13, 5, 1, 7, 8, 98, 67, 26, 33, 12, 6, 7, 8
 
 What are the applications of Heap? Write the algorithm for Reheap UP and Reheap Down operation.
 
-_____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Discuss algorithms used in Heap construction with a suitable example: reheap up and reheap down
 
@@ -98,9 +82,9 @@ Insert 46 into the heap and reheapify
 
 Explain the following AVL Tree balancing procedures giving suitable examples: Double Rotation Right and Double Rotation Left.
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Write the algorithm for Reheap UP and Reheap Down operation.
 
@@ -119,9 +103,9 @@ iii. Right of Left(R-L)
 iv. Left of Right(L-R)
 Explain with suitable examples.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 Discuss AVL tree and Write code to create AVL tree.
 
@@ -140,9 +124,9 @@ Define Heap? Write Heap sort Algorithm and sort the below tree.
              10   19  31   42
 ```
 
-_____
 
-#### SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
+
+## SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
 
 Explain the Rotate right and Double Rotation Right algorithms used for AVL Tree balancing with a suitable example
 
@@ -157,9 +141,8 @@ Construct the AVL tree mentioning the balance factor from the following data
 
 Explain the reheap up and reheap down algorithms used in Heap construction with a suitable example.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020
 
 Explain the following AVL Tree balancing procedures giving suitable examples: Double Rotation Right and Double Rotation Left.
 
@@ -175,5 +158,4 @@ Insert 44 and 50 into the tree created.
 
 Define heap. Write the algorithm for reheap up and reheap down
 
-____
 

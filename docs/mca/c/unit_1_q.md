@@ -1,21 +1,6 @@
----
-title: "DS - Unit-1 Previous Questions"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 275
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-1 Previous Questions
 
-
-### Syllabus
+## Syllabus
 
 Introduction to Data Structures: Definition, Need of Data Structures, Classification of Data Structures.
 
@@ -23,9 +8,9 @@ Recursion: Recursive definition and processes, Designing the recursive functions
 
 Stack: Introduction to Stacks, Operations on a Stack and Applications of Stacks: Conversion from Infix to Postfix, evaluation of a postfix expression.
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Justify the usage of stacks for reversal of strings while explaining the various operations related to stack data structure.
 
@@ -42,9 +27,9 @@ Write a recursive function to solve Towers of Hanoi problem for ‘n’ disks an
 Write a function in C for evaluating a postfix expression. Justify the usage of stack for evaluating the given expression:
 `PQ+R-QP+R^-` where P=1, Q=2, R=3.
 
-___
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 
 Write a C program to convert an infix expression to postfix expression using STACK. Also convert the following infix expression to postfix expression by mentioning the steps clearly: `(((A/B)+C*(D-E)^F)*G)`.
@@ -61,9 +46,9 @@ Design an algorithm to evaluate a postfix Expression. And Trace the algorithm fo
 
 Write a Recursive C program to solve tower of Hanoi problem. Find the number of moves required to solve the same problem for 5 Disks.
 
-____
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 What are Data Structures? Explain the classification of data sutures with examples?
 
@@ -84,9 +69,9 @@ Define Recursion. Write a recursive c function for the following:
 i) Find factorial of a number
 ii) Solve Towers of Hanoi problem.
 
-_____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 
 Define data structure. List its types and also explain the need of Data structures.
@@ -108,9 +93,9 @@ Design an algorithm to evaluate a postfix Expression. And Trace the algorithm fo
 
 State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Write the difference between iterative method and recursion method. Is it advisable to generate Fibonacci Series using recursion? Justify your answer with an example.
 
@@ -124,9 +109,9 @@ Define Stack. Develop routines to handle insert, push, pop and print operations 
 Write the algorithm for converting the Infix Expression to Postfix expression. Also transform the following expression to its postfix equivalent form by using the conversion algorithm steps.
 `((A+B)^C-(D*E)/F)`
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 Define data structure. List its types and also explain the need of Data structures.
 
@@ -146,9 +131,9 @@ Design an algorithm to evaluate a postfix Expression.
 
 State tower of Hanoi problem. Write a recursive C function to solve the same problem for three disks.
 
-_____
 
-#### SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
+
+## SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
 
 Define Stack. Develop routines to handle push, pop and print
 operations on Stack.
@@ -162,8 +147,4 @@ Explain how stacks can be used in recursion. Write the recursive algorithm to so
 
 Write the algorithm for converting the Infix Expression to Postfix expression. Also transform the following expression to its postfix equivalent form by using the conversion algorithm steps.
 `((A+B)^C-(D*E)/F)`
-
-
-____
-
 

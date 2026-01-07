@@ -1,24 +1,9 @@
----
-title: "DS - Unit-1 Data Structure Answered"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 276
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-1 Data Structure Answered
 
+## Introduction to Data Structures: Definition, Need of Data Structures, Classification of Data Structures.
 
-#### Introduction to Data Structures: Definition, Need of Data Structures, Classification of Data Structures.
-
-* What are Data Structures? Explain the classification of data sutures with examples?
-* Define data structure. List its types and also explain the need of Data structures.
+- What are Data Structures? Explain the classification of data sutures with examples?
+- Define data structure. List its types and also explain the need of Data structures.
 
 **Answer :**
 
@@ -30,7 +15,7 @@ Every application uses a Data Structure, Different types of data structures are 
 
 ____
 
-##### Types of Data Structures:
+### Types of Data Structures:
 
 Data structures are classified into two main categories :
 
@@ -48,7 +33,7 @@ Classification of Non Primitive Data Structures can be broadly be done into two 
 1. Linear Data Structures
 2. Non-linear Data Structures
 
-##### Linear Data Structures
+#### Linear Data Structures
 
 In linear data structures, the data elements are arranged in a sequential or linear order one after the other. Each element has a unique predecessor and successor, except for the first and last elements.
 
@@ -61,7 +46,7 @@ In linear data structures, the data elements are arranged in a sequential or lin
 - **Queue**: A collection of elements that follows the **First In, First Out (FIFO)** principle. Elements are added at the rear and removed from the front. Queue of people: `First Person -> Second Person -> Third Person`.
 
 
-##### Non Linear Data Structures
+#### Non Linear Data Structures
 
 In Non-linear data structure, elements are not stores sequentially, they are connected to each other in a hierarchical or interconnected manner.
 
@@ -75,21 +60,21 @@ In Non-linear data structure, elements are not stores sequentially, they are con
 
 ____
 
-#### Characteristics of Data Structure
+## Characteristics of Data Structure
 
-* **Correctness** : Data must be represented accurately and managed.
+- **Correctness** : Data must be represented accurately and managed.
 
-* **Time Complexity** : Running time or execution time of operations like insert, delete and search should take the least possible time.
+- **Time Complexity** : Running time or execution time of operations like insert, delete and search should take the least possible time.
 
-* **Space Complexity** : Memory usage should be as minimal and efficient.
+- **Space Complexity** : Memory usage should be as minimal and efficient.
 
 ____
 
-#### **Need for Data Structures:**
+## Need for Data Structures:
 
 When amount of data is very large, operations on it in a linear fashion will be very slow and processing will not be efficient. Multiple concurrent requests cannot be handled in a inefficient data structure leading to delays or crashes.
 
-* Handling Large volumes of data needs efficient structures to prevent performance issues.
+- Handling Large volumes of data needs efficient structures to prevent performance issues.
 
 - **Efficient Data Management** : Data structures organize data for efficient access, retrieval and modification.
 - Arrays provide O(1) access time using an index.
@@ -108,38 +93,38 @@ When amount of data is very large, operations on it in a linear fashion will be 
 
 ___
 
-#### Operations Performed on Data Structures
+## Operations Performed on Data Structures
 
-* **Create** : involves allocating memory for a data structure and initializing it for use. It defines the data structure's size and format, either statically or dynamically.
-* Creating an array of 10 integers, or initializing a linked list with a head pointer set to `NULL`.
+- **Create** : involves allocating memory for a data structure and initializing it for use. It defines the data structure's size and format, either statically or dynamically.
+- Creating an array of 10 integers, or initializing a linked list with a head pointer set to `NULL`.
 
-* **Delete** : refers to deallocating memory that was previously allocated to a data structure or removing an element from it.
+- **Delete** : refers to deallocating memory that was previously allocated to a data structure or removing an element from it.
 
-* **Updation** : modifies the value of an existing element in the data structure. It usually requires accessing the element first and then replacing its value.
+- **Updation** : modifies the value of an existing element in the data structure. It usually requires accessing the element first and then replacing its value.
 
-* **Searching** : involves locating an element in data structure. It may also find the locations of all elements that satisfy certain conditions.
+- **Searching** : involves locating an element in data structure. It may also find the locations of all elements that satisfy certain conditions.
 
-* **Sorting** : is arranging data in a specific order, either in ascending order or in descending order. Sorting makes merging and searching more efficient.
-* Sorting an array of integers in ascending order using bubble sort or quicksort.
+- **Sorting** : is arranging data in a specific order, either in ascending order or in descending order. Sorting makes merging and searching more efficient.
+- Sorting an array of integers in ascending order using bubble sort or quicksort.
 
-* **Merging** : combines two or more data structures (usually sorted) into a single data structure while maintaining the sorted order.
-* Merging two sorted arrays into a third sorted array.
+- **Merging** : combines two or more data structures (usually sorted) into a single data structure while maintaining the sorted order.
+- Merging two sorted arrays into a third sorted array.
 
-* **Splitting** : Splitting is a process of partitioning single list to multiple list based on certain condition or size.
+- **Splitting** : Splitting is a process of partitioning single list to multiple list based on certain condition or size.
 
-* **Traversal** : involves visiting all the nodes in a data structure usually to perform some operation on elements.
-* Traversing a linked list to display its elements or traversing a binary tree using in-order traversal.
+- **Traversal** : involves visiting all the nodes in a data structure usually to perform some operation on elements.
+- Traversing a linked list to display its elements or traversing a binary tree using in-order traversal.
 
 ____
 
-#### Time Complexities of Data Structure Operations
+## Time Complexities of Data Structure Operations
 
 Efficiency of Data Structure can be characterized by its time complexity as: 
 - **Worst Case**: Maximum time the operation could take.
 - **Best Case**: Minimum time required.
 - **Average Case**: Expected time over all inputs.
 
-##### Array
+### Array
 
 An array is a collection of elements stored in contiguous memory locations. It allows fast access using an index.
 
@@ -161,7 +146,7 @@ An array is a collection of elements stored in contiguous memory locations. It a
 
 ---
 
-##### Linked List
+### Linked List
 
 A linked list is a linear data structure where each element (node) contains data and a pointer to the next (or previous) node.
 
@@ -191,7 +176,7 @@ A linked list is a linear data structure where each element (node) contains data
 
 ---
 
-##### Stack
+### Stack
 
 A stack is a linear data structure based on the Last In First Out (LIFO) principle.
 
@@ -217,7 +202,7 @@ A stack is a linear data structure based on the Last In First Out (LIFO) princip
 
 ---
 
-##### Queue
+### Queue
 
 A queue is a linear data structure that follows the First In First Out (FIFO) principle.
 
@@ -239,7 +224,7 @@ A queue is a linear data structure that follows the First In First Out (FIFO) pr
 
 ---
 
-##### Binary Search Tree (BST)
+### Binary Search Tree (BST)
 
 A binary search tree is a hierarchical structure where the left child is smaller and the right child is greater than the parent node.
 
@@ -263,7 +248,7 @@ A binary search tree is a hierarchical structure where the left child is smaller
 
 ---
 
-##### **AVL Tree (Self-Balancing BST)**
+### AVL Tree (Self-Balancing BST)
 
 An AVL Tree maintains balance after every insertion or deletion using rotations, ensuring O(log n) height.
 
@@ -282,7 +267,7 @@ An AVL Tree maintains balance after every insertion or deletion using rotations,
 
 ---
 
-##### Graph (Adjacency List Representation)
+### Graph (Adjacency List Representation)
 
 A graph consists of a set of vertices and edges. When implemented using an adjacency list, each vertex stores a list of connected vertices.
 
@@ -304,7 +289,7 @@ A graph consists of a set of vertices and edges. When implemented using an adjac
 
 ---
 
-##### Graph (Adjacency Matrix Representation)
+### Graph (Adjacency Matrix Representation)
 
 In this method, a 2D array is used where cell `[i][j]` indicates the presence of an edge between vertex i and j.
 
@@ -321,7 +306,4 @@ In this method, a 2D array is used where cell `[i][j]` indicates the presence of
 - **Game Theory/AI**: Representing state transitions in board games.
 
 - **Routing Algorithms**: For dense networks like airline routes.
-
----
-
 

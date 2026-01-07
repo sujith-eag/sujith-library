@@ -1,21 +1,6 @@
----
-title: "DS - Unit-5 Previous Questions"
-description: ""
-summary: ""
-date: 2025-01-01T16:00:52+05:30
-lastmod: 2025-01-01T16:00:52+05:30
-draft: false
-weight: 284
-toc: true
-seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
----
+# DS - Unit-5 Previous Questions
 
-
-#### Syllabus
+## Syllabus
 
 Multi-way trees: Introduction, Definition, features. B-trees – Introduction, Definition and features, Construction of B-trees of order 3, order 4 and order 5, Implementation, Simplified B-Trees: 2-3 tree, 2-3-4 tree.
 
@@ -23,9 +8,8 @@ Graphs: Basic concepts, Terminologies: vertices, edge, cycle, loop, graph vs tre
 
 Graph traversals: Breadth-First- Search (BFS) Traversal, Depth-First- Search (DFS) Traversal, storage structures (Adjacency Matrix and Adjacency List), graph algorithms.
 
-___
 
-#### SEMESTER END EXAMINATIONS – JUNE 2024
+## SEMESTER END EXAMINATIONS – JUNE 2024
 
 Explain the characteristics of 2-3 trees. Formulate the procedure to design a 2-3 tree for the given input: 10, 6, 8, 5, 1, 4, 7.
 
@@ -37,9 +21,8 @@ List the properties of B-tree. Explain the insertion operation in B-tree using e
 
 Discuss the steps to add and delete a vertex in the graph with suitable examples.
 
-____
 
-#### BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
+## BACKLOG SUBJECT EXAMINATIONS – SEPTEMBER / OCTOBER 2023
 
 Illustrate the properties of m-way tree with an example.
 
@@ -67,9 +50,8 @@ Draw the B-tree of order 4 created by inserting the following data arriving in s
 
 Explain how Graph can be represented using a Adjacency Matrix and Adjacency List with suitable example.
 
-___
 
-#### SEMESTER END EXAMINATIONS – MAY / JUNE 2023
+## SEMESTER END EXAMINATIONS – MAY / JUNE 2023
 
 Calculate the maximum number of data entries in a:
 i) 3-way tree of height 3
@@ -91,9 +73,9 @@ Explain how Graph can be represented using an Adjacency Matrix and Adjacency Lis
 
 Explain the two common structures used to store graphs with examples.
 
-_____
 
-#### SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
+
+## SUPPLEMENTARY SEMESTER EXAMINATIONS - NOVEMBER 2022
 
 Define and give suitable example for the following trees:
 m-way search tree 
@@ -116,9 +98,9 @@ algorithm. Give the Depth-first traversal for the following graph starting from 
 Graph of hexagonal and sqaure shape
 ```
 
-____
 
-#### SEMESTER END EXAMINATIONS – JUNE 2022
+
+## SEMESTER END EXAMINATIONS – JUNE 2022
 
 Discuss Breadth-first traversal of a graph with suitable example and algorithm
 
@@ -131,9 +113,9 @@ Define the following with reference to Graph and an example for each: Path, Cycl
 
 Describe the two types of graph storage structures with suitable examples.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2021
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2021
 
 
 Explain different graph storage structure with example.
@@ -147,9 +129,9 @@ Discuss Depth-first traversal of a Graph with an example.
 
 Explain simplified B-tree with an example.
 
-_____
 
-#### SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
+
+## SEMESTER END EXAMINATIONS – JULY / AUGUST 2021
 
 Define and explain with example for the following:
 i. m-way tree
@@ -165,9 +147,9 @@ Draw the B-tree of order 4 created by inserting the following data arriving in s
 
 Discuss Breadth-first traversal of a graph with suitable example.
 
-____
 
-#### EXAMINATIONS SEPTEMBER /OCTOBER 2020
+
+## EXAMINATIONS SEPTEMBER /OCTOBER 2020
 
 Construct a B-tree of order 4 created by inserting the following data arriving in sequence:
 92 24 6 7 11 8 22 4 5 16 19 20 78
@@ -205,6 +187,4 @@ ii) Adjacency List.
 Draw complete 2-3 and 2-3-4 trees.
 
 Define the following With reference to Graph and give one example each Path, Cycle, Loop, Degree, Out-Degree and In-Degree.
-
-___
 
