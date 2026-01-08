@@ -10,28 +10,19 @@ This diagram illustrates the relationship between the Root user and IAM entities
 
 ```mermaid
 flowchart TD
-    subgraph Account_Management [" AWS Account Management "]
-        Root[Root User / Owner]
-        Alias[Account Alias]
-        
-        Root -->|Creates| Alias
-        Root -->|Manages| IAM_Dash[IAM Dashboard]
-    end
-
-    subgraph IAM_Structure [" IAM Entity Creation "]
-        IAM_Dash -->|1. Create Group| Group[IAM Group]
-        Group -->|Has Policies| Policy[Permissions Policy]
-        
-        IAM_Dash -->|2. Create User| User[IAM User]
-        User -->|Added to| Group
-        User -->|Inherits| Policy
-    end
-
-    subgraph Security_Hardening [" Security Steps "]
-        User -->|Login via Alias URL| Console[Console Access]
-        Console -->|3. Enable Security| MFA[Multi-Factor Auth]
-        MFA --> Secure[Secured User Access]
-    end
+    Root[Root User<br/>Account Owner] -->|Creates| Alias[Account Alias]
+    Root -->|Manages| IAM[IAM Dashboard]
+    
+    IAM -->|1. Create| Group[IAM Group<br/>e.g., Students, Developers]
+    Group -->|Attached| Policy[IAM Policy<br/>Permissions Document]
+    
+    IAM -->|2. Create| User[IAM User<br/>Individual Account]
+    User -->|Add to| Group
+    User -.->|Inherits| Policy
+    
+    User -->|Login| Console[AWS Console<br/>via Account Alias URL]
+    Console -->|3. Enable| MFA[Multi-Factor Authentication]
+    MFA -->|Secures| Access[Secured User Access]
 ```
 
 

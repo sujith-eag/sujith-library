@@ -1,5 +1,85 @@
 # Data Science & Machine Learning Cheat Sheet
 
+## Theoretical Concepts
+
+### 1. Exploratory Data Analysis (EDA)
+
+EDA is the process of analyzing datasets to summarize their main characteristics, often using visual methods. It helps in understanding the data structure, detecting outliers, and formulating hypotheses for further analysis.
+
+**Key Steps:**
+- Data inspection (head, tail, shape)
+- Handling missing values
+- Statistical summaries (mean, median, std)
+- Visualization for insights
+
+**Why Important:** Ensures data quality before modeling, prevents errors from dirty data.
+
+### 2. Machine Learning Basics
+
+Machine Learning (ML) is a subset of AI that enables systems to automatically learn and improve from experience without being explicitly programmed.
+
+**Types:**
+- **Supervised Learning:** Uses labeled data to train models (e.g., classification, regression).
+- **Unsupervised Learning:** Finds hidden patterns in unlabeled data (e.g., clustering, dimensionality reduction).
+
+**Workflow:** Data Prep → Model Training → Evaluation → Prediction.
+
+### 3. Classification Algorithms
+
+Classification predicts categorical labels based on input features.
+
+- **Logistic Regression:** Uses a sigmoid function to predict probabilities for binary outcomes. Interpretable coefficients show feature impact.
+- **Naive Bayes:** Based on Bayes' theorem, assumes feature independence. Fast and works well with text data.
+- **K-Nearest Neighbors (KNN):** Classifies by majority vote of k nearest data points. Simple but sensitive to scale and noise.
+
+**Evaluation:** Confusion matrix, accuracy, precision, recall, F1-score.
+
+### 4. Dimensionality Reduction
+
+Techniques to reduce the number of features while preserving information.
+
+- **Principal Component Analysis (PCA):** Transforms data into principal components capturing maximum variance. Used for visualization and noise reduction.
+
+**Benefits:** Improves model efficiency, reduces overfitting.
+
+### 5. Probability Distributions
+
+Distributions describe the likelihood of different outcomes for random variables.
+
+- **Normal (Gaussian):** Symmetric bell-shaped curve, defined by mean and variance. Common in natural phenomena.
+- **Uniform:** Equal probability over a range. Used in simulations.
+- **Binomial:** Number of successes in fixed trials. Discrete, requires n trials and p probability.
+- **Poisson:** Number of events in a fixed interval. For rare events.
+- **Exponential:** Time between events in a Poisson process. Memoryless property.
+
+**Applications:** Modeling real-world uncertainties, hypothesis testing.
+
+### 6. Bayes' Theorem
+
+Updates the probability of a hypothesis based on new evidence.
+
+**Formula:** P(H|E) = [P(E|H) × P(H)] / P(E)
+
+Where:
+- P(H|E): Posterior probability
+- P(E|H): Likelihood
+- P(H): Prior probability
+- P(E): Evidence (total probability)
+
+**Applications:** Medical diagnostics, spam filtering, risk assessment.
+
+### 7. Linear Regression
+
+Models the linear relationship between a dependent variable (y) and one or more independent variables (X).
+
+**Equation:** y = mx + c
+- m: Slope (coefficient) - change in y per unit x
+- c: Intercept - y when x=0
+
+**Evaluation:** R-squared (variance explained), MSE (prediction error).
+
+**Assumptions:** Linearity, independence, homoscedasticity, normality of residuals.
+
 ## 1. Data Essentials (EDA & Cleaning)
 
 Used for Exercises 1, 2, and 3.
@@ -69,6 +149,11 @@ model.fit(X_train, y_train)
 # Naive Bayes (Ex 5)
 from sklearn.naive_bayes import GaussianNB
 model = GaussianNB()
+model.fit(X_train, y_train)
+
+# KNN (Ex 9)
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X_train, y_train)
 ```
 

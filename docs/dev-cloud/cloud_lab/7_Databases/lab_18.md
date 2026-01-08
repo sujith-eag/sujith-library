@@ -1,12 +1,28 @@
 # Creating and Operating a NoSQL Database with Amazon DynamoDB
 
-## Prerequisites
+## Overview
+
+This lab introduces Amazon DynamoDB, AWS's fully managed NoSQL database service. You'll create a table with a composite primary key, insert data, perform read operations (Query vs. Scan), update items, and delete records. This demonstrates the core operations of a key-value and document database in a cloud environment.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **DynamoDB** | Serverless NoSQL database supporting key-value and document models |
+| **Partition Key (PK)** | Primary identifier for data distribution across partitions |
+| **Sort Key (SK)** | Secondary identifier for sorting and querying within a partition |
+| **Composite Primary Key** | Combination of PK and SK for unique item identification |
+| **Query** | Efficient retrieval using PK (and optional SK) |
+| **Scan** | Full table read (expensive, avoid for large tables) |
+| **CRUD Operations** | Create, Read, Update, Delete operations on items |
+
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for DynamoDB (e.g., DynamoDBFullAccess policy)
 - Basic understanding of NoSQL databases and key-value stores
 
-## Objective
+### Objective
 
 To create an Amazon DynamoDB table and perform CRUD operations (Create, Read, Update, Delete) using the AWS Management Console. This exercise helps in understanding Partition Keys, Sort Keys, the difference between Query vs. Scan, and table cleanup procedures.
 
@@ -14,15 +30,11 @@ To create an Amazon DynamoDB table and perform CRUD operations (Create, Read, Up
 
 ```mermaid
 flowchart TD
-    App[Application] --> DDB[(DynamoDB Table)]
+    App[Application] --> DDB[(DynamoDB Table<br/>MCA_StudentLabInternals)]
     
-    subgraph Table_Structure[Table: MCA_StudentLabInternals]
-        PK[Partition Key: USN]
-        SK[Sort Key: CourseCode]
-        Attr[Attributes: Name, Semester, Attendance, IA1Marks]
-    end
-    
-    DDB --> Table_Structure
+    DDB --> PK[Partition Key: USN]
+    DDB --> SK[Sort Key: CourseCode]
+    DDB --> Attr[Attributes:<br/>Name, Semester,<br/>Attendance, IA1Marks]
 ```
 
 **Key Concepts:**
@@ -161,6 +173,14 @@ We will create a table to store Student Records including USN, Name, Semester, C
 - Type the requested confirmation text and click **Delete**
 - Ensure the table is removed from the list
 
+## Validation
+
+- **Table Creation:** Confirm table exists with correct PK/SK and is Active.
+- **Data Insertion:** Verify 3 items are present with correct attributes.
+- **Query Operations:** Ensure Query returns 2 items for one student, Scan returns all remaining items.
+- **Update:** Check that IA1Marks changed from 14 to 16.
+- **Delete:** Confirm item count reduced to 2 after deletion.
+- **Cleanup:** Verify table is deleted and no longer appears in the list.
 
 ## Query vs Scan Comparison
 
@@ -173,24 +193,28 @@ We will create a table to store Student Records including USN, Name, Semester, C
 ## Cost Considerations
 
 - **On-Demand Pricing:**
-  - Reads: ~$0.25/million
-  - Writes: ~$1.25/million
-  - Storage: ~$0.25/GB/month
-- **Best Practice:** Delete tables after lab to avoid charges
-
+  - Reads: ~$0.25 per million
+  - Writes: ~$1.25 per million
+  - Storage: ~$0.25 per GB/month
+- **Best Practice:** Delete tables after lab to avoid charges. Enable AWS Budget alerts for monitoring.
 
 ## Troubleshooting
 
-- **Table Creation Fails:** Check IAM permissions for DynamoDB
-- **Item Not Found:** Ensure both PK and SK are provided for queries
-- **Slow Performance:** Use Query instead of Scan when possible
-- **Unexpected Charges:** Enable AWS Budget alerts and delete unused tables
-
+- **Table Creation Fails:** Check IAM permissions for DynamoDB; ensure no duplicate table names.
+- **Item Not Found:** Ensure both PK and SK are provided for queries in composite key tables.
+- **Slow Performance:** Use Query instead of Scan; consider Global Secondary Indexes for complex queries.
+- **Unexpected Charges:** Monitor usage in AWS Cost Explorer; set up billing alerts.
+- **Access Denied:** Verify IAM policies include DynamoDB permissions.
 
 ## Key Takeaways
 
-1. **Partition Key + Sort Key** creates a composite primary key
-2. **Query** is efficient for targeted searches
-3. **Scan** should be avoided for large datasets
-4. DynamoDB is serverless and scales automatically
-5. Always clean up resources to avoid unexpected costs
+1. **Partition Key + Sort Key** creates a composite primary key for efficient data organization.
+2. **Query** is efficient for targeted searches using PK/SK.
+3. **Scan** should be avoided for large datasets due to cost and performance.
+4. DynamoDB is serverless and scales automatically with no maintenance.
+5. Always clean up resources to avoid unexpected costs.
+6. Design schemas with access patterns in mind for optimal performance.
+
+## Result
+
+Successfully created and operated a DynamoDB table, performing all CRUD operations. Demonstrated the efficiency of Query over Scan and understood the importance of proper key design in NoSQL databases.

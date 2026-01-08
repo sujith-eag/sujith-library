@@ -1,13 +1,28 @@
 # Deploying a Flask Application on AWS Elastic Beanstalk
 
-## Prerequisites
+## Overview
+
+This lab demonstrates deploying a Flask web application using AWS Elastic Beanstalk, a Platform as a Service (PaaS) that handles infrastructure provisioning and management. You'll create a simple Flask app, package it, and deploy it to a single-instance environment.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Elastic Beanstalk** | Managed service for deploying and scaling web applications |
+| **Procfile** | Defines how to run the application (e.g., Gunicorn for Flask) |
+| **requirements.txt** | Lists Python dependencies for automatic installation |
+| **Single Instance Environment** | Basic setup with one EC2 instance, no load balancer |
+| **Gunicorn** | WSGI HTTP server for running Flask in production |
+| **Application Versions** | Deployed code packages managed by Elastic Beanstalk |
+
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Elastic Beanstalk and EC2
 - Python installed locally for app creation
 - Basic knowledge of Flask and web deployment
 
-## Objective
+### Objective
 
 Deploy a simple Flask application on AWS Elastic Beanstalk and verify it using the public URL.
 
@@ -37,17 +52,19 @@ It is cost-effective and simple, but not fault-tolerant.
 
 ```mermaid
 flowchart TD
-    User[User] --> EB[Elastic Beanstalk Environment]
+    Developer[Developer] -->|Upload Code| EB[Elastic Beanstalk Service]
+    EB -->|Creates| Environment[Application Environment]
     
-    subgraph EB_Environment[Elastic Beanstalk Environment]
-        App[Flask Application]
-        EC2[EC2 Instance<br/>t3.micro]
-        SG[Security Group]
-    end
+    Environment --> LB[Load Balancer<br/>Optional]
+    Environment --> ASG[Auto Scaling Group<br/>Optional]
+    Environment --> EC2[EC2 Instance<br/>t3.micro]
+    Environment --> SG[Security Group<br/>Ports 22,80]
     
-    EB --> EC2
-    EC2 --> App
-    EC2 --> SG
+    EC2 -->|Runs| Flask[Flask App<br/>Gunicorn WSGI]
+    Flask -->|Serves| User[End User<br/>HTTP Requests]
+    
+    EB -.->|Manages| EC2
+    EB -.->|Configures| SG
 ```
 
 
@@ -75,7 +92,7 @@ def health():
     return "OK"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
 ```
 
 ### Step 3: Create [requirements.txt](requirements.txt)
@@ -83,8 +100,8 @@ if __name__ == "__main__":
 Create a file named `requirements.txt` and add the following dependencies:
 
 ```text
-Flask==3.0.3
-gunicorn==22.0.0
+Flask
+gunicorn
 ```
 
 > [!NOTE]
@@ -225,10 +242,18 @@ Append `/health` to the URL.
 **Verification:** Both URLs load correctly.
 
 
+## Validation
+
+- **Local Testing:** Confirm Flask app runs locally without errors.
+- **ZIP Structure:** Verify files are at root level in the ZIP.
+- **Deployment:** Check environment health is "OK" and domain URL is accessible.
+- **Application Access:** Test both root and /health endpoints.
+- **Logs:** Review EB logs for any deployment issues.
+
 ## Cost Considerations
 
 - **Pricing:** EB ~$0.01/hour for t3.micro EC2; free tier covers 750 hours
-- **Tip:** Terminate environments immediately to avoid charges. Monitor via CloudWatch
+- **Tip:** Terminate environments immediately to avoid charges. Monitor via CloudWatch and set billing alerts.
 
 
 ## Phase F: Cleanup (Mandatory)
@@ -252,7 +277,7 @@ If environment health is "Degraded" or "Severe":
 - **ZIP must contain files at root level** (not inside a sub-folder)
 - **Upload must be Local file** (not Public S3 URL)
 - **IAM roles must be created/selected** if "No options" appear
-- **Python version in requirements.txt must match EB platform**
+- **Packages in requirements.txt must be compatible with the EB platform's Python version**
 - **Application must listen on 0.0.0.0** in production (handled by Gunicorn)
 
 
@@ -299,3 +324,6 @@ This allows:
 4. IAM roles are required for EB to manage resources
 5. Monitor logs and health status for debugging
 6. Always terminate environments after use to avoid costs
+## Result
+
+Successfully deployed a Flask application on AWS Elastic Beanstalk. Demonstrated PaaS benefits, proper application packaging, and infrastructure abstraction for simplified web application deployment.

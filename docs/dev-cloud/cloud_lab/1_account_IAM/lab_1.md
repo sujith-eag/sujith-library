@@ -4,50 +4,34 @@ Topics: AWS Console Overview, Enable MFA, Create AWS budget alert
 
 Date: 8-10-2025
 
-## Account Setup Workflow
 
-This diagram illustrates the two main workflows described in the text: securing the account via MFA and setting up cost controls via Budgets.
+### Account Setup Workflow
 
 ```mermaid
 flowchart TD
     Start([Start: Log into AWS Console]) --> Dashboard[AWS Dashboard Overview]
     
-    Dashboard --> Explore[Explore Components]
-    Explore --> Widgets[Widgets & Search Bar]
-    Explore --> Regions[Select Region]
+    Dashboard --> Explore[Explore Components<br/>Widgets & Search Bar<br/>Select Region]
     
-    Dashboard --> Security[Security Credentials]
-    Dashboard --> Billing[Billing & Cost Mgt]
-
-    subgraph MFA_Setup [" Enable MFA "]
-        direction TB
-        Security --> AssignMFA[Assign MFA Device]
-        AssignMFA --> Choice{Choose Method}
-        
-        Choice -- Passkey --> Passkey[Passkey/Biometric]
-        Passkey --> BioPrompt[Approve on Phone]
-        
-        Choice -- Auth App --> AuthApp[Authenticator App]
-        AuthApp --> ScanQR[Scan QR Code]
-        ScanQR --> EnterCode[Enter 6-Digit Code]
-        
-        BioPrompt --> MFA_Done[MFA Enabled]
-        EnterCode --> MFA_Done
-    end
-
-    subgraph Budget_Setup [" Create Budget Alert "]
-        direction TB
-        Billing --> Features[Select Budgets]
-        Features --> CreateB[Create Budget]
-        CreateB --> Type[Select Cost Budget]
-        Type --> Details["Set Amount (e.g., $20)"]
-        Details --> Alert["Set Alert Threshold (80%)"]
-        Alert --> Email[Enter Email Recipient]
-        Email --> Finalize[Budget Created]
-    end
-
-    MFA_Done --> EndNode([Setup Complete])
-    Finalize --> EndNode
+    Dashboard --> Security[Security Credentials<br/>→ Assign MFA Device]
+    Dashboard --> Billing[Billing & Cost Management<br/>→ Budgets]
+    
+    Security --> MFA_Process[MFA Setup Process]
+    MFA_Process --> Choice{Choose Method}
+    Choice -->|Passkey/Biometric| Passkey[Passkey on Phone<br/>Approve Prompt]
+    Choice -->|Auth App| AuthApp[Authenticator App<br/>Scan QR → Enter Code]
+    Passkey --> MFA_Enabled[MFA Enabled ✓]
+    AuthApp --> MFA_Enabled
+    
+    Billing --> Budget_Process[Budget Setup Process]
+    Budget_Process --> CreateB[Create Budget<br/>Cost Budget]
+    CreateB --> Amount[Set Amount<br/>e.g., $20]
+    Amount --> Threshold[Set Alert Threshold<br/>80%]
+    Threshold --> Email[Enter Email<br/>Recipient]
+    Email --> Budget_Enabled[Budget Alert Created ✓]
+    
+    MFA_Enabled --> Complete([Setup Complete])
+    Budget_Enabled --> Complete
 ```
 
 ## AWS Console Overview

@@ -9,11 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 import matplotlib.pyplot as plt
-```
 
-Load and Explore Data
-
-```python
+# Load and Explore Data
 # Load the dataset
 data = pd.read_csv("Exam.csv")
 df = pd.DataFrame(data)
@@ -21,26 +18,17 @@ df = pd.DataFrame(data)
 # Display the first few rows
 print("Dataset preview:")
 print(df.head())
-```
 
-Prepare Features and Target
-
-```python
+# Prepare Features and Target
 # Define features (X) and target (y)
 X = df[["Internal exam"]]
 y = df["External exam"]
-```
 
-Split Data
-
-```python
+# Split Data
 # Split into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-```
 
-Train the Linear Regression Model
-
-```python
+# Train the Linear Regression Model
 # Initialize and train the model
 model = LinearRegression()
 model.fit(X_train, y_train)
@@ -48,11 +36,8 @@ model.fit(X_train, y_train)
 # Display model parameters
 print(f"Model Intercept: {model.intercept_:.2f}")
 print(f"Model Coefficient: {model.coef_[0]:.2f}")
-```
 
-Make Predictions
-
-```python
+# Make Predictions
 # Predict on test data
 y_pred = model.predict(X_test)
 
@@ -63,11 +48,8 @@ mse = mean_squared_error(y_test, y_pred)
 
 print(f"R-squared Score: {r2:.4f}")
 print(f"Mean Squared Error: {mse:.2f}")
-```
 
-Visualize Results
-
-```python
+# Visualize Results
 # Scatter plot of actual vs predicted values
 plt.scatter(X_test, y_test, color="blue", label="Actual Data", alpha=0.7)
 plt.plot(X_test, y_pred, color="red", label="Regression Line", linewidth=2)
@@ -85,53 +67,7 @@ Use Exam dataset, apply linear regression and analyse if internal marks increase
 
 Plot the graph and give intercept and co-efficient values.
 
-____
-
-This exercise demonstrates simple linear regression to determine the relationship between internal and external exam marks. Specifically, we calculate how much the dependent variable (External marks) changes for every 1-unit increase in the independent variable (Internal marks).
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_squared_error
-
-# 1. Load the dataset
-# Based on Lab 10, we use the Exam.csv dataset
-data = pd.read_csv("Exam.csv")
-df = pd.DataFrame(data)
-
-# 2. Prepare Features (X) and Target (y)
-X = df[["Internal exam"]] # Independent variable
-y = df["External exam"]   # Dependent variable
-
-# 3. Split Data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# 4. Train the Model
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# 5. Extract Parameters
-intercept = model.intercept_
-coefficient = model.coef_[0]
-
-print(f"Model Intercept (c): {intercept:.2f}")
-print(f"Model Coefficient (m): {coefficient:.2f}")
-
-# 6. Make Predictions and Evaluate
-y_pred = model.predict(X_test)
-print(f"R-squared Score: {r2_score(y_test, y_pred):.4f}")
-
-# 7. Visualization
-plt.scatter(X_test, y_test, color="blue", label="Actual Data")
-plt.plot(X_test, y_pred, color="red", label="Regression Line")
-plt.xlabel("Internal Exam Score")
-plt.ylabel("External Exam Score")
-plt.title("Linear Regression: Internal vs External Exam Scores")
-plt.legend()
-plt.show()
-```
+The code above demonstrates the implementation as described in the exercise.
 
 ### Analysis and Interpretation
 

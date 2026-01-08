@@ -34,16 +34,32 @@ flowchart TD
     Files -->|Response| User
 ```
 
-When you enable "Static Website Hosting," your S3 bucket acts like a web server, and AWS provides a public website URL to access it. You can create a multi-page static website (e.g., `index.html`, `about.html`, `contact.html`) and upload it to S3. Links within these pages allow users to navigate between them just like a normal website.
-
-### Create a Multi-Page Static Website on S3
+### Improved S3 Static Website Architecture
 
 ```mermaid
 flowchart TD
-    Create[Create Bucket] --> Upload[Upload Files]
-    Upload --> Enable[Enable Static Hosting]
-    Enable --> Policy[Add Bucket Policy]
-    Policy --> Access[Access Website URL]
+    User[Web User] -->|HTTP Request| S3[S3 Bucket<br/>Static Website Hosting]
+    
+    S3 --> Policy[Bucket Policy<br/>Public Read Access]
+    S3 --> Config[Static Website Config<br/>Index & Error Documents]
+    S3 --> Files[Static Files<br/>HTML, CSS, JS, Images]
+    
+    Policy -.->|Enables| Access[Public Access]
+    Config -.->|Configures| Hosting[Website Hosting]
+    Files -.->|Serves| User
+```
+
+When you enable "Static Website Hosting," your S3 bucket acts like a web server, and AWS provides a public website URL to access it. You can create a multi-page static website (e.g., `index.html`, `about.html`, `contact.html`) and upload it to S3. Links within these pages allow users to navigate between them just like a normal website.
+
+### Static Website Setup Flow
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Bucket[Create S3 Bucket<br/>Unique Name<br/>ACLs Enabled]
+    Bucket --> Files[Upload Website Files<br/>HTML, CSS, JS, Images]
+    Files --> Hosting[Enable Static Website Hosting<br/>Set Index & Error Documents]
+    Hosting --> Policy[Attach Bucket Policy<br/>Public Read Access]
+    Policy --> URL[Website URL Generated<br/>Access Your Site]
 ```
 
 **Step 1:** Create an S3 Bucket
@@ -184,22 +200,18 @@ CRR automatically copies objects from one S3 bucket (source) to another (destina
 > [!NOTE]
 > Cross-Region Replication **doubles your storage cost** (data in 2 regions) AND adds **Data Transfer costs** (paying to move data across the country).
 
+### Cross-Region Replication Flow
 
 ```mermaid
 flowchart TD
-    Upload[Upload New Object] --> Source[Source Bucket]
+    Upload[Upload Object] --> Source[Source Bucket<br/>Region A<br/>Versioning Enabled]
     
-    subgraph Region_A [Region A]
-        Source --> Ver_A[Versioning Enabled]
-    end
+    Source --> Rule[Replication Rule<br/>Configured]
+    Rule --> IAM[IAM Role<br/>S3 Replication Permissions]
     
-    Ver_A --> Rule{Replication Rule}
-    Rule -->|IAM Role| IAM[IAM Permissions]
+    IAM -->|Asynchronous Copy| Dest[Destination Bucket<br/>Region B<br/>Versioning Enabled]
     
-    subgraph Region_B [Region B]
-        IAM -->|Async Copy| Dest[Destination Bucket]
-        Dest --> Ver_B[Versioning Enabled]
-    end
+    Dest --> Replicated[Object Replicated<br/>Disaster Recovery<br/>Low Latency Access]
 ```
 
 ### Set Up CRR

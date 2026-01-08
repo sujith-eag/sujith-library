@@ -9,11 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
-```
 
-Load and Prepare Data
-
-```python
+# Load and Prepare Data
 # Load the Iris dataset
 iris = load_iris()
 
@@ -21,21 +18,15 @@ iris = load_iris()
 X_train, X_test, y_train, y_test = train_test_split(
     iris.data, iris.target, test_size=0.25, random_state=42
 )
-```
 
-Train the KNN Model
-
-```python
+# Train the KNN Model
 # Initialize KNN classifier with k=3
 model = KNeighborsClassifier(n_neighbors=3)
 
 # Train the model
 model.fit(X_train, y_train)
-```
 
-Make Predictions
-
-```python
+# Make Predictions
 # Predict on test data
 y_pred = model.predict(X_test)
 
@@ -43,11 +34,8 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {round(accuracy * 100, 2)}%")
 print("Predictions:", y_pred)
-```
 
-Visualize Results
-
-```python
+# Visualize Results
 # Scatter plot of predictions using first two features
 plt.scatter(X_test[:, 0], X_test[:, 1], c=y_pred, cmap="viridis", edgecolors='k')
 plt.xlabel("Sepal Length (cm)")

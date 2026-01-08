@@ -22,11 +22,7 @@ X, y = iris.data, iris.target
 
 # Split the data: 80% for training, 20% for testing
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-```
 
-Train the Logistic Regression Model
-
-```python
 # Initialize the Logistic Regression model
 model = LogisticRegression(max_iter=200)
 
@@ -36,19 +32,16 @@ model.fit(X_train, y_train)
 # Make Predictions on Test Data
 # Predict the target values for the test set
 y_pred = model.predict(X_test)
-```
 
-Evaluate Model Performance
-
-```python
+# Evaluate Model Performance
 # Confusion Matrix: Shows true positives, false positives, etc.
-confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 # Accuracy Score: Proportion of correct predictions
-accuracy_score(y_test, y_pred)
+print("Accuracy Score:", accuracy_score(y_test, y_pred))
 
 # Classification Report: Precision, recall, F1-score for each class
-classification_report(y_test, y_pred)
+print("Classification Report:\n", classification_report(y_test, y_pred))
 ```
 
 ### Exercise 4: Classification using Logistic Regression
@@ -57,37 +50,7 @@ Using iris dataset split the dataset and apply Logistic Regression, print the co
 
 Explain why data preprocessing is important before training a machine learning model
 
-____
-
-This exercise focuses on implementing a classification model using the Iris dataset, which contains measurements for three species of flowers.
-
-```python
-import numpy as np
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
-
-# 1. Load the Iris Dataset
-iris = load_iris()
-X, y = iris.data, iris.target
-
-# 2. Split Data into Training (80%) and Testing (20%) Sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# 3. Train the Logistic Regression Model
-# Increasing max_iter ensures the solver converges on a solution
-model = LogisticRegression(max_iter=200)
-model.fit(X_train, y_train)
-
-# 4. Make Predictions on Test Data
-y_pred = model.predict(X_test)
-
-# 5. Evaluate Model Performance
-print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
-print("\nAccuracy Score:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
-```
+The code above demonstrates the implementation as described in the exercise. Below is the theory explanation.
 
 ### Theory: Role of Preprocessing for Classification
 

@@ -28,19 +28,13 @@ flowchart TD
     User[User] --> ALB[Application Load Balancer]
     ALB --> TG[Target Group]
     
-    subgraph ASG[Auto Scaling Group]
-        EC2_1[EC2 Instance 1]
-        EC2_2[EC2 Instance 2]
-        EC2_3[EC2 Instance 3]
-    end
-    
-    TG --> EC2_1
-    TG --> EC2_2
-    TG --> EC2_3
+    TG --> EC2_1[EC2 Instance 1<br/>Auto Scaling Group]
+    TG --> EC2_2[EC2 Instance 2<br/>Auto Scaling Group]
+    TG --> EC2_3[EC2 Instance 3<br/>Auto Scaling Group]
     
     CW[CloudWatch Alarms] -.->|CPU > 60%| ScaleOut[Scale Out Policy]
     CW -.->|CPU < 20%| ScaleIn[Scale In Policy]
-    ScaleOut -.-> ASG
+    ScaleOut -.-> ASG[Auto Scaling Group]
     ScaleIn -.-> ASG
 ```
 

@@ -175,7 +175,9 @@ flowchart LR
 
 **Step 10:** Stop the Instance: Return to the EC2 Dashboard → Select your instance → click Instance State → Stop Instance.
 
-> **Note on Formats:** Use **.ppk** format key when connecting with PuTTY. Use **.pem** format key when connecting with PowerShell / Linux / macOS terminal.
+> **Note on Formats:** 
+> Use **.ppk** format key when connecting with PuTTY. 
+> Use **.pem** format key when connecting with PowerShell / Linux / macOS terminal.
 
 
 >[!IMPORTANT] Console Connect method.

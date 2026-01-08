@@ -10,9 +10,9 @@ Consider a medical scenario where a certain condition exists in 1% of the popula
 
 If an individual tests positive, calculate the probability that they actually have the condition.
 
-### Given Probabilities
-
 ```python
+# Import necessary libraries (if needed, but not in this case)
+# Given Probabilities
 # Prior probability of having the disease
 p_disease = 0.01  # 1%
 
@@ -25,78 +25,27 @@ p_negative_given_no_disease = 0.90
 # Calculate complementary probabilities
 p_no_disease = 1 - p_disease  # 99%
 p_positive_given_no_disease = 1 - p_negative_given_no_disease  # 10%
-```
 
-### Apply Bayes' Theorem
-
-Bayes' theorem: `P(Disease | Positive) = [P(Positive | Disease) × P(Disease)] / P(Positive)`
-
-Where `P(Positive) = P(Positive | Disease) × P(Disease) + P(Positive | No Disease) × P(No Disease)`
-
-```python
-# Calculate the total probability of positive test result
+# Apply Bayes' Theorem
+# Total probability of positive test result
 p_positive = (p_positive_given_disease * p_disease) + (p_positive_given_no_disease * p_no_disease)
 
-# Apply Bayes' theorem
+# Posterior probability
 p_disease_given_positive = (p_positive_given_disease * p_disease) / p_positive
-```
 
-Display Results
-
-```python
+# Display Results
 print("Prior probability of disease:", p_disease)
-
 print("Probability of positive test given disease:", p_positive_given_disease)
-
 print("Probability of positive test given no disease:", p_positive_given_no_disease)
-
 print("Total probability of positive test:", p_positive)
-
 print(f"Probability of having disease given positive test: {p_disease_given_positive:.4f} ({p_disease_given_positive*100:.2f}%)")
 ```
-
 
 ## Exercise 8: Bayes' Theorem Case Study
 
 Consider a medical scenario where there is a certain condition that exists in 1% of the population. A diagnostic test for this condition has an accuracy of 98% in correctly identifying the individuals with the condition and it correctly identifies individuals without the condition 90% of the time. If an individual tests positive for the condition, calculate the probability that the individual actually has the condition.
 
-____
-
-This exercise applies **Bayes' Theorem** to a medical diagnostic scenario to calculate the "Post-test Probability"—the likelihood that a patient has a disease given a positive test result.
-
-Problem Parameters
-
-- **Prior Probability ($P(\text{Disease})$)**: $1\%$ or $0.01$.
-    
-- **Sensitivity ($P(\text{Positive} | \text{Disease})$)**: $98\%$ or $0.98$.
-    
-- **Specificity ($P(\text{Negative} | \text{No Disease})$)**: $90\%$ or $0.90$.
-    
-```python
-# 1. Given Probabilities
-p_disease = 0.01  
-p_positive_given_disease = 0.98  
-p_negative_given_no_disease = 0.90
-
-# 2. Calculate complementary probabilities
-p_no_disease = 1 - p_disease  # 99%
-p_positive_given_no_disease = 1 - p_negative_given_no_disease  # 10% (False Positive Rate)
-
-# 3. Apply Bayes' Theorem
-# Total probability of a positive test P(Positive)
-p_positive = (p_positive_given_disease * p_disease) + \
-             (p_positive_given_no_disease * p_no_disease)
-
-# Posterior probability P(Disease | Positive)
-p_disease_given_positive = (p_positive_given_disease * p_disease) / p_positive
-
-# 4. Display Results
-print(f"Total probability of testing positive: {p_positive:.4f}")
-print(f"Probability of having the disease given a positive test: {p_disease_given_positive:.4f}")
-print(f"Percentage: {p_disease_given_positive * 100:.2f}%")
-```
-
----
+The code above demonstrates the implementation as described in the exercise.
 
 ### Theoretical Explanation
 
@@ -111,7 +60,7 @@ In this specific medical context, the formula translates to:
 2. **Evidence (Denominator)**: The total probability of testing positive, which includes both **True Positives** (sick people who test positive) and **False Positives** (healthy people who test positive).
     
 3. **Posterior Probability**: The updated probability after seeing the test result ($~8.99\%$).
-    
+
 ### Analysis of Results
 
 - **Low Predictive Value**: Even though the test is $98\%$ sensitive and $90\%$ specific, the probability of actually having the disease after a positive test is only about **$9\%$**.

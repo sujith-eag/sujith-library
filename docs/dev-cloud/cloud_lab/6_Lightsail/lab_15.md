@@ -1,10 +1,40 @@
 # Hosting a WordPress Website on Amazon Lightsail
 
-## Prerequisites
+## Overview
 
-- An active AWS account with billing enabled.
+This lab guides you through deploying a WordPress website using Amazon Lightsail, AWS's simplified cloud platform. You'll create a virtual server, install WordPress with one-click deployment, configure the site, and secure it with HTTPS and backups.
+
+### Key Concepts
+
+| Component | Description |
+|-----------|-------------|
+| **Lightsail Instance** | Simplified EC2 virtual machine with fixed pricing |
+| **WordPress Blueprint** | Pre-configured LAMP stack (Linux, Apache, MySQL, PHP) with WordPress |
+| **Static IP** | Fixed public IP address for consistent access |
+| **SSL Certificate** | Free HTTPS encryption via Let's Encrypt |
+| **Snapshots** | Point-in-time backups of your instance |
+
+### Prerequisites
+
+- An active AWS account with billing enabled
 - Basic familiarity with web interfaces and WordPress (optional but helpful)
-- Free-tier eligibility for Lightsail (first-time users get 3 months free on 512 MB plan)
+- Free-tier eligibility for Lightsail (first-time users get 750 hours free on the $3.50/month plan)
+
+## Architecture Overview
+
+```mermaid
+flowchart TD
+    User[User] -->|HTTP/HTTPS| Lightsail[Lightsail Instance]
+    
+    Lightsail --> Apache[Apache Web Server]
+    Lightsail --> PHP[PHP]
+    Lightsail --> WordPress[WordPress CMS]
+    Lightsail --> MySQL[(MySQL Database)]
+    
+    Apache --> PHP
+    PHP --> WordPress
+    WordPress --> MySQL
+```
 
 ## What is Amazon Lightsail?
 
@@ -48,16 +78,16 @@ WordPress is a full-stack content management system (CMS) pre-installed on Light
 - **Database:** MySQL/MariaDB (Stores pages, media, lessons, posts, settings)
 - **Server:** Apache web server
 - **Hosting:** Lightsail VM + static IP + firewall
-    
 
-**Conclusion:** WordPress is a full-stack application (LAMP stack).
+> [!NOTE]
+> WordPress is a full-stack application (LAMP stack).
 
 ## Lightsail Free-Tier Eligibility
 
-- **Eligibility:** 3 months free for first-time users
-- **Plan:** Only for the 512 MB RAM plan ($3.50/month normally)
+- **Eligibility:** 750 hours free for first-time users (about 1 month)
+- **Plan:** Only for the $3.50/month plan (512 MB RAM)
 - **Performance:** Suitable for basic WordPress, but may be slow for multiple users or media-heavy sites
-- **Cost After Free-Tier:** ~₹350–₹400/month for 512 MB; upgrade to 1 GB RAM (~$5/month) for better performance
+- **Cost After Free-Tier:** ~$3.50/month for 512 MB; upgrade to 1 GB RAM (~$5/month) for better performance
 - **Note:** Free-tier applies per AWS account; charges start if you exceed limits or use paid features
 - **Recommended:** 1 GB RAM plan for better performance
 

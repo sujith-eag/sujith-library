@@ -2,65 +2,66 @@
 
 This lab covers loading datasets from CSV files, performing basic data exploration, and computing statistical measures on data columns.
 
-______
-
-Load and explore the credit card expense dataset `CC_Expense Dataset.csv`.
-
 ```python
-# Import pandas for data manipulation
 import pandas as pd
-
-# Load the dataset from CSV file
-data = pd.read_csv("CC_Expense.csv")
-
-# Display the first few rows
-data.head()
-
-# Display the last few rows
-data.tail()
-
-# Get the shape of the dataset (rows, columns)
-data.shape
-
-# Generate descriptive statistics
-data.describe()
-
-# Drop the 'SL_no' column as it's likely an index column
-data = data.drop("SL_no", axis=1)
+import numpy as np
+import matplotlib.pyplot as plt
 ```
 
-Load and analyze the startups dataset `50_startups.csv`, focusing on profit statistics.
+### Loading and Exploring the Credit Card Expense Dataset
+
+```python
+# Load the dataset from CSV file
+cc_data = pd.read_csv("CC_Expense.csv")
+
+# Display the first few rows
+cc_data.head()
+
+# Display the last few rows
+cc_data.tail()
+
+# Get the shape of the dataset (rows, columns)
+cc_data.shape
+
+# Generate descriptive statistics
+cc_data.describe()
+
+# Drop the 'SL_no' column as it's likely an index column
+cc_data = cc_data.drop("SL_no", axis=1)
+```
+
+### Loading and Analyzing the Startups Dataset
 
 ```python
 # Load the startups dataset
-data = pd.read_csv("50_startups.csv")
+startups_data = pd.read_csv("50_startups.csv")
 
 # Display the first few rows
-data.head()
+startups_data.head()
 
 # Get the shape of the dataset
-data.shape
+startups_data.shape
 
 # Calculate mean of Profit column
-data["Profit"].mean()
+startups_data["Profit"].mean()
 
 # Calculate median of Profit column
-data["Profit"].median()
+startups_data["Profit"].median()
 
 # Calculate mode of Profit column
-data["Profit"].mode()
+startups_data["Profit"].mode()
 
 # Get value counts for Profit column
-data["Profit"].value_counts()
+startups_data["Profit"].value_counts()
 
 # Calculate variance of Profit column
-data["Profit"].var()
+startups_data["Profit"].var()
 
 # Calculate standard deviation of Profit column
-data["Profit"].std()
+startups_data["Profit"].std()
 
 # Generate descriptive statistics for Profit column
-data["Profit"].describe()
+startups_data["Profit"].describe()
 ```
 
 
@@ -75,12 +76,7 @@ Explain why missing values needs to be eliminated before training a machine lear
 Plot a graph to understand the standard deviation of all the columns and analyse it's results    
 
 ```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
 # 1. Load the dataset
-# Based on Lab 2, we load the credit card expense data
 data = pd.read_csv("CC_Expense.csv")
 
 # 2. Display number of rows and columns
@@ -144,14 +140,9 @@ Before training a machine learning model, missing values must be handled for the
 
 Use `50_startups.csv`, give the basics and derive the mean, median and value counts for each column. Also plot a graph for the results and analyze the results. Explain why data preprocessing is important before training a machine learning model.
 
-____
-
 In this exercise, we analyze the `50_startups` dataset to understand the financial performance of various companies across different spending categories.
 
 ```python
-import pandas as pd
-import matplotlib.pyplot as plt
-
 # 1. Load the dataset
 data = pd.read_csv("50_startups.csv")
 
@@ -165,9 +156,9 @@ data.head()
 for column in data.columns:
     print(f"--- Statistics for {column} ---")
     if data[column].dtype != 'object':
-        data[column].mean()
-        data[column].median()
-    data[column].value_counts()
+        print(f"Mean: {data[column].mean()}")
+        print(f"Median: {data[column].median()}")
+    print(f"Value Counts:\n{data[column].value_counts()}")
 
 # 4. Plotting Results (Visualizing Profit distribution)
 plt.figure(figsize=(10, 6))

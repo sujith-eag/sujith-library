@@ -5,7 +5,11 @@ This lab demonstrates basic data manipulation using the Pandas library in Python
 ```python
 import pandas as pd  # Pandas for data manipulation
 import numpy as np   # NumPy for numerical operations and NaN handling
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
 ```
+
+### Creating and Exploring DataFrames
 
 Create a sample DataFrame with mixed data types. This DataFrame has three columns: col1 (integers), col2 (strings), col3 (integers)
 
@@ -51,54 +55,43 @@ df["col2"].unique()
 df["col1"].value_counts()
 ```
 
-Work with DataFrames containing NaN values.
+### Handling Missing Values and Sorting
+
+Work with DataFrames containing NaN values and perform sorting operations.
 
 ```python
-# Create a DataFrame with some NaN values
-df1 = pd.DataFrame({
-    "col1": [1, 2, 3, 4, 5],
-    "col2": ["abc", "def", np.nan, "xyz", "sss"],
-    "col3": [111, 222, 333, 444, np.nan]
-})
-
-df1
-
-# Count non-null values in col3
-df1["col3"].count()
-
-# Get unique values in col3
-df1["col3"].unique()
-
-# Get value counts for col3
-df1["col3"].value_counts()
-```
-
-Create another DataFrame and perform sorting and null checks.
-
-```python
-# Create DataFrame with more NaN values
-df1 = pd.DataFrame({
+# Create a DataFrame with NaN values
+df_with_nan = pd.DataFrame({
     "col1": [1, 2, 3, 4, 5, np.nan],
     "col2": ["abc", "def", "def", np.nan, "xyz", "sss"],
     "col3": [111, 222, 333, 444, np.nan, np.nan]
 })
 
-df1
+df_with_nan
+
+# Count non-null values in col3
+df_with_nan["col3"].count()
+
+# Get unique values in col3
+df_with_nan["col3"].unique()
+
+# Get value counts for col3
+df_with_nan["col3"].value_counts()
 
 # Sort values in col2
-df1["col2"].sort_values()
+df_with_nan["col2"].sort_values()
 
 # Sort the DataFrame by col2
-df1.sort_values("col2")
+df_with_nan.sort_values("col2")
 
 # Alternative sort
-df1.sort_values(by="col2")
+df_with_nan.sort_values(by="col2")
 
 # Check for null values
-df1.isnull()
+df_with_nan.isnull()
 
 # Drop rows with NaN
-df1.dropna()
+df_with_nan.dropna()
 ```
 
 
@@ -116,42 +109,39 @@ Feed any dataset into a script and perform the following:
 - h) Sort the values by a particular column.
 - i) Generate a plot and provide insights on what the visualization represents.
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
+Using the Iris dataset:
 
+```python
 # f) Convert data into a structured DataFrame
 iris = load_iris()
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-df['species'] = iris.target
+df_iris = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_iris['species'] = iris.target
 
 # a) Display the first 8 rows
-df.head(8)
+df_iris.head(8)
 
 # b) Display the last 8 rows
-df.tail(8)
+df_iris.tail(8)
 
 # c) Display total number of rows and columns
-df.shape
+df_iris.shape
 
 # d) Count for a particular column
-df['sepal length (cm)'].count()
+df_iris['sepal length (cm)'].count()
 
 # e) Count unique values for a specific column
-df['species'].unique()
+df_iris['species'].unique()
 
 # g) Perform value counts for each column
-df['species'].value_counts()
+df_iris['species'].value_counts()
 
 # h) Sort the values by a particular column
-sorted_df = df.sort_values(by='sepal length (cm)', ascending=False)
+sorted_df = df_iris.sort_values(by='sepal length (cm)', ascending=False)
 sorted_df.head()
 
 # i) Generate a plot and provide insights
 plt.figure(figsize=(8, 6))
-plt.scatter(df['sepal length (cm)'], df['sepal width (cm)'], c=df['species'])
+plt.scatter(df_iris['sepal length (cm)'], df_iris['sepal width (cm)'], c=df_iris['species'])
 plt.title("Sepal Length vs Width")
 plt.xlabel("Sepal Length (cm)")
 plt.ylabel("Sepal Width (cm)")

@@ -2,7 +2,29 @@
 
 This lab provides a complete walkthrough for deploying a Flask application integrated with Amazon DynamoDB on AWS Elastic Beanstalk, demonstrating a serverless database architecture with managed application hosting.
 
-## System Architecture
+## Overview
+
+This lab builds on Lab 20 by integrating a Flask application with DynamoDB for data persistence. You'll deploy a RESTful API that performs CRUD operations on a DynamoDB table, all managed through Elastic Beanstalk's PaaS environment.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Boto3** | AWS SDK for Python to interact with DynamoDB |
+| **RESTful API** | HTTP-based interface for CRUD operations |
+| **IAM Instance Profile** | Role attached to EC2 for secure AWS service access |
+| **Environment Variables** | Configuration values passed to application at runtime |
+| **Runtime.txt** | Specifies Python version for Elastic Beanstalk |
+| **JSON Responses** | Structured data format for API responses |
+
+### Prerequisites
+
+- Active AWS account with billing enabled
+- IAM permissions for Elastic Beanstalk, EC2, and DynamoDB
+- Basic knowledge of Flask, REST APIs, and NoSQL databases
+- Completion of Lab 18 (DynamoDB basics) recommended
+
+## System Architecture 1
 
 ```mermaid
 flowchart TD
@@ -41,6 +63,33 @@ flowchart TD
     end
     
     Deployment --> ELB
+```
+
+### System Architecture 2
+
+```mermaid
+flowchart TD
+    Client[Client Application] -->|HTTP Requests| EB[Elastic Beanstalk Environment]
+    
+    EB --> EC2[EC2 Instance<br/>with IAM Role]
+    EC2 --> Flask[Flask REST API<br/>Routes: /student]
+    
+    Flask -->|CRUD Operations| DDB[(DynamoDB Table<br/>Students<br/>PK: StudentID)]
+    
+    Role[Instance Profile Role] --> Policy[DynamoDB Access Policy<br/>Read/Write Items]
+    
+    EC2 -.->|Attached| Role
+    Role -.->|Grants Access| DDB
+    
+    Client -->|POST /student| Flask
+    Client -->|GET /student/<id>| Flask
+    Client -->|PUT /student/<id>| Flask
+    Client -->|DELETE /student/<id>| Flask
+    
+    Code[Flask Code + Config] --> Zip[Create ZIP Package]
+    Zip --> Upload[Upload to EB]
+    Upload --> Deploy[EB Deploys to EC2]
+    Deploy --> EB
 ```
 
 ## Phase 1: Local Environment Preparation
@@ -84,22 +133,28 @@ def health():
 # CREATE
 @app.route("/student", methods=["POST"])
 def create_student():
-    data = request.get_json()
-    table.put_item(Item={
-        "StudentID": data["StudentID"],
-        "Name": data["Name"],
-        "Dept": data.get("Dept", "")
-    })
-    return jsonify(message="Student created"), 201
+    try:
+        data = request.get_json()
+        table.put_item(Item={
+            "StudentID": data["StudentID"],
+            "Name": data["Name"],
+            "Dept": data.get("Dept", "")
+        })
+        return jsonify(message="Student created"), 201
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 # READ
 @app.route("/student/<student_id>", methods=["GET"])
 def get_student(student_id):
-    resp = table.get_item(Key={"StudentID": student_id})
-    item = resp.get("Item")
-    if not item:
-        return jsonify(error="Student not found"), 404
-    return jsonify(item)
+    try:
+        resp = table.get_item(Key={"StudentID": student_id})
+        item = resp.get("Item")
+        if not item:
+            return jsonify(error="Student not found"), 404
+        return jsonify(item)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 # UPDATE
 @app.route("/student/<student_id>", methods=["PUT"])
@@ -124,9 +179,9 @@ def delete_student(student_id):
 #### requirements.txt
 
 ```text
-Flask==3.0.0
-boto3==1.34.0
-gunicorn==21.2.0
+Flask
+boto3
+gunicorn
 ```
 
 #### Procfile
@@ -175,7 +230,7 @@ The IAM role grants EC2 instances permission to access DynamoDB.
 8. Click **Create role**
 
 > [!TIP]
-> Once this role is created, it will be available for all future Elastic Beanstalk environments. You only need to create it once per AWS account.
+> Once this role is created, it will be available for all future Elastic Beanstalk environments. You only need to create it once per AWS account. For production, create a custom policy with minimal DynamoDB permissions instead of full access.
 
 ## Phase 3: Elastic Beanstalk Deployment
 
@@ -310,6 +365,15 @@ curl -X DELETE http://<your-eb-domain>/student/101
 2. Click **Explore table items**
 3. Confirm the data reflects your test operations
 
+## Validation
+
+- **Local Setup:** Verify all files are created and Flask app runs locally.
+- **Packaging:** Confirm ZIP contains files at root level.
+- **Deployment:** Check EB environment health is "OK" and domain is accessible.
+- **API Testing:** Test all CRUD endpoints with curl commands.
+- **Database:** Verify data persistence in DynamoDB console.
+- **Environment Variables:** Ensure TABLE_NAME and AWS_REGION are set.
+
 ## Common Issues & Solutions
 
 ### Issue: Application returns 500 errors
@@ -344,6 +408,12 @@ curl -X DELETE http://<your-eb-domain>/student/101
 1. Go to **Configuration** → **Security** → **Edit**
 2. Verify **IAM instance profile** is set to `EB-EC2-DynamoDB-Role`
 3. Confirm role has `AmazonDynamoDBFullAccess` policy attached
+
+## Cost Considerations
+
+- **Elastic Beanstalk:** ~$0.01/hour for t3.micro EC2 (free tier eligible)
+- **DynamoDB:** On-demand pricing (~$1.25/million writes, $0.25/million reads)
+- **Tip:** Terminate EB environment and delete DynamoDB table immediately after lab. Monitor via AWS Cost Explorer.
 
 ## Cleanup Instructions
 
@@ -383,13 +453,6 @@ An EC2 instance profile is a container for an IAM role that allows EC2 instances
 - Security: No credentials in source code
 - Easy updates without redeploying code
 
-## Learning Outcomes
+## Result
 
-After completing this lab, you should understand:
-
-- How to structure a Flask application for Elastic Beanstalk
-- IAM roles and policies for service-to-service authentication
-- DynamoDB as a NoSQL database for REST APIs
-- Environment-based configuration management
-- Deployment workflows for managed PaaS platforms
-- CRUD operations via RESTful endpoints
+Successfully deployed a Flask REST API integrated with DynamoDB on Elastic Beanstalk. Demonstrated serverless database operations, secure IAM access, and managed application deployment with full CRUD functionality.

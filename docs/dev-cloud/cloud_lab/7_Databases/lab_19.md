@@ -1,25 +1,44 @@
 # ElastiCache (Redis) as an In-Memory Cache
 
-## Prerequisites
+## Overview
+
+This lab demonstrates Amazon ElastiCache using Redis OSS as an in-memory caching layer to improve application performance. You'll deploy a Redis cluster, connect from an EC2 instance, and perform basic cache operations like storing, retrieving, and expiring data.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **ElastiCache** | Managed in-memory caching service compatible with Redis/Memcached |
+| **Redis OSS** | Open-source in-memory data structure store used as cache |
+| **Valkey** | Redis-compatible client used in Amazon Linux 2023 |
+| **TTL (Time To Live)** | Automatic expiration of cached data |
+| **Cache Hit/Miss** | Data found in cache (hit) or fetched from DB (miss) |
+| **Subnet Groups** | Define subnets for ElastiCache clusters in VPC |
+
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for ElastiCache and EC2
 - Basic knowledge of Redis and caching concepts
 
-## Objective
+### Objective
 
 To implement Amazon ElastiCache (Redis) as an in-memory caching service by deploying a Redis cluster and performing basic cache operations from an EC2 instance.
 
-## Application-Level Data Flow
+### ElastiCache Data Flow
 
 ```mermaid
 flowchart TD
-    User[User Request] --> App[Application]
-    App --> Cache{Check<br/>ElastiCache<br/>Redis}
-    Cache -->|Data Exists| ReturnCache[Return from Cache<br/>FAST]
-    Cache -->|Data Missing| FetchDB[Fetch from RDS]
-    FetchDB --> StoreCache[Store in Cache]
-    StoreCache --> ReturnData[Return to User]
+    User[User Request] --> App[Application Layer]
+    
+    App --> Cache{Data in Cache?<br/>Check ElastiCache Redis}
+    
+    Cache -->|HIT - Data Found| ReturnCache[Return Cached Data<br/>⚡ Fast Response]
+    Cache -->|MISS - Data Not Found| FetchDB[Fetch from Database<br/>RDS/MySQL]
+    
+    FetchDB --> StoreCache[Store in Cache<br/>Set TTL]
+    StoreCache --> ReturnData[Return Fresh Data]
+    
     ReturnCache --> User
     ReturnData --> User
 ```
@@ -307,6 +326,13 @@ EXIT
 - Temporary storage and TTL behavior observed
 - Redis used as a cache, not as a primary database
 
+## Validation
+
+- **EC2 Setup:** Confirm instance is running, valkey-cli installed, and connected to Redis.
+- **ElastiCache Cluster:** Verify status is "Available" and endpoint is accessible.
+- **Cache Operations:** Test SET/GET, INCR, TTL, and DEL commands.
+- **Expiry:** Confirm data is removed after TTL expires.
+- **Security:** Ensure only authorized EC2 can connect via security groups.
 
 ## Common Errors & Quick Fix
 
@@ -322,8 +348,7 @@ EXIT
 ## Cost Considerations
 
 - **Pricing:** ElastiCache ~$0.02/hour for cache.t4g.micro; no free tier
-- **Tip:** Delete clusters immediately after lab to avoid charges. Monitor via CloudWatch
-
+- **Tip:** Delete clusters immediately after lab to avoid charges. Monitor via CloudWatch and set billing alerts.
 
 ## Cleanup (Mandatory)
 
@@ -337,8 +362,7 @@ EC2 → Instances → **Terminate** `RedisClient-AL2023`
 
 **Step 3: Optional**
 
-Delete unused security groups
-
+Delete unused security groups and subnet groups
 
 ## Redis Commands Explanation
 
@@ -350,13 +374,13 @@ Delete unused security groups
 > [!NOTE]
 > The above commands simulate application caching behavior. Cached data is temporary and stored in memory. After expiry, the application would fetch fresh data from the database again.
 
-
 ## Integrating with RDS for Full Workflow
 
 To test the complete "database + cache" setup:
 
 1. Create an RDS MySQL instance (as in Lab 17)
 2. On EC2, install Python and run a script that checks Redis first, then fetches from RDS if missing
+   - Install dependencies: `pip3 install redis mysql-connector-python`
 3. Example Python snippet:
 
 ```python
@@ -368,14 +392,20 @@ db = mysql.connector.connect(host='rds-endpoint', user='admin', password='pwd', 
 
 def get_data(key):
     if r.exists(key):
-        return r.get(key)
+        return r.get(key).decode('utf-8') if r.get(key) else None
     else:
         # Fetch from RDS
         cursor = db.cursor()
         cursor.execute("SELECT value FROM table WHERE id=%s", (key,))
         data = cursor.fetchone()
-        r.set(key, data, ex=300)  # Cache for 5 mins
-        return data
+        if data:
+            r.set(key, str(data[0]), ex=300)  # Cache for 5 mins
+            return str(data[0])
+        return None
 ```
 
 This demonstrates real-world caching.
+
+## Result
+
+Successfully deployed an ElastiCache Redis cluster and performed in-memory caching operations from an EC2 instance. Demonstrated key concepts like TTL, cache hits/misses, and integration with databases for improved application performance.

@@ -2,14 +2,28 @@
 
 Full Deployment on AWS EC2 + AWS RDS (MySQL)
 
-## Prerequisites
+## Overview
+
+This lab demonstrates deploying a complete web application on AWS, integrating Flask with a MySQL database hosted on RDS. You'll build user registration and login functionality, learning cloud deployment, database connectivity, and security best practices.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **AWS EC2** | Virtual server for hosting the Flask application |
+| **AWS RDS** | Managed relational database service (MySQL) |
+| **Flask Routing** | Handling different URL endpoints for registration and login |
+| **Database Connectivity** | Using mysql-connector-python to interact with RDS |
+| **Security Groups** | AWS firewall rules for controlling traffic between EC2 and RDS |
+
+### Prerequisites
 
 - Active AWS account with billing enabled
 - Basic knowledge of Python, Flask, SQL, and AWS (EC2, RDS)
 - IAM permissions for EC2 and RDS creation
-- Free-tier eligible for EC2; note RDS incurs costs
+- Free-tier eligible for EC2; note RDS incurs costs (~$10-20/month)
 
-## Objectives
+### Objectives
 
 To design and deploy a Python Flask web application on an AWS EC2 instance that allows:
 
@@ -28,16 +42,10 @@ flowchart TD
     User[User Browser] --> Flask[Flask App on EC2]
     Flask --> RDS[(MySQL on RDS)]
     
-    subgraph AWS_Cloud[AWS Cloud]
-        subgraph EC2_Instance[EC2 Instance]
-            Flask
-        end
-        
-        subgraph RDS_Instance[RDS Instance]
-            RDS
-        end
-    end
+    AWS[Amazon Web Services] --> EC2[EC2 Instance<br/>Flask App]
+    AWS --> RDS_Instance[RDS Instance<br/>MySQL Database]
 ```
+
 
 **Components:**
 
@@ -105,6 +113,9 @@ db_config = {
 }
 ```
 
+> [!IMPORTANT]
+> Never hardcode credentials in production. Use AWS Secrets Manager or environment variables.
+
 ### app.py
 
 The main application logic handling routing and database connectivity.
@@ -129,24 +140,28 @@ def home():
 
 @app.route('/register', methods=['POST'])
 def register():
-    name = request.form.get('uname')
-    password = request.form.get('pwd')
+    name = request.form.get('uname', '').strip()
+    password = request.form.get('pwd', '').strip()
     if not name or not password:
-        return "Error: Both fields required", 400
+        return render_template('error.html', message="Both fields are required"), 400
     
     conn = get_connection()
     if not conn:
-        return "Database error", 500
+        return render_template('error.html', message="Database connection failed"), 500
     try:
         cur = conn.cursor()
         cur.execute("INSERT INTO users (name, password) VALUES (%s, %s)", (name, password))
         conn.commit()
         return render_template('success.html')
+    except mysql.connector.IntegrityError:
+        return render_template('error.html', message="Username already exists"), 400
     except mysql.connector.Error as err:
-        return f"Registration error: {err}", 500
+        return render_template('error.html', message=f"Registration error: {err}"), 500
     finally:
-        cur.close()
-        conn.close()
+        if 'cur' in locals():
+            cur.close()
+        if conn:
+            conn.close()
 
 @app.route('/login')
 def login():
@@ -154,14 +169,14 @@ def login():
 
 @app.route('/validate', methods=['POST'])
 def validate():
-    name = request.form.get('uname')
-    password = request.form.get('pwd')
+    name = request.form.get('uname', '').strip()
+    password = request.form.get('pwd', '').strip()
     if not name or not password:
-        return "Error: Both fields required", 400
+        return render_template('error.html', message="Both fields are required"), 400
     
     conn = get_connection()
     if not conn:
-        return "Database error", 500
+        return render_template('error.html', message="Database connection failed"), 500
     try:
         cur = conn.cursor()
         cur.execute("SELECT * FROM users WHERE name = %s AND password = %s", (name, password))
@@ -169,29 +184,137 @@ def validate():
         if user:
             return render_template('welcome.html', username=name)
         else:
-            return render_template('error.html')
+            return render_template('error.html', message="Invalid username or password")
     except mysql.connector.Error as err:
-        return f"Login error: {err}", 500
+        return render_template('error.html', message=f"Login error: {err}"), 500
     finally:
-        cur.close()
-        conn.close()
+        if 'cur' in locals():
+            cur.close()
+        if conn:
+            conn.close()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)  # Debug=False for security
 ```
+
+> [!WARNING]
+> Passwords are stored in plain text for simplicity. In production, use hashing (e.g., bcrypt) and implement CSRF protection, input sanitization, and rate limiting.
 
 
 ## HTML Templates
 
 Place these files inside the `templates/` folder.
 
-| File | Purpose |
-|------|---------|
-| `register.html` | Form with `action="/register"` to accept user details |
-| `login.html` | Form with `action="/validate"` to check credentials |
-| `welcome.html` | Displays `{{ username }}` upon successful login |
-| `success.html` | Confirmation message after registration |
-| `error.html` | "Invalid Username or Password" message |
+### register.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 300px; }
+        input { margin-bottom: 10px; padding: 5px; width: 100%; }
+        button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>User Registration</h2>
+    <form action="/register" method="post">
+        Name: <input type="text" name="uname" required><br><br>
+        Password: <input type="password" name="pwd" required><br><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+</body>
+</html>
+```
+
+### login.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 300px; }
+        input { margin-bottom: 10px; padding: 5px; width: 100%; }
+        button { padding: 10px; background-color: #2196F3; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0b7dda; }
+    </style>
+</head>
+<body>
+    <h2>User Login</h2>
+    <form action="/validate" method="post">
+        Name: <input type="text" name="uname" required><br><br>
+        Password: <input type="password" name="pwd" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/">Register here</a></p>
+</body>
+</html>
+```
+
+### welcome.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ username }}!</h2>
+    <p>You have successfully logged in.</p>
+    <a href="/login">Logout</a>
+</body>
+</html>
+```
+
+### success.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Registration Successful!</h2>
+    <p>Your account has been created.</p>
+    <a href="/login">Login now</a>
+</body>
+</html>
+```
+
+### error.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; color: red; }
+    </style>
+</head>
+<body>
+    <h2>Error</h2>
+    <p>{{ message }}</p>
+    <a href="/">Go back</a>
+</body>
+</html>
+```
 
 
 ## Deployment Steps
@@ -382,12 +505,20 @@ _Expect to see:_ `* Running on http://0.0.0.0:5000`
    - **Login:** Enter the credentials. It should redirect to the Welcome Page
    - **Verify DB:** Run `SELECT * FROM users;` in the MySQL prompt to see the records
 
+### Validation
+
+- **Registration:** Check that new users are added to the database.
+- **Login Success:** Valid credentials show welcome page.
+- **Login Failure:** Invalid credentials show error message.
+- **Database:** Confirm data persistence across app restarts.
+- **Security:** Ensure no plain text passwords are exposed in logs.
+
 ### Expected Output Summary
 
 - **Registration:** Successful insertion into RDS
 - **Login Match:** SELECT query validates credentials
 - **Welcome Page:** Displays "Welcome, `<username>`! You have successfully logged in."
-- **Error Page:** Displays "Invalid Username or Password" for incorrect details
+- **Error Page:** Displays appropriate error messages
 
 
 ## Cost Considerations
@@ -411,12 +542,28 @@ To avoid charges:
 
 - **VPC Mismatch:** Ensure EC2 and RDS are in the same VPC/subnet
 - **Security Groups:** Verify RDS allows MySQL (3306) from EC2 SG
-- **Credentials:** Check [db_config.py](db_config.py) for correct endpoint, user, password
+- **Credentials:** Check `db_config.py` for correct endpoint, user, password
 - **Public Access:** RDS should not have public access; connect via private IP
 - **MySQL Client:** Ensure mariadb105 is installed on EC2
 - **Firewall:** Check EC2 allows outbound to RDS on 3306
 
+### Application Errors
+
+- **Flask Not Starting:** Check for syntax errors in `app.py`; ensure dependencies are installed
+- **Template Not Found:** Verify files are in `templates/` folder with correct names
+- **Database Errors:** Check RDS status; ensure database and table exist
+- **Port Issues:** Confirm port 5000 is open in EC2 security group
+
+### Common Issues
+
+- **Import Errors:** Run `pip3 list` to verify mysql-connector-python is installed
+- **Environment Variables:** Set `RDS_HOST`, etc., before running the app
+- **Debugging:** Temporarily set `debug=True` in `app.py` for error details (remove for production)
+
 
 ## Result
 
-A fully working cloud-based registration and login system was successfully deployed using **Flask** (Backend), **EC2** (Application Server), and **AWS RDS** (Database).
+A fully working cloud-based registration and login system was successfully deployed using **Flask** (Backend), **EC2** (Application Server), and **AWS RDS** (Database). The application demonstrates secure database connectivity, user authentication, and proper error handling in a cloud environment.
+
+> [!NOTE]
+> This lab provides a foundation for building more complex web applications. Remember to implement security best practices like password hashing and HTTPS in production deployments.

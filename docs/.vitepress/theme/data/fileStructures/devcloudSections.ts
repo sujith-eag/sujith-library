@@ -22,62 +22,75 @@ export const cloud2Section = [
       {
         title: "Account & IAM",
         items: [
-          { label: "AWS Account Setup", link: "/dev-cloud/cclab/lab_1" },
-          { label: "IAM User & Group", link: "/dev-cloud/cclab/lab_2" },
+          { label: "AWS Account Setup", link: "/dev-cloud/cloud_lab/1_account_IAM/lab_1" },
+          { label: "IAM Users, Groups, Roles", link: "/dev-cloud/cloud_lab/1_account_IAM/lab_2" },
         ]
       },
       {
         title: "S3 Storage",
         items: [
-          { label: "S3 Introduction", link: "/dev-cloud/cclab/lab_3" },
-          { label: "S3 Hosting & Replication", link: "/dev-cloud/cclab/lab_4" },
+          { label: "S3 Introduction", link: "/dev-cloud/cloud_lab/2_S3/lab_3" },
+          { label: "S3 Advanced Features", link: "/dev-cloud/cloud_lab/2_S3/lab_4" },
         ]
       },
       {
-        title: "EC2 Instances",
+        title: "EC2 Compute",
         items: [
-          { label: "Windows EC2 (RDP)", link: "/dev-cloud/cclab/lab_5" },
-          { label: "Linux EC2 (SSH)", link: "/dev-cloud/cclab/lab_6" },
-          { label: "Static Website on EC2", link: "/dev-cloud/cclab/lab_7" },
-          { label: "Custom AMI", link: "/dev-cloud/cclab/lab_8" },
-          { label: "Mini Project", link: "/dev-cloud/cclab/lab_9" },
+          { label: "Windows EC2 Instance with RDP Access", link: "/dev-cloud/cloud_lab/3_EC2/lab_5" },
+          { label: "Linux EC2 Instance with SSH Access", link: "/dev-cloud/cloud_lab/3_EC2/lab_6" },
+          { label: "Static Website on EC2", link: "/dev-cloud/cloud_lab/3_EC2/lab_7" },
+          { label: "Using Custom AMI", link: "/dev-cloud/cloud_lab/3_EC2/lab_8" },
+          { label: "Deploying a Web Application", link: "/dev-cloud/cloud_lab/3_EC2/lab_9" },
         ]
       },
       {
-        title: "Networking (VPC)",
+        title: "VPC Networking",
         items: [
-          { label: "Custom VPC Setup", link: "/dev-cloud/cclab/lab_10" },
-          { label: "EC2 in Public/Private Subnet", link: "/dev-cloud/cclab/lab_11" },
+          { label: "Creating a Custom VPC", link: "/dev-cloud/cloud_lab/4_VPC/lab_10" },
+          { label: "EC2 in Public and Private Subnets", link: "/dev-cloud/cloud_lab/4_VPC/lab_11" },
         ]
       },
       {
-        title: "Load Balancing & Scaling",
+        title: "Load Balancing",
         items: [
-          { label: "ALB & Auto Scaling", link: "/dev-cloud/cclab/lab_12" },
-          { label: "Stress Testing (CloudWatch)", link: "/dev-cloud/cclab/lab_13" },
-          { label: "ASG Mini Project", link: "/dev-cloud/cclab/lab_14" },
+          { label: "Load-Balanced App with ALB and ASG", link: "/dev-cloud/cloud_lab/5_Load_Balancing/lab_12" },
+          { label: "Stress Testing EC2 Instance", link: "/dev-cloud/cloud_lab/5_Load_Balancing/lab_13" },
+          { label: "Application Load Balancer (ALB)", link: "/dev-cloud/cloud_lab/5_Load_Balancing/lab_14" },
         ]
       },
       {
-        title: "Managed Services",
+        title: "Lightsail",
         items: [
-          { label: "WordPress on Lightsail", link: "/dev-cloud/cclab/lab_15" },
-          { label: "Flask on Elastic Beanstalk", link: "/dev-cloud/cclab/lab_20" },
-          { label: "Flask + DynamoDB on EB", link: "/dev-cloud/cclab/lab_21" },
+          { label: "WordPress Website on Lightsail", link: "/dev-cloud/cloud_lab/6_Lightsail/lab_15" },
         ]
       },
       {
-        title: "Web Applications",
+        title: "Databases",
         items: [
-          { label: "Flask Basics", link: "/dev-cloud/cclab/lab_16" },
-          { label: "Flask + RDS MySQL", link: "/dev-cloud/cclab/lab_17" },
+          { label: "Building Flask Web Application", link: "/dev-cloud/cloud_lab/7_Databases/lab_16" },
+          { label: "Relational Database with Amazon RDS", link: "/dev-cloud/cloud_lab/7_Databases/lab_17" },
+          { label: "NoSQL Database with Amazon DynamoDB", link: "/dev-cloud/cloud_lab/7_Databases/lab_18" },
+          { label: "ElastiCache (Redis) as an In-Memory Cache", link: "/dev-cloud/cloud_lab/7_Databases/lab_19" },
         ]
       },
       {
-        title: "Data Services",
+        title: "Elastic Beanstalk",
         items: [
-          { label: "DynamoDB Operations", link: "/dev-cloud/cclab/lab_18" },
-          { label: "ElastiCache Redis", link: "/dev-cloud/cclab/lab_19" },
+          { label: "Flask Application on Elastic Beanstalk", link: "/dev-cloud/cloud_lab/8_Elastic_Beanstalk/lab_20" },
+          { label: "Flask + DynamoDB on Elastic Beanstalk", link: "/dev-cloud/cloud_lab/8_Elastic_Beanstalk/lab_21" },
+        ]
+      },
+      {
+        title: "CloudFormation",
+        items: [
+          { label: "Launching EC2, Apache using UserData", link: "/dev-cloud/cloud_lab/9_CloudFormation/lab_22" },
+          { label: "EC2 + S3 : using CloudFormation", link: "/dev-cloud/cloud_lab/9_CloudFormation/lab_23" },
+        ]
+      },
+      {
+        title: "AWS Lambda",
+        items: [
+          { label: "Input Processing, Business Logic Execution", link: "/dev-cloud/cloud_lab/10_AWS_Lambda/lab_24" },
         ]
       },
     ]

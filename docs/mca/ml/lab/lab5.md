@@ -15,71 +15,25 @@ data = load_iris()
 
 # Display dataset information
 data
-```
 
-Prepare and Standardize the Data
-
-```python
+# Prepare and Standardize the Data
 # Create DataFrame from features
 X = pd.DataFrame(data.data, columns=data.feature_names)
+y = data.target
 
 # Standardize the features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
-```
 
-Apply Principal Component Analysis
-
-```python
+# Apply Principal Component Analysis
 # Initialize PCA with 2 components
 pca = PCA(n_components=2)
 
 # Fit and transform the scaled data
 X_pca = pca.fit_transform(X_scaled)
-```
 
-Visualize the PCA Results
-
-```python
+# Visualize the PCA Results
 # Scatter plot of the two principal components
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data.target, cmap='viridis')
-plt.xlabel('Principal Component 1')
-plt.ylabel('Principal Component 2')
-plt.title('PCA of Iris Dataset')
-plt.colorbar(label='Target Class')
-plt.show()
-```
-
-
-## Exercise 6: Dimensionality Reduction (PCA)
-
-Use iris dataset and apply Principal component analysis, plot a graph and give its analysis.
-
-This exercise demonstrates how to use **Principal Component Analysis (PCA)** to reduce the complexity of the Iris dataset from four features down to two, while retaining as much variance (information) as possible.
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-
-# 1. Load the Iris Dataset
-data = load_iris()
-X = pd.DataFrame(data.data, columns=data.feature_names)
-y = data.target
-
-# 2. Standardize the Features
-# PCA is sensitive to variances of the initial variables; scaling is mandatory
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-# 3. Apply PCA
-# Reducing 4 features (sepal/petal length/width) to 2 principal components
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_scaled)
-
-# 4. Visualize the PCA Results
 plt.figure(figsize=(8, 6))
 scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis', edgecolors='k')
 plt.xlabel('Principal Component 1')
@@ -90,7 +44,11 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
----
+## Exercise 6: Dimensionality Reduction (PCA)
+
+Use iris dataset and apply Principal component analysis, plot a graph and give its analysis.
+
+The code above demonstrates the implementation as described in the exercise.
 
 ### Analysis of PCA Results
 
