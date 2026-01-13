@@ -16,15 +16,17 @@ An architectural pattern description should include:
     
 5. **Usage Guide**: Information on when it is appropriate to use, along with strengths and weaknesses.
 
-> [!NOTE] Practice Questions
->
-> - Briefly explain the **repository model** and the **client-server model**. Draw the repository architecture for an IDE and discuss advantages and disadvantages.
->
-> - Discuss the **Layered architecture** with an example; state its advantages and disadvantages.
->
-> - What is an **MVC pattern**? Illustrate the Model-View-Controller model with a diagram and an example.
->
-> - Explain what **design patterns** are and briefly discuss the **Observer** pattern. Sketch an architecture for an ATM machine and indicate any relevant design patterns used.
+::: info Practice Questions
+
+- Briefly explain the **repository model** and the **client-server model**. Draw the repository architecture for an IDE and discuss advantages and disadvantages.
+
+- Discuss the **Layered architecture** with an example; state its advantages and disadvantages.
+
+- What is an **MVC pattern**? Illustrate the Model-View-Controller model with a diagram and an example.
+
+- Explain what **design patterns** are and briefly discuss the **Observer** pattern. Sketch an architecture for an ATM machine and indicate any relevant design patterns used.
+
+:::
 
     
 ## 1. Model-View-Controller (MVC) Pattern

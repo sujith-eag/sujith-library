@@ -68,41 +68,37 @@ export const mcaSESection = [
       {
         title: "Requirements Engineering",
         items: [
-          { label: "RE Fundamentals", link: "/mca/se/u11/u11" },
-          { label: "RE Process", link: "/mca/se/u11/u12" },
-          { label: "Requirements Specification (SRD)", link: "/mca/se/u11/u13" },
-          { label: "Requirements Validation", link: "/mca/se/u11/u14" },
+          { label: "Functional & Non-Functional Requirements", link: "/mca/se/unit_11/1_functional_non-functional" },
+          { label: "Requirements Engineering Process", link: "/mca/se/unit_11/2_requirement_engineering_process" },
+          { label: "Software Requirements Document (SRD)", link: "/mca/se/unit_11/3_srd" },
+          { label: "Requirements Validation", link: "/mca/se/unit_11/4_validation" },
         ]
       },
       {
         title: "Socio-Technical & Systems Engineering",
         items: [
-          { label: "Socio-technical Systems", link: "/mca/se/u12/u11" },
-          { label: "Systems Engineering Process", link: "/mca/se/u12/u12" },
-          { label: "System Development & Evolution", link: "/mca/se/u12/u13" },
+          { label: "Socio-technical Systems", link: "/mca/se/unit_12/5_Socio_technical_systems" },
+          { label: "Systems Engineering Process", link: "/mca/se/unit_12/6_System_Engineering" },
+          { label: "System Development & Evolution", link: "/mca/se/unit_12/7_System_Development" },
         ]
       },
       {
         title: "System Modeling & MDE",
         items: [
-          { label: "System Modeling Overview", link: "/mca/se/u21/u1" },
-          { label: "Context Models", link: "/mca/se/u21/u2" },
-          { label: "Interaction Models", link: "/mca/se/u21/u3" },
-          { label: "Sequence Diagrams", link: "/mca/se/u21/u4" },
-          { label: "Structural Models", link: "/mca/se/u21/u5" },
-          { label: "Behavioral Models", link: "/mca/se/u21/u6" },
-          { label: "Event-Driven Modeling & MDE", link: "/mca/se/u21/u7" },
-          { label: "Model-Driven Architecture (MDA)", link: "/mca/se/u21/u8" },
+          { label: "System Modeling Overview", link: "/mca/se/unit_21/1_system_modeling_overview" },
+          { label: "Context Models", link: "/mca/se/unit_21/2_context_models" },
+          { label: "Interaction Models", link: "/mca/se/unit_21/3_interaction_models" },
+          { label: "Structural Models", link: "/mca/se/unit_21/4_structural_models" },
+          { label: "Behavioral Models & MDE", link: "/mca/se/unit_21/5_behavioral_models_mde" },
         ]
       },
       {
         title: "Architectural Design & Patterns",
         items: [
-          { label: "Architectural Design", link: "/mca/se/u22/u1" },
-          { label: "Design Decisions", link: "/mca/se/u22/u2" },
-          { label: "Architectural Views", link: "/mca/se/u22/u3" },
-          { label: "Architectural Patterns", link: "/mca/se/u22/u4" },
-          { label: "Application Architectures", link: "/mca/se/u22/u5" },
+          { label: "Architectural Design", link: "/mca/se/unit_22/1_architectural_design" },
+          { label: "Architectural Views", link: "/mca/se/unit_22/2_architectural_views" },
+          { label: "Architectural Patterns", link: "/mca/se/unit_22/3_architectural_patterns" },
+          { label: "Application Architectures", link: "/mca/se/unit_22/4_application_architectures" },
         ]
       },
     ]

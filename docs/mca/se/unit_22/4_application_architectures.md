@@ -23,17 +23,19 @@ Designers can use generic models in five primary ways:
 |**Reuse Assessment**|Identifies comparable elements for component reuse.|
 |**Vocabulary**|Provides standard terms for discussing applications.|
 
-> [!NOTE] Practice Questions
->
-> - What is **application architecture**? State its uses and give examples of application types.
->
-> - Classify the two types of application architecture and elaborate any one with an example.
->
-> - Draw the **architecture diagram for a language processing system** and explain the role of repository and pipe-and-filter styles in compilers and language-processing toolsets.
->
-> - List the **stages of object-oriented design** and explain any three of them.
->
-> - Identify possible **objects** for a group diary/time-management system and outline an object-oriented design for it (make reasonable assumptions as needed).
+::: info Practice Questions
+
+- What is **application architecture**? State its uses and give examples of application types.
+
+- Classify the two types of application architecture and elaborate any one with an example.
+
+- Draw the **architecture diagram for a language processing system** and explain the role of repository and pipe-and-filter styles in compilers and language-processing toolsets.
+
+- List the **stages of object-oriented design** and explain any three of them.
+
+- Identify possible **objects** for a group diary/time-management system and outline an object-oriented design for it (make reasonable assumptions as needed).
+
+:::
 
 
 ## 1. Transaction Processing Systems (TPS)
@@ -132,8 +134,6 @@ flowchart TD
     TM --> RG
     RG --> DB
 ```
-
----
 
 ## 2. Language Processing Systems (LPS)
 

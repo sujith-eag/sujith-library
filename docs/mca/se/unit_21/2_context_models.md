@@ -11,9 +11,10 @@ System boundaries are established by deciding what is and is not part of the sys
 - What processing or operations should be carried out in the system’s **operational environment** (e.g., processes that remain manual or are supported by existing systems).
     
 
-> [!NOTE] Cost Efficiency
-> 
-> Boundary decisions should be made early in the process to limit the system costs and reduce the time required to fully understand the system requirements and design.
+::: tip Cost Efficiency
+
+Boundary decisions should be made early in the process to limit the system costs and reduce the time required to fully understand the system requirements and design.
+:::
 
 ## Flexibility of Boundaries
 
@@ -34,9 +35,10 @@ Once initial boundary decisions are made, the next step is producing a **simple 
 
 A context model typically shows the environment, which generally includes **several other automated systems**.
 
-> [!WARNING] Limitation of Simple Context Models
-> 
-> Simple context models show the boundary and neighboring systems, but they do not explicitly show the types of relationships (e.g., data consumption/production, shared data, or network connectivity). Therefore, they must be used alongside other models, such as business process models.
+::: warning Limitation of Simple Context Models
+
+Simple context models show the boundary and neighboring systems, but they do not explicitly show the types of relationships (e.g., data consumption/production, shared data, or network connectivity). Therefore, they must be used alongside other models, such as business process models.
+:::
 
 ## Relevant Diagrams (Section 5.1)
 
@@ -109,12 +111,14 @@ flowchart TD
     Join1 --> End((End))
 ```
 
-> [!TIP] Parallel Execution
-> 
-> In the diagram above, the activities "Inform social care," "Inform next of kin," "Inform patient of rights," and "Update register" are designed to be executed concurrently.
+::: tip Parallel Execution
 
-> [!NOTE] Practice Questions
-> - How do **context models help in defining the boundaries of a system** and its interactions with external entities?
-> - Draw a **context model for a Patient information system in a hospital** including a patient admission system and an image storage system; explain the necessity of a context diagram.
-> - When are boundaries considered flexible vs clear? Give examples.
+In the diagram above, the activities "Inform social care," "Inform next of kin," "Inform patient of rights," and "Update register" are designed to be executed concurrently.
+:::
+
+::: tip Practice Questions
+- How do **context models help in defining the boundaries of a system** and its interactions with external entities?
+- Draw a **context model for a Patient information system in a hospital** including a patient admission system and an image storage system; explain the necessity of a context diagram.
+- When are boundaries considered flexible vs clear? Give examples.
+:::
 

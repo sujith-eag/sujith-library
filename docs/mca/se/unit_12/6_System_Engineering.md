@@ -1,6 +1,8 @@
-## I. The Systems Engineering Process
+# Systems Engineering
 
-### A. Key Definitions and Stages
+## The Systems Engineering Process
+
+### Key Definitions and Stages
 
 1. **Systems Engineering :** The activity concerned with specifying, buying, designing, and testing complex sociotechnical systems, encompassing hardware, software, and operational processes. It includes everything related to procuring, specifying, developing, deploying, operating, and maintaining both technical and sociotechnical systems.
     
@@ -8,10 +10,9 @@
 
 ```mermaid
 graph TD
-
-    A[fa:fa-lightbulb Conceptual Design]:::stage --> B[fa:fa-shopping-cart System Procurement]:::stage;
-    B --> C[fa:fa-cogs Development]:::stage;
-    C --> D[fa:fa-sync-alt Operation & Evolution]:::stage;
+    A[💡 Conceptual Design] --> B[🛒 System Procurement];
+    B --> C[⚙️ Development];
+    C --> D[🔄 Operation & Evolution];
     D -- "New Requirements/Bugs" --> A;
 ```
     
@@ -23,7 +24,7 @@ graph TD
         
 - **Operation and Evolution:** The long-term modification of the system to reflect changes in business requirements and the operating environment.        
 
-### B. Development Process Characteristics
+### Development Process Characteristics
 
 1. **Plan-Driven Requirement:** Higher-level systems engineering processes are typically **plan-driven processes** (often following a waterfall model). This is essential because different elements of the system (hardware, software, buildings) are developed **independently** and often by different contractors concurrently.
     
@@ -47,16 +48,15 @@ graph TD
 
 ```mermaid
 graph TD
-
-    A[Requirements Engineering]:::activity --> B[Architectural Design]:::activity;
-    B --> C[Requirements Partitioning]:::activity;
-    C --> D[Subsystem Engineering]:::activity;
-    D --> E[System Integration]:::activity;
-    E --> F[System Testing]:::activity;
-    F --> G[System Deployment]:::activity;
+    A[Requirements Engineering] --> B[Architectural Design];
+    B --> C[Requirements Partitioning];
+    C --> D[Subsystem Engineering];
+    D --> E[System Integration];
+    E --> F[System Testing];
+    F --> G[System Deployment];
 ```
 
-### C. Challenges of Interdisciplinary Development
+### Challenges of Interdisciplinary Development
 
 Systems engineering requires the involvement of a range of professional disciplines (e.g., electrical, software, mechanical, user interface designers).
 
@@ -65,9 +65,9 @@ Systems engineering requires the involvement of a range of professional discipli
 - **Misconceptions about Capabilities:** Each discipline often makes assumptions about what other disciplines can or cannot do based on inadequate understanding. For example, an electronic engineer might assume software can easily handle computationally intensive tasks to simplify hardware design.
     
 
-## II. System Procurement
+## System Procurement
 
-### A. Key Definition and Drivers
+### Key Definition and Drivers
 
 1. **System Procurement (System Acquisition) :** A process whose outcome is a decision to buy one or more systems from system suppliers. At this stage, decisions are made on the scope of a system that is to be purchased, system budgets and timescales, and high-level system requirements.
     
@@ -80,7 +80,7 @@ Systems engineering requires the involvement of a range of professional discipli
     - **The Replacement of Other Organizational Systems:** An organization may have a mixture of systems that cannot work together or that are expensive to maintain.
         
 
-### B. Types of Systems Procured
+### Types of Systems Procured
 
 The procurement approach depends on the type of system or component needed:
 
@@ -105,7 +105,7 @@ mindmap
 3. **Custom Systems:** Systems that must be specially designed and implemented.
     
 
-### C. Procurement Processes by System Type
+### Procurement Processes by System Type
 
 |**System Type**|**Core Activities**|**Requirements Status**|
 |---|---|---|
@@ -113,7 +113,7 @@ mindmap
 |**Configurable Systems**|Market survey, choosing a shortlist, **refining requirements** to match candidate systems, choosing a supplier, and contract negotiation.|Requirements must often be modified or adapted to fit the system's assumptions.|
 |**Custom Systems**|**Defining detailed requirements** (which form the legal contract), issuing a request for tender, choosing a supplier, and contract negotiation.|Requirements document is **critical** and part of the contract.|
 
-### D. Requirements and Contracts in Procurement
+### Requirements and Contracts in Procurement
 
 - **Legal Documents:** For custom systems, the requirements document becomes a **legal document** and the basis for the contract.
     
@@ -122,7 +122,7 @@ mindmap
 - **Negotiation:** Contract negotiations for custom systems cover payment schedules, reporting, acceptance criteria, and costs of change requests.
     
 
-### E. Challenges and Consequences
+### Challenges and Consequences
 
 1. **The Criticality of Procurement Decisions:**
     
@@ -139,12 +139,13 @@ mindmap
     - **Examples of Political Drivers:** Senior management demanding a single system across the organization; suppliers chosen based on long-standing relationships; or managers preferring compatibility with existing systems rather than new, superior technology.
         
 
-### F. Analogy: System Engineering vs. System Procurement
+### Analogy: System Engineering vs. System Procurement
 
 If **Systems Engineering** is the master plan for building a new national railway network (defining the tracks, the trains, the scheduling rules, and the staff training), then **System Procurement** is the specific stage where the government chooses _which_ companies will supply the specialized steel for the tracks, _which_ manufacturer will build the locomotives, and _which_ contractor will implement the ticketing software, all based on predefined requirements and legal contracts. Procurement formalizes the financial and contractual aspects of the high-level engineering plan.
 
-> [!NOTE] Practice Questions
-> - Describe the **professional disciplines involved in Systems Engineering** with a neat sketch.
-> - What do you mean by **critical systems**? Explain the **three main types of critical systems**.
-> - What is **system procurement**? Explain system procurement in detail and describe the **steps involved in the system procurement process**.
-> - Explain the **stages of system procurement** with the help of an activity diagram.
+::: tip Practice Questions
+- Describe the **professional disciplines involved in Systems Engineering** with a neat sketch.
+- What do you mean by **critical systems**? Explain the **three main types of critical systems**.
+- What is **system procurement**? Explain system procurement in detail and describe the **steps involved in the system procurement process**.
+- Explain the **stages of system procurement** with the help of an activity diagram.
+:::

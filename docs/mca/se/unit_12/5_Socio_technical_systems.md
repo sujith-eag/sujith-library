@@ -1,9 +1,6 @@
 # Socio-technical Systems
 
-
-## I. Socio-technical Systems Fundamentals
-
-### A. Key Definitions
+## Socio-technical Systems Fundamentals
 
 1. **System :** A purposeful collection of interrelated components, of different kinds, which **work together to deliver a set of services** to the system owner and users.
     
@@ -13,16 +10,15 @@
 
 ```mermaid
 graph TD
-
     subgraph "System"
         direction LR
-        S[fa:fa-globe System]:::system
+        S[🌐 System]
         subgraph "Socio-technical System"
             direction LR
-            STS[fa:fa-users Socio-technical System]:::sts
+            STS[👥 Socio-technical System]
             subgraph "Technical Computer-Based System"
                 direction LR
-                TCBS[fa:fa-microchip Technical Computer-Based System]:::tcbs
+                TCBS[🖥️ Technical Computer-Based System]
             end
         end
     end
@@ -30,7 +26,7 @@ graph TD
     STS --> TCBS;
 ```
 
-### B. Core Concepts
+### Core Concepts
 
 1. **Holistic View and Emergent Properties:** A system is defined as **more than simply the sum of its parts**. Systems possess **emergent properties** (like performance, reliability, safety, and security) that relate to the behavior of the system as a whole and only become apparent when components are integrated.
     
@@ -45,27 +41,26 @@ graph TD
     - Systems engineering deals with all aspects of complex system development where software plays a major role, including hardware development, policy and process design, and system deployment.
         
 
-### C. Example
+### Example
 
 - **Mentcare System:** This medical records system is a **sociotechnical system**. While it includes technical components (client software, server, database), its operation is critically influenced by staff, organizational policies (privacy, safety), and strict mental health laws governing patient detention.
     
 
-## II. Sociotechnical System Structure and Context
+## Sociotechnical System Structure and Context
 
-### A. The Sociotechnical Systems Stack (Layers)
+### The Sociotechnical Systems Stack (Layers)
 
 Sociotechnical systems are complex and must be viewed in layers. These layers, organized from innermost (technical) to outermost (environmental), influence the system’s behavior and requirements. Software is embedded in almost all layers.
 
 ```mermaid
 graph TD
-
-    Society[fa:fa-globe Society]:::layer;
-    Organization[fa:fa-building Organization]:::layer;
-    BusinessProcesses[fa:fa-cogs Business Processes]:::layer;
-    ApplicationSystem[fa:fa-desktop Application System]:::coreLayer;
-    CommDataMgmt[fa:fa-network-wired Communications & Data Management]:::coreLayer;
-    OperatingSystem[fa:fa-sd-card Operating System]:::coreLayer;
-    Equipment[fa:fa-microchip Equipment]:::coreLayer;
+    Society[🌐 Society];
+    Organization[🏢 Organization];
+    BusinessProcesses[⚙️ Business Processes];
+    ApplicationSystem[🖥️ Application System];
+    CommDataMgmt[🌐 Communications & Data Management];
+    OperatingSystem[💾 Operating System];
+    Equipment[🖥️ Equipment];
 
     Society --> Organization;
     Organization --> BusinessProcesses;
@@ -90,7 +85,7 @@ graph TD
 7. **Society:** The laws and regulations of society that govern the operation of the system.
     
 
-### B. Organizational Elements and Boundaries
+### Organizational Elements and Boundaries
 
 The organizational environment in which a sociotechnical system operates influences its requirements, design, and eventual operation.
 
@@ -115,9 +110,9 @@ It is important to ensure that, wherever possible, software failure does not lea
     
 
 
-## III. Complexity of Socio-technical Systems
+## Complexity of Socio-technical Systems
 
-### A. Core Concepts of Complexity
+### Core Concepts of Complexity
 
 1. **Basis of Complexity:** System complexity arises from the **number of relationships** and the **nature of the relationships** (coupling) between system elements.
     
@@ -126,7 +121,7 @@ It is important to ensure that, wherever possible, software failure does not lea
 3. **Reductionism Failure:** The traditional engineering approach of **reductionism** (understanding a system by studying its separate parts) is **inadequate** for complex sociotechnical systems, because the number and dynamic nature of interactions cannot be analyzed as a whole.
     
 
-### B. Types of Complexity
+### Types of Complexity
 
 When discussing complex systems, particularly large-scale systems of systems, complexity is often categorized into three types:
 
@@ -137,7 +132,7 @@ When discussing complex systems, particularly large-scale systems of systems, co
 3. **Governance Complexity:** Stems from the conflicting objectives, policies, and regulations (laws, ethical standards) that govern the system and its elements.
     
 
-### C. Characteristics Driven by Complexity
+### Characteristics Driven by Complexity
 
 The complexity of sociotechnical systems gives rise to crucial characteristics that challenge traditional software engineering:
 
@@ -148,22 +143,21 @@ The complexity of sociotechnical systems gives rise to crucial characteristics t
 3. **Wicked Problems:** Complex sociotechnical systems are often developed to solve "wicked problems," which are so complex that **no definitive problem specification exists**, and the true nature of the problem only emerges as the solution is developed (e.g., developing a national medical records system).
     
 
-## IV. Dependability and Failure in Sociotechnical Systems
+## Dependability and Failure in Sociotechnical Systems
 
 System dependability is influenced by all elements in a sociotechnical system—hardware, software, people, and organizations. Component failures in any system are inevitable.
 
-### A. Failure Propagation (The Swiss Cheese Model)
+### Failure Propagation (The Swiss Cheese Model)
 
 System failure is often not due to a single component failing, but the unexpected alignment of multiple failures.
 
 ```mermaid
 graph TD
-
-    Hazard[fa:fa-exclamation-triangle Hazard]:::hazard --> A[Slice 1: Unsafe Act]:::slice;
-    A -- "Hole (Error)" --> B[Slice 2: Preconditions]:::slice;
-    B -- "Hole (Error)" --> C[Slice 3: Latent Conditions]:::slice;
-    C -- "Hole (Error)" --> D[Slice 4: Organizational Influences]:::slice;
-    D -- "Hole (Error)" --> Accident(fa:fa-skull-crossbones Accident):::accident;
+    Hazard[⚠️ Hazard] --> A[Slice 1: Unsafe Act];
+    A -- "Hole (Error)" --> B[Slice 2: Preconditions];
+    B -- "Hole (Error)" --> C[Slice 3: Latent Conditions];
+    C -- "Hole (Error)" --> D[Slice 4: Organizational Influences];
+    D -- "Hole (Error)" --> Accident(💀 Accident);
 ```
 
 - **The Swiss Cheese Model:** This model suggests that hazards are prevented by multiple, redundant layers of defense (like slices of Swiss cheese). Failure occurs only when the weaknesses (holes) in all layers align temporarily, allowing a hazard to pass through the system defenses and trigger an accident.
@@ -171,11 +165,11 @@ graph TD
 - Failure Consequences: In complex sociotechnical systems, failure propagation can occur across system boundaries. A software failure in a technical system might not lead to total system failure if human operators in the broader sociotechnical system detect the failure and take corrective action.
     
 
-### B. Regulation and Compliance
+### Regulation and Compliance
 
 To ensure public safety, most governments limit the freedom of companies by requiring them to follow certain standards to ensure their products are safe and secure. Regulation and compliance (following the rules) applies to the **sociotechnical system as a whole**, not simply the software element of that system.
 
-### C. Redundancy and Diversity
+### Redundancy and Diversity
 
 Strategies to achieve and enhance dependability rely on both redundancy and diversity.
 
@@ -183,10 +177,11 @@ Strategies to achieve and enhance dependability rely on both redundancy and dive
     
 2. **Diversity :** Redundant components of the system are of different types, thus increasing the chances that they will not fail in exactly the same way.
 
-> [!NOTE] Practice Questions
-> - Define **Socio-technical System** and **Complex Systems**.
-> - Justify why **sociotechnical systems are viewed as layers**, and describe the **different layers of a Socio-Technical System**.
-> - What are **emergent system properties**? List the **types of emergent properties** and explain how they affect behavior and performance.
-> - List and discuss the **key factors which influence socio-technical system operation**.
-> - What do you mean by **System Dependability**? Explain the **four principal dimensions of dependability** and give examples of principal dependability properties.
+::: tip Practice Questions
+- Define **Socio-technical System** and **Complex Systems**.
+- Justify why **sociotechnical systems are viewed as layers**, and describe the **different layers of a Socio-Technical System**.
+- What are **emergent system properties**? List the **types of emergent properties** and explain how they affect behavior and performance.
+- List and discuss the **key factors which influence socio-technical system operation**.
+- What do you mean by **System Dependability**? Explain the **four principal dimensions of dependability** and give examples of principal dependability properties.
+:::
 

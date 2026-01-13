@@ -11,9 +11,10 @@ Structural models can be categorized into two main types:
 - **Dynamic Models**: Show the organization of the system executing, reflecting structures such as interacting threads.
     
 
-> [!NOTE] Architectural Context
-> 
-> Although UML has component, package, and deployment diagrams for architectural modeling, the core of this section focuses on Class Diagrams to detail the static structure of objects.
+::: info Architectural Context
+
+Although UML has component, package, and deployment diagrams for architectural modeling, the core of this section focuses on Class Diagrams to detail the static structure of objects.
+:::
 
 ## Class Diagrams
 
@@ -167,7 +168,8 @@ classDiagram
     PatientRecord "1" --o "1..*" Consultation : aggregates
 ```
 
-> [!NOTE] Practice Questions
-> - What are **structural models**? Explain **class diagrams** with an example.
-> - Describe **multiplicity**, **generalization**, **aggregation**, and **associations** in class diagrams.
-> - Give an example class diagram for an ATM or a language-processing system.
+::: tip Practice Questions
+- What are **structural models**? Explain **class diagrams** with an example.
+- Describe **multiplicity**, **generalization**, **aggregation**, and **associations** in class diagrams.
+- Give an example class diagram for an ATM or a language-processing system.
+:::

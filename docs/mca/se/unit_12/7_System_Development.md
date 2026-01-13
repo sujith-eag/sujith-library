@@ -1,6 +1,8 @@
-## III. System Development
+# System Development
 
-### A. Definition and Core Concepts
+## System Development
+
+### Definition and Core Concepts
 
 1. **Definition :** System development is the complex process in which system elements (developed or purchased) are **integrated to create the final system**.
     
@@ -13,19 +15,18 @@
 5. **Goal :** The process culminates in a "go live," after which users begin to use the system to support their work.
     
 
-### B. Key Development Activities (Process Steps)
+### Key Development Activities (Process Steps)
 
 The systems development stage includes seven fundamental activities after the initial conceptual design:
 
 ```mermaid
 graph TD
-
-    A[fa:fa-tasks Requirements Engineering]:::activity --> B[fa:fa-sitemap Architectural Design]:::activity;
-    B --> C[fa:fa-puzzle-piece Requirements Partitioning]:::activity;
-    C --> D[fa:fa-cogs Subsystem Engineering]:::activity;
-    D --> E[fa:fa-cubes System Integration]:::activity;
-    E --> F[fa:fa-vial System Testing]:::activity;
-    F --> G[fa:fa-rocket System Deployment]:::activity;
+    A[📋 Requirements Engineering] --> B[🗂️ Architectural Design];
+    B --> C[🧩 Requirements Partitioning];
+    C --> D[⚙️ Subsystem Engineering];
+    D --> E[🧱 System Integration];
+    E --> F[🧪 System Testing];
+    F --> G[🚀 System Deployment];
 ```
 
 1. **Requirements Engineering:** The process of refining, analyzing, and documenting the high-level and business requirements identified earlier in the conceptual design.
@@ -51,7 +52,7 @@ graph TD
 7. **System Deployment:** Making the system available to its users, including transferring data from existing systems and establishing communications with other systems in the environment.
     
 
-### C. Implementation and Quality Practices in Development
+### Implementation and Quality Practices in Development
 
 1. **Design and Implementation :** These activities are invariably interleaved. In an agile approach, formal design documents may be minimized or recorded informally on whiteboards, with design decisions left to the programmers.
     
@@ -77,17 +78,16 @@ graph TD
 
 ```mermaid
 graph TD
-
-    C[System Testing]:::testLevel
-    B[Component Testing]:::testLevel
-    A[Unit Testing]:::testLevel
+    C[System Testing]
+    B[Component Testing]
+    A[Unit Testing]
     
     A --> B --> C
 ```
 
-## IV. System Operation and Deployment
+## System Operation and Deployment
 
-### A. Key Concepts
+### Key Concepts
 
 1. **Operation Stage :** This stage occurs after the system is deployed and users are trained. The system is put into practical use.
     
@@ -110,19 +110,18 @@ graph TD
     - Different user interfaces between new and old systems may increase the operator error rate.
         
 
-## V. Software Evolution and Maintenance
+## Software Evolution and Maintenance
 
-> [!NOTE] Practice Questions
-> - Describe the **system development** lifecycle and the key activities (requirements engineering, architectural design, partitioning, subsystem engineering, integration, testing, deployment).
-> - Explain why **plan-driven processes** are often used for large system development and the rationale for heavy upfront interface definition.
-> - What are the **implementation and quality practices** important during development (configuration management, CI, testing, TDD)?
-> - Discuss **software evolution and maintenance**: drivers, challenges, and why maintenance costs can exceed initial development costs.
+::: tip Practice Questions
+- Describe the **system development** lifecycle and the key activities (requirements engineering, architectural design, partitioning, subsystem engineering, integration, testing, deployment).
+- Explain why **plan-driven processes** are often used for large system development and the rationale for heavy upfront interface definition.
+- What are the **implementation and quality practices** important during development (configuration management, CI, testing, TDD)?
+- Discuss **software evolution and maintenance**: drivers, challenges, and why maintenance costs can exceed initial development costs.
+:::
 
 Large, complex systems usually have a long lifetime. Complex hardware/software systems may remain in use for more than 20 years, even though the original technologies used are obsolete.
 
 Over their lifetime, these systems change and evolve to correct errors in the original requirements and to implement new requirements. Computers are replaced, organizations reorganize, and the external environment changes, forcing system changes. Evolution is a process that runs alongside normal system operational processes, involving reentering the development process to make changes to hardware, software, and operational processes.
-
-### A. Key Definitions
 
 |**Term**|**Key Definition**|
 |---|---|
@@ -130,7 +129,7 @@ Over their lifetime, these systems change and evolve to correct errors in the or
 |**Software Maintenance**|The general process of **changing a system after it has been delivered**. This term is usually applied to **custom software** where separate development groups are involved before and after delivery.|
 |**Legacy System**|A sociotechnical system that is **useful or essential** to an organization but has been developed using **obsolete technology or methods**. They often perform critical business functions.|
 
-### B. The Evolution Process
+### The Evolution Process
 
 1. **Duration:** Operation and maintenance is normally the **longest life-cycle phase**.
     
@@ -140,13 +139,10 @@ Over their lifetime, these systems change and evolve to correct errors in the or
 
 ```mermaid
 graph TD
-
-    A(fa:fa-file-import Change Proposals):::success --> B[fa:fa-search Change Identification]:::activity;
-    B --> C["fa:fa-cogs Software Evolution<br>(Implementation)"]:::activity;
-    C --> D(fa:fa-rocket System Release):::detail;
+    A(📥 Change Proposals) --> B[🔍 Change Identification];
+    B --> C["⚙️ Software Evolution<br>(Implementation)"];
+    C --> D(🚀 System Release);
     D -- "Feedback &<br>New Proposals" --> B;
-
-    linkStyle 3 stroke:#28a745,stroke-width:2px,stroke-dasharray: 5 5;
 ```
     
 1. **Change Identification Process:** Identifying changes based on user feedback or new requirements.
@@ -156,7 +152,7 @@ graph TD
 3. **System Release:** Delivering the updated version.
         
 
-### C. Challenges and Costs of Evolution
+### Challenges and Costs of Evolution
 
 1. **High Cost:** The cost of **software maintenance usually exceeds the initial software development costs** for custom systems.
     
@@ -179,7 +175,7 @@ graph TD
     - Conversely, detailed documentation, especially the **system requirements document**, is critical for maintenance engineers to assess the impact of proposed changes. The lack of a coherent requirements document in agile-developed systems can make maintenance more difficult and expensive.
         
 
-### D. Legacy Systems
+### Legacy Systems
 
 1. **Legacy Components:** Legacy systems consist of hardware, obsolete support software (compilers, debuggers), and application software.
     

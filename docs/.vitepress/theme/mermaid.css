@@ -273,7 +273,7 @@
 /* ───── Mindmap ───── */
 .mermaid .mindmap-node rect,
 .mermaid .mindmap-node circle,
-.mermaid .mindmap-node polygon { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .mindmap-node polygon { stroke: var(--mm-border) !important; }
 .mermaid .mindmap-node text,
 .mermaid .mindmap-node tspan { fill: var(--mm-text) !important; }
 /* Mindmap branch colors for hierarchy */
@@ -315,6 +315,36 @@
 .mermaid .container text,
 .mermaid .component text { fill: var(--mm-text) !important; }
 .mermaid .c4Line { stroke: var(--mm-border) !important; }
+
+/* ───── Timeline Diagram ───── */
+.mermaid .timeline rect,
+.mermaid .timeline circle { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .timeline text { fill: var(--mm-text) !important; }
+
+/* ───── Sankey Diagram ───── */
+.mermaid .sankey rect { fill: var(--mm-node-default-fill) !important; stroke: var(--mm-node-default-stroke) !important; }
+.mermaid .sankey path { stroke: var(--mm-border) !important; }
+.mermaid .sankey text { fill: var(--mm-text) !important; }
+
+/* ───── Quadrant Chart ───── */
+.mermaid .quadrant rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .quadrant text { fill: var(--mm-text) !important; }
+
+/* ───── XY Chart ───── */
+.mermaid .xychart rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .xychart text { fill: var(--mm-text) !important; }
+
+/* ───── Packet Diagram ───── */
+.mermaid .packet rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .packet text { fill: var(--mm-text) !important; }
+
+/* ───── Architecture Diagram ───── */
+.mermaid .architecture rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .architecture text { fill: var(--mm-text) !important; }
+
+/* ───── Block Diagram ───── */
+.mermaid .block rect { fill: var(--mm-surface) !important; stroke: var(--mm-border) !important; }
+.mermaid .block text { fill: var(--mm-text) !important; }
 
 /* ───── Subgraph borders (flowchart clusters) ───── */
 .mermaid .cluster-label { fill: var(--mm-text) !important; }

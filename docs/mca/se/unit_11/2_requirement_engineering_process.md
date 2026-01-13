@@ -1,8 +1,6 @@
 # Requirements Engineering Processes
 
-## I. Requirements Engineering (RE) Fundamentals
-
-### A. Key Definitions
+## Requirements Engineering (RE) Fundamentals
 
 1. **Requirements Engineering (RE) :** The process of **finding out, analyzing, documenting, and checking** the services and constraints of a system. It involves understanding and defining what services are required from the system and identifying the constraints on its operation and development.
     
@@ -11,7 +9,7 @@
 3. **Feasibility Study :** A short, focused study that takes place early in the RE process to assess if the system contributes to organizational objectives, can be implemented within schedule/budget/technology, and can be integrated with existing systems.
     
 
-### B. Core Concepts and Principles
+### Core Concepts and Principles
 
 1. **Criticality:** Requirements engineering is a particularly **critical stage** of the software process, as errors or mistakes made early inevitably lead to later problems in system design and implementation.
     
@@ -20,13 +18,13 @@
 3. **Stakeholder Needs:** Requirements are usually presented at two levels of detail: a high-level statement for **end-users and customers**, and a detailed **system specification** for developers.
     
 
-## II. The Overall Requirements Engineering Process
+## The Overall Requirements Engineering Process
 
 Requirements engineering involves three key activities: discovering requirements by interacting with stakeholders (elicitation and analysis); converting these requirements into a standard form (specification); and checking that the requirements actually define the system that the customer wants (validation).
 
 In practice, requirements engineering is an iterative process in which the activities are interleaved. The overall process consists of these three core activities, often following a spiral model structure.
 
-### A. Process Steps (Main Activities)
+### Process Steps (Main Activities)
 
 1. **Requirements Elicitation and Analysis:** Discovering requirements by interacting with stakeholders (elicitation and analysis);
     
@@ -36,35 +34,33 @@ In practice, requirements engineering is an iterative process in which the activ
 
 ```mermaid
 graph TD
-
-    A[fa:fa-search Requirements Elicitation<br>& Analysis]:::processPhase --> B[fa:fa-file-alt Requirements Specification]:::processPhase;
-    B --> C[fa:fa-check-circle Requirements Validation]:::processPhase;
+    A[🔍 Requirements Elicitation<br>& Analysis] --> B[📄 Requirements Specification];
+    B --> C[✅ Requirements Validation];
     C --> A;
 ```
 
-### B. Phasing of Effort (The Spiral Model)
+### Phasing of Effort (The Spiral Model)
 
 The activities are organized as an iterative process around a spiral. The amount of time and effort devoted to each activity in an iteration depends on the stage of the overall process, the type of system being developed, and the budget that is available. The output of the RE process is a system requirements document.
 
-#### Version 1: Abstract Flowchart
+#### Abstract Flowchart
 
 This diagram represents the progressive and iterative nature of the spiral model as a linear flow.
 
 ```mermaid
 graph TD
-
-    start((Start)) --> iter1[Iteration 1]:::iteration;
-    iter1 --> hlr[High-Level Requirements]:::phase;
-    hlr --> ur["User Requirements (Abstract)"]:::phase;
-    ur --> iter2[Iteration 2]:::iteration;
-    iter2 --> dr[Detailed Requirements]:::phase;
-    dr --> nfr["Non-Functional Requirements (Detailed)"]:::phase;
-    nfr --> iter3[Iteration N]:::iteration;
-    iter3 --> srs("System Requirements Document"):::artifact;
+    start((Start)) --> iter1[Iteration 1];
+    iter1 --> hlr[High-Level Requirements];
+    hlr --> ur["User Requirements (Abstract)"];
+    ur --> iter2[Iteration 2];
+    iter2 --> dr[Detailed Requirements];
+    dr --> nfr["Non-Functional Requirements (Detailed)"];
+    nfr --> iter3[Iteration N];
+    iter3 --> srs("System Requirements Document");
     srs --> endNode((End));
 ```
 
-#### Version 2: State Diagram
+#### State Diagram
 
 This diagram shows the cyclical nature of the process, with states for each major activity.
 
@@ -80,16 +76,14 @@ stateDiagram-v2
 
 This spiral model accommodates approaches to development where the requirements are developed to different levels of detail. The number of iterations around the spiral can vary, so that the spiral can be exited after some or all of the user requirements have been elicited.
 
-## III. Requirements Elicitation and Analysis
-
-### A. Key Definition
+## Requirements Elicitation and Analysis
 
 **Requirements Elicitation and Analysis :** The process of deriving system requirements through observation of existing systems, discussions with potential users and procurers, task analysis, and other techniques. The goal is to understand the work that stakeholders do and how they might use a new system to support that work.
 
 
 During requirements elicitation, software engineers work with stakeholders to find out about the application domain, work activities, the services and system features that stakeholders want, the required performance of the system, hardware constraints, and so on.
 
-### B. The Elicitation and Analysis Sub-Process Steps
+### The Elicitation and Analysis Sub-Process Steps
 
 Elicitation and analysis is itself an iterative process cycle with continual feedback between stages:
 
@@ -110,7 +104,7 @@ Elicitation and analysis is itself an iterative process cycle with continual fee
     - To make information sharing easier, it is best to use a shared document or a wiki that is accessible to all interested stakeholders.
         
 
-### C. Requirements Elicitation Techniques
+### Requirements Elicitation Techniques
 
 1. **Interviewing:** Talking directly to stakeholders to gather information about what they do.
     
@@ -155,26 +149,23 @@ Elicitation and analysis is itself an iterative process cycle with continual fee
 ```mermaid
 mindmap
   root{{Requirements Elicitation Techniques}}
-    ::icon(fa fa-lightbulb)
     ("Interviewing")
-      ::icon(fa fa-comments)
       ("Open Interviews")
       ("Closed Interviews")
       ("Springboard Questions")
     ("Observation / Ethnography")
-      ::icon(fa fa-eye)
       ("Understand Operational Processes")
       ("Discover Unarticulated Needs")
       ("Combine with Prototyping")
     ("Scenarios and User Stories")
-      ::icon(fa fa-book-open)
       ("High-level Narratives")
       ("Visualize User Interaction")
       ("Outline Interactions")
 ```
 
-> [!NOTE] Practice Questions
-> - With a neat diagram, discuss the **software requirement engineering process** (overall RE process).
-> - Discuss the process of **requirements elicitation and analysis** with a suitable diagram.
-> - Explain the key **elicitation techniques** and when to use them (interviewing, observation/ethnography, scenarios/user stories).
+::: tip Practice Questions
+- With a neat diagram, discuss the **software requirement engineering process** (overall RE process).
+- Discuss the process of **requirements elicitation and analysis** with a suitable diagram.
+- Explain the key **elicitation techniques** and when to use them (interviewing, observation/ethnography, scenarios/user stories).
+:::
 

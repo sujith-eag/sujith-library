@@ -11,9 +11,10 @@ System modeling is the process of developing **abstract models** of a system, wh
 - **Formal Models**: While graphical notation is standard, it is possible to develop formal mathematical models for detailed system specifications.
     
 
-> [!NOTE] Model Abstraction
-> 
-> A system model is not a complete representation of the system. It is an abstraction that purposely leaves out detail to make the system easier to understand, emphasizing only the most salient characteristics.
+::: info Model Abstraction
+
+A system model is not a complete representation of the system. It is an abstraction that purposely leaves out detail to make the system easier to understand, emphasizing only the most salient characteristics.
+:::
 
 ## Purpose of System Models
 
@@ -50,20 +51,20 @@ While UML provides 13 diagram types, five key types represent the essentials of 
 
 These models work together to form a cohesive design. The architectural design acts as the critical link between design and requirements engineering.
 
-> [!TIP] The Building Analogy
-> 
-> If software design is like planning a complex building:
-> 
-> - **Context Models**: The property lines and connection to external infrastructure.
->     
-> - **Structural Models**: The blueprints for the frame and interior.
->     
-> - **Interaction Models**: How people move through rooms and use services.
->     
-> - **Behavioral Models**: How automated systems (climate/security) react to events.
->     
-> - **MDE**: Automated tools reading blueprints to fabricate the building reality.
->     
+::: tip The Building Analogy
+
+If software design is like planning a complex building:
+
+- **Context Models**: The property lines and connection to external infrastructure.
+    
+- **Structural Models**: The blueprints for the frame and interior.
+    
+- **Interaction Models**: How people move through rooms and use services.
+    
+- **Behavioral Models**: How automated systems (climate/security) react to events.
+    
+- **MDE**: Automated tools reading blueprints to fabricate the building reality.
+:::
 
 
 ```mermaid
@@ -94,8 +95,9 @@ The following table summarizes the specific topics covered in Chapter 5 of Ian S
 | **5.4**     | **Behavioral models**  | Describe dynamic behavior and responses to stimuli (data or events) over time. <br><br>Uses Activity and State diagrams.                  |
 | **5.5**     | **MDE**                | An approach where models are automatically transformed into executable code, covering requirements, testing, and development.             |
 
-> [!NOTE] Practice Questions
-> - What is **system modelling**? Explain the **different types of UML diagrams** used to represent the essentials of a system (Activity, Use Case, Sequence, Class, State).
-> - Explain why **several types of model are needed** to fully represent a system.
-> - What roles do models play (communication/documentation vs implementation basis in MDE)?
+::: tip Practice Questions
+- What is **system modelling**? Explain the **different types of UML diagrams** used to represent the essentials of a system (Activity, Use Case, Sequence, Class, State).
+- Explain why **several types of model are needed** to fully represent a system.
+- What roles do models play (communication/documentation vs implementation basis in MDE)?
+:::
 

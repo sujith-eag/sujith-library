@@ -1,6 +1,6 @@
-## IV. Requirements Specification
+# Software Requirements Document
 
-### A. Goal and Output
+## Goal and Output
 
 1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
     
@@ -11,28 +11,22 @@
     - **System requirements:** Detailed functional and non-functional descriptions for developers; they may be written using more formal notations.
         
 
-### B. Notations for Requirements Specification
+## Notations for Requirements Specification
 
 Different notations are suitable for different audiences and levels of detail. User requirements are almost always written in **natural language** supplemented by diagrams, while system requirements may use natural language, graphical, or mathematical notations.
 
 ```mermaid
 graph TD
-
     Start((Start)) --> A{Audience?};
     A -- "Customer (Non-technical)" --> B{Level of Formality?};
     A -- "Developer (Technical)" --> C{Level of Formality?};
 
-    B -- "Low" --> NL[fa:fa-file-alt Natural Language Sentences];
-    B -- "High" --> SNL[fa:fa-wpforms Structured Natural Language];
+    B -- "Low" --> NL[📄 Natural Language Sentences];
+    B -- "High" --> SNL[📋 Structured Natural Language];
     
     C -- "Low" --> SNL;
-    C -- "High (Visual)" --> GN[fa:fa-chart-pie Graphical Notations];
-    C -- "High (Formal)" --> MS[fa:fa-superscript Mathematical Specifications];
-
-    NL:::notation;
-    SNL:::notation;
-    GN:::notation;
-    MS:::notation;
+    C -- "High (Visual)" --> GN[📊 Graphical Notations];
+    C -- "High (Formal)" --> MS[∑ Mathematical Specifications];
 ```
 
 |**Notation**|**Description**|
@@ -42,7 +36,7 @@ graph TD
 |**Graphical Notations**|Graphical models (e.g., UML use case and sequence diagrams) define the functional requirements, supplemented by text annotations. Use cases, for example, identify actors and interaction types.|
 |**Mathematical Specifications**|Notations based on formal concepts like finite-state machines or sets. While unambiguous, they are often difficult for most customers to understand and check.|
 
-### C. Natural Language Specification Guidelines
+## Natural Language Specification Guidelines
 
 Natural language is popular because it is expressive and intuitive, but its flexibility makes it potentially vague and ambiguous, complicating interpretation.
 
@@ -59,7 +53,7 @@ To minimize ambiguity in natural language requirements, follow these guidelines:
 - **Rationale:** Whenever possible, associate a rationale with each user requirement to explain _why_ it was included and who proposed it (the source).
     
 
-### D. Structured Specifications
+## Structured Specifications
 
 Structured natural language uses a standard way of writing requirements (usually templates or forms) to maintain expressiveness while enforcing uniformity and organization.
 
@@ -67,16 +61,15 @@ Structured natural language uses a standard way of writing requirements (usually
 
 ```mermaid
 graph TD
-
-    Form[fa:fa-file-alt Form-Based Structured Specification]:::formHeader --> Func(Function):::field;
-    Form --> Desc(Description):::field;
-    Form --> In(Inputs & Origin):::field;
-    Form --> Out(Outputs & Destination):::field;
-    Form --> Req(Requires):::field;
-    Form --> Act(Action):::field;
-    Form --> Pre(Precondition):::field;
-    Form --> Post(Postcondition):::field;
-    Form --> Side(Side Effects):::field;
+    Form[📄 Form-Based Structured Specification] --> Func(Function);
+    Form --> Desc(Description);
+    Form --> In(Inputs & Origin);
+    Form --> Out(Outputs & Destination);
+    Form --> Req(Requires);
+    Form --> Act(Action);
+    Form --> Pre(Precondition);
+    Form --> Post(Postcondition);
+    Form --> Side(Side Effects);
 ```
 
 **Form-Based Information:** Information typically included in a form-based structured specification:
@@ -96,22 +89,21 @@ graph TD
 - A description of any **side effects** of the operation.
 	
 
-## V. Requirements Specification Examples
+## Requirements Specification Examples
 
 The use of different specification styles (Natural, Structured, and Tabular) helps manage the inherent ambiguity of requirements and is chosen based on the audience (customer vs. developer) and the complexity of the feature being specified.
 
 ```mermaid
 graph TD
-
     Start((Start)) --> A{Audience?};
     A -- "Customer" --> B{Complexity?};
     A -- "Developer" --> C{Complexity?};
 
-    B -- "Simple" --> NL["Natural Language<br>(User Requirements)"]:::styleType;
-    B -- "Complex" --> SL_User["Structured Language<br>(User Requirements)"]:::styleType;
+    B -- "Simple" --> NL["Natural Language<br>(User Requirements)"];
+    B -- "Complex" --> SL_User["Structured Language<br>(User Requirements)"];
 
-    C -- "Simple" --> SL_Dev["Structured Language<br>(System Requirements)"]:::styleType;
-    C -- "Complex/Alternatives" --> TS["Tabular Specification<br>(System Requirements)"]:::styleType;
+    C -- "Simple" --> SL_Dev["Structured Language<br>(System Requirements)"];
+    C -- "Complex/Alternatives" --> TS["Tabular Specification<br>(System Requirements)"];
 
     NL --> End((End));
     SL_User --> End;
@@ -119,7 +111,7 @@ graph TD
     TS --> End;
 ```
 
-### A. Natural Language Specification (User Requirements)
+### Natural Language Specification (User Requirements)
 
 Natural language specification is used for writing **user requirements** because it is expressive, intuitive, and universal, making it understandable by non-technical system users and customers.
 
@@ -132,7 +124,7 @@ This example follows the recommended guidelines by using a standard format, "sha
 |**3.2**|The system **shall measure** the blood sugar and **deliver insulin**, if required, **every 10 minutes**.|
 |**Rationale:**|(Changes in blood sugar are relatively slow, so more frequent measurement is unnecessary; less frequent measurement could lead to unnecessarily high sugar levels.)|
 
-### B. Structured Specification (System Requirements)
+### Structured Specification (System Requirements)
 
 Structured natural language is a technique where requirements are written in a standard format (template or form) to impose uniformity, reduce ambiguity, and reduce variability. This level is used for **system requirements** directed at software engineers.
 
@@ -153,7 +145,7 @@ This form-based specification details a specific function, defining the conditio
 |**Postcondition**|r0 is replaced by r1 then r1 is replaced by r2.|
 |**Side effects**|None.|
 
-### C. Tabular Specification (System Requirements Detail)
+### Tabular Specification (System Requirements Detail)
 
 Tables are especially useful when specifying functional requirements that deal with a number of **alternative situations** or complex computations, as they simplify the description of actions taken for each condition. This helps clarify complex logic that is difficult to write unambiguously in natural language text.
 
@@ -168,7 +160,7 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 |**Sugar level increasing and rate of increase decreasing** (_r2 > r1 & ((r2 - r1) < (r1 - r0))_)|`CompDose = 0`|
 |**Sugar level increasing and rate of increase stable or increasing** (_r2 > r1 & ((r2 - r1) $\geq$ (r1 - r0))_)|`CompDose = round ((r2 - r1)/4)`. If rounded result = 0 then `CompDose = MinimumDose`|
 
-### D. Summary Analogy
+### Summary Analogy
 
 **Analogy: The Blueprint for a Skyscraper**
 
@@ -179,9 +171,7 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 
 
 
-## VI. The Software Requirements Document (SRD)
-
-### A. Key Definitions and Core Concepts
+## The Software Requirements Document (SRD)
 
 1. **Requirements:** Descriptions of the services a system should provide and the constraints on its operation.
     
@@ -198,9 +188,9 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 7. **System-as-a-Whole Focus:** The document should generally describe only the **external behavior** of the system and its operational constraints, avoiding excessive detail about internal design or implementation.
     
 
-### B. Importance, Usage, and Level of Detail
+## Importance, Usage, and Level of Detail
 
-#### 1. When the SRD is Essential
+### When the SRD is Essential
 
 Requirements documents are critical under specific professional circumstances:
 
@@ -213,7 +203,7 @@ Requirements documents are critical under specific professional circumstances:
 
 In contrast, agile methods often argue against detailed requirements documents, favoring short, incrementally collected **user stories** written on cards or whiteboards, as formal documents are viewed as quickly obsolete.
 
-#### 2. Determining the Level of Detail
+### Determining the Level of Detail
 
 The required detail in the document depends on the system type and the development process:
 
@@ -224,7 +214,7 @@ The required detail in the document depends on the system type and the developme
 - **In-house/Iterative Development:** The requirements document can be **less detailed**, allowing details and ambiguities to be resolved later during the development process.
     
 
-#### 3. Stakeholder Roles and Document Usage
+### Stakeholder Roles and Document Usage
 
 Different types of readers use the requirements document for different purposes:
 
@@ -239,7 +229,7 @@ Different types of readers use the requirements document for different purposes:
 - **System Maintenance Engineers:** Use the requirements to understand the system and the relationships between its parts.
     
 
-### C. Recommended Document Structure
+## Recommended Document Structure
 
 The organization of the SRD often follows a structure recommended by standards organizations, such as the **IEEE** (Institute of Electrical andElectronic Engineers), especially for complex, long-lifetime systems.
 
@@ -256,9 +246,10 @@ The organization of the SRD often follows a structure recommended by standards o
 | **Appendices**                        | Provide detailed, specific information that is related to the application being developed (e.g., hardware and database descriptions).<br><br>  <br>Hardware requirements define the minimal and optimal configurations for the system.<br><br><br>Database requirements define the logical organization of the data used by the system and the relationships between data. |
 | **Index**                             | Includes indexes (e.g., alphabetic index, index of diagrams, index of functions) to help readers find information easily.                                                                                                                                                                                                                                                  |
 
-> [!NOTE] Practice Questions
-> - Explain **different ways of writing system requirements specification (SRS)** (natural language, structured natural language, graphical, mathematical). What are the advantages and trade-offs?
-> - List the **problems that can arise when user requirements are written in natural language**.
-> - Highlight the **key activities involved in the requirements specification process**.
-> - Discuss the **general structure of a software requirements document (IEEE SRS)** and who the primary readers/users of the document are.
+::: tip Practice Questions
+- Explain **different ways of writing system requirements specification (SRS)** (natural language, structured natural language, graphical, mathematical). What are the advantages and trade-offs?
+- List the **problems that can arise when user requirements are written in natural language**.
+- Highlight the **key activities involved in the requirements specification process**.
+- Discuss the **general structure of a software requirements document (IEEE SRS)** and who the primary readers/users of the document are.
+:::
 

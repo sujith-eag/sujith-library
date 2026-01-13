@@ -1,11 +1,11 @@
-## VII. Requirements Validation
+# Requirements Validation
 
 Requirements validation is the process of checking that the requirements define the system that the customer **really wants**. It is concerned with finding problems with the requirements and overlaps with elicitation and analysis.
 
 * Requirements validation is critically important because errors in a requirements document can lead to **extensive rework costs** when these problems are discovered during development or after the system is in service. 
 * The cost of fixing a requirements problem by making a system change is usually much greater than repairing design or coding errors, as a change to the requirements usually means that the system design and implementation must also be changed.
 
-### A. Goal and Importance
+### Goal and Importance
 
 1. **Goal:** To check that the requirements define the system the customer **really wants**. This involves ensuring the requirements are realistic, consistent, and complete.
     
@@ -14,28 +14,22 @@ Requirements validation is the process of checking that the requirements define 
 3. **Role in Dependable Processes:** Requirements reviews are included in dependable processes to check that requirements are, as far as possible, complete and consistent.
     
 
-### B. Validation Checks (5 key Dimensions)
+### Validation Checks (5 key Dimensions)
 
 During the requirements validation process, different types of checks should be carried out on the requirements in the requirements document.
 
 ```mermaid
 mindmap
   root{{Requirements Validation Checks}}
-    ::icon(fa fa-check-double)
-    ("Validity Checks")
-      ::icon(fa fa-clipboard-check)
+    ("✅ Validity Checks")
       ("True stakeholder needs")
-    ("Consistency Checks")
-      ::icon(fa fa-exclamation-triangle)
+    ("⚠️ Consistency Checks")
       ("No contradictions")
-    ("Completeness Checks")
-      ::icon(fa fa-list-ul)
+    ("📝 Completeness Checks")
       ("All functions & constraints defined")
-    ("Realism Checks")
-      ::icon(fa fa-tasks)
+    ("🛠️ Realism Checks")
       ("Implementable (tech, budget, schedule)")
-    ("Verifiability Checks")
-      ::icon(fa fa-flask)
+    ("🧪 Verifiability Checks")
       ("Objectively testable")
 ```
 
@@ -49,55 +43,47 @@ mindmap
     
 5. Verifiability: Ensuring requirements are written so that a set of tests can be objectively designed to demonstrate that the delivered system meets each specified requirement, thereby reducing potential disputes.
     
-### C. Validation Techniques
-    
+### Validation Techniques
 
-    
 1. **Requirements Reviews:** A systematic analysis of the requirements by a team of reviewers to find errors and inconsistencies.
-    
-    
     
 2. **Prototyping:** Developing an executable model of the system for end-users and customers to interact with. Their feedback helps identify necessary requirements changes and unmet expectations.
     
-    
-    
 3. **Test-Case Generation:** Devising tests for the requirements as part of the validation process. If a test is difficult or impossible to design, this usually means that the requirement will be difficult to implement and should be reconsidered. Developing tests from user requirements before code is written is an integral part of test-driven development.
-    
-
-    
+        
 ```mermaid
 graph TD    
-    Start((Start)) --> A[fa:fa-users Requirements Reviews]:::technique;
-    A --> B[fa:fa-code Prototyping]:::technique;
-    B --> C[fa:fa-file-alt Test-Case Generation]:::technique;
+    Start((Start)) --> A[👥 Requirements Reviews];
+    A --> B[💻 Prototyping];
+    B --> C[📄 Test-Case Generation];
     C --> End((End));
-    A -- "Systematic Analysis" --> A1(Find Errors):::detail;
-    B -- "Executable Model" --> B1(Identify Changes):::detail;
-    C -- "Devise Tests" --> C1(Check Implementability):::detail;
-    linkStyle 0,1,2 stroke:#000,stroke-width:1px;
-    linkStyle 3,4,5 stroke:#6c757d,stroke-dasharray: 5 5;
+    A -- "Systematic Analysis" --> A1(Find Errors);
+    B -- "Executable Model" --> B1(Identify Changes);
+    C -- "Devise Tests" --> C1(Check Implementability);
 ```
 
     
-### D. Challenges in Validation
+### Challenges in Validation
 
 The problems involved in requirements validation should not be underestimated. It is difficult to show that a set of requirements does in fact meet a user’s needs. Users need to picture the system in operation and imagine how that system would fit into their work. This type of abstract analysis is difficult even for skilled computer professionals and harder still for system users.
 
 As a result, it is rare to find all requirements problems during the requirements validation process. Inevitably, further requirements changes will be needed to correct omissions and misunderstandings after agreement has been reached on the requirements document.
 
-> [!NOTE] Practice Questions
-> - Mention different types of **checks that should be carried out** during the requirements validation process (validity, consistency, completeness, realism, verifiability). Explain each briefly.
-> - Differentiate between **verification and validation** in the requirements context.
-> - Describe **validation techniques** and when to use them (requirements reviews, prototyping, test-case generation).
+::: tip Practice Questions
+- Mention different types of **checks that should be carried out** during the requirements validation process (validity, consistency, completeness, realism, verifiability). Explain each briefly.
+- Differentiate between **verification and validation** in the requirements context.
+- Describe **validation techniques** and when to use them (requirements reviews, prototyping, test-case generation).
+:::
 
 
-## VIII. Requirements Management and Change
+## Requirements Management and Change
 
-> [!NOTE] Practice Questions
-> - What is **requirement change management**? What are the **principal stages of the change management process** (problem analysis and change specification, change analysis and costing, change implementation)?
-> - What is **requirements management** and what planning activities are needed (identification, traceability, tool support, change management process)?
+::: tip Practice Questions
+- What is **requirement change management**? What are the **principal stages of the change management process** (problem analysis and change specification, change analysis and costing, change implementation)?
+- What is **requirements management** and what planning activities are needed (identification, traceability, tool support, change management process)?
+:::
 
-### A. Core Concept and Inevitability of Change
+### Core Concept and Inevitability of Change
 
 1. **Requirements Management :** The process of **managing changes** to the requirements of a system.
     
@@ -112,34 +98,29 @@ As a result, it is rare to find all requirements problems during the requirement
     - **User vs. Customer:** The people who pay for a system (customers) and the people who use it (end-users) are rarely the same. Customer-imposed budgetary or organizational constraints may conflict with user needs, requiring new features to be added after delivery for the system to be effective.
         
 
-### B. The Need for Requirements Management
+### The Need for Requirements Management
 
 Given that requirements will evolve, a formal process must be in place to manage these changes. The goal is to track individual requirements, maintain links between dependent requirements, and assess the **impact** and **cost** of proposed changes _before_ they are implemented.
 
 This process should begin as soon as a draft version of the requirements document is available.
 
-### C. Requirements Management Planning
+### Requirements Management Planning
 
 Requirements management planning is concerned with establishing how the set of evolving requirements will be managed. During this planning stage, several key issues must be decided:
 
 ```mermaid
 mindmap
   root{{Requirements Management Planning}}
-    ::icon(fa fa-clipboard-list)
-    ("Requirements Identification")
-      ::icon(fa fa-tag)
+    ("🏷️ Requirements Identification")
       ("Unique Identifier")
       ("Cross-referencing")
-    ("Change Management Process")
-      ::icon(fa fa-exchange-alt)
+    ("🔄 Change Management Process")
       ("Impact Assessment")
       ("Cost Assessment")
-    ("Traceability Policies")
-      ::icon(fa fa-link)
+    ("🔗 Traceability Policies")
       ("Relationships (Reqs, Design)")
       ("Maintenance of Records")
-    ("Tool Support")
-      ::icon(fa fa-tools)
+    ("🛠️ Tool Support")
       ("Requirements Storage")
       ("Change Tracking")
       ("Traceability Management")
@@ -163,19 +144,18 @@ mindmap
         
 
 
-### D. Requirements Change Management Process
+### Requirements Change Management Process
 
 A formal requirements change management process should be applied to all proposed changes after the requirements document has been approved. This ensures all change proposals are treated consistently and that the benefits of implementation are justified by the costs.
 
 ```mermaid
 graph TD
-
-    A[fa:fa-file-signature Change Request Submitted]:::process --> B{fa:fa-search Problem Analysis &<br>Specification}:::decision;
-    B --> C{fa:fa-calculator Change Analysis & Costing}:::decision;
-    C --> D{fa:fa-question-circle Decision to Proceed?}:::decision;
-    D -- Yes --> E[fa:fa-code Change Implementation]:::process;
-    D -- No --> F[fa:fa-times-circle Request Rejected/<br>Postponed]:::outcomeFailure;
-    E --> G[fa:fa-check-circle Change Incorporated]:::outcomeSuccess;
+    A[📝 Change Request Submitted] --> B{🔍 Problem Analysis &<br>Specification};
+    B --> C{🧮 Change Analysis & Costing};
+    C --> D{❓ Decision to Proceed?};
+    D -- Yes --> E[💻 Change Implementation];
+    D -- No --> F[❌ Request Rejected/<br>Postponed];
+    E --> G[✅ Change Incorporated];
 ```
 
 The process has three principal stages:
@@ -191,7 +171,7 @@ The process has three principal stages:
     - If an emergency change must be made to the system, the requirements document must be updated as soon as possible to prevent the specification and implementation from becoming out of sync.
         
 
-### E. Agile vs. Formal Change Management
+### Agile vs. Formal Change Management
 
 1. **Agile Approach:** Agile development processes are designed to cope with requirements that change during development. When a user proposes a change, it does not go through a formal change management process. Instead, the user prioritizes the change and decides what planned features should be dropped from the next iteration to accommodate it.
     

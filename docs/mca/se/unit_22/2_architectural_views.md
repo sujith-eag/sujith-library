@@ -10,12 +10,13 @@ It is **impossible to represent all relevant information about a systemâ€™s arch
     
 - **Agile Context**: In Agile methods, the team should produce only the design documentation that **adds value** and is necessary for maintenance and support.
     
-> [!NOTE] Practice Questions
->
-> - What are **architectural views**? Explain why multiple views are needed to represent a system's architecture.
->
-> - Explain the **different types of architectural views** (e.g., logical, process, development, physical, scenarios) and their significance in providing a comprehensive understanding of system architecture.
->
+::: info Practice Questions
+
+- What are **architectural views**? Explain why multiple views are needed to represent a system's architecture.
+
+- Explain the **different types of architectural views** (e.g., logical, process, development, physical, scenarios) and their significance in providing a comprehensive understanding of system architecture.
+
+:::
 
 ## Krutchen's 4+1 View Model
 
@@ -28,9 +29,11 @@ One widely recognized framework for organizing these perspectives is **Krutchenâ
 |**Development View**|**Decomposition**|Details the breakdown of software into components implemented by a **single developer or team**. Valuable for managers and programmers.|
 |**Physical View**|**Hardware/Distribution**|Shows system hardware and how components are **distributed across processors**. Essential for deployment planning.|
 
-> [!NOTE] The "+1" View
-> 
-> Use Cases/Scenarios form the "+1" component. They link and integrate the four main views, illustrating how components work together during typical system interactions.
+::: info The "+1" View
+
+Use Cases/Scenarios form the "+1" component. They link and integrate the four main views, illustrating how components work together during typical system interactions.
+
+:::
 
 
 ```mermaid
@@ -61,11 +64,13 @@ flowchart LR
 - **Example**: The high-level block diagram of the **packing robot system** (from the chapter introduction) is a conceptual view.
     
 
-> [!TIP] Practical Usage
-> 
-> Conceptual views are almost always developed during the design process to explain the architecture to stakeholders and inform decisions.
+::: tip Practical Usage
 
-## Notations for Architectural Models
+Conceptual views are almost always developed during the design process to explain the architecture to stakeholders and inform decisions.
+
+:::
+
+### Notations for Architectural Models
 
 Architects must decide what notations to use for describing architectural models.
 
@@ -75,7 +80,9 @@ Architects must decide what notations to use for describing architectural models
 | **UML**                                        | Useful for **detailed documentation** and model-driven development.            | Can constrain expressiveness; requires specialist knowledge.                    | Detailed documentation phases.                   |
 | **ADLs** (Architectural Description Languages) | Reduces ambiguity; allows tool-based checking.                                 | **Expensive**, time-consuming, and difficult for non-specialists to understand. | Specialized high-rigor environments.             |
 
-> [!IMPORTANT] Agile Perspective
-> 
-> In Agile development, detailed design documentation is often minimized. This practice is known as EDUF (Enough Design Up Front), focusing only on views necessary for communication.
+::: warning Agile Perspective
+
+In Agile development, detailed design documentation is often minimized. This practice is known as EDUF (Enough Design Up Front), focusing only on views necessary for communication.
+
+:::
 
