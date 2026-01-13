@@ -1,4 +1,4 @@
-## LAB 6: Probability Distributions
+# LAB 6: Probability Distributions
 
 This lab demonstrates various probability distributions including normal, uniform, binomial, Poisson, and exponential distributions. We'll visualize each distribution and understand their characteristics.
 

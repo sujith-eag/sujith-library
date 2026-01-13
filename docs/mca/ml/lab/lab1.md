@@ -1,4 +1,4 @@
-## LAB 1: Introduction to Data Handling with Pandas
+# LAB 1: Introduction to Data Handling with Pandas
 
 This lab demonstrates basic data manipulation using the Pandas library in Python. We'll cover creating DataFrames, exploring data, handling missing values, and performing common operations.
 

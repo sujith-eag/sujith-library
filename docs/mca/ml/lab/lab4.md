@@ -1,4 +1,4 @@
-## LAB 4: Naive Bayes Classification
+# LAB 4: Naive Bayes Classification
 
 This lab demonstrates the implementation of Gaussian Naive Bayes classifier on the Salary dataset. We'll cover data loading, preprocessing categorical variables, training the model, and evaluating its performance.
 

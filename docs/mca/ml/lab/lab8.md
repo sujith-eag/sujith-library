@@ -1,4 +1,4 @@
-## LAB 8: Text Classification with Naive Bayes
+# LAB 8: Text Classification with Naive Bayes
 
 This lab demonstrates text classification using Multinomial Naive Bayes on a small dataset of news articles categorized by topic (Sports, Politics, Technology, Entertainment).
 

@@ -1,4 +1,4 @@
-## LAB 5: Principal Component Analysis (PCA)
+# LAB 5: Principal Component Analysis (PCA)
 
 This lab demonstrates dimensionality reduction using Principal Component Analysis on the Iris dataset. We'll standardize the data, apply PCA to reduce to 2 components, and visualize the results.
 

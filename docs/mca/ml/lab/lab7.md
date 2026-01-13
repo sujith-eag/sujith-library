@@ -1,8 +1,8 @@
-## LAB 7: Bayes' Theorem Application
+# LAB 7: Bayes' Theorem Application
 
 This lab demonstrates the application of Bayes' theorem in a medical diagnostic scenario. We'll calculate the probability that a person actually has a condition given a positive test result.
 
-### Problem Statement
+## Problem Statement
 
 Consider a medical scenario where a certain condition exists in 1% of the population. A diagnostic test has:
 - 98% sensitivity (correctly identifies individuals with the condition)

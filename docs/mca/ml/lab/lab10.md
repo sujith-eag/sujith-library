@@ -1,4 +1,4 @@
-## LAB 10: Linear Regression
+# LAB 10: Linear Regression
 
 This lab demonstrates simple linear regression using exam scores data. We'll predict external exam scores based on internal exam scores.
 

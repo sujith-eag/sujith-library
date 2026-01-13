@@ -1,4 +1,4 @@
-## LAB 2: Data Loading and Basic Statistics
+# LAB 2: Data Loading and Basic Statistics
 
 This lab covers loading datasets from CSV files, performing basic data exploration, and computing statistical measures on data columns.
 

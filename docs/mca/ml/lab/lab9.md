@@ -1,4 +1,4 @@
-## LAB 9: K-Nearest Neighbors Classification
+# LAB 9: K-Nearest Neighbors Classification
 
 This lab demonstrates the K-Nearest Neighbors (KNN) algorithm for classification using the Iris dataset. We'll train a KNN classifier and visualize the predictions.
 

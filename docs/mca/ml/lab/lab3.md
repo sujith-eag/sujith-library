@@ -1,4 +1,4 @@
-## LAB 3: Model Training and Evaluation
+# LAB 3: Model Training and Evaluation
 
 This lab demonstrates data splitting, training a machine learning model (Logistic Regression), and evaluating its performance using various metrics like confusion matrix, accuracy, and classification report. We'll use the Iris dataset for this classification task.
 
