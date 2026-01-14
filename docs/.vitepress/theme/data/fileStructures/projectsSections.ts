@@ -24,6 +24,18 @@ export const securityBlog = {
           ]
         }
       ]
+    },
+
+    {
+      title: 'Security Architecture',
+      items: [
+        { label: 'Overview', link: '/projects/blogs/security/security_architecture/00_overview' },
+        { label: 'Foundation', link: '/projects/blogs/security/security_architecture/1_foundation' },
+        { label: 'Prevention & IAM', link: '/projects/blogs/security/security_architecture/2_prevention_iam' },
+        { label: 'Endpoint & Network', link: '/projects/blogs/security/security_architecture/3_endpoint_network' },
+        { label: 'Application & Data', link: '/projects/blogs/security/security_architecture/4_application_data' },
+        { label: 'Detection & Response', link: '/projects/blogs/security/security_architecture/5_detection_response' }
+      ]
     }
   ]
 };
