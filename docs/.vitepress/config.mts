@@ -213,5 +213,10 @@ export default withMermaid(
         { icon: 'linkedin', link: 'https://www.linkedin.com/in/sujith-eag' }
       ]
     }
-  })
+  }),
+  {
+    mermaid: {
+      htmlLabels: false
+    }
+  }
 )

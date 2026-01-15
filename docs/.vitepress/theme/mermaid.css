@@ -67,14 +67,27 @@
   --mm-accent: #fbbf24;
 }
 
+/* Ensure Mermaid container allows content to expand */
+.mermaid {
+  overflow: visible !important;
+  max-height: none !important; /* Override any max-height from parent containers */
+}
+
 /* Ensure SVG inherits background for better contrast */
 .mermaid svg {
   background-color: var(--mm-bg) !important;
+  height: auto !important; /* Allow SVG to auto-size based on content */
+  padding-bottom: 20px !important;
 }
 
 /* Improve text legibility */
 .mermaid svg text {
   fill: var(--mm-text) !important;
+}
+
+/* Ensure foreignObject allows overflow for better text rendering */
+.mermaid foreignObject {
+  overflow: visible !important;
 }
 
 /* ───────────────────────────────────────────────────────────

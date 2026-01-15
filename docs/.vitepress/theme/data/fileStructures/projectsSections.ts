@@ -29,7 +29,7 @@ export const securityBlog = {
     {
       title: 'Security Architecture',
       items: [
-        { label: 'Overview', link: '/projects/blogs/security/security_architecture/00_overview' },
+        { label: 'Overview', link: '/projects/blogs/security/security_architecture/0_overview' },
         { label: 'Foundation', link: '/projects/blogs/security/security_architecture/1_foundation' },
         { label: 'Prevention & IAM', link: '/projects/blogs/security/security_architecture/2_prevention_iam' },
         { label: 'Endpoint & Network', link: '/projects/blogs/security/security_architecture/3_endpoint_network' },
