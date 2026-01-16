@@ -22,6 +22,7 @@ This lab guides you through deploying a WordPress website using Amazon Lightsail
 
 ## Architecture Overview
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[User] -->|HTTP/HTTPS| Lightsail[Lightsail Instance]
@@ -35,6 +36,7 @@ flowchart TD
     PHP --> WordPress
     WordPress --> MySQL
 ```
+:::
 
 ## What is Amazon Lightsail?
 

@@ -4,7 +4,7 @@
 
 This lab covers creating a Custom Amazon Machine Image (AMI) from a working EC2 instance, launching new instances from it, and properly deleting AMIs to avoid unnecessary charges.
 
-
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     subgraph Creation [Create Custom AMI]
@@ -22,6 +22,7 @@ flowchart TD
         StepB --> Free[Storage Freed]
     end
 ```
+:::
 
 ## What is an AMI?
 
@@ -43,6 +44,7 @@ A Custom AMI is like a master copy of your EC2 setup. It ensures your website or
 
 This section captures the current configuration — installed packages, website files, and settings — into a reusable Amazon Machine Image (AMI).
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Select[Select Instance] --> Actions[Actions Menu]
@@ -51,6 +53,8 @@ flowchart TD
     Name --> Storage[Configure Storage]
     Storage --> Done[Create Image]
 ```
+:::
+
 
 **Step 1:** Select the running instance
 
@@ -97,6 +101,7 @@ Your custom AMI is now saved in that region and can be used to launch identical 
 
 This section launches a new EC2 instance from a previously created Custom Amazon Machine Image (AMI) — containing your configured website and software.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     AMI[Select AMI] --> Launch[Launch Instance]
@@ -105,6 +110,7 @@ flowchart TD
     Network --> Storage[Storage Options]
     Storage --> Review[Review & Launch]
 ```
+:::
 
 **Step 1:** Go to AMIs
 
@@ -157,6 +163,7 @@ Deleting a custom AMI involves **deregistering** the image and then **deleting i
 
 When you deregister an AMI, it is removed from your account and can no longer be used to launch new instances. However, the **snapshot** that was created along with the AMI still remains in your storage and continues to incur charges, so you must delete it separately to free up space and stop costs.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Locate[Locate AMI] --> Deregister[Deregister AMI]
@@ -164,6 +171,7 @@ flowchart TD
     FindSnap --> DeleteSnap[Delete Snapshot]
     DeleteSnap --> Clean[Resources Freed]
 ```
+:::
 
 **Step 1:** Open EC2 Dashboard
 

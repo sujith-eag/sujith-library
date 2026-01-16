@@ -4,6 +4,7 @@
 
 This lab demonstrates launching and configuring EC2 instances for a Web Server in a Public Subnet and a Database Server in a Private Subnet, including secure connectivity between them.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User((User/Admin))
@@ -32,6 +33,8 @@ flowchart TD
     
     Internet -.->|X Blocked| DB
 ```
+:::
+
 
 ## Launch Windows Instance in Public Subnet
 

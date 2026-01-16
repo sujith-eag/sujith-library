@@ -4,6 +4,8 @@
 
 This lab demonstrates deploying a scalable and highly available web application on AWS by configuring EC2 web servers, Custom AMI, Target Group, Application Load Balancer (ALB), and Auto Scaling Group (ASG).
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     subgraph Build [Build Custom Image]
@@ -26,6 +28,7 @@ flowchart TD
         AMI -.->|Used to Launch| Inst2
     end
 ```
+:::
 
 ## Component Overview
 
@@ -103,6 +106,7 @@ This AMI now contains Apache + your `index.html`.
 
 ## Create Target Group
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Create[Create Target Group] --> Type[Target Type: Instances]
@@ -110,6 +114,7 @@ flowchart TD
     Protocol --> Health[Health Check Path: /]
     Health --> Done[Target Group Ready]
 ```
+:::
 
 **Step 1:** EC2 → Target Groups → Create Target Group
 

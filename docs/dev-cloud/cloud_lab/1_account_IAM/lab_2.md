@@ -8,6 +8,7 @@ Date: 9-10-2025
 
 This diagram illustrates the relationship between the Root user and IAM entities, and the workflow for securing a new user.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Root[Root User<br/>Account Owner] -->|Creates| Alias[Account Alias]
@@ -24,6 +25,7 @@ flowchart TD
     Console -->|3. Enable| MFA[Multi-Factor Authentication]
     MFA -->|Secures| Access[Secured User Access]
 ```
+:::
 
 
 AWS Identity and Access Management (IAM) is a security service that helps you control who can access your AWS resources and what actions they can perform. It is a global AWS service. It allows you to securely manage users, groups, roles, and permissions in your AWS account.
@@ -40,6 +42,7 @@ AWS Identity and Access Management (IAM) is a security service that helps you co
 
 ## IAM User Group Creation
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart LR
     IAM[IAM Dashboard] --> Groups[User Groups]
@@ -48,6 +51,7 @@ flowchart LR
     Name --> Policy[Attach Policies]
     Policy --> Done[Group Created]
 ```
+:::
 
 **Step 1:** Sign in to AWS Console
 
@@ -89,6 +93,7 @@ Log in to your AWS Management Console using an administrator account.
 
 ## IAM User Creation
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart LR
     IAM[IAM Dashboard] --> Users[Users Section]
@@ -98,6 +103,7 @@ flowchart LR
     Perms --> Review[Review & Create]
     Review --> Creds[Save Credentials]
 ```
+:::
 
 **Step 1:** Sign in to AWS Management Console
 
@@ -159,6 +165,7 @@ flowchart LR
 
 ## Enable AWS IAM MFA
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[Select User] --> Security[Security Credentials]
@@ -171,6 +178,7 @@ flowchart TD
     Key --> Verify
     Verify --> Done[MFA Enabled]
 ```
+:::
 
 **Step 1:** Sign in to AWS Console as root user
 

@@ -37,6 +37,7 @@ This exercise demonstrates a complete cloud-based web application workflow using
 
 **Flow:** Browser → Flask App (on EC2) → MySQL Database (RDS)
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[User Browser] --> Flask[Flask App on EC2]
@@ -45,6 +46,7 @@ flowchart TD
     AWS[Amazon Web Services] --> EC2[EC2 Instance<br/>Flask App]
     AWS --> RDS_Instance[RDS Instance<br/>MySQL Database]
 ```
+:::
 
 
 **Components:**

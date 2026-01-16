@@ -28,6 +28,7 @@ After completing this exercise, you will be able to:
 
 ### Flask Form Processing Flow
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[User] -->|GET /| Flask[Flask Application<br/>Running Locally]
@@ -39,6 +40,7 @@ flowchart TD
     
     Result --> User
 ```
+:::
 
 ## Preparation
 

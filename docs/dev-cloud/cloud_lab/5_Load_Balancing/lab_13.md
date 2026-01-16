@@ -4,6 +4,7 @@
 
 This lab demonstrates how to generate high CPU load on an Amazon EC2 Linux instance using the `stress-ng` tool and observe CPU utilization in CloudWatch.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     subgraph User_Actions [User Actions]
@@ -30,6 +31,7 @@ flowchart TD
     CW --> Graph
     U3 --> Graph
 ```
+:::
 
 ## Launch a Linux EC2 Instance
 
@@ -111,6 +113,7 @@ stress-ng --cpu 4 --timeout 120
 
 ## Observe CPU Utilization in CloudWatch
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     EC2[EC2 Instance] -->|Sends Metrics| CW[CloudWatch]
@@ -119,6 +122,7 @@ flowchart TD
     Select --> CPU[Choose CPUUtilization]
     CPU --> Graph[View Spike in Graph]
 ```
+:::
 
 **Step 1:** Go to CloudWatch → Metrics → EC2 → Per-Instance Metrics.
 

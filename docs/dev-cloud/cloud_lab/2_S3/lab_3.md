@@ -8,6 +8,8 @@ Date: 14-10-2025
 
 This diagram visualizes the specific configuration steps required to make an object accessible via a public URL.
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     Start([Start: Log into AWS Console]) --> Search[Search S3]
@@ -28,6 +30,7 @@ flowchart TD
     
     Action --> Access([Access via Object URL])
 ```
+:::
 
 Amazon S3 (Simple Storage Service) is a fully managed, object-based storage service offered by AWS. It allows you to store and retrieve unlimited amounts of data from anywhere on the web.
 
@@ -85,6 +88,8 @@ Each object can be accessed through a unique URL. S3 is commonly used for:
 
 ## Create an S3 Bucket and Upload an Image
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart LR
     S3[Open S3] --> Create[Create Bucket]
@@ -93,6 +98,8 @@ flowchart LR
     Upload --> Public[Make Public]
     Public --> URL[Copy Object URL]
 ```
+
+:::
 
 **Step 1:** Open the S3 Service:
 

@@ -4,6 +4,7 @@
 
 This lab covers creating and configuring a Custom AWS Virtual Private Cloud (VPC) with a two-tier architecture including public and private subnets, Internet Gateway, NAT Gateway, and Route Tables.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Internet((Internet))
@@ -29,6 +30,7 @@ flowchart TD
     PrivInstance -->|Private Route Table| NAT
     NAT --> IGW
 ```
+:::
 
 ## Create a New VPC
 

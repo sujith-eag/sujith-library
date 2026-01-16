@@ -1,31 +1,38 @@
+---
+title: Flask and DynamoDB on Elastic Beanstalk
+description: Deploying a Flask application with DynamoDB integration on AWS Elastic Beanstalk
+sidebar: auto
+---
+
 # Flask + DynamoDB on Elastic Beanstalk
 
-This lab provides a complete walkthrough for deploying a Flask application integrated with Amazon DynamoDB on AWS Elastic Beanstalk, demonstrating a serverless database architecture with managed application hosting.
+**Topics:** Elastic Beanstalk, Flask, DynamoDB, REST API, IAM, PaaS
 
 ## Overview
 
-This lab builds on Lab 20 by integrating a Flask application with DynamoDB for data persistence. You'll deploy a RESTful API that performs CRUD operations on a DynamoDB table, all managed through Elastic Beanstalk's PaaS environment.
+This lab builds on previous excercise by integrating a Flask application with DynamoDB for data persistence. You'll deploy a RESTful API that performs CRUD operations on a DynamoDB table, all managed through Elastic Beanstalk's PaaS environment. The activity demonstrates serverless database architecture with managed application hosting.
 
-### Key Concepts
+## Key Concepts
 
 | Concept | Description |
-|---------|-------------|
-| **Boto3** | AWS SDK for Python to interact with DynamoDB |
-| **RESTful API** | HTTP-based interface for CRUD operations |
-| **IAM Instance Profile** | Role attached to EC2 for secure AWS service access |
-| **Environment Variables** | Configuration values passed to application at runtime |
-| **Runtime.txt** | Specifies Python version for Elastic Beanstalk |
-| **JSON Responses** | Structured data format for API responses |
+| :------- | :---------- |
+| Boto3 | AWS SDK for Python to interact with DynamoDB |
+| RESTful API | HTTP-based interface for CRUD operations |
+| IAM Instance Profile | Role attached to EC2 for secure AWS service access |
+| Environment Variables | Configuration values passed to application at runtime |
+| Runtime.txt | Specifies Python version for Elastic Beanstalk |
+| JSON Responses | Structured data format for API responses |
 
-### Prerequisites
+## Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Elastic Beanstalk, EC2, and DynamoDB
 - Basic knowledge of Flask, REST APIs, and NoSQL databases
 - Completion of Lab 18 (DynamoDB basics) recommended
 
-## System Architecture 1
+## Architecture Overview
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[Client/User] --> ELB[Elastic Beanstalk Environment]
@@ -64,8 +71,9 @@ flowchart TD
     
     Deployment --> ELB
 ```
+:::
 
-### System Architecture 2
+::: details Click to expand Architecture Diagram
 
 ```mermaid
 flowchart TD
@@ -91,6 +99,7 @@ flowchart TD
     Upload --> Deploy[EB Deploys to EC2]
     Deploy --> EB
 ```
+:::
 
 ## Phase 1: Local Environment Preparation
 
@@ -409,13 +418,22 @@ curl -X DELETE http://<your-eb-domain>/student/101
 2. Verify **IAM instance profile** is set to `EB-EC2-DynamoDB-Role`
 3. Confirm role has `AmazonDynamoDBFullAccess` policy attached
 
+## Validation
+
+- **Elastic Beanstalk Environment:** Health status shows "Ok" in EB console
+- **Application URL:** Accessible and returns "Flask + DynamoDB on Elastic Beanstalk is working!" on root path
+- **DynamoDB Table:** "Students" table exists with correct partition key
+- **API Endpoints:** All CRUD operations (POST, GET, PUT, DELETE) work correctly
+- **IAM Role:** EB-EC2-DynamoDB-Role attached to EC2 instance with proper permissions
+- **Environment Variables:** TABLE_NAME and AWS_REGION properly configured
+
 ## Cost Considerations
 
 - **Elastic Beanstalk:** ~$0.01/hour for t3.micro EC2 (free tier eligible)
 - **DynamoDB:** On-demand pricing (~$1.25/million writes, $0.25/million reads)
 - **Tip:** Terminate EB environment and delete DynamoDB table immediately after lab. Monitor via AWS Cost Explorer.
 
-## Cleanup Instructions
+## Cleanup
 
 To avoid ongoing charges:
 
@@ -431,28 +449,14 @@ To avoid ongoing charges:
    - Can be retained for future labs
    - Or delete via **IAM** → **Roles** → `EB-EC2-DynamoDB-Role` → **Delete**
 
-## Key Concepts
-
-### Elastic Beanstalk Components
-
-- **Application**: Top-level container for environments
-- **Environment**: Runtime instance with specific configuration
-- **Platform**: Managed runtime (Python, Node.js, etc.)
-- **Version**: Specific deployment of application code
-
-### IAM Instance Profile
-
-An EC2 instance profile is a container for an IAM role that allows EC2 instances to assume that role. It provides temporary credentials to applications running on EC2 without hardcoding API keys.
-
-### Environment Variables vs. Hardcoding
-
-**Why use environment variables?**
-
-- Separate configuration from code
-- Different settings per environment (dev, staging, prod)
-- Security: No credentials in source code
-- Easy updates without redeploying code
-
 ## Result
 
 Successfully deployed a Flask REST API integrated with DynamoDB on Elastic Beanstalk. Demonstrated serverless database operations, secure IAM access, and managed application deployment with full CRUD functionality.
+
+## Viva Questions
+
+1. What is the role of Boto3 in this Flask application?
+2. Why do we use IAM instance profiles instead of access keys?
+3. What are the benefits of deploying on Elastic Beanstalk?
+4. How does DynamoDB differ from traditional relational databases?
+5. What is the purpose of the Procfile in Elastic Beanstalk deployments?

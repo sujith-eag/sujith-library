@@ -8,6 +8,8 @@ Date: 30-10-2025
 
 This diagram illustrates the two distinct paths for connecting to a Linux instance based on your operating system and preferred tool (OpenSSH vs. PuTTY).
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     Start([Launch Linux Instance]) --> KeySelect{Select Key Format}
@@ -30,6 +32,8 @@ flowchart TD
     Open --> Connected
 ```
 
+:::
+
 ### Key Pair Format Differences
 
 | **Scenario**                                | **Key File Format** | **Explanation**                                                         |
@@ -39,6 +43,8 @@ flowchart TD
 
 ## Launch Linux EC2 and Connect via SSH (PowerShell/Linux)
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart LR
     Launch[Launch Instance] --> Key[Create .pem Key]
@@ -47,6 +53,7 @@ flowchart LR
     Run --> Perms[Set Key Permissions]
     Perms --> Connect[SSH Connect]
 ```
+:::
 
 **Step 1:** Sign in to AWS Management Console: select the nearest AWS Region.
 
@@ -108,6 +115,8 @@ PuTTY is a client program for the SSH, Telnet and Rlogin network protocols. It i
 
 ## Launch Linux EC2 and Connect via PuTTY
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart LR
     Launch[Launch Instance] --> Key[Create .ppk Key]
@@ -117,6 +126,8 @@ flowchart LR
     PuTTY --> Config[Configure Host & Auth]
     Config --> Connect[Connect]
 ```
+
+:::
 
 **Step 1:** Sign in to AWS Management Console and select your AWS Region.
 

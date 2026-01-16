@@ -4,6 +4,7 @@
 
 This project demonstrates hosting a simple static website using AWS S3 for static hosting and an EC2 instance for an alternative server-backed deployment.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     subgraph User [User Access]
@@ -37,6 +38,7 @@ flowchart TD
     Role -.->|Read Access| Bucket
     Script -->|Syncs Content| Bucket
 ```
+:::
 
 ## Project Status
 

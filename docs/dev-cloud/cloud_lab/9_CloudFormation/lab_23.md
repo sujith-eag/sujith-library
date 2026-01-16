@@ -1,4 +1,12 @@
+---
+title: EC2 + S3 - Static Content Pulled from S3 using CloudFormation
+description: Multi-resource CloudFormation stack with EC2 and S3 integration
+sidebar: auto
+---
+
 # EC2 + S3 : Static Content Pulled from S3 using CloudFormation
+
+**Topics:** CloudFormation, EC2, S3, IAM, Infrastructure as Code, UserData
 
 ## Overview
 
@@ -29,6 +37,7 @@ This lab demonstrates advanced CloudFormation usage by creating a multi-resource
 
 ## Architecture Overview
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     subgraph "CloudFormation Resources"
@@ -57,17 +66,16 @@ flowchart TD
     Download --> Deploy
     Deploy --> Website
 ```
+:::
     
-## PART 0 — One-time: Create Key Pair
+## Step 0: One-time Setup - Create Key Pair
 
 1. Navigate to **EC2** → **Key Pairs** → **Create key pair**.
-    
 2. **Name:** `pemkeypair`.
-    
 3. **Format:** `.pem`. Download and keep it safe.
     
 
-## PART 1 — Stack-1: Create S3 Bucket (CloudFormation)
+## Step 1: Create S3 Bucket Stack (CloudFormation)
 
 ### Step 1.1: Create S3 template file
 
@@ -102,7 +110,7 @@ Outputs:
 Open the completed stack, go to **Outputs**, and copy the `BucketName`.
 
 
-## PART 2 — Upload Static Content to S3 (Manual)
+## Step 2: Upload Content to S3
 
 ### Step 2.1: Create index.html on your PC
 
@@ -130,7 +138,7 @@ Create a file named `index.html` with this content:
 3. The file path is now: `s3://<your-bucket-name>/index.html`.
     
 
-## PART 3 — Stack-2: Launch EC2 + Apache + Pull from S3
+## Step 3: Launch EC2 Stack and Verify
 
 This stack manages the IAM Role, Security Group, EC2 instance, Apache installation, and file synchronization.
 
@@ -242,14 +250,8 @@ Outputs:
         
     - **SubnetId:** Select a **PUBLIC** subnet.
         
-5. Click **Create stack** and wait for `CREATE_COMPLETE`.
-    
-
-## PART 4 — Verify Output
-
-Go to **Stack-2** → **Outputs** → Copy **WebsiteURL** and open it in a browser.
-
-- **Expected page:** "Hello! This page was pulled from S3 to EC2 automatically…".
+5. **Verify Output**: Go to **Stack-2** → **Outputs** → Copy **WebsiteURL** and open it in a browser.
+   - **Expected page:** "Hello! This page was pulled from S3 to EC2 automatically…".
     
 
 ## Validation
@@ -297,19 +299,14 @@ Go to **Stack-2** → **Outputs** → Copy **WebsiteURL** and open it in a brows
 3. **Delete Stack-1:** `S3-Website-Bucket`.
     
 
-## Viva-ready questions
-
-- What is the purpose of **UserData** in EC2?
-    
-- Why do we need an **IAM Role + Instance Profile**?
-    
-- Why is the S3 bucket not made public in this lab?
-    
-- What happens when a CloudFormation stack is deleted? 
-    
-- Which ports are required for web hosting and SSH?
-
 ## Result
 
 Successfully created a multi-service CloudFormation stack integrating EC2, S3, and IAM. Demonstrated automated content deployment from object storage to web server using IaC and secure cross-service permissions.
-    
+
+## Viva Questions
+
+- What is the purpose of **UserData** in EC2?
+- Why do we need an **IAM Role + Instance Profile**?
+- Why is the S3 bucket not made public in this lab?
+- What happens when a CloudFormation stack is deleted?
+- Which ports are required for web hosting and SSH?

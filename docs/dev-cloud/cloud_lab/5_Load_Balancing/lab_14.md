@@ -23,6 +23,7 @@ Deploying a Load-Balanced Web Application using **Application Load Balancer (ALB
 
 ## Architecture Overview
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[User] --> ALB[Application Load Balancer]
@@ -37,6 +38,7 @@ flowchart TD
     ScaleOut -.-> ASG[Auto Scaling Group]
     ScaleIn -.-> ASG
 ```
+:::
 
 ## Step A: Create Launch Template
 

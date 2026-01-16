@@ -8,6 +8,8 @@ Date: 29-10-2025
 
 This diagram illustrates the process of configuring the instance, handling security credentials, and establishing the remote desktop connection.
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     User(User) -->|1. Configures| Console[AWS Console]
@@ -31,6 +33,8 @@ flowchart TD
         RDP -->|Public IP + Password| Remote[Remote Desktop Session]
     end
 ```
+
+:::
 
 Amazon Elastic Compute Cloud (EC2) is a core AWS Compute service that lets you run virtual servers (instances) in the cloud. Amazon EC2 is an Infrastructure as a Service (IaaS) offering from AWS. It allows you to launch virtual machines to host applications and manage them remotely – wherever you are in the world.
 
@@ -110,6 +114,7 @@ Remote Desktop Protocol (RDP), is a secure communication protocol developed by M
 
 ## Launch Windows EC2 and Connect via RDP
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart LR
     Launch[Launch Instance] --> Config[Configure AMI & Type]
@@ -119,6 +124,8 @@ flowchart LR
     Run --> Decrypt[Decrypt Password]
     Decrypt --> Connect[Connect via RDP]
 ```
+
+:::
 
 **Step 1:** Sign in to AWS Management Console:
 

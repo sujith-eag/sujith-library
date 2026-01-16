@@ -8,6 +8,7 @@ Date: 5-11-2025
 
 This diagram contrasts the Manual Installation method (requires SSH and multiple commands) with the User Data method (automated at boot).
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Start([Configure EC2]) --> Net[Network: Allow HTTP 80 & SSH 22]
@@ -26,6 +27,7 @@ flowchart TD
     Boot --> Auto[[System Auto-Executes Script]]
     Auto --> EndNode
 ```
+:::
 
 - **Manual Installation of Apache (httpd) Web Server on EC2 for Static Website Hosting.**
     

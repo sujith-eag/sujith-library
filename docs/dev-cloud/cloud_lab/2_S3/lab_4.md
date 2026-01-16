@@ -18,6 +18,8 @@ This lab covers three major S3 capabilities:
 
 Amazon S3 can host a static website – a website consisting of only HTML, CSS, JavaScript, images, etc. – no server-side scripting like PHP or Python.
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     User((Web User)) -->|HTTP Request| Bucket[S3 Bucket]
@@ -33,8 +35,11 @@ flowchart TD
     Config -->|Serves| Files
     Files -->|Response| User
 ```
+:::
 
 ### Improved S3 Static Website Architecture
+
+::: details Click to expand Architecture Diagram
 
 ```mermaid
 flowchart TD
@@ -48,10 +53,13 @@ flowchart TD
     Config -.->|Configures| Hosting[Website Hosting]
     Files -.->|Serves| User
 ```
+:::
 
 When you enable "Static Website Hosting," your S3 bucket acts like a web server, and AWS provides a public website URL to access it. You can create a multi-page static website (e.g., `index.html`, `about.html`, `contact.html`) and upload it to S3. Links within these pages allow users to navigate between them just like a normal website.
 
 ### Static Website Setup Flow
+
+::: details Click to expand Architecture Diagram
 
 ```mermaid
 flowchart TD
@@ -61,6 +69,7 @@ flowchart TD
     Hosting --> Policy[Attach Bucket Policy<br/>Public Read Access]
     Policy --> URL[Website URL Generated<br/>Access Your Site]
 ```
+:::
 
 **Step 1:** Create an S3 Bucket
 
@@ -202,6 +211,8 @@ CRR automatically copies objects from one S3 bucket (source) to another (destina
 
 ### Cross-Region Replication Flow
 
+::: details Click to expand Architecture Diagram
+
 ```mermaid
 flowchart TD
     Upload[Upload Object] --> Source[Source Bucket<br/>Region A<br/>Versioning Enabled]
@@ -213,6 +224,7 @@ flowchart TD
     
     Dest --> Replicated[Object Replicated<br/>Disaster Recovery<br/>Low Latency Access]
 ```
+:::
 
 ### Set Up CRR
 

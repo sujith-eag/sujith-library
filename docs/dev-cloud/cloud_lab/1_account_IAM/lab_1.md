@@ -7,6 +7,7 @@ Date: 8-10-2025
 
 ### Account Setup Workflow
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Start([Start: Log into AWS Console]) --> Dashboard[AWS Dashboard Overview]
@@ -33,6 +34,7 @@ flowchart TD
     MFA_Enabled --> Complete([Setup Complete])
     Budget_Enabled --> Complete
 ```
+:::
 
 ## AWS Console Overview
 
@@ -52,6 +54,7 @@ flowchart TD
 > Notes
 > Make sure your phone is unlocked, Bluetooth is on, and it uses a screen lock (fingerprint/PIN).
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Security[Security Credentials] --> AssignMFA[Assign MFA Device]
@@ -66,6 +69,8 @@ flowchart TD
     ScanQR --> EnterCode[Enter 6-Digit Code]
     EnterCode --> MFA_Done
 ```
+:::
+
 
 ### Option 1: Add a Passkey for Easier Login
 
@@ -129,6 +134,7 @@ Example: if you are close to or exceeding your designated budget.
 
 By setting a budget you can monitor budget thresholds from the start.
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     Billing[Billing & Cost Mgt] --> Features[Select Budgets]
@@ -139,6 +145,8 @@ flowchart TD
     Alert --> Email[Enter Email Recipient]
     Email --> Finalize[Budget Created]
 ```
+:::
+
 
 ### Creating a budget
 

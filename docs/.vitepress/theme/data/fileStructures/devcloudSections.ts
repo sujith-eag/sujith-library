@@ -31,6 +31,9 @@ export const cloud2Section = [
         items: [
           { label: "S3 Introduction", link: "/dev-cloud/cloud_lab/2_S3/lab_3" },
           { label: "S3 Advanced Features", link: "/dev-cloud/cloud_lab/2_S3/lab_4" },
+          { label: "S3 Data Analysis with Athena", link: "/dev-cloud/cloud_lab/2_S3/lab_26" },
+          { label: "S3 Website with CloudFront", link: "/dev-cloud/cloud_lab/2_S3/lab_28" },
+          { label: "Global S3 Website Delivery", link: "/dev-cloud/cloud_lab/2_S3/lab_29" },
         ]
       },
       {
@@ -91,6 +94,19 @@ export const cloud2Section = [
         title: "AWS Lambda",
         items: [
           { label: "Input Processing, Business Logic Execution", link: "/dev-cloud/cloud_lab/10_AWS_Lambda/lab_24" },
+          { label: "Event-Driven Notifications", link: "/dev-cloud/cloud_lab/10_AWS_Lambda/lab_25" },
+        ]
+      },
+      {
+        title: "IoT",
+        items: [
+          { label: "Sensor Monitoring with IoT Core", link: "/dev-cloud/cloud_lab/11_IoT/lab_27" },
+        ]
+      },
+      {
+        title: "EKS",
+        items: [
+          { label: "Containerized App on EKS", link: "/dev-cloud/cloud_lab/12_EKS/lab_30" },
         ]
       },
     ]

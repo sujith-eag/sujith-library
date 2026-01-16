@@ -27,6 +27,7 @@ To implement Amazon ElastiCache (Redis) as an in-memory caching service by deplo
 
 ### ElastiCache Data Flow
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     User[User Request] --> App[Application Layer]
@@ -42,6 +43,7 @@ flowchart TD
     ReturnCache --> User
     ReturnData --> User
 ```
+:::
 
 **Why use ElastiCache?**
 

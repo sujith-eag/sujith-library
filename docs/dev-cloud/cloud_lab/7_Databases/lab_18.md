@@ -28,6 +28,7 @@ To create an Amazon DynamoDB table and perform CRUD operations (Create, Read, Up
 
 ## DynamoDB Architecture
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     App[Application] --> DDB[(DynamoDB Table<br/>MCA_StudentLabInternals)]
@@ -36,6 +37,7 @@ flowchart TD
     DDB --> SK[Sort Key: CourseCode]
     DDB --> Attr[Attributes:<br/>Name, Semester,<br/>Attendance, IA1Marks]
 ```
+:::
 
 **Key Concepts:**
 

@@ -1,41 +1,51 @@
-# CloudFormation : Launch EC2 (Amazon Linux 2023) + Install Apache using UserData
+---
+title: CloudFormation - Launch EC2 with Apache using UserData
+description: Introduction to AWS CloudFormation with EC2 and UserData automation
+sidebar: auto
+---
 
-Create an EC2 instance using AWS CloudFormation (YAML template) and automatically install Apache web server (httpd) using UserData, then verify the website from a browser.
+# CloudFormation: Launch EC2 with Apache using UserData
+
+**Topics:** CloudFormation, EC2, UserData, Infrastructure as Code
 
 ## Overview
 
 This lab introduces AWS CloudFormation, Infrastructure as Code (IaC) service. You'll create a YAML template to provision an EC2 instance with Apache web server installed via UserData, demonstrating automated infrastructure deployment.
 
-### Key Concepts
+The activity covers creating a CloudFormation template, deploying it as a stack, and verifying the automated setup. You'll learn how to define resources, use parameters, and leverage UserData for instance configuration.
+
+## Key Concepts
 
 | Concept | Description |
-|---------|-------------|
-| **CloudFormation** | AWS service for defining and provisioning infrastructure as code |
-| **YAML Template** | Human-readable format for defining AWS resources |
-| **UserData** | Script that runs on EC2 instance launch for configuration |
-| **Parameters** | Input values for template customization |
-| **Resources** | AWS services defined in the template |
-| **Outputs** | Values returned after stack creation |
+| :------- | :---------- |
+| CloudFormation | AWS service for defining and provisioning infrastructure as code |
+| YAML Template | Human-readable format for defining AWS resources |
+| UserData | Script that runs on EC2 instance launch for configuration |
+| Parameters | Input values for template customization |
+| Resources | AWS services defined in the template |
+| Outputs | Values returned after stack creation |
 
-### Prerequisites
+## Prerequisites
 
 - Region set to Asia Pacific (Mumbai) – ap-south-1
 - Basic knowledge of EC2 and Security Groups
 - Understanding of YAML syntax (optional but helpful)
+- Existing EC2 key pair for SSH access
 
-### Architecture Overview
+## Architecture Overview
 
+::: details Click to expand Architecture Diagram
 ```mermaid
 flowchart TD
     subgraph "CloudFormation Deployment"
         Template[YAML Template<br/>Defines Resources] --> Stack[CloudFormation Stack<br/>Manages Resources]
-        Stack --> EC2[EC2 Instance<br/>t3.micro<br/>Amazon Linux 2]
+        Stack --> EC2[EC2 Instance<br/>t3.micro<br/>Amazon Linux 2023]
         Stack --> SG[Security Group<br/>Ports: 22, 80]
     end
     
     subgraph "Instance Launch Process"
         UserData[UserData Script] -->|Executes on Boot| EC2
-        UserData --> Install[Install Apache<br/>yum install httpd]
+        UserData --> Install[Install Apache<br/>dnf install httpd]
         UserData --> Config[Configure Firewall<br/>firewall-cmd]
         UserData --> Content[Create Index.html<br/>Custom Website]
     end
@@ -49,17 +59,16 @@ flowchart TD
     Config --> Content
     Content --> Website
 ```
+:::
 
-## Prerequisites Setup
+## Phase 1: Create Key Pair
 
-### Create Key Pair (One-time setup)
-
-#### Step 1: Open EC2 Key Pairs
+### Step 1: Open EC2 Key Pairs
 1. AWS Console → Search EC2
 2. Left menu → Key Pairs (under "Network & Security")
 3. Click Create key pair
 
-#### Step 2: Create key pair
+### Step 2: Create key pair
 - Name: pemkeypair (any name is fine)
 - Key pair type: RSA
 - Private key file format: .pem (recommended)
@@ -67,25 +76,22 @@ flowchart TD
 
 A file will download like: pemkeypair.pem
 
-**Note:** CloudFormation uses key pair NAME (pemkeypair), not the file name.
+> [!NOTE]
+> CloudFormation uses key pair NAME (pemkeypair), not the file name.
 
-## Template Creation
+## Phase 2: Create CloudFormation Template
 
-### Create CloudFormation Template File (Amazon Linux 2023 + Apache)
-
-#### Step 1: Create YAML file on your computer
+### Step 1: Create YAML file on your computer
 1. Open Notepad
 2. Paste the full YAML template given below
 3. Save as: ec2-apache-al2023.yaml
    - Save type: All files
    - Encoding: UTF-8 (if asked)
 
----
-
 ### Full CloudFormation Template (Amazon Linux 2023)
-**Important:**
-- Do not add .pem anywhere.
-- You will select Key Pair from dropdown during stack creation.
+> [!IMPORTANT]
+> - Do not add .pem anywhere.
+> - You will select Key Pair from dropdown during stack creation.
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
@@ -142,55 +148,43 @@ Outputs:
     Value: !Sub "http://${WebServerInstance.PublicDnsName}"
 ```
 
-## Stack Deployment
+## Phase 3: Deploy CloudFormation Stack
 
-### Create CloudFormation Stack (Console Steps)
-
-#### Step 1: Open CloudFormation
+### Step 1: Open CloudFormation
 1. AWS Console → Search CloudFormation
 2. Click Stacks
 3. Click Create stack → With new resources (standard)
 
-#### Step 2: Prepare template (select correct options)
+### Step 2: Prepare template (select correct options)
 1. Under Prepare template: Select Choose an existing template
 2. Under Template source: Select Upload a template file
 3. Click Choose file → select ec2-apache-al2023.yaml
 4. Click Next
 
-### Specify Stack Details
-
-#### Step 1: Stack name
+### Step 3: Specify Stack Details
 - Stack name: EC2-Apache-AL2023
 - Click Next
 
-#### Step 2: Parameters
+### Step 4: Parameters
 - Under KeyName, select your key pair name from dropdown (Example: pemkeypair)
 - Click Next
 
-### Configure Stack Options (keep default)
+### Step 5: Configure Stack Options (keep default)
 1. Leave everything as default
 2. Click Next
 
-### Review and Create
+### Step 6: Review and Create
 1. Scroll down
 2. Click Create stack
 
-### Monitor Stack Creation
+### Step 7: Monitor Stack Creation
 1. Wait for Stack status to become: CREATE_COMPLETE
 2. Open the stack → click Outputs tab
 3. Copy WebsiteURL
 4. Paste URL in browser
 
-**Expected Output in browser:** Apache Installed via CloudFormation UserData (Amazon Linux 2023)!
-
-## Verification
-
-### Verify in EC2 (Optional)
-1. Go to EC2 → Instances
-2. Instance should be running
-3. Security group should allow:
-   - SSH 22
-   - HTTP 80
+> [!TIP]
+> Expected Output in browser: Apache Installed via CloudFormation UserData (Amazon Linux 2023)!
 
 ## Validation
 
@@ -202,7 +196,7 @@ Outputs:
 - **Website:** Access the output URL and verify Apache page loads.
 - **UserData:** Check EC2 system logs for UserData execution.
 
-## Troubleshooting (Common Errors)
+### Troubleshooting (Common Errors)
 
 1. **Website not opening**
    - Check: EC2 instance status checks are 2/2 passed
@@ -233,3 +227,11 @@ This deletes EC2 + Security Group automatically.
 ## Result
 
 Successfully created infrastructure using CloudFormation IaC. Demonstrated automated EC2 provisioning with UserData scripts for software installation and configuration.
+
+## Viva Questions
+
+1. What is the purpose of **UserData** in EC2?
+2. Why do we use CloudFormation instead of manual EC2 creation?
+3. What is the difference between **Parameters** and **Resources** in CloudFormation?
+4. Why is the Security Group created in the template?
+5. What happens when a CloudFormation stack is deleted?
