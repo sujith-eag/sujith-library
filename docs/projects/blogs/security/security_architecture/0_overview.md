@@ -2,6 +2,11 @@
 
 Cybersecurity architecture is the systematic design and implementation of security controls across an organization's technology landscape. Unlike ad-hoc security measures, an architectural approach ensures comprehensive coverage, consistent policies, and measurable effectiveness.
 
+> [!INFO] **Credit and Source**
+> This content is based on Jeff Crume's excellent IBM Cybersecurity Architecture series, which follows a 10-part deep dive into security domains.
+> 
+> [IBM Cybersecurity Architecture Playlist](https://www.youtube.com/playlist?list=PLOspHqNVtKADkWLFt9OcziQF7EatuANSY)
+
 ## Why Architecture Matters
 
 **The Challenge:** Modern organizations face sophisticated threats that exploit weaknesses across multiple domains. A single strong control (like a firewall) is insufficient when attackers can pivot through identity systems, endpoints, applications, or data stores.
@@ -51,33 +56,23 @@ The framework builds upon foundational principles and spans seven functional dom
 5. Data Security
 
 **Detection and Response Domains:**
-6. Detection and Monitoring
-7. Incident Response
+6. **Detection and Monitoring:** The process of identifying security incidents and threats through monitoring, logging, and analysis
+7. **Incident Response:** The coordinated approach to addressing and managing the aftermath of a security breach
 
 ```mermaid
-flowchart LR
+flowchart TD
     Foundation["`**Foundational Principles**
                 CIA Triad, 
                 Defense in Depth,
                 Least Privilege`"]
     
-    Foundation --> Prevention[**Prevention Domains**]
+    Foundation --> Prevention["`**Prevention Domains**
+                        IAM, Endpoint,
+                        Network, App, Data`"]
     Foundation --> Detection[**Detection Domain**]
     Foundation --> Response[**Response Domain**]
     
-    Prevention --> IAM["`Identity 
-	    & Access Management`"]
-    Prevention --> Endpoint[Endpoint Security]
-    Prevention --> Network[Network Security]
-    Prevention --> App[Application Security]
-    Prevention --> Data[Data Security]
-    
-    IAM --> Detection
-    Endpoint --> Detection
-    Network --> Detection
-    App --> Detection
-    Data --> Detection
-    
+    Prevention --> Detection
     Detection --> Response
 ```
 
@@ -90,7 +85,7 @@ Before implementing technology, security architects must establish a strategic m
 Every security control should support at least one of these three objectives:
 
 ```mermaid
-flowchart TD
+flowchart LR
     CIA["`**CIA Triad**
     Security Objectives`"]
     
@@ -153,9 +148,7 @@ These principles guide how security controls should be designed and implemented:
 
 ## Prevention: The First Line of Defense
 
-Prevention aims to stop attacks before they succeed. While no prevention is perfect, strong preventive controls dramatically reduce the attack surface and force attackers to expend more resources.
-
-### Why Prevention Comes First
+Prevention aims to stop attacks before they succeed. While no prevention is perfect, strong preventive controls dramatically reduce the attack surface and force attackers to expend more resources. Why Prevention Comes First?
 
 **Cost Efficiency:** Preventing a breach costs far less than detecting and responding to one
 - Average cost of a data breach: $4.35 million globally ($9+ million in the US)
@@ -548,5 +541,4 @@ This overview provided the framework. The following sections dive deep into each
 4. **Prevention: Application and Data Security** : Securing the code and crown jewels
 
 5. **Detection and Response** : Monitoring, hunting, and incident management
-
 
