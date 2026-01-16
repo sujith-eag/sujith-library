@@ -1,7 +1,6 @@
 ---
 title: Accelerate an S3 Static Website Using Amazon CloudFront (CDN)
 description: CDN acceleration for S3 static websites with security
-sidebar: auto
 ---
 
 # Accelerate an S3 Static Website Using Amazon CloudFront (CDN)

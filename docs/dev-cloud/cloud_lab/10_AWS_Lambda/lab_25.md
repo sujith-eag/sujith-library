@@ -1,7 +1,6 @@
 ---
 title: Mini Project - Event-Driven Notification System using AWS Lambda and Amazon SNS
 description: Serverless event processing with Lambda and SNS notifications
-sidebar: auto
 ---
 
 # Mini Project: Event-Driven Notification System using AWS Lambda and Amazon SNS

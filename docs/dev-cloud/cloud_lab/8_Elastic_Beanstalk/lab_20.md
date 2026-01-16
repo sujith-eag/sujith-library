@@ -1,7 +1,6 @@
 ---
 title: Deploying a Flask Application on AWS Elastic Beanstalk
 description: Introduction to AWS Elastic Beanstalk for deploying Flask applications
-sidebar: auto
 ---
 
 # Deploying a Flask Application on AWS Elastic Beanstalk

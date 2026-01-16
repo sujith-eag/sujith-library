@@ -1,7 +1,6 @@
 ---
 title: AWS Lambda - Input Processing, Business Logic Execution, and CloudWatch Logging
 description: Serverless function development with Lambda and CloudWatch
-sidebar: auto
 ---
 
 # AWS Lambda : Input Processing, Business Logic Execution, and CloudWatch Logging

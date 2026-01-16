@@ -1,7 +1,6 @@
 ---
 title: Flask and DynamoDB on Elastic Beanstalk
 description: Deploying a Flask application with DynamoDB integration on AWS Elastic Beanstalk
-sidebar: auto
 ---
 
 # Flask + DynamoDB on Elastic Beanstalk

@@ -1,7 +1,6 @@
 ---
 title: Smart Sensor Monitoring System using AWS IoT Core
 description: IoT data ingestion and processing with AWS IoT Core
-sidebar: auto
 ---
 
 # Smart Sensor Monitoring System using AWS IoT Core

@@ -1,7 +1,6 @@
 ---
 title: Analyze a CSV File in S3 Using Amazon Athena
 description: Serverless data analysis with Athena and S3
-sidebar: auto
 ---
 
 # Analyze a CSV File in S3 Using Amazon Athena

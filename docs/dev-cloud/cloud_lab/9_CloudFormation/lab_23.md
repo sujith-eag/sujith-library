@@ -1,7 +1,6 @@
 ---
 title: EC2 + S3 - Static Content Pulled from S3 using CloudFormation
 description: Multi-resource CloudFormation stack with EC2 and S3 integration
-sidebar: auto
 ---
 
 # EC2 + S3 : Static Content Pulled from S3 using CloudFormation

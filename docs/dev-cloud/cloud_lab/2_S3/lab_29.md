@@ -1,7 +1,6 @@
 ---
 title: Global Static Website Delivery using S3 + CloudFront with Cache Update Demo
 description: CDN implementation with caching and invalidation demo
-sidebar: auto
 ---
 
 # Global Static Website Delivery using S3 + CloudFront with Cache Update Demo

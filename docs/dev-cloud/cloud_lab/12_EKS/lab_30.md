@@ -1,7 +1,6 @@
 ---
 title: Deploying a Containerized App on AWS using Amazon EKS
 description: Container orchestration with Amazon EKS and Kubernetes
-sidebar: auto
 ---
 
 # Deploying a Containerized App on AWS using Amazon EKS

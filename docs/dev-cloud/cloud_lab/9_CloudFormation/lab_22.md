@@ -1,7 +1,6 @@
 ---
 title: CloudFormation - Launch EC2 with Apache using UserData
 description: Introduction to AWS CloudFormation with EC2 and UserData automation
-sidebar: auto
 ---
 
 # CloudFormation: Launch EC2 with Apache using UserData
