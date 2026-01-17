@@ -1,8 +1,46 @@
+---
+title: EC2 Instances in Public and Private Subnets
+description: Deploy and secure Windows EC2 instances in two-tier VPC architecture with bastion host connectivity
+---
+
 # EC2 Instances in Public and Private Subnets
 
-**Date:** 14-11-2025
+**Topics:** EC2, VPC, Networking, Bastion Host, Jump Server, RDP, Security Groups, NAT Gateway
 
-This lab demonstrates launching and configuring EC2 instances for a Web Server in a Public Subnet and a Database Server in a Private Subnet, including secure connectivity between them.
+## Overview
+
+This lab demonstrates deploying EC2 instances in a secure two-tier network architecture. You'll launch a Windows web server in a public subnet (accessible from the internet) and a Windows database server in a private subnet (isolated from direct internet access). This architecture pattern is fundamental for production environments where frontend servers need public accessibility while backend databases must remain fully isolated.
+
+You'll configure security groups to control network access,use the public instance as a bastion host (jump server) to access the private instance, and verify that NAT Gateway enables private instances to access the internet for updates while blocking all inbound connections. 
+
+## Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| Bastion Host (Jump Server) | EC2 instance in public subnet used as secure gateway to access private subnet instances; only entry point to private resources |
+| Public Subnet | Subnet with route to Internet Gateway allowing instances to receive public IPs and accept inbound internet connections |
+| Private Subnet | Subnet without public IP assignment or direct internet access; outbound traffic routed through NAT Gateway for security |
+| Security Group (Instance-Level) | Stateful virtual firewall controlling inbound/outbound traffic for EC2 instances based on protocol, port, and source |
+| Security Group Chaining | Referencing one security group as source in another's rules; enables secure communication between tiers without exposing public IPs |
+| Remote Desktop Protocol (RDP) | Microsoft protocol for remote GUI access to Windows instances over TCP port 3389 |
+| NAT Gateway Functionality | Enables private subnet instances to initiate outbound internet connections while blocking all inbound initiated traffic |
+| Private IP vs Public IP | Private IPs (e.g., 10.0.x.x) for internal VPC communication; public IPs for internet-accessible resources |
+| Multi-Hop RDP | Connecting to private instance by first RDP to bastion (public instance), then RDP again from bastion to private instance |
+| Network Isolation | Security practice of separating different application tiers (web, app, database) into distinct subnets with controlled routing |
+
+## Prerequisites
+
+- Completed Lab 10 (Custom VPC Configuration with public/private subnets, IGW, NAT Gateway)
+- Existing VPC with:
+  - Public subnet with route to Internet Gateway
+  - Private subnet with route to NAT Gateway
+  - Both subnets in different Availability Zones
+- Windows computer with Remote Desktop Connection (mstsc) client
+- `.pem` key pair file from previous EC2 labs (or create new one)
+- Basic understanding of Windows Remote Desktop and network security
+- IAM permissions for EC2 instance launch and security group management
+
+## Architecture Overview
 
 ::: details Click to expand Architecture Diagram
 ```mermaid
@@ -35,179 +73,450 @@ flowchart TD
 ```
 :::
 
+## Phase 1: Launch Windows Instance in Public Subnet
 
-## Launch Windows Instance in Public Subnet
+1. Sign in to AWS Management Console.
 
-**Step 1:** Go to EC2 → Launch Instance
+2. Navigate to EC2 service → Click **Launch Instance**.
 
-**Step 2:** Choose configuration:
+3. Configure instance details:
+   - **Name:** `WebInstance` (or descriptive name like `PublicWebServer`)
+   - **Application and OS Images (AMI):**
+     - Select **Windows** tab
+     - Choose **Microsoft Windows Server 2022 Base** or **2019 Base**
+     - Ensure "Free tier eligible" is displayed (if applicable)
 
-- AMI → Windows Server (Free tier eligible)
-- Instance type → `t2.micro` / `t3.micro`
+4. Choose instance type:
+   - **Instance type:** `t2.micro` or `t3.micro` (Free tier eligible)
+   - t3.micro offers better performance but may not be available in all regions
 
-**Step 3:** Select network settings:
+5. Configure key pair:
+   - **Key pair (login):** Select existing key pair or create new
+   - **Key pair type:** RSA
+   - **Private key file format:** `.pem` (for Windows decrypt password)
+   - Download and save the `.pem` file securely
 
-- VPC → `MyWebAppVPC`
-- Subnet → `PublicSubnet`
-- Auto assign Public IP → **Enable**
+> [!IMPORTANT] Key Pair Requirement
+> You need the `.pem` key pair file to decrypt the Windows Administrator password. Without it, you cannot log in to the instance. Store the `.pem` file securely—it cannot be downloaded again after creation.
 
-**Step 4:** Configure Security Group:
+6. Configure Network Settings:
+   - Click **Edit** under Network settings
+   - **VPC:** Select `MyWebAppVPC` (your custom VPC from Lab 10)
+   - **Subnet:** Select `PublicSubnet` (must be the public subnet)
+   - **Auto-assign Public IP:** **Enable**
+     - Critical for internet accessibility
+     - If disabled, instance won't be reachable from internet
 
-- Create `WebInstance-SG`
-- Allow RDP (3389) → Anywhere (for practice)
+7. Configure Security Group for Web Instance:
+   - **Firewall (security groups):** Create security group
+   - **Security group name:** `WebInstance-SG`
+   - **Description:** "Allow RDP from anywhere for lab purposes"
+   - **Inbound security group rules:**
+     - **Rule 1:**
+       - **Type:** RDP
+       - **Protocol:** TCP
+       - **Port:** 3389
+       - **Source:** 0.0.0.0/0 (Anywhere)
+       - **Description:** "RDP access for remote management"
 
-**Step 5:** Launch instance using key pair (.pem)
+> [!WARNING] Production Security
+> In this lab, we allow RDP from 0.0.0.0/0 (anywhere) for learning purposes. In production environments, restrict RDP to specific IP addresses (e.g., your office IP or VPN) using "My IP" or custom CIDR blocks to prevent unauthorized access attempts.
 
-## Launch Windows Instance in Private Subnet
+8. Configure Storage:
+   - **Size:** 30 GiB (default for Windows)
+   - **Volume type:** gp3 (General Purpose SSD)
+   - Leave other storage settings at default
 
-**Step 1:** Click Launch Instance
+9. Review configuration in Summary panel.
 
-**Step 2:** Choose Windows Server AMI
+10. Click **Launch instance**.
 
-**Step 3:** Select network settings:
+11. Wait for instance to be ready:
+    - Instance state: Running
+    - Status checks: 2/2 checks passed (takes 3-5 minutes for Windows)
+    - Note the **Public IPv4 address** and **Private IPv4 address**
 
-- VPC → `MyWebAppVPC`
-- Subnet → `PrivateSubnet`
-- Auto assign Public IP → **Disable**
+> [!NOTE] Windows Boot Time
+> Windows instances take longer to boot than Linux (3-5 minutes for status checks). The instance must complete initialization and Windows configuration before it's ready for RDP connection.
 
-**Step 4:** Configure Security Group:
+## Phase 2: Launch Windows Instance in Private Subnet
 
-- Create `DBInstance-SG`
-- Allow RDP only from `WebInstance-SG`
+1. In EC2 console, click **Launch Instance** again.
 
-**Step 5:** Launch instance
+2. Configure instance details:
+   - **Name:** `DBInstance` (or descriptive name like `PrivateDatabaseServer`)
+   - **AMI:** **Microsoft Windows Server 2022 Base** or **2019 Base** (same as public instance)
 
-The `DBInstance` is now **fully isolated** and cannot be accessed directly from the internet.
+3. Choose instance type:
+   - **Instance type:** `t2.micro` or `t3.micro`
 
-## Connect to Public Windows Instance
+4. Configure key pair:
+   - **Key pair:** Select **the same key pair** used for WebInstance
+     - Using same key pair simplifies password decryption
+     - Alternatively, use different key pair if managing separately
 
-**Step 1:** Select `WebInstance` → Click Connect
+5. Configure Network Settings:
+   - Click **Edit** under Network settings
+   - **VPC:** Select `MyWebAppVPC` (same VPC)
+   - **Subnet:** Select `PrivateSubnet` (must be the private subnet)
+   - **Auto-assign Public IP:** **Disable**
+     - Critical for security—private instances should not have public IPs
+     - Ensures instance is not directly accessible from internet
 
-**Step 2:** Choose RDP Client tab
+> [!IMPORTANT] No Public IP for Private Instances
+> Private subnet instances must have auto-assign public IP **disabled**. This is a fundamental security practice ensuring databases and backend services are never directly exposed to the internet, preventing unauthorized access attempts.
 
-**Step 3:** Click Get Password
+6. Configure Security Group for DB Instance:
+   - **Firewall (security groups):** Create security group
+   - **Security group name:** `DBInstance-SG`
+   - **Description:** "Allow RDP only from WebInstance security group"
+   - **Inbound security group rules:**
+     - **Rule 1:**
+       - **Type:** RDP
+       - **Protocol:** TCP
+       - **Port:** 3389
+       - **Source:** **Custom**
+       - In source field, type `WebInstance-SG` and select it from dropdown
+       - **Description:** "RDP from WebInstance only"
 
-**Step 4:** Upload your `.pem` key pair
+> [!TIP] Security Group Chaining
+> By referencing `WebInstance-SG` as the source instead of an IP address, we create dynamic security. Any instance with `WebInstance-SG` can connect, even if IP addresses change. This is more maintainable than hardcoding IP addresses and follows AWS best practices.
 
-**Step 5:** Copy the decrypted Windows Administrator password
+7. Configure Storage:
+   - **Size:** 30 GiB
+   - **Volume type:** gp3
+   - Leave defaults
 
-**Step 6:** Copy the Public IP for later use
+8. Review configuration:
+   - Verify subnet is `PrivateSubnet`
+   - Verify no public IP assignment
+   - Verify security group references `WebInstance-SG`
 
-### Connect Using RDP
+9. Click **Launch instance**.
 
-**Step 1:** Open Remote Desktop Connection (`mstsc`)
+10. Wait for instance to be ready:
+    - Instance state: Running
+    - Status checks: 2/2 checks passed
+    - Note the **Private IPv4 address** (no public IP shown)
+    - Instance name shows `DBInstance`
 
-**Step 2:** In the dialog:
+> [!NOTE] Private Instance Isolation
+> The `DBInstance` is now **fully isolated** from direct internet access. It has no public IP and cannot accept connections from the internet. The only way to access it is through the `WebInstance` (bastion host) on the local VPC network.
 
-- Computer → Public IP of `WebInstance`
+## Phase 3: Connect to Public Windows Instance
 
-**Step 3:** Click Connect
+### Retrieve Windows Administrator Password
 
-**Step 4:** Enter credentials:
+1. In EC2 console, select `WebInstance`.
 
-- Username → Administrator
-- Password → Paste decrypted password
+2. Click **Connect** button at the top.
 
-**Step 5:** Click OK
+3. Click the **RDP client** tab.
 
-You are now inside the public Windows instance.
+4. Retrieve password:
+   - Click **Get password** button
+   - If greyed out, wait 2-3 minutes (Windows must finish initialization)
+   - Click **Browse** or **Choose file**
+   - Select your `.pem` key pair file
+   - Click **Decrypt password**
 
-## Connect to Private Windows Instance
+5. Copy the decrypted password:
+   - Long random password appears (e.g., `aB3!xY9@mN5#pQ2$`)
+   - Click **Copy password** or manually select and copy
+   - Save to a text file temporarily (you'll need it multiple times)
 
-You cannot connect directly from your laptop — the instance has no Public IP. You must connect from within WebInstance (jump server / bastion host).
+6. Note the Public IP address displayed on the Connect page.
 
-### Remote Login from WebInstance to DBInstance
+> [!TIP] Password Storage
+> Save the decrypted password securely. You'll need it every time you connect to this instance. If you lose it, you cannot retrieve it again—you'd need to reset the Administrator password using Systems Manager or other methods.
 
-**Step 1:** While logged into `WebInstance`, open Remote Desktop Connection (`mstsc`)
+### Connect Using Remote Desktop
 
-**Step 2:** Enter:
+1. On your Windows computer, press `Windows + R`.
 
-- Computer → Private IP of `DBInstance`
+2. Type `mstsc` and press Enter (opens Remote Desktop Connection).
 
-**Step 3:** Click Connect
+3. In the Remote Desktop Connection dialog:
+   - **Computer:** Paste the **Public IP** of `WebInstance` (e.g., `54.123.45.67`)
+   - Click **Connect**
 
-**Step 4:** Enter credentials:
+4. Windows Security credential prompt appears:
+   - **Username:** `Administrator` (default Windows admin account)
+   - **Password:** Paste the decrypted password you copied earlier
+   - Check "Remember my credentials" (optional, for convenience)
+   - Click **OK**
 
-- Username → Administrator
-- Password → Paste the decrypted password (same key pair)
+5. Certificate warning appears (common for self-signed certs):
+   - Warning: "The identity of the remote computer cannot be verified"
+   - Check "Don't ask me again for connections to this computer"
+   - Click **Yes**
 
-**Step 5:** Click OK
+6. Remote Desktop session opens—you're now inside the `WebInstance`.
 
-You are now inside the private Windows instance.
+> [!NOTE] First Login
+> First login may take 30-60 seconds as Windows configures the Administrator profile. Be patient and don't close the connection prematurely.
 
-## Test NAT Gateway Connectivity
+## Phase 4: Connect to Private Windows Instance via Bastion
+
+You cannot connect directly to `DBInstance` from your laptop because it has no public IP. You must connect from within `WebInstance` using its private IP address.
+
+### Get DB Instance Password
+
+Before connecting, you need to decrypt `DBInstance` password (if you haven't already):
+
+1. In your EC2 console (on your laptop), select `DBInstance`.
+
+2. Click **Connect** → **RDP client** tab.
+
+3. Click **Get password** → Upload same `.pem` file → **Decrypt**.
+
+4. Copy and save the `DBInstance` password.
+
+> [!TIP] Same Key Pair
+> If you used the same key pair for both instances, the passwords will be different (AWS generates unique passwords per instance). Decrypt and save both passwords separately.
+
+### Remote Desktop from WebInstance to DBInstance
+
+1. While logged into `WebInstance` (your RDP session from Phase 3):
+   - Inside the remote Windows desktop, press `Windows + R`
+   - Type `mstsc` and press Enter
+   - This opens Remote Desktop Connection **inside** WebInstance
+
+2. In the Remote Desktop Connection dialog (inside WebInstance):
+   - **Computer:** Enter the **Private IP address** of `DBInstance` (e.g., `10.0.2.15`)
+     - Find this in EC2 console under `DBInstance` details
+     - Must be private IP (10.0.x.x), not public (it has none)
+   - Click **Connect**
+
+3. Credential prompt appears:
+   - **Username:** `Administrator`
+   - **Password:** Paste the `DBInstance` decrypted password
+   - Click **OK**
+
+4. Certificate warning appears:
+   - Click **Yes** to accept
+
+5. Nested RDP session opens—you're now inside the private Windows instance.
+
+> [!NOTE] Multi-Hop Connection
+> You now have two RDP sessions:
+> - Your laptop → `WebInstance` (public IP, over internet)
+> - `WebInstance` → `DBInstance` (private IP, over VPC network)
+>
+> This is called "bastion host" or "jump box" pattern. `WebInstance` acts as the secure gateway to private resources.
+
+## Phase 5: Test NAT Gateway Connectivity
 
 ### From WebInstance (Public Subnet)
 
-Open a browser → Internet should work (through IGW)
+1. While logged into `WebInstance` (outer RDP session):
+   - Open a web browser (Microsoft Edge or Internet Explorer)
+   - Navigate to `https://www.google.com` or `https://www.aws.amazon.com`
+   - Website loads successfully
+
+2. Check internet connectivity icon:
+   - System tray (bottom-right) shows internet connection icon
+   - No yellow triangle or "No internet" message
+
+**Result:** Internet access works through Internet Gateway (direct route).
 
 ### From DBInstance (Private Subnet)
 
-Open browser → Internet should also work (through NAT Gateway)
+1. While logged into `DBInstance` (nested RDP session):
+   - Open a web browser
+   - Navigate to `https://www.google.com`
+   - Website loads successfully
 
-Internet icon will show "Internet Access"
+2. Check network status:
+   - System tray shows internet connection icon
+   - Status: "Internet Access"
+
+**Result:** Internet access works through NAT Gateway (outbound-only route).
+
+> [!NOTE] NAT Gateway Function
+> Even though `DBInstance` has no public IP and cannot accept inbound connections from the internet, it **can** initiate outbound connections to the internet through the NAT Gateway. This allows it to download Windows updates, access AWS service APIs, or connect to external databases while remaining completely isolated from inbound internet traffic.
 
 ### Security Verification
 
+Test that `DBInstance` is not accessible from the internet:
+
 | Test | Expected Result |
 |------|-----------------|
-|DBInstance outbound to internet|Allowed via NAT|
-|Internet inbound to DBInstance|Blocked|
-|WebInstance to DBInstance RDP|Allowed|
+| RDP to DBInstance from your laptop using private IP | **Fails** (private IPs not routable over internet) |
+| RDP to DBInstance from your laptop using public IP | **N/A** (no public IP assigned) |
+| Ping DBInstance from internet | **Fails** (no public IP, ICMP blocked) |
+| DBInstance outbound to internet | **Success** (via NAT Gateway) |
+| Internet inbound to DBInstance | **Blocked** (NAT is one-way, security group denies) |
+| WebInstance to DBInstance RDP via private IP | **Success** (allowed by security group) |
 
-### Test Outbound from Private Subnet
+### Outbound Test from Private Subnet (Advanced)
 
-**Step 1:** Connect to `DBInstance` (using RDP from `WebInstance`)
+1. Inside `DBInstance` RDP session:
+   - Open Command Prompt (cmd)
+   - Run: `ping google.com -n 4`
 
-**Step 2:** Open Command Prompt inside `DBInstance`
+2. Expected output:
+   ```
+   Pinging google.com [142.250.xxx.xxx] with 32 bytes of data:
+   Reply from 142.250.xxx.xxx: bytes=32 time=20ms TTL=115
+   Reply from 142.250.xxx.xxx: bytes=32 time=18ms TTL=115
+   Reply from 142.250.xxx.xxx: bytes=32 time=19ms TTL=115
+   Reply from 142.250.xxx.xxx: bytes=32 time=21ms TTL=115
+   ```
 
-**Step 3:** Type:
+3. This proves outbound connectivity works via NAT Gateway.
 
-```bash
-ping google.com
-```
+> [!TIP] Troubleshooting No Internet
+> If `DBInstance` cannot access the internet:
+> 1. Verify NAT Gateway is in "Available" state (VPC → NAT Gateways)
+> 2. Check Private Route Table has route `0.0.0.0/0` → NAT Gateway ID
+> 3. Verify `PrivateSubnet` is associated with Private Route Table
+> 4. Check security group allows outbound traffic (default: allow all outbound)
+> 5. Wait 2-3 minutes for routing changes to propagate
 
-**Expected Result:**
+## Validation
 
-```
-Reply from 142.250.xxx.xxx: bytes=32 time=20ms TTL=115
-```
+Verify successful completion:
 
-This works because outbound traffic is allowed from Private Subnet → NAT Gateway → Internet.
+- **Instance Launch:**
+  - `WebInstance` running in `PublicSubnet` with public and private IPs assigned
+  - `DBInstance` running in `PrivateSubnet` with private IP only (no public IP)
+  - Both instances show 2/2 status checks passed
+  - Both instances in "Running" state
 
-### What Will NOT Work
+- **Security Group Configuration:**
+  - `WebInstance-SG` allows RDP (3389) from 0.0.0.0/0
+  - `DBInstance-SG` allows RDP (3389) from `WebInstance-SG` only
+  - `DBInstance-SG` does NOT allow traffic from 0.0.0.0/0
+  - Both security groups allow all outbound traffic (default)
 
-- From DBInstance: `ping <Your Own Public IP>`
-- Anyone trying to: `ping <DBInstance Private IP>`
+- **Network Connectivity:**
+  - RDP to `WebInstance` from your laptop using public IP: **Success**
+  - RDP to `DBInstance` directly from your laptop: **Fails** (no public IP)
+  - RDP to `DBInstance` from `WebInstance` using private IP: **Success**
+  - `WebInstance` internet access through IGW: **Success**
+  - `DBInstance` internet access through NAT Gateway: **Success**
 
-Both fail because:
+- **Security Isolation:**
+  - `DBInstance` cannot accept inbound connections from internet: **Verified**
+  - `DBInstance` can initiate outbound connections to internet: **Verified**
+  - Bastion host pattern working: **Verified**
 
-- Inbound traffic is blocked
-- DBInstance has no Public IP
-- Security Group allows inbound only from WebInstance-SG
+## Cost Considerations
 
-| Direction | Result |
-|-----------|--------|
-|Private instance → Internet|**YES** (via NAT Gateway)|
-|Internet → Private instance|**NO** (fully blocked)|
+- **EC2 Instances (t2.micro/t3.micro Windows):**
+  - **Free Tier:** 750 hours/month for first 12 months (Linux and Windows combined)
+  - **Windows instances:** Count against same free tier hours as Linux
+  - **After Free Tier:** ~$0.0116/hour per instance = ~$8.35/month each (us-east-1)
+  - **2 instances running:** ~$16.70/month
 
-NAT Gateway is **one-way** only.
+- **EBS Storage (30 GB per instance, gp3):**
+  - **Free Tier:** 30 GB total for first 12 months
+  - **2 instances = 60 GB total:** 30 GB covered by free tier, 30 GB charged
+  - **Overage cost:** 30 GB × $0.08/GB-month = $2.40/month
 
-## Elastic IP Address
+- **NAT Gateway:**
+  - **Hourly:** ~$0.045/hour = ~$32.40/month
+  - **Data processing:** $0.045/GB processed
+  - **Total for lab:** If running 1 hour = $0.045 + minimal data charges
 
-An Elastic IP address is a static, public IPv4 address that you can allocate to your AWS account.
+- **Data Transfer:**
+  - **RDP sessions:** Minimal data usage (<100 MB for 1-hour session)
+  - **Inbound:** Free
+  - **Outbound:** Covered by 100 GB free tier/month
 
-| Feature | Description |
-|---------|-------------|
-|Static|Permanent address that doesn't change|
-|Region-specific|Must be used in a specific Region|
-|Source|Comes from Amazon's pool of IPv4 addresses|
-|Association|Can be associated with instance or network interface|
-|Reassignment|Can be disassociated and associated with different resources|
-|Billing|Charged for all Elastic IPs, whether associated or not|
+- **Total Estimated Cost (1 hour lab):**
+  - 2× Windows instances: 2× $0.0116 = $0.0232
+  - NAT Gateway: $0.045
+  - Data transfer: ~$0 (within free tier)
+  - **Total:** ~$0.07 for 1-hour lab
+  - **If left running 24/7 for 30 days:** ~$51/month
 
-**Use Cases:**
+> [!WARNING] Stop vs Terminate
+> **Stopping** instances (Instance state → Stop) halts compute charges but continues EBS storage charges (~$2.40/month for 60 GB). **Terminating** instances completely removes them and stops all charges. For labs, always **terminate** when done.
 
-- Web Servers: Domain always points to correct server
-- NAT Gateways: Fixed outbound IP for whitelisting
-- Load Balancers: Consistent endpoint
+> [!IMPORTANT] NAT Gateway Charges
+> NAT Gateway charges continue even if no instances are running. Always delete NAT Gateway after completing labs to avoid $32.40/month charges.
+
+## Cleanup
+
+To avoid ongoing charges, delete resources in this order:
+
+### 1. Terminate EC2 Instances
+
+1. Navigate to EC2 → Instances.
+
+2. Select `WebInstance`:
+   - Click **Instance state** → **Terminate instance**
+   - Confirm termination (type `terminate` if prompted)
+
+3. Select `DBInstance`:
+   - Click **Instance state** → **Terminate instance**
+   - Confirm termination
+
+4. Wait for instance state to change to "Terminated" (2-3 minutes).
+
+> [!NOTE] Termination Delay
+> Windows instances take longer to terminate than Linux. Wait for state to show "Terminated" before proceeding to ensure all resources are released.
+
+### 2. Delete Security Groups (Optional)
+
+1. Navigate to EC2 → Security Groups.
+
+2. Select `WebInstance-SG`:
+   - Click **Actions** → **Delete security groups**
+   - Confirm deletion
+
+3. Select `DBInstance-SG`:
+   - Click **Actions** → **Delete security groups**
+   - If error "has dependent object," wait 2-3 minutes for instance network interfaces to fully detach
+   - Retry deletion
+
+> [!TIP] Security Group Dependencies
+> You cannot delete security groups while they're attached to running instances or network interfaces. Always terminate instances first, then wait a few minutes before deleting security groups.
+
+### 3. Delete NAT Gateway (If Not Already Done in Lab 10)
+
+1. Navigate to VPC → NAT Gateways.
+
+2. Select NAT Gateway → **Actions** → **Delete NAT gateway**.
+
+3. Type `delete` to confirm → Click **Delete**.
+
+4. Wait for state to change to "Deleted."
+
+### 4. Release Elastic IP (If NAT Gateway Deleted)
+
+1. Navigate to VPC → Elastic IPs.
+
+2. Select Elastic IP (shows "Disassociated" status).
+
+3. Click **Actions** → **Release Elastic IP addresses**.
+
+4. Click **Release**.
+
+### Verification
+
+- Both instances show "Terminated" state in EC2 console
+- Security groups deleted or only default security group remains
+- No unexpected charges in Billing dashboard (check after 24 hours)
+- NAT Gateway deleted (if applicable)
+- Elastic IP released (if applicable)
+
+## Result
+
+You have successfully deployed and secured a two-tier EC2 architecture demonstrating real-world cloud security practices. The public Windows web server is accessible from the internet while the private Windows database server remains completely isolated, accessible only through the bastion host.
+
+You configured security group chaining to allow controlled access between tiers, verified that NAT Gateway enables private instances to access the internet for updates while blocking inbound connections, and implemented the bastion host pattern for secure remote management of private resources.
+
+## Viva Questions
+
+1. What is a bastion host, and why is it important for cloud security?
+
+2. Explain how security group chaining works and why it's better than hardcoding IP addresses.
+
+3. Why can a private subnet instance access the internet through NAT Gateway but the internet cannot access it?
+
+4. What would happen if you enabled "Auto-assign Public IP" on the private subnet?
+
+5. Describe the complete network path when you RDP from your laptop to DBInstance through WebInstance.

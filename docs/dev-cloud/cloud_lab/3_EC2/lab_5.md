@@ -1,15 +1,47 @@
-# Windows EC2 Instance and RDP Connection
+---
+title: Launch Windows EC2 Instance and RDP Connection
+description: Deploy Windows Server on EC2 and connect via Remote Desktop Protocol
+---
 
-Topics: EC2 Overview, Launch Windows Instance, Connect via RDP
+# Launch Windows EC2 Instance and RDP Connection
 
-Date: 29-10-2025
+**Topics:** EC2, Windows Server, RDP, Remote Desktop, Security Groups, Key Pairs
 
-## Windows EC2 Launch & Connect Workflow
+## Overview
 
-This diagram illustrates the process of configuring the instance, handling security credentials, and establishing the remote desktop connection.
+Amazon Elastic Compute Cloud (EC2) is AWS's core Infrastructure as a Service (IaaS) offering that provides resizable compute capacity in the cloud. EC2 allows you to launch virtual servers (instances) on-demand, paying only for what you use, without the capital expense of physical hardware.
+
+This lab focuses on launching a Windows Server instance and establishing remote access using Remote Desktop Protocol (RDP). Demonstrates how to decrypt the Windows administrator password using a private key and connect to your Windows instance from your local computer.
+
+## Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| EC2 Instance | Virtual server running in AWS cloud with configurable CPU, memory, storage, and networking |
+| AMI (Amazon Machine Image) | Pre-configured template containing OS, applications, and configurations for launching instances |
+| Instance Type | Hardware specification defining vCPUs, memory, storage, and network performance (e.g., t3.micro) |
+| Security Group | Virtual firewall controlling inbound and outbound traffic to instances using port-based rules |
+| Key Pair | Cryptographic key pair (public/private) for securely accessing instances and decrypting passwords |
+| RDP (Remote Desktop Protocol) | Microsoft protocol for remote graphical access to Windows systems (port 3389) |
+| EBS Volume | Elastic Block Store - persistent block storage attached to EC2 instances (survives stops/starts) |
+| Public IPv4 Address | Internet-routable IP address for accessing instance from outside AWS (changes on stop/start) |
+| Private IPv4 Address | Internal IP address for VPC communication (persists until instance termination) |
+| Instance State | Current status: pending, running, stopping, stopped, terminating, terminated |
+
+## Prerequisites
+
+- Active AWS account (Free Tier eligible)
+- Windows, macOS, or Linux computer with internet connection
+- RDP client installed:
+  - **Windows:** Remote Desktop Connection (built-in)
+  - **macOS:** Microsoft Remote Desktop from App Store
+  - **Linux:** Remmina or rdesktop
+- Basic understanding of networking concepts (IP addresses, ports)
+- Ability to download and store .pem key files securely
+
+## Architecture Overview
 
 ::: details Click to expand Architecture Diagram
-
 ```mermaid
 flowchart TD
     User(User) -->|1. Configures| Console[AWS Console]
@@ -33,169 +65,277 @@ flowchart TD
         RDP -->|Public IP + Password| Remote[Remote Desktop Session]
     end
 ```
-
 :::
 
-Amazon Elastic Compute Cloud (EC2) is a core AWS Compute service that lets you run virtual servers (instances) in the cloud. Amazon EC2 is an Infrastructure as a Service (IaaS) offering from AWS. It allows you to launch virtual machines to host applications and manage them remotely – wherever you are in the world.
+## Launch Windows EC2 Instance
 
-### Key concepts
+1. Sign in to AWS Management Console.
 
-- **Instance:** A virtual machine running in the AWS cloud.
-    
-- **AMI (Amazon Machine Image):** A pre-configured template that includes: OS (Linux, Windows, etc.), Application software, other configurations.
-    
-- **Instance Type:** Defines hardware power.
+2. Select your preferred AWS Region from the dropdown (top-right corner).
+   - Choose a region close to your location for better performance
 
-## EC2 Instance Types
+3. Navigate to EC2 service:
+   - Search for `EC2` in the console search bar
+   - Click **EC2** (Virtual Servers in the Cloud)
 
-|**Family**|**Example**|**Use Case**|
-|---|---|---|
-|General Purpose|t2.micro|Basic web apps|
-|Compute Optimized|c5.large|High-performance computing|
-|Memory Optimized|r5.large|Databases, analytics|
-|Storage Optimized|i3.large|Data warehousing|
-|GPU Instances|g4dn.xlarge|ML/AI, graphics|
+4. Click **Launch Instance** button.
 
-- **EBS (Elastic Block Store):** Persistent storage for your EC2 instance. Acts like a hard drive — data remains even after the instance stops. Types: SSD, HDD, etc.
-    
-- **Security Groups:** Virtual firewalls controlling inbound and outbound traffic. Example: Allow HTTP (port 80), SSH (port 22), HTTPS (port 443).
-    
-- **Key Pair:** Used for secure login (SSH for Linux, RDP for Windows). Consists of a public key (stored in AWS) and private key (.pem) that you download.
+5. Configure instance name and tags:
+   - **Name:** Enter descriptive name (e.g., `MyWindowsServer`, `TestWin2022`)
+   - Tags help organize and identify resources
 
-### Common Ways to Access EC2
+6. Choose Amazon Machine Image (AMI):
+   - Under **Application and OS Images (Amazon Machine Image)**
+   - Select **Quick Start** tab
+   - Choose **Microsoft Windows Server 2022 Base**
+   - Verify "Free tier eligible" label appears
 
-- SSH (Linux instances)
+7. Select Instance Type:
+   - Under **Instance type**
+   - Select **t3.micro** (Free tier eligible)
+   - Specifications: 2 vCPUs, 1 GiB memory
+   - Or select **t2.micro** if t3.micro unavailable in your region
 
-- RDP (Windows instances) - Use Remote Desktop with Administrator password.
+8. Configure Key Pair for password decryption:
+   - Under **Key pair (login)** section
+   - **Option A - Create new key pair:**
+     - Click **Create new key pair**
+     - **Key pair name:** Enter name (e.g., `my-windows-key`)
+     - **Key pair type:** RSA
+     - **Private key file format:** .pem
+     - Click **Create key pair**
+     - The .pem file downloads automatically
+     - **Save this file securely** - you cannot retrieve it later!
+   - **Option B - Use existing key pair:**
+     - Select existing key pair from dropdown
+     - Confirm you have access to the private key file
 
-- User Data Script: Run automation commands during instance launch.
+> [!IMPORTANT] Key Pair Security
+> The .pem file is required to decrypt the Windows administrator password. Store it in a secure location with restricted permissions. Loss of this file means you cannot access the administrator password.
 
-### EC2 Use Cases
+9. Configure Network Settings:
+   - Under **Network settings**, click **Edit** if you want to customize
+   - **VPC:** Leave default VPC selected (or select custom VPC)
+   - **Subnet:** No preference (auto-assign)
+   - **Auto-assign Public IP:** Enable (required for RDP access from internet)
 
-- Hosting static or dynamic websites
-    
-- Deploying web servers (Apache/Nginx)
-    
-- Running applications, APIs, or databases
-    
-- Machine Learning model hosting
-    
-- Batch processing jobs
+10. Configure Security Group (firewall rules):
+    - **Create security group** (if first time) or select existing
+    - **Security group name:** `windows-rdp-sg` (or descriptive name)
+    - **Description:** "Allow RDP access to Windows instance"
+    - **Inbound security group rules:**
+      - **Type:** RDP
+      - **Protocol:** TCP
+      - **Port range:** 3389
+      - **Source type:** Choose one:
+        - **My IP** (Recommended) - Restricts access to your current public IP
+        - **Custom** - Enter specific IP range (e.g., `203.0.113.0/24`)
+        - **Anywhere (0.0.0.0/0)** - Allows access from any IP (NOT recommended for production)
 
-### Pricing Models
+> [!WARNING] Security Risk
+> Opening RDP (port 3389) to 0.0.0.0/0 exposes your instance to brute-force attacks from automated bots worldwide. Always restrict RDP access to known IP addresses. Use "My IP" for testing, or implement VPN/bastion host for production.
 
-- **On-Demand:** Pay per hour/second; flexible.
+11. Configure Storage:
+    - **Volume 1 (Root):**
+      - **Size:** 30 GiB (default for Windows Server)
+      - **Volume type:** gp3 (General Purpose SSD) - recommended
+      - **Delete on termination:** Checked (default)
+    - Leave other storage settings at default
 
-- **Reserved Instances:** 1–3 year commitment; cheaper.
+12. Expand **Advanced details** (optional configurations):
+    - **User data:** Can add PowerShell script to run at launch
+    - **Termination protection:** Enable to prevent accidental deletion
+    - Leave other settings at default for this lab
 
-- **Spot Instances:** Unused capacity; up to 90% cheaper.
+13. Review configuration in the **Summary** panel on the right:
+    - Instance count: 1
+    - AMI: Windows Server 2022
+    - Instance type: t3.micro
+    - Key pair: Selected
+    - Security group: RDP allowed
 
-- **Free Tier:** t2.micro or t3.micro free for 6 months.
+14. Click **Launch instance**.
 
-### Instance Lifecycle
+15. Wait for instance launch:
+    - You'll see a success message
+    - Click **View all instances** to see the Instances dashboard
+    - Instance **State** changes from "Pending" → "Running" (1-2 minutes)
+    - **Status check** shows "2/2 checks passed" (2-5 minutes)
 
-|**Step**|**Description**|
-|---|---|
-|Launch|Choose AMI, type, key, security group|
-|Running|Accessible and operational|
-|Stop|Instance paused, EBS persists|
-|Start|Boot again from same EBS|
-|Terminate|Deleted permanently, data lost unless backed up|
+> [!TIP] Initial Boot Time
+> Windows instances take longer to initialize than Linux instances (typically 3-5 minutes). Wait for both instance state to show "Running" AND status checks to complete before attempting to connect.
 
-### Two Types of IPv4 Addresses
+## Connect to Windows Instance via RDP
 
-1. **Private IPv4 Address:** Used for internal communication within the same VPC. Not accessible from the Internet. The private IP remains attached to the instance until it is terminated.
+1. Wait for instance to be fully ready:
+   - **Instance state:** Running
+   - **Status check:** 2/2 checks passed
+   - **Important:** Wait an additional 5 minutes after launch for Windows to complete initialization
 
-2. **Public IPv4 Address:** Used for communication over the Internet. Assigned automatically if your subnet is public. The public IP changes each time you stop/start the instance. To make it permanent, you can assign an Elastic IP (static public IP).
+2. Select your instance in the EC2 console (checkbox).
 
-### Remote Desktop Protocol (RDP)
+3. Click **Connect** button at the top.
 
-Remote Desktop Protocol (RDP), is a secure communication protocol developed by Microsoft that allows a user to connect to and control another computer remotely. An RDP client is the software or app that you use to make this remote connection. It connects to a remote Windows server or Windows EC2 instance that is running an RDP server (which listens on port 3389). It is pre-installed in Windows.
+4. Navigate to **RDP client** tab.
 
-## Launch Windows EC2 and Connect via RDP
+5. Retrieve Windows Administrator password:
+   - Click **Get password** button
+   - **Upload private key file:** Click **Browse** or **Choose File**
+   - Select the .pem file you downloaded earlier
+   - Click **Decrypt password**
+   - The decrypted Administrator password appears
 
-::: details Click to expand Architecture Diagram
-```mermaid
-flowchart LR
-    Launch[Launch Instance] --> Config[Configure AMI & Type]
-    Config --> Key[Create Key Pair]
-    Key --> Security[Configure Security Group]
-    Security --> Run[Launch & Wait]
-    Run --> Decrypt[Decrypt Password]
-    Decrypt --> Connect[Connect via RDP]
-```
+6. Copy credentials:
+   - **Public DNS (IPv4) or Public IP:** Copy this address
+   - **User name:** Administrator
+   - **Password:** Copy the decrypted password
+   - Keep this information accessible for the next steps
 
-:::
+7. Open RDP client on your computer:
 
-**Step 1:** Sign in to AWS Management Console:
+   **For Windows:**
+   - Press `Win + R`, type `mstsc`, press Enter
+   - Or search "Remote Desktop Connection" in Start menu
 
-Select the Region closest to you.
+   **For macOS:**
+   - Open **Microsoft Remote Desktop** app from Applications
 
-**Step 2:** Open the EC2 Dashboard:
+   **For Linux:**
+   - Open **Remmina** or run `rdesktop` in terminal
 
-In the AWS Console, search for EC2. Click on EC2 → Instances → Launch Instance. Under Name and Tags, give your instance a name.
+8. Configure RDP connection:
+   - **Computer/Server:** Paste the Public IP address
+   - Click **Connect** or **Show Options** for advanced settings
+   - **User name:** Administrator
+   - **Password:** Paste the decrypted password
 
-**Step 3:** Choose an Amazon Machine Image (AMI):
+9. Handle security certificate warning:
+   - You'll see a warning about the remote computer's identity
+   - This is expected for new instances with self-signed certificates
+   - Click **Yes** / **Continue** / **Connect Anyway** to proceed
 
-Under Application and OS Images (Amazon Machine Image) → choose: Microsoft Windows Server 2022 Base (Free tier eligible).
+> [!NOTE] Certificate Warning
+> Self-signed certificates trigger security warnings. For production environments, configure proper SSL/TLS certificates or join the instance to Active Directory domain for trusted certificates.
 
-**Step 4:** Choose Instance Type:
+10. Remote Desktop session establishes:
+    - Windows Server desktop appears in the RDP window
+    - You're now remotely controlling the EC2 Windows instance
+    - Wait for Server Manager to load automatically
 
-Choose t3.micro (Free-tier eligible).
+11. Verify connection:
+    - Check the Server Manager dashboard
+    - Open Command Prompt and run `ipconfig` to see network configuration
+    - Open PowerShell and run `Get-ComputerInfo` for system details
 
-**Step 5:** Configure Key Pair:
+> [!TIP] Performance Tips 
+> - For better RDP performance, reduce display resolution in RDP settings
+> - Disable desktop background and visual effects
+> - Use RDP compression for slower internet connections
 
-- Under Key pair (login), choose an existing key pair or create a new one.
-    
-- If creating a new key pair: Choose type: RSA, Format: .pem
-    
-- Download and save it safely — it's required to decrypt your Windows password later.
+## Validation
 
-**Step 6:** Configure Network Settings:
+Verify successful completion:
 
-- Leave default VPC and Subnet settings.
-    
-- Under Firewall (security group) → Select Create security group.
-    
-- Allow RDP (port 3389) access from My IP (for better security) or anywhere (0.0.0.0/0).
+- **Instance Launch:**
+  - Instance appears in EC2 Instances dashboard
+  - Instance state shows "Running"
+  - Status checks show "2/2 checks passed"
+  - Public IP address assigned
 
->[!NOTE] Warning
->Windows RDP (Port 3389) is the #1 target for hackers. If you leave this open to `0.0.0.0/0` for more than a few days, bots _will_ find it and try to brute-force your password. Always try to use "My IP" when possible.
+- **Security Configuration:**
+  - Security group attached to instance
+  - RDP (port 3389) rule present in security group
+  - Key pair associated with instance
 
-**Step 7:** Launch the Instance:
+- **RDP Connection:**
+  - Successfully decrypted Administrator password
+  - RDP client connects to instance public IP
+  - Windows Server desktop displays
+  - Server Manager loads successfully
+  - Can execute commands in PowerShell/Command Prompt
 
-Review all configurations. Click Launch Instance. Wait until the Instance state changes to Running.
+- **Network Connectivity:**
+  - Instance has both public and private IP addresses
+  - Can ping external websites from instance (e.g., `ping google.com`)
+  - Windows firewall allows outbound internet access
 
-**Step 8:** Get the Administrator Password:
+## Cost Considerations
 
-- Wait approximately 5 minutes after instance launch.
-    
-- Select your running instance → click Connect → choose RDP Client tab.
-    
-- Click Get Password.
-    
-- Upload your .pem key file and click Decrypt Password.
-    
-- Copy the Public IPv4 address and Administrator Password shown.
+- **EC2 Instance (t3.micro):**
+  - **Free Tier:** 750 hours/month for first 12 months (covers 1 instance running 24/7)
+  - **After Free Tier:** ~$0.0104/hour = ~$7.50/month (us-east-1 pricing)
+  - **Stopped instances:** No compute charges, but EBS storage still charged
 
->[!NOTE]
->You can actually set the Windows password _during_ launch using a User Data script, avoiding the decryption process entirely
+- **EBS Storage (30 GB gp3):**
+  - **Free Tier:** 30 GB for first 12 months
+  - **After Free Tier:** $0.08/GB-month = $2.40/month
 
-**Step 9:** Connect Using RDP Client:
+- **Data Transfer:**
+  - **Inbound:** Free
+  - **Outbound to internet:** First 100 GB/month free, then $0.09/GB
+  - **RDP sessions:** Minimal data transfer (~10-50 MB/hour)
 
-- On Windows system: Open Remote Desktop Connection (from Start Menu).
-    
-- Enter your instance’s Public IPv4 address.
-    
-- Click Connect → Enter: Username: Administrator, Password: (the decrypted password).
-    
-- Click OK → accept the certificate → the remote Windows desktop opens!
+- **Elastic IP (if allocated):**
+  - Free while instance is running with it attached
+  - $0.005/hour if instance is stopped or IP is unattached
 
-**Step 10:** Verify Connection:
+> [!WARNING] Stop vs Terminate
+> Stopping an instance halts compute charges but EBS storage charges continue (~$2.40/month). Terminate the instance to stop all charges completely.
 
-You should now see a Windows Server desktop running inside your local window.
+## Cleanup
 
->[!note]
->Always Stop the instance when not in use to avoid charges. Only "Stop" if you plan to use the exact same files tomorrow. Otherwise Terminate.
->
->Stopping the instance saves **Compute** costs (the CPU/RAM). However, the **EBS Volume** (the hard drive) persists and **you are still charged for storage** every month.
+To avoid ongoing charges:
+
+1. **Disconnect RDP session:**
+   - Sign out from Windows (Start → Power → Sign out)
+   - Or close the RDP window
+
+2. **Stop the instance (temporary, if you need it later):**
+   - Go to EC2 → Instances
+   - Select your instance
+   - Click **Instance state** → **Stop instance**
+   - Confirm by clicking **Stop**
+   - **Result:** Compute charges stop, EBS storage charges continue
+
+3. **Terminate the instance (permanent deletion):**
+   - Select your instance
+   - Click **Instance state** → **Terminate instance**
+   - Type "terminate" in the confirmation dialog
+   - Click **Terminate**
+   - **Result:** All charges stop, data is permanently deleted
+
+4. **Delete the key pair (optional):**
+   - Go to EC2 → Network & Security → Key Pairs
+   - Select your key pair
+   - Click **Actions** → **Delete**
+   - Confirm deletion
+   - Delete the local .pem file from your computer
+
+5. **Delete the security group (optional):**
+   - Go to EC2 → Network & Security → Security Groups
+   - Select your RDP security group
+   - Click **Actions** → **Delete security group**
+   - Confirm deletion
+   - **Note:** Cannot delete if still attached to running instances
+
+> [!IMPORTANT] Data Loss
+> Terminating an instance permanently deletes all data on the instance. Ensure you've backed up any important files before termination. For production instances, enable "Termination Protection" to prevent accidental deletion.
+
+## Result
+
+You have successfully launched an Amazon EC2 Windows Server instance, configured security settings, and established a remote desktop connection. You now understand the fundamentals of EC2 including AMIs, instance types, key pairs, security groups, and the instance lifecycle.
+
+These skills form the foundation for deploying Windows-based applications, Active Directory environments, Microsoft SQL Server databases, and other Windows services in AWS. 
+
+
+## Viva Questions
+
+1. **Why is RDP port 3389 a security risk when opened to 0.0.0.0/0?**
+   - Port 3389 is a well-known target for automated brute-force attacks. Bots continuously scan the internet for open RDP ports and attempt dictionary attacks using common passwords. Restricting access to known IP addresses (My IP) or using VPN/bastion host significantly reduces this attack surface.
+
+2. **What is the purpose of the .pem key pair file for Windows instances?**
+   - The private key (.pem file) is used to decrypt the randomly generated Windows Administrator password. AWS encrypts the password using the public key and stores it. Only someone with the corresponding private key can decrypt it, ensuring secure password distribution without transmitting it in plaintext.
+
+3. **What happens to the Public IP address when you stop and start an EC2 instance?**
+   - The Public IPv4 address changes every time you stop and restart an instance. The Private IP address remains the same. To maintain a consistent public IP, allocate and associate an Elastic IP address (static public IP that persists across stops/starts).
+

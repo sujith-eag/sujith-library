@@ -1,25 +1,50 @@
-# Mini Project: Load-Balanced Web Application
+---
+title: Auto Scaling Group with Dynamic CPU-Based Scaling
+description: Deploy production-ready auto-scaling infrastructure with CloudWatch alarms and load balancer integration
+---
 
-Deploy a Load-Balanced Web Application using Application Load Balancer (ALB), Auto Scaling Group (ASG), Custom AMI, and Target Group on AWS.
+# Auto Scaling Group with Dynamic CPU-Based Scaling
 
-## Project Overview
+**Topics:** Auto Scaling Groups, Launch Templates, CloudWatch Alarms, Dynamic Scaling Policies, Stress Testing, High Availability
 
-Deploying a Load-Balanced Web Application using **Application Load Balancer (ALB)**, **Auto Scaling Group (ASG)**, **Custom AMI**, and **Target Group** on AWS with **CloudWatch Alarms** & **Stress Testing** for Auto Scaling Validation.
+## Overview
 
-### Key Concepts
+Auto Scaling Groups (ASG) automate the process of dynamically adjusting capacity based on real-time demand. When CPU utilization exceeds thresholds, ASG automatically launches new instances; when demand decreases, ASG terminates excess instances to reduce costs.
 
-| Component | What it is | Why we use it |
-|-----------|------------|---------------|
-| **ASG** | Automatically launches/terminates EC2 instances based on demand | Provides scalability to handle variable traffic |
-| **CPU Scaling** | Rules that add/remove instances based on CPU thresholds | Ensures performance during load and saves cost during idle time |
-| **Stress Testing** | Artificially increasing CPU load using tools like `stress-ng` | Validates if the Auto Scaling Group triggers correctly |
+This comprehensive lab demonstrates building auto-scaling architecture. You'll create a Launch Template defining instance configuration, configure an Auto Scaling Group with minimum/maximum capacity constraints, integrate with Application Load Balancer for traffic distribution, create CloudWatch Alarms to monitor CPU metrics, attach dynamic scaling policies that respond to alarms, and validate the entire system through stress testing.
 
-### Prerequisites
+## Key Concepts
 
-- A custom AMI (`AMI-WebServer`) created from a base instance with a web server (e.g., Apache or Nginx) installed and configured to serve a simple HTML page (e.g., displaying instance ID and IP)
-- An Application Load Balancer (ALB) and Target Group (`TG-WebServer`) already created and configured
-- VPC with internet access (e.g., via Internet Gateway or NAT Gateway) for installing packages on instances
-- Existing key pair and security group allowing SSH (Port 22) and HTTP (Port 80)
+| Concept | Description |
+|---------|-------------|
+| Auto Scaling Group (ASG) | AWS service that automatically adjusts the number of EC2 instances based on demand, health checks, and scaling policies |
+| Launch Template | Reusable configuration blueprint specifying AMI, instance type, key pair, security groups, and user data for launching instances |
+| Desired Capacity | Target number of instances ASG attempts to maintain; can change dynamically based on scaling policies |
+| Minimum Capacity | Lowest number of instances ASG will maintain; prevents scaling below this threshold even under zero load |
+| Maximum Capacity | Highest number of instances ASG can launch; prevents runaway scaling and controls maximum costs |
+| Scaling Policy | Rules defining when and how to add or remove instances (Simple Scaling, Step Scaling, Target Tracking) |
+| Simple Scaling | Policy that adds or removes fixed number of instances when CloudWatch alarm triggers (one action per alarm) |
+| CloudWatch Alarm | Automated monitoring that triggers actions when metrics exceed thresholds for specified duration |
+| Scale-Out | Process of adding instances to handle increased load (horizontal scaling up) |
+| Scale-In | Process of removing instances when load decreases (horizontal scaling down) |
+| Cooldown Period | Wait time after scaling activity before ASG can initiate another scaling action (prevents oscillation) |
+| Health Check Grace Period | Time ASG waits before checking instance health after launch (allows application startup time) |
+| Target Group Integration | ASG automatically registers new instances with load balancer target groups for seamless traffic distribution |
+
+## Prerequisites
+
+- Completed Lab 12 (Load-Balanced Web Application with ALB and Custom AMI)
+- Completed Lab 13 (Stress Testing EC2 Instance)
+- Existing resources:
+  - Custom AMI with Apache web server and custom homepage
+  - Application Load Balancer (ALB) in active state
+  - Target Group configured for HTTP port 80
+  - VPC with at least 2 public subnets in different Availability Zones
+  - Security group allowing SSH (22) and HTTP (80)
+  - EC2 key pair for SSH access
+- Understanding of CloudWatch metrics and alarms
+- Familiarity with stress-ng tool for CPU load testing
+- IAM permissions for Auto Scaling, CloudWatch, and EC2
 
 ## Architecture Overview
 
@@ -40,297 +65,816 @@ flowchart TD
 ```
 :::
 
-## Step A: Create Launch Template
 
-**Path:** EC2 → Launch Templates → Create launch template
+::: details Click to expand Architecture Diagram
+```mermaid
+flowchart TD
+    User[User Traffic] --> ALB[Application Load Balancer]
+    ALB --> TG[Target Group]
+    
+    subgraph ASG [Auto Scaling Group]
+        LT[Launch Template<br/>AMI + Config]
+        LT -.->|Launches| Inst1[Instance 1<br/>Min Capacity]
+        LT -.->|Scales Out| Inst2[Instance 2<br/>On High CPU]
+        LT -.->|Scales Out| Inst3[Instance 3<br/>On High CPU]
+    end
+    
+    TG --> Inst1
+    TG --> Inst2
+    TG --> Inst3
+    
+    subgraph Monitoring [CloudWatch Monitoring]
+        CW_High[High CPU Alarm<br/>CPU > 60%]
+        CW_Low[Low CPU Alarm<br/>CPU < 20%]
+    end
+    
+    Inst1 & Inst2 & Inst3 -.->|Report Metrics| CW_High
+    Inst1 & Inst2 & Inst3 -.->|Report Metrics| CW_Low
+    
+    CW_High -->|Triggers| ScaleOut[Scale-Out Policy<br/>Add 1 Instance]
+    CW_Low -->|Triggers| ScaleIn[Scale-In Policy<br/>Remove 1 Instance]
+    
+    ScaleOut -.->|Executes| ASG
+    ScaleIn -.->|Executes| ASG
+```
+:::
 
-**Configuration:**
+## Phase 1: Create Launch Template
 
-- **Template Name:** `LT-WebServer`
-- **Application and OS Images (AMI):**
-  - Click **My AMIs**
-  - Select your custom AMI: `AMI-WebServer`
-- **Instance Type:** `t3.micro`
-- **Key Pair:** Select your existing key pair (e.g., `pemfile1.pem`)
-- **Network Settings (Security Group):**
-  - Select existing security group (e.g., `launch-wizard-1`)
-  - Ensure it allows: **SSH (Port 22)** and **HTTP (Port 80)**
-- **Storage:** Leave default (`8 GiB gp3` root volume)
+Launch Templates define the instance configuration that ASG uses when launching new instances.
 
-> [!NOTE]
-> The Launch Template is now ready for the Auto Scaling Group.
+1. Sign in to AWS Management Console.
 
-## Step B: Create Auto Scaling Group (ASG)
+2. Navigate to EC2 service.
 
-**Path:** EC2 → Auto Scaling Groups → Create Auto Scaling Group
+3. In left navigation, scroll down to **Instances** section → Click **Launch Templates**.
 
-**1. Name & Template:**
+4. Click **Create launch template** button.
 
-- Name: `ASG-WebServer`
-- Template: `LT-WebServer`
+5. Configure template details:
+   - **Launch template name:** `LT-WebServer`
+   - **Template version description:** "Web server template for Auto Scaling"
+   - **Auto Scaling guidance:** Check "Provide guidance to help me set up a template that I can use with EC2 Auto Scaling"
 
-**2. Network Configuration:**
+6. Configure Application and OS Images (AMI):
+   - Click **My AMIs** tab
+   - Select your custom AMI: `WebServer-AMI` (created in Lab 12)
+   - Verify it shows the correct AMI ID
 
-- VPC: `vpc-0c952a6cabfbe594b` (Default VPC)
-- Subnets: Select any **2** (e.g., `ap-south-1a` and `ap-south-1b`)
+> [!IMPORTANT] AMI Selection
+> You must select the custom AMI containing your pre-configured web server. If you launch from base Amazon Linux AMI, instances won't have Apache installed and won't serve web pages correctly.
 
-**3. Load Balancing:**
+7. Configure Instance type:
+   - **Instance type:** `t3.micro`
+   - Free tier eligible (if applicable)
+   - 2 vCPUs, 1 GB RAM
 
-- Option: **Attach to an existing load balancer**
-- Selection: **Choose from your load balancer target groups**
-- Target Group: `TG-WebServer`
+8. Configure Key pair:
+   - **Key pair name:** Select your existing key pair (e.g., `my-key-pair.pem`)
+   - Required for SSH troubleshooting
 
-**4. Group Size & Scaling:**
+9. Configure Network settings:
+   - **Subnet:** Don't include in launch template
+     - ASG will select subnets automatically based on ASG configuration
+     - This provides flexibility for multi-AZ deployment
+   - **Firewall (security groups):** Select existing security group
+     - Choose security group allowing HTTP (80) and SSH (22)
+     - E.g., `WebServer-SG` from Lab 12
 
-- **Desired Capacity:** 1
-- **Minimum Capacity:** 1
-- **Maximum Capacity:** 3
-- Scaling Policies: Select **No scaling policies** (we will add these in next Step)
+10. Configure Storage:
+    - **Volume 1 (AMI Root):**
+      - Size: 8 GiB
+      - Volume type: gp3
+      - Delete on termination: Yes (recommended)
 
-**5. Review & Create:**
+11. Review all settings:
+    - Verify AMI is your custom web server image
+    - Verify instance type is t3.micro
+    - Verify security group allows HTTP and SSH
+    - Verify storage configured correctly
 
-Verify settings and click **Create Auto Scaling Group**.
+12. Click **Create launch template**.
+
+13. Verify creation:
+    - Success message appears
+    - Template shows in Launch Templates list
+    - Status: Available
+    - Note the template ID (lt-xxxxxxxxxxxxx)
+
+> [!NOTE] Launch Template vs Launch Configuration
+> Launch Templates are the modern replacement for Launch Configurations. They support versioning, allow modifications, can launch instances directly, and are recommended by AWS. Launch Configurations are legacy and should not be used for new deployments.
+
+## Phase 2: Create Auto Scaling Group
+
+Configure the ASG to automatically manage instance count based on demand.
+
+1. In EC2 console left navigation, scroll down to **Auto Scaling** section → Click **Auto Scaling Groups**.
+
+2. Click **Create Auto Scaling group** button.
+
+### Step 1: Choose Launch Template
+
+1. Configure ASG name and template:
+   - **Auto Scaling group name:** `ASG-WebServer`
+   - **Launch template:** Select `LT-WebServer`
+   - **Version:** Latest (recommended for automatic updates)
+
+2. Click **Next**.
+
+### Step 2: Choose Instance Launch Options
+
+1. Configure network:
+   - **VPC:** Select your VPC (Default VPC or custom VPC from Lab 10)
+   - **Availability Zones and subnets:** Select at least **2 subnets**
+     - Choose subnets in different Availability Zones (e.g., us-east-1a, us-east-1b)
+     - Select public subnets (with route to Internet Gateway)
+     - This ensures high availability across multiple data centers
+
+> [!IMPORTANT] Multi-AZ Requirement
+> Select at least 2 subnets in different Availability Zones. This ensures if one AZ fails, ASG continues launching instances in the remaining AZ. Single-AZ deployment defeats the purpose of auto-scaling for high availability.
+
+2. Click **Next**.
+
+### Step 3: Configure Advanced Options
+
+1. Load balancing configuration:
+   - **Load balancing:** Choose "Attach to an existing load balancer"
+   - **Choose from your load balancer target groups:** Select option
+   - **Existing load balancer target groups:** Select `WebApp-TG` (created in Lab 12)
+
+> [!NOTE] Target Group Registration
+> ASG automatically registers new instances with the Target Group. When ASG launches instances, they're immediately added to the Target Group. ALB performs health checks and starts routing traffic once instances pass health checks.
+
+2. Health checks:
+   - **Health check type:** 
+     - Check ☑ **EC2** (checks instance status)
+     - Check ☑ **ELB** (checks application health via load balancer)
+   - **Health check grace period:** 300 seconds (5 minutes)
+     - Allows time for Apache to start before health checks begin
+
+> [!TIP] Health Check Grace Period
+> 300 seconds prevents ASG from terminating instances before they finish initializing. If set too low (e.g., 60 seconds), ASG may terminate instances while Apache is still starting, creating a "launch-terminate loop." If instances use UserData scripts, increase to 600+ seconds.
+
+3. Additional settings (optional):
+   - **Enable group metrics collection within CloudWatch:** Check this box
+     - Provides additional ASG-level metrics (GroupDesiredCapacity, GroupInServiceInstances)
+   - **Default instance warmup:** 60 seconds
+
+4. Click **Next**.
+
+### Step 4: Configure Group Size and Scaling Policies
+
+1. Group size configuration:
+   - **Desired capacity:** 1
+     - Number of instances ASG launches immediately
+   - **Minimum capacity:** 1
+     - ASG will never scale below 1 instance
+     - Ensures at least one instance always running
+   - **Maximum capacity:** 3
+     - ASG will never scale above 3 instances
+     - Prevents runaway costs if alarms malfunction
+
+> [!NOTE] Capacity Explanation
+> - **Minimum = 1:** Ensures website always available (at least 1 instance)
+> - **Desired = 1:** Start with 1 instance (baseline capacity)
+> - **Maximum = 3:** Allow scaling to 3 instances during high load
+> - If desired=2, ASG launches 2 instances immediately
+
+2. Scaling policies:
+   - **Scaling policies:** Select "No scaling policies"
+   - We'll add scaling policies separately in Phase 3
+
+> [!TIP] Why Skip Scaling Policies Here
+> AWS offers Target Tracking Scaling (simple setup) in this wizard, but we're using Simple Scaling with CloudWatch Alarms for educational purposes to understand the complete workflow. In production, Target Tracking is often preferred for its simplicity.
+
+3. Instance maintenance policy:
+   - Leave default settings
+
+4. Click **Next**.
+
+### Step 5: Add Notifications (Optional)
+
+1. **Add notification:** Skip this step (click Next)
+   - In production, configure SNS to send emails when scaling events occur
+
+### Step 6: Add Tags (Optional)
+
+1. **Add tags:** Optionally add tags:
+   - **Key:** `Environment` | **Value:** `Lab`
+   - **Key:** `ManagedBy` | **Value:** `AutoScaling`
+   - Check "Tag new instances" to apply tags to launched instances
+
+2. Click **Next**.
+
+### Step 7: Review and Create
+
+1. Review all configuration:
+   - Launch template: LT-WebServer
+   - VPC and subnets: 2+ subnets in different AZs
+   - Load balancer: Attached to WebApp-TG
+   - Group size: Min=1, Desired=1, Max=3
+   - Health checks: EC2 + ELB enabled
+
+2. Click **Create Auto Scaling group**.
+
+3. Verify ASG created successfully:
+   - Navigate to Auto Scaling Groups
+   - `ASG-WebServer` appears in list
+   - Status: Shows capacity information
+
+### Phase 2 Verification
+
+1. Check **Activity** tab:
+   - Shows "Launching a new EC2 instance" activity
+   - Wait for status: "Successful"
+
+2. Check **Instance management** tab:
+   - Shows 1 instance in "InService" lifecycle state
+   - Health status: "Healthy" (may take 3-5 minutes)
+
+3. Navigate to EC2 → Instances:
+   - See new instance launched by ASG
+   - Name includes ASG name (e.g., "ASG-WebServer")
+   - Instance state: Running
+
+4. Navigate to Target Groups → Select WebApp-TG → Targets tab:
+   - Instance registered automatically
+   - Health status: "Healthy" (wait 30-60 seconds for health checks)
+
+5. Test ALB DNS name in browser:
+   - Should display your custom web page
+   - Refresh multiple times (will show same instance since only 1 running)
+
+> [!NOTE] First Instance Launch
+> ASG launches the first instance to meet desired capacity (1). This happens automatically—you don't manually register instances. The instance appears in both EC2 Instances list and Target Group targets.
+
+## Phase 3: Create CloudWatch Alarms for Scaling
+
+Create alarms that monitor CPU and trigger scaling policies.
+
+### Create High CPU Alarm (Scale-Out Trigger)
+
+1. Navigate to **CloudWatch** service.
+
+2. In left navigation, click **Alarms** → **All alarms**.
+
+3. Click **Create alarm** button.
+
+4. Click **Select metric**.
+
+5. Select metric source:
+   - Click **EC2**
+   - Click **By Auto Scaling Group**
+   - Find and check **CPUUtilization** for `ASG-WebServer`
+   - Click **Select metric**
+
+> [!IMPORTANT] Metric Selection
+> Select "By Auto Scaling Group" (not "Per-Instance Metrics"). This monitors the average CPU across all instances in the ASG, which is the correct metric for scaling decisions.
+
+6. Configure metric and conditions:
+   - **Statistic:** Average
+   - **Period:** 1 minute
+     - How often CloudWatch evaluates the condition
+     - Shorter period = faster scaling response
+   - **Conditions:**
+     - **Threshold type:** Static
+     - **Whenever CPUUtilization is:** Greater than 60
+     - **Threshold value:** 60
+
+> [!NOTE] Threshold Selection
+> - **60% threshold:** Moderate load, typical for scale-out
+> - **Lower threshold (40%):** More aggressive scaling, higher costs
+> - **Higher threshold (80%):** Slower scaling, may impact performance
+> - Adjust based on your application's requirements
+
+7. Click **Next**.
+
+8. Configure actions:
+   - **Alarm state trigger:** In alarm
+   - **Send a notification to:** Select "Remove"
+     - We don't need SNS notifications for this lab
+   - **Auto Scaling action:** Skip (we'll attach scaling policy separately)
+
+> [!TIP] No Actions Configuration
+> Don't configure any actions on this screen. We'll create scaling policies separately and link them to the alarms. If you see a warning "No actions configured," click **Proceed without actions**.
+
+9. Click **Next**.
+
+10. Configure alarm name:
+    - **Alarm name:** `ASG-CPU-High-60`
+    - **Alarm description:** "Trigger scale-out when CPU > 60%"
+
+11. Click **Next**.
+
+12. Review configuration:
+    - Metric: ASG-WebServer CPUUtilization
+    - Condition: Average > 60 for 1 minute
+    - Actions: None (will add via scaling policy)
+
+13. Click **Create alarm**.
+
+14. Verify alarm created:
+    - Shows in Alarms list
+    - State: "OK" (CPU below 60%)
+    - Or "Insufficient data" (wait 1-2 minutes for first data point)
+
+### Create Low CPU Alarm (Scale-In Trigger)
+
+1. In CloudWatch Alarms, click **Create alarm** again.
+
+2. Click **Select metric** → **EC2** → **By Auto Scaling Group**.
+
+3. Check **CPUUtilization** for `ASG-WebServer` → Click **Select metric**.
+
+4. Configure metric and conditions:
+   - **Statistic:** Average
+   - **Period:** 1 minute
+   - **Conditions:**
+     - **Threshold type:** Static
+     - **Whenever CPUUtilization is:** Lower than 20
+     - **Threshold value:** 20
+
+> [!NOTE] Scale-In Threshold
+> - **20% threshold:** Conservative scale-in, keeps instances longer
+> - **Higher threshold (40%):** Aggressive scale-in, reduces costs faster
+> - Set lower than scale-out threshold to create "hysteresis" (prevents oscillation)
+
+5. Click **Next**.
+
+6. Configure actions:
+   - Skip SNS notification
+   - Skip Auto Scaling action
+   - Click **Proceed without actions**
+
+7. Click **Next**.
+
+8. Configure alarm name:
+   - **Alarm name:** `ASG-CPU-Low-20`
+   - **Alarm description:** "Trigger scale-in when CPU < 20%"
+
+9. Click **Next** → Review → Click **Create alarm**.
+
+10. Verify both alarms exist:
+    - `ASG-CPU-High-60` (State: OK or Insufficient data)
+    - `ASG-CPU-Low-20` (State: OK or Insufficient data)
+
+## Phase 4: Create and Attach Scaling Policies
+
+Link the CloudWatch alarms to Auto Scaling actions.
+
+### Create Scale-Out Policy (Add Instances)
+
+1. Navigate to **EC2** → **Auto Scaling Groups**.
+
+2. Select `ASG-WebServer`.
+
+3. Click **Automatic scaling** tab.
+
+4. Under **Dynamic scaling policies**, click **Create dynamic scaling policy** button.
+
+5. Configure policy:
+   - **Policy type:** Simple scaling
+     - Adds/removes fixed number of instances per alarm trigger
+   - **Scaling policy name:** `ScaleOut-CPU60`
+   - **CloudWatch alarm:** Select `ASG-CPU-High-60`
+   - **Take the action:** Add
+   - **Capacity units:** 1
+     - Adds 1 instance when alarm triggers
+   - **And then wait:** 300 seconds
+     - Cooldown period before next scaling action
+
+> [!IMPORTANT] Cooldown Period
+> 300 seconds (5 minutes) prevents rapid successive scaling. After adding instance, ASG waits 5 minutes before considering another scale-out, allowing the new instance to start serving traffic and metrics to stabilize.
+
+6. Click **Create** button.
+
+7. Verify policy created:
+   - Shows in Dynamic scaling policies list
+   - Policy name: ScaleOut-CPU60
+   - Alarm: ASG-CPU-High-60
+
+### Create Scale-In Policy (Remove Instances)
+
+1. Still in **Automatic scaling** tab, click **Create dynamic scaling policy** again.
+
+2. Configure policy:
+   - **Policy type:** Simple scaling
+   - **Scaling policy name:** `ScaleIn-CPU20`
+   - **CloudWatch alarm:** Select `ASG-CPU-Low-20`
+   - **Take the action:** Remove
+   - **Capacity units:** 1
+     - Removes 1 instance when alarm triggers
+   - **And then wait:** 300 seconds
+
+3. Click **Create** button.
+
+4. Verify both policies exist:
+   - ScaleOut-CPU60 (adds 1 when CPU > 60%)
+   - ScaleIn-CPU20 (removes 1 when CPU < 20%)
+
+> [!NOTE] Policy Status
+> Policies show "Waiting" status initially. They activate when the linked CloudWatch alarms change state (OK → ALARM).
+
+## Phase 5: Install Stress Testing Tool
+
+Prepare to validate Auto Scaling by generating CPU load.
+
+1. Navigate to **EC2** → **Instances**.
+
+2. Find the instance launched by ASG:
+   - Look for instance with ASG name in tags
+   - Or check ASG → Instance management tab for instance ID
+
+3. Select the instance → Click **Connect**.
+
+4. Use **EC2 Instance Connect** or **SSH**:
+   - For SSH: `ssh -i your-key.pem ec2-user@<Public-IP>`
+
+5. Update system and install stress-ng:
+   ```bash
+   sudo dnf update -y
+   sudo dnf install stress-ng -y
+   ```
+
+6. Verify installation:
+   ```bash
+   stress-ng --version
+   ```
+
+> [!TIP] VPC Internet Access Required
+> If `dnf install` fails with "Cannot download," ensure:
+> - Instance is in public subnet with route to Internet Gateway
+> - Or in private subnet with route to NAT Gateway
+> - Security group allows outbound HTTPS (443) for package downloads
+
+## Phase 6: Trigger Scale-Out Event
+
+Generate high CPU load to trigger automatic scaling.
+
+### Run Stress Test
+
+1. While connected to ASG instance via SSH:
+   ```bash
+   stress-ng --cpu 4 --timeout 300
+   ```
+   - Creates 4 CPU workers
+   - Runs for 5 minutes (300 seconds)
+   - Pushes CPU to 90-100%
+
+2. Monitor command output:
+   ```
+   stress-ng: info:  [xxxxx] dispatching hogs: 4 cpu
+   stress-ng: info:  [xxxxx] cache allocate: using defaults...
+   ```
+
+3. Keep SSH session open or run in background:
+   ```bash
+   # Run in background
+   nohup stress-ng --cpu 4 --timeout 300 &
+   # Logout (stress continues)
+   exit
+   ```
+
+### Monitor CloudWatch Alarm
+
+1. Navigate to **CloudWatch** → **Alarms**.
+
+2. Watch `ASG-CPU-High-60` alarm:
+   - Initial state: OK (CPU < 60%)
+   - After 1-2 minutes: State changes to **ALARM** (CPU > 60%)
+   - Red color indicates alarm triggered
+
+3. Observe alarm graph:
+   - CPU line crosses 60% threshold
+   - Alarm evaluates true for 1 datapoint
+   - State change: OK → ALARM
+
+### Monitor Auto Scaling Activity
+
+1. Navigate to **EC2** → **Auto Scaling Groups** → Select `ASG-WebServer`.
+
+2. Click **Activity** tab.
+
+3. Watch for new activity:
+   - **Status:** "Launching a new EC2 instance"
+   - **Cause:** "At 2026-01-17 10:23:00 UTC a monitor alarm arn:aws:cloudwatch:... in ALARM state triggered policy ScaleOut-CPU60"
+   - Shows which alarm triggered the scaling
+
+4. Wait 2-4 minutes:
+   - Activity status changes to: **Successful**
+   - Message: "Launching a new EC2 instance: i-xxxxxxxxx"
+
+5. Click **Instance management** tab:
+   - Now shows **2 instances** in "InService" state
+   - Desired capacity automatically increased from 1 to 2
+
+6. Navigate to **EC2** → **Instances**:
+   - See 2 instances running with ASG name
+   - New instance just launched
+
+7. Navigate to **Target Groups** → Select `WebApp-TG` → **Targets** tab:
+   - Shows 2 registered targets
+   - New instance initially "Initial" status
+   - Wait 30-60 seconds → Both show "Healthy"
+
+> [!NOTE] Scaling Timeline
+> - **T+0 min:** Stress test starts, CPU rises
+> - **T+1 min:** CloudWatch alarm triggers (ALARM state)
+> - **T+1 min:** ASG initiates scale-out
+> - **T+2 min:** New instance launching
+> - **T+3 min:** Instance running, registered with Target Group
+> - **T+4 min:** Instance passes health checks, receives traffic
+
+### Test Load Balancing Across 2 Instances
+
+1. Copy ALB DNS name.
+
+2. Open browser → Navigate to ALB DNS:
+   ```
+   http://WebApp-ALB-xxxxx.us-east-1.elb.amazonaws.com
+   ```
+
+3. Refresh browser multiple times:
+   - First refresh: Shows Instance 1 hostname
+   - Second refresh: Shows Instance 2 hostname
+   - Third refresh: Shows Instance 1 hostname
+   - Load balancing confirmed!
+
+> [!TIP] Browser Caching
+> If you see the same instance repeatedly, clear browser cache or use incognito mode. Some browsers cache responses aggressively.
+
+## Phase 7: Trigger Scale-In Event
+
+Allow CPU to drop and observe automatic instance termination.
+
+### Stop Stress Test
+
+1. If stress test still running, SSH to instance:
+   ```bash
+   # Find stress-ng process
+   ps aux | grep stress-ng
+   
+   # Kill it if needed
+   sudo pkill stress-ng
+   ```
+
+2. Or wait for 5-minute timeout to complete automatically.
+
+### Monitor CPU Drop
+
+1. Navigate to **CloudWatch** → **Alarms**.
+
+2. Watch `ASG-CPU-High-60` alarm:
+   - After stress stops: CPU drops below 60%
+   - State changes: ALARM → OK
+
+3. Watch `ASG-CPU-Low-20` alarm:
+   - After 2-3 minutes of idle: CPU drops below 20%
+   - State changes: OK → ALARM
+
+### Monitor Scale-In Activity
+
+1. Navigate to **Auto Scaling Groups** → Select `ASG-WebServer` → **Activity** tab.
+
+2. Wait 3-5 minutes after CPU drops below 20%:
+   - New activity appears: "Terminating EC2 instance"
+   - **Cause:** "At 2026-01-17 10:35:00 UTC a monitor alarm arn:aws:cloudwatch:... in ALARM state triggered policy ScaleIn-CPU20"
+
+3. Wait for activity status: **Successful**
+
+4. Click **Instance management** tab:
+   - Now shows **1 instance** in "InService"
+   - Desired capacity automatically decreased from 2 to 1
+
+5. Navigate to **EC2** → **Instances**:
+   - One instance terminated (state: Terminating or Terminated)
+   - One instance running (minimum capacity maintained)
+
+6. Navigate to **Target Groups** → **Targets** tab:
+   - Shows 1 healthy target
+   - Terminated instance shows "Draining" then disappears
+
+> [!NOTE] Scale-In Timing
+> Scale-in is intentionally slower than scale-out:
+> - CloudWatch must detect low CPU for evaluation period
+> - Cooldown period prevents premature termination
+> - Total time: 5-10 minutes from stress stop to termination
+> - This prevents oscillation (rapid add/remove cycles)
+
+## Validation
+
+Verify all components working correctly:
+
+- **Launch Template:**
+  - Template `LT-WebServer` exists with correct AMI
+  - Instance type: t3.micro
+  - Security group allows HTTP (80) and SSH (22)
+  - Template version shows "Latest" or specific version number
+
+- **Auto Scaling Group:**
+  - ASG `ASG-WebServer` created and active
+  - Capacity: Min=1, Desired=1-2, Max=3
+  - Attached to Target Group: WebApp-TG
+  - Health check type: EC2 + ELB
+  - Covers 2+ Availability Zones
+
+- **CloudWatch Alarms:**
+  - `ASG-CPU-High-60` exists (triggers at CPU > 60%)
+  - `ASG-CPU-Low-20` exists (triggers at CPU < 20%)
+  - Both alarms monitor ASG average CPU (not individual instances)
+  - Alarms change state based on load (OK ↔ ALARM)
+
+- **Scaling Policies:**
+  - `ScaleOut-CPU60` attached to high CPU alarm (adds 1 instance)
+  - `ScaleIn-CPU20` attached to low CPU alarm (removes 1 instance)
+  - Cooldown period: 300 seconds configured
+  - Policies show in ASG Automatic scaling tab
+
+- **Auto Scaling Behavior:**
+  - **Scale-out test:** High CPU triggers alarm → ASG launches new instance → Instance registers with Target Group → Health checks pass → Traffic distributed
+  - **Scale-in test:** Low CPU triggers alarm → ASG terminates instance → Desired capacity reduces → Single instance remains (minimum)
+  - Activity history shows all scaling events with timestamps and causes
+
+- **Load Balancer Integration:**
+  - New instances automatically registered with Target Group
+  - Terminated instances automatically deregistered
+  - ALB distributes traffic across all healthy instances
+  - No manual Target Group management required
+
+## Cost Considerations
+
+- **Auto Scaling Group Service:** Free
+  - No charges for ASG itself, only for launched instances
+
+- **EC2 Instances (Variable):**
+  - **Minimum cost (1 instance):** ~$0.0104/hour = ~$7.50/month
+  - **During scale-out (2-3 instances):** ~$0.0208-$0.0312/hour
+  - **Free Tier:** 750 hours/month covers 1 instance 24/7
+  - **After Free Tier:** Pay for all running instances
+
+- **Application Load Balancer:**
+  - **Hourly:** ~$0.0225/hour = ~$16.20/month
+  - **LCU charges:** $0.008 per LCU-hour (minimal for lab traffic)
+  - **No free tier** for ALB
+
+- **CloudWatch:**
+  - **Alarms:** First 10 alarms free, then $0.10/alarm/month
+  - **2 alarms in this lab:** Free
+  - **Metrics (Basic Monitoring):** Free for EC2 instances
+  - **Detailed Monitoring (Optional):** $2.10/instance/month
+
+- **Data Transfer:**
+  - **Between AZs:** $0.01/GB each direction (if instances in different AZs)
+  - **Outbound to internet:** First 100 GB free, then $0.09/GB
+  - **ALB to instances:** Free within same AZ
+
+- **Total Cost Examples:**
+
+  **Scenario 1: 1-hour lab (Free Tier)**
+  - 1 instance running 1 hour: $0 (free tier)
+  - ALB 1 hour: $0.02
+  - CloudWatch alarms: $0 (free)
+  - **Total: ~$0.02**
+
+  **Scenario 2: 24/7 for 30 days (After Free Tier)**
+  - 1 instance (minimum, always running): ~$7.50
+  - Occasional scale-out (2-3 instances for 10% of time): ~$2.25
+  - ALB: ~$16.20
+  - CloudWatch: $0 (2 alarms free)
+  - **Total: ~$26/month**
+
+  **Scenario 3: High traffic with frequent scaling**
+  - Average 2.5 instances running: ~$18.75
+  - ALB + LCU charges: ~$20
+  - Data transfer (cross-AZ): ~$2
+  - **Total: ~$40/month**
+
+## Cleanup
+
+Delete resources in correct order to avoid dependency errors:
+
+### 1. Delete Auto Scaling Group
+
+1. Navigate to **EC2** → **Auto Scaling Groups**.
+
+2. Select `ASG-WebServer`.
+
+3. Click **Delete** button.
+
+4. Confirmation dialog:
+   - Type `delete` to confirm
+   - Click **Delete**
+
+5. ASG deletion triggers:
+   - All scaling policies deleted automatically
+   - All instances terminated automatically
+   - Target Group deregistration automatic
+
+6. Wait 2-3 minutes:
+   - ASG removed from list
+   - Instances show "Terminating" then "Terminated"
+
+> [!IMPORTANT] ASG Deletes Instances
+> When you delete ASG, AWS automatically terminates all instances it manages. You don't need to manually terminate them. If you terminate instances manually first, ASG will launch new ones to maintain desired capacity.
+
+### 2. Delete CloudWatch Alarms
+
+1. Navigate to **CloudWatch** → **Alarms**.
+
+2. Select both alarms:
+   - `ASG-CPU-High-60`
+   - `ASG-CPU-Low-20`
+
+3. Click **Actions** → **Delete**.
+
+4. Confirm deletion.
+
+### 3. Delete Launch Template
+
+1. Navigate to **EC2** → **Launch Templates**.
+
+2. Select `LT-WebServer`.
+
+3. Click **Actions** → **Delete template**.
+
+4. Confirm deletion (type `delete`).
+
+### 4. Delete Application Load Balancer (If Not Needed)
+
+1. Navigate to **EC2** → **Load Balancers**.
+
+2. Select `WebApp-ALB`.
+
+3. Click **Actions** → **Delete load balancer**.
+
+4. Type `confirm` → Click **Delete**.
+
+5. Wait for deletion (2-3 minutes).
+
+### 5. Delete Target Group (If Not Needed)
+
+1. Navigate to **EC2** → **Target Groups**.
+
+2. Select `WebApp-TG`.
+
+3. Click **Actions** → **Delete**.
+
+4. Confirm deletion.
+
+### 6. Deregister AMI and Delete Snapshot (If Not Needed)
+
+1. Navigate to **EC2** → **AMIs**.
+
+2. Select `WebServer-AMI`.
+
+3. Click **Actions** → **Deregister AMI**.
+
+4. Confirm deregistration.
+
+5. Navigate to **Snapshots**.
+
+6. Find snapshot associated with AMI (check description).
+
+7. Select snapshot → **Actions** → **Delete snapshot**.
+
+8. Confirm deletion.
+
+### 7. Delete Security Groups (Optional)
+
+1. Navigate to **EC2** → **Security Groups**.
+
+2. Select security groups created for this lab.
+
+3. Click **Actions** → **Delete security groups**.
+
+4. If error "has dependent object," wait 2-3 minutes for network interfaces to detach.
+
+5. Retry deletion.
 
 ### Verification
 
-Check the **Activity** tab in your ASG. You should see "Successful — Launching a new EC2 instance." The **Instances** tab should show one instance in a **Running** state.
+- ASG removed from Auto Scaling Groups list
+- All ASG-managed instances terminated
+- CloudWatch alarms deleted
+- Launch Template deleted
+- ALB and Target Group deleted (if applicable)
+- AMI deregistered and snapshot deleted (if applicable)
+- No unexpected charges in Billing dashboard (check after 24 hours)
 
-Additionally, check ALB health: EC2 → Load Balancers → Select ALB → Targets tab (instances should be 'healthy').
+## Result
 
-## Step C: Configure Auto Scaling Policies
+You have successfully deployed a production-ready auto-scaling infrastructure that automatically adjusts capacity based on CPU load. The system demonstrated self-healing capabilities by launching new instances during high demand and terminating excess instances during low demand, all without manual intervention.
 
-### Part 1: Create High-CPU Alarm (Scale-OUT)
+You configured CloudWatch Alarms to monitor application performance, created dynamic scaling policies that respond to alarm state changes, integrated Auto Scaling Group with Application Load Balancer for seamless traffic distribution, and validated the entire system through realistic load testing. This architecture provides high availability, cost efficiency, and performance optimization—fundamental requirements for modern cloud applications.
 
-**Path:** CloudWatch → Alarms → All alarms → Create alarm
+## Viva Questions
 
-**Configuration:**
+1. Explain the complete workflow from high CPU detection to new instance serving traffic.
 
-- **Metric:** EC2 → By Auto Scaling Group → `ASG-WebServer` → `CPUUtilization`
-- **Statistic:** Average | **Period:** 1 minute
-- **Conditions:** Threshold Type: Static | Greater than: `60`
-- **Actions:** Skip (Do not add SNS or ASG actions here)
+2. Why do we need both a minimum capacity and a maximum capacity in Auto Scaling Groups?
 
-> [!IMPORTANT]
-> On Configure actions page, do NOT add anything. Just click Next. If a popup says "No actions configured", click Proceed without actions.
+3. What is the purpose of the cooldown period, and what problems does it prevent?
 
-**Name and create:**
+4. How does Auto Scaling Group integration with Target Group differ from manually registering instances?
 
-- **Name:** `ASG-CPU-High-60`
-
-Click Next, then Create alarm. You now have one metric alarm with no actions.
-
-### Part 2: Attach Scale-OUT Policy to ASG
-
-**Path:** EC2 → Auto Scaling groups → ASG-WebServer → Automatic scaling
-
-Click Create dynamic scaling policy.
-
-**Configuration:**
-
-- **Policy Type:** Simple scaling
-- **Name:** `ScaleOut-CPU60`
-- **CloudWatch Alarm:** `ASG-CPU-High-60`
-- **Action:** Add `1` capacity units
-- **Cooldown:** 300 seconds
-
-Click Create.
-
-### Part 3: Create Low-CPU Alarm (Scale-IN)
-
-**Path:** CloudWatch → Alarms → Create alarm
-
-**Configuration:**
-
-- **Metric:** Same as Part 1 (`CPUUtilization` for `ASG-WebServer`)
-- **Conditions:** Threshold Type: Static | Lower than: `20`
-- **Name:** `ASG-CPU-Low-20`
-
-### Part 4: Attach Scale-IN Policy to ASG
-
-**Path:** EC2 → Auto Scaling groups → ASG-WebServer → Automatic scaling
-
-**Configuration:**
-
-- **Policy Type:** Simple scaling
-- **Name:** `scalein-cpu20`
-- **CloudWatch Alarm:** `ASG-CPU-Low-20`
-- **Action:** Remove `1` capacity units
-- **Cooldown:** 300 seconds
-
-Click Create.
-
-## Step D: Stress Testing & Validation
-
-To artificially increase CPU load on EC2 instances and observe automatic scaling behavior triggered by CloudWatch alarms.
-
-### Part A & B: Setup Stress Tool
-
-Connect to the **ASG-launched instance** via EC2 Instance Connect and run:
-
-```bash
-# Install stress-ng
-sudo dnf install stress-ng -y
-
-# Verify installation
-stress-ng --version
-```
-
-> [!NOTE]
-> Ensure your VPC has internet access (e.g., via NAT Gateway) for `dnf install` to work.
-
-### Part C & D: Trigger Scale Out
-
-Run the following command to spike CPU load:
-
-```bash
-stress-ng --cpu 4 --timeout 120
-```
-
-**Monitor the following:**
-
-- **ASG Activity:** A new instance should be launched
-- **EC2 Console:** A second instance will appear in the list
-- **CloudWatch:** `ASG-CPU-High-60` alarm should turn red (ALARM state)
-
-> [!TIP]
-> Scaling may take **2–4 minutes**. Refresh page to see updates.
-
-### Part E: Test Load Balancing
-
-Copy the **ALB DNS Name** (Found in EC2 → Load Balancers) and paste it into your browser. Refresh several times to see traffic shifting between instances:
-
-- _Output 1:_ Hello from Instance 1 — IP: XX.XX.XX.XX
-- _Output 2:_ Hello from Instance 2 — IP: AA.AA.AA.AA
-
-> [!NOTE]
-> Confirms ALB is distributing traffic across multiple instances.
-
-### Part F: Scale In
-
-Once the stress test ends, wait 3-5 minutes. The CPU will drop below 20%, the `ASG-CPU-Low-20` alarm will trigger, and the ASG will terminate the extra instance.
-
-## Knowledge Base & FAQs
-
-**What is a Target Group?**
-
-A Target Group is a collection of EC2 instances that receive traffic from the Application Load Balancer (ALB). It defines:
-
-- Which instances to send traffic to
-- On which port (example: 80)
-- Health check rules (path /, interval, threshold)
-
-In simple words: Target Group = list of servers behind the load balancer.
-
-**Why do we need two steps: Create Launch Template and Create Auto Scaling Group?**
-
-Because both have different roles:
-
-**Launch Template = WHAT to launch**
-
-It contains the configuration of one EC2 instance, such as:
-
-- AMI
-- Instance type
-- Security Group
-- Key pair
-- Storage
-- User data
-
-This is just a blueprint.
-
-**Auto Scaling Group = WHEN & HOW MANY to launch**
-
-The ASG uses the Launch Template to automatically:
-
-- Launch new instances
-- Remove instances
-- Maintain desired capacity
-- Scale based on CPU/memory demand
-
-**Where to find ALB DNS Name?**
-
-You can find the ALB DNS Name in the AWS Console:
-
-Path: EC2 → Load Balancers → Select your ALB → Description tab
-
-There you will see: DNS name: `mywebapp-alb-12345678.ap-south-1.elb.amazonaws.com`
-
-Use it in your browser as: `http://mywebapp-alb-12345678.ap-south-1.elb.amazonaws.com`
-
-This is the public URL of your Load Balancer.
-
-**What is ALB DNS?**
-
-ALB DNS is the publicly accessible DNS name automatically created by AWS for your Application Load Balancer.
-
-Example: `myapp-alb-123456789.ap-south-1.elb.amazonaws.com`
-
-When a user types this URL:
-
-- Traffic goes to the ALB
-- ALB forwards to Target Group
-- Target Group sends request to one of the EC2 instances
-
-ALB DNS = The website URL of your Load Balancer.
-
-**What is DNS?**
-
-DNS means Domain Name System.
-
-DNS is a system that converts domain names to IP addresses.
-
-Example: `www.amazon.com → 52.95.120.1`
-
-A DNS Server is only one part of this system.
-
-- DNS = System that translates names to IPs
-- DNS Server = Machine that performs the translation
-
-**Why do we NEED CloudWatch alarms for ASG scaling exercise?**
-
-We are using "Simple Scaling"
-
-- Based on CPU > 60 and CPU < 20
-- Which requires manually created CloudWatch alarms
-
-Without the alarms, ASG has NO trigger, so it cannot scale.
-
-## Clean-Up Procedure
-
-> [!WARNING]
-> Delete resources in this exact order to avoid dependency errors (e.g., ALB cannot be deleted if ASG is attached).
-
-1. **Auto Scaling Group:** Terminate instances first
-2. **Launch Template:** Delete the blueprint
-3. **Application Load Balancer:** Stop hourly charges
-4. **Target Group:** Clean up routing
-5. **Custom AMI & Snapshots:** Delete from AMIs and Snapshots sections
-6. **Manual Instances:** Terminate any remaining base instances
-
-## Summary Checklist
-
-- [ ] Custom AMI created with web server
-- [ ] ALB and Target Group configured
-- [ ] Launch Template created
-- [ ] ASG created and attached to Target Group
-- [ ] CloudWatch alarms for CPU high/low created
-- [ ] Scaling policies attached to ASG
-- [ ] Stress testing performed and scaling observed
-- [ ] Load balancing tested via ALB DNS
-- [ ] Resources cleaned up in correct order
-
-## Troubleshooting Guide
-
-**Common "Health Check" Issues:**
-
-- **Issue:** Instances show "unhealthy" in Target Group
-  - **Cause:** Web server not running or health check path incorrect
-  - **Fix:** SSH into instance, check if web server is active (`sudo systemctl status httpd`), and ensure health check path (e.g., /) returns 200
-
-- **Issue:** ALB DNS not accessible
-  - **Cause:** Security group blocks HTTP or ALB not properly configured
-  - **Fix:** Verify security group allows 0.0.0.0/0 on port 80, and check ALB listeners/target groups
-
-- **Issue:** Scaling not triggering
-  - **Cause:** Alarms not in ALARM state or policies not attached
-  - **Fix:** Check CloudWatch alarms and ASG scaling policies; ensure metrics are being collected
+5. What would happen if you set the scale-in threshold higher than the scale-out threshold (e.g., scale-out at 40%, scale-in at 60%)?

@@ -2,7 +2,7 @@
 
 Cybersecurity architecture is the systematic design and implementation of security controls across an organization's technology landscape. Unlike ad-hoc security measures, an architectural approach ensures comprehensive coverage, consistent policies, and measurable effectiveness.
 
-> [!INFO] **Credit and Source**
+> [!INFO] Credit and Source
 > This content is based on Jeff Crume's excellent IBM Cybersecurity Architecture series, which follows a 10-part deep dive into security domains.
 > 
 > [IBM Cybersecurity Architecture Playlist](https://www.youtube.com/playlist?list=PLOspHqNVtKADkWLFt9OcziQF7EatuANSY)

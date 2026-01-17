@@ -47,6 +47,13 @@ features:
     link: /java/
 
   - icon:
+      src: /logo/cloud_server.svg
+      alt: cloud Icon
+    title: DevOps & Cloud Topics
+    details: Covering Fundamentals of Cloud and DevOps Concepts.
+    link: /dev-cloud/
+
+  - icon:
       src: /logo/react.svg
       alt: React Icon
     title: React Topics
@@ -59,13 +66,6 @@ features:
     title: JavaScript Topics
     details: Master JavaScript basics, DOM, and ES6+ features.
     link: /java-script/
-
-  - icon:
-      src: /logo/cloud_server.svg
-      alt: cloud Icon
-    title: DevOps & Cloud Topics
-    details: Covering Fundamentals of Cloud and DevOps Concepts.
-    link: /dev-cloud/
 
   - icon:
       src: /logo/leetcode_p.svg
