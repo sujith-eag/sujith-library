@@ -9,8 +9,6 @@ description: Generate CPU load on Linux EC2 and monitor performance metrics with
 
 ## Overview
 
-Understanding how applications behave under high load is critical for capacity planning, performance tuning, and validating Auto Scaling configurations. Before implementing auto-scaling in production, you must verify that CloudWatch accurately captures resource utilization and that scaling policies trigger at appropriate thresholds.
-
 This lab demonstrates systematic load testing of EC2 instances using stress-ng, a Linux tool designed to generate controlled CPU stress. You'll learn how to install testing tools, generate synthetic CPU load, and monitor real-time performance metrics through Amazon CloudWatch. 
 
 ## Key Concepts
@@ -79,14 +77,12 @@ flowchart TD
    - **AMI:** Amazon Linux 2023 AMI (Free tier eligible)
      - Latest generation with dnf package manager
      - Optimized for AWS performance
-   - **Instance type:** `t2.micro` or `t3.micro`
-     - t2.micro: 1 vCPU, 1 GB RAM (older generation)
+   - **Instance type:** `t3.micro`
      - t3.micro: 2 vCPUs, 1 GB RAM (better burst performance)
 
 4. Configure key pair:
    - **Key pair:** Select existing or create new
    - **Private key file format:** `.pem`
-   - Download and save securely
 
 5. Configure Network Settings:
    - **VPC:** Default VPC (or custom VPC)
@@ -154,14 +150,6 @@ flowchart TD
 6. Verify successful connection:
    - Command prompt changes to: `[ec2-user@ip-172-31-x-x ~]$`
    - You're now inside the EC2 instance
-
-> [!TIP] Connection Troubleshooting
-> If SSH fails:
-> - Verify security group allows SSH (22) from your IP
-> - Check instance has public IP assigned
-> - Ensure you're using correct key file
-> - Confirm key file permissions (400 for Linux/Mac)
-> - Try with verbose mode: `ssh -v -i key.pem ec2-user@<IP>`
 
 ## Phase 3: Install Apache Web Server (Optional)
 
@@ -254,7 +242,6 @@ stress-ng --cpu 4 --timeout 120
 - `--cpu 4`: Create 4 CPU worker processes
   - Each worker runs math-intensive calculations
   - More workers = higher CPU utilization
-  - For t2.micro (1 vCPU): Use `--cpu 1` or `--cpu 2`
   - For t3.micro (2 vCPUs): Use `--cpu 2` or `--cpu 4`
 - `--timeout 120`: Run for 120 seconds (2 minutes)
   - Safety mechanism to prevent infinite load
@@ -452,6 +439,8 @@ Monitor CPU usage directly on the instance for immediate feedback.
 
 ## Validation
 
+::: details Validation
+
 Verify successful completion:
 
 - **EC2 Instance Launch:**
@@ -483,7 +472,11 @@ Verify successful completion:
   - Under stress (4 workers, 2 vCPUs): 70-100% CPU utilization
   - Post-stress: Returns to 0-5% within 1-2 minutes
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **EC2 Instance (t2.micro/t3.micro):**
   - **Free Tier:** 750 hours/month for first 12 months
@@ -516,6 +509,8 @@ Verify successful completion:
   - Monitoring: $0 (Basic Monitoring)
   - **Total:** ~$0.00-$0.01
 
+:::
+
 > [!TIP] Zero Cost Lab
 > This lab can be completed at zero cost if you:
 > - Use free tier eligible instance (t2.micro or t3.micro)
@@ -523,7 +518,10 @@ Verify successful completion:
 > - Use Basic Monitoring (not Detailed)
 > - Terminate instance immediately after completion
 
+
 ## Cleanup
+
+::: details Cleanup
 
 Stop all charges by terminating resources:
 
@@ -581,6 +579,8 @@ If created specifically for this lab:
 - CloudWatch metrics stop updating (no new data points after termination)
 - Security group deleted (optional)
 - No unexpected charges in Billing dashboard (check after 24 hours)
+
+:::
 
 ## Result
 

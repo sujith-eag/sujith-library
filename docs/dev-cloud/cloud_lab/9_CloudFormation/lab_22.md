@@ -92,6 +92,7 @@ A file will download like: pemkeypair.pem
 > - Do not add .pem anywhere.
 > - You will select Key Pair from dropdown during stack creation.
 
+::: details ec2-apache-al2023.yaml Code
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Launch EC2 (Amazon Linux 2023) and install Apache (httpd) using UserData
@@ -146,6 +147,7 @@ Outputs:
     Description: Apache Website URL
     Value: !Sub "http://${WebServerInstance.PublicDnsName}"
 ```
+:::
 
 ## Phase 3: Deploy CloudFormation Stack
 
@@ -187,6 +189,8 @@ Outputs:
 
 ## Validation
 
+::: details Validation
+
 - **Key Pair:** Confirm key pair exists in EC2 console.
 - **Template:** Verify YAML syntax and file structure.
 - **Stack Creation:** Check CloudFormation stack status is "CREATE_COMPLETE".
@@ -194,6 +198,9 @@ Outputs:
 - **Security Group:** Confirm inbound rules for ports 22 and 80.
 - **Website:** Access the output URL and verify Apache page loads.
 - **UserData:** Check EC2 system logs for UserData execution.
+:::
+
+::: details Troubleshooting
 
 ### Troubleshooting (Common Errors)
 
@@ -207,13 +214,21 @@ Outputs:
    - Go to stack → Events tab → check the failure reason
    - Most common reason: Wrong Key Pair selected / key pair does not exist
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **EC2 t3.micro:** ~$0.01/hour (free tier eligible for 750 hours)
 - **CloudFormation:** No additional cost for the service itself
 - **Tip:** Delete stack immediately after lab to avoid EC2 charges.
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 To avoid charges:
 1. CloudFormation → Stacks
@@ -222,6 +237,8 @@ To avoid charges:
 4. Confirm
 
 This deletes EC2 + Security Group automatically.
+
+:::
 
 ## Result
 

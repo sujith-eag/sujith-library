@@ -69,57 +69,59 @@ flowchart TD
 2. **Add Code (Business Logic + Logs)**:
    - In the **Code** tab, open `lambda_function.py`.
    - Paste the following code and click **Deploy**:
-     ```python
-     import json
+::: details lambda_function.py Code
+```python
+import json
 
-     def lambda_handler(event, context):
-         # Welcome message
-         print("Lambda invoked successfully")
+def lambda_handler(event, context):
+    # Welcome message
+    print("Lambda invoked successfully")
 
-         # Read input from event
-         if "StudentName" not in event:
-             return {
-                 "statusCode": 400,
-                 "body": json.dumps({"message": "Missing 'StudentName'"})
-             }
-         if "Marks" not in event:
-             return {
-                 "statusCode": 400,
-                 "body": json.dumps({"message": "Missing 'Marks'"})
-             }
-         student_name = event["StudentName"]
-         marks = event["Marks"]
-         if not isinstance(marks, int) or marks < 0 or marks > 100:
-             return {
-                 "statusCode": 400,
-                 "body": json.dumps({"message": "Marks must be between 0 and 100"})
-             }
+    # Read input from event
+    if "StudentName" not in event:
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"message": "Missing 'StudentName'"})
+        }
+    if "Marks" not in event:
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"message": "Missing 'Marks'"})
+        }
+    student_name = event["StudentName"]
+    marks = event["Marks"]
+    if not isinstance(marks, int) or marks < 0 or marks > 100:
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"message": "Marks must be between 0 and 100"})
+        }
 
-         # Business logic: grade calculation
-         if marks >= 75:
-             result = "Pass"
-             grade = "A"
-         else:
-             result = "Fail"
-             grade = "F"
+    # Business logic: grade calculation
+    if marks >= 75:
+        result = "Pass"
+        grade = "A"
+    else:
+        result = "Fail"
+        grade = "F"
 
-         # Log output
-         print("Student:", student_name)
-         print("Marks:", marks)
-         print("Grade:", grade)
-         print("Result:", result)
+    # Log output
+    print("Student:", student_name)
+    print("Marks:", marks)
+    print("Grade:", grade)
+    print("Result:", result)
 
-         # Return response
-         return {
-             "statusCode": 200,
-             "body": json.dumps({
-                 "StudentName": student_name,
-                 "Marks": marks,
-                 "Grade": grade,
-                 "Result": result
-             })
-         }
-     ```
+    # Return response
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "StudentName": student_name,
+            "Marks": marks,
+            "Grade": grade,
+            "Result": result
+        })
+    }
+```
+:::
 
 3. **Test with Input Events (JSON)**:
    - Create a test event (Valid case): Go to **Test** → **Configure test event**.
@@ -147,6 +149,8 @@ flowchart TD
 
 ## Validation
 
+::: details Validation
+
 - **Function Creation:** Confirm Lambda function created with correct runtime and permissions.
 - **Code Deployment:** Verify code deploys without errors.
 - **Test Events:** Test all scenarios (valid, missing fields, invalid marks).
@@ -154,19 +158,29 @@ flowchart TD
 - **SNS Integration:** Verify email notifications received for different event types.
 - **IAM Permissions:** Ensure proper policies attached for CloudWatch and SNS access.
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Lambda:** ~$0.20 per 1M requests + compute time (~$0.0000167/GB-second)
 - **CloudWatch Logs:** ~$0.50/GB ingested
 - **SNS:** ~$0.50/100,000 email notifications
 - **Free Tier:** Generous Lambda free tier; delete functions after lab
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. Delete Lambda functions: `StudentGradeLogger` and `NotificationSimulator`.
 2. Delete SNS Topic: `Grade Notifications`.
 3. Delete CloudWatch Log Groups associated with the functions.
 4. Delete the IAM roles if they are not used elsewhere.
+
+:::
 
 ## Result
 

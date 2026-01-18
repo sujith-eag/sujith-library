@@ -9,9 +9,9 @@ description: Deploy scalable web infrastructure using Application Load Balancer,
 
 ## Overview
 
-A single EC2 instance serving your website creates a single point of failure—if the instance fails, your entire website goes down. Application Load Balancers (ALB) solve this by distributing incoming HTTP/HTTPS traffic across multiple EC2 instances, ensuring your application remains available even if individual instances fail.
+Application Load Balancers (ALB) distribute incoming HTTP/HTTPS traffic across multiple EC2 instances, ensuring your application remains available even if individual instances fail. This lab demonstrates deploying a load-balanced web architecture. 
 
-This lab demonstrates deploying a load-balanced web architecture. You'll create a custom Amazon Machine Image (AMI) containing your pre-configured web application, use it to launch multiple identical EC2 instances, configure a Target Group to manage instance health, and deploy an Application Load Balancer to distribute traffic across instances. 
+You'll create a custom Amazon Machine Image (AMI) containing your pre-configured web application, use it to launch multiple identical EC2 instances, configure a Target Group to manage instance health, and deploy an Application Load Balancer to distribute traffic across instances. 
 
 ## Key Concepts
 
@@ -138,7 +138,8 @@ Create the foundational instance that will become your custom AMI.
    ```
 
 > [!NOTE] Hostname Variable
-> The `$(hostname)` command dynamically inserts the instance's hostname. When you create the AMI and launch multiple instances, each will display its unique hostname, allowing you to verify load balancing is working—refreshing the browser will show different hostnames as ALB distributes traffic.
+> The `$(hostname)` command dynamically inserts the instance's hostname. 
+> When you create the AMI and launch multiple instances, each will display its unique hostname, allowing you to verify load balancing is working. Refreshing the browser will show different hostnames as ALB distributes traffic.
 
 8. Test the web server:
    - Open browser: `http://<Public-IP>`
@@ -171,7 +172,7 @@ Create a reusable image from your configured instance.
 4. Configure AMI:
    - **Image name:** `WebServer-AMI`
    - **Image description:** "Apache web server with custom homepage"
-   - **No reboot:** Leave unchecked (recommended for data consistency)
+   - **Reboot:** Checked (recommended for data consistency)
 
 5. Click **Create image**.
 
@@ -182,9 +183,6 @@ Create a reusable image from your configured instance.
 
 > [!IMPORTANT] AMI Availability
 > The AMI must show status "Available" before you can launch instances from it. Creating the AMI takes a snapshot of all EBS volumes attached to the instance, which requires a few minutes. Don't proceed to Target Group creation until this is complete.
-
-> [!NOTE] No Reboot Option
-> By default, AWS reboots the instance during AMI creation to ensure file system consistency. If you check "No reboot," the AMI may have inconsistent data if files were being written during snapshot. For production, allow the reboot.
 
 ## Phase 4: Create Target Group
 
@@ -431,6 +429,8 @@ Verify ALB is distributing traffic across your instances.
 
 ## Validation
 
+::: details Validation
+
 Verify successful completion:
 
 - **Custom AMI:**
@@ -467,7 +467,11 @@ Verify successful completion:
   - Restarting stopped instance resumes load balancing
   - Round Robin distribution verified
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Application Load Balancer:**
   - **Hourly charge:** ~$0.0225/hour = ~$16.20/month (us-east-1)
@@ -505,6 +509,8 @@ Verify successful completion:
   - AMI snapshot: ~$0.40
   - **Total:** ~$32.88/month
 
+:::
+
 > [!WARNING] ALB Costs
 > Application Load Balancer is the primary cost driver in this architecture. Unlike EC2 instances (which have free tier), ALB charges start immediately at ~$0.0225/hour. For learning purposes, delete the ALB immediately after completing the lab to avoid ongoing charges.
 
@@ -514,7 +520,10 @@ Verify successful completion:
 > - For production: ALB cost is justified by high availability and scalability benefits
 > - Use CloudWatch to monitor actual LCU consumption
 
+
 ## Cleanup
+
+::: details Cleanup
 
 Delete resources in this order to avoid dependency errors and stop all charges:
 
@@ -590,6 +599,8 @@ Delete resources in this order to avoid dependency errors and stop all charges:
 2. Select `Base-WebServer`.
 3. Click **Instance state** → **Terminate instance**.
 4. Confirm termination.
+
+:::
 
 ### Verification
 

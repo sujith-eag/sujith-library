@@ -117,6 +117,7 @@ Create a folder named `flask-ddb-lab` containing exactly these four files:
 
 #### application.py
 
+::: details application.py Code
 ```python
 from flask import Flask, request, jsonify
 import boto3
@@ -183,6 +184,7 @@ def delete_student(student_id):
     table.delete_item(Key={"StudentID": student_id})
     return jsonify(message="Student deleted")
 ```
+:::
 
 #### requirements.txt
 
@@ -384,6 +386,7 @@ curl -X DELETE http://<your-eb-domain>/student/101
 
 ## Common Issues & Solutions
 
+::: details Troubleshooting
 ### Issue: Application returns 500 errors
 
 **Causes:**
@@ -416,8 +419,11 @@ curl -X DELETE http://<your-eb-domain>/student/101
 1. Go to **Configuration** → **Security** → **Edit**
 2. Verify **IAM instance profile** is set to `EB-EC2-DynamoDB-Role`
 3. Confirm role has `AmazonDynamoDBFullAccess` policy attached
+:::
 
 ## Validation
+
+::: details Validation
 
 - **Elastic Beanstalk Environment:** Health status shows "Ok" in EB console
 - **Application URL:** Accessible and returns "Flask + DynamoDB on Elastic Beanstalk is working!" on root path
@@ -426,13 +432,21 @@ curl -X DELETE http://<your-eb-domain>/student/101
 - **IAM Role:** EB-EC2-DynamoDB-Role attached to EC2 instance with proper permissions
 - **Environment Variables:** TABLE_NAME and AWS_REGION properly configured
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Elastic Beanstalk:** ~$0.01/hour for t3.micro EC2 (free tier eligible)
 - **DynamoDB:** On-demand pricing (~$1.25/million writes, $0.25/million reads)
 - **Tip:** Terminate EB environment and delete DynamoDB table immediately after lab. Monitor via AWS Cost Explorer.
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 To avoid ongoing charges:
 
@@ -447,6 +461,8 @@ To avoid ongoing charges:
 3. **IAM Role** (optional):
    - Can be retained for future labs
    - Or delete via **IAM** → **Roles** → `EB-EC2-DynamoDB-Role` → **Delete**
+
+:::
 
 ## Result
 

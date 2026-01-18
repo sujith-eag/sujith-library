@@ -145,6 +145,7 @@ This stack manages the IAM Role, Security Group, EC2 instance, Apache installati
 
 Create a file named `stack2-ec2-pull-from-s3.yaml` and paste the following:
 
+::: details stack2-ec2-pull-from-s3.yaml Code
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Launch EC2 (Amazon Linux 2023), install Apache, and pull index.html from S3
@@ -229,7 +230,7 @@ Outputs:
     Description: Open this URL in browser
     Value: !Sub "http://${WebServerInstance.PublicDnsName}"
 ```
-
+:::
 
 ### Step 3.2: Create stack
 
@@ -255,6 +256,8 @@ Outputs:
 
 ## Validation
 
+::: details Validation
+
 - **Stack-1:** Confirm S3 bucket created and bucket name noted from outputs.
 - **S3 Upload:** Verify index.html uploaded to bucket root.
 - **Stack-2:** Check CloudFormation stack status is "CREATE_COMPLETE".
@@ -262,9 +265,12 @@ Outputs:
 - **Security Group:** Confirm ports 22 and 80 are open.
 - **Website:** Access output URL and verify content matches S3 file.
 - **IAM Permissions:** Confirm EC2 can access S3 without public bucket access.
+:::
+
 
 ## Troubleshooting (common)
 
+::: Troubleshooting
 1. **Website not opening:**
     
     - Wait 1–2 minutes (UserData takes time).
@@ -282,14 +288,22 @@ Outputs:
     - `index.html` not uploaded at the root of the bucket.
         
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **EC2 t3.micro:** ~$0.01/hour (free tier eligible)
 - **S3 Storage:** ~$0.023/GB/month (minimal for small files)
 - **CloudFormation:** No additional cost
 - **Tip:** Delete stacks immediately after lab to avoid charges.
 
+:::
+
 ## Clean-up
+
+::: details Clean-up
 
 1. **Delete Stack-2 first:** `EC2-Pull-S3-Website`.
     
@@ -297,6 +311,8 @@ Outputs:
     
 3. **Delete Stack-1:** `S3-Website-Bucket`.
     
+
+:::
 
 ## Result
 

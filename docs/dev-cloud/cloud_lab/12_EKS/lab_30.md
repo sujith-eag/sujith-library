@@ -133,6 +133,8 @@ flowchart TD
 
 ## Validation
 
+::: details Validation
+
 - **CloudShell Access**: Terminal successfully opened in browser
 - **Tools Verification**: aws, kubectl, and eksctl commands work
 - **EKS Cluster**: Cluster creation completed successfully
@@ -141,7 +143,11 @@ flowchart TD
 - **LoadBalancer Service**: Service created with external IP
 - **Application Access**: Nginx welcome page loads in browser
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **EKS Control Plane**: $0.10 per hour (always running)
 - **EC2 Worker Nodes**: t3.medium pricing (~$0.04/hour each)
@@ -150,7 +156,11 @@ flowchart TD
 - **Free Tier**: Limited EKS free tier available
 - **Estimated Cost**: $5-15 for 1-2 hour lab session
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. **Delete LoadBalancer service**:
    ```bash
@@ -168,6 +178,8 @@ flowchart TD
    ```
 
 4. Verify all resources are removed to avoid charges
+
+:::
 
 ## Result
 

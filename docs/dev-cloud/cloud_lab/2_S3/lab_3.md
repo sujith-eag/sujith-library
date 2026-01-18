@@ -83,9 +83,6 @@ flowchart TD
      - Example: `student1-lab3-assets-2025-xy` or `yourname-demo-bucket-jan2026`
    - **AWS Region:** Select the region nearest to you (e.g., `us-east-1`, `ap-south-1`)
 
-> [!IMPORTANT] Global Uniqueness
-> S3 bucket names must be globally unique across ALL AWS accounts worldwide. You cannot use common names like `test-bucket` or `my-files`. Include your name, project, or random characters to ensure uniqueness.
-
 5. Configure Object Ownership:
    - Expand **Object Ownership** section
    - Select **ACLs enabled**
@@ -101,9 +98,6 @@ flowchart TD
    - **Uncheck** "Block all public access"
    - A warning dialog appears
    - Check the acknowledgment box: "I acknowledge that the current settings might result in this bucket and the objects within becoming public"
-
-> [!WARNING] Security Consideration
-> Unchecking public access settings allows anyone on the internet to access objects you explicitly make public. Never make sensitive data public. This lab uses public access for learning purposes only.
 
 7. Leave all other settings at default:
    - Bucket Versioning: Disabled
@@ -149,6 +143,8 @@ flowchart TD
 
 ## Validation
 
+::: details Validation
+
 Verify successful completion:
 
 - **Bucket Creation:**
@@ -168,7 +164,11 @@ Verify successful completion:
   - Image/file displays without authentication required
   - No "Access Denied" errors
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **S3 Standard Storage:**
   - First 50 TB: $0.023 per GB/month
@@ -190,7 +190,11 @@ Verify successful completion:
   - PUT, COPY, POST, LIST: $0.005 per 1,000 requests
   - GET, SELECT: $0.0004 per 1,000 requests
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 To avoid ongoing costs and maintain good AWS hygiene:
 
@@ -208,6 +212,8 @@ To avoid ongoing costs and maintain good AWS hygiene:
    - Click **Delete**
    - Type the bucket name in the confirmation field
    - Click **Delete bucket**
+
+:::
 
 > [!IMPORTANT] Deletion Requirement
 > S3 buckets must be empty before they can be deleted. Always empty buckets first, then delete them.

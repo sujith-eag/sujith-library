@@ -294,44 +294,19 @@ echo "<html>
 ### Phase 2: Launch Instance with User Data
 
 1. Sign in to AWS Management Console.
+   - Perform all steps from Phase 1 till security group and storage.
 
-2. Navigate to EC2 → Click **Launch Instance**.
-
-3. Configure basic instance details:
-   - **Name:** `AutoApacheWebServer`
-   - **AMI:** Amazon Linux 2 AMI (Free tier eligible)
-   - **Instance type:** t3.micro
-
-4. Key pair:
-   - Select existing key pair or create new
-   - **Format:** .pem
-   - **Note:** Key pair not strictly required if you don't plan to SSH, but recommended for troubleshooting
-
-5. Network settings:
-   - **Firewall (security groups):** Create security group
-   - **Allow HTTP traffic from the internet:** ✓ (check this box)
-   - **Allow SSH traffic:** ✓ (optional, for troubleshooting)
-   - This automatically creates security group rules for ports 80 and 22
-
-6. Storage:
-   - Leave default settings (8 GiB gp3)
-
-7. Expand **Advanced details** section (at bottom):
+2. Expand **Advanced details** section (at bottom):
    - Scroll down to **User data** text box
    - Paste the entire bash script from Phase 1 above
    - **Ensure the first line is `#!/bin/bash`**
 
-> [!IMPORTANT] Shebang Requirement
-> The first line must be exactly `#!/bin/bash` (no spaces before #). This tells the Linux kernel to execute the script using the Bash shell interpreter. Without it, cloud-init treats the text as configuration data instead of executable commands, causing silent failure.
-
-8. Review configuration in Summary panel:
+3. Review configuration in Summary panel:
    - Instance type: t3.micro
    - Security group: HTTP (80) allowed
    - User data: Present (shown as "Specified")
 
-9. Click **Launch instance**.
-
-10. Wait for instance to be ready:
+4. Click **Launch instance** and  Wait for instance to be ready:
     - Instance state: Running (1-2 minutes)
     - Status checks: 2/2 checks passed (2-3 minutes)
     - User Data execution: Additional 1-2 minutes
@@ -351,36 +326,33 @@ echo "<html>
    - No manual configuration needed
    - Website operational within minutes of launch
 
-4. **Optional - Troubleshooting:** If website doesn't appear, SSH to instance and check logs:
-   ```bash
-   ssh -i your-key.pem ec2-user@<Public-IP>
-   
-   # Check User Data execution log
-   sudo cat /var/log/cloud-init-output.log
-   
-   # Check Apache status
-   sudo systemctl status httpd
-   
-   # Check if index.html was created
-   ls -la /var/www/html/
-   ```
+> [!WARNING] Public IP Changes
+> If you stop and start an instance, the Public IP address changes, breaking your website URL. For production websites, allocate an Elastic IP (static IP) or use a domain name with Route 53 DNS service.
+
+
+::: details Click to expand Troubleshooting Tips
+If website doesn't appear, SSH to instance and check logs:
+```bash
+ssh -i your-key.pem ec2-user@<Public-IP>
+
+# Check User Data execution log
+sudo cat /var/log/cloud-init-output.log
+
+# Check Apache status
+sudo systemctl status httpd
+
+# Check if index.html was created
+ls -la /var/www/html/
+```
 
 > [!NOTE] Log File Location
 > `/var/log/cloud-init-output.log` contains the complete output of User Data script execution, including any error messages. This is the first place to check when troubleshooting User Data issues.
+:::
 
-## Comparison: Manual vs User Data
-
-| Aspect | Manual Installation | User Data Automation |
-|--------|-------------------|---------------------|
-| **Setup Time** | 10-15 minutes (including SSH) | 3-5 minutes (fully automated) |
-| **Skills Required** | SSH, Linux commands, systemd | Basic scripting knowledge |
-| **Reproducibility** | Manual steps, prone to errors | Identical deployment every time |
-| **Scalability** | Must SSH to each instance | Can launch 100s of instances simultaneously |
-| **Use Case** | Learning, troubleshooting, one-off deployments | Production, auto-scaling, infrastructure-as-code |
-| **SSH Required** | Yes (for all operations) | No (optional for troubleshooting only) |
-| **Best For** | Development, learning, testing | Production, automation, CI/CD pipelines |
 
 ## Validation
+
+::: details Click to expand
 
 Verify successful completion:
 
@@ -405,9 +377,11 @@ Verify successful completion:
 - **File System:**
   - `/var/www/html/index.html` exists with correct content
   - File readable by Apache: `ls -la /var/www/html/index.html`
+:::
 
 ## Cost Considerations
 
+::: details Click to expand
 - **EC2 Instance (t3.micro):**
   - **Free Tier:** 750 hours/month for first 12 months
   - **After Free Tier:** ~$0.0104/hour = ~$7.50/month (us-east-1)
@@ -424,19 +398,16 @@ Verify successful completion:
 - **Elastic IP (if allocated):**
   - Free while associated with running instance
   - $0.005/hour if unattached or instance stopped
-
-> [!WARNING] Public IP Changes
-> If you stop and start an instance, the Public IP address changes, breaking your website URL. For production websites, allocate an Elastic IP (static IP) or use a domain name with Route 53 DNS service.
+:::
 
 ## Cleanup
-
+::: details Click to expand
 To avoid ongoing charges:
 
 1. **Exit SSH session** (if connected):
    ```bash
    exit
    ```
-
 2. **Terminate the instance:**
    - Go to EC2 → Instances
    - Select your instance
@@ -455,7 +426,7 @@ To avoid ongoing charges:
    - Select your key pair
    - Click **Actions** → **Delete**
    - Delete local .pem file from your computer
-
+:::
 
 ## Result
 

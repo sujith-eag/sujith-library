@@ -170,6 +170,8 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 
 ## Validation
 
+::: details Validation
+
 - **S3 Bucket**: Created with files `index.html` and `about.html`
 - **CloudFront Distribution**: Status "Enabled" with domain name
 - **OAC Configuration**: Origin Access Control properly set up
@@ -180,7 +182,11 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 - **Invalidation**: Created and completed successfully
 - **Final Test**: CloudFront now shows V2 after invalidation
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **CloudFront Data Transfer**: $0.085-$0.12 per GB (first 10TB)
 - **CloudFront Requests**: $0.0075-$0.009 per 10,000 requests
@@ -189,11 +195,16 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 - **Free Tier**: 1TB data transfer, 10 million requests free
 - **Estimated Cost**: <$2 for this mini-project
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. **CloudFront**: Disable distribution → wait for deployment → Delete distribution
 2. **S3**: Empty bucket → Delete bucket
 3. Verify all resources are removed to avoid charges
+:::
 
 ## Result
 

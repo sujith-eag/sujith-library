@@ -219,6 +219,8 @@ flowchart TD
 
 ## Validation
 
+::: details Validation
+
 Verify that you have successfully completed all phases:
 
 - **Console Navigation:**
@@ -237,14 +239,22 @@ Verify that you have successfully completed all phases:
   - Email recipient is correctly configured
   - Confirmation email received (check spam folder)
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **AWS Free Tier:** This lab uses only Free Tier services with no direct costs
 - **Budgets:** First 2 budgets are free; additional budgets cost $0.02 per day per budget
 - **MFA:** No additional cost for MFA setup or usage
 - **Notification Emails:** Free through Amazon SNS for budget alerts
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 No cleanup is required for this lab as all configurations (MFA, budgets, console customizations) are permanent account settings that provide ongoing value. However, if you wish to remove specific items:
 
@@ -259,6 +269,8 @@ No cleanup is required for this lab as all configurations (MFA, budgets, console
 You have successfully configured your AWS account with essential security and cost management features. Your account now has MFA protection, reducing the risk of unauthorized access, and budget alerts to monitor spending and prevent unexpected charges. You're familiar with the AWS Console navigation and ready to begin working with AWS services securely and cost-effectively.
 
 These foundational skills will serve you throughout your AWS journey, whether you're building personal projects, learning cloud technologies, or working on enterprise applications.
+
+:::
 
 ## Viva Questions
 

@@ -171,19 +171,29 @@ Expected: John, Arun
 
 ## Validation
 
+::: details Validation
+
 - **CSV Upload:** File successfully uploaded to S3 bucket
 - **Database Creation:** labdb database created in Athena
 - **Table Creation:** students table created without errors
 - **Query Results:** All SQL queries execute successfully and return expected results
 - **Result Location:** Query outputs stored in specified S3 location
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **S3 storage:** Tiny (almost negligible for this small CSV)
 - **Athena:** Charges based on data scanned; with this tiny CSV it's usually minimal
 - **Tip:** Always delete query outputs and bucket after lab to avoid charges
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. In Athena, you can keep DB/table (no cost by itself), but clean S3:
 2. Go to S3 bucket
@@ -191,6 +201,8 @@ Expected: John, Arun
    - students.csv
    - athena-results/ folder contents (query outputs)
 4. Delete the bucket (must be empty to delete)
+
+:::
 
 ## Result
 

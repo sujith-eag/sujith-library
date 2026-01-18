@@ -9,10 +9,11 @@ description: Deploy static website using both S3 hosting and EC2 with Nginx sync
 
 ## Overview
 
-This mini project demonstrates two distinct approaches to hosting static websites on AWS: serverless S3 static hosting and server-based EC2 with Nginx. Unlike previous labs that focused on individual services, this project integrates multiple AWS services—S3, EC2, IAM, and security groups—to create a complete, production-ready deployment workflow.
+This project integrates multiple AWS services: S3, EC2, IAM, and security groups to create a complete, production-ready deployment workflow.
 
-- Method A serves files directly from S3 using static website hosting (low-cost, highly scalable, serverless).
-- Method B deploys an EC2 instance with Nginx that automatically syncs content from S3 using IAM roles and AWS CLI, demonstrating how to build scalable web servers with automated content delivery.
+This mini project demonstrates two distinct approaches to hosting static websites on AWS:  hosting and server-based EC2 with Nginx. 
+- Method A :  Serves files directly from S3 using static website hosting (low-cost, highly scalable, serverless).
+- Method B : Deploys an EC2 instance with Nginx that automatically syncs content from S3 using IAM roles and AWS CLI, demonstrating how to build scalable web servers with automated content delivery.
 
 ## Key Concepts
 
@@ -93,24 +94,21 @@ This phase creates the centralized content repository and direct static hosting.
 
 ### Create and Configure S3 Bucket
 
-1. Sign in to AWS Management Console.
+1. Sign in to AWS Management Console. 
+  - Navigate to S3 service.
+  - Click **Create bucket**.
 
-2. Navigate to S3 service.
-
-3. Click **Create bucket**.
-
-4. Configure bucket settings:
+2. Configure bucket settings:
    - **Bucket name:** Enter globally unique name (e.g., `my-static-website-2024`, `yourname-web-project`)
    - **Region:** Select region closest to your location (e.g., us-east-1, ap-south-1)
-   - **Note:** Bucket name must be unique across all AWS accounts globally
 
-5. Configure public access settings:
-   - **Block Public Access settings for this bucket**
+1. Configure public access settings:
    - **Uncheck** "Block all public access"
    - **Warning:** Acknowledge that you understand the bucket will be public
 
 > [!WARNING] Security Consideration
-> This bucket will be publicly accessible for website hosting. Never store sensitive data, credentials, or private information in publicly accessible S3 buckets. Use separate private buckets for sensitive content.
+> This bucket will be publicly accessible for website hosting. Use separate private buckets for sensitive content.
+> Never store sensitive data, credentials, or private information in publicly accessible S3 buckets. 
 
 6. Leave other settings at default:
    - Bucket Versioning: Disabled
@@ -122,11 +120,131 @@ This phase creates the centralized content repository and direct static hosting.
 ### Upload Website Files
 
 1. Prepare your website files:
-   - **Sample files** (create locally if you don't have a website):
-     - `index.html` - Main page
-     - `main.css` - Stylesheet (optional)
-     - `script.js` - JavaScript (optional)
-     - `form_1.html`, `form_2.html` - Additional pages (optional)
+	```
+	my-website/
+	├── index.html
+	├── about.html
+	├── contact.html
+	└── error.html
+	```
+
+::: details Click to expand HTML file examples
+::: code-group
+```html [index.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Static Website</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>This is a simple static website hosted on Amazon S3.</p>
+        <p>Learn more about our services on the About page.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [about.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>This website demonstrates Amazon S3 static website hosting capabilities.</p>
+        <p>S3 provides a cost-effective way to host static content without managing servers.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [contact.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>Get in touch with us!</p>
+        <p>Email: info@mywebsite.com</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>This is a static page - for dynamic forms, consider using additional AWS services.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [error.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+</head>
+<body>
+    <header>
+        <h1>404 - Page Not Found</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>Sorry, the page you're looking for doesn't exist.</p>
+        <p>Please check the URL or return to the home page.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+:::
 
 2. In S3 console, click your bucket name to open it.
 
@@ -142,7 +260,9 @@ This phase creates the centralized content repository and direct static hosting.
    - Verify all files appear in bucket
 
 > [!TIP] Using AWS CLI for Upload
-> For faster uploads of many files, use AWS CLI: `aws s3 sync ./local-folder s3://your-bucket-name/ --acl public-read`. This is much faster than console upload for projects with hundreds of files.
+> For faster uploads of many files, use AWS CLI: 
+> `aws s3 sync ./local-folder s3://your-bucket-name/ --acl public-read`. 
+> This is much faster than console upload for projects with hundreds of files.
 
 ### Enable Static Website Hosting
 
@@ -156,7 +276,7 @@ This phase creates the centralized content repository and direct static hosting.
    - **Static website hosting:** Enable
    - **Hosting type:** Host a static website
    - **Index document:** `index.html`
-   - **Error document:** `index.html` (or create `error.html`)
+   - **Error document:** `error.html`
 
 5. Click **Save changes**.
 
@@ -169,11 +289,8 @@ This phase creates the centralized content repository and direct static hosting.
 S3 objects are private by default. You must add a bucket policy to allow public read access.
 
 1. In your bucket, click the **Permissions** tab.
-
 2. Scroll to **Bucket policy** section.
-
 3. Click **Edit**.
-
 4. Paste this JSON policy (replace `BUCKET_NAME` with your actual bucket name):
 
 ```json
@@ -192,7 +309,9 @@ S3 objects are private by default. You must add a bucket policy to allow public 
 ```
 
 > [!IMPORTANT] Replace BUCKET_NAME
-> You must replace `BUCKET_NAME` with your actual bucket name (without `s3://` prefix). Example: if your bucket is `my-website-2024`, the Resource line should be `"arn:aws:s3:::my-website-2024/*"`.
+> You must replace `BUCKET_NAME` with your actual bucket name (without `s3://` prefix). 
+> if your bucket is `my-website-2024`, the Resource line should be 
+> `"arn:aws:s3:::my-website-2024/*"`.
 
 5. Click **Save changes**.
 
@@ -218,7 +337,9 @@ S3 objects are private by default. You must add a bucket policy to allow public 
    - Should display your error page or index.html
 
 > [!NOTE] S3 Website Endpoint vs Object URL
-> The S3 website endpoint (`.s3-website-`) supports index documents and error pages. Direct object URLs (`.s3.amazonaws.com/index.html`) download files instead of displaying them in browser. Always use the website endpoint for hosting.
+> Always use the website endpoint for hosting.
+> The S3 website endpoint (`.s3-website-`) supports index documents and error pages. 
+> Direct object URLs (`.s3.amazonaws.com/index.html`) download files instead of displaying them in browser. 
 
 ## Phase 2: Create IAM Role for EC2
 
@@ -286,6 +407,7 @@ This phase deploys an EC2 instance that automatically installs Nginx and syncs c
 
 This script runs automatically at first boot, installing Nginx and syncing website files.
 
+::: details Click to expand Data Script
 ```bash
 #!/bin/bash
 set -e
@@ -294,10 +416,8 @@ set -e
 BUCKET="your-bucket-name"    # Replace with your actual bucket name
 REGION="us-east-1"           # Replace with your bucket's region
 
-# Update system packages
 yum update -y
-
-# Install Nginx and AWS CLI (AWS CLI pre-installed on Amazon Linux 2)
+# Install Nginx and AWS CLI
 yum install -y nginx
 
 # Start and enable Nginx
@@ -319,9 +439,10 @@ systemctl restart nginx
 # Log completion
 echo "Website synced from s3://$BUCKET to /usr/share/nginx/html" >> /var/log/user-data.log
 ```
+:::
 
 > [!IMPORTANT] Update Script Variables
-> Before using this script, replace `your-bucket-name` with your actual S3 bucket name and `us-east-1` with your bucket's region. Failure to update these values will cause the script to fail.
+> Before using this script, replace `your-bucket-name` with your actual S3 bucket name and `us-east-1` with your bucket's region.
 
 ### Launch EC2 Instance
 
@@ -395,39 +516,42 @@ echo "Website synced from s3://$BUCKET to /usr/share/nginx/html" >> /var/log/use
    - All pages accessible
    - Files were synced from S3 successfully
 
-4. **Optional - SSH Verification:** Connect to instance and check logs:
-   ```bash
-   # Fix key permissions and connect
-   chmod 400 your-key.pem
-   ssh -i your-key.pem ec2-user@<Public-IP>
-   
-   # Check User Data execution log
-   sudo cat /var/log/cloud-init-output.log
-   
-   # Verify Nginx status
-   sudo systemctl status nginx
-   
-   # List synced files
-   ls -la /usr/share/nginx/html/
-   
-   # Check AWS CLI can access S3 (should list buckets)
-   aws s3 ls
-   ```
+::: details Click to expand SSH Verification Steps
+```bash
+# Connect and check logs
+# Fix key permissions and connect
+chmod 400 your-key.pem
+ssh -i your-key.pem ec2-user@<Public-IP>
+
+# Check User Data execution log
+sudo cat /var/log/cloud-init-output.log
+
+# Verify Nginx status
+sudo systemctl status nginx
+
+# List synced files
+ls -la /usr/share/nginx/html/
+
+# Check AWS CLI can access S3 (should list buckets)
+aws s3 ls
+```
+:::
 
 ## Comparison: S3 vs EC2 Hosting
 
-| Aspect | S3 Static Hosting | EC2 with Nginx |
-|--------|------------------|----------------|
-| **Cost** | ~$0.023/GB-month storage + data transfer | ~$7.50/month (t3.micro) + storage + data transfer |
-| **Scalability** | Automatic, unlimited | Manual scaling, instance limits |
-| **Availability** | 99.99% SLA, multi-AZ | Single instance (99.5%), requires setup for HA |
-| **Maintenance** | Zero - fully managed | OS patching, Nginx updates, monitoring |
-| **SSL/HTTPS** | Requires CloudFront | Configure directly with Let's Encrypt |
-| **Dynamic Content** | Not supported | Supports server-side processing (PHP, Python, etc.) |
-| **Best For** | Pure static sites, SPAs, low traffic | Dynamic sites, APIs, custom configurations |
-| **Setup Time** | 5 minutes | 10-15 minutes |
+| Aspect              | S3 Static Hosting                        | EC2 with Nginx                                      |
+| ------------------- | ---------------------------------------- | --------------------------------------------------- |
+| **Scalability**     | Automatic, unlimited                     | Manual scaling, instance limits                     |
+| **Availability**    | 99.99% SLA, multi-AZ                     | Single instance (99.5%), requires setup for HA      |
+| **Maintenance**     | Zero - fully managed                     | OS patching, Nginx updates, monitoring              |
+| **SSL/HTTPS**       | Requires CloudFront                      | Configure directly with Let's Encrypt               |
+| **Dynamic Content** | Not supported                            | Supports server-side processing (PHP, Python, etc.) |
+| **Best For**        | Pure static sites, SPAs, low traffic     | Dynamic sites, APIs, custom configurations          |
+| **Setup Time**      | 5 minutes                                | 10-15 minutes                                       |
 
 ## Validation
+
+::: details Validation
 
 Verify successful completion:
 
@@ -460,8 +584,12 @@ Verify successful completion:
   - `aws s3 ls` command works on EC2 instance
   - Website displays identically on both S3 and EC2 endpoints
 
+:::
+
 
 ## Cleanup
+
+::: details Cleanup
 
 To avoid ongoing charges:
 
@@ -508,6 +636,8 @@ To avoid ongoing charges:
    - Select `ec2-s3-read-role`
    - **Delete** button
    - Confirm deletion
+
+:::
 
 ## Result
 

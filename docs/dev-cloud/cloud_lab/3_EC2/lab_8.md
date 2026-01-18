@@ -9,9 +9,9 @@ description: Build reusable Amazon Machine Images from configured EC2 instances
 
 ## Overview
 
-Amazon Machine Images (AMIs) are pre-configured templates containing the operating system, application software, and configuration settings needed to launch EC2 instances. While AWS provides thousands of public AMIs, custom AMIs allow you to create standardized, repeatable deployments of your specifically configured environments.
+Amazon Machine Images (AMIs) are pre-configured templates containing the operating system, application software, and configuration settings needed to launch EC2 instances. While AWS provides thousands of public AMIs, custom AMIs allow you to create standardized, repeatable deployments of your specifically configured environments. Custom AMIs are fundamental to infrastructure-as-code practices, enabling rapid scaling, disaster recovery, and consistent deployments across development, staging, and production environments.
 
-This lab demonstrates the complete lifecycle of custom AMI management: creating an AMI from a running instance, launching new instances from your custom AMI, and properly deleting AMIs to avoid unnecessary storage costs. Custom AMIs are fundamental to infrastructure-as-code practices, enabling rapid scaling, disaster recovery, and consistent deployments across development, staging, and production environments.
+This lab demonstrates the complete lifecycle of custom AMI management: creating an AMI from a running instance, launching new instances from your custom AMI, and properly deleting AMIs to avoid unnecessary storage costs. 
 
 
 ## Key Concepts
@@ -27,7 +27,7 @@ This lab demonstrates the complete lifecycle of custom AMI management: creating 
 | AMI ID | Unique identifier (ami-xxxxxxxxx) for each AMI, specific to a region |
 | Region-Specific | AMIs exist only in the region where created; must be copied to use in other regions |
 | Root Device Volume | Primary EBS volume containing the OS; snapshot becomes part of AMI |
-| No-Reboot Option | Creates AMI without stopping instance (faster but risks filesystem inconsistency) |
+| Reboot Option | When checked, reboots instance during AMI creation for filesystem consistency; unchecked for faster creation with risk of inconsistency |
 
 ## Prerequisites
 
@@ -98,12 +98,12 @@ Before creating an AMI, ensure your instance is properly configured.
 > Use descriptive, versioned names for AMIs (e.g., `webserver-prod-v1.2`, `app-server-2024-01-16`). You may create multiple AMIs over time and need to distinguish between versions.
 
 7. Configure reboot behavior:
-   - **Enable "No reboot":** Unchecked (default)
-   - **Why unchecked:** Allows instance to reboot for filesystem consistency
-   - **Why check:** Use only if you cannot afford 2-3 minutes of downtime
+   - **Reboot instance:** Checked (default)
+   - **Why unchecked:** Faster creation but risks filesystem inconsistency
+   - **Why checked:** Allows instance to reboot for filesystem consistency, but takes 2-3 minutes downtime
 
 > [!WARNING] No Reboot Risk
-> If you check "No reboot," the instance stays online during AMI creation. This is faster but risks data corruption if files are being written when the snapshot occurs. File system may be in an inconsistent state. Always allow reboot unless downtime is absolutely unacceptable.
+> If you leave "Reboot instance" unchecked, the instance stays online during AMI creation. This is faster but risks data corruption if files are being written when the snapshot occurs. File system may be in an inconsistent state. Always check reboot unless downtime is absolutely unacceptable.
 
 8. Review storage volumes:
    - The **Instance volumes** section shows attached EBS volumes
@@ -115,13 +115,13 @@ Before creating an AMI, ensure your instance is properly configured.
 
 10. Confirmation message appears:
     - Note the **AMI ID** (format: ami-xxxxxxxxxxxxxxxxx)
-    - Click **View AMI** link to see status
+    - Click **AMI ID** link to see status
 
 11. Monitor AMI creation:
     - Go to EC2 → **Images** → **AMIs** (left navigation)
     - Find your AMI by name
     - **Status:** Shows "Pending" → changes to "Available" (5-10 minutes)
-    - During creation, instance reboots briefly if "No reboot" was unchecked
+    - During creation, instance reboots briefly if "Reboot instance" was checked
 
 > [!NOTE] Creation Time
 > AMI creation time depends on EBS volume size. Typical 8 GB root volume takes 5-10 minutes. Larger volumes (50+ GB) may take 20-30 minutes. The instance is briefly unavailable during reboot.
@@ -291,6 +291,8 @@ Deleting an AMI requires two steps: deregistering the AMI and deleting the assoc
 
 ## Validation
 
+::: details Validation Checks
+
 Verify successful completion:
 
 - **AMI Creation:**
@@ -315,9 +317,11 @@ Verify successful completion:
   - Instance launched from AMI behaves identically to source instance
   - All services start automatically (e.g., httpd enabled)
   - No manual configuration required
+:::
 
 ## Cost Considerations
 
+::: details Cost Considerations
 - **AMI Storage:**
   - **Free Tier:** Included in 30 GB of EBS snapshots for first 12 months
   - **After Free Tier:** $0.05/GB-month (us-east-1)
@@ -338,11 +342,11 @@ Verify successful completion:
   - Snapshot copy charges: $0.05/GB one-time
   - Storage in destination region: $0.05/GB-month ongoing
 
-> [!TIP]
-> **Cost Optimization:** Delete unused AMIs and their snapshots. Review your AMIs monthly. If you have multiple versions of the same AMI, delete old versions after ensuring new versions work correctly.
+:::
 
 ## Cleanup
 
+::: details Cleanup
 To avoid ongoing charges:
 
 1. **Terminate instances launched from AMI:**
@@ -366,9 +370,14 @@ To avoid ongoing charges:
    - No AMIs in your AMI list (except AWS-provided public AMIs)
    - No snapshots in Snapshots list (except those you want to keep)
    - No unexpected EBS storage charges
+:::
 
 > [!IMPORTANT] Cleanup Order
-> You can delete in any order, but best practice is: 1) Terminate instances, 2) Deregister AMI, 3) Delete snapshot. This ensures you don't accidentally delete snapshots for AMIs still in use.
+> You can delete in any order, but best practice is: 
+> 1) Terminate instances
+> 2) Deregister AMI
+> 3) Delete snapshot. 
+> This ensures you don't accidentally delete snapshots for AMIs still in use.
 
 ## Result
 

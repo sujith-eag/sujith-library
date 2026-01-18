@@ -126,7 +126,6 @@ Launch Templates define the instance configuration that ASG uses when launching 
 
 7. Configure Instance type:
    - **Instance type:** `t3.micro`
-   - Free tier eligible (if applicable)
    - 2 vCPUs, 1 GB RAM
 
 8. Configure Key pair:
@@ -139,7 +138,6 @@ Launch Templates define the instance configuration that ASG uses when launching 
      - This provides flexibility for multi-AZ deployment
    - **Firewall (security groups):** Select existing security group
      - Choose security group allowing HTTP (80) and SSH (22)
-     - E.g., `WebServer-SG` from Lab 12
 
 10. Configure Storage:
     - **Volume 1 (AMI Root):**
@@ -162,7 +160,8 @@ Launch Templates define the instance configuration that ASG uses when launching 
     - Note the template ID (lt-xxxxxxxxxxxxx)
 
 > [!NOTE] Launch Template vs Launch Configuration
-> Launch Templates are the modern replacement for Launch Configurations. They support versioning, allow modifications, can launch instances directly, and are recommended by AWS. Launch Configurations are legacy and should not be used for new deployments.
+> Launch Templates are the modern replacement for Launch Configurations. They support versioning, allow modifications, can launch instances directly, and are recommended by AWS. 
+> Launch Configurations are legacy and should not be used for new deployments.
 
 ## Phase 2: Create Auto Scaling Group
 
@@ -189,9 +188,6 @@ Configure the ASG to automatically manage instance count based on demand.
      - Choose subnets in different Availability Zones (e.g., us-east-1a, us-east-1b)
      - Select public subnets (with route to Internet Gateway)
      - This ensures high availability across multiple data centers
-
-> [!IMPORTANT] Multi-AZ Requirement
-> Select at least 2 subnets in different Availability Zones. This ensures if one AZ fails, ASG continues launching instances in the remaining AZ. Single-AZ deployment defeats the purpose of auto-scaling for high availability.
 
 2. Click **Next**.
 
@@ -252,21 +248,7 @@ Configure the ASG to automatically manage instance count based on demand.
 
 4. Click **Next**.
 
-### Step 5: Add Notifications (Optional)
-
-1. **Add notification:** Skip this step (click Next)
-   - In production, configure SNS to send emails when scaling events occur
-
-### Step 6: Add Tags (Optional)
-
-1. **Add tags:** Optionally add tags:
-   - **Key:** `Environment` | **Value:** `Lab`
-   - **Key:** `ManagedBy` | **Value:** `AutoScaling`
-   - Check "Tag new instances" to apply tags to launched instances
-
-2. Click **Next**.
-
-### Step 7: Review and Create
+### Step 5: Review and Create
 
 1. Review all configuration:
    - Launch template: LT-WebServer
@@ -663,6 +645,8 @@ Allow CPU to drop and observe automatic instance termination.
 
 ## Validation
 
+::: details Validation
+
 Verify all components working correctly:
 
 - **Launch Template:**
@@ -701,7 +685,11 @@ Verify all components working correctly:
   - ALB distributes traffic across all healthy instances
   - No manual Target Group management required
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Auto Scaling Group Service:** Free
   - No charges for ASG itself, only for launched instances
@@ -749,7 +737,11 @@ Verify all components working correctly:
   - Data transfer (cross-AZ): ~$2
   - **Total: ~$40/month**
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 Delete resources in correct order to avoid dependency errors:
 
@@ -850,6 +842,7 @@ Delete resources in correct order to avoid dependency errors:
 4. If error "has dependent object," wait 2-3 minutes for network interfaces to detach.
 
 5. Retry deletion.
+:::
 
 ### Verification
 
@@ -864,8 +857,6 @@ Delete resources in correct order to avoid dependency errors:
 ## Result
 
 You have successfully deployed a production-ready auto-scaling infrastructure that automatically adjusts capacity based on CPU load. The system demonstrated self-healing capabilities by launching new instances during high demand and terminating excess instances during low demand, all without manual intervention.
-
-You configured CloudWatch Alarms to monitor application performance, created dynamic scaling policies that respond to alarm state changes, integrated Auto Scaling Group with Application Load Balancer for seamless traffic distribution, and validated the entire system through realistic load testing. This architecture provides high availability, cost efficiency, and performance optimization—fundamental requirements for modern cloud applications.
 
 ## Viva Questions
 

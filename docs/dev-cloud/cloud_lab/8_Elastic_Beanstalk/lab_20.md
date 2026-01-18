@@ -231,13 +231,19 @@ Append `/health` to the URL.
 
 ## Validation
 
+::: details Validation
+
 - **Local Testing:** Confirm Flask app runs locally without errors.
 - **ZIP Structure:** Verify files are at root level in the ZIP.
 - **Deployment:** Check environment health is "OK" and domain URL is accessible.
 - **Application Access:** Test both root and /health endpoints.
 - **Logs:** Review EB logs for any deployment issues.
+:::
+
 
 ### Troubleshooting
+
+::: details Troubleshooting
 
 #### Accessing Logs in Elastic Beanstalk
 
@@ -264,18 +270,27 @@ If environment health is "Degraded" or "Severe":
 - **Environment health degraded:** Review logs for Python/dependency errors
 - **Permission denied:** Ensure IAM roles are correctly assigned
 - **Port issues:** Gunicorn handles port binding; don't specify port in application.py when deployed
+:::
 
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Pricing:** EB ~$0.01/hour for t3.micro EC2; free tier covers 750 hours
 - **Tip:** Terminate environments immediately to avoid charges. Monitor via CloudWatch and set billing alerts.
 
+:::
+
 
 ## Cleanup
+
+::: details Cleanup
 
 1. Go to **Elastic Beanstalk** → **Environments**
 2. Select your environment → **Actions** → **Terminate environment**
 3. Confirm termination
+
+:::
 
 ## Result
 

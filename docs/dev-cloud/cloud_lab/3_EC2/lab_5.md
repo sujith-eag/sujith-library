@@ -9,7 +9,7 @@ description: Deploy Windows Server on EC2 and connect via Remote Desktop Protoco
 
 ## Overview
 
-Amazon Elastic Compute Cloud (EC2) is AWS's core Infrastructure as a Service (IaaS) offering that provides resizable compute capacity in the cloud. EC2 allows you to launch virtual servers (instances) on-demand, paying only for what you use, without the capital expense of physical hardware.
+Amazon Elastic Compute Cloud (EC2) is AWS's core Infrastructure as a Service (IaaS) offering that provides resizable compute capacity in the cloud. Allowing to launch virtual servers (instances) on-demand, paying only for what you use, without the capital expense of physical hardware.
 
 This lab focuses on launching a Windows Server instance and establishing remote access using Remote Desktop Protocol (RDP). Demonstrates how to decrypt the Windows administrator password using a private key and connect to your Windows instance from your local computer.
 
@@ -87,14 +87,13 @@ flowchart TD
 6. Choose Amazon Machine Image (AMI):
    - Under **Application and OS Images (Amazon Machine Image)**
    - Select **Quick Start** tab
-   - Choose **Microsoft Windows Server 2022 Base**
+   - Choose **Microsoft Windows Server 2025 Base**
    - Verify "Free tier eligible" label appears
 
 7. Select Instance Type:
    - Under **Instance type**
    - Select **t3.micro** (Free tier eligible)
    - Specifications: 2 vCPUs, 1 GiB memory
-   - Or select **t2.micro** if t3.micro unavailable in your region
 
 8. Configure Key Pair for password decryption:
    - Under **Key pair (login)** section
@@ -149,7 +148,7 @@ flowchart TD
 
 13. Review configuration in the **Summary** panel on the right:
     - Instance count: 1
-    - AMI: Windows Server 2022
+    - AMI: Windows Server 2025
     - Instance type: t3.micro
     - Key pair: Selected
     - Security group: RDP allowed
@@ -202,6 +201,32 @@ flowchart TD
 
    **For Linux:**
    - Open **Remmina** or run `rdesktop` in terminal
+
+::: details Click to expand: Using rdesktop in Ubuntu
+
+To install and use rdesktop for RDP connections in Ubuntu:
+
+1. **Connect to Windows EC2 instance:**
+   ```bash
+   sudo apt install rdesktop
+
+   rdesktop -u Administrator -p "YOUR_DECRYPTED_PASSWORD" YOUR_PUBLIC_IP
+   ```
+
+2. **Optional parameters:**
+   - `-f` for fullscreen mode
+   - `-g 1024x768` to set resolution
+   - `-a 16` for color depth
+
+3. **Troubleshooting common errors:**
+
+   **Certificate validation error:**
+   ```bash
+   rdesktop -u Administrator -p 'YOUR_DECRYPTED_PASSWORD' --ignore-certificate YOUR_PUBLIC_IP
+   ```
+
+4. **Exit rdesktop:** Press `Ctrl+Alt+Enter` to exit fullscreen, then close the window.
+:::
 
 8. Configure RDP connection:
    - **Computer/Server:** Paste the Public IP address

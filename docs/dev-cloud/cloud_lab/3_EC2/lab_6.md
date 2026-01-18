@@ -83,32 +83,25 @@ This section demonstrates launching a Linux instance and connecting via OpenSSH 
 
 1. Sign in to AWS Management Console.
 
-2. Select your preferred AWS Region from the dropdown (top-right corner).
-   - Choose a region close to your location for lower latency
+2. Select your preferred AWS Region from the dropdown. Choose a closer region for lower latency
 
-3. Navigate to EC2 service:
-   - Search for `EC2` in the console search bar
-   - Click **EC2** (Virtual Servers in the Cloud)
+3. Navigate to EC2 service. Click **Launch Instance** button.
 
-4. Click **Launch Instance** button.
+4. Configure instance name and tags:
 
-5. Configure instance name and tags:
-   - **Name:** Enter descriptive name (e.g., `Linux-SSH-Demo`, `DevServer`)
-   - Tags help organize and identify resources
-
-6. Choose Amazon Machine Image (AMI):
+5. Choose Amazon Machine Image (AMI):
    - Under **Application and OS Images (Amazon Machine Image)**
    - Select **Quick Start** tab
    - Choose **Amazon Linux 2023** or **Amazon Linux 2 AMI**
-   - Verify "Free tier eligible" label appears
 
 > [!NOTE] AMI Options
-> Amazon Linux is optimized for EC2 and includes AWS CLI pre-installed. Alternative options include Ubuntu Server, Red Hat Enterprise Linux, or CentOS. Each has different default usernames (ubuntu, ec2-user, centos, admin).
+> Amazon Linux is optimized for EC2 and includes AWS CLI pre-installed.
+>  
+> Alternative options include Ubuntu Server, Red Hat Enterprise Linux, or CentOS. Each has different default usernames (ubuntu, ec2-user, centos, admin).
 
 7. Select Instance Type:
    - Under **Instance type**
-   - Select **t3.micro** (Free tier eligible)
-   - Specifications: 2 vCPUs, 1 GiB memory
+   - Select **t3.micro** (Free tier eligible). 2 vCPUs, 1 GiB memory
 
 8. Configure Key Pair for SSH authentication:
    - Under **Key pair (login)** section
@@ -117,15 +110,13 @@ This section demonstrates launching a Linux instance and connecting via OpenSSH 
      - **Key pair name:** Enter name (e.g., `my-linux-key`)
      - **Key pair type:** RSA
      - **Private key file format:** **.pem** (for OpenSSH)
-     - Click **Create key pair**
-     - The .pem file downloads automatically
-     - **Save this file securely** - you cannot retrieve it later!
    - **Option B - Use existing key pair:**
      - Select existing key pair from dropdown
      - Confirm you have access to the private key file
 
 > [!IMPORTANT] Key Pair Security
-> The .pem file is your only authentication method for SSH access. Store it in a secure location with restricted permissions. Loss of this file means you cannot access the instance without complex recovery procedures.
+> The .pem file is your only authentication method for SSH access. 
+> Store it in a secure location with restricted permissions. Loss of this file means you cannot access the instance without complex recovery procedures.
 
 9. Configure Network Settings:
    - Under **Network settings**, click **Edit** if you want to customize

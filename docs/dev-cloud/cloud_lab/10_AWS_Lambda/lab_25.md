@@ -66,6 +66,7 @@ Lambda → **Code** tab → open lambda_function.py → remove existing code →
 
 Replace <SNS_TOPIC_ARN> with your copied Topic ARN.
 
+::: details lambda_function.py Code
 ```python
 import json
 import boto3
@@ -121,7 +122,7 @@ def lambda_handler(event, context):
         })
     }
 ```
-
+:::
 ## Phase C: Permissions and Testing
 
 1. **Attach SNS Publish Policy**: Go to **Configuration** → **Permissions** → Click the **Role name**. 
@@ -153,19 +154,29 @@ Verify these prints exist:
 
 ## Validation
 
+::: details Validation
+
 **Expected Outputs**
 1. Lambda test status: Succeeded
 2. Email received from SNS with correct message    
 3. CloudWatch logs showing event type and generated message
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **Lambda:** ~$0.20 per 1M requests + compute time (~$0.0000167/GB-second)
 - **CloudWatch Logs:** ~$0.50/GB ingested
 - **SNS:** ~$0.50/100,000 email notifications
 - **Tip:** Lambda has generous free tier; delete functions after lab.
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. Delete Lambda functions: `StudentGradeLogger` and `NotificationSimulator`.
     
@@ -174,6 +185,8 @@ Verify these prints exist:
 3. Delete CloudWatch Log Groups associated with the functions.
     
 4. Delete the IAM roles if they are not used elsewhere.
+
+:::
 
 ## Result
 

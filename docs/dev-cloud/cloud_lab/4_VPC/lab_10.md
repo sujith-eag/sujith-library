@@ -11,8 +11,10 @@ description: Building secure network architecture in AWS with VPC, IGW, NAT Gate
 
 Amazon Virtual Private Cloud (VPC) is a logically isolated network within AWS where you launch and manage your cloud resources. Unlike the default VPC that AWS provides automatically, a custom VPC gives you complete control over your network configuration, IP addressing, subnets, routing, and security settings.
 
-This lab guides you through creating a production-ready two-tier network architecture with public and private subnets spanning multiple Availability Zones. You'll configure Internet Gateway for public internet access, NAT Gateway for private subnet outbound connectivity, and route tables to control traffic flow. This architecture pattern is fundamental for secure, scalable cloud applications where web servers sit in public subnets while databases reside in isolated private subnets.
-
+This lab guides you through creating a two-tier network architecture with public and private subnets spanning multiple Availability Zones. This architecture pattern is fundamental for secure, scalable cloud applications where web servers sit in public subnets while databases reside in isolated private subnets. You'll configure : 
+- Internet Gateway for public internet access
+- NAT Gateway for private subnet outbound connectivity
+- Route tables to control traffic flow. 
 
 ## Key Concepts
 
@@ -71,9 +73,7 @@ flowchart TD
 
 1. Sign in to AWS Management Console.
 
-2. Navigate to VPC service:
-   - In the search bar, type `VPC`
-   - Click on **VPC** (Virtual Private Cloud)
+2. Navigate to VPC service (Virtual Private Cloud)
 
 3. Click **Create VPC** button.
 
@@ -102,7 +102,9 @@ flowchart TD
 > You must enable **"Enable DNS hostnames"**. Without this setting, your EC2 instances will receive a Public IP address (e.g., `54.1.2.3`) but won't get a Public DNS name (e.g., `ec2-54-1-2-3.compute-1.amazonaws.com`). Many applications, scripts, and AWS services rely on DNS names for connectivity and configuration.
 
 > [!NOTE] CIDR Block Selection
-> The `10.0.0.0/16` CIDR block is a standard choice from the RFC 1918 private IP range. It gives you 65,536 total IP addresses to use within this VPC. Other common choices include `172.16.0.0/16` or `192.168.0.0/16`. Plan your CIDR blocks carefully to avoid overlap if you need VPC peering later.
+> The `10.0.0.0/16` CIDR block is a standard choice from the RFC 1918 private IP range. It gives you 65,536 total IP addresses to use within this VPC. 
+> Other common choices include `172.16.0.0/16` or `192.168.0.0/16`. 
+> Plan your CIDR blocks carefully to avoid overlap if you need VPC peering later.
 
 ## Phase 2: Create Subnets
 
@@ -110,23 +112,20 @@ Subnets divide your VPC into smaller network segments. Each subnet must reside e
 
 ### Public Subnet
 
-**Step 1:** Go to `Subnets` → `Create subnet`
+1. Go to `Subnets` → `Create subnet`
+2. Select VPC: `MyWebAppVPC`
+3. Choose Availability Zone A
+4. Enter configuration:
+  - Name → `PublicSubnet`
+  - Availability Zone: e.g., `ap-south-1a`
+  - IPv4 CIDR block → `10.0.1.0/24`
 
-**Step 2:** Select VPC: `MyWebAppVPC`
-
-**Step 3:** Choose Availability Zone A
-
-**Step 4:** Enter configuration:
-
-- Name → `PublicSubnet`
-- Availability Zone: e.g., `ap-south-1a`
-- IPv4 CIDR block → `10.0.1.0/24`
-
-**Step 5:** Click `Create subnet`
+5. Click `Create subnet`
 
 >[!NOTE] Auto-Assign Public IP
->Creating a "Public Subnet" doesn't automatically give instances a Public IP.
->After creating the subnet, you must Select Subnet -> Actions -> **Edit subnet settings** -> Check **"Enable auto-assign public IPv4 address"**. 
+>Creating a "Public Subnet" doesn't automatically give instances a Public IP. 
+>After creating the subnet, Select : 
+>Subnet -> Actions -> **Edit subnet settings** -> Check **"Enable auto-assign public IPv4 address"**. 
 >
 >Without this, every time you launch an instance, you have to manually request an IP.
 
@@ -151,17 +150,18 @@ Subnets divide your VPC into smaller network segments. Each subnet must reside e
 5. **Do NOT enable auto-assign public IP for private subnet** (this is intentional).
 
 > [!NOTE] Subnet Sizing
-> Using `/24` CIDR gives each subnet 256 total IP addresses. AWS reserves 5 IPs per subnet (first 4 and last 1), leaving 251 usable IPs. The subnet CIDR blocks cannot overlap. Plan your subnet sizes based on expected instance count in each tier.
+> Using `/24` CIDR gives each subnet 256 total IP addresses. 
+> AWS reserves 5 IPs per subnet (first 4 and last 1), leaving 251 usable IPs. 
+> The subnet CIDR blocks cannot overlap. Plan your subnet sizes based on expected instance count in each tier.
 
 ## Phase 3: Create and Attach Internet Gateway
 
-**Step 1:** In the left navigation pane, click "Internet Gateways"
+1. In the left navigation pane, click "Internet Gateways"
 
-**Step 2:** Click `Create Internet Gateway`
+2. Click `Create Internet Gateway`
+	- Name: `MyWebApp-IGW`
 
-- Name: `MyWebApp-IGW`
-
-**Step 3:** Click `Create Internet Gateway`
+3. Click `Create Internet Gateway`
 
 ### Attach to VPC
 
@@ -173,7 +173,8 @@ Subnets divide your VPC into smaller network segments. Each subnet must reside e
 
 **Step 4:** Click `Attach Internet Gateway`
 
-> **Note:** The IGW is the "front door" to the internet for your VPC. Attaching it doesn't automatically give everything internet access — a route table is still needed.
+> [!NOTE] IGW 
+> IGW is the "front door" to the internet for your VPC. Attaching it doesn't automatically give everything internet access. A route table is still needed.
 
 ## Configure Public Route Table
 
@@ -193,17 +194,15 @@ Subnets divide your VPC into smaller network segments. Each subnet must reside e
 
 Now the `PublicSubnet` has internet access.
 
->[!NOTE] 
->When you create a VPC, AWS creates a "Main" route table automatically. Leave the "Main" table empty (no routes to IGW). Explicitly associate your subnets to your custom tables. This prevents accidental public exposure if you create a new subnet and forget to configure it.
+>[!NOTE] Main Route Table
+>When you create a VPC, AWS creates a "Main" route table automatically. 
+>Leave the "Main" table empty (no routes to IGW). Explicitly associate your subnets to your custom tables. This prevents accidental public exposure if you create a new subnet and forget to configure it.
 
 ## Create NAT Gateway
 
 >[!IMPORTANT] NAT Tax 
 >NAT Gateways are **NOT Free Tier eligible**. As soon as you finish this lab, **delete the NAT Gateway**. It charges you even if no data is passing through it.
 >
-
-
-NAT Gateway must always be created in a public subnet. 
 
 **Step 1:** Go to `NAT Gateways` → `Create NAT Gateway`
 
@@ -217,7 +216,9 @@ NAT Gateway must always be created in a public subnet.
 
 **Step 3:** Click `Create NAT Gateway`
 
-> **Note:** The NAT Gateway needs to be in the public subnet to access the IGW. Using an Elastic (static) IP ensures the public IP never changes even if underlying hardware fails.
+> [!NOTE] 
+> The NAT Gateway needs to be in the **Public Subnet** to access the IGW. 
+> Using an Elastic (static) IP ensures the public IP never changes even if underlying hardware fails.
 
 ## Phase 4: Configure Private Route Table
 
@@ -233,16 +234,14 @@ NAT Gateway must always be created in a public subnet.
 
 5. Add NAT Gateway route:
    - Select the newly created `PrivateRT`
-   - Click **Routes** tab
-   - Click **Edit routes**
+   - In **Routes** tab, Click **Edit routes**
    - Click **Add route**
      - **Destination:** `0.0.0.0/0`
      - **Target:** Select **NAT Gateway** → `NAT-GW`
    - Click **Save changes**
 
 6. Associate route table with private subnet:
-   - Click **Subnet associations** tab
-   - Click **Edit subnet associations**
+   - In **Subnet associations** tab, Click **Edit subnet associations**
    - Check the box next to `PrivateSubnet`
    - Click **Save associations**
 
@@ -258,6 +257,8 @@ Private subnet now has outbound internet access through the NAT Gateway.
 > Each subnet can be associated with only one route table. If not explicitly associated, it uses the Main Route Table. Always explicitly associate subnets to custom route tables to avoid confusion and maintain security best practices.
 
 ## Validation
+
+::: details Validation
 
 Verify successful VPC configuration:
 
@@ -296,7 +297,11 @@ Verify successful VPC configuration:
   - Launch EC2 instance in private subnet → no public IP, outbound internet via NAT
   - Ping between instances on private IPs should work
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **VPC, Subnets, Route Tables:** Free
   - No charges for creating or using VPCs, subnets, or route tables
@@ -321,6 +326,8 @@ Verify successful VPC configuration:
   - **Outbound to internet:** First 100 GB/month free, then $0.09/GB
   - **Between AZs:** $0.01/GB in each direction (for cross-AZ traffic)
 
+:::
+
 > [!WARNING] NAT Gateway Costs
 > NAT Gateway is the primary cost driver in this lab. Even with zero data transfer, you pay hourly charges ($0.045/hour). For 24-hour operation, that's approximately $1.08/day or $32.40/month. Always delete NAT Gateways when not actively using them.
 
@@ -331,6 +338,8 @@ Verify successful VPC configuration:
 > - **Use NAT Gateway only in production:** For labs, test connectivity then immediately delete
 
 ## Cleanup
+
+::: details Cleanup
 
 To avoid ongoing charges, delete resources in this specific order to prevent dependency errors:
 
@@ -344,7 +353,7 @@ To avoid ongoing charges, delete resources in this specific order to prevent dep
 6. Wait for state to change to "Deleted" (takes 2-3 minutes)
 
 > [!IMPORTANT] Delete NAT Gateway First
-> NAT Gateway must be deleted before you can delete the subnets or release the Elastic IP. Deletion is not immediate—wait for status to show "Deleted" before proceeding.
+> NAT Gateway must be deleted before you can delete the subnets or release the Elastic IP. Deletion is not immediate, wait for status to show "Deleted" before proceeding.
 
 ### 2. Release Elastic IP Address
 
@@ -397,6 +406,9 @@ To avoid ongoing charges, delete resources in this specific order to prevent dep
 4. Type `delete` to confirm
 5. Click **Delete**
 
+:::
+
+
 > [!TIP] Cascade Deletion
 > If you delete the VPC first, AWS attempts to automatically delete associated resources (subnets, route tables, IGW). However, NAT Gateway and Elastic IPs must be manually deleted first. Following the order above ensures clean deletion without errors.
 
@@ -410,8 +422,6 @@ To avoid ongoing charges, delete resources in this specific order to prevent dep
 ## Result
 
 You have successfully created a production-ready custom VPC with a secure two-tier network architecture. This configuration separates public-facing resources (web servers) from private resources (databases) while enabling controlled internet access through Internet Gateway and NAT Gateway. The multi-Availability Zone design provides high availability and fault tolerance.
-
-This VPC architecture pattern is fundamental for AWS solutions and serves as the networking foundation for scalable, secure cloud applications. You now understand how to control traffic flow through route tables, isolate resources using subnets, and implement defense-in-depth security through network segmentation.
 
 ## Viva Questions
 

@@ -98,6 +98,8 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 
 ## Validation
 
+::: details Validation
+
 - **S3 Static Website**: Bucket configured with static website hosting enabled
 - **CloudFront Distribution**: Status shows "Enabled" and "Deployed"
 - **OAC Configuration**: Origin Access Control properly set up
@@ -105,7 +107,11 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 - **HTTPS Redirect**: HTTP requests automatically redirect to HTTPS
 - **Content Delivery**: Website loads successfully via CloudFront URL
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **CloudFront Data Transfer**: $0.085-$0.12 per GB (first 10TB)
 - **CloudFront Requests**: $0.0075-$0.009 per 10,000 requests
@@ -113,12 +119,18 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 - **Free Tier**: 1TB data transfer, 10 million requests free
 - **Estimated Cost**: <$5 for moderate traffic website
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. Delete CloudFront distribution
 2. Remove bucket policy from S3 bucket
 3. Optionally delete S3 bucket and contents
 4. Verify all resources are removed
+
+:::
 
 ## Result
 

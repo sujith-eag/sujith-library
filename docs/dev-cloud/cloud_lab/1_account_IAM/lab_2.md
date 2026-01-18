@@ -307,6 +307,8 @@ https://my-company.signin.aws.amazon.com/console
 
 ## Validation
 
+::: details Validation
+
 Verify that you have successfully completed all phases:
 
 - **IAM Group:**
@@ -331,7 +333,11 @@ Verify that you have successfully completed all phases:
   - New sign-in URL works correctly
   - IAM users can access console using the alias URL
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **IAM Service:** Completely free with no charges for:
   - Creating users, groups, roles, and policies
@@ -343,7 +349,11 @@ Verify that you have successfully completed all phases:
 
 - **Hardware MFA Devices:** If you choose hardware FIDO security keys or TOTP tokens, those devices have purchase costs (typically $20-$50) but no AWS charges
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 If you need to remove the IAM resources created in this lab:
 
@@ -370,6 +380,7 @@ If you need to remove the IAM resources created in this lab:
 1. Go to IAM → Dashboard
 2. Under AWS Account section, click **Delete** next to the alias
 3. Your account reverts to using the numeric account ID in sign-in URLs
+:::
 
 > [!WARNING] Best Practice
 > In production environments, do NOT delete IAM users or groups without proper authorization and documentation. These actions are often irreversible and can disrupt access for team members.

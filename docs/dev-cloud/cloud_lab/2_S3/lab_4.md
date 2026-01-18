@@ -90,12 +90,130 @@ my-website/
 ├── index.html
 ├── about.html
 ├── contact.html
-├── error.html
-└── images/
-    └── banner.jpg
+└── error.html
 ```
 
 2. Create basic HTML files with navigation links between pages.
+
+::: details Click to expand HTML file examples
+
+::: code-group
+
+```html [index.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Static Website</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>This is a simple static website hosted on Amazon S3.</p>
+        <p>Learn more about our services on the About page.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [about.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>This website demonstrates Amazon S3 static website hosting capabilities.</p>
+        <p>S3 provides a cost-effective way to host static content without managing servers.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [contact.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Static Website</title>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>Get in touch with us!</p>
+        <p>Email: info@mywebsite.com</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>This is a static page - for dynamic forms, consider using additional AWS services.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+```html [error.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+</head>
+<body>
+    <header>
+        <h1>404 - Page Not Found</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <p>Sorry, the page you're looking for doesn't exist.</p>
+        <p>Please check the URL or return to the home page.</p>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Static Website</p>
+    </footer>
+</body>
+</html>
+```
+
+:::
 
 ### Create and Configure S3 Bucket
 
@@ -269,12 +387,14 @@ Cross-Region Replication automatically copies objects from a source bucket to a 
 > CRR only replicates new objects uploaded after enabling the replication rule. Existing objects are not automatically replicated unless you use S3 Batch Replication.
 
 > [!WARNING] Doubled Costs
-> Cross-Region Replication doubles storage costs (data in two regions) AND incurs data transfer charges for moving data between regions (approximately $0.02 per GB).
+> Cross-Region Replication doubles storage costs (data in two regions) AND incurs data transfer charges for moving data between regions.
 
 > [!TIP] Same-Region Replication (SRR)
 > AWS also offers Same-Region Replication for compliance requirements or creating test/dev copies in the same region. Configuration is identical but destination bucket is in the same region.
 
 ## Validation
+
+::: details Validation
 
 Verify successful completion of all phases:
 
@@ -301,7 +421,11 @@ Verify successful completion of all phases:
 - Replication status shows "Completed"
 - IAM replication role exists
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 ### Static Website Hosting
 - **S3 Storage:** $0.023 per GB/month (Standard class)
@@ -323,7 +447,11 @@ Verify successful completion of all phases:
 > [!TIP] Cost Optimization
 > For versioning, implement a lifecycle rule that transitions old versions to Glacier after 30 days and deletes them after 90 days. This dramatically reduces costs while maintaining recent version history.
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 ### Delete Static Website
 1. Go to source bucket → **Properties** → **Static website hosting** → **Edit** → **Disable** → Save
@@ -349,6 +477,8 @@ Verify successful completion of all phases:
 6. Delete destination bucket
 7. Optional: Delete the IAM replication role from IAM console
 
+:::
+
 > [!WARNING] Complete Cleanup
 > Always delete objects from both source and destination buckets before deleting the buckets themselves. Replicated objects continue accruing costs until explicitly deleted.
 
@@ -366,11 +496,6 @@ Static Website Hosting demonstrates S3's versatility beyond storage, enabling co
 2. **How does S3 versioning protect against accidental deletion?**
    - When versioning is enabled, deleting an object places a "delete marker" on it rather than permanently removing it. All previous versions remain stored and can be restored by removing the delete marker or downloading a specific version ID. This provides a complete history of changes and deletions.
 
-3. **What are the cost implications of enabling versioning on frequently updated files?**
-   - Every version is stored and charged separately. A 1GB file updated 10 times stores 11 versions = 11GB charged at $0.023/GB = $0.253/month. Without lifecycle policies to delete old versions, costs can multiply rapidly. Best practice: auto-delete versions older than 30-90 days.
-
-4. **Why must versioning be enabled for Cross-Region Replication?**
+3. **Why must versioning be enabled for Cross-Region Replication?**
    - CRR relies on version IDs to track and replicate objects across regions. Versioning ensures each object change gets a unique identifier, allowing S3 to properly synchronize the exact state of objects, including deletions (via delete markers), between source and destination buckets.
 
-5. **When should you use Cross-Region Replication versus Same-Region Replication?**
-   - Use CRR for disaster recovery (different geographic region), compliance requirements (data residency), or reducing latency for global users (serve from nearest region). Use SRR for log aggregation, creating test/dev copies, or compliance requiring data replication within the same region while maintaining separation.

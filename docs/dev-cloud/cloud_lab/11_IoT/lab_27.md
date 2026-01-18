@@ -132,6 +132,8 @@ Automatic processing confirmed. Sensor data is sent to AWS IoT Core, where rules
 
 ## Validation
 
+::: details Validation
+
 - **IoT Thing Created**: Verify `TempSensor01` appears in Things registry
 - **Certificate Attached**: Check certificate is active and attached to the thing
 - **Policy Attached**: Confirm policy allows required permissions
@@ -139,20 +141,30 @@ Automatic processing confirmed. Sensor data is sent to AWS IoT Core, where rules
 - **Rule Created**: IoT rule exists with correct SQL query
 - **CloudWatch Logs**: Sensor data entries visible in log group
 
+:::
+
 ## Cost Considerations
+
+::: details Cost Considerations
 
 - **AWS IoT Core**: Pay per message ($1 per million messages) + connection time
 - **CloudWatch Logs**: $0.50 per GB ingested
 - **Free Tier**: 250,000 messages/month, 5GB logs free
 - **Estimated Cost**: <$1 for this lab
 
+:::
+
 ## Cleanup
+
+::: details Cleanup
 
 1. Delete IoT Rule
 2. Detach and deactivate certificate
 3. Delete IoT Policy
 4. Delete IoT Thing
 5. Delete CloudWatch log group
+
+:::
 
 ## Result
 
