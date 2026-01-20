@@ -22,7 +22,7 @@ This lab demonstrates how to accelerate a static website hosted on Amazon S3 usi
 | **Cache Hit/Miss** | Whether requested content is served from cache (hit) or origin (miss) |
 | **TTL (Time To Live)** | How long content remains cached before being refreshed |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for CloudFront, S3, and related services
@@ -96,7 +96,7 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 
 **Expected Result**: Your `index.html` loads via CloudFront.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -109,7 +109,7 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -121,7 +121,7 @@ This ensures public users cannot directly access S3, but CloudFront can access i
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

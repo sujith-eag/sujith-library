@@ -24,7 +24,7 @@ The activity covers creating a CloudFormation template, deploying it as a stack,
 | Resources | AWS services defined in the template |
 | Outputs | Values returned after stack creation |
 
-## Prerequisites
+### Prerequisites
 
 - Region set to Asia Pacific (Mumbai) – ap-south-1
 - Basic knowledge of EC2 and Security Groups
@@ -151,43 +151,39 @@ Outputs:
 
 ## Phase 3: Deploy CloudFormation Stack
 
-### Step 1: Open CloudFormation
-1. AWS Console → Search CloudFormation
-2. Click Stacks
-3. Click Create stack → With new resources (standard)
+1. Open CloudFormation
+  1. AWS Console → Search CloudFormation
+  2. Click Stacks
+  3. Click Create stack → With new resources (standard)
 
-### Step 2: Prepare template (select correct options)
-1. Under Prepare template: Select Choose an existing template
-2. Under Template source: Select Upload a template file
-3. Click Choose file → select ec2-apache-al2023.yaml
-4. Click Next
+2. Prepare template (select correct options)
+  1. Under Prepare template: Select Choose an existing template
+  2. Under Template source: Select Upload a template file
+  3. Click Choose file → select ec2-apache-al2023.yaml
+  4. Click Next
 
-### Step 3: Specify Stack Details
-- Stack name: EC2-Apache-AL2023
-- Click Next
+3. Specify Stack Details
+  - Stack name: EC2-Apache-AL2023
+  - Under KeyName, select your key pair name from dropdown
 
-### Step 4: Parameters
-- Under KeyName, select your key pair name from dropdown (Example: pemkeypair)
-- Click Next
+4. Configure Stack Options (keep default)
+  1. Leave everything as default
+  2. Click Next
 
-### Step 5: Configure Stack Options (keep default)
-1. Leave everything as default
-2. Click Next
+5. Review and Create
+  1. Scroll down
+  2. Click Create stack
 
-### Step 6: Review and Create
-1. Scroll down
-2. Click Create stack
-
-### Step 7: Monitor Stack Creation
-1. Wait for Stack status to become: CREATE_COMPLETE
-2. Open the stack → click Outputs tab
-3. Copy WebsiteURL
-4. Paste URL in browser
+6. Monitor Stack Creation
+  1. Wait for Stack status to become: CREATE_COMPLETE
+  2. Open the stack → click Outputs tab
+  3. Copy WebsiteURL
+  4. Paste URL in browser
 
 > [!TIP]
 > Expected Output in browser: Apache Installed via CloudFormation UserData (Amazon Linux 2023)!
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -200,9 +196,10 @@ Outputs:
 - **UserData:** Check EC2 system logs for UserData execution.
 :::
 
-::: details Troubleshooting
 
 ### Troubleshooting (Common Errors)
+
+::: details Troubleshooting
 
 1. **Website not opening**
    - Check: EC2 instance status checks are 2/2 passed
@@ -216,7 +213,7 @@ Outputs:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -226,7 +223,7 @@ Outputs:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

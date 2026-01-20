@@ -22,7 +22,7 @@ This lab builds on previous excercise by integrating a Flask application with Dy
 | Runtime.txt | Specifies Python version for Elastic Beanstalk |
 | JSON Responses | Structured data format for API responses |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Elastic Beanstalk, EC2, and DynamoDB
@@ -197,7 +197,7 @@ gunicorn
 #### Procfile
 
 ```text
-web: gunicorn application:app
+web: gunicorn --bind 0.0.0.0:8000 application:app
 ```
 
 #### runtime.txt
@@ -209,8 +209,14 @@ python-3.11
 ### Packaging the Application
 
 1. Select all 4 files in the `flask-ddb-lab` folder
-2. Right-click → **Send to** → **Compressed (zipped) folder**
-3. Name the file: `flask-ddb-lab.zip`
+2. **On Windows/Mac:** Right-click → **Send to** → **Compressed (zipped) folder**
+3. **On Ubuntu/Linux:** Open terminal in the `flask-ddb-lab` folder and run:
+
+```bash
+zip flask-ddb-lab.zip application.py requirements.txt Procfile runtime.txt
+```
+
+4. Name the file: `flask-ddb-lab.zip`
 
 > [!IMPORTANT]
 > When you open the zip file, all 4 files should be at the root level, NOT inside a subfolder. Elastic Beanstalk expects the application code at the root of the archive.
@@ -282,8 +288,8 @@ Wait for the deployment to complete (health status returns to **Ok**).
 Environment variables tell your Flask app which DynamoDB table and region to use.
 
 1. In the environment dashboard, click **Configuration** (left sidebar)
-2. Locate the **Software** category and click **Edit**
-3. Scroll to **Environment properties** section
+2. Locate the **Updates** category and click **Edit**
+3. In the **Platform software** section, scroll to **Environment variables**
 4. Add these properties:
 
 | Name | Value |
@@ -295,7 +301,7 @@ Environment variables tell your Flask app which DynamoDB table and region to use
 6. Wait for the environment to finish updating (2-3 minutes)
 
 > [!WARNING]
-> Without these environment variables, your application will fail to connect to DynamoDB. The Flask app reads these values using `os.getenv()`.
+> Without these environment variables, your application will fail to connect to DynamoDB. The Flask app reads these values using `os.getenv()` with defaults, but explicit configuration ensures correct region and table name.
 
 ## Phase 5: Testing & Verification
 
@@ -375,7 +381,7 @@ curl -X DELETE http://<your-eb-domain>/student/101
 2. Click **Explore table items**
 3. Confirm the data reflects your test operations
 
-## Validation
+### Validation
 
 - **Local Setup:** Verify all files are created and Flask app runs locally.
 - **Packaging:** Confirm ZIP contains files at root level.
@@ -384,7 +390,18 @@ curl -X DELETE http://<your-eb-domain>/student/101
 - **Database:** Verify data persistence in DynamoDB console.
 - **Environment Variables:** Ensure TABLE_NAME and AWS_REGION are set.
 
-## Common Issues & Solutions
+::: details Validation
+
+- **Elastic Beanstalk Environment:** Health status shows "Ok" in EB console
+- **Application URL:** Accessible and returns "Flask + DynamoDB on Elastic Beanstalk is working!" on root path
+- **DynamoDB Table:** "Students" table exists with correct partition key
+- **API Endpoints:** All CRUD operations (POST, GET, PUT, DELETE) work correctly
+- **IAM Role:** EB-EC2-DynamoDB-Role attached to EC2 instance with proper permissions
+- **Environment Variables:** TABLE_NAME and AWS_REGION properly configured
+
+:::
+
+### Common Issues & Solutions
 
 ::: details Troubleshooting
 ### Issue: Application returns 500 errors
@@ -411,6 +428,17 @@ curl -X DELETE http://<your-eb-domain>/student/101
 2. Verify all 4 files are at zip root (not in subfolder)
 3. Ensure `application.py` has the correct variable name (`app`)
 
+### Issue: 502 Bad Gateway error
+
+**Causes:**
+- Procfile missing port binding (should bind to 8000)
+- Nginx proxy configuration mismatch
+
+**Solution:**
+1. Ensure Procfile is: `web: gunicorn --bind 0.0.0.0:8000 application:app`
+2. Redeploy the application
+3. Check `/var/log/nginx/error.log` for upstream connection errors
+
 ### Issue: Permission denied accessing DynamoDB
 
 **Cause:** IAM role not attached or incorrect permissions
@@ -421,20 +449,7 @@ curl -X DELETE http://<your-eb-domain>/student/101
 3. Confirm role has `AmazonDynamoDBFullAccess` policy attached
 :::
 
-## Validation
-
-::: details Validation
-
-- **Elastic Beanstalk Environment:** Health status shows "Ok" in EB console
-- **Application URL:** Accessible and returns "Flask + DynamoDB on Elastic Beanstalk is working!" on root path
-- **DynamoDB Table:** "Students" table exists with correct partition key
-- **API Endpoints:** All CRUD operations (POST, GET, PUT, DELETE) work correctly
-- **IAM Role:** EB-EC2-DynamoDB-Role attached to EC2 instance with proper permissions
-- **Environment Variables:** TABLE_NAME and AWS_REGION properly configured
-
-:::
-
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -444,7 +459,7 @@ curl -X DELETE http://<your-eb-domain>/student/101
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

@@ -22,7 +22,7 @@ This mini project demonstrates building an event-driven notification system usin
 | **JSON Event Processing** | Handling structured data inputs in serverless functions |
 | **IAM Permissions** | Managing access control for AWS services |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Lambda, SNS, and CloudWatch
@@ -65,6 +65,7 @@ Open AWS Lambda
 Lambda → **Code** tab → open lambda_function.py → remove existing code → paste:
 
 Replace <SNS_TOPIC_ARN> with your copied Topic ARN.
+
 
 ::: details lambda_function.py Code
 ```python
@@ -127,7 +128,6 @@ def lambda_handler(event, context):
 
 1. **Attach SNS Publish Policy**: Go to **Configuration** → **Permissions** → Click the **Role name**. 
 2. On the IAM page, click **Add permissions** → **Attach policies** and attach `AmazonSNSFullAccess`. Now lambda can publish to SNS 
-   - Note: For production, create a custom policy with only `sns:Publish` permission on the specific topic ARN instead of full access. 
     
 3. **Create a test event**: Name it `PaymentFailed` with the following JSON:
    Lambda → Test tab → Create new test event 
@@ -152,7 +152,7 @@ Verify these prints exist:
 - Message:
 - Priority:
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -163,7 +163,7 @@ Verify these prints exist:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -174,7 +174,7 @@ Verify these prints exist:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

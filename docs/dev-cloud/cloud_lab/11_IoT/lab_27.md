@@ -23,7 +23,7 @@ This lab demonstrates cloud-based IoT data ingestion and processing using AWS Io
 | **IoT Rules** | SQL-based rules that process incoming IoT data and trigger actions |
 | **Event-Driven Architecture** | System design where actions are triggered by events (data arrival) |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for IoT Core, CloudWatch, and related services
@@ -130,7 +130,7 @@ Rule = "when data arrives, do something"
 
 Automatic processing confirmed. Sensor data is sent to AWS IoT Core, where rules automatically process and store the data without using any server.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -143,7 +143,7 @@ Automatic processing confirmed. Sensor data is sent to AWS IoT Core, where rules
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -154,7 +154,7 @@ Automatic processing confirmed. Sensor data is sent to AWS IoT Core, where rules
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

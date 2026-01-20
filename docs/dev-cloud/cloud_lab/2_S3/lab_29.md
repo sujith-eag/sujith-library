@@ -22,7 +22,7 @@ This mini-project demonstrates end-to-end static website hosting and global cont
 | **TTL (Time To Live)** | Duration content remains cached before automatic refresh |
 | **Cache Hit/Miss** | Whether requested content is served from cache or fetched from origin |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for S3 and CloudFront services
@@ -168,7 +168,7 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 - Invalidation status "Completed"
 - Browser showing V2
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -184,7 +184,7 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -197,7 +197,7 @@ After distribution creation, CloudFront shows: "S3 bucket policy needs to be upd
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

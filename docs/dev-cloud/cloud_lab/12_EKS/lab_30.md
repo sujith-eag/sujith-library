@@ -23,7 +23,7 @@ This mini-project demonstrates container orchestration on AWS using Amazon Elast
 | **LoadBalancer Service** | Kubernetes service type that exposes applications via AWS ELB |
 | **CloudShell** | Browser-based shell environment for AWS management |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - Root account access or IAM permissions for EKS, EC2, VPC, and IAM services
@@ -131,7 +131,7 @@ flowchart TD
    - Open in browser: `http://<EXTERNAL-IP>`
    - Expected: Nginx welcome page
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -145,7 +145,7 @@ flowchart TD
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -158,7 +158,7 @@ flowchart TD
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

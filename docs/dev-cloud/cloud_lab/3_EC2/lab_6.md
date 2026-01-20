@@ -31,7 +31,7 @@ By completing this lab, you'll gain hands-on experience with EC2 instance creati
 | icacls Command | Windows tool for modifying NTFS file permissions to restrict key file access |
 | EC2 Instance Connect | Browser-based SSH terminal in AWS Console requiring no local key files |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - SSH client installed:
@@ -443,7 +443,7 @@ ssh-keygen -R <Public-IP-Address>
 Remove-Item "$env:USERPROFILE\.ssh\known_hosts" -Force
 ```
 
-## Validation
+### Validation
 
 Verify successful completion:
 
@@ -474,7 +474,7 @@ Verify successful completion:
   - `aws --version` shows AWS CLI is installed
   - Can create files, install packages, manage services
 
-## Cost Considerations
+### Cost Considerations
 
 - **EC2 Instance (t3.micro):**
   - **Free Tier:** 750 hours/month for first 12 months (covers 1 instance running 24/7)
@@ -495,7 +495,7 @@ Verify successful completion:
   - $0.005/hour if instance is stopped or IP is unattached
 
 
-## Cleanup
+### Cleanup
 
 To avoid ongoing charges:
 

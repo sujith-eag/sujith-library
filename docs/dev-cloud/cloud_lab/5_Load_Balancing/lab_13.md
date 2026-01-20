@@ -26,7 +26,7 @@ This lab demonstrates systematic load testing of EC2 instances using stress-ng, 
 | Metric Granularity | Time resolution of data points (1-minute vs 5-minute intervals) affecting monitoring accuracy |
 | dnf Package Manager | Next-generation package manager for Amazon Linux 2023 and Red Hat-based distributions (replaces yum) |
 
-## Prerequisites
+### Prerequisites
 
 - AWS account with EC2 and CloudWatch permissions
 - Completed basic EC2 labs (launching instances, SSH connectivity)
@@ -437,7 +437,7 @@ Monitor CPU usage directly on the instance for immediate feedback.
 > First number = 1-min avg (4.00 = very high for 1 vCPU)
 > ```
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -474,7 +474,7 @@ Verify successful completion:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -519,7 +519,7 @@ Verify successful completion:
 > - Terminate instance immediately after completion
 
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

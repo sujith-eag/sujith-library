@@ -30,7 +30,7 @@ This mini project demonstrates two distinct approaches to hosting static website
 | Least Privilege | IAM best practice of granting only minimum permissions needed (read-only S3 access for this project) |
 | Hybrid Architecture | Combining multiple hosting methods for flexibility, redundancy, or specific use cases |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Completed Lab 3 (S3 basics) and Lab 6 (EC2 SSH)
@@ -549,7 +549,7 @@ aws s3 ls
 | **Best For**        | Pure static sites, SPAs, low traffic     | Dynamic sites, APIs, custom configurations          |
 | **Setup Time**      | 5 minutes                                | 10-15 minutes                                       |
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -587,7 +587,7 @@ Verify successful completion:
 :::
 
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

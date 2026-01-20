@@ -24,7 +24,7 @@ Elastic Beanstalk automatically creates required AWS resources, deploys the appl
 | Gunicorn | WSGI HTTP server for running Flask in production |
 | Application Versions | Deployed code packages managed by Elastic Beanstalk |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Elastic Beanstalk and EC2
@@ -81,6 +81,8 @@ if __name__ == "__main__":
 
 > [!TIP]
 > We use `host='0.0.0.0'` so that the Flask application running on EC2 is accessible from external systems using the EC2 public IP. By default, Flask runs on `127.0.0.1` (localhost), which means the application is accessible only from inside the EC2 instance.
+> 
+> Note: In production on Elastic Beanstalk, the application will be run by Gunicorn via the Procfile, so the `if __name__ == "__main__"` block is not executed. The port is handled by the $PORT environment variable.
 
 ### Step 3: Create requirements.txt
 
@@ -101,7 +103,7 @@ Create a file named exactly `Procfile` (with no file extension).
 Contents:
 
 ```text
-web: gunicorn application:app
+web: gunicorn --bind 0.0.0.0:8000 application:app
 ```
 
 > [!WARNING]  
@@ -109,7 +111,7 @@ web: gunicorn application:app
 
 
 > [!TIP] Procfile
-> A Procfile tells Elastic Beanstalk how to start the application. It specifies the process type (web) and the command to run the application (Gunicorn for Flask).
+> A Procfile tells Elastic Beanstalk how to start the application. It specifies the process type (web) and the command to run the application (Gunicorn for Flask), binding to port 8000 which is the port that Nginx proxies to in this Elastic Beanstalk platform.
 > 
 > Without a Procfile, Elastic Beanstalk may not know which command to execute, leading to deployment errors.
 
@@ -125,7 +127,7 @@ eb-flask-lab/
 ```
 
 > [!TIP]
-> Run `python application.py` locally to ensure it starts without errors.
+> Install dependencies and test locally: Run `pip install -r requirements.txt` then `python application.py` to ensure it starts without errors.
 
 
 ## Phase 2: Package the Application
@@ -136,7 +138,13 @@ Inside the eb-flask-lab folder, select all 3 files (`application.py`, `requireme
 
 ### Step 2: Create ZIP
 
-Right-click → Compress to ZIP file. Rename it to: `eb-flask-lab.zip`
+**On Windows/Mac:** Right-click → Compress to ZIP file. Rename it to: `eb-flask-lab.zip`
+
+**On Ubuntu/Linux:** Open terminal in the eb-flask-lab folder and run:
+
+```bash
+zip eb-flask-lab.zip application.py requirements.txt Procfile
+```
 
 ### Step 3: Confirm ZIP Contents
 
@@ -150,7 +158,7 @@ Open the ZIP file. You must see the files directly at the top level.
 
 ### Step 1: Open Elastic Beanstalk
 
-Navigate to the AWS Console → Search for Elastic Beanstalk. Ensure your region is Asia Pacific (Mumbai) (ap-south-1).
+Navigate to the AWS Console → Search for Elastic Beanstalk. Select your preferred region (ensure it supports Elastic Beanstalk).
 
 ### Step 2: Create Environment
 
@@ -229,7 +237,7 @@ Append `/health` to the URL.
 **Verification:** Both URLs load correctly.
 
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -265,14 +273,14 @@ If environment health is "Degraded" or "Severe":
 
 #### Common Issues
 
-- **502 Bad Gateway:** Check Procfile syntax and file location in ZIP
+- **502 Bad Gateway:** Check Procfile syntax and file location in ZIP. Also verify the port in Procfile matches what Nginx expects (check /var/log/nginx/error.log for upstream port).
 - **Application version not found:** Verify files are at root level in ZIP
 - **Environment health degraded:** Review logs for Python/dependency errors
 - **Permission denied:** Ensure IAM roles are correctly assigned
 - **Port issues:** Gunicorn handles port binding; don't specify port in application.py when deployed
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -282,7 +290,7 @@ If environment health is "Degraded" or "Severe":
 :::
 
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

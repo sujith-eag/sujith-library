@@ -28,7 +28,7 @@ This lab focuses on launching a Windows Server instance and establishing remote 
 | Private IPv4 Address | Internal IP address for VPC communication (persists until instance termination) |
 | Instance State | Current status: pending, running, stopping, stopped, terminating, terminated |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Windows, macOS, or Linux computer with internet connection
@@ -257,7 +257,7 @@ To install and use rdesktop for RDP connections in Ubuntu:
 > - Disable desktop background and visual effects
 > - Use RDP compression for slower internet connections
 
-## Validation
+### Validation
 
 Verify successful completion:
 
@@ -284,7 +284,7 @@ Verify successful completion:
   - Can ping external websites from instance (e.g., `ping google.com`)
   - Windows firewall allows outbound internet access
 
-## Cost Considerations
+### Cost Considerations
 
 - **EC2 Instance (t3.micro):**
   - **Free Tier:** 750 hours/month for first 12 months (covers 1 instance running 24/7)
@@ -307,7 +307,7 @@ Verify successful completion:
 > [!WARNING] Stop vs Terminate
 > Stopping an instance halts compute charges but EBS storage charges continue (~$2.40/month). Terminate the instance to stop all charges completely.
 
-## Cleanup
+### Cleanup
 
 To avoid ongoing charges:
 

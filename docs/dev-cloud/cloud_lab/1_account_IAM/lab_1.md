@@ -26,7 +26,7 @@ The lab covers Multi-Factor Authentication (MFA) setup to protect your account f
 | Passkey | Biometric or device-based authentication method for passwordless login |
 | Authenticator App | Mobile application generating time-based one-time passwords (TOTP) |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Smartphone for MFA setup
@@ -217,7 +217,7 @@ flowchart TD
 > [!TIP] Best Practice
 > Set multiple alert thresholds (e.g., 50%, 80%, 100%) to get early warnings before exceeding your budget. You can create up to 2 free budgets per account.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -241,7 +241,7 @@ Verify that you have successfully completed all phases:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -252,7 +252,7 @@ Verify that you have successfully completed all phases:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

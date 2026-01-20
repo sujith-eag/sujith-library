@@ -31,7 +31,7 @@ This comprehensive lab demonstrates building auto-scaling architecture. You'll c
 | Health Check Grace Period | Time ASG waits before checking instance health after launch (allows application startup time) |
 | Target Group Integration | ASG automatically registers new instances with load balancer target groups for seamless traffic distribution |
 
-## Prerequisites
+### Prerequisites
 
 - Completed Lab 12 (Load-Balanced Web Application with ALB and Custom AMI)
 - Completed Lab 13 (Stress Testing EC2 Instance)
@@ -643,7 +643,7 @@ Allow CPU to drop and observe automatic instance termination.
 > - Total time: 5-10 minutes from stress stop to termination
 > - This prevents oscillation (rapid add/remove cycles)
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -687,7 +687,7 @@ Verify all components working correctly:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -739,7 +739,7 @@ Verify all components working correctly:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

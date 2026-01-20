@@ -26,7 +26,7 @@ This lab guides you through creating IAM users and groups, setting up account al
 | Account Alias | Custom name for your AWS account that replaces the numeric account ID in sign-in URLs |
 | Permissions | Authorization rules that determine what actions users can perform on AWS resources |
 
-## Prerequisites
+### Prerequisites
 
 - AWS account with root user access
 - Basic understanding of cloud security concepts
@@ -305,7 +305,7 @@ https://my-company.signin.aws.amazon.com/console
 > - Can be changed at any time
 > - Immediately effective across all IAM users
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -335,7 +335,7 @@ Verify that you have successfully completed all phases:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -351,7 +351,7 @@ Verify that you have successfully completed all phases:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

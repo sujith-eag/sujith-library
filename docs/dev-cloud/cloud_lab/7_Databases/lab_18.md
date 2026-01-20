@@ -29,7 +29,7 @@ This lab introduces Amazon DynamoDB, AWS's fully managed NoSQL database service.
 | GSI (Global Secondary Index) | Alternate Partition Key/Sort Key for different query patterns (not used in this lab) |
 | Eventually Consistent Reads | Default read mode returning data within 1 second of write; cheaper than strongly consistent reads |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for DynamoDB (AmazonDynamoDBFullAccess)
@@ -174,28 +174,28 @@ We will create a table to store Student Records including USN, Name, Semester, C
 4. Enter first item:
 
 ::: details First Student Record
-   ```json
-   {
-     "USN": {
-       "S": "1CR21CS001"
-     },
-     "CourseCode": {
-       "S": "21CS51"
-     },
-     "Name": {
-       "S": "Alice Johnson"
-     },
-     "Semester": {
-       "N": "5"
-     },
-     "Attendance": {
-       "N": "85"
-     },
-     "IA1Marks": {
-       "N": "14"
-     }
-   }
-   ```
+```json
+{
+ "USN": {
+   "S": "1CR21CS001"
+ },
+ "CourseCode": {
+   "S": "21CS51"
+ },
+ "Name": {
+   "S": "Alice Johnson"
+ },
+ "Semester": {
+   "N": "5"
+ },
+ "Attendance": {
+   "N": "85"
+ },
+ "IA1Marks": {
+   "N": "14"
+ }
+}
+```
 :::
 
 5. Click **Create item** button.
@@ -213,28 +213,28 @@ We will create a table to store Student Records including USN, Name, Semester, C
 6. Click **Create item** → JSON view. Enter second item (different student, same course):
 
 ::: details Second Student Recore
-   ```json
-   {
-     "USN": {
-       "S": "1CR21CS002"
-     },
-     "CourseCode": {
-       "S": "21CS51"
-     },
-     "Name": {
-       "S": "Bob Smith"
-     },
-     "Semester": {
-       "N": "5"
-     },
-     "Attendance": {
-       "N": "92"
-     },
-     "IA1Marks": {
-       "N": "16"
-     }
-   }
-   ```
+```json
+{
+ "USN": {
+   "S": "1CR21CS002"
+ },
+ "CourseCode": {
+   "S": "21CS51"
+ },
+ "Name": {
+   "S": "Bob Smith"
+ },
+ "Semester": {
+   "N": "5"
+ },
+ "Attendance": {
+   "N": "92"
+ },
+ "IA1Marks": {
+   "N": "16"
+ }
+}
+```
 :::
 
 7. **Create item**.
@@ -243,26 +243,26 @@ We will create a table to store Student Records including USN, Name, Semester, C
 
 ::: details Third Student Record
    ```json
-   {
-     "USN": {
-       "S": "1CR21CS001"
-     },
-     "CourseCode": {
-       "S": "21CS52"
-     },
-     "Name": {
-       "S": "Alice Johnson"
-     },
-     "Semester": {
-       "N": "5"
-     },
-     "Attendance": {
-       "N": "88"
-     },
-     "IA1Marks": {
-       "N": "15"
-     }
-   }
+{
+ "USN": {
+   "S": "1CR21CS001"
+ },
+ "CourseCode": {
+   "S": "21CS52"
+ },
+ "Name": {
+   "S": "Alice Johnson"
+ },
+ "Semester": {
+   "N": "5"
+ },
+ "Attendance": {
+   "N": "88"
+ },
+ "IA1Marks": {
+   "N": "15"
+ }
+}
    ```
 :::
 
@@ -398,7 +398,7 @@ We will create a table to store Student Records including USN, Name, Semester, C
    - Item 2: USN=1CR21CS001, CourseCode=21CS52, IA1Marks=15
 
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -430,7 +430,7 @@ Verify all operations successful:
 
 :::
 
-## Cleanup Procedure
+### Cleanup Procedure
 
 ::: details Cleanup Procedure
 
@@ -459,7 +459,7 @@ Delete table to stop all charges:
 
 :::
 
-## Troubleshooting
+### Troubleshooting
 
 ::: details Troubleshooting
 

@@ -28,7 +28,7 @@ You'll create a custom Amazon Machine Image (AMI) containing your pre-configured
 | Instance State (Target Group) | Health status showing if instance is healthy, unhealthy, initial, draining, or unused |
 | Listener | ALB component that checks for connection requests using configured protocol and port (e.g., HTTP port 80) |
 
-## Prerequisites
+### Prerequisites
 
 - AWS account with EC2 and Elastic Load Balancing permissions
 - Completed EC2 and VPC labs (understanding of instances, security groups, subnets)
@@ -427,7 +427,7 @@ Verify ALB is distributing traffic across your instances.
 > ```
 > You should see a mix of Instance 1 and Instance 2 in the output.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -469,7 +469,7 @@ Verify successful completion:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -521,7 +521,7 @@ Verify successful completion:
 > - Use CloudWatch to monitor actual LCU consumption
 
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

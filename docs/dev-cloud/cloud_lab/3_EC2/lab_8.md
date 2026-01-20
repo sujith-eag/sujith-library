@@ -29,7 +29,7 @@ This lab demonstrates the complete lifecycle of custom AMI management: creating 
 | Root Device Volume | Primary EBS volume containing the OS; snapshot becomes part of AMI |
 | Reboot Option | When checked, reboots instance during AMI creation for filesystem consistency; unchecked for faster creation with risk of inconsistency |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Completed Lab 6 (SSH to Linux EC2) or Lab 7 (Apache on EC2)
@@ -289,7 +289,7 @@ Deleting an AMI requires two steps: deregistering the AMI and deleting the assoc
 > [!IMPORTANT] Two-Step Process
 > You must BOTH deregister the AMI AND delete the snapshot to completely remove resources and stop all charges. Deregistering the AMI alone leaves the snapshot ($0.05/GB-month charges continue).
 
-## Validation
+### Validation
 
 ::: details Validation Checks
 
@@ -319,7 +319,7 @@ Verify successful completion:
   - No manual configuration required
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 - **AMI Storage:**
@@ -344,7 +344,7 @@ Verify successful completion:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 To avoid ongoing charges:

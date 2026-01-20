@@ -31,7 +31,7 @@ This lab guides you through creating a two-tier network architecture with public
 | Main Route Table | Default route table automatically created with VPC; best practice is to leave it unchanged and create custom route tables |
 | Security Group | Virtual firewall at instance level controlling inbound/outbound traffic based on protocol, port, and source/destination |
 
-## Prerequisites
+### Prerequisites
 
 - AWS account with VPC creation permissions (IAMFullAccess or VPCFullAccess policy)
 - Basic understanding of networking concepts (IP addresses, subnets, routing)
@@ -256,7 +256,7 @@ Private subnet now has outbound internet access through the NAT Gateway.
 > [!NOTE] Subnet Route Table Association
 > Each subnet can be associated with only one route table. If not explicitly associated, it uses the Main Route Table. Always explicitly associate subnets to custom route tables to avoid confusion and maintain security best practices.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -299,7 +299,7 @@ Verify successful VPC configuration:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -337,7 +337,7 @@ Verify successful VPC configuration:
 > - **Schedule deletion:** Delete NAT Gateway at end of work day, recreate next day if needed
 > - **Use NAT Gateway only in production:** For labs, test connectivity then immediately delete
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

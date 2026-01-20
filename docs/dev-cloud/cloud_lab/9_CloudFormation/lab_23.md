@@ -29,7 +29,7 @@ This lab demonstrates advanced CloudFormation usage by creating a multi-resource
 - Launch an **EC2 (Amazon Linux 2023) + Apache** using CloudFormation.
 - Configure EC2 to **pull index.html from S3** and host it via Apache.
 
-### Prerequisites
+#### Prerequisites
 
 - **Region:** Mumbai (ap-south-1).
 - **Key Pair:** An existing key pair (e.g., `pemkeypair`).
@@ -66,7 +66,7 @@ flowchart TD
     Deploy --> Website
 ```
 :::
-    
+
 ## Step 0: One-time Setup - Create Key Pair
 
 1. Navigate to **EC2** → **Key Pairs** → **Create key pair**.
@@ -237,7 +237,7 @@ Outputs:
 1. **CloudFormation** → **Stacks** → **Create stack**.
     
 2. Upload `stack2-ec2-pull-from-s3.yaml`.
-    
+
 3. **Stack name:** `EC2-Pull-S3-Website`.
     
 4. **Parameters:**
@@ -254,7 +254,7 @@ Outputs:
    - **Expected page:** "Hello! This page was pulled from S3 to EC2 automatically…".
     
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -268,7 +268,7 @@ Outputs:
 :::
 
 
-## Troubleshooting (common)
+### Troubleshooting (common)
 
 ::: Troubleshooting
 1. **Website not opening:**
@@ -290,7 +290,7 @@ Outputs:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 

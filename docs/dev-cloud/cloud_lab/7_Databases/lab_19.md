@@ -1,28 +1,31 @@
 ---
-title: ElastiCache (Redis) as an In-Memory Cache
-description: Deploy and use Amazon ElastiCache with Redis for in-memory caching operationss
+title: ElastiCache (Valkey) as an In-Memory Cache
+description: Deploy and use Amazon ElastiCache with Valkey for in-memory caching operations
 ---
 
-# ElastiCache (Redis) as an In-Memory Cache
+# ElastiCache (Valkey) as an In-Memory Cache
 
-**Topics:** Databases, Caching, ElastiCache, Redis, AWS
+**Topics:** Databases, Caching, ElastiCache, Valkey, AWS
 
 ## Overview
 
-This lab demonstrates Amazon ElastiCache using Redis OSS as an in-memory caching layer to improve application performance. You'll deploy a Redis cluster, connect from an EC2 instance, and perform basic cache operations like storing, retrieving, and expiring data.
+This lab demonstrates Amazon ElastiCache using Valkey as an in-memory caching layer to improve application performance. You'll deploy a Valkey cluster, connect from an EC2 instance, and perform basic cache operations like storing, retrieving, and expiring data.
 
 ## Key Concepts
 
 | Concept | Description |
 |---------|-------------|
-| ElastiCache | Managed in-memory caching service compatible with Redis/Memcached |
-| Redis OSS | Open-source in-memory data structure store used as cache |
-| Valkey | Redis-compatible client used in Amazon Linux 2023 |
+| ElastiCache | Managed in-memory caching service compatible with Valkey/Redis/Memcached |
+| Valkey | High-performance, Redis-compatible data structure store used as cache |
+| Redis OSS | Open-source alternative, but Valkey is recommended for new deployments |
 | TTL (Time To Live) | Automatic expiration of cached data |
 | Cache Hit/Miss | Data found in cache (hit) or fetched from DB (miss) |
-| Subnet Groups | Define subnets for ElastiCache clusters in VPC |
+| Subnet Groups | Define subnets for ElastiCache clusters in VPC (not needed for serverless) |
+| Serverless | Auto-scaling, pay-per-use deployment option |
+| Encryption | Data protection at rest and in transit |
+| Authentication | Secure access using passwords/tokens |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for ElastiCache and EC2
@@ -36,7 +39,7 @@ This lab demonstrates Amazon ElastiCache using Redis OSS as an in-memory caching
 flowchart TD
     User[User Request] --> App[Application Layer]
     
-    App --> Cache{Data in Cache?<br/>Check ElastiCache Redis}
+    App --> Cache{Data in Cache?<br/>Check ElastiCache Valkey}
     
     Cache -->|HIT - Data Found| ReturnCache[Return Cached Data<br/>⚡ Fast Response]
     Cache -->|MISS - Data Not Found| FetchDB[Fetch from Database<br/>RDS/MySQL]
@@ -65,10 +68,7 @@ flowchart TD
 3. Network & Security Group
     - **VPC:** Default VPC
     - **Security Group Name:** `SG-RedisClient`
-    - **Inbound Rules:**
-    | Type | Port | Source |
-    |------|------|--------|
-    | SSH | 22 | 0.0.0.0/0 |
+    - **Inbound Rules:** | Type: SSH | Port: 22 | Source : 0.0.0.0/0 |
 
 > [!IMPORTANT]
 > Do NOT add Redis (6379) here. The client does not listen on 6379.
@@ -91,9 +91,9 @@ valkey-cli --version
 **Verification:** Confirm EC2 status is "Running" and valkey-cli version displays.
 
 
-## Phase 2: Create Amazon ElastiCache (Redis OSS) Cluster
+## Phase 2: Create Amazon ElastiCache (Valkey) Cache
 
-**Purpose:** To create an Amazon ElastiCache Redis OSS cluster that will act as an in-memory cache, accessible from the EC2 client created in Phase-1.
+**Purpose:** To create an Amazon ElastiCache Valkey serverless cache that will act as an in-memory cache, accessible from the EC2 client created in Phase-1.
 
 1. Confirm AWS Region
     - Ensure you are in the **same region** used in Phase-1
@@ -105,66 +105,67 @@ valkey-cli --version
     3. Click **Create cache**
 
 3. Select Cache Engine
-    - **Engine:** Redis OSS
+    - **Engine:** Valkey
 
 4. Choose Deployment Settings
-    - **Deployment option:** Node-based cluster
+    - **Deployment option:** Serverless
     - **Creation method:** Easy create
 
 > [!TIP]
-> Easy create is used to avoid advanced production settings.
+> Serverless deployment provides automatic scaling and simplifies management for development and testing.
 
 5. Select Configuration
     - **Configuration:** Demo
-    - This automatically selects:
-    - A small, low-cost node (e.g., `cache.t4g.micro`)
-    - Suitable for labs and practice
+    - This automatically selects suitable defaults for labs and practice
 
 6. Provide Cluster Information
-    - **Cache name:** `lab-redis`
-    - **Description:** Optional (`lab-redis`)
+    - **Cache name:** `lab-valkey`
+    - **Description:** Optional (`lab-valkey`)
 
-7. Configure Network and Subnet Group
-    - **Network type:** IPv4
-    - **Subnet Group:** Select **Create a new subnet group**
-        - **Subnet group name:** `redis-subnet-group`
-        - **VPC:** Default VPC
-        - **Subnets:** Leave AWS auto-selected subnets unchanged
-
-8. Configure Security
-    - **Security Group:** Create or select a security group named **SG-RedisCache**
-    - **Inbound Rule for Redis:** Add **one inbound rule** to SG-RedisCache:
+7. Configure Network
+    - **VPC:** Default VPC
+    - **Security Group:** Create or select a security group named **SG-ValkeyCache**
+    - **Inbound Rule for Valkey:** Add **one inbound rule** to SG-ValkeyCache:
     | Type | Port | Source |
     |------|------|--------|
     | Custom TCP | 6379 | SG-RedisClient |
 
 > [!NOTE]
-> This allows only the EC2 client to access Redis.
+> This allows only the EC2 client to access Valkey.
 
-9. Authentication
-    - **Authentication:** Disabled
+8. Configure Security and Encryption
+    - **Authentication:** Enabled
+        - Set a strong password (e.g., `MySecurePass123!`)
+        - Note: Store this password securely; you'll need it to connect
+    - **Encryption in transit:** Enabled
+    - **Encryption at rest:** Enabled (using AWS managed key)
 
-10. Create Cache
+> [!IMPORTANT]
+> Enabling authentication and encryption follows AWS security best practices for production workloads.
+
+9. Create Cache
 
     1. Review all settings
     2. Click **Create**
     3. Wait until **Status = Available** (This may take a few minutes)
 
-11. Note the Redis Endpoint
-    1. Click on the cache name `lab-redis`
-    2. Copy the **Configuration Endpoint**
-    - Example: `lab-redis.xxxxxx.cache.amazonaws.com`
-    3. This endpoint will be used in Phase-3 to connect from EC2
+10. Note the Valkey Endpoint
+    1. Click on the cache name `lab-valkey`
+    2. Copy the **Serverless endpoint** (for serverless deployment)
+       - Example: `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com`
+    3. If using cluster mode, copy the **Configuration endpoint**
+       - Example: `clustercfg.lab-valkey-xxxxxx.use1.cache.amazonaws.com:6379`
+    4. This endpoint will be used in Phase-3 to connect from EC2
 
 > [!NOTE]
-> We have created an in-memory Redis cache using Amazon ElastiCache. It runs inside the AWS VPC and does not have a public IP. Only our EC2 client is allowed to access it using port 6379.
+> For serverless deployment, use the serverless endpoint. For cluster mode, use the configuration endpoint and add `-c` flag to valkey-cli for cluster support.
 
-**Verification:** Confirm cluster status is "Available" and endpoint is noted.
+**Verification:** Confirm cache status is "Available" and endpoint is noted.
 
 
-## Phase 3: Connect EC2 to ElastiCache Redis and Execute Cache Commands
+## Phase 3: Connect EC2 to ElastiCache Valkey and Execute Cache Commands
 
-**Purpose:** To connect the EC2 client (Amazon Linux 2023) to the ElastiCache Redis OSS cluster using valkey-cli and demonstrate basic in-memory cache operations.
+**Purpose:** To connect the EC2 client (Amazon Linux 2023) to the ElastiCache Valkey serverless cache using valkey-cli and demonstrate basic in-memory cache operations.
 
 ### Pre-checks
 
@@ -172,10 +173,11 @@ Before connecting, confirm:
 
 - EC2 and ElastiCache are in the same AWS region
 - EC2 security group = `SG-RedisClient`
-- Redis security group = `SG-RedisCache`
-- Redis security group allows port 6379 from `SG-RedisClient`
-- Redis Status = **Available**
-- You have copied the **Primary/Configuration Endpoint**
+- Valkey security group = `SG-ValkeyCache`
+- Valkey security group allows port 6379 from `SG-RedisClient`
+- Valkey Status = **Available**
+- You have copied the **Serverless endpoint**
+- You have the authentication password set in Phase 2
 
 1. Connect to EC2
     1. AWS Console → **EC2**
@@ -190,23 +192,23 @@ Before connecting, confirm:
 valkey-cli --version
 ```
 
-3. Connect to ElastiCache Redis
+3. Connect to ElastiCache Valkey
 
-Use the Configuration Endpoint from Phase-2:
-
-```bash
-valkey-cli -h <Configuration_ENDPOINT> -p 6379
-```
-
-**Example:**
+Use the Serverless Endpoint from Phase-2 and the password:
 
 ```bash
-valkey-cli -h lab-redis.xxxxxx.cache.amazonaws.com -p 6379
+valkey-cli -h <Serverless_ENDPOINT> -p 6379 -a <PASSWORD>
 ```
 
-**Expected Result:** You should see a prompt like `lab-redis.xxxxxx.cache.amazonaws.com:6379>`. This means the connection is successful.
+For cluster mode, use the Configuration endpoint:
 
-4. Execute Redis / Valkey Commands
+```bash
+valkey-cli -h <Configuration_ENDPOINT> -p 6379 -a <PASSWORD> -c
+```
+
+**Expected Result:** You should see a prompt like `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com:6379>`. This means the connection is successful.
+
+4. Execute Valkey Commands
 
 These commands simulate what an application does internally.
 
@@ -278,42 +280,42 @@ GET course
 
 **Expected Output:** `(nil)`
 
-5. Exit Redis Client
+5. Exit Valkey Client
 
 ```
 EXIT
 ```
 
 > [!TIP]
-> The application first checks Redis. If data is present, it is returned immediately from memory. If not present, the application fetches data from the database and stores it in Redis with a TTL. Redis automatically removes the data after expiry.
+> The application first checks Valkey. If data is present, it is returned immediately from memory. If not present, the application fetches data from the database and stores it in Valkey with a TTL. Valkey automatically removes the data after expiry.
 
 **Verification:** Confirm all commands executed as expected (e.g., GET returns values, TTL expires).
 
-- EC2 successfully connected to ElastiCache Redis
+- EC2 successfully connected to ElastiCache Valkey
 - In-memory key–value operations verified
 - Temporary storage and TTL behavior observed
-- Redis used as a cache, not as a primary database
+- Valkey used as a cache, not as a primary database
 
-## Validation
+### Validation
 
 ::: details Validation
 
-- **EC2 Setup:** Confirm instance is running, valkey-cli installed, and connected to Redis.
-- **ElastiCache Cluster:** Verify status is "Available" and endpoint is accessible.
+- **EC2 Setup:** Confirm instance is running, valkey-cli installed, and connected to Valkey.
+- **ElastiCache Cache:** Verify status is "Available" and endpoint is accessible.
 - **Cache Operations:** Test SET/GET, INCR, TTL, and DEL commands.
 - **Expiry:** Confirm data is removed after TTL expires.
-- **Security:** Ensure only authorized EC2 can connect via security groups.
+- **Security:** Ensure only authorized EC2 can connect via security groups, with authentication and encryption enabled.
 
 :::
 
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 
-**Step 1: Delete Redis Cluster**
+**Step 1: Delete Valkey Cache**
 
-ElastiCache → Select `lab-redis` → **Delete** (Disable snapshots)
+ElastiCache → Select `lab-valkey` → **Delete** (Disable snapshots)
 
 **Step 2: Terminate EC2 Instance**
 
@@ -321,11 +323,11 @@ EC2 → Instances → **Terminate** `RedisClient-AL2023`
 
 **Step 3: Optional**
 
-Delete unused security groups and subnet groups
+Delete unused security groups
 
 :::
 
-## Redis Commands Explanation
+## Valkey Commands Explanation
 
 - `SET course "Cloud Computing"`: Stores frequently accessed data in cache
 - `GET course`: Retrieves data from memory
@@ -338,12 +340,15 @@ Delete unused security groups and subnet groups
 
 ## Result
 
-Successfully deployed an ElastiCache Redis cluster and performed in-memory caching operations from an EC2 instance. Demonstrated key concepts like TTL, cache hits/misses, and integration with databases for improved application performance.
+Successfully deployed an ElastiCache Valkey serverless cache with encryption and authentication enabled, and performed in-memory caching operations from an EC2 instance. Demonstrated key concepts like TTL, cache hits/misses, and integration with databases for improved application performance, following AWS security best practices.
+
 
 ## Viva Questions
 
 1. What is the primary purpose of ElastiCache in AWS?
 2. Explain the difference between a cache hit and a cache miss.
-3. How does TTL work in Redis, and why is it important?
+3. How does TTL work in Valkey, and why is it important?
 4. Why would you use ElastiCache instead of storing data directly in RDS?
 5. What security measures are implemented when connecting EC2 to ElastiCache?
+6. What are the benefits of using ElastiCache Serverless deployment?
+7. Why is encryption important for cached data?

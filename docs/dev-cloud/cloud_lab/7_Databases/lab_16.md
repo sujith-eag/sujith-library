@@ -29,7 +29,7 @@ This foundational knowledge is prerequisite for Lab 17 (Flask with AWS RDS), whe
 | Form Action | HTML `<form action="/submit">` specifies which URL receives form submission |
 | Form Method | HTML `<form method="post">` specifies HTTP method (GET displays form, POST submits data) |
 
-## Prerequisites
+### Prerequisites
 
 - Python 3.7 or higher installed (check with `python --version` or `python3 --version`)
 - pip package manager (included with Python 3.4+)
@@ -502,7 +502,7 @@ FlaskFormApp/
    deactivate
    ```
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -543,7 +543,7 @@ Confirm all components working correctly:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -567,7 +567,7 @@ This lab runs entirely on local machine—no cloud costs incurred:
 :::
 
 
-## Troubleshooting
+### Troubleshooting
 
 ::: details Troubleshooting
 Common issues and solutions:

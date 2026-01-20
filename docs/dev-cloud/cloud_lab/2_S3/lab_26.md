@@ -22,7 +22,7 @@ This lab demonstrates serverless data analysis using Amazon Athena to query CSV 
 | **Serverless Analytics** | No infrastructure management required for data analysis |
 | **SQL on S3** | Running standard SQL queries directly on files in S3 |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for S3 and Athena
@@ -67,13 +67,13 @@ StudentID,Name,Dept,Marks,Result
 - Open the bucket → Click **Upload**
 - Upload **students.csv**
 - Click **Upload**
-    
+
 Now your CSV is in S3.
 
 ## Phase C: Set Up Athena Query Result Location
 
 - Go to **AWS Console → Amazon Athena**
-- If it shows “Get started” / “Query editor”, open it.
+- Open “Query editor”.
 - It will ask to set a Query result location
 - Click the link/button like Settings / Manage / Edit
 - Set query result location to something like:
@@ -169,7 +169,7 @@ WHERE Result = 'Fail';
 ```
 Expected: John, Arun
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -181,7 +181,7 @@ Expected: John, Arun
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -191,7 +191,7 @@ Expected: John, Arun
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

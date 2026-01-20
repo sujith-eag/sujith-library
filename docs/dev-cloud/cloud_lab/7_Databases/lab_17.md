@@ -26,7 +26,7 @@ This lab demonstrates deploying a complete cloud-based web application with Flas
 | Database Schema | Table structure defining columns, data types, constraints (users table with id, name, password) |
 | SQL Injection Prevention | Using parameterized queries (%s placeholders) instead of string concatenation to prevent attacks |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - Completed Lab 16 (Flask Web Application basics)
@@ -179,29 +179,30 @@ flowchart TD
 ### Step 6: Create Project Directory
 
 1. Create project folder:
-   ```bash
-   mkdir FlaskLoginApp
-   cd FlaskLoginApp
-   mkdir templates
+```bash
+mkdir FlaskLoginApp
+cd FlaskLoginApp
+mkdir templates
+```
 
-2. Create Database Configuration File
+1. Create Database Configuration File
 
    Create `db_config.py`:
-   ```bash
-   nano db_config.py
-   ```
+```bash
+nano db_config.py
+```
 
-3. Enter configuration (will update endpoint after RDS creation):
-   ```python
-   import os
-   
-   db_config = {
-       'host': os.environ.get('RDS_HOST', 'PLACEHOLDER-RDS-ENDPOINT'),
-       'user': os.environ.get('RDS_USER', 'admin'),
-       'password': os.environ.get('RDS_PASSWORD', 'YourPasswordHere'),
-       'database': os.environ.get('RDS_DB', 'flaskdb')
-   }
-   ```
+2. Enter configuration (will update endpoint after RDS creation):
+```python
+import os
+
+db_config = {
+   'host': os.environ.get('RDS_HOST', 'PLACEHOLDER-RDS-ENDPOINT'),
+   'user': os.environ.get('RDS_USER', 'admin'),
+   'password': os.environ.get('RDS_PASSWORD', 'YourPasswordHere'),
+   'database': os.environ.get('RDS_DB', 'flaskdb')
+}
+```
 
 3. Save: **Ctrl+O**, Enter, **Ctrl+X**.
 
@@ -426,9 +427,6 @@ nano templates/login.html
    - Edition: MySQL Community
    - Version: MySQL 8.0.35 (or latest 8.0.x version)
 
-> [!NOTE] MySQL Version Selection
-> Use MySQL 8.0.x for compatibility with mysql-connector-python. Avoid MySQL 5.7 (deprecated) or MariaDB (different engine).
-
 ### Step 10: Templates and Settings
 
 1. **Templates:**
@@ -638,16 +636,16 @@ nano templates/login.html
    ```
 
 3. Update with actual RDS endpoint and password:
-   ```python
-   import os
-   
-   db_config = {
-       'host': 'flaskdb-instance.abcdef123456.us-east-1.rds.amazonaws.com',
-       'user': 'admin',
-       'password': 'Flask123!',
-       'database': 'flaskdb'
-   }
-   ```
+```python
+import os
+
+db_config = {
+   'host': 'flaskdb-instance.abcdef123456.us-east-1.rds.amazonaws.com',
+   'user': 'admin',
+   'password': 'Flask123!',
+   'database': 'flaskdb'
+}
+```
    Replace endpoint and password with your actual values.
 
 4. Save: Ctrl+O, Enter, Ctrl+X.
@@ -710,7 +708,7 @@ nano templates/login.html
 > - **HTTP not HTTPS:** Use http:// (not https://)
 
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -741,7 +739,7 @@ Verify all components working:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -781,7 +779,7 @@ Monthly cost estimate:
 > - RDS charges accumulate 24/7 even when not in use
 > - Stopping RDS saves compute costs but still charges for storage
 
-## Cleanup Procedure
+### Cleanup Procedure
 
 ::: details Cleanup Procedure
 
@@ -837,7 +835,7 @@ Delete all resources to stop charges:
 
 :::
 
-## Troubleshooting
+### Troubleshooting
 ::: details Troubleshooting
 
 Common issues and solutions:

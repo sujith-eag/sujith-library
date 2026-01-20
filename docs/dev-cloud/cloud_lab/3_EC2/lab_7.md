@@ -28,7 +28,7 @@ This lab demonstrates two fundamental approaches to deploying web applications o
 | Security Group | Virtual firewall controlling inbound/outbound traffic; must allow port 80 for web access |
 | cloud-init | AWS service that processes User Data scripts during instance initialization |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Completed Lab 6 (SSH connection to Linux EC2)
@@ -350,7 +350,7 @@ ls -la /var/www/html/
 :::
 
 
-## Validation
+### Validation
 
 ::: details Click to expand
 
@@ -379,7 +379,7 @@ Verify successful completion:
   - File readable by Apache: `ls -la /var/www/html/index.html`
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Click to expand
 - **EC2 Instance (t3.micro):**
@@ -400,7 +400,7 @@ Verify successful completion:
   - $0.005/hour if unattached or instance stopped
 :::
 
-## Cleanup
+### Cleanup
 ::: details Click to expand
 To avoid ongoing charges:
 

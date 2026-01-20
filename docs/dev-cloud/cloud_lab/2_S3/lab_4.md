@@ -34,7 +34,7 @@ By mastering these features, you'll understand how to leverage S3 for production
 | Replication Rule | Configuration defining what objects to replicate and where |
 | Lifecycle Policy | Automated rules for transitioning or deleting object versions based on age |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Completed Lab 3 (basic S3 bucket creation)
@@ -392,7 +392,7 @@ Cross-Region Replication automatically copies objects from a source bucket to a 
 > [!TIP] Same-Region Replication (SRR)
 > AWS also offers Same-Region Replication for compliance requirements or creating test/dev copies in the same region. Configuration is identical but destination bucket is in the same region.
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -423,7 +423,7 @@ Verify successful completion of all phases:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -449,7 +449,7 @@ Verify successful completion of all phases:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

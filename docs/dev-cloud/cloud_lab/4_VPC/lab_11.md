@@ -28,7 +28,7 @@ You'll configure security groups to control network access,use the public instan
 | Multi-Hop RDP | Connecting to private instance by first RDP to bastion (public instance), then RDP again from bastion to private instance |
 | Network Isolation | Security practice of separating different application tiers (web, app, database) into distinct subnets with controlled routing |
 
-## Prerequisites
+### Prerequisites
 
 - Completed Lab 10 (Custom VPC Configuration with public/private subnets, IGW, NAT Gateway)
 - Existing VPC with:
@@ -302,7 +302,7 @@ Test that `DBInstance` is not accessible from the internet.
 > 4. Check security group allows outbound traffic (default: allow all outbound)
 > 5. Wait 2-3 minutes for routing changes to propagate
 
-## Validation
+### Validation
 
 ::: details Verify successful completion:
 
@@ -331,7 +331,7 @@ Test that `DBInstance` is not accessible from the internet.
 - Bastion host pattern working: **Verified**
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 **EC2 Instances (t2.micro/t3.micro Windows):**
@@ -369,7 +369,7 @@ Test that `DBInstance` is not accessible from the internet.
 > [!IMPORTANT] NAT Gateway Charges
 > NAT Gateway charges continue even if no instances are running. Always delete NAT Gateway after completing labs to avoid $32.40/month charges.
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

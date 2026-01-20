@@ -25,7 +25,7 @@ This lab guides you through deploying a WordPress website using Amazon Lightsail
 | Plugins | Extensions adding functionality (SEO, security, forms, caching) to WordPress core |
 | Permalinks | URL structure for posts and pages (e.g., `example.com/post-name` vs `example.com/?p=123`) |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account with billing enabled
 - Payment method configured (credit card or AWS promotional credits)
@@ -487,7 +487,7 @@ Snapshots are complete backups (OS, files, database, configuration).
 > - Snapshots billed at $0.05/GB/month (minimal cost)
 > - Can restore snapshot to new instance if site breaks
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -532,7 +532,7 @@ Verify all components configured correctly:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -588,7 +588,7 @@ Verify all components configured correctly:
 :::
 
 
-## Cleanup Procedure
+### Cleanup Procedure
 
 ::: details Cleanup Procedure
 

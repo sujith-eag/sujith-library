@@ -30,7 +30,7 @@ S3's durability (99.999999999%) and availability (99.99%) make it ideal for crit
 | Availability              | Percentage of time data is accessible; S3 Standard offers 99.99% availability         |
 | Public Access             | Configuration allowing internet users to access objects without AWS credentials       |
 
-## Prerequisites
+### Prerequisites
 
 - Active AWS account (Free Tier eligible)
 - Image file or any test file for upload
@@ -141,7 +141,7 @@ flowchart TD
 > - `<region>`: AWS region where bucket is created
 > - `<object-key>`: The file name (or path if using prefixes)
 
-## Validation
+### Validation
 
 ::: details Validation
 
@@ -166,7 +166,7 @@ Verify successful completion:
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -192,7 +192,7 @@ Verify successful completion:
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 

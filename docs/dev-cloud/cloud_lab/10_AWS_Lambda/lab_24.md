@@ -22,7 +22,7 @@ This lab introduces AWS Lambda, the serverless compute service. You'll create fu
 | **IAM Execution Role** | Permissions Lambda uses to access other AWS services |
 | **Test Events** | JSON payloads used to simulate function triggers |
 
-### Prerequisites
+#### Prerequisites
 
 - Active AWS account with billing enabled
 - IAM permissions for Lambda, CloudWatch, and SNS
@@ -147,7 +147,7 @@ def lambda_handler(event, context):
    - Verify print outputs: welcome message, student details, grade/result.
 
 
-## Validation
+#### Validation
 
 ::: details Validation
 
@@ -160,7 +160,7 @@ def lambda_handler(event, context):
 
 :::
 
-## Cost Considerations
+### Cost Considerations
 
 ::: details Cost Considerations
 
@@ -171,7 +171,7 @@ def lambda_handler(event, context):
 
 :::
 
-## Cleanup
+### Cleanup
 
 ::: details Cleanup
 
