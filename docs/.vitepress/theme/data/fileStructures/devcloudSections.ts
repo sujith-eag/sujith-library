@@ -143,7 +143,8 @@ export const dev1Section = [
          { label: "Syntax", link: "/dev-cloud/devops/cmp/1" },
          { label: "Environment", link: "/dev-cloud/devops/cmp/2" },
         ]
-      },      
+      },
+      { label: "Lab-Practice", link: "/dev-cloud/devops/jenkins/jenkins5" },
     ]
   }
 ]
