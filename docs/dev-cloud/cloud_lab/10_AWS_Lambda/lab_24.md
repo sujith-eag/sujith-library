@@ -192,3 +192,12 @@ Successfully created serverless Lambda functions with business logic, logging, a
 2. How does CloudWatch help with Lambda monitoring?
 3. What are the benefits of event-driven architecture?
 4. How does Lambda handle input validation and error responses?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create Lambda function with Python runtime and basic execution role.
+2. Add business logic code to process input events and log to CloudWatch.
+3. Create test events for valid and invalid inputs; run tests.
+4. View execution logs in CloudWatch to verify outputs.
+5. (Optional) Create SNS topic and integrate with Lambda for notifications.
+:::

@@ -214,3 +214,12 @@ Successfully implemented serverless data analysis using Amazon Athena to query C
 2. How does Athena handle data stored in S3?
 3. Why is setting a query result location important?
 4. What is a SerDe and why is it needed for CSV files?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create a sample CSV file with student data.
+2. Create an S3 bucket and upload the CSV file.
+3. Set up Athena query result location in S3.
+4. Create a database and external table in Athena referencing the CSV.
+5. Run SQL queries to analyze the data (counts, averages, filtering).
+:::

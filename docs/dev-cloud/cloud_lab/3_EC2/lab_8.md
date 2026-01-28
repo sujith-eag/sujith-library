@@ -402,3 +402,11 @@ You have successfully created a custom Amazon Machine Image from a configured EC
 3. **What is a "golden image" strategy, and what are its benefits?**
    - A golden image is a master AMI representing the ideal, fully configured and secured server setup. Instead of manually configuring each instance, you build one perfect instance (with all security patches, software, configurations, monitoring agents), create an AMI, and launch all production instances from it.
    
+::: details Quick Start Guide
+### Quick Start Guide
+1. Prepare and configure an EC2 instance with desired software and settings.
+2. Create a custom AMI from the configured instance via EC2 Console.
+3. Launch new EC2 instances from the custom AMI.
+4. Verify that new instances inherit all configurations.
+5. Deregister the AMI and delete associated snapshots to avoid charges.
+:::

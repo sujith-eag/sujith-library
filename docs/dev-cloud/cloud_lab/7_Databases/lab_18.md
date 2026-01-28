@@ -100,11 +100,9 @@ We will create a table to store Student Records including USN, Name, Semester, C
 
 1. Sign in to AWS Management Console.
 
-2. Services → **DynamoDB** (or search "DynamoDB" in top search bar).
+2. Services → **DynamoDB** and Click **Create table** button.
 
-3. Click **Create table** button (orange button).
-
-4. **Table details:**
+3. **Table details:**
 	  - **Table name:** `MCA_StudentLabInternals`
 	  - **Partition key (PK):** `USN` (Type: String)
 	  - **Sort key (SK):** `CourseCode` (Type: String)
@@ -117,7 +115,7 @@ We will create a table to store Student Records including USN, Name, Semester, C
 > All items with same USN stored in same partition. 
 > Sort Key (CourseCode) allows multiple courses per student sorted alphabetically (21CS51, 21CS52, 21CS53...).
 
-2. **Table settings:**
+4. **Table settings:**
 
    Select: **Customize settings** (not Default settings; need to choose On-Demand mode)
 
@@ -496,3 +494,12 @@ Successfully created and operated a DynamoDB table, performing all CRUD operatio
 
 5. Explain DynamoDB's eventually consistent reads vs strongly consistent reads. When would you choose each, and what are the trade-offs?
 
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create DynamoDB table with Partition Key (USN) and Sort Key (CourseCode).
+2. Insert items using Create Item (DynamoDB JSON format).
+3. Perform Query operation specifying Partition Key to retrieve one student's courses.
+4. Perform Scan operation to retrieve all items (inefficient).
+5. Update specific item's attribute (IA1Marks) using Edit Item.
+6. Delete specific item using Delete Items action.
+:::

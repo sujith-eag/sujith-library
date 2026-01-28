@@ -76,8 +76,7 @@ flowchart TD
 
 ### Step 2: Configure Instance Settings
 
-1. **Name:**
-   - Name: `FlaskLoginServer`
+1. **Name:** `FlaskLoginServer`
 
 2. **Application and OS Images (AMI):**
    - Quick Start → **Amazon Linux**
@@ -174,6 +173,17 @@ flowchart TD
 > [!NOTE] Why mysql-connector-python
 > Official MySQL driver for Python. Chosen for simplicity and official support.
 
+2. Install MariaDB client (MySQL-compatible):
+   ```bash
+   sudo dnf install mariadb105 -y
+
+   mysql --version
+   ```
+   Expected: `mysql Ver 15.1 Distrib 10.5.x-MariaDB`
+
+> [!NOTE] MariaDB Client
+> Amazon Linux 2023 includes MariaDB client (not MySQL client) but they're protocol-compatible. Use mysql command to connect to RDS MySQL.
+
 ## Phase 3: Create Flask Project Structure
 
 ### Step 6: Create Project Directory
@@ -185,9 +195,7 @@ cd FlaskLoginApp
 mkdir templates
 ```
 
-1. Create Database Configuration File
-
-   Create `db_config.py`:
+1. Create Database Configuration File `db_config.py`:
 ```bash
 nano db_config.py
 ```
@@ -409,7 +417,7 @@ nano templates/login.html
 ```
 :::
 
-**welcome.html, success.html, error.html** - Create similarly (see original lab_17.md for complete templates).
+**welcome.html, success.html, error.html** - Create similarly.
 
 ## Phase 4: Create RDS MySQL Database Instance
 
@@ -449,14 +457,13 @@ nano templates/login.html
 2. **Storage:**
    - Storage type: General Purpose SSD (gp3)
    - Allocated storage: 20 GiB (minimum)
-   - Storage autoscaling: Enable (optional, for growth)
    - Maximum storage threshold: 1000 GiB
 
 ### Step 12: Connectivity Configuration (Critical)
 
 1. **Compute resource:**
    - Select: **Connect to an EC2 compute resource**
-   - **EC2 instance:** Select `FlaskLoginServer`
+   - **EC2 instance:** Select `FlaskLoginServer` which you created earlier
 
 > [!IMPORTANT] Automatic Security Group Configuration
 > Selecting "Connect to EC2" automatically:
@@ -481,11 +488,9 @@ nano templates/login.html
 
 ### Step 13: Additional Configuration
 
-1. **Database authentication:**
-   - Password authentication (default)
+1. **Database authentication:** Password authentication (default)
 
-2. **Initial database name:**
-   - **Initial database name:** `flaskdb`
+2. **Initial database name:** `flaskdb`
    - This creates database automatically (no need to run CREATE DATABASE)
 
 3. **DB parameter group:** default.mysql8.0
@@ -532,34 +537,16 @@ nano templates/login.html
 
 ## Phase 6: Create Database Table
 
-### Step 16: Install MySQL Client on EC2
-
-1. Connect to EC2 terminal (if disconnected):
-   - EC2 → Instances → Select `FlaskLoginServer` → Connect
-
-2. Install MariaDB client (MySQL-compatible):
-   ```bash
-   sudo dnf install mariadb105 -y
-
-   mysql --version
-   ```
-   Expected: `mysql Ver 15.1 Distrib 10.5.x-MariaDB`
-
-> [!NOTE] MariaDB Client
-> Amazon Linux 2023 includes MariaDB client (not MySQL client) but they're protocol-compatible. Use mysql command to connect to RDS MySQL.
-
-### Step 17: Connect to RDS from EC2
+### Step 16: Connect to RDS from EC2
 
 1. Use RDS endpoint:
    ```bash
-   mysql -h flaskdb-instance.abcdef123456.us-east-1.rds.amazonaws.com -u admin -p
+   mysql -h flaskd....onaws.com -u admin -p
    ```
-   Replace with your actual endpoint.
 
-2. Enter password when prompted: `Flask123!`
+2. Enter password when prompted
 
-3. Expected output:
-   ```
+   ```bash
    Welcome to the MariaDB monitor. Commands end with ; or \g.
    ...
    MySQL [(none)]>
@@ -572,8 +559,11 @@ nano templates/login.html
 > - **Unknown host:** Verify RDS endpoint spelling
 
 4. In MySQL prompt:
+
+   If you created initial database `flaskdb` during RDS setup, switch to it:
    ```sql
    CREATE DATABASE flaskdb;
+   
    USE flaskdb;
    ```
    Expected: `Database changed`
@@ -869,3 +859,22 @@ A fully working cloud-based registration and login system was successfully deplo
 
 5. How would you implement password hashing with bcrypt and environment variable-based configuration to secure this application for production?
 
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Launch EC2 instance with Amazon Linux 2023, t3.micro, security group allowing SSH (22) and HTTP (5000).
+2. Connect to EC2 via Instance Connect, update packages, install Python3, pip, Flask, mysql-connector-python, and MariaDB client.
+```bash
+sudo dnf update -y
+sudo dnf install python3-pip -y
+pip3 install flask mysql-connector-python
+sudo dnf install mariadb105 -y
+```
+3. Create Flask project structure with `app.py`, `db_config.py`, and HTML templates
+4. Create RDS MySQL instance (db.t3.micro), connect to EC2, set Public access = No, note endpoint.
+5. Verify RDS security group allows MySQL (3306) from EC2 security group
+6. Connect to RDS from EC2 using MariaDB client, create `flaskdb` database and `users` table.
+7. Update `db_config.py` with actual RDS endpoint and password.
+8. Run Flask application on EC2, access via browser using EC2 public IP and port
+   5000, test registration and login functionality.
+:::

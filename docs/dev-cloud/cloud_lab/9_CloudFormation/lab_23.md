@@ -96,11 +96,11 @@ Outputs:
 ### Step 1.2: Create stack
 
 1. Go to **CloudFormation** → **Stacks** → **Create stack** → **With new resources**.
-    
+
 2. Choose **Upload a template file** → `stack1-s3-bucket.yaml`.
-    
+
 3. **Stack name:** `S3-Website-Bucket`.
-    
+
 4. Click **Create stack**.
     
 
@@ -325,3 +325,14 @@ Successfully created a multi-service CloudFormation stack integrating EC2, S3, a
 - Why is the S3 bucket not made public in this lab?
 - What happens when a CloudFormation stack is deleted?
 - Which ports are required for web hosting and SSH?
+
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create an S3 bucket using CloudFormation (Stack-1).
+2. Upload `index.html` to the S3 bucket root.
+  - copy the bucket name from Stack-1 output.
+  - give the bucket name while creating Stack-2.
+3. Create an EC2 CloudFormation stack (Stack-2) with IAM role and UserData.
+4. Access the website using the output URL from Stack-2.
+:::

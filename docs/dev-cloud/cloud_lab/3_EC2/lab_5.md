@@ -364,3 +364,18 @@ These skills form the foundation for deploying Windows-based applications, Activ
 3. **What happens to the Public IP address when you stop and start an EC2 instance?**
    - The Public IPv4 address changes every time you stop and restart an instance. The Private IP address remains the same. To maintain a consistent public IP, allocate and associate an Elastic IP address (static public IP that persists across stops/starts).
 
+::: details Quick Start Guide
+### Quick Start Guide
+1. Sign in to AWS Management Console and navigate to EC2 service.
+2. Click **Launch Instance** and configure:
+   - Select Windows Server AMI (e.g., Windows Server 2025)
+   - Choose t3.micro instance type (Free Tier eligible)
+   - Create/select key pair (.pem file) for password decryption
+   - Configure security group to allow RDP (port 3389) from your IP
+3. Launch the instance and wait for it to be in "Running" state with "2/2 checks passed".
+4. Select the instance and click **Connect** → RDP client tab.
+5. Click **Get password**, upload .pem file, and decrypt to retrieve Administrator password
+6. Open RDP client on your computer, enter Public IP, username (Administrator), and decrypted password.
+7. Accept security certificate warning and connect to Windows Server desktop.
+8. Verify connection by checking Server Manager and running commands in PowerShell/Command Prompt.
+:::

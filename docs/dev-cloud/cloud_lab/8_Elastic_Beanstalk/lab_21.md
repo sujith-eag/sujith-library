@@ -490,3 +490,15 @@ Successfully deployed a Flask REST API integrated with DynamoDB on Elastic Beans
 3. What are the benefits of deploying on Elastic Beanstalk?
 4. How does DynamoDB differ from traditional relational databases?
 5. What is the purpose of the Procfile in Elastic Beanstalk deployments?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create a Flask application with `application.py`, `requirements.txt`, `Procfile`, and `runtime.txt`.
+2. Package files into a ZIP with files at the root level.
+3. Create a DynamoDB table named `Students` with `StudentID` as the partition key.
+4. Create an IAM role `EB-EC2-DynamoDB-Role` with DynamoDB access.
+5. Create an Elastic Beanstalk environment with the IAM role attached.
+6. Configure environment variables for `TABLE_NAME` and `AWS_REGION`.
+7. Deploy the application ZIP to Elastic Beanstalk.
+8. Test CRUD operations using curl commands.
+:::

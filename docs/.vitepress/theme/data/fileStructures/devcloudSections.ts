@@ -31,9 +31,7 @@ export const cloud2Section = [
         items: [
           { label: "S3 Introduction", link: "/dev-cloud/cloud_lab/2_S3/lab_3" },
           { label: "S3 Advanced Features", link: "/dev-cloud/cloud_lab/2_S3/lab_4" },
-          { label: "S3 Data Analysis with Athena", link: "/dev-cloud/cloud_lab/2_S3/lab_26" },
-          { label: "S3 Website with CloudFront", link: "/dev-cloud/cloud_lab/2_S3/lab_28" },
-          { label: "Global S3 Website Delivery", link: "/dev-cloud/cloud_lab/2_S3/lab_29" },
+          { label: "S3 Data Analysis with Athena", link: "/dev-cloud/cloud_lab/2_S3/lab_26" }
         ]
       },
       {
@@ -98,9 +96,11 @@ export const cloud2Section = [
         ]
       },
       {
-        title: "IoT",
+        title: "IoT & CloudFront",
         items: [
-          { label: "Sensor Monitoring with IoT Core", link: "/dev-cloud/cloud_lab/11_IoT/lab_27" },
+          { label: "Sensor Monitoring with IoT Core", link: "/dev-cloud/cloud_lab/11_Iot_cloudfront/lab_27" },
+          { label: "S3 Website with CloudFront", link: "/dev-cloud/cloud_lab/11_Iot_cloudfront/lab_28" },
+          { label: "Global S3 Website Delivery", link: "/dev-cloud/cloud_lab/11_Iot_cloudfront/lab_29" },
         ]
       },
       {

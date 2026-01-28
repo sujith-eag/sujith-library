@@ -248,3 +248,11 @@ Successfully created infrastructure using CloudFormation IaC. Demonstrated autom
 3. What is the difference between **Parameters** and **Resources** in CloudFormation?
 4. Why is the Security Group created in the template?
 5. What happens when a CloudFormation stack is deleted?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create EC2 key pair in the desired region.
+2. Create a YAML CloudFormation template defining EC2 instance, security group, and UserData.
+3. Upload template to CloudFormation and create stack, selecting the key pair.
+4. Wait for stack creation to complete and access the Apache website using the output URL.
+:::

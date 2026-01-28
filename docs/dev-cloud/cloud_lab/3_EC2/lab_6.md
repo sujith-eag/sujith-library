@@ -542,3 +542,19 @@ You have successfully launched an Amazon EC2 Linux instance and established secu
 
 SSH access enables you to install software, configure services, deploy applications, manage databases, and perform system administration tasks on cloud servers. The ability to work with both .pem and .ppk key formats ensures flexibility across different tools and environments.
 
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create a Linux EC2 instance using Amazon Linux AMI.
+2. Generate a key pair in .pem format for OpenSSH or .ppk format for PuTTY.
+3. Configure security group to allow SSH (port 22) from your IP.
+4. Launch the instance and wait for it to be in "Running" state with 2/2 status checks passed.
+5. Connect using OpenSSH:
+   - Set file permissions: `chmod 400 key.pem`
+   - SSH command: `ssh -i key.pem ec2-user@<Public-IP>`
+6. Connect using PuTTY:
+   - Load .ppk key in PuTTY configuration
+   - Enter `ec2-user@<Public-IP>` as hostname
+   - Click Open to start session
+7. Verify connection by running commands like `uname -a`, `sudo yum update -y`, and `aws --version`.
+:::

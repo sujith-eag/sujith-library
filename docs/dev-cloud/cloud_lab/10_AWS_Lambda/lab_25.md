@@ -1,15 +1,15 @@
 ---
-title: Mini Project - Event-Driven Notification System using AWS Lambda and Amazon SNS
+title: Event-Driven Notification System using AWS Lambda and Amazon SNS
 description: Serverless event processing with Lambda and SNS notifications
 ---
 
-# Mini Project: Event-Driven Notification System using AWS Lambda and Amazon SNS
+# Event-Driven Notification System using AWS Lambda and Amazon SNS
 
 **Topics:** Lambda, SNS, CloudWatch, Event-Driven Architecture, Serverless
 
 ## Overview
 
-This mini project demonstrates building an event-driven notification system using serverless computing. An event in JSON format is given as input to an AWS Lambda function. The Lambda function processes the event and generates a notification message. The message is published to an Amazon SNS topic. SNS sends the notification to the subscribed email address. The execution details are verified using CloudWatch Logs.
+This lab demonstrates building an event-driven notification system using serverless computing. An event in JSON format is given as input to an AWS Lambda function. The Lambda function processes the event and generates a notification message. The message is published to an Amazon SNS topic. SNS sends the notification to the subscribed email address. The execution details are verified using CloudWatch Logs.
 
 ### Key Concepts
 
@@ -199,3 +199,12 @@ Successfully created serverless Lambda functions with business logic, logging, a
 3. Why are CloudWatch Logs important for serverless functions?
 4. What are the benefits of serverless computing for notification systems?
     
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create SNS topic and email subscription; confirm subscription via email.
+2. Create Lambda function with Python runtime and basic execution role.
+3. Add business logic code to process input events and publish to SNS.
+4. Create test events for different scenarios; run tests.
+5. View execution logs in CloudWatch to verify outputs.
+5. Check email for SNS notifications.
+:::

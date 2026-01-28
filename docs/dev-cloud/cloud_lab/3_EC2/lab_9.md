@@ -643,3 +643,10 @@ To avoid ongoing charges:
 
 You have successfully deployed a static website using two different AWS hosting methods: serverless S3 static hosting and server-based EC2 with Nginx. 
 
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create S3 bucket, upload website files, enable static hosting, and set public read policy.
+2. Create IAM role with S3 read-only access for EC2.
+3. Launch EC2 instance with User Data script to install Nginx and sync files from S3.
+4. Test both S3 and EC2 endpoints to verify website accessibility.
+:::

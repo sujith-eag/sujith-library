@@ -352,3 +352,20 @@ Successfully deployed an ElastiCache Valkey serverless cache with encryption and
 5. What security measures are implemented when connecting EC2 to ElastiCache?
 6. What are the benefits of using ElastiCache Serverless deployment?
 7. Why is encryption important for cached data?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Launch EC2 instance with Amazon Linux 2023 and install valkey-cli.
+```bash
+sudo dnf install -y valkey
+valkey-cli --version
+
+valkey-cli -h <Serverless_ENDPOINT> -p 6379 -a <PASSWORD>
+valkey-cli -h <Configuration_ENDPOINT> -p 6379 -a <PASSWORD> -c
+valkey-cli -h lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com -p 6379 -a MySecurePass123!
+```
+2. Create ElastiCache Valkey serverless cache with authentication and encryption.
+3. Connect EC2 to ElastiCache using valkey-cli with endpoint and password.
+4. Execute Valkey commands: PING, SET/GET, INCR, TTL, DEL.
+5. Verify data storage, retrieval, expiry, and deletion.
+:::

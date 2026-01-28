@@ -499,3 +499,15 @@ Static Website Hosting demonstrates S3's versatility beyond storage, enabling co
 3. **Why must versioning be enabled for Cross-Region Replication?**
    - CRR relies on version IDs to track and replicate objects across regions. Versioning ensures each object change gets a unique identifier, allowing S3 to properly synchronize the exact state of objects, including deletions (via delete markers), between source and destination buckets.
 
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create S3 bucket and upload website files (HTML, CSS, JS).
+2. Enable static website hosting with index and error documents.
+3. Set bucket policy for public read access.
+4. Access website via bucket website endpoint URL.
+5. Enable versioning on the bucket.
+6. Upload same file multiple times to create versions.
+7. Create destination bucket in different region with versioning enabled.
+8. Configure replication rule on source bucket to replicate to destination bucket.
+9. Upload new objects to source bucket and verify replication in destination bucket.
+:::

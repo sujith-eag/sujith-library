@@ -319,3 +319,12 @@ Key takeaways include:
 3. What is the difference between single instance and load balanced environments?
 4. Why do we use Gunicorn instead of running Flask directly?
 5. What happens if you don't specify `host='0.0.0.0'` in Flask?
+
+::: details Quick Start Guide
+### Quick Start Guide
+1. Create a Flask application with `application.py`, `requirements.txt`, and `Procfile`.
+2. Package files into a ZIP with files at the root level.
+3. Open Elastic Beanstalk in AWS Console and create a web server environment.
+4. Upload the ZIP file, configure IAM roles, and create the environment.
+5. Monitor deployment, test application endpoints, and verify functionality.
+:::

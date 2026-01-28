@@ -432,3 +432,19 @@ To avoid ongoing charges:
 
 You have successfully deployed a static website on Amazon EC2 using Apache HTTP Server through two methods: manual SSH-based installation and automated User Data scripts. You now understand the fundamentals of web server deployment, Linux package management, systemd service control, and infrastructure automation.
 
+::: details Quick Start Guide
+### Quick Start Guide
+1. Launch EC2 instance with Amazon Linux 2 AMI and t3.micro type.
+2. Create security group allowing SSH (22) and HTTP (80) inbound traffic.
+3. Connect via SSH using your key pair.
+4. For Manual Method:
+   - Update packages: `sudo yum update -y`
+   - Install Apache: `sudo yum install httpd -y`
+   - Start and enable Apache: `sudo systemctl start httpd` and `sudo systemctl enable httpd`
+   - Create custom `index.html` in `/var/www/html/`.
+5. For User Data Method:
+   - Prepare bash script with Apache installation and HTML content.
+   - Paste script in User Data section during instance launch.
+   - Launch instance and wait for it to initialize.
+6. Access website via browser using Public IP address.
+:::

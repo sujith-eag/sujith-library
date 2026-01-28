@@ -33,7 +33,7 @@ This lab demonstrates systematic load testing of EC2 instances using stress-ng, 
 - EC2 key pair for SSH access (.pem file)
 - SSH client (PowerShell, Terminal, or PuTTY)
 - Basic understanding of Linux command line
-- Familiarity with CloudWatch console (optional but helpful)
+
 
 ## Architecture Overview
 
@@ -115,9 +115,6 @@ flowchart TD
    - Instance state: Running
    - Status checks: 2/2 checks passed (2-3 minutes)
    - Note the **Public IPv4 address**
-
-> [!NOTE] Instance Type Selection
-> t2.micro (1 vCPU) will reach 100% CPU faster with stress-ng. t3.micro (2 vCPUs) requires more CPU workers to reach high utilization. Both work fine for this lab—choose based on free tier eligibility and availability in your region.
 
 ## Phase 2: Connect to EC2 Instance
 
@@ -217,8 +214,7 @@ This step is optional but demonstrates a typical instance configuration before s
    ```bash
    stress-ng --version
    ```
-   - Expected output: `stress-ng, version 0.xx.xx` (version number may vary)
-   - If version displays, installation successful
+   - Expected output: `stress-ng, version 0.xx.xx`
 
 4. View stress-ng help (optional, to understand options):
    ```bash
@@ -242,12 +238,8 @@ stress-ng --cpu 4 --timeout 120
 - `--cpu 4`: Create 4 CPU worker processes
   - Each worker runs math-intensive calculations
   - More workers = higher CPU utilization
-  - For t3.micro (2 vCPUs): Use `--cpu 2` or `--cpu 4`
-- `--timeout 120`: Run for 120 seconds (2 minutes)
-  - Safety mechanism to prevent infinite load
-  - Test automatically stops after this duration
-  - Adjust based on your testing needs (e.g., 300 for 5 minutes)
-
+- `--timeout 120`: Run for 120 seconds (2 minutes) to prevent infinite load
+  
 ### Execute Stress Test
 
 1. Start the stress test:
@@ -261,26 +253,7 @@ stress-ng --cpu 4 --timeout 120
    stress-ng: info:  [12345] cache allocate: using defaults, shared cache...
    ```
 
-3. Monitor in real-time with htop (optional, requires installation):
-   ```bash
-   # In a second SSH session (don't close the first)
-   sudo dnf install htop -y
-   htop
-   ```
-   - CPU bars show near 100% utilization
-   - Four stress-ng processes visible
-   - Press `q` to quit htop
-
-4. Or use top command (pre-installed):
-   ```bash
-   # In a second SSH session
-   top
-   ```
-   - Press `1` to show all CPUs
-   - Look for stress-ng processes consuming CPU
-   - Press `q` to quit
-
-5. Wait for stress test to complete (2 minutes):
+3. Wait for stress test to complete (2 minutes):
    ```
    stress-ng: info:  [12345] successful run completed in 120.02s
    ```
@@ -288,14 +261,6 @@ stress-ng --cpu 4 --timeout 120
 > [!IMPORTANT] Monitoring Delay
 > CloudWatch metrics have a **5-minute** delay by default (Basic Monitoring). Even if stress-ng runs for only 2 minutes, CloudWatch may average the spike over its 5-minute collection interval, showing lower-than-actual peaks. For accurate real-time monitoring, enable Detailed Monitoring (1-minute intervals) or run stress tests for at least 6-10 minutes.
 
-### Extended Stress Test (Recommended for CloudWatch Visibility)
-
-To ensure clear metric spikes in CloudWatch:
-
-```bash
-# Run for 10 minutes to span multiple CloudWatch collection intervals
-stress-ng --cpu 4 --timeout 600
-```
 
 > [!TIP] Background Execution
 > To run stress test in background and logout:
@@ -313,57 +278,21 @@ View performance metrics and verify CloudWatch is capturing the load.
 
 2. In left navigation menu, click **Metrics** → **All metrics**.
 
-3. Under "Metrics," click **EC2**.
+3. Under "Metrics," click **EC2** and **Per-Instance Metrics**.
 
-4. Click **Per-Instance Metrics**.
+4. Find your instance name: `StressTest-EC2`
 
-5. Find your instance:
-   - Search for instance name: `StressTest-EC2`
-   - Or filter by **Instance Id**
-
-6. Select the **CPUUtilization** metric:
+5. Select the **CPUUtilization** metric:
    - Check the box next to `CPUUtilization` for your instance
-   - Metric appears in the graph above
 
-7. Configure graph time range and granularity:
+6. Configure graph time range and granularity:
    - Click **Custom** time range selector (top right)
    - Set **Relative** time: **Last 1 hour**
-   - Or use quick select: **1h** button
-   - **Period:** Auto (defaults to appropriate interval based on time range)
 
-8. Observe the CPU graph:
+7. Observe the CPU graph:
    - **Before stress test:** CPU utilization 0-5% (idle)
    - **During stress test:** CPU utilization spikes to 80-100%
    - **After stress test:** CPU returns to 0-5%
-
-9. Analyze the spike:
-   - **Time of spike:** Corresponds to when you ran stress-ng
-   - **Duration:** Approximately the timeout you specified
-   - **Peak value:** Closer to 100% if you used more CPU workers
-
-> [!NOTE] The "5-Minute Gap" Problem
-> By default, EC2 sends metrics to CloudWatch every **5 minutes** (Basic Monitoring). If your stress test runs for only **2 minutes** (120 seconds), CloudWatch might smooth out the spike in the graph, showing an average of 40-60% instead of a peak of 100%. This is because CloudWatch averages values over the 5-minute collection period. To see a clear, sustained spike, run the stress test for at least **6-10 minutes** (300-600 seconds) to span multiple collection intervals.
-
-### Enable Detailed Monitoring (Optional)
-
-For 1-minute metric granularity:
-
-1. Navigate to EC2 → Instances.
-
-2. Select `StressTest-EC2`.
-
-3. Click **Actions** → **Monitor and troubleshoot** → **Manage detailed monitoring**.
-
-4. Check **Enable** detailed monitoring.
-
-5. Click **Save**.
-
-6. Wait 1-2 minutes, then run stress test again.
-
-7. CloudWatch will now show data points every 1 minute instead of 5.
-
-> [!WARNING] Detailed Monitoring Cost
-> Detailed Monitoring costs $2.10/instance/month (7 metrics × $0.30/metric). For this lab, Basic Monitoring (free) is sufficient. Only enable Detailed Monitoring if you need faster metric collection for Auto Scaling or troubleshooting.
 
 ## Phase 7: Real-Time Monitoring with Linux Tools
 
@@ -385,8 +314,6 @@ Monitor CPU usage directly on the instance for immediate feedback.
    - **%CPU column:** Per-process CPU usage
 
 3. Press `1` to display all CPUs individually (for multi-core instances).
-
-4. Press `q` to quit top.
 
 ### Using htop Command (Enhanced Visualization)
 
@@ -511,13 +438,6 @@ Verify successful completion:
 
 :::
 
-> [!TIP] Zero Cost Lab
-> This lab can be completed at zero cost if you:
-> - Use free tier eligible instance (t2.micro or t3.micro)
-> - Complete within 1 hour
-> - Use Basic Monitoring (not Detailed)
-> - Terminate instance immediately after completion
-
 
 ### Cleanup
 
@@ -598,3 +518,29 @@ You have successfully performed CPU stress testing on an Amazon EC2 instance and
 4. Why is the stress-ng timeout parameter important, especially in cloud environments?
 
 5. How would you use stress testing to validate an Auto Scaling Group configuration?
+
+::: details Quick Start Commands
+
+```bash
+# Connect to EC2
+ssh -i your-key-file.pem ec2-user@<Public-IP-Address>
+# Update packages
+sudo dnf update -y
+
+# Install Apache
+sudo dnf install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+# Install stress-ng
+sudo dnf install stress-ng -y
+
+# Run CPU stress test
+stress-ng --cpu 4 --timeout 120
+
+# Monitor CPU usage
+top
+# or
+htop
+```
+:::
