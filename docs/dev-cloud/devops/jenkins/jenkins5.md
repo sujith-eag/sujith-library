@@ -295,19 +295,19 @@ sudo systemctl restart jenkins
 - **For Public Repositories**: No authentication is required. Jenkins can clone the repo directly using the HTTPS URL without credentials.
     
 - **For Private Repositories or to Avoid Rate Limits**: Configure authentication as follows:
-    
-	- **SSH Method**:
-		- Switch to the jenkins user: `sudo -su jenkins`.
-		- Generate an SSH key and add it to GitHub (ensure the key has read access to the repo).
-		- Add GitHub to known hosts:
+- **Token Method**:
+	- Generate a fine-grained personal access token with read-only permissions (e.g., Contents: Read).
+	- In Jenkins, go to **Manage Jenkins > Credentials > Global > Add Credentials**. Select "Username and Password," use the ID `github_token`, enter your GitHub username and the token as password.
+
+- **SSH Method**:
+	- Switch to the jenkins user: `sudo -su jenkins`
+	- Generate an SSH key and add it to GitHub (ensure the key has read access to the repo).
+	- Add GitHub to known hosts:
             
 ```bash
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 chmod 600 ~/.ssh/known_hosts
 ```
-- **Token Method**:
-	- Generate a fine-grained personal access token with read-only permissions (e.g., Contents: Read).
-	- In Jenkins, go to **Manage Jenkins > Credentials > Global > Add Credentials**. Select "Username and Password," use the ID `github_token`, enter your GitHub username and the token as password.
 :::
 
 ### Jenkinsfile Definitions
@@ -470,6 +470,8 @@ minikube status
 > If you encounter issues with the default driver, try specifying `--driver=docker` in the `minikube start` command.
 > check with `minikube status`
 > Delete existing cluster with `minikube delete` and restart if needed.
+> 
+> Error can also happen because of kvm and needs to be disabled.
 
 
 ```bash
@@ -504,8 +506,6 @@ kubectl expose deployment <app-name> --type=NodePort --port=<app_port>
 ```
 
    - Flask Example: `kubectl expose deployment my-webapp --type=NodePort --port=5000`
-   - Maven Example: `kubectl expose deployment my-maven-app --type=NodePort --port=8080`
-   - React Example: `kubectl expose deployment my-react-app --type=NodePort --port=80`
 
 3. **Verify Service**: Retrieve the URL to access the application.
     

@@ -519,7 +519,15 @@ You have successfully performed CPU stress testing on an Amazon EC2 instance and
 
 5. How would you use stress testing to validate an Auto Scaling Group configuration?
 
-::: details Quick Start Commands
+::: details Quick Start Guide
+### Quick Start Guide
+1. Launch Amazon Linux 2023 EC2 instance (t3.micro) with SSH access.
+2. Connect via SSH using your key pair.
+3. (Optional) Install Apache web server and verify it's running.
+4. Install stress-ng tool using dnf package manager.
+5. Run CPU stress test: `stress-ng --cpu 4 --timeout 120`.
+6. Monitor CPU utilization in CloudWatch Metrics console.
+7. Use top/htop commands on EC2 to observe real-time CPU load.
 
 ```bash
 # Connect to EC2

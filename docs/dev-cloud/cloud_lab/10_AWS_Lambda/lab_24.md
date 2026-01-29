@@ -61,7 +61,7 @@ flowchart TD
    - Open Lambda: AWS Console → Search Lambda → Open AWS Lambda.
    - Click **Create function** and select **Author from scratch**.
    - Function name: `StudentGradeLogger`
-   - Runtime: Python 3.11
+   - Runtime: Python 3.14
    - Architecture: x86_64 (default)
    - Permissions: Create a new role with basic Lambda permissions.
    - Click **Create function**.
@@ -126,7 +126,6 @@ def lambda_handler(event, context):
 3. **Test with Input Events (JSON)**:
    - Create a test event (Valid case): Go to **Test** → **Configure test event**.
      - Event name: `ValidInput`
-     - JSON:
        ```json
        {
          "StudentName": "Anita",
@@ -199,5 +198,4 @@ Successfully created serverless Lambda functions with business logic, logging, a
 2. Add business logic code to process input events and log to CloudWatch.
 3. Create test events for valid and invalid inputs; run tests.
 4. View execution logs in CloudWatch to verify outputs.
-5. (Optional) Create SNS topic and integrate with Lambda for notifications.
 :::

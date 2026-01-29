@@ -131,12 +131,12 @@ def lambda_handler(event, context):
     
 3. **Create a test event**: Name it `PaymentFailed` with the following JSON:
    Lambda → Test tab → Create new test event 
-    ```json
-    {
-      "eventType": "PAYMENT_FAILED",
-      "user": "Anita"
-    }
-    ```
+```json
+{
+    "eventType": "PAYMENT_FAILED",
+    "user": "Anita"
+}
+```
     
 4. **Run Test**: Click **Test**. Check your email for a notification with the subject `PAYMENT_FAILED [HIGH]`.
 	Message: “Hi Anita, your payment has failed. Please retry.”
@@ -177,15 +177,10 @@ Verify these prints exist:
 ### Cleanup
 
 ::: details Cleanup
-
 1. Delete Lambda functions: `StudentGradeLogger` and `NotificationSimulator`.
-    
 2. Delete SNS Topic: `NotificationTopic`.
-    
 3. Delete CloudWatch Log Groups associated with the functions.
-    
 4. Delete the IAM roles if they are not used elsewhere.
-
 :::
 
 ## Result
@@ -205,6 +200,12 @@ Successfully created serverless Lambda functions with business logic, logging, a
 2. Create Lambda function with Python runtime and basic execution role.
 3. Add business logic code to process input events and publish to SNS.
 4. Create test events for different scenarios; run tests.
+```
+{
+    "eventType": "PAYMENT_FAILED",
+    "user": "Anita"
+}
+```
 5. View execution logs in CloudWatch to verify outputs.
 5. Check email for SNS notifications.
 :::

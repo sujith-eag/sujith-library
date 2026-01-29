@@ -270,24 +270,16 @@ Outputs:
 
 ### Troubleshooting (common)
 
-::: Troubleshooting
-1. **Website not opening:**
-    
-    - Wait 1–2 minutes (UserData takes time).
-        
-    - Check if Security Group has **HTTP 80** open.
-        
-    - Ensure firewall allows HTTP (configured in UserData).
-        
-    - Ensure you selected a **public subnet** for S3 access.
-        
+::: deails Troubleshooting
+1. **Website not opening:**    
+  - Wait 1–2 minutes (UserData takes time).
+  - Check if Security Group has **HTTP 80** open.
+  - Ensure firewall allows HTTP (configured in UserData).
+  - Ensure you selected a **public subnet** for S3 access.
 2. **Stack-2 fails with S3 access error:**
-    
-    - BucketName typed incorrectly.
-        
-    - `index.html` not uploaded at the root of the bucket.
-        
+  - BucketName typed incorrectly.
 
+  - `index.html` not uploaded at the root of the bucket.
 :::
 
 ### Cost Considerations
@@ -310,8 +302,6 @@ Outputs:
 2. **Empty the S3 bucket:** Delete `index.html`.
     
 3. **Delete Stack-1:** `S3-Website-Bucket`.
-    
-
 :::
 
 ## Result

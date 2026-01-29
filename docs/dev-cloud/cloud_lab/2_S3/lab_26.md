@@ -219,7 +219,17 @@ Successfully implemented serverless data analysis using Amazon Athena to query C
 ### Quick Start Guide
 1. Create a sample CSV file with student data.
 2. Create an S3 bucket and upload the CSV file.
-3. Set up Athena query result location in S3.
+3. Set up Athena query result location in S3 bucket folder.
 4. Create a database and external table in Athena referencing the CSV.
+```
+create database labdb;
+create external table students (...);
+```
 5. Run SQL queries to analyze the data (counts, averages, filtering).
+```
+select * from students;
+select count(*) from students;
+select dept, avg(marks) from students group by dept;
+select * from students where result='Fail';
+```
 :::

@@ -69,11 +69,11 @@ flowchart TD
     - **VPC:** Default VPC
     - **Security Group Name:** `SG-RedisClient`
     - **Inbound Rules:** | Type: SSH | Port: 22 | Source : 0.0.0.0/0 |
+    - **Outbound rules:** Allow all (default)
 
 > [!IMPORTANT]
-> Do NOT add Redis (6379) here. The client does not listen on 6379.
+> Add Redis 6379 and 6380 also for durabilty. The client does not listen on 6379.
 
-- **Outbound rules:** Allow all (default)
 
 4. Connect & Install Client
     Connect via EC2 Instance Connect and run:
@@ -109,59 +109,27 @@ valkey-cli --version
 
 4. Choose Deployment Settings
     - **Deployment option:** Serverless
-    - **Creation method:** Easy create
 
 > [!TIP]
 > Serverless deployment provides automatic scaling and simplifies management for development and testing.
 
-5. Select Configuration
-    - **Configuration:** Demo
-    - This automatically selects suitable defaults for labs and practice
-
-6. Provide Cluster Information
+5. Provide Cluster Information
     - **Cache name:** `lab-valkey`
-    - **Description:** Optional (`lab-valkey`)
 
-7. Configure Network
+6. Configure Network
     - **VPC:** Default VPC
-    - **Security Group:** Create or select a security group named **SG-ValkeyCache**
-    - **Inbound Rule for Valkey:** Add **one inbound rule** to SG-ValkeyCache:
-    | Type | Port | Source |
-    |------|------|--------|
-    | Custom TCP | 6379 | SG-RedisClient |
+    - **Security Group:** Security group with port 6379, 6380 access from EC2
 
-> [!NOTE]
-> This allows only the EC2 client to access Valkey.
-
-8. Configure Security and Encryption
-    - **Authentication:** Enabled
-        - Set a strong password (e.g., `MySecurePass123!`)
-        - Note: Store this password securely; you'll need it to connect
-    - **Encryption in transit:** Enabled
-    - **Encryption at rest:** Enabled (using AWS managed key)
-
-> [!IMPORTANT]
-> Enabling authentication and encryption follows AWS security best practices for production workloads.
-
-9. Create Cache
-
-    1. Review all settings
-    2. Click **Create**
-    3. Wait until **Status = Available** (This may take a few minutes)
-
-10. Note the Valkey Endpoint
+7. Note the Valkey Endpoint
     1. Click on the cache name `lab-valkey`
     2. Copy the **Serverless endpoint** (for serverless deployment)
-       - Example: `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com`
-    3. If using cluster mode, copy the **Configuration endpoint**
-       - Example: `clustercfg.lab-valkey-xxxxxx.use1.cache.amazonaws.com:6379`
-    4. This endpoint will be used in Phase-3 to connect from EC2
+    3. This endpoint will be used in Phase-3 to connect from EC2
 
 > [!NOTE]
-> For serverless deployment, use the serverless endpoint. For cluster mode, use the configuration endpoint and add `-c` flag to valkey-cli for cluster support.
+> Can Use cloudshell to run valkey commands if EC2 is not preferred.
+> Connect to Compute allows connecting to EC2 created in Phase-1 automatically.
 
 **Verification:** Confirm cache status is "Available" and endpoint is noted.
-
 
 ## Phase 3: Connect EC2 to ElastiCache Valkey and Execute Cache Commands
 
@@ -170,7 +138,6 @@ valkey-cli --version
 ### Pre-checks
 
 Before connecting, confirm:
-
 - EC2 and ElastiCache are in the same AWS region
 - EC2 security group = `SG-RedisClient`
 - Valkey security group = `SG-ValkeyCache`
@@ -186,24 +153,13 @@ Before connecting, confirm:
     4. Choose **EC2 Instance Connect** and click **Connect**
     5. You are now inside the EC2 terminal
 
-2. Verify Valkey Client
-
-```bash
-valkey-cli --version
-```
-
-3. Connect to ElastiCache Valkey
+2. Connect to ElastiCache Valkey
 
 Use the Serverless Endpoint from Phase-2 and the password:
 
 ```bash
-valkey-cli -h <Serverless_ENDPOINT> -p 6379 -a <PASSWORD>
-```
+valkey-cli -tls -h <Serverless_ENDPOINT> -p 6379
 
-For cluster mode, use the Configuration endpoint:
-
-```bash
-valkey-cli -h <Configuration_ENDPOINT> -p 6379 -a <PASSWORD> -c
 ```
 
 **Expected Result:** You should see a prompt like `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com:6379>`. This means the connection is successful.
@@ -267,9 +223,6 @@ GET notice
 ```
 
 **Expected Output:** `(nil)`
-
-> [!NOTE]
-> Confirms data is automatically removed from memory.
 
 #### 4.6 Delete Data Manually
 
@@ -356,16 +309,25 @@ Successfully deployed an ElastiCache Valkey serverless cache with encryption and
 ::: details Quick Start Guide
 ### Quick Start Guide
 1. Launch EC2 instance with Amazon Linux 2023 and install valkey-cli.
+    - Allow Port 6379 and 6380 in security group.
 ```bash
 sudo dnf install -y valkey
 valkey-cli --version
-
-valkey-cli -h <Serverless_ENDPOINT> -p 6379 -a <PASSWORD>
-valkey-cli -h <Configuration_ENDPOINT> -p 6379 -a <PASSWORD> -c
-valkey-cli -h lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com -p 6379 -a MySecurePass123!
 ```
-2. Create ElastiCache Valkey serverless cache with authentication and encryption.
-3. Connect EC2 to ElastiCache using valkey-cli with endpoint and password.
+2. Create ElastiCache Valkey serverless cache.
+    - Connect to EC2 and choose the Created instance.
+3. Connect EC2 to ElastiCache using valkey-cli with endpoint url.
 4. Execute Valkey commands: PING, SET/GET, INCR, TTL, DEL.
+```
+PING
+SET course "Cloud Computing"
+GET course
+INCR visits
+TTL notice
+SET notice "Results Published" EX 60
+GET notice
+DEL course
+GET course
+```
 5. Verify data storage, retrieval, expiry, and deletion.
 :::

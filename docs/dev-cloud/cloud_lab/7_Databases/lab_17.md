@@ -202,13 +202,11 @@ nano db_config.py
 
 2. Enter configuration (will update endpoint after RDS creation):
 ```python
-import os
-
 db_config = {
-   'host': os.environ.get('RDS_HOST', 'PLACEHOLDER-RDS-ENDPOINT'),
-   'user': os.environ.get('RDS_USER', 'admin'),
-   'password': os.environ.get('RDS_PASSWORD', 'YourPasswordHere'),
-   'database': os.environ.get('RDS_DB', 'flaskdb')
+   'host': 'PLACEHOLDER-RDS-ENDPOINT',
+   'user': 'admin',
+   'password': 'YourPasswordHere',
+   'database': 'flaskdb'
 }
 ```
 
@@ -444,7 +442,7 @@ nano templates/login.html
 2. **Settings:**
    - **DB instance identifier:** `flaskdb-instance`
    - **Master username:** `admin`
-   - **Master password:** `Flask123!` (or your strong password)
+   - **Master password:** `Flask123!`
    - **Confirm password:** `Flask123!`
 
 ### Step 11: DB Instance Configuration
@@ -452,7 +450,7 @@ nano templates/login.html
 1. **DB instance class:**
    - **Burstable classes:** `db.t3.micro`
    - 1 vCPU, 1 GB RAM
-   - Note: NOT free tier eligible (~$0.017/hour)
+   - Note: NOT free tier eligible
 
 2. **Storage:**
    - Storage type: General Purpose SSD (gp3)
@@ -561,21 +559,21 @@ nano templates/login.html
 4. In MySQL prompt:
 
    If you created initial database `flaskdb` during RDS setup, switch to it:
-   ```sql
-   CREATE DATABASE flaskdb;
-   
-   USE flaskdb;
-   ```
+```sql
+CREATE DATABASE flaskdb;
+
+USE flaskdb;
+```
    Expected: `Database changed`
 
 5. Create users table:
-   ```sql
-   CREATE TABLE users (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       name VARCHAR(50) NOT NULL,
-       password VARCHAR(50) NOT NULL
-   );
-   ```
+```sql
+CREATE TABLE users (
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   name VARCHAR(50) NOT NULL,
+   password VARCHAR(50) NOT NULL
+);
+```
    Expected: `Query OK, 0 rows affected`
 
 3. Verify table creation:
@@ -627,8 +625,6 @@ nano templates/login.html
 
 3. Update with actual RDS endpoint and password:
 ```python
-import os
-
 db_config = {
    'host': 'flaskdb-instance.abcdef123456.us-east-1.rds.amazonaws.com',
    'user': 'admin',
@@ -636,7 +632,6 @@ db_config = {
    'database': 'flaskdb'
 }
 ```
-   Replace endpoint and password with your actual values.
 
 4. Save: Ctrl+O, Enter, Ctrl+X.
 
@@ -862,7 +857,7 @@ A fully working cloud-based registration and login system was successfully deplo
 
 ::: details Quick Start Guide
 ### Quick Start Guide
-1. Launch EC2 instance with Amazon Linux 2023, t3.micro, security group allowing SSH (22) and HTTP (5000).
+1. Launch EC2 instance, security group allowing SSH (22) and HTTP (5000).
 2. Connect to EC2 via Instance Connect, update packages, install Python3, pip, Flask, mysql-connector-python, and MariaDB client.
 ```bash
 sudo dnf update -y
@@ -871,7 +866,7 @@ pip3 install flask mysql-connector-python
 sudo dnf install mariadb105 -y
 ```
 3. Create Flask project structure with `app.py`, `db_config.py`, and HTML templates
-4. Create RDS MySQL instance (db.t3.micro), connect to EC2, set Public access = No, note endpoint.
+4. Create RDS MySQL instance, connect to EC2, set Public access = No, note endpoint.
 5. Verify RDS security group allows MySQL (3306) from EC2 security group
 6. Connect to RDS from EC2 using MariaDB client, create `flaskdb` database and `users` table.
 7. Update `db_config.py` with actual RDS endpoint and password.
