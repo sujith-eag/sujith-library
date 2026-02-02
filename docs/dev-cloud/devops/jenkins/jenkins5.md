@@ -40,7 +40,6 @@ COPY . .
 EXPOSE 5000
 CMD ["python","app.py"]
 ```
-:::
 
 5. **Local Testing**: Build and run the Docker image locally to verify.
     
@@ -48,6 +47,8 @@ CMD ["python","app.py"]
 docker build -t my_webapp .
 docker run -p 5000:5000 my_webapp:latest
 ```
+:::
+
 
 ### Maven Spring Boot Application
 
@@ -68,9 +69,11 @@ docker run -p 5000:5000 my_webapp:latest
    - Click Generate to download the ZIP file.
    
    Extract the ZIP file into your working directory.
-    
+:::
+
 2. Add a **`HomeController.java`** file with rest controller at `src/main/java/com/example/my_maven_app/`
 
+::: details Java and Dockerfile
 ```java
 package com.example.my_maven_app;
 
@@ -85,16 +88,8 @@ public class HomeController {
     }
 }
 ```
-:::
 
-3. **Local Build**: Install Maven and build the project while skipping tests.
-    
-```bash
-sudo apt install maven
-mvn clean package -DskipTests
-```
-
-4. **`Dockerfile`**: Configure the container for the Java application.
+3. **`Dockerfile`**: Configure the container for the Java application.
     
 ```dockerfile
 FROM eclipse-temurin:21-jdk-alpine
@@ -102,6 +97,13 @@ WORKDIR /app
 COPY target/*.jar app.jar
 EXPOSE 8080
 CMD ["java","-jar","app.jar"]
+```
+
+4. **Local Build**: Install Maven and build the project while skipping tests.
+    
+```bash
+sudo apt install maven
+mvn clean package -DskipTests
 ```
 
 5. **Local Testing**: Build and run the Docker image locally to verify.
@@ -112,11 +114,15 @@ docker run -p 10000:8080 my_maven_app:latest
 ```
 
    - Open `localhost:10000` in your browser to verify the application displays "Hello from Spring Boot Maven App!".
+:::
+
 
 ### React Web Application (Using Vite)
 
 1. **Initialize Directory**: Create a folder named `my_react_app` and navigate into it.
-    
+
+::: details React Setup
+
 2. **Create Vite App**: Use Vite to scaffold the application.
     
 ```bash
@@ -165,8 +171,124 @@ docker run -p 3000:80 my_react_app:latest
 
    - Open `localhost:3000` in your browser to verify the React app loads.
 
+:::
+
+
+### Jenkinsfile Setup
+
+Create a `Jenkinsfile` in the root of your project directory.
+
+**Flask/Maven/React Pipeline Example:**
+
+The Cron job can be added at the trigger section in the pipeline instead of the code also as `H/5 * * * *`
+
+::: details Jenkinsfile
+```groovy
+pipeline {
+	agent any
+	
+	// Use only if Cron job is needed, Remove for manual
+	triggers {
+		cron('H/5 * * * *')  // Runs every 5 minutes
+	}
+
+	environment {
+		DOCKERHUB_CRED=credentials('dockerhub')
+		IMAGE_NAME="<docker_hub_username>/<docker_hub_repo_name>"
+	}
+	
+	stages {
+		stage('checkout') {
+			steps {
+				git url:'https://github.com/<username>/<repo>.git', branch:'main'
+				// For SSH: 
+				// git url:'<github_repo_ssh_url>', branch:'main'
+			}
+		}
+
+	// Stage only for a Maven project, skip for others
+		stage('Build Maven Project') {
+			steps {
+				retry(3) {
+					sh "mvn clean package -DskipTests"
+				}
+			}
+		}
+
+	// Only for React Project, skip for others
+		stage('Install Dependencies and Build React App') {
+			steps {
+				retry(3) {
+					sh 'npm install'
+					sh 'npm run build'
+				}
+			}
+		}
+
+	// Note: No build stage needed for Flask as it's a simple Python script
+
+		stage('Build Docker Image') {
+			steps {
+				retry(3) {
+					script {
+						dockerImage=docker.build("${IMAGE_NAME}:latest")
+					}
+				}
+			}
+		}
+		
+		stage('Push to DockerHub') {
+			steps {
+				retry(3) {
+					script {
+						docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
+							dockerImage.push()
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	post {
+		success {
+			echo "Pipeline Successful"
+		}
+		failure {
+			echo "Pipeline Failed"
+		}
+		always {
+			echo "Cleaning Up WorkSpace"
+			deleteDir()
+		}
+	}
+}
+```
+:::
+
+For cron-based pipelines, the trigger automatically starts the pipeline at set intervals (e.g., every 5 minutes) without manual intervention.
+
+::: details Pipeline Stages
+
+- **Checkout Stage**: Jenkins clones the repository from GitHub using the specified branch (e.g., main). This pulls the latest code changes.
+- **Build Stages** (varies by app):
+  - Flask: Not needed (app is simple).
+  - Maven: `mvn clean package -DskipTests` compiles and packages the JAR, skipping tests for speed.
+  - React: `npm install` installs dependencies, `npm run build` creates production build.
+- **Docker Build Stage**: Builds the Docker image using the Dockerfile, tagging it with the IMAGE_NAME.
+- **Push to DockerHub Stage**: Logs into Docker Hub and pushes the image for storage and deployment.
+- **Deploy Stage** (varies):
+  - Docker Swarm: Uses `docker service create` or `docker stack deploy` to run the container on the Swarm cluster.
+  - Kubernetes: Uses `kubectl apply` to deploy pods/services on the K8s cluster.
+- **Post Actions**: Logs success/failure and cleans up the workspace.
+:::
+
 
 ## 2. Source Control & Repository Configuration
+
+### Docker Hub Setup
+
+1. Log in to Docker Hub and create new repositories named `my_webapp` and `my_maven_app`.
 
 ### GitHub Initialization
 
@@ -223,13 +345,10 @@ git push origin main
    - For automation, you can configure Git to store credentials, but be cautious with security.
 :::
 
-### Docker Hub Setup
 
-1. Log in to [Docker Hub](https://hub.docker.com/) and create new repositories named `my_webapp` and `my_maven_app`.
-    
 ## 3. Jenkins CI/CD Pipeline Configuration
 
-::: details Jenkins Setup
+::: details Jenkins Installation
 
 ```bash
 sudo apt update
@@ -266,6 +385,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 `http://localhost:8080`
 
 :::
+
 ### Plugin & System Requirements
 
 1. **Install Plugins**: Ensure the following are installed: **Git**, **Pipeline**, **Docker Pipeline**, and **Credential Binding**.
@@ -283,11 +403,11 @@ sudo systemctl restart docker
 sudo systemctl restart jenkins
 ```
 
-### Credentials & Security
+### Credentials
 
 1. **Docker Hub Credentials**: Go to **Manage Jenkins > Credentials > Global > Add Credentials**. Select "Username and Password," use the ID `dockerhub`, and enter your Docker Hub credentials.
     
-2. **GitHub Access for Jenkins (Optional for Public Repos)**:
+2. **(Optional for Public Repos) GitHub Access for Jenkins**:
     
     Jenkins only needs to pull (clone) the repository code for building and does not push back to GitHub. Only Docker Hub push occurs.
 
@@ -303,131 +423,12 @@ sudo systemctl restart jenkins
 	- Switch to the jenkins user: `sudo -su jenkins`
 	- Generate an SSH key and add it to GitHub (ensure the key has read access to the repo).
 	- Add GitHub to known hosts:
-            
+
 ```bash
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 chmod 600 ~/.ssh/known_hosts
 ```
 :::
-
-### Jenkinsfile Definitions
-
-Create a `Jenkinsfile` in the root of your project directory.
-
-**Flask/Maven/React Pipeline Example:**
-
-The Cron job can be added at the trigger section in the pipeline instead of the code also as `H/5 * * * *`
-
-::: details
-```groovy
-pipeline {
-	agent any
-	
-// Use only if Cron job is needed, Remove for manual
-	triggers {
-		cron('H/5 * * * *')  // Runs every 5 minutes
-	}
-	
-	environment {
-		DOCKERHUB_CRED=credentials('dockerhub')
-		IMAGE_NAME="<docker_hub_username>/<docker_hub_repo_name>"
-	}
-	
-	stages {
-		stage('checkout') {
-			steps {
-				//For Public Repo:
-				git url:'https://github.com/<username>/<repo>.git', branch:'main'
-				// For SSH: 
-				// git url:'<github_repo_ssh_url>', branch:'main'
-			}
-		}
-		
-// Stage only for a Maven project, skip for others
-		stage('Build Maven Project') {
-			steps {
-				retry(3) {
-					sh "mvn clean package -DskipTests"
-				}
-			}
-		}
-
-// Only for React Project, skip for others
-		stage('Install Dependencies and Build React App') {
-			steps {
-				retry(3) {
-					sh 'npm install'
-					sh 'npm run build'
-				}
-			}
-		}
-
-// Note: No build stage needed for Flask as it's a simple Python script
-
-		stage('Build Docker Image') {
-			steps {
-				retry(3) {
-					script {
-						dockerImage=docker.build("${IMAGE_NAME}:latest")
-					}
-				}
-			}
-		}
-		
-		stage('Push to DockerHub') {
-			steps {
-				retry(3) {
-					script {
-						docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
-							dockerImage.push()
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	post {
-		success {
-			echo "Pipeline Successful"
-		}
-		failure {
-			echo "Pipeline Failed"
-		}
-		always {
-			echo "Cleaning Up WorkSpace"
-			deleteDir()
-		}
-	}
-}
-```
-:::
-
-3. **Commit and Push the Jenkinsfile**: Add the jenkinsfile to Git and push to GitHub.
-    
-```bash
-git add .
-git commit -m "Added jenkinsfile"
-git push origin main
-```
-
-### Pipeline Stage Explanations
-::: details
-
-- **Checkout Stage**: Jenkins clones the repository from GitHub using the specified branch (e.g., main). This pulls the latest code changes.
-- **Build Stages** (varies by app):
-  - Flask: Not needed (app is simple).
-  - Maven: `mvn clean package -DskipTests` compiles and packages the JAR, skipping tests for speed.
-  - React: `npm install` installs dependencies, `npm run build` creates production build.
-- **Docker Build Stage**: Builds the Docker image using the Dockerfile, tagging it with the IMAGE_NAME.
-- **Push to DockerHub Stage**: Logs into Docker Hub and pushes the image for storage and deployment.
-- **Deploy Stage** (varies):
-  - Docker Swarm: Uses `docker service create` or `docker stack deploy` to run the container on the Swarm cluster.
-  - Kubernetes: Uses `kubectl apply` to deploy pods/services on the K8s cluster.
-- **Post Actions**: Logs success/failure and cleans up the workspace.
-:::
-
-For cron-based pipelines, the trigger automatically starts the pipeline at set intervals (e.g., every 5 minutes) without manual intervention.
 
 ### Creating the Jenkins Pipeline Job
 
@@ -467,12 +468,28 @@ minikube status
 ```
 
 > [!NOTE] minikube issue
-> If you encounter issues with the default driver, try specifying `--driver=docker` in the `minikube start` command.
+> If you encounter issues with the default driver, try `minikube start --driver=docker`
 > check with `minikube status`
 > Delete existing cluster with `minikube delete` and restart if needed.
-> 
 > Error can also happen because of kvm and needs to be disabled.
 
+::: details kvm disable
+
+To stop kvm modules temporarily for the current session:
+
+```bash
+sudo modprobe -r kvm_intel
+sudo modprobe -r kvm_amd
+sudo modprobe -r kvm
+```
+To start kvm modules again:
+
+```bash
+sudo modprobe kvm
+sudo modprobe kvm_intel  # For Intel CPUs
+sudo modprobe kvm_amd    # For AMD CPUs
+```
+:::
 
 ```bash
 sudo snap install kubectl --classic
@@ -482,10 +499,16 @@ kubectl version --client
 kubectl cluster-info
 ```
 
-2. **Docker Authentication in Minikube**:
-    
+2. If using private Docker Hub repo, login to Docker Hub:
+
+Docker Authentication in Minikube
+
 ```bash
 eval $(minikube docker-env)
+```
+This command tells your local terminal's Docker client to talk to the Docker engine inside the Minikube virtual machine instead of your host machine's Docker engine.
+
+```bash
 docker login
 ```
 
@@ -498,6 +521,24 @@ kubectl create deployment <app-name> --image=<username>/<repo>:<tag>
 ```
 
    - Example: `kubectl create deployment my-webapp --image=myuser/my_webapp:latest`
+
+::: details kubernetes Notes
+- This command creates a Deployment named `<app-name>` that manages a Pod running the specified Docker image.
+- By default, Kubernetes creates a single replica of the Pod. You can scale this later.
+- To verify the deployment, run:
+```bash
+kubectl get deployments
+kubectl get pods
+```
+
+To Scale your application to 3 replicas, run:
+```bash
+kubectl scale deployment/my-webapp --replicas=3
+
+kubectl get pods
+```
+You should be able to see all three instances starting up or running
+:::
 
 2. **Expose Port**: Make the application accessible.
     
@@ -513,55 +554,50 @@ kubectl expose deployment <app-name> --type=NodePort --port=<app_port>
 minikube service <app-name>
 ```
 
-::: details 
-   - This command tunnels the Minikube service to localhost and opens the browser. If it doesn't work, check service status with `kubectl get services` and pod status with `kubectl get pods`. 
-   - Ensure the app binds to `0.0.0.0` inside the container (already configured in Dockerfiles).
+::: details kubernetes Troubleshooting
+- This command tunnels the Minikube service to localhost and opens the browser.
+- **No Access**: Ensure `minikube service` is run in a terminal (it starts a tunnel). 
+- Check for running status 
+```bash
+minikube status
+kubectl get pods
+kubectl get services
+```
+- **Image Issues**: Verify the image exists on Docker Hub and is public or authenticated.
+- **Port Binding**: Apps are configured to bind to `0.0.0.0`; if custom, ensure Dockerfile CMD exposes correctly.
 :::
 
 4. **Cleanup**:
     
 ```bash
 kubectl delete deployment <app-name>
+
 kubectl delete service <app-name>
+
 minikube stop
 ```
 
-::: details
-#### Troubleshooting Kubernetes Deployment:
-- **No Access**: Ensure `minikube service` is run in a terminal (it starts a tunnel). Check `minikube status` and `kubectl get pods` for running status.
-- **Image Issues**: Verify the image exists on Docker Hub and is public or authenticated.
-- **Port Binding**: Apps are configured to bind to `0.0.0.0`; if custom, ensure Dockerfile CMD exposes correctly.
-:::
 
-```
-unset DOCKER_TLS_VERIFY DOCKER_HOST DOCKER_CERT_PATH DOCKER_MACHINE_NAME
-```
-
-When you run `eval $(minikube docker-env)`, it sets these variables to redirect all `docker` commands to the Minikube cluster. If Minikube is stopped or the network has changed, local commands will fail.
-
-
-## 5. Docker Swarm Deployment (Alternative)
+## 5. Docker Swarm Deployment
 
 ### Environment Initialization
 
 1. **Initialize Docker Swarm**:
-    
+
+Use `hostname -I` to get your machine's IP address.
+Use the first IP address from the output to initialize the swarm.
+
 ```bash
-docker swarm init
+docker swarm init --advertise-addr <your_machine_ip>
 ```
 
    - This sets up the current node as a Swarm manager.
 
-If error occurs:  `sudo docker swarm init --advertise-addr 127.0.0.1`
+2. If using private Docker Hub repo, login to Docker Hub:
 
-
-2. **Docker Hub Authentication**:
-    
 ```bash
 docker login
 ```
-
-   - Enter your Docker Hub username and password. This allows pulling private images or avoids rate limits on public pulls.
 
 ### Service Management
 
@@ -588,12 +624,107 @@ docker service ls
 docker service ps <app-name>
 ```
 
-   - Access the app at `localhost:<host_port>` (e.g., `localhost:5000` for Flask). 
+   - Access the app at `machine_ip:host_port` in your browser.
    - If not accessible, check service logs with `docker service logs <app-name>` and ensure the container exposes the port correctly.
 
 4. **Cleanup**:
     
 ```bash
 docker service rm <app-name>
+
 docker swarm leave --force
 ```
+
+
+## Alternative: Orchestration with Docker Stack
+
+While `docker service` is useful for single containers, **Docker Stack** is the production-standard for Swarm. It allows for defining the entire application state (scaling, networking, and resource limits) in a single file.
+
+::: details stack benefits
+- **Declarative State**: Unlike manual commands, a Stack file defines the _desired state_. If a node fails, Swarm automatically re-distributes containers to match the YAML definition.
+    
+- **Overlay Networking**: Docker Stack automatically creates an isolated virtual network that allows containers across different physical hosts to communicate securely.
+    
+- **The Routing Mesh**: When you publish a port in a Stack, Docker opens that port on _every_ node in the cluster. Even if a container isn't running on a specific node, the Routing Mesh forwards the traffic to a node that has the container.
+:::
+
+::: details Implementation Steps
+
+#### 1. Create the Stack Definition
+
+Create a file named `docker-stack.yml` in your project root. This configuration works for your Flask, Maven, or React images by simply changing the image name.
+
+```yaml
+version: '3.8'
+services:
+  webapp:
+    image: <docker_hub_username>/<repo_name>:latest
+    ports:
+      - "5000:5000"  # Map Host Port 5000 to Container Port 5000 (Flask)
+    networks:
+      - app-net
+    deploy:
+      replicas: 2  # High availability: 2 instances running
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+networks:
+  app-net:
+    driver: overlay
+```
+
+#### 2. Initialize Swarm
+
+```bash
+docker swarm init
+```
+
+   - This sets up the current node as a Swarm manager.
+
+To avoid the networking issues found in manual setups, initialize using your machine's actual IP address rather than the loopback address.
+
+```bash
+# Get your local IP
+export MY_IP=$(hostname -I | awk '{print $1}')
+
+# Initialize Swarm
+docker swarm init --advertise-addr $MY_IP
+```
+
+#### 3. Deploy the Stack
+
+The `docker stack deploy` command sends the YAML configuration to the Swarm manager, which then schedules the tasks.
+
+Deploy the stack (named 'lab_stack')
+```bash
+docker stack deploy -c docker-stack.yml lab_stack
+```
+
+#### 4. Verification and Management
+
+- **List Stacks and Check service status**: 
+ 
+```bash
+docker stack ls.
+
+docker stack services lab_stack
+
+# List tasks in the stack
+docker stack ps lab_stack
+```
+- **Access the Application**: Open your browser and navigate to `http://<your_machine_ip>:5000` to see the application running.
+- **Scale Dynamically**: You can change the `replicas` in the YAML and re-run the `deploy` command; Docker will perform a rolling update without downtime.
+    
+### Cleanup
+
+To remove the entire application, including the network and all services:
+
+```bash
+docker stack rm lab_stack
+
+docker swarm leave --force
+```
+:::
