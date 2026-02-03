@@ -40,18 +40,19 @@ A context model typically shows the environment, which generally includes **seve
 Simple context models show the boundary and neighboring systems, but they do not explicitly show the types of relationships (e.g., data consumption/production, shared data, or network connectivity). Therefore, they must be used alongside other models, such as business process models.
 :::
 
-## Relevant Diagrams (Section 5.1)
+## Relevant Diagrams
 
 Two primary diagram types are employed to illustrate context and process.
 
 ### 1. The Context Model
 
 This simple architectural model shows the Mentcare system and the other automated systems in its environment.
- 
+
 - **Connectivity**: Shows links to external systems like Patient Records, Appointments, Admissions, Management Reporting, Prescriptions, and HC Statistics (collects research information).
 
+::: details Mentcare System Context Model
 ```mermaid
-flowchart TD
+flowchart LR
     Mentcare["«system»<br>Mentcare"]
     
     subgraph Environment [Operational Environment]
@@ -70,6 +71,7 @@ flowchart TD
     Mentcare --- PS
     Mentcare --- HCS
 ```
+:::
 
 ### 2. Process Model of Involuntary Detention (Activity Diagram)
 
@@ -78,11 +80,12 @@ flowchart TD
 **Diagram Elements:**
 
 - **Activities**: Rectangles with round corners representing subprocesses.
-    
-- **Coordination**: A **solid bar** indicates synchronization. Flows leading _from_ a bar represent parallel (concurrent) activities.
-    
-- **Guards**: Conditions in square brackets (e.g., `[dangerous]`) that determine flow.
-    
+
+- **Activity Coordination**: A **solid bar** indicates synchronization. Flows leading from a bar represent parallel (concurrent) activities. All of these activities must complete before proceeding.
+
+- **Guards**: Conditions annotated on the arrow in square brackets (e.g., `[dangerous]`) that determine flow.
+
+::: details Involuntary Detention Process
 ```mermaid
 flowchart TD
     Start((Start)) --> A1[Record detention decision]
@@ -110,6 +113,7 @@ flowchart TD
 
     Join1 --> End((End))
 ```
+:::
 
 ::: tip Parallel Execution
 
@@ -121,4 +125,3 @@ In the diagram above, the activities "Inform social care," "Inform next of kin,"
 - Draw a **context model for a Patient information system in a hospital** including a patient admission system and an image storage system; explain the necessity of a context diagram.
 - When are boundaries considered flexible vs clear? Give examples.
 :::
-

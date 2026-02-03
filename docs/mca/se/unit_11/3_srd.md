@@ -1,13 +1,13 @@
 # Software Requirements Document
 
-1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
-    
+    1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
+
 2. **Content:** The specification includes two primary types of requirements:
-    
+
     - **User requirements:** Abstract statements for customers and end-users, typically written in natural language.
-        
+
     - **System requirements:** Detailed functional and non-functional descriptions for developers; they may be written using more formal notations.
-        
+
 ## Notations for Requirements Specification
 
 Different notations are suitable for different audiences and levels of detail. User requirements are almost always written in **natural language** supplemented by diagrams, while system requirements may use natural language, graphical, or mathematical notations.
@@ -42,15 +42,15 @@ Natural language is popular because it is expressive and intuitive, but its flex
 To minimize ambiguity in natural language requirements, follow these guidelines:
 
 - **Standard Format:** Invent a standard format and ensure all requirements adhere to it. Write the requirement in one or two sentences.
-    
+
 - **Consistent Language:** Use language consistently to distinguish between **mandatory** requirements (usually using "**shall**") and desirable requirements ("should").
-    
+
 - **Highlighting:** Use text highlighting (bold, italic, or color) for key parts of the requirement.
-    
+
 - **Avoid Jargon:** Avoid technical jargon, abbreviations, and acronyms (like "architecture" or "module") that non-technical readers may misunderstand.
-    
+
 - **Rationale:** Whenever possible, associate a rationale with each user requirement to explain _why_ it was included and who proposed it (the source).
-    
+
 ## Structured Specifications
 
 Structured natural language uses a standard way of writing requirements (usually templates or forms) to maintain expressiveness while enforcing uniformity and organization.
@@ -70,25 +70,24 @@ graph LR
     Form --> Post(Postcondition);
     Form --> Side(Side Effects);
 ```
-
 :::
 
 **Form-Based Information:** Information typically included in a form-based structured specification:
-    
+
 - A **description** of the function or entity being specified.
-	
+
 - A description of its **inputs** and their origin.
-	
+
 - A description of its **outputs** and their destination.
-	
+
 - Information needed for the computation (**"requires"** part).
-	
+
 - A description of the **action** to be taken.
-	
+
 - **Precondition** (what must be true before the function is called) and **postcondition** (what is true after the function is called).
-	
+
 - A description of any **side effects** of the operation.
-	
+
 ### Natural Language Specification (User Requirements)
 
 Natural language specification is used for writing **user requirements** because it is expressive, intuitive, and universal, making it understandable by non-technical system users and customers.
@@ -140,27 +139,27 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 
 ### Analogy: The Blueprint for a Skyscraper
 
- The Software Requirements Document is like the blueprint for a skyscraper. 
- * It doesn't just show the pretty picture (the **user requirements**); 
- * it includes detailed structural diagrams (**system requirements**), material constraints (**non-functional requirements**), and 
- * a comprehensive log of decisions, ensuring that all tradesmen (developers, managers, testers) know exactly what must be built, how well it must stand up, and why it's needed.
+The Software Requirements Document is like the blueprint for a skyscraper. 
+* It doesn't just show the pretty picture (the **user requirements**); 
+* it includes detailed structural diagrams (**system requirements**), material constraints (**non-functional requirements**), and 
+* a comprehensive log of decisions, ensuring that all tradesmen (developers, managers, testers) know exactly what must be built, how well it must stand up, and why it's needed.
 
 ## The Software Requirements Document (SRD)
 
 1. **Requirements:** Descriptions of the services a system should provide and the constraints on its operation.
-    
+
 2. **Requirements Specification:** The process of writing down the user and system requirements into a document.
-    
+
 3. **Software Requirements Document (SRD) / Software Requirements Specification (SRS):** An official statement of what the system developers should implement. It may include both the user requirements for a system and a detailed specification of the system requirements.
-    
+
 4. **System Requirements Document (Functional Specification):** A detailed description of the software system’s functions, services, and operational constraints that defines **exactly what is to be implemented**. It may be part of the contract between the system buyer and the software developers.
-    
+
 5. **Ideal Document Quality:** Ideally, the requirements specified within the document should be clear, unambiguous, easy to understand, complete, and consistent.
-    
+
 6. **Structure and Architecture:** The requirements document may need an initial architectural design of the system to help organize the specification, particularly structuring the requirements according to the different subsystems.
-    
+
 7. **System-as-a-Whole Focus:** The document should generally describe only the **external behavior** of the system and its operational constraints, avoiding excessive detail about internal design or implementation.
-    
+
 
 ## Importance, Usage, and Level of Detail
 
@@ -169,11 +168,11 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 Requirements documents are critical under specific professional circumstances:
 
 - When systems are **outsourced** for development.
-    
+
 - When **different teams** develop different parts of the system.
-    
+
 - When a detailed analysis of the requirements is **mandatory** (e.g., for critical systems).
-    
+
 In contrast, agile methods often argue against detailed requirements documents, favoring short, incrementally collected **user stories** written on cards or whiteboards, as formal documents are viewed as quickly obsolete.
 
 ### Determining the Level of Detail
@@ -181,25 +180,25 @@ In contrast, agile methods often argue against detailed requirements documents, 
 The required detail in the document depends on the system type and the development process:
 
 - **Critical Systems (e.g., Safety/Security-Critical):** These systems need **detailed and precise** requirements because safety and security must be analyzed thoroughly to find possible errors.
-    
+
 - **Contracted/Outsourced Systems:** The specifications must be **detailed and precise**.
-    
+
 - **In-house/Iterative Development:** The requirements document can be **less detailed**, allowing details and ambiguities to be resolved later during the development process.
-    
+
 ### Stakeholder Roles and Document Usage
 
 Different types of readers use the requirements document for different purposes:
 
 - **System Customers:** Specify the requirements and read them to check if they meet their needs; specify changes to the requirements.
-    
+
 - **Managers:** Use the requirements document to plan a bid for the system and to plan the system development process.
-    
+
 - **System Engineers (Developers):S** Use the requirements to understand the system and the relationships between its parts.
-    
+
 - **System Test Engineers:** Use the requirements to develop validation tests for the system.
-    
+
 - **System Maintenance Engineers:** Use the requirements to understand the system and the relationships between its parts.
-    
+
 ## Recommended Document Structure
 
 The organization of the SRD often follows a structure recommended by standards organizations, such as the **IEEE** (Institute of Electrical andElectronic Engineers), especially for complex, long-lifetime systems.
@@ -223,4 +222,3 @@ The organization of the SRD often follows a structure recommended by standards o
 - Highlight the **key activities involved in the requirements specification process**.
 - Discuss the **general structure of a software requirements document (IEEE SRS)** and who the primary readers/users of the document are.
 :::
-

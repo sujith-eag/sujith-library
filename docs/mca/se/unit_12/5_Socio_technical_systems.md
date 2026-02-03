@@ -1,57 +1,25 @@
 # Socio-technical Systems
 
-## Socio-technical Systems Fundamentals
+1. **System:** A purposeful collection of interrelated components, of different kinds, which **work together to deliver a set of services** to the system owner and users.
 
-1. **System :** A purposeful collection of interrelated components, of different kinds, which **work together to deliver a set of services** to the system owner and users.
-    
-2. **Socio-technical System (STS) :** A system that includes technical components (hardware and software) but **crucially also includes people, defined operational processes**, and is situated within an organization, influenced by its policies and culture. These systems include non-technical elements such as people, processes, and regulations, as well as technical components.
-    
-3. **Technical Computer-Based System :** A system including hardware and software components but **excluding** the defined procedures and processes followed by human operators (e.g., mobile phones, computer games).
+   Software engineering is not an isolated activity but is part of a broader systems engineering process. It has human, social, or organizational purpose.
 
-```mermaid
-graph TD
-    subgraph "System"
-        direction LR
-        S[🌐 System]
-        subgraph "Socio-technical System"
-            direction LR
-            STS[👥 Socio-technical System]
-            subgraph "Technical Computer-Based System"
-                direction LR
-                TCBS[🖥️ Technical Computer-Based System]
-            end
-        end
-    end
-    S --> STS;
-    STS --> TCBS;
-```
+2. **Technical Computer-Based System:** A system including hardware and software components but **excluding** the defined procedures and processes followed by human operators (e.g., mobile phones, computer games). The system is not self-aware.
 
-### Core Concepts
+3. **Socio-technical System (STS):** A system that includes technical components (hardware and software), defined operational processes, and people (operators) as inherent parts of the system. Situated within and governed by an organization, influenced by its policies and culture.
+    **Mentcare System:** This medical records system is a **sociotechnical system**. While it includes technical components (client software, server, database), its operation is critically influenced by staff, organizational policies (privacy, safety), and strict mental health laws governing patient detention.
 
-1. **Holistic View and Emergent Properties:** A system is defined as **more than simply the sum of its parts**. Systems possess **emergent properties** (like performance, reliability, safety, and security) that relate to the behavior of the system as a whole and only become apparent when components are integrated.
-    
-2. **Purpose:** Sociotechnical systems are developed to support human activities and deliver a business purpose, such as increasing sales or maintaining safe airspace.
-    
-3. **Engineering Focus:** When designing a dependable, software-intensive system, designers must take a **holistic sociotechnical systems perspective** rather than focusing solely on software or hardware. Errors are likely to occur at the interfaces between separately designed parts.
-    
-4. **Relationship to Software Engineering:**
-    
-    - **Systems engineering is broader**; software engineering is a component of systems engineering.
-        
-    - Systems engineering deals with all aspects of complex system development where software plays a major role, including hardware development, policy and process design, and system deployment.
-        
+## Sociotechnical System Structure
 
-### Example
+Sociotechnical systems are complex and must be viewed in layers to understand them. These layers, organized from innermost (technical) to outermost (environmental), influence the system's behavior and requirements. Software is embedded in almost all layers.
 
-- **Mentcare System:** This medical records system is a **sociotechnical system**. While it includes technical components (client software, server, database), its operation is critically influenced by staff, organizational policies (privacy, safety), and strict mental health laws governing patient detention.
-    
+In a complex system, all the properties and behavior of the system components are inextricably intermingled. The successful functioning of each system component depends on the functioning of other components.
 
-## Sociotechnical System Structure and Context
+Thus, software can only operate if the processor is operational. The processor can only carry out computations if the software system defining these computations has been successfully installed. Complex systems are usually hierarchical and so include other systems.
 
 ### The Sociotechnical Systems Stack (Layers)
 
-Sociotechnical systems are complex and must be viewed in layers. These layers, organized from innermost (technical) to outermost (environmental), influence the system’s behavior and requirements. Software is embedded in almost all layers.
-
+::: details Sociotechnical Systems Stack
 ```mermaid
 graph TD
     Society[🌐 Society];
@@ -69,88 +37,63 @@ graph TD
     CommDataMgmt --> OperatingSystem;
     OperatingSystem --> Equipment;
 ```
+:::
+
+The layers are as follows:
 
 1. **Equipment:** The hardware devices, some of which may be computers controlled by embedded software.
-    
+
 2. **Operating System:** Interacts with the hardware and provides a set of common facilities for higher software layers.
-    
+
 3. **Communications and Data Management:** Extends the operating system facilities to provide access to remote systems and databases (sometimes called middleware).
-    
+
 4. **Application System:** Delivers the application-specific functionality that is required.
-    
+
 5. **Business Processes:** The organizational business processes that make use of the software system.
-    
+
 6. **Organization:** Includes higher-level strategic processes as well as business rules, policies, and norms that should be followed.
-    
+
 7. **Society:** The laws and regulations of society that govern the operation of the system.
-    
 
-### Organizational Elements and Boundaries
-
-The organizational environment in which a sociotechnical system operates influences its requirements, design, and eventual operation.
-
-1. **Organizational Elements:** A new system may lead to changes in these fundamental organizational elements:
-    
-    - **Policies:** Organizational rules, such as security policies and data protection standards.
-        
-    - **Processes:** The operational procedures and workflows followed by staff when using the system.
-        
-    - **Jobs:** The responsibilities and work tasks of the people using and managing the system.
-        
-    - **Politics:** Organizational objectives and conflicts between organizational goals.
-        
-2. **System Boundaries:** Establishing system boundaries is difficult because large systems are often embedded in their organizational environments, and different people see the scope of the system differently. Defining the boundary is critical for requirements definition.
-    
-
-It is important to ensure that, wherever possible, software failure does not lead to overall system failure. This requires examining how the software interacts with its environment to ensure that:
-
-- Software failures are, as far as possible, contained within the enclosing layer of the system stack and do not seriously affect the operation of other layers.
-    
-- Faults and failures in other layers are understood, so that checks may be built into the software to help detect these failures and support recovery.
-    
-
-
-## Complexity of Socio-technical Systems
-
-### Core Concepts of Complexity
-
-1. **Basis of Complexity:** System complexity arises from the **number of relationships** and the **nature of the relationships** (coupling) between system elements.
-    
-2. **Impact:** Complexity is the primary influence on a system's **understandability and changeability**. As complexity increases, so does the likelihood that changing one part will have unpredictable or undesirable effects elsewhere.
-    
-3. **Reductionism Failure:** The traditional engineering approach of **reductionism** (understanding a system by studying its separate parts) is **inadequate** for complex sociotechnical systems, because the number and dynamic nature of interactions cannot be analyzed as a whole.
-    
-
-### Types of Complexity
-
-When discussing complex systems, particularly large-scale systems of systems, complexity is often categorized into three types:
-
-1. **Technical Complexity:** Stems from the relationships between the hardware and software components of the system itself.
-    
-2. **Managerial Complexity:** Stems from the complexity of coordinating different managers and teams who may have conflicting priorities, especially when systems are managed independently.
-    
-3. **Governance Complexity:** Stems from the conflicting objectives, policies, and regulations (laws, ethical standards) that govern the system and its elements.
-    
-
-### Characteristics Driven by Complexity
+## Characteristics of Sociotechnical Systems
 
 The complexity of sociotechnical systems gives rise to crucial characteristics that challenge traditional software engineering:
 
-1. **Emergent Properties:** These are properties of the system as a whole (e.g., dependability, security, resilience) that cannot be determined by analyzing individual components alone and only become visible when the system is integrated. **Reliability**, for example, is an emergent property dependent on hardware, software, and operator reliability.
-    
-2. **Non-deterministic Behavior:** The precise behavior of complex systems is often hard to predict because of the dynamic, complex interactions between components, the environment, and human operators.
-    
+1. **Emergent Properties:** These are properties of the system as a whole (e.g., dependability, usability, security, resilience) that cannot be determined by analyzing individual components alone and only become visible when the system is integrated, as a consequence of the interactions between components.
+
+   **Reliability**, for example, is an emergent property dependent on hardware, software, and operator reliability.
+
+2. **Non-deterministic Behavior:** They do not always produce the same output when presented with the same input. The precise behavior of complex systems is often hard to predict because of the dynamic, complex interactions between components, the environment, and human operators.
+
 3. **Wicked Problems:** Complex sociotechnical systems are often developed to solve "wicked problems," which are so complex that **no definitive problem specification exists**, and the true nature of the problem only emerges as the solution is developed (e.g., developing a national medical records system).
-    
+
+4. **Complex Relationships with Organizational Objectives:** The extent to which the system supports organizational objectives does not just depend on the system itself. It also depends on the stability of these objectives, relationships and conflicts between organizational objectives, and how people in the organization interpret these objectives.
+
+### Emergent Properties
+
+- **Functional Emergent Properties:** These appear when all the parts of a system work together to achieve some objective. For example, a bicycle has the functional property of being a transportation device once it has been assembled from its components.
+
+- **Non-functional Emergent Properties:** These relate to the behavior of the system in its operational environment, such as reliability, performance, safety, and security. These are often critical for computer-based systems, as failure to achieve some minimal defined level in these properties may make the system unusable.
+
+#### Reliability as an Emergent Property
+
+- Because of component inter-dependencies, faults can be propagated through the system.
+- System failures often occur because of unforeseen inter-relationships between components.
+- It is practically impossible to anticipate all possible component relationships.
+- Software reliability measures may give a false picture of the overall system reliability.
+
+#### Influences on Reliability
+
+- **Hardware Reliability:** What is the probability of a hardware component failing and how long does it take to repair that component?
+- **Software Reliability:** How likely is it that a software component will produce an incorrect output. Software failure is usually distinct from hardware failure in that software does not wear out.
+- **Operator Reliability:** How likely is it that the operator of a system will make an error?
+- Failures are not independent and they propagate from one level to another.
 
 ## Dependability and Failure in Sociotechnical Systems
 
-System dependability is influenced by all elements in a sociotechnical system—hardware, software, people, and organizations. Component failures in any system are inevitable.
+System dependability is influenced by all elements in a sociotechnical system—hardware, software, people, and organizations. Component failures in any system are inevitable. System failure is often not due to a single component failing, but the unexpected alignment of multiple failures.
 
-### Failure Propagation (The Swiss Cheese Model)
-
-System failure is often not due to a single component failing, but the unexpected alignment of multiple failures.
-
+::: details Failure Propagation
 ```mermaid
 graph TD
     Hazard[⚠️ Hazard] --> A[Slice 1: Unsafe Act];
@@ -159,23 +102,23 @@ graph TD
     C -- "Hole (Error)" --> D[Slice 4: Organizational Influences];
     D -- "Hole (Error)" --> Accident(💀 Accident);
 ```
+:::
 
 - **The Swiss Cheese Model:** This model suggests that hazards are prevented by multiple, redundant layers of defense (like slices of Swiss cheese). Failure occurs only when the weaknesses (holes) in all layers align temporarily, allowing a hazard to pass through the system defenses and trigger an accident.
-    
-- Failure Consequences: In complex sociotechnical systems, failure propagation can occur across system boundaries. A software failure in a technical system might not lead to total system failure if human operators in the broader sociotechnical system detect the failure and take corrective action.
-    
 
-### Regulation and Compliance
+- **Failure Consequences:** In complex sociotechnical systems, failure propagation can occur across system boundaries. A software failure in a technical system might not lead to total system failure if human operators in the broader sociotechnical system detect the failure and take corrective action.
 
-To ensure public safety, most governments limit the freedom of companies by requiring them to follow certain standards to ensure their products are safe and secure. Regulation and compliance (following the rules) applies to the **sociotechnical system as a whole**, not simply the software element of that system.
+## Types of Complexity
 
-### Redundancy and Diversity
+In complex systems, complexity is often categorized into three types:
 
-Strategies to achieve and enhance dependability rely on both redundancy and diversity.
+1. **Technical Complexity:** Stems from the relationships between the hardware and software components of the system itself.
 
-1. **Redundancy :** Spare capacity is included in a system that can be used if part of that system fails.
-    
-2. **Diversity :** Redundant components of the system are of different types, thus increasing the chances that they will not fail in exactly the same way.
+2. **Managerial Complexity:** Stems from the complexity of coordinating different managers and teams who may have conflicting priorities, especially when systems are managed independently.
+
+3. **Governance Complexity:** Stems from the conflicting objectives, policies, and regulations (laws, ethical standards) that govern the system and its elements.
+
+## Practice Questions
 
 ::: tip Practice Questions
 - Define **Socio-technical System** and **Complex Systems**.

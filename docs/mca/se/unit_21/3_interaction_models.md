@@ -1,17 +1,20 @@
 # Interaction Models
 
-Interaction models are used to represent interactions, which can include user input/output, system-to-system communication, or interaction between software components. **Use case modeling** is one of the two primary approaches used for this purpose, primarily focused on modeling interactions between a system and external agents.
+Interaction models are used to represent interactions, which can include user input/output, system-to-system communication, or interaction between software components.
+
+User interaction modeling is important as it helps identify the user requirements.
+
+**Use case modeling** is one of the primary approaches used for this purpose, focused on modeling interactions between a system and external agents.
+
+**Sequence diagrams**, are used to model interactions between system components, although external agents may also be included.
 
 ## Use Case Modeling
 
 Originally developed by **Ivar Jacobsen in the 1990s**, use case modeling is now part of the Unified Modeling Language (UML).
 
 - **Definition**: A use case represents a **discrete task** that involves **external interaction** with the system. A use case is understood as a **simple description** of what a user expects from a system during a particular interaction.
-    
-- **Scope**: It is a simple description of what a user expects from a system during a particular interaction.
-    
+
 - **Application**: Use case models are generally more helpful in the **early stages of system design** rather than in detailed requirements engineering.
-    
 
 ### Notation and Elements
 
@@ -30,9 +33,9 @@ Use case diagrams offer a **simple overview** of an interaction but lack specifi
 To achieve a complete interaction description, diagrams must be supplemented with additional detail.
 
 1. A **simple textual description**.
-    
+
 2. A **structured description** typically presented in a **table** (often considered the most useful format).
-    
+
 3. A **sequence diagram** to model interactions between system components.
 :::
 
@@ -41,15 +44,13 @@ To achieve a complete interaction description, diagrams must be supplemented wit
 **Composite use case diagrams** are used to show multiple different use cases in a single view.
 
 - **Small Systems**: It is possible to include all potential interactions in one diagram.
-    
+
 - **Complex Systems**: Multiple diagrams are required, often grouped by **related use cases** (e.g., all use cases involving a specific actor like a "Medical Receptionist").
-    
 
 ::: info UML Complexity
 
 The UML includes specific constructs for sharing parts of a use case across diagrams (e.g., include, extend), but these are often difficult for non-technical end-users to understand.
 :::
-
 
 ## Use Case Examples (Mentcare System)
 
@@ -58,22 +59,6 @@ The following diagrams illustrate the progression from a single interaction to c
 ### Single Interaction: Transfer Data
 
 This model shows the interaction required for transferring summarized patient data from the Mentcare system to an external Patient Record System (PRS). The Medical Receptionist initiates this interaction.
-
-
-```mermaid
-graph LR
-    subgraph Actors
-        MR[Medical Receptionist]
-        PRS[Patient Record System]
-    end
-
-    subgraph System
-        TD((Transfer Data))
-    end
-
-    MR -- initiates --> TD
-    TD -- transfers data --> PRS
-```
 
 ### Tabular Description: Transfer Data
 
@@ -91,6 +76,7 @@ The following table provides the necessary detail for the "Transfer Data" use ca
 
 This diagram (Figure 5.5) illustrates multiple use cases connected to a single actor, demonstrating the range of tasks a Medical Receptionist performs.
 
+::: details Medical Receptionist Use Cases
 ```mermaid
 graph LR
     subgraph Actors
@@ -111,11 +97,13 @@ graph LR
     MR --> VP
     MR --> UP
 ```
+:::
 
 ### General System Overview
 
 This diagram (Figure 4.15) illustrates the relationships between multiple actors (Nurse, Manager, Doctor) and their specific interactions.
 
+::: details Mentcare System Use Cases
 ```mermaid
 graph LR
     subgraph Actors
@@ -142,6 +130,7 @@ graph LR
     Manager --> GR
     Manager --> ES
 ```
+:::
 
 ::: tip Practice Questions
 - Define **interaction model**. Explain **use-case modelling** with an example.
@@ -195,9 +184,11 @@ The following diagrams illustrate key concepts using the Mentcare system.
 
 ### 1. View Patient Information
 
-This diagram (Figure 5.6) models the dynamic sequence where a Medical Receptionist requests patient information, requiring an **authorization check**.
+This diagram models the dynamic sequence where a Medical Receptionist requests patient information, requiring an **authorization check**.
 
+::: details View Patient Information Sequence Diagram
 ```mermaid
+%%{init: { "sequence": { "mirrorActors": false } } }%%
 sequenceDiagram
     actor MR as Medical Receptionist
     participant P as P:PatientInfo
@@ -231,18 +222,21 @@ sequenceDiagram
     end
     deactivate P
 ```
+:::
 
 ### 2. Transfer Data (Complex Interaction)
 
-This diagram (Figure 5.7) demonstrates advanced features:
+This diagram demonstrates advanced features:
 
 - **Alternatives**: Processing differs based on whether the user selects `sendInfo` or `sendSummary`.
     
 - **Object Creation**: A temporary `Summary` object is created dynamically.
     
 - **External Interaction**: The system interacts with an external Patient Record System (PRS).
-    
+
+::: details Transfer Data Sequence Diagram
 ```mermaid
+%%{init: { "sequence": { "mirrorActors": false } } }%%
 sequenceDiagram
     actor MR as Medical Receptionist
     participant PRS as PRS
@@ -293,7 +287,7 @@ sequenceDiagram
     %% Final Action: Receptionist logs off
     MR->>PRS: logout()
 ```
-
+:::
 
 ::: tip Practice Questions
 - Define the **sequence diagram** notation: participants, lifelines, activation, messages, object creation.
@@ -301,4 +295,3 @@ sequenceDiagram
 - Develop a **sequence diagram for consulting a doctor** in a hospital department (show actors and authorization checks).
 - Explain when to use sequence diagrams vs DFDs.
 :::
-

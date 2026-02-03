@@ -79,7 +79,6 @@ export const mcaSESection = [
         items: [
           { label: "Socio-technical Systems", link: "/mca/se/unit_12/5_Socio_technical_systems" },
           { label: "Systems Engineering Process", link: "/mca/se/unit_12/6_System_Engineering" },
-          { label: "System Development & Evolution", link: "/mca/se/unit_12/7_System_Development" },
         ]
       },
       {

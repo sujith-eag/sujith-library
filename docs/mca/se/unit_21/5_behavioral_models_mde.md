@@ -9,18 +9,15 @@ System stimuli fall into two main categories:
 - **Data**: Data becomes available that must be processed by the system, triggering the required processing.
     
 - **Events**: An internal or external event occurs that triggers system processing (events may or may not have associated data).
-    
+
 
 ## Data-Driven Modeling
 
+Many business systems are data-processing systems that are primarily driven by data. They are controlled by the data input to the system, with relatively little external event processing. Their processing involves a sequence of actions on that data and the generation of an output.
+
 **Data-driven models** illustrate the sequence of actions involved in processing input data and generating an associated output.
-
-### Purpose and History
-
-- **Requirements Analysis**: Typically used to show the **end-to-end processing** sequence from initial input to final response.
-    
+- **Requirements Analysis**: Typically used to show the **end-to-end processing** sequence from initial input to final response.        
 - **Functional Perspective**: Historically implemented as **data-flow diagrams (DFDs)**, they illustrate how data flows through and is transformed during sequential processing.
-    
 
 ### Benefits and Notation
 
@@ -32,7 +29,7 @@ System stimuli fall into two main categories:
     
 
 ::: info Engineer vs. Stakeholder Preference
-> 
+
 While non-experts typically find DFDs (activity diagrams) more intuitive, engineers generally prefer sequence diagrams because they highlight the specific system objects responsible for operations.
 
 :::
@@ -44,29 +41,35 @@ Data-driven modeling is illustrated using an activity model of a control system 
 
 ### 1. Activity Model: Insulin Pump Operation
 
-This diagram (Figure 5.14) shows the processing chain where the insulin pump software converts a sensor input into control commands.
+This diagram shows the processing chain where the insulin pump software converts a sensor input into control commands.
 
 - **Activities**: Rounded rectangles represent process steps.
     
 - **Objects**: Square rectangles represent the data flowing between steps.
-	
+
+::: details Insulin Pump Activity Diagram
 ```mermaid
 flowchart TD
     BSS[Blood sugar sensor] --> GSV(Get sensor value)
-    GSV --> SD[Sensor data]
+    GSV --> SD[/Sensor data/]
     SD --> CSL(Compute sugar level)
-    CSL --> BSL[Blood sugar level]
+    CSL --> BSL[/Blood sugar level/]
     BSL --> CID(Calculate insulin delivery)
-    CID --> IR[Insulin requirement]
+    CID --> IR[/Insulin requirement/]
     IR --> CPC(Calculate pump commands)
-    CPC --> PCC[Pump control commands]
+    CPC --> PCC[/Pump control commands/]
     PCC --> CP(Control pump)
     CP --> IP[Insulin pump]
 ```
+:::
 
 ### 2. Sequence Diagram: Order Processing
 
-This sequence diagram (Figure 5.15) illustrates an alternative way to show sequential data processing, focusing on the system objects (`Order`, `Budget`, `Orders` datastore) rather than the processes themselves.
+This sequence diagram illustrates an alternative way to show sequential data processing, focusing on the system objects (`Order`, `Budget`, `Orders` datastore) rather than the processes themselves.
+
+Sequence models are particularly useful for **business process modeling**, where the focus is on the interactions between different system components.
+
+data-flow models highlight the processing steps(operations) and data transformations.
 
 ::: tip Directional Flow
 
@@ -74,7 +77,9 @@ When sequence diagrams are used for data-driven modeling, messages flow primaril
 
 :::
 
+::: details Order Processing Sequence Diagram
 ```mermaid
+%%{init: { "sequence": { "mirrorActors": false } } }%%
 sequenceDiagram
     actor PO as Purchase officer
     participant Order as :Order
@@ -89,13 +94,20 @@ sequenceDiagram
 
     alt validation ok
         Order->>Budget: Update(amount)
+        activate Budget
+        deactivate Budget
         Order->>Orders: Save()
-        Order->>Supplier: Send()
+        activate Orders
+        deactivate Orders
+        Orders->>Supplier: Send()
+        activate Supplier
+        deactivate Supplier
     else validation failed
         Order-->>PO: Error/Cancellation
     end
     deactivate Order
 ```
+:::
 
 ::: info Practice Questions
 - What is a **state machine model**? Draw the **state machine model of a simple microwave oven** (event-driven modeling).
@@ -110,8 +122,6 @@ This section covers the final behavioral modeling approaches: event-driven model
 ### Event-Driven Modeling
 
 **Event-driven modeling** is a type of behavioral model that shows how a system dynamically responds to internal and external **events**.
-
-#### Core Concepts
 
 - **Stimulus-Response**: These models assume a system has a **finite number of states**, and events (stimuli) cause a **transition from one state to another**.
     
@@ -143,9 +153,15 @@ The following example illustrates event-driven modeling using a microwave oven s
 
 The `Operation` state includes substates for status checking. If the door opens during operation, the system immediately transitions to the `Disabled` state.
 
+::: details Microwave Oven State Diagram
 ```mermaid
 stateDiagram-v2
-    direction TD
+    state Waiting : Waiting for user input
+    state HalfPower : Half Power Mode
+    state FullPower : Full Power Mode
+    state SetTime : Setting Time
+    state Operation : Operation Mode
+    state Disabled : Disabled State
 
     [*] --> Waiting
 
@@ -181,20 +197,16 @@ stateDiagram-v2
         e.g., until Door closed
     end note
 ```
+:::
 
-### Model-Driven Engineering (MDE)
+## Model-Driven Engineering (MDE)
 
-**Model-driven engineering (MDE)** is a software development approach where **models, rather than executable programs, are the principal outputs** of the development process.
-
-#### Core Philosophy
-
-- **Abstraction**: MDE aims to raise the level of abstraction, freeing engineers from programming language details or execution platforms.
+**Model-driven engineering (MDE)** is a software development approach where **models, rather than executable programs, are the principal outputs** of the development process. MDE aims to raise the level of abstraction, freeing engineers from programming language details or execution platforms.
     
 - **Origins**: MDE developed from **Model-Driven Architecture (MDA)**, proposed by the Object Management Group (OMG).
     
 - **Scope**: While MDA focuses on design and implementation, MDE concerns **all aspects** of the software engineering process, including requirements and testing.
     
-
 #### MDA Model Types
 
 MDA recommends producing three types of abstract system models.
@@ -205,10 +217,17 @@ MDA recommends producing three types of abstract system models.
 | **PIM**     | Platform-Independent Model    | Models system operation **without reference to implementation**. Shows static structure and event responses.  |
 | **PSM**     | Platform-Specific Model       | A transformation of the PIM for a specific platform (e.g., J2EE, .NET). Can often be generated automatically. |
 
+Platform-independent models (PIMs) are central to MDA, serving as the basis for generating platform-specific models (PSMs) and ultimately executable code.
+
+Computation independent models (CIMs) capture high-level domain concepts and are used to guide PIM development.
+
+Platform-specific models (PSMs) adapt PIMs to particular implementation technologies, often through automated transformations.
+
 #### Transformation Pipeline
 
 The following diagram illustrates the conceptual flow of models in MDA.
 
+::: details MDA Transformation Pipeline
 ```mermaid
 flowchart TD
     Human(Human Intervention / Expert)
@@ -219,8 +238,9 @@ flowchart TD
         PSM -->|Translator + Platform Rules| Code[Executable Code]
     end
 
-    Human -.->|Guidance/Mapping| PIM
+    Human -.->|Guidance/Expert Knowledge| PIM
 ```
+:::
 
 ### Benefits and Challenges
 
@@ -236,51 +256,14 @@ Completely automated transformation relies on Executable UML (xUML), a subset of
 
 :::
 
-::: info Practice Questions
-- What is **model driven engineering (MDE/MDA)**? Explain the role of **CIM, PIM, and PSM**.
-- What is **event-driven modelling**? Provide an example and draw the state diagram for a microwave oven.
-- Illustrate **Model-Driven Engineering** with an example and explain the transformation pipeline.
-:::
-
 
 ## Model-Driven Architecture (MDA)
-
-**Model-Driven Architecture (MDA)** is a model-focused approach to software design and implementation that uses a subset of **Unified Modeling Language (UML) models** to describe a system.
-
-It was proposed by the **Object Management Group (OMG)** as a new software development paradigm.
 
 ::: info MDA vs. MDE
 
 While Model-driven engineering (MDE) is concerned with all aspects of the software engineering process (including requirements and testing), MDA focuses specifically on the design and implementation stages.
 
 :::
-
-### Core Philosophy
-
-MDA aims to **raise the level of abstraction** in software engineering. The core philosophy ensures that **models, rather than executable programs, are the principal outputs** of the development process, freeing engineers from concerns about specific programming language details or execution platforms.
-
-#### The Three Abstract System Models
-
-MDA recommends producing three types of abstract system models to represent the system at different levels.
-
-|**Model Type**|**Abbreviation**|**Description**|
-|---|---|---|
-|**Computation Independent Model**|**CIM**|Also called **domain models**. They abstract the core domain features and identify key abstractions (e.g., assets, roles, patients).|
-|**Platform-Independent Model**|**PIM**|Describes system operation **without reference to implementation**. Typically uses UML diagrams to show static structure and event responses.|
-|**Platform-Specific Model**|**PSM**|A **transformation of the PIM** for a specific platform (e.g., J2EE, .NET). These can be layered (e.g., middleware-specific but database-independent).|
-
-#### Benefits and Transformation
-
-Model-based engineering provides several key advantages:
-
-- **Error Reduction**: Reduces the likelihood of errors by abstracting implementation details.
-    
-- **Speed**: Accelerates the design and implementation process.
-    
-- **Reusability**: Allows the creation of reusable, platform-independent application models.
-    
-- **Portability**: Enables **rapid re-hosting** on new platforms by writing a new model translator.
-    
 
 ::: tip Multi-Platform Efficiency
 
@@ -308,24 +291,10 @@ In practice, completely automated translation from models to code is **rarely po
 - **Complex Mapping**: **Human intervention** is necessary to link concepts used in different CIMs (e.g., mapping a 'role' in a security model to a 'staff member' in a hospital model).
 
 :::
->     
 
-## MDA Transformation Pipeline
-
-The following diagram illustrates the transformation pipeline recommended by MDA.
-
-```mermaid
-flowchart TD
-    CIM["Computation Independent Model<br>(CIM)"] -->|Translator| PIM["Platform Independent Model<br>(PIM)"]
-    PIM -->|Translator + Domain Guidelines| PSM["Platform Specific Model<br>(PSM)"]
-    PSM -->|Translator + Platform Rules| EXE[Executable Code]
-
-    Human("Human Intervention / Expert") -.->|Expert Knowledge| PIM
-```
 
 ::: info Practice Questions
 - What is **model driven engineering (MDE/MDA)**? Explain **event driven modelling** with an example.
-- Illustrate **Model Driven Engineering** with an example (CIM → PIM → PSM → Code pipeline).
+- Illustrate **Model-Driven Engineering** with an example and explain the transformation pipeline (CIM → PIM → PSM → Code pipeline).
 - What are practical limitations of fully automated model-to-code translation (where human intervention is required)?
 :::
-
