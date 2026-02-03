@@ -1,83 +1,10 @@
 # Requirements Engineering
 
-## Requirements Engineering Fundamentals
-
-### Core Concepts and Definitions
-
 1. **Requirement :** A description of the **services** a system should provide and the **constraints** on its operation. Requirements reflect the needs of customers for a system that serves a specific purpose (e.g., controlling a device, finding information, or placing an order).
+     
+2. **System Stakeholder :** Any individual or group who is affected by the system in some way and thus has a legitimate interest in it.
     
-2. **Requirements Engineering (RE) :** The process of finding out, analyzing, documenting, and checking the services and constraints of a system.
-    
-3. **System Stakeholder :** Any individual or group who is affected by the system in some way and thus has a legitimate interest in it.
-    
-
-### Requirements Engineering in the Software Lifecycle
-
-Requirements Engineering is typically presented as the first stage of the software engineering process. It establishes a high-level view of what the system might do and the benefits that it might provide.
-
-These findings are often used in a feasibility study, which assesses whether the proposed system is technically and financially feasible. The results of this study help management decide whether to proceed with the procurement or development of the system.
-
-### Levels of Requirements Specification
-
-Requirements are documented at different levels of detail because they are read and utilized by different stakeholders for different purposes.
-
-```mermaid
-graph TD
-    A[👤 User Requirements] -- "Are elaborated into" --> B[⚙️ System Requirements];
-    
-    A --> A_Details("ℹ️ High-level, abstract<br>For customers & end-users<br>");
-    B --> B_Details("📋 Detailed, specific<br>For developers & engineers<br>");
-```
-
-### User Requirements Specification
-
-- **Definition:** Statements written in natural language, supplemented by simple diagrams and tables. They describe what services the system is expected to provide to system users and the constraints under which it must operate.
-    
-- **Purpose:** To describe the functional and non-functional requirements in a way that is understandable by system users and customers who lack detailed technical knowledge. User requirements should avoid software jargon, structured notations, or formal notations.
-    
-- **Content Focus:** This specification should describe only the external behavior of the system. The content may vary from broad statements of required features to detailed descriptions of system functionality.
-    
-
-### System Requirements Specification
-
-- **Definition:** A detailed, expanded version of the user requirements. This document, sometimes called a functional specification, provides more specific information and a detailed description of the services, functions, and operational constraints of the software system to be implemented.
-    
-- **Purpose:** Serves as the starting point for system design by software engineers. It should define exactly what is to be implemented and may be used as part of the contract between the system buyer and the software developers.
-    
-- **Content Focus:** This specification should ideally describe only the external behavior and operational constraints of the system. However, for complex systems, some initial design information (such as a proposed architecture) may be included to help structure the specification.
-    
-
-### Stakeholder Readership by Requirement Level
-
-The level of detail required by a reader depends on their role and concerns.
-
-1. **Audience for User Requirements:** Stakeholders who are not usually concerned with how the system will be implemented or may be managers not interested in detailed facilities. This audience includes:
-    
-    - Client Managers
-        
-    - System End-Users
-        
-    - Client Engineers
-        
-    - Contractor Managers
-        
-    - System Architects
-        
-2. **Audience for System Requirements:** Stakeholders who need to know more precisely what the system will do, either because they are involved in system implementation or need to understand how it will support business processes. This audience includes:
-    
-    - System End-Users
-        
-    - Client Engineers
-        
-    - System Architects
-        
-    - Software Developers
-
-
-
 ## Functional Requirements (FRs)
-
-### Key Definition and Scope
 
 Functional requirements are explicit **statements of services the system should provide**. This includes defining how the system must react to particular inputs and how it must behave in particular situations. They may also explicitly define what the system should **not** do.
 
@@ -91,7 +18,6 @@ Functional requirements are explicit **statements of services the system should 
         
 3. **Information Requirements:** In cases where an organization plans to use an existing off-the-shelf software product, the focus of specification shifts from functional requirements to **information requirements**. These define the necessary information people need to do their work, and how that information is to be delivered and organized.
     
-
 ### Quality Attributes of Functional Requirements
 
 An ideal functional requirements specification should be both complete and consistent.
@@ -100,17 +26,14 @@ An ideal functional requirements specification should be both complete and consi
     
 2. **Consistency:** Requirements should not be contradictory.
     
-
 Achieving both completeness and consistency is complex and is often only possible for very small systems. This difficulty arises for two primary reasons:
 
 - In large, complex systems, mistakes and omissions are easy to make.
     
 - Large systems involve many stakeholders with different backgrounds and expectations. These stakeholders are likely to have different, and often inconsistent, needs. Such inconsistencies may not be obvious when requirements are first specified and may only be discovered after deeper analysis or during system development.
     
-
-#### Risk of Imprecision
-
-Ambiguous or imprecise requirements can lead to disputes, implementation delays, and cost increases. This is because system developers may interpret vague requirements in a way that simplifies implementation, which frequently conflicts with the customer’s true intentions.
+> [!IMPORTANT] Risk of Imprecision
+> Ambiguous or imprecise requirements can lead to disputes, implementation delays, and cost increases. This is because system developers may interpret vague requirements in a way that simplifies implementation, which frequently conflicts with the customer’s true intentions.
 
 ### Examples of Functional Requirements
 
@@ -122,10 +45,7 @@ Functional requirements for a hypothetical Mentcare system (Mental Health Care P
     
 - Each staff member using the system **shall be uniquely identified** by his or her eight-digit employee number.
     
-
 ## Non-functional Requirements (NFRs)
-
-### Key Definition and Characteristics
 
 Non-functional requirements are **constraints** on the services or functions offered by the system. They include timing constraints, constraints on the development process, and constraints imposed by standards. NFRs often apply to the **system as a whole** rather than individual system features.
 
@@ -139,11 +59,11 @@ Non-functional requirements are **constraints** on the services or functions off
         
     - **Example (Performance):** If an embedded control system fails to meet its performance requirements, the control functions will not operate correctly.
         
-
 ### Sources and Classification
 
 NFRs can be classified into three main groups based on the requirements origin:
 
+::: details NFR Classification Mindmap
 ```mermaid
 mindmap
   root{{Non-Functional Requirements}}
@@ -152,29 +72,33 @@ mindmap
       ("Reliability")
       ("Security")
       ("Usability")
+      ("Efficiency")
+      ("Dependability")
     ("Organizational Requirements")
       ("Operational Processes")
       ("Development Standards")
       ("Tool Requirements")
+      ("Environmental Requirements")
     ("External Requirements")
       ("Regulatory")
       ("Ethical")
       ("Legislative")
 ```
+:::
 
 1. **Product Requirements:** Specify or constrain the **runtime behavior** of the software.
-    
-    - _Examples:_ Performance (speed, memory required), Reliability (acceptable failure rate), Security, and Usability requirements.
+	* Performance (speed, memory required) : How fast the system must execute and how much memory it requires 
+	* Reliability is the acceptable failure rate 
+	* Security, and Usability requirements.
         
 2. **Organizational Requirements:** Broad system requirements derived from **policies and procedures** in the customer’s and developer’s organizations.
-    
-    - _Examples:_ Operational process requirements (defining system use) and Development process requirements (specifying development methods or tools).
+	- Operational process requirements : defining how the system will be used.
+	- Development process requirements : specifies the programming language, process and standards to be used.
+	- Environmental requirements : specifies the operating environment of the system
         
 3. **External Requirements:** Derived from factors external to the system and development process. These may include regulatory requirements that set out what must be done for the system to be approved for use.
-    
-    - _Examples:_ Regulatory, ethical, and legislative requirements (e.g., privacy laws, safety regulations) that ensure the system is acceptable to its users and the general public.
+    - Regulatory, ethical, and legislative requirements (e.g., privacy laws, safety regulations) that ensure the system is acceptable to its users and the general public.
         
-
 ### Quantitative Specification and Metrics
 
 To be verifiable, non-functional requirements should be stated **quantitatively** whenever possible, allowing them to be objectively tested and measured for compliance.
@@ -185,11 +109,11 @@ Common metrics used for objective specification include:
 
 - **Speed/Efficiency (Performance):** Processed transactions/second, User/event response time, Screen refresh time.
     
-- **Size:** Memory required, Chip area.
+- **Size:** Memory required, Number of ROM chips / Megabytes.
     
 - **Robustness:** Time to restart after failure, Probability of data corruption on failure, Percentage of events causing failure.
     
-- **Reliability:** Mean time to failure (MTTF), Rate of occurrence of failure (ROCOF).
+- **Reliability:** Mean time to failure (MTTF), Rate of occurrence of failure (ROCOF). Availability, Probability of unavailability.
     
 - **Safety:** Probability of failure on demand (POFOD).
     
@@ -199,14 +123,12 @@ Common metrics used for objective specification include:
     
 - **Usability:** Training time required, Average number of errors made by experienced users per hour.
     
-
 ### Example: From Goal to Verifiable Requirement
 
 - **General Goal (Non-testable):** "Medical staff should be able to use the system easily."
     
 - **Verifiable NFR (Testable):** "Medical staff shall be able to use all the system functions after two hours of training. After this training, the average number of errors made by experienced users shall not exceed two per hour of system use."
     
-
 ### Examples of Non-functional Requirements (Mentcare System)
 
 1. **Product Requirement (Availability):** "The Mentcare system shall be available to all clinics during normal working hours (Mon–Fri, 08:30–17:30). **Downtime** within normal working hours shall **not exceed 5 seconds in any one day**."
@@ -215,8 +137,6 @@ Common metrics used for objective specification include:
     
 3. **External Requirement (Privacy):** "The system shall implement patient privacy provisions as set out in HStan-03-2006-priv."
     
-
-
 ## The Relationship Between Requirement Types
 
 ### Interdependence
@@ -227,6 +147,9 @@ The distinction between functional and non-functional requirements is not always
 
 A user requirement concerned with security, such as a statement limiting access to authorized users, may appear to be a non-functional requirement. However, when developed in more detail, this single requirement may generate other requirements that are clearly functional, such as the need to include user authentication facilities (e.g., login, password management) in the system.
 
+The system requirements, therefore, do not just specify the services or features required; they also specify the necessary functionality to ensure that these services and features are delivered effectively.
+
+::: details Representation of Security NFR
 ```mermaid
 graph TD
     A("🛡️ NFR: System shall<br>be secure") --> B[✅ FR: Implement user authentication];
@@ -236,22 +159,21 @@ graph TD
     B --> B1[🔑 FR: User login with username/password];
     B --> B2[🗝️ FR: Password complexity rules];
 ```
-
-The system requirements, therefore, do not just specify the services or features required; they also specify the necessary functionality to ensure that these services and features are delivered effectively.
+:::
 
 ### Analogy
 
 Think of designing a high-performance race car.
 
-- **Functional Requirements** are the car's basic services which define **what** the car does : 
-	- "It must accelerate from 0 to 60 mph," 
-	- "It must brake when the pedal is pressed,"
-	- "It must turn when the steering wheel is turned."
+**Functional Requirements** are the car's basic services which define **what** the car does : 
+- "It must accelerate from 0 to 60 mph," 
+- "It must brake when the pedal is pressed,"
+- "It must turn when the steering wheel is turned."
 
-- **Non-functional Requirements** are the constraints and quality attributes which define **how well** or under **what restrictions** the car performs its functions : 
-	- "The car must have an _Availability_ (Product NFR) of 99.9% during the race," 
-	- "It must be constructed using _Organization_ standards (Organizational NFR) set by the company,"
-	- "It must not exceed 90 decibels of noise (External/Regulatory NFR)." 
+**Non-functional Requirements** are the constraints and quality attributes which define **how well** or under **what restrictions** the car performs its functions : 
+- "The car must have an _Availability_ (Product NFR) of 99.9% during the race," 
+- "It must be constructed using _Organization_ standards (Organizational NFR) set by the company,"
+- "It must not exceed 90 decibels of noise (External/Regulatory NFR)." 
 
 ::: tip Practice Questions
 - Explain the differences between **Functional and Non-Functional Requirements** with suitable examples.

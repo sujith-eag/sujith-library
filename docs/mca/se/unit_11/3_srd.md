@@ -1,7 +1,5 @@
 # Software Requirements Document
 
-## Goal and Output
-
 1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
     
 2. **Content:** The specification includes two primary types of requirements:
@@ -10,12 +8,12 @@
         
     - **System requirements:** Detailed functional and non-functional descriptions for developers; they may be written using more formal notations.
         
-
 ## Notations for Requirements Specification
 
 Different notations are suitable for different audiences and levels of detail. User requirements are almost always written in **natural language** supplemented by diagrams, while system requirements may use natural language, graphical, or mathematical notations.
 
-```mermaid
+::: details 
+```mermaid Document Formality
 graph TD
     Start((Start)) --> A{Audience?};
     A -- "Customer (Non-technical)" --> B{Level of Formality?};
@@ -28,13 +26,14 @@ graph TD
     C -- "High (Visual)" --> GN[📊 Graphical Notations];
     C -- "High (Formal)" --> MS[∑ Mathematical Specifications];
 ```
+:::
 
-|**Notation**|**Description**|
-|---|---|
-|**Natural Language Sentences**|Requirements are written using numbered sentences, with each sentence expressing one requirement.|
-|**Structured Natural Language**|Requirements are written on a standard form or template, where each field provides information about an aspect of the requirement. This reduces variability and imposes uniformity.|
-|**Graphical Notations**|Graphical models (e.g., UML use case and sequence diagrams) define the functional requirements, supplemented by text annotations. Use cases, for example, identify actors and interaction types.|
-|**Mathematical Specifications**|Notations based on formal concepts like finite-state machines or sets. While unambiguous, they are often difficult for most customers to understand and check.|
+| **Notation**                    | **Description**                                                                                                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Natural Language Sentences**  | Requirements are written using numbered sentences, with each sentence expressing one requirement.                                                                                                |
+| **Structured Natural Language** | Requirements are written on a standard form or template, where each field provides information about an aspect of the requirement. This reduces variability and imposes uniformity.              |
+| **Graphical Notations**         | Graphical models (e.g., UML use case and sequence diagrams) define the functional requirements, supplemented by text annotations. Use cases, for example, identify actors and interaction types. |
+| **Mathematical Specifications** | Notations based on formal concepts like finite-state machines or sets. While unambiguous, they are often difficult for most customers to understand and check.                                   |
 
 ## Natural Language Specification Guidelines
 
@@ -52,15 +51,15 @@ To minimize ambiguity in natural language requirements, follow these guidelines:
     
 - **Rationale:** Whenever possible, associate a rationale with each user requirement to explain _why_ it was included and who proposed it (the source).
     
-
 ## Structured Specifications
 
 Structured natural language uses a standard way of writing requirements (usually templates or forms) to maintain expressiveness while enforcing uniformity and organization.
 
 **Advantages:** This approach reduces **variability** and helps organize requirements more effectively compared to free-form text.
 
+::: details Information in Standard Format
 ```mermaid
-graph TD
+graph LR
     Form[📄 Form-Based Structured Specification] --> Func(Function);
     Form --> Desc(Description);
     Form --> In(Inputs & Origin);
@@ -71,6 +70,8 @@ graph TD
     Form --> Post(Postcondition);
     Form --> Side(Side Effects);
 ```
+
+:::
 
 **Form-Based Information:** Information typically included in a form-based structured specification:
     
@@ -88,29 +89,6 @@ graph TD
 	
 - A description of any **side effects** of the operation.
 	
-
-## Requirements Specification Examples
-
-The use of different specification styles (Natural, Structured, and Tabular) helps manage the inherent ambiguity of requirements and is chosen based on the audience (customer vs. developer) and the complexity of the feature being specified.
-
-```mermaid
-graph TD
-    Start((Start)) --> A{Audience?};
-    A -- "Customer" --> B{Complexity?};
-    A -- "Developer" --> C{Complexity?};
-
-    B -- "Simple" --> NL["Natural Language<br>(User Requirements)"];
-    B -- "Complex" --> SL_User["Structured Language<br>(User Requirements)"];
-
-    C -- "Simple" --> SL_Dev["Structured Language<br>(System Requirements)"];
-    C -- "Complex/Alternatives" --> TS["Tabular Specification<br>(System Requirements)"];
-
-    NL --> End((End));
-    SL_User --> End;
-    SL_Dev --> End;
-    TS --> End;
-```
-
 ### Natural Language Specification (User Requirements)
 
 Natural language specification is used for writing **user requirements** because it is expressive, intuitive, and universal, making it understandable by non-technical system users and customers.
@@ -160,16 +138,12 @@ The insulin pump's computation of insulin dose is based on the rate of change of
 |**Sugar level increasing and rate of increase decreasing** (_r2 > r1 & ((r2 - r1) < (r1 - r0))_)|`CompDose = 0`|
 |**Sugar level increasing and rate of increase stable or increasing** (_r2 > r1 & ((r2 - r1) $\geq$ (r1 - r0))_)|`CompDose = round ((r2 - r1)/4)`. If rounded result = 0 then `CompDose = MinimumDose`|
 
-### Summary Analogy
-
-**Analogy: The Blueprint for a Skyscraper**
+### Analogy: The Blueprint for a Skyscraper
 
  The Software Requirements Document is like the blueprint for a skyscraper. 
  * It doesn't just show the pretty picture (the **user requirements**); 
  * it includes detailed structural diagrams (**system requirements**), material constraints (**non-functional requirements**), and 
  * a comprehensive log of decisions, ensuring that all tradesmen (developers, managers, testers) know exactly what must be built, how well it must stand up, and why it's needed.
-
-
 
 ## The Software Requirements Document (SRD)
 
@@ -200,7 +174,6 @@ Requirements documents are critical under specific professional circumstances:
     
 - When a detailed analysis of the requirements is **mandatory** (e.g., for critical systems).
     
-
 In contrast, agile methods often argue against detailed requirements documents, favoring short, incrementally collected **user stories** written on cards or whiteboards, as formal documents are viewed as quickly obsolete.
 
 ### Determining the Level of Detail
@@ -213,7 +186,6 @@ The required detail in the document depends on the system type and the developme
     
 - **In-house/Iterative Development:** The requirements document can be **less detailed**, allowing details and ambiguities to be resolved later during the development process.
     
-
 ### Stakeholder Roles and Document Usage
 
 Different types of readers use the requirements document for different purposes:
@@ -228,7 +200,6 @@ Different types of readers use the requirements document for different purposes:
     
 - **System Maintenance Engineers:** Use the requirements to understand the system and the relationships between its parts.
     
-
 ## Recommended Document Structure
 
 The organization of the SRD often follows a structure recommended by standards organizations, such as the **IEEE** (Institute of Electrical andElectronic Engineers), especially for complex, long-lifetime systems.
