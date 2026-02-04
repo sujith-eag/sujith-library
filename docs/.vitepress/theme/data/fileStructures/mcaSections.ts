@@ -95,9 +95,35 @@ export const mcaSESection = [
         title: "Architectural Design & Patterns",
         items: [
           { label: "Architectural Design", link: "/mca/se/unit_22/1_architectural_design" },
-          { label: "Architectural Views", link: "/mca/se/unit_22/2_architectural_views" },
-          { label: "Architectural Patterns", link: "/mca/se/unit_22/3_architectural_patterns" },
-          { label: "Application Architectures", link: "/mca/se/unit_22/4_application_architectures" },
+          { label: "Architectural Patterns", link: "/mca/se/unit_22/2_architectural_patterns" },
+          { label: "Application Architectures", link: "/mca/se/unit_22/3_application_architectures" },
+        ]
+      },
+      {
+        title: "Agile Methodologies",
+        items: [
+          { label: "Intro to Agile Methodologies", link: "/mca/se/unit_31/1_introduction_to_agile_methodologies" },
+          { label: "Foundations of Agile", link: "/mca/se/unit_31/2_foundations_of_agile" },
+          { label: "Agile Constraints & Iron Triangle", link: "/mca/se/unit_31/3_agile_constraints_iron_triangle" },
+        ]
+      },
+      {
+        title: "Generic Agile Process",
+        items: [
+          { label: "Agile Operating Model", link: "/mca/se/unit_41/1_agile_operating_model" },
+          { label: "Agile Roles", link: "/mca/se/unit_41/2_common_agile_roles" },
+          { label: "Agile Techniques", link: "/mca/se/unit_41/3_common_agile_techniques" },
+          { label: "Agile Practices", link: "/mca/se/unit_41/4_common_agile_practices" },
+        ]
+      },
+      {
+        title: "Major Agile Frameworks",
+        items: [
+          { label: "eXtreme Programming(XP)", link: "/mca/se/unit_51/1_extreme_programming_xp" },
+          { label: "Scrum", link: "/mca/se/unit_51/2_scrum" },
+          { label: "Dynamic Systems Development Method (DSDM)", link: "/mca/se/unit_51/3_dynamic_systems_development_method_dsdm" },
+          { label: "Lean Software Development", link: "/mca/se/unit_51/4_lean_software_development_lean_startup" },
+          { label: "Scaled Agile Framework(SAFe)", link: "/mca/se/unit_51/5_scaled_agile_framework_safe" },
         ]
       },
     ]
@@ -114,30 +140,6 @@ export const mcaEHSection = [
       //     { label: "Introduction & Ethics", link: "/mca/eh/u1/u11" },
       //     { label: "Reconnaissance", link: "/mca/eh/u1/u12" },
       //     { label: "Unit-1 Questions", link: "/mca/eh/u1/q1" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-2",
-      //   items: [
-      //     { label: "Network Exploitation", link: "/mca/eh/u2/u21" },
-      //     { label: "Scanning & Enumeration", link: "/mca/eh/u2/u22" },
-      //     { label: "Unit-2 Questions", link: "/mca/eh/u2/q2" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-3",
-      //   items: [
-      //     { label: "Web Application Attacks", link: "/mca/eh/u3/u31" },
-      //     { label: "Exploitation Tools", link: "/mca/eh/u3/u32" },
-      //     { label: "Unit-3 Questions", link: "/mca/eh/u3/q3" },
-      //   ]
-      // },
-      // {
-      //   title: "Unit-4 & 5",
-      //   items: [
-      //     { label: "Wireless & Mobile Attacks", link: "/mca/eh/u4/u41" },
-      //     { label: "Defensive Measures & Legal", link: "/mca/eh/u4/u42" },
-      //     { label: "Unit-5 Questions", link: "/mca/eh/u4/q5" },
       //   ]
       // },
       {

@@ -1,6 +1,6 @@
 # Software Requirements Document
 
-    1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
+1. **Goal:** To translate the gathered information into a precise document. The resulting **Software Requirements Document (SRD)** should ideally be clear, unambiguous, easy to understand, complete, and consistent, although this is practically impossible for large systems.
 
 2. **Content:** The specification includes two primary types of requirements:
 
@@ -13,7 +13,8 @@
 Different notations are suitable for different audiences and levels of detail. User requirements are almost always written in **natural language** supplemented by diagrams, while system requirements may use natural language, graphical, or mathematical notations.
 
 ::: details 
-```mermaid Document Formality
+
+```mermaid
 graph TD
     Start((Start)) --> A{Audience?};
     A -- "Customer (Non-technical)" --> B{Level of Formality?};
@@ -26,6 +27,7 @@ graph TD
     C -- "High (Visual)" --> GN[📊 Graphical Notations];
     C -- "High (Formal)" --> MS[∑ Mathematical Specifications];
 ```
+
 :::
 
 | **Notation**                    | **Description**                                                                                                                                                                                  |

@@ -1,52 +1,33 @@
-# Architectural Design
+# Architectural Design & Views
 
 The specific subtopics are:
 
 - Architectural design decisions
-    
 - Architectural views
-    
 - Architectural patterns
-    
 - Application architectures
-    
 
-## Chapter 6 Breakdown
+The following table details the topics discussed within the textbook.
 
-The following table details where each specific topic is located and discussed within the textbook.
+| **Topic**                     | **Details**                                                                                                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Architectural Design**      | It is the first stage in the software design process.<br><br>Introduces the importance of architectural design, decisions involved, and patterns.     |
+| **Design Decisions**          | Addresses structural decisions (decomposing components, controlling operations, non-functional requirements) that profoundly affect the system.       |
+| **Architectural Views**       | Discusses perspectives required for documenting architecture (e.g., Krutchen’s 4+1 view model), as a single diagram cannot represent all information. |
+| **Architectural Patterns**    | Introduces reusable patterns (MVC, Layered, Client-Server) that capture successful system organizations and their strengths/weaknesses.               |
+| **Application Architectures** | Details generic models for specific classes of systems (e.g., Transaction processing), used as design checklists or starting points.                  |
 
-| **Section**   | **Topic**                     | **Details**                                                                                                                                           |
-| ------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Chapter 6** | **Architectural Design**      | Introduces the importance of architectural design, decisions involved, and patterns. It is the first stage in the software design process.            |
-| **6.1**       | **Design Decisions**          | Addresses structural decisions (decomposing components, controlling operations, non-functional requirements) that profoundly affect the system.       |
-| **6.2**       | **Architectural Views**       | Discusses perspectives required for documenting architecture (e.g., Krutchen’s 4+1 view model), as a single diagram cannot represent all information. |
-| **6.3**       | **Architectural Patterns**    | Introduces reusable patterns (MVC, Layered, Client-Server) that capture successful system organizations and their strengths/weaknesses.               |
-| **6.4**       | **Application Architectures** | Details generic models for specific classes of systems (e.g., Transaction processing), used as design checklists or starting points.                  |
-
-## Introduction to Architectural Design
+## Architectural Design
 
 Architectural design is defined as the process concerned with **understanding how a software system should be organized** and **designing the overall structure of that system**.
 
+Software architecture is important because it affects the performance, robustness, distributability, and maintainability of a system. Non-functional requirements have the most significant effect on the system’s architecture.
+
 ### Role in the Software Process
 
-- **First Stage**: It is the **first stage in the software design process**.
-    
-- **Critical Link**: It serves as the **critical link between design and requirements engineering**.
-    
-- **Primary Function**: To **identify the main structural components in a system** and determine the **relationships between them**.
-    
-
-::: info Output
+Architectural design is the **first stage in the software design process**. It serves as the critical link between design and **requirements engineering**. The primary function is to **identify the main structural components in a system** and determine the **relationships between them**.
 
 The outcome of the architectural design process is an architectural model that describes how the system is organized as a set of communicating components.
-
-:::
-
-::: info Practice Questions
-- What is meant by **architectural design**? Define **software architecture**.
-- Discuss the different **architectural styles and structures** and how non-functional requirements influence architecture decisions.
-- Why is architectural design a critical link between requirements and design? Give examples.
-:::
 
 ### Agile Considerations
 
@@ -56,52 +37,31 @@ While traditional models define architecture early, it remains significant in ag
 
 - It is generally accepted that an **early stage** of an agile development process should focus on designing an overall system architecture.
     
-- **Incremental development of architectures is not usually successful**.
+- Incremental development of architectures is not usually successful.
     
 - While refactoring components is easy, **refactoring the system architecture is expensive** because it requires modifying most system components to adapt to the changes.
 
 :::
->     
 
 ### Overlap with Requirements Engineering
 
-In practice, there is a **significant overlap** between architectural design and requirements engineering.
+In practice, there is a **significant overlap** between architectural design and requirements engineering. The ideal that a system specification should not include design information is **unrealistic**, except for small systems.
 
-- **Unrealistic Separation**: The ideal that a system specification should not include design information is **unrealistic**, except for small systems.
-    
-- **Feature Reflection**: Architectural components must be identified because they **reflect the high-level features of the system**.
-    
-- **Abstract Architecture**: An **abstract system architecture** is often proposed during requirements engineering to associate groups of functions with large-scale components.
-    
+- **Identification of Components**: Identify the main architectural components as they reflect the high-level features of the system. As part of the requirements engineering process, propose an abstract system architecture where groups of system functions or features are associated with large-scale components or sub-systems.
 
-## Example: Packing Robot Control System
+### Levels of Abstraction
 
-The source material uses an abstract model of a **packing robot system** to illustrate system architecture. The system uses a vision component to identify objects, select packaging, and manage movement.
+You can design software architectures at two levels of abstraction:
 
-### Diagram Description
+1. Architecture in the small is concerned with the architecture of individual programs. At this level, we are concerned with the way that an individual program is decomposed into components. 
 
-The model shows the main components and the links between them, representing how these communicating components structure the system.
-
-```mermaid
-flowchart TD
-    V[Vision system] --> OI(Object identification system)
-    OI --> PS(Packaging selection system)
-
-    OI --> PKG[Packing system]
-    PS --> PKG
-
-    PKG --> AC[Arm controller]
-    PKG --> CC[Conveyor controller]
-
-    AC --> GC[Gripper controller]
-    GC --> CC
-
-    AC --> CC
-```
+2. Architecture in the large is concerned with the architecture of complex enterprise systems that include other systems, programs, and program components. These systems may be distributed over different computers, which may be owned and managed by different companies.
 
 ## Architectural Design Decisions
 
-Architectural design is a **creative process** in which the system architect designs an organization that satisfies the functional and non-functional requirements. Rather than following a rigid sequence of activities, architectural design is best considered a **series of decisions**. These structural decisions are influenced by the system type, the architect's experience, and the specific system requirements.
+Architectural design is not a rigid sequence of activities, it is a **creative process** or considered a **series of decisions** in which the system architect designs an organization that satisfies the functional and non-functional requirements. 
+
+These structural decisions are influenced by the system type, the architect's experience, and the specific system requirements.
 
 ### Fundamental Architectural Questions
 
@@ -123,32 +83,6 @@ During the architectural design process, system architects must address several 
     
 8. **Documentation**: How should the architecture of the system be documented?
     
-
-### Decision Concept Map
-
-::: info Practice Questions
-
-- What is meant by **architectural design**? Explain its role in meeting functional and non-functional system requirements.
-
-- Define **software architecture** and describe how architectural design helps address non-functional requirements. Give examples.
-
-- Discuss different **architectural styles and structures** you can choose to satisfy non-functional requirements (e.g., layered, client-server, repository). Explain advantages and disadvantages of each.
-
-:::
-
-
-```mermaid
-flowchart LR
-    A[Architectural Design Decisions] --> B(Fundamental Approach to System Structure?)
-    A --> C(Architectural Patterns or Styles?)
-    A --> D(Component Decomposition Strategy?)
-    A --> E(Control Strategy for Component Operation?)
-    A --> F(Organization to Meet Non-functional Requirements?)
-    A --> G(System Distribution Across Processors?)
-    A --> H(Reuse Generic Application Architecture?)
-    A --> I(Documentation Method?)
-```
-
 ### Influence of Non-functional Requirements
 
 The choice of architectural style and structure is closely related to the **non-functional requirements** of the system. The architecture fundamentally influences properties like reliability, efficiency, and security.
@@ -171,37 +105,91 @@ It is impossible to optimize all non-functional attributes simultaneously. Archi
     
 - **Availability vs. Time-to-Market**: Balancing redundancy with cost and speed.
 
+:::     
+
+::: info Practice Questions
+- What is meant by architectural design? Define software architecture.
+
+- Why is architectural design a critical link between requirements and design? Give examples.
+
+- Discuss the different **architectural styles and structures** and how non-functional requirements influence architecture decisions.
+
+- What is meant by **architectural design**? Explain its role in meeting functional and non-functional system requirements.
+
+- Discuss different **architectural styles and structures** you can choose to satisfy non-functional requirements (e.g., layered, client-server, repository). Explain advantages and disadvantages of each.
+
 :::
->     
 
-### Architectural Decisions in Agile
 
-In the context of Agile and self-organizing teams, the process of making architectural decisions shifts from detailed upfront definition to **emergent design**.
+## Architectural Views
 
-#### Emergent Design and the Last Responsible Moment
+The architectural model, which is the output of architectural design, describes how a system is organized as a set of communicating components.
 
-- **Agile Principle**: The eleventh principle states that **the best architectures, requirements, and designs emerge from self-organising teams**.
-    
-- **Deferring Decisions**: Agile teams avoid Big Design Up Front (BDUF). Design thinking is guided by the **"last responsible moment,"** the latest point at which a decision must be made.
-    
-- **Opportunistic Design**: Deferring choices allows teams to make decisions based on **evidence** and facts learned while building the system.
-    
-- **Flexibility**: The architecture should support the flexibility required to **add any Product Backlog Item (PBI) at any time**.
-    
+### Purpose and Need for Multiple Views
 
-#### Team Responsibility and Constraints
+It is impossible to represent all relevant information about a system's architecture in a single diagram. A single graphical model can only depict **one perspective** (e.g., decomposition, runtime interactions, or physical distribution). Because all of these are useful at different times, for both design and documentation, you usually need to present multiple views of the software architecture.
 
-- **Constraints**: Self-organizing teams are often constrained by **external enterprise architects** who impose limits on technical choices (e.g., toolsets).
-    
-- **High-Level Principles**: In complex environments, high-level architectural principles align teams, but the teams themselves remain responsible for detailed design.
-    
-- **EDUF**: Agile teams practice **Enough Design Up Front (EDUF)**, producing only documentation that **adds value** and is necessary for maintenance.
-    
+- **Agile Context**: In Agile methods, the team should produce only the design documentation that **adds value** and is necessary for maintenance and support.
 
-#### Technical Excellence and Debt
+It might show:
+- How a system is decomposed into modules
+- How the runtime processes interact
+- The different ways in which system components are distributed across a network
 
-- **Agility**: **Continuous attention to technical excellence and good design enhances agility**.
-    
-- **Technical Debt**: Allowing inappropriate design or quick hacks leads to technical debt, making systems expensive to support later in the lifecycle.
-    
-- **Refactoring**: This practice is crucial for architectural design in Agile. It ensures the continual quality and maintainability of the system by improving structure without changing behavior.
+### Krutchen's 4+1 View Model
+
+One widely recognized framework for organizing these perspectives is **Krutchen’s 4+1 view model**. It suggests four fundamental architectural views linked through common use cases.
+
+| View                 | Focus                 | Details                                                                                                                                                  |
+| -------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Logical View**     | Key Abstractions      | Shows objects or object classes. Relates system requirements to entities.                                                                                |
+| **Process View**     | Runtime Interactions  | Shows how the system is composed of interacting processes. Useful for judgments on non-functional characteristics like **performance and availability**. |
+| **Development View** | Decomposition         | Details the breakdown of software into components implemented by a **single developer or team**. Valuable for software managers and programmers.         |
+| **Physical View**    | Hardware/Distribution | Shows system hardware and how components are **distributed across processors**. Essential for deployment planning.                                       |
+
+::: info The "+1" View
+
+Use Cases/Scenarios form the "+1" component. They link and integrate the four main views, illustrating how components work together during typical system interactions.
+
+:::
+
+## Conceptual View
+
+**Hofmeister et al.** suggest incorporating a **conceptual view** in addition to Krutchen's four views.
+
+This view is an abstract view of the system that serves as a basis for decomposing high-level requirements into more detailed specifications, assists with component reuse decisions, and can represent a product line rather than a single system.
+
+- **Example**: The high-level block diagram of the **packing robot system** is a conceptual view.
+
+::: tip Practical Usage
+
+Conceptual views are almost always developed during the design process to explain the architecture to stakeholders and inform decisions.
+
+:::
+
+### Notations for Architectural Models
+
+Architects must decide what notations to use for describing architectural models.
+
+| **Notation Type**                              | **Pros**                                                                       | **Cons**                                                                        | **Context**                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **Informal** (Block Diagrams)                  | **Fast**, intuitive, supports communication. Requires no specialist knowledge. | Lacks rigor.                                                                    | Best for **creative design phase** and planning. |
+| **UML**                                        | Useful for **detailed documentation** and model-driven development.            | Can constrain expressiveness; requires specialist knowledge.                    | Detailed documentation phases.                   |
+| **ADLs** (Architectural Description Languages) | Reduces ambiguity; allows tool-based checking.                                 | **Expensive**, time-consuming, and difficult for non-specialists to understand. | Specialized high-rigor environments.             |
+
+::: warning Agile Perspective
+
+In Agile development, detailed design documentation is often minimized. This practice is known as EDUF (Enough Design Up Front), focusing only on views necessary for communication.
+
+:::
+
+
+::: info Practice Questions
+
+- What are **architectural views**? Explain why multiple views are needed to represent a system's architecture.
+
+- Explain the **different types of architectural views** (e.g., logical, process, development, physical, scenarios) and their significance in providing a comprehensive understanding of system architecture.
+
+- Explain C&C (Component and Connector) view with its notations and example.
+
+:::
