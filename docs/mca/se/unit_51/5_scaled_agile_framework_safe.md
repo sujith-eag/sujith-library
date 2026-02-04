@@ -1,6 +1,4 @@
-# Unit V: Major Agile Frameworks - Scaled Agile Framework (SAFe)
-
-## Overview of SAFe
+# Scaled Agile Framework (SAFe)
 
 The Scaled Agile Framework (SAFe) is a knowledge base of proven, integrated principles and practices for Lean, Agile, and DevOps development at scale. It was launched to address problems faced by large software organizations where individual team frameworks (like Scrum or XP) were insufficient.
 
@@ -8,14 +6,16 @@ The Scaled Agile Framework (SAFe) is a knowledge base of proven, integrated prin
 - **Agile Release Train (ART):** The primary value delivery construct in SAFe. It is a long-lived team-of-teams that delivers value in a value stream.
 - **Program Increment (PI):** A mid-level planning cycle (typically 8–12 weeks or 4–6 sprints) during which an Agile Release Train delivers incremental value,.
 
-### Core Concepts: The Foundation
+## The Foundation
 
 - **The Goal:** To synchronize alignment, collaboration, and delivery for large numbers of Agile teams.
+
 - **Core Values:** SAFe is built on four core values:
     1. **Code Quality**
     2. **Alignment**
     3. **Program Execution**
     4. **Transparency**.
+
 - **Underlying Approaches:** SAFe acts as a container for existing approaches, specifically endorsing **Scrum**, **eXtreme Programming (XP)**, **Kanban**, and **Lean Thinking**.
 
 
@@ -87,11 +87,11 @@ SAFe rejects the idea of purely emergent design (where architecture evolves sole
 These questions relate to the SAFe model and the general challenges of applying Agile to large-scale systems.
 
 SAFe Framework:
-*   Describe Scaled Agile Framework (SAFe).
-*   How does the SAFe process model ensure alignment, collaboration, and delivery across multiple teams? Explain.
+- Describe Scaled Agile Framework (SAFe).
+- How does the SAFe process model ensure alignment, collaboration, and delivery across multiple teams? Explain.
 
 Scaling Agile (General):
-*   Discuss in detail Agile project Management for developing Large software systems.
-*   Explain how Agile methods can be used for large projects.
-*   Why it is difficult to introduce agile methods into large companies?
+- Discuss in detail Agile project Management for developing Large software systems.
+- Explain how Agile methods can be used for large projects.
+- Why it is difficult to introduce agile methods into large companies?
 

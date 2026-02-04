@@ -1,10 +1,8 @@
-# Unit V: Lean Software Development & Lean Start-up
+# Lean Software Development & Lean Start-up
 
 ## Lean Software Development
 
 Lean software development was adapted from Lean manufacturing (specifically the Toyota Production System) by Mary and Tom Poppendieck in 2003. It provides a framework for improving and scaling Agile approaches based on proven principles.
-
-### Core Concepts
 
 - **Manufacturing vs. Software:** While Lean manufacturing focuses on eliminating waste in repetitive processes, software development is not repetitive (every problem is unique). Therefore, Lean software development shifts the focus from purely eliminating waste to **maximizing value** and emphasizing **learning**.
 - **The Goal:** To deliver value to the customer quickly by discovering valuable stories and avoiding those that have no value.
@@ -73,7 +71,7 @@ The Lean Start-up movement, initiated by Eric Ries (2011), applies Lean thinking
 - **Minimum Viable Product (MVP):** The simplest version of a product that enables a full turn of the Build-Measure-Learn loop to test hypotheses.
 - **Business Model Canvas:** A common format used to capture all hypotheses (partners, costs, value proposition, channels, etc.) on one page.
 
-### Core Concepts: The Goal
+### The Goal
 
 - **Finding vs. Executing:** Lean start-up is not about _executing_ a known business model (which existing companies do); it is about **finding** a business model.
 - **Questions a Business Model must answer:**
@@ -108,5 +106,5 @@ At the start of the loop, the entrepreneur must test "leap-of-faith assumptions"
 
 ## Questions
 
-*   Discuss the Lean Software Development Tools.
+- Discuss the Lean Software Development Tools.
 

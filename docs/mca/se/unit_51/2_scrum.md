@@ -1,47 +1,46 @@
-# Unit V: Major Agile Frameworks - Scrum
-
-## Overview of Scrum
+# Scrum
 
 Scrum is an iterative and incremental Agile framework for managing product development. It is not a technique for creating software (like XP) but a framework for organizing projects and managing work.
 
-### Core Concepts
-
 - **Empirical Process Control:** Scrum is based on three pillars that uphold empirical process control:
   1. **Transparency:** Providing visibility to those responsible for the outcome (e.g., common language, shared definitions).
-  2. **Inspection:** Frequently checking the product and progress to detect undesirable variances.
+
+  2. **Inspection:** Frequently checking the product and progress towards goal to detect undesirable variances.
+
   3. **Adaptation:** Adjusting the process or material if inspection reveals deviations outside acceptable limits.
-- **Time-boxing:** Development occurs in fixed-length iterations called **Sprints** (typically 2–4 weeks), ensuring a regular cadence of delivery.
+
+- **Time-boxing:** Development occurs in fixed-length iterations called **Sprints** (typically 2-4 weeks), ensuring a regular cadence of delivery.
 
 ## Scrum Roles
 
-Scrum defines three specific roles, avoiding traditional titles like "Project Manager" to emphasize self-organization.
+Scrum defines three specific roles for a Scrum team, avoiding traditional titles like "Project Manager" to emphasize self-organization.
 
 ### A. The Product Owner
 
 The Product Owner is the single person responsible for maximizing the value of the product and the work of the Development Team. They define what will be delivered and in what order via the Product Backlog.
 
-- **Key Responsibilities:**
-  - Acts as the "single voice of the customer."
-  - Manages the **Product Backlog** (ordering and prioritizing items).
-  - Decides what will be built and in what order.
-  - Accepts or rejects work results.
-  - Communicates the product vision to the team.
+**Key Responsibilities:**
+- Acts as the "single voice of the customer."
+- Manages the **Product Backlog** (ordering and prioritizing items).
+- Decides what will be built and in what order.
+- Accepts or rejects work results.
+- Communicates the product vision to the team.
 
-- **Activities:**
-  - Identifying relative value on the PBIs.
-  - Communicating the vision of the business to the team and the vision of the team to the business.
-  - Defining available budget.
-  - Setting goals for the sprints and releases.
-  - Participating in the sprint planning and release planning meetings.
-  - Elaborating PBIs on a just-in-time basis with the team.
-  - Accepting PBIs.
-  - Accepting the sprint/release.
-  - Deciding when to release.
-  - Defining the features of the product via PBIs (mainly stories).
-  - Setting development schedule by ordering the product backlog.
-  - Adjusting PBIs and prioritising every sprint as needed.
-  - Ensuring return on investment.
-  - Gaining insight and assurance the product is meeting its goals through deep and broad feedback.
+**Activities:**
+- Identifying relative value on the PBIs (Product Backlog Items).
+- Communicating the vision of the business to the team and the vision of the team to the business.
+- Defining available budget.
+- Setting goals for the sprints and releases.
+- Participating in the sprint planning and release planning meetings.
+- Elaborating PBIs on a just-in-time basis with the team.
+- Accepting PBIs.
+- Accepting the sprint/release.
+- Deciding when to release.
+- Defining the features of the product via PBIs (mainly stories).
+- Setting development schedule by ordering the product backlog.
+- Adjusting PBIs and prioritising every sprint as needed.
+- Ensuring return on investment.
+- Gaining insight and assurance the product is meeting its goals through deep and broad feedback.
 
 ### B. The ScrumMaster
 
@@ -53,41 +52,41 @@ Through activities and coaching, the ScrumMaster helps the development team over
 
 External interference should be eliminated, as the ScrumMaster acts as a team shield in line with Agile Manifesto principle number five: Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
 
-- **Key Responsibilities:**
-  - **Coaching:** Guides the team in self-organization and cross-functionality.
-  - **Shielding:** Removes impediments (obstacles) and protects the team from external interference.
-  - **Facilitator:** Ensures Scrum events (meetings) take place and are effective.
-  - **Servant-Leader:** Helps the team perform at their highest level rather than directing their tasks.
+**Key Responsibilities:**
+- **Coaching:** Guides the team in self-organization and cross-functionality.
+- **Shielding:** Removes impediments (obstacles) and protects the team from external interference.
+- **Facilitator:** Ensures Scrum events (meetings) take place and are effective.
+- **Servant-Leader:** Helps the team perform at their highest level rather than directing their tasks.
 
-- **Activities for Success:**
-  - Establishing Scrum practices and rules, shielding the team, and removing obstacles.
-  - Ensuring that the Scrum team is fully functional and productive.
-  - Enabling close cooperation across all roles and functions.
-  - Ensuring that the Scrum process is followed, including effective daily Scrum meetings, sprint reviews, retrospectives, and planning meetings.
-  - Leading and coaching the organization in adopting Scrum.
-  - Assisting the product owner and finding effective product backlog management techniques.
+**Activities for Success:**
+- Establishing Scrum practices and rules, shielding the team, and removing obstacles.
+- Ensuring that the Scrum team is fully functional and productive.
+- Enabling close cooperation across all roles and functions.
+- Ensuring that the Scrum process is followed, including effective daily Scrum meetings, sprint reviews, retrospectives, and planning meetings.
+- Leading and coaching the organization in adopting Scrum.
+- Assisting the product owner and finding effective product backlog management techniques.
 
 ### C. The Development Team
 
 The Development Team is a cross-functional, self-organizing group of professionals who deliver a potentially shippable Increment. They define how to deliver what has been asked for and how long it will take via the Sprint Backlog. The team is a self-organizing, cross-functional, and collaborative entity that aims to deliver the goals agreed with the Product Owner.
 
-- **Key Characteristics:**
-  - **Self-Organizing:** The team decides how to turn the Product Backlog into working product; no one (not even the ScrumMaster) tells them how to build it.
-  - **Cross-Functional:** The team possesses all the skills necessary to create the product increment (e.g., coding, testing, analysis, design).
-  - **Size:** Typically 5 to 9 people (or 7 ± 2). Small enough to communicate, large enough to complete significant work.
+**Key Characteristics:**
+- **Self-Organizing:** The team decides how to turn the Product Backlog into working product; no one (not even the ScrumMaster) tells them how to build it.
+- **Cross-Functional:** The team possesses all the skills necessary to create the product increment (e.g., coding, testing, analysis, design).
+- **Size:** Typically 5 to 9 people (or 7 ± 2). Small enough to communicate, large enough to complete significant work.
 
 Self-organization is a critical and evolving characteristic of the Development Team. The team determines the best manner to realize the requirements defined and prioritized by the Product Owner in the form of the Sprint Goal, in line with Agile Manifesto principle number 11: The best architectures, requirements, and designs emerge from self-organizing teams.
 
-- **Responsibilities:**
-  - Working with the Product Owner, ensuring that PBIs are understood and realized appropriately.
-  - Defining emergent architectures while maintaining quality at the agreed level.
-  - Being self-organizing, cross-functional, with no predetermined roles.
-  - Consisting of seven plus or minus two people – all skills required to get PBIs to 'done'.
-  - Using lots of face-to-face communication.
-  - Being responsible for organizing tasks and committing to work.
-  - Having authority to do whatever is needed to meet commitment.
-  - Demonstrating work results to the Product Owner and stakeholders.
-  - Having the right to do everything within the boundaries of the delivery standards and guidelines to reach the sprint/release goal.
+**Responsibilities:**
+- Working with the Product Owner, ensuring that PBIs are understood and realized appropriately.
+- Defining emergent architectures while maintaining quality at the agreed level.
+- Being self-organizing, cross-functional, with no predetermined roles.
+- Consisting of seven plus or minus two people – all skills required to get PBIs to 'done'.
+- Using lots of face-to-face communication.
+- Being responsible for organizing tasks and committing to work.
+- Having authority to do whatever is needed to meet commitment.
+- Demonstrating work results to the Product Owner and stakeholders.
+- Having the right to do everything within the boundaries of the delivery standards and guidelines to reach the sprint/release goal.
 
 
 ## Scrum Artefacts
@@ -165,16 +164,15 @@ The Scrum lifecycle revolves around the **Sprint**, a time-boxed iteration (typi
 These questions cover the Scrum process, roles, and its application in project management.
 
 Process and Methodology:
-*   What is Scrum Process? Explain Agile Project Management in detail.
-*   Demonstrate scrum approach of agile methodology with a neat diagram.
-*   What is Scrum? How do you implement scrum? Explain.
-*   Why Scrum? Illustrate Applying Scrum for project development.
-*   Explain the Scrum activities and process.
+- What is Scrum Process? Explain Agile Project Management in detail.
+- Demonstrate scrum approach of agile methodology with a neat diagram.
+- What is Scrum? How do you implement scrum? Explain.
+- Why Scrum? Illustrate Applying Scrum for project development.
+- Explain the Scrum activities and process.
 
 Roles and Responsibilities:
-*   Describe the primary roles in Scrum and what are their responsibilities.
+- Describe the primary roles in Scrum and what are their responsibilities.
 
 Business Value:
-*   Explain Business value through Collaboration and Empirical Management for developing application using scrum.
-*   Why Current System Development Methodologies Don’t Work? Why Does Scrum Works? Discuss.
-
+- Explain Business value through Collaboration and Empirical Management for developing application using scrum.
+- Why Current System Development Methodologies Don’t Work? Why Does Scrum Works? Discuss.

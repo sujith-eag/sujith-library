@@ -1,4 +1,6 @@
-# Unit V: Major Agile Frameworks
+# DSDM, AgilePM and Kanban
+
+Agile frameworks provide structured approaches to software development and project management. This unit explores three such frameworks: Dynamic Systems Development Method (DSDM), Agile Project Management (AgilePM), and Kanban.
 
 ## Dynamic Systems Development Method (DSDM)
 
@@ -11,12 +13,19 @@ The DSDM philosophy states that "best business value emerges when projects are a
 This philosophy is supported by **eight guiding principles**:
 
 1. **Focus on the business need:** Deliver what the business wants when they need it.
+
 2. **Deliver on time:** By using time-boxing and MSCW prioritization, the team ensures delivery happens on time.
+
 3. **Collaborate:** Teams that collaborate outperform those that do not. This increases understanding and shared ownership.
+
 4. **Never compromise on quality:** Aim to deliver the agreed level of quality from start to finish.
+
 5. **Build incrementally from firm foundations:** Do "Enough Design Up Front" (EDUF) rather than "No Design Up Front" or "Big Design Up Front" to ensure value is delivered early.
+
 6. **Develop iteratively:** Use a cycle of "Thought, Action and Conversation" to converge on the best solution.
+
 7. **Communicate continuously and clearly:** Poor communication causes failure; DSDM emphasizes practices to support effective communication.
+
 8. **Demonstrate control:** The whole team is involved in planning, and progress is measured by the delivery of products rather than completed activities.
 
 ### DSDM Roles
@@ -27,25 +36,34 @@ DSDM defines a comprehensive set of roles grouped into three levels.
 
 project level, solution development team level and supporting level. A person can take more than one role, and a role can be covered by more than one person.
 
-**A. Project Level Roles**
+#### A. Project Level Roles
 
 - **Business Sponsor:** The person funding the project.
+
 - **Business Visionary:** Provides the "big picture" and strategic direction. This role should be held by a single person to avoid confusion.
+
 - **Project Manager:** Coordinates high-level management but leaves detailed planning to the solution development team.
+
 - **Technical Coordinator:** The technical authority ensuring consistency and quality of the technical solution.
 
-**B. Solution Development Team Roles**
+#### B. Solution Development Team Roles
 
 - **Business Ambassador:** The main day-to-day decision-maker for the business duting iterative development. They must have sufficient seniority and credibility to make decisions on behalf of the business.
+
 - **Business Analyst:** is both active in supporting the project-level roles and fully integrated with the solution development team. Facilitates the relationship between business and technical roles.
+
 - **Team Leader:** A servant-leader who removes impediments and fosters self-organization.
+
 - **Solution Developer:** Interprets business requirements and translates them into the solution that meets the functional and non-functional needs.
+
 - **Solution Tester:** Performs testing throughout the project in accordance with agreed strategy for technical testing.
 
-**C. Supporting Roles**
+#### C. Supporting Roles
 
 - **Technical Advisor & Business Advisor:** Provide specific/specialist input to project when needed.
+
 - **Workshop Facilitator:** Manages the workshop process to help participants achieve their objectives.
+
 - **DSDM Coach:** Helps teams with limited experience get the most out of the framework.
 
 ### The DSDM Process
@@ -53,26 +71,34 @@ project level, solution development team level and supporting level. A person ca
 The DSDM process consists of sequential and iterative phases,:
 
 1. **Pre-project:** A short phase where the idea is formed (e.g., terms of reference).
+
 2. **Feasibility:** Creates outline requirements and a high-level solution to determine if the project is feasible.
+
 3. **Foundations:** Adds enough detail to requirements and plans to establish firm foundations for development.
+
 4. **Evolutionary Development:** The team evolves the solution within time-boxes using iterative development and prioritization, together with modelling and facilitated workshops, to converge on an accurate solution that meets the business need and is also built in the right way from a technical viewpoint.
+
 5. **Deployment:** Releasing an increment of the solution into operational use.
+
 6. **Post-project:** Assessing whether the expected benefits have been delivered (usually 3–6 months after deployment).
 
 
 The five practices that ensure project success in DSDM are:
+
 1. **Timeboxing:** Fixed time periods for development activities to ensure timely delivery.
+
 2. **MoSCoW Prioritization:** Prioritizing requirements into Must have, Should have, Could have, and Won't have.
+
 3. **Iterative Development:** Developing the solution in small increments to allow for feedback and adjustments.
+
 4. **Facilitated Workshops:** Engaging stakeholders in workshops to gather requirements and make decisions.
+
 5. **Modelling:** Using models to visualize and understand the solution.
 
 
 ## Agile Project Management (AgilePM)
 
 **AgilePM** is a framework based on the current version of DSDM. It views DSDM from the perspective of a project manager.
-
-### Core Concepts
 
 - **Facilitative Management:** AgilePM focuses on the mindset and behaviors needed to support self-organizing teams, moving away from "command and control".
 
@@ -85,7 +111,7 @@ Kanban is an approach to continuously improving service delivery by emphasizing 
 
 Kanban does not prescribe specific roles or process steps as it is built on the concept of evolutionary change. Start by understanding how the current software delivery system works. When the current flow of work is visualised and measured, improve it one step at a time. Continue to do this forever.
 
-### Core Concepts: Six Core Practices
+### Six Core Practices
 
 1. **Visualise the work:** Use a board (e.g., Post-it notes) to see the flow of work from idea to release. This makes the invisible work of software delivery visible.
 
@@ -140,18 +166,18 @@ Scrum : Revolutionary. Implement a new way of working with defined roles, events
 These questions focus on the DSDM framework, its process, and ensuring project success.
 
 Framework and Process:
-*   Explain in details of Dynamic system development method (DSDM).
-*   Illustrate the Dynamic System Development Method (DSDM) framework with appropriate diagrams.
-*   Describe the dynamic system development method in brief.
-*   Elucidate DSDM process with a neat diagram. How does DSDM practices ensure project success? Explain.
-*   Describe the DSDM (Dynamic System Development Method) process.
+- Explain in details of Dynamic system development method (DSDM).
+- Illustrate the Dynamic System Development Method (DSDM) framework with appropriate diagrams.
+- Describe the dynamic system development method in brief.
+- Elucidate DSDM process with a neat diagram. How does DSDM practices ensure project success? Explain.
+- Describe the DSDM (Dynamic System Development Method) process.
 
 ### Kanban
 
 These questions cover the Kanban model, its principles, and how it differs from Scrum.
 
 Process and Principles:
-*   Illustrate the Kanban Process with help of a neat diagram.
-*   Discuss/Elucidate the core principles and practices of Kanban.
+- Illustrate the Kanban Process with help of a neat diagram.
+- Discuss/Elucidate the core principles and practices of Kanban.
 Comparison:
-*   Classify between Kanban and Scrum process. List and discuss the core practices of Kanban process.
+- Classify between Kanban and Scrum process. List and discuss the core practices of Kanban process.

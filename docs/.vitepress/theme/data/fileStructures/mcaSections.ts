@@ -108,7 +108,7 @@ export const mcaSESection = [
         ]
       },
       {
-        title: "Generic Agile Process",
+        title: "Agile Process",
         items: [
           { label: "Agile Operating Model", link: "/mca/se/unit_41/1_agile_operating_model" },
           { label: "Agile Roles", link: "/mca/se/unit_41/2_common_agile_roles" },
@@ -117,7 +117,7 @@ export const mcaSESection = [
         ]
       },
       {
-        title: "Major Agile Frameworks",
+        title: "Agile Frameworks",
         items: [
           { label: "eXtreme Programming(XP)", link: "/mca/se/unit_51/1_extreme_programming_xp" },
           { label: "Scrum", link: "/mca/se/unit_51/2_scrum" },
