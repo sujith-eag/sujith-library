@@ -1,4 +1,4 @@
-# Unit IV: Generic Agile Process - Agile Operating Model
+# Generic Agile Process - Agile Operating Model
 
 While specific frameworks differ, we can outline a **Simplified Generic Agile Process** that most AOMs follow.
 
@@ -26,7 +26,7 @@ Agile may be scaled up from the iteration/sprint and release level across many t
 
 ## Agile Operating Model (AOM)
 
-An Agile Operating Model is the practical application of Agile within a specific business context. It acknowledges that "one size does not fit all" and No single Agile framework provides everything a business requires. So need to combine different agile frameworks to cover all aspects of delivery, governance, and technical engineering.
+An Agile Operating Model is the practical application of Agile within a specific business context. It acknowledges that "one size does not fit all" and No single Agile framework provides everything a business requires. Businesses need to combine different agile frameworks to cover all aspects of delivery, governance, and technical engineering.
 
 - **Agile Operating Model (AOM):** The holistic and simple definition of what an organization, programmer, project, or team means when they use the term "Agile." It aligns with the Agile Manifesto and often involves the integration of multiple frameworks (e.g., combining Scrum with XP). The solution depends entirely on the business implementing it; there is no single "correct" AOM.
 
@@ -42,28 +42,24 @@ Different frameworks can be layered to cover different levels of responsibility,
 
 An effective AOM often layers frameworks based on their specific strengths. A typical integration might look like this (from the bottom up):
 
-1. **Technical Engineering Level:**
-    - **Framework:** **eXtreme Programming (XP)**.
-    - **Focus:** Used for the technical aspects of software engineering and team practices.
+1. **Technical Engineering Level**: eXtreme Programming (XP).
+    - Used for the technical aspects of software engineering and team practices.
 
-2. **Team and Product Delivery Level:**
-    - **Frameworks:** **Scrum**, **Kanban**, or **DSDM**.
-    - **Focus:** Used to manage the team dynamics and the delivery of the product.
+2. **Team and Product Delivery Level:** Scrum, Kanban, or DSDM.
+    - Used to manage the team dynamics and the delivery of the product.
 
-3. **Project Governance Level:**
-    - **Frameworks:** **AgilePM** (Agile Project Management) or **DSDM**.
-    - **Focus:** Used if Agile project governance is required (e.g., for reporting, business cases, and higher-level tracking).
+3. **Project Governance Level:** AgilePM (Agile Project Management) or DSDM.
+    - Used if Agile project governance is required (e.g., for reporting, business cases, and higher-level tracking).
 
-4. **Scaling Level (Multi-Team):**
-    - **Framework:** **SAFe** (Scaled Agile Framework) or others.
-    - **Focus:** Used if the delivery involves many teams working together.
+4. **Scaling Level (Multi-Team):** SAFe (Scaled Agile Framework) or others.
+    - Used if the delivery involves many teams working together.
 
 5. **The Wrapper:**
     - **Values & Principles:** All of the above are wrapped within the **Agile Manifesto** values and principles to ensure cultural alignment.
 
 When the frameworks are integrated and work together in this way, they create the Agile operating model.
 
-### Key Example: The Agile Business Operating Model (BOM)
+### The Agile Business Operating Model (BOM)
 
 The AOM does not exist in a vacuum; it sits within the wider Business Operating Model (BOM):
 
@@ -76,4 +72,3 @@ The AOM does not exist in a vacuum; it sits within the wider Business Operating 
 
 > [!NOTE] 
 > A **standard** is something that is mandatory and audited, whereas a **guideline** is something that can be inspected and adapted by the team.
-

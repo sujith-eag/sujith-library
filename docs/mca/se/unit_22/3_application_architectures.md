@@ -36,12 +36,14 @@ Transaction processing systems may be organized as a “pipe and filter” archi
 
 The conceptual structure involves four sequential components for handling a request.
 
+::: details TPS Conceptual Structure
 ```mermaid
 graph TD
     IOP[I/O processing] --> AL[Application logic]
     AL --> TM[Transaction manager]
     TM --> DB[(Database)]
 ```
+:::
 
 ### Example: ATM System
 

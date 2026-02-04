@@ -1,6 +1,4 @@
-# Unit V: Major Agile Frameworks - eXtreme Programming (XP)
-
-## Overview and Ethos
+# eXtreme Programming (XP)
 
 eXtreme Programming (XP) is one of the most significant Agile methodologies, conceived in the late 1990s primarily by Kent Beck. 
 

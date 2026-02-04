@@ -1,6 +1,4 @@
-# Unit III: Agile Methodologies - Introduction
-
-## 1. What is Agile?
+# Agile Methodologies - Introduction
 
 Agile is not a single methodology but an umbrella term. 
 
@@ -18,11 +16,9 @@ Agile frameworks collectively ensure:
 
 - **Evolution:** Recognizing Agile as a dynamic approach requiring continuous improvement (Kaizen) after framework implementation.
 
-## 2. The History of Agile
+## The History of Agile
 
 Agile methodologies build upon foundational concepts from manufacturing and earlier software development practices.
-
-### Evolution of Agile
 
 - **Lean Origins:** Agile draws inspiration from the Toyota Production System (TPS), now known as Lean. Concepts like visual boards originated from TPS.
 - However, Agile emphasizes Lean product development, which embraces variability for innovation, contrasting with Lean manufacturing's focus on repeatability.
@@ -45,7 +41,7 @@ Innovation and creativity in product development thrive on variability, whereas 
    - Feature Driven Development (FDD).
 4. **2001:** Agreement on the Agile Manifesto in Snowbird, Utah, establishing unified values for these frameworks.
 
-## 3. The Agile Manifesto
+## The Agile Manifesto
 
 The Agile Manifesto was created in February 2001 by 17 software development experts. It provides a unified definition of Agile that all frameworks align with, driven by the need for an alternative to documentation-driven, heavyweight software development processes that often resulted in late, over-budget deliveries of unsatisfactory products.
 
@@ -81,9 +77,9 @@ Typically an Agile audit or health check will be performed against the 4 manifes
 	- Agile contracts concentrate on enabling inspection and adaptation of the product, prioritization, and collaboration between all stakeholders. This ensures they can work together to a mutually satisfactory conclusion. 
 
 > [!NOTE] Waterfall Contracts 
-> This stands in contrast to a traditional 'Waterfall'-driven contract, in which the analysis and design stages will produce detailed documents that become fundamental parts of the contract (e.g., the requirement specification, functional specification, etc.).
+> In traditional 'Waterfall'-driven contract, the analysis and design stages will produce detailed documents that become fundamental parts of the contract (e.g., the requirement specification, functional specification, etc.).
 >  
-> The interaction between customer and supplier then becomes a negotiation based on the detailed documents that have been produced. This can create significant friction where there is a large amount of change required to the contracted specifications.
+> The interaction between customer and supplier then becomes a negotiation based on the detailed documents that have been produced. Can create significant friction where there is a large amount of change required to the contracted specifications.
 
 4. **Responding to change over following a plan:**
     - Agile planning exists as focused planning designed to enable inspection and adaptation.
@@ -145,21 +141,21 @@ Agile deliveries follow an empirical process (learning process). The three pilla
 
 ## Questions
 
-### 1. What is Agile? & Agile vs. Traditional Models
+### What is Agile? & Agile vs. Traditional Models
 
-*   What is Agile? And state the Agile Manifesto.,
-*   What is agile method? List the various agile methods. Can we develop our own agile method? Justify your answer.
-*   Write a note on agile methods? Briefly discuss the principles of agile methods.
-*   Distinguish between Agile Model and Waterfall Model. Give example each.
-*   With a neat diagram explain the difference between agile development and plan based development.
-*   State and explain the benefits of Agile.
-*   What are the main reasons organizations choose to adopt Agile methodologies?
+- What is Agile? And state the Agile Manifesto.
+- Distinguish between Agile Model and Waterfall Model. Give example each.
+- With a neat diagram explain the difference between agile development and plan based development.
+- State and explain the benefits of Agile.
+- What are the main reasons organizations choose to adopt Agile methodologies?
+- What is agile method? List the various agile methods. Can we develop our own agile method? Justify your answer.
+- Write a note on agile methods? Briefly discuss the principles of agile methods.
 
-### 2. The Agile Manifesto (Values and Principles)
+### The Agile Manifesto (Values and Principles)
 
-*   Analyze the four key values of Agile manifesto.
-*   List and Explain the core values of Agile Manifesto.
-*   Summarize the 12 Principles behind the Agile Manifesto.
-*   Illustrate the agile principles with appropriate examples.
-*   Explain any eight principles which supports core values of Agile Manifesto.
+- Analyze the four key values of Agile manifesto.
+- List and Explain the core values of Agile Manifesto.
+- Summarize the 12 Principles behind the Agile Manifesto.
+- Illustrate the agile principles with appropriate examples.
+- Explain any eight principles which supports core values of Agile Manifesto.
 

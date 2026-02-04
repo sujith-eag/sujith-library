@@ -1,6 +1,8 @@
-# Unit IV: Generic Agile Process - Common Agile Roles
+# Common Agile Roles
 
-Agile frameworks generally define four key roles: The Customer, The Team, The Agile Lead, and The Stakeholders. While specific frameworks (like Scrum) use specific names (e.g., Product Owner, Scrum Master), these generic definitions cover the responsibilities found across most Agile methods.
+Agile frameworks generally define four key roles: The Customer, The Team, The Agile Lead, and The Stakeholders. 
+
+While specific frameworks (like Scrum) use specific names (e.g., Product Owner, Scrum Master), these generic definitions cover the responsibilities found across most Agile methods.
 
 ## 1. The Customer
 
@@ -83,65 +85,50 @@ Self-organizing teams tend towards better performance for software development:
 
 ### Team Structures (Types)
 
-#### 1. Feature Teams: 
+#### A. Feature Teams: 
 * Agile teams are usually structured as feature teams as it enables delivery of features (described as stories) from the backlog in vertical slices in the value sequence that the customer requires.
 
 * They contain all necessary skills to deliver the story to the customer (cross-functional).
 
-#### 2. Component Teams: 
+#### B. Component Teams: 
 * Responsible for producing components that can be combined with other components from other teams and integrated together into a feature.
 
 * Producing specific technical components (e.g., a database layer) that are integrated by other teams. Used when scaling Agile in complex environments.
 
-#### 3. Core vs. Support Teams: 
+#### C. Core vs. Support Teams: 
 * Core teams that are focused on delivering across the value chain; 
 
 * Support teams (e.g., architecture support) exist to enable the core teams to do things right the first time.
 
 ## 3. The Agile Lead
 
-- **Servant-Leader:** A leadership style where the leader serves the team's needs first, rather than commanding and controlling them. They gain credibility by helping the team succeed.
+- **Servant-Leader**: A leadership style where the leader serves the team's needs first, rather than commanding and controlling them. They gain credibility by helping the team succeed.
 
-- **Facilitator:** An individual who structures and manages workshops (like Retrospectives) to help the group achieve its objectives without taking a side in the outcome.
+- **Facilitator**: An individual who structures and manages workshops (e.g., Retrospectives) to help the group achieve its objectives without taking a side in the outcome.
 
-The Agile Lead is a servant-leader whose primary goal is to enable the team to self-organize and continuously improve. Should have Experience and maturity to understand that the focus in Agile is on the individuals and the effective face-to-face interactions between those individuals;
+The Agile Lead acts as a servant-leader, focusing on enabling the team to self-organize and continuously improve. They require experience and maturity to foster effective interactions, create a no-blame culture where mistakes are learning opportunities, and possess deep knowledge of Agile principles and transformation.
 
-The ability to create a no-blame culture where people are not afraid to try new things, and an understanding that everyone (including themselves) makes mistakes, and that mistakes are acceptable as long as learning occurs;
+### Facets of the Role
 
-Experience in knowledge of Agile and transformation.
+1. **Servant-Leader**: Facilitates and enables team self-organization instead of commanding and controlling. Asks what support was missing if the team fails, building credibility by serving team needs.
 
-### Core Concepts: The Facets of the Role
+2. **Removing Impediments**: Identifies and removes blockers that prevents team from working (e.g., lack of empowerment, poor technology, management interference) that hinder progress.
 
-1. **Servant-Leader:** They will not command and control the team; instead they will facilitate and enable the team to self organize.
-	* Asks what support was missing if a team fails.
-	* An Agile lead should be a servant-leader who gains the credibility in their team by being a servant to the team’s needs and wants. 
+3. **Process Facilitator**: Ensures adherence to the Agile Operating Model, refines stories to appropriate size, and maintains definitions of "done," process policies, and work-in-progress limits.
 
-2. **Removing Impediments:** Responsible for identifying and removing "noise" or blockers that stop the team from working (e.g., lack of empowerment, bad technology, management interference).
-
-3. **Process Facilitator:** Ensures the Agile Operating Model (AOM) is being followed, all Agile activities are respected, stories are refined to the appropriate size.
-	* Making sure the team’s definition of ‘done’ or process policies are being met. 
-	* Work in progress limits are being adhered to
-
-4. **Coach/Trainer:** Teaches the team Agile principles and helps them visualize why transformation is necessary.
-	* Should pass on their knowledge of Agile principles, processes and practices to their team through coaching and training.
+4. **Coach/Trainer**: Teaches Agile principles, processes, and practices to help the team understand and embrace transformation.
 
 > [!NOTE] Servant-Leader
-> The Servant-Leader is servant first. It begins with the natural feeling that one wants to serve, to serve first. 
-> Then conscious choice brings one to aspire to lead. That person is sharply different from one who is leader first;
+> The Servant-Leader is servant first. It begins with the natural feeling that one wants to serve, to serve first. Then conscious choice brings one to aspire to lead. That person is sharply different from one who is leader first.
 
 > [!NOTE] Team Lead
-> One who operates in a ‘command and control’ style. 
-> * Will typically pass a plan to the team that details how they should do things (tasks) and how long they have to do those things;  They will then control the team to achieve the plan. 
-> * If the team fails, which is likely because they will not buy into a plan they had little or no input to, the team will probably blame the team lead for the failure citing excuses such as ‘we knew the plan was wrong’. 
-> * The team will also not self-organize as they have no motivation for doing so and they won’t feel safe to do so.
+> One who operates in a 'command and control' style: Passes detailed plans to the team, controls execution, and blames the team for failures. This discourages self-organization, motivation, and safety.
 
 ## 4. The Stakeholders
 
-Stakeholders are people and organisations outside the core team who have, a real or perceived ‘stake’, interest in the project or it's outcome. (e.g., users, governance boards, other departments).
+Stakeholders are people and organisations outside the core team who have, a real or perceived ‘stake’, interest in the project or it's outcome. (e.g., users, governance boards, other departments). 
 
-> Any person or group who can **help** the team or **hinder** them. 
-
-- **Importance:** Stakeholders can champion a project to success or be effective saboteurs if they feel un-engaged. may exert influence over the project, its deliverables or its team members.
+- **Importance:** They are any person or group who can **help** the team or **hinder** them. Stakeholders can champion a project to success or be effective saboteurs if they feel un-engaged. may exert influence over the project, its deliverables or its team members.
 
 - **Role:** They ensure the interests of their specific group are represented. They typically interact with the Customer to define requirements but may interact with the team directly for clarifications.
 
@@ -160,10 +147,6 @@ Stakeholders are people and organisations outside the core team who have, a real
 
 ## Questions
 
-### 1. Common Agile Roles (The Customer, The Team, The Agile Lead)
-
-These questions focus on the people involved in the process and their responsibilities.
-
-*   Elaborate on major key roles in Agile Delivery.
-*   How can you find a mentor for your Agile Development team? Discuss.  *(Note: This often refers to the Agile Lead/Coach role).*
-*   Illustrate the benefits of team work.
+- Elaborate on major key roles in Agile Delivery.
+- How can you find a mentor for your Agile Development team? Discuss.  *(Note: This often refers to the Agile Lead/Coach role).*
+- Illustrate the benefits of team work.
