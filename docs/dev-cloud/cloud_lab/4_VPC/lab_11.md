@@ -11,7 +11,7 @@ description: Deploy and secure Windows EC2 instances in two-tier VPC architectur
 
 This lab demonstrates deploying EC2 instances in a secure two-tier network architecture. You'll launch a Windows web server in a public subnet (accessible from the internet) and a Windows database server in a private subnet (isolated from direct internet access). This architecture pattern is fundamental for production environments where frontend servers need public accessibility while backend databases must remain fully isolated.
 
-You'll configure security groups to control network access,use the public instance as a bastion host (jump server) to access the private instance, and verify that NAT Gateway enables private instances to access the internet for updates while blocking all inbound connections. 
+You'll configure security groups to control network access, use the public instance as a bastion host (jump server) to access the private instance, and verify that NAT Gateway enables private instances to access the internet for updates while blocking all inbound connections. 
 
 ## Key Concepts
 

@@ -125,6 +125,8 @@ valkey-cli --version
     2. Copy the **Serverless endpoint** (for serverless deployment)
     3. This endpoint will be used in Phase-3 to connect from EC2
 
+8. In the created cache instance go to "Connected compute resources" and add the EC2 Instance. This automatically connects the EC2 security groups and allows connection.
+
 > [!NOTE]
 > Can Use cloudshell to run valkey commands if EC2 is not preferred.
 > Connect to Compute allows connecting to EC2 created in Phase-1 automatically.
@@ -157,12 +159,13 @@ Before connecting, confirm:
 
 Use the Serverless Endpoint from Phase-2 and the password:
 
-```bash
-valkey-cli -tls -h <Serverless_ENDPOINT> -p 6379
+If the endpoint has `.....cache.amazonaws.com:6379` port at the end, change it to `-p 6379`.
 
+```bash
+valkey-cli --tls -h <Serverless_ENDPOINT> -p 6379
 ```
 
-**Expected Result:** You should see a prompt like `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com:6379>`. This means the connection is successful.
+You should see a `lab-valkey-xxxxxx.serverless.use1.cache.amazonaws.com:6379>`. This means the connection is successful.
 
 4. Execute Valkey Commands
 

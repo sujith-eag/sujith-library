@@ -15,16 +15,16 @@ This lab guides you through creating IAM users and groups, setting up account al
 
 ## Key Concepts
 
-| Concept | Description |
-|---------|-------------|
-| Root User | The account owner with unrestricted access to all AWS services and resources; should be used only for account setup and billing |
-| IAM User | Individual identity with unique credentials for accessing AWS; represents a person or application |
-| IAM Group | Collection of IAM users that share identical permissions; simplifies permission management |
-| IAM Policy | JSON document defining permissions that specify allowed or denied actions on AWS resources |
-| IAM Role | Set of permissions that can be temporarily assumed by users, services, or applications |
-| MFA (Multi-Factor Authentication) | Additional security layer requiring a second form of authentication beyond password |
-| Account Alias | Custom name for your AWS account that replaces the numeric account ID in sign-in URLs |
-| Permissions | Authorization rules that determine what actions users can perform on AWS resources |
+| Concept                           | Description                                                                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Root User                         | The account owner with unrestricted access to all AWS services and resources; should be used only for account setup and billing |
+| IAM User                          | Individual identity with unique credentials for accessing AWS; represents a person or application                               |
+| IAM Group                         | Collection of IAM users that share identical permissions; simplifies permission management                                      |
+| IAM Policy                        | JSON document defining permissions that specify allowed or denied actions on AWS resources                                      |
+| IAM Role                          | Set of permissions that can be temporarily assumed by users, services, or applications                                          |
+| MFA (Multi-Factor Authentication) | Additional security layer requiring a second form of authentication beyond password                                             |
+| Account Alias                     | Custom name for your AWS account that replaces the numeric account ID in sign-in URLs                                           |
+| Permissions                       | Authorization rules that determine what actions users can perform on AWS resources                                              |
 
 ### Prerequisites
 

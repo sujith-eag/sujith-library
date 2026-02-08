@@ -15,18 +15,18 @@ This lab demonstrates two fundamental approaches to deploying web applications o
 
 ## Key Concepts
 
-| Concept | Description |
-|---------|-------------|
-| Apache HTTP Server (httpd) | Open-source web server software that listens on port 80/443 and serves web content to browsers |
-| httpd | HTTP Daemon - the service name for Apache on Red Hat-based Linux distributions (Amazon Linux, CentOS) |
-| Document Root | Directory where web server looks for files to serve (default: /var/www/html on Amazon Linux) |
-| systemd | Linux system and service manager for starting, stopping, enabling services (systemctl command) |
-| yum Package Manager | Yellowdog Updater Modified - package manager for Red Hat-based systems to install/update software |
-| User Data Script | Bash script executed automatically at instance first boot for configuration automation |
-| Shebang (#!/bin/bash) | First line of script specifying the interpreter, required for User Data scripts to execute |
-| Port 80 (HTTP) | Standard TCP port for unencrypted web traffic (Hypertext Transfer Protocol) |
-| Security Group | Virtual firewall controlling inbound/outbound traffic; must allow port 80 for web access |
-| cloud-init | AWS service that processes User Data scripts during instance initialization |
+| Concept                    | Description                                                                                           |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Apache HTTP Server (httpd) | Open-source web server software that listens on port 80/443 and serves web content to browsers        |
+| httpd                      | HTTP Daemon - the service name for Apache on Red Hat-based Linux distributions (Amazon Linux, CentOS) |
+| Document Root              | Directory where web server looks for files to serve (default: /var/www/html on Amazon Linux)          |
+| systemd                    | Linux system and service manager for starting, stopping, enabling services (systemctl command)        |
+| yum Package Manager        | Yellowdog Updater Modified - package manager for Red Hat-based systems to install/update software     |
+| User Data Script           | Bash script executed automatically at instance first boot for configuration automation                |
+| Shebang (#!/bin/bash)      | First line of script specifying the interpreter, required for User Data scripts to execute            |
+| Port 80 (HTTP)             | Standard TCP port for unencrypted web traffic (Hypertext Transfer Protocol)                           |
+| Security Group             | Virtual firewall controlling inbound/outbound traffic; must allow port 80 for web access              |
+| cloud-init                 | AWS service that processes User Data scripts during instance initialization                           |
 
 ### Prerequisites
 

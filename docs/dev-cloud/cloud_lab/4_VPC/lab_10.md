@@ -18,18 +18,18 @@ This lab guides you through creating a two-tier network architecture with public
 
 ## Key Concepts
 
-| Concept | Description |
-|---------|-------------|
-| VPC (Virtual Private Cloud) | Logically isolated virtual network dedicated to your AWS account with complete control over IP addressing, subnets, routing, and security |
-| CIDR Block | Classless Inter-Domain Routing notation defining IP address range (e.g., 10.0.0.0/16 provides 65,536 IP addresses) |
-| Subnet | Subdivision of VPC IP range tied to a specific Availability Zone; can be public (internet-accessible) or private (isolated) |
-| Internet Gateway (IGW) | Horizontally scaled, redundant gateway enabling bidirectional internet communication for public subnet resources |
-| NAT Gateway | Managed network address translation service allowing private subnet instances to access internet for updates while blocking inbound traffic |
-| Route Table | Set of routing rules determining where network traffic from subnets is directed (e.g., local traffic, internet-bound traffic) |
-| Availability Zone (AZ) | Isolated data center within AWS region providing fault tolerance; distributing subnets across AZs ensures high availability |
-| Elastic IP | Static public IPv4 address allocated to your account and associated with NAT Gateway for consistent outbound IP addressing |
-| Main Route Table | Default route table automatically created with VPC; best practice is to leave it unchanged and create custom route tables |
-| Security Group | Virtual firewall at instance level controlling inbound/outbound traffic based on protocol, port, and source/destination |
+| Concept                     | Description                                                                                                                                 |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| VPC (Virtual Private Cloud) | Logically isolated virtual network dedicated to your AWS account with complete control over IP addressing, subnets, routing, and security   |
+| CIDR Block                  | Classless Inter-Domain Routing notation defining IP address range (e.g., 10.0.0.0/16 provides 65,536 IP addresses)                          |
+| Subnet                      | Subdivision of VPC IP range tied to a specific Availability Zone; can be public (internet-accessible) or private (isolated)                 |
+| Internet Gateway (IGW)      | Horizontally scaled, redundant gateway enabling bidirectional internet communication for public subnet resources                            |
+| NAT Gateway                 | Managed network address translation service allowing private subnet instances to access internet for updates while blocking inbound traffic |
+| Route Table                 | Set of routing rules determining where network traffic from subnets is directed (e.g., local traffic, internet-bound traffic)               |
+| Availability Zone (AZ)      | Isolated data center within AWS region providing fault tolerance; distributing subnets across AZs ensures high availability                 |
+| Elastic IP                  | Static public IPv4 address allocated to your account and associated with NAT Gateway for consistent outbound IP addressing                  |
+| Main Route Table            | Default route table automatically created with VPC; best practice is to leave it unchanged and create custom route tables                   |
+| Security Group              | Virtual firewall at instance level controlling inbound/outbound traffic based on protocol, port, and source/destination                     |
 
 ### Prerequisites
 

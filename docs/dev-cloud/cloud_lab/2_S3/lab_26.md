@@ -60,6 +60,7 @@ StudentID,Name,Dept,Marks,Result
 ```
 
 ## Phase B: Create S3 Bucket and Upload CSV
+
 - Go to **AWS Console → S3**
 - Click **Create bucket**
 - Bucket name: `athena-lab-<yourname>-<number>` (must be globally unique)
