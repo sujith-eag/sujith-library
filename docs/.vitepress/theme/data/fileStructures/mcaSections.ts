@@ -11,7 +11,6 @@ export const mcaMLSection = [
           { label: "Applications & Tools", link: "/mca/ml/u1/u14" },
           { label: "Phases of ML", link: "/mca/ml/u1/u21" },
           { label: "Data Structures & Attributes", link: "/mca/ml/u1/u22" },
-          { label: "Preparing to Model", link: "/mca/ml/u1/u23" },
         ]
       },
       {
