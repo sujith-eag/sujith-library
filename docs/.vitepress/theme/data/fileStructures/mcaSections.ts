@@ -16,10 +16,10 @@ export const mcaMLSection = [
       {
         title: "Unit-2",
         items: [
-          { label: "Selecting a Model", link: "/mca/ml/u2/u11" },
+          { label: "Modeling & Evaluation", link: "/mca/ml/u2/u11" },
           { label: "Training a Model", link: "/mca/ml/u2/u12" },
           { label: "Model Representation", link: "/mca/ml/u2/u13" },
-          { label: "Improving Performance", link: "/mca/ml/u2/u14" },
+          { label: "Feature Engineering", link: "/mca/ml/u2/u14" },
         ]
       },
       // {
