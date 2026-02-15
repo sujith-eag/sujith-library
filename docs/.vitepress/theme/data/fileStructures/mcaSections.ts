@@ -149,6 +149,13 @@ export const mcaEHSection = [
         ]
       },
       {
+        title: "Unit-3",
+        items: [
+          { label: "Windows Exploit", link: "/mca/eh/theory/u3/u31" },
+          { label: "Linux Exploit", link: "/mca/eh/theory/u3/u32" },
+        ]
+      },
+      {
         title: "Lab Manual",
         items: [
           { label: "Wake-on-LAN", link: "/mca/eh/lab/lab1" },
