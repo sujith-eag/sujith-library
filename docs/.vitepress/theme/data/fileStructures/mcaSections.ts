@@ -153,6 +153,7 @@ export const mcaEHSection = [
         items: [
           { label: "Windows Exploit", link: "/mca/eh/theory/u3/u31" },
           { label: "Linux Exploit", link: "/mca/eh/theory/u3/u32" },
+          { label: "Mobile Hacking", link: "/mca/eh/theory/u3/u33" },
         ]
       },
       {
