@@ -133,14 +133,21 @@ export const mcaEHSection = [
   {
     title: "Ethical Hacking",
     items: [
-      // {
-      //   title: "Unit-1",
-      //   items: [
-      //     { label: "Introduction & Ethics", link: "/mca/eh/u1/u11" },
-      //     { label: "Reconnaissance", link: "/mca/eh/u1/u12" },
-      //     { label: "Unit-1 Questions", link: "/mca/eh/u1/q1" },
-      //   ]
-      // },
+      {
+        title: "Unit-1",
+        items: [
+          { label: "Introduction to EH", link: "/mca/eh/theory/u1/u11" },
+          { label: "Attackers & Defenders", link: "/mca/eh/theory/u1/u12" },
+          { label: "Anatomy of an Attack", link: "/mca/eh/theory/u1/u13" },
+        ]
+      },
+      {
+        title: "Unit-2",
+        items: [
+          { label: "Footprinting & Reconnaissance", link: "/mca/eh/theory/u2/u21" },
+          { label: "Scanning & Enumeration", link: "/mca/eh/theory/u2/u22" },
+        ]
+      },
       {
         title: "Lab Manual",
         items: [
