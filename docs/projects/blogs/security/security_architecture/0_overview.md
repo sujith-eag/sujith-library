@@ -56,8 +56,10 @@ The framework builds upon foundational principles and spans seven functional dom
 5. Data Security
 
 **Detection and Response Domains:**
-6. **Detection and Monitoring:** The process of identifying security incidents and threats through monitoring, logging, and analysis
-7. **Incident Response:** The coordinated approach to addressing and managing the aftermath of a security breach
+
+6. Detection and Monitoring: The process of identifying security incidents and threats through monitoring, logging, and analysis
+
+7. Incident Response: The coordinated approach to addressing and managing the aftermath of a security breach
 
 ```mermaid
 flowchart TD
