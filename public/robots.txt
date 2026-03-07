@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of build artifacts, cache, or temp files
+Disallow: /.vitepress/cache/
+Disallow: /.vitepress/temp/
+
+# Allow and emphasize crawling of projects section (blogs and articles)
+Allow: /projects/blogs/
+
+# Sitemap location
+Sitemap: https://sujith-eag.in/sitemap.xml

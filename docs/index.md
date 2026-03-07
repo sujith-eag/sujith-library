@@ -20,8 +20,12 @@ hero:
   #   link: https://github.com/sujith-eag/agentic-workstation 
 
   - theme: alt
-    text: ❤️ Collaborate on Project
+    text: ❤️ Collaborate
     link: /support/
+
+  - theme: brand
+    text: 📝 Articles & Doc
+    link: /projects/
 
 
 features:
